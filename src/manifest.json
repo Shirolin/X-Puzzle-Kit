@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "X-Puzzle-Stitcher",
+  "version": "1.0.0",
+  "description": "Twitter (X) 拼图还原助手，一键无缝拼接推特多图。",
+  "permissions": ["activeTab", "storage", "downloads"],
+  "host_permissions": [
+    "https://twitter.com/*",
+    "https://x.com/*",
+    "https://pbs.twimg.com/*"
+  ],
+  "action": {
+    "default_title": "X-Puzzle-Stitcher"
+  },
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js": ["src/content/index.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "x-puzzle-stitcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:test": "vite serve -c vite.test.config.ts",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.2",
+    "@types/chrome": "^0.1.36",
+    "@types/node": "^25.0.10",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-web-extension": "^4.5.0"
+  },
+  "dependencies": {
+    "lucide-preact": "^0.563.0",
+    "preact": "^10.28.2"
+  }
+}

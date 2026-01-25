@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X-Puzzle-Stitcher Test Bench</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #0f1419;
+      }
+      #sidebar {
+        width: 420px;
+        background: #fff;
+        border-right: 1px solid #eff3f4;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .sidebar-header {
+        padding: 20px;
+        border-bottom: 1px solid #eff3f4;
+      }
+      .sidebar-content {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      #content-area {
+        flex: 1;
+        background: #f7f9f9;
+        overflow: auto;
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      #twitter-feed {
+        width: 600px;
+        background: #fff;
+        border: 1px solid #eff3f4;
+        border-radius: 16px;
+        min-height: 200px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      }
+      
+      /* Tabs */
+      .tabs {
+        display: flex;
+        border-bottom: 1px solid #eff3f4;
+      }
+      .tab {
+        flex: 1;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        font-weight: bold;
+        color: #536471;
+        border-bottom: 3px solid transparent;
+      }
+      .tab.active {
+        color: #0f1419;
+        border-bottom-color: #1d9bf0;
+      }
+      .panel {
+        display: none;
+      }
+      .panel.active {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      /* Form Elements */
+      label {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 4px;
+        display: block;
+      }
+      input, textarea {
+        width: 100%;
+        border: 1px solid #cfd9de;
+        border-radius: 4px;
+        padding: 8px;
+        font-family: monospace;
+        box-sizing: border-box;
+      }
+      input:focus, textarea:focus {
+        outline: none;
+        border-color: #1d9bf0;
+      }
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      .hint {
+        font-size: 12px;
+        color: #536471;
+        margin-top: 4px;
+      }
+      
+      button.primary {
+        background: #1d9bf0;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 9999px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background 0.2s;
+      }
+      button.primary:hover {
+        background: #1a8cd8;
+      }
+
+      /* Twitter Styles Simulation */
+      article { padding: 16px; border-bottom: 1px solid #eff3f4; }
+      .mock-avatar { width: 48px; height: 48px; background: #cfd9de; border-radius: 50%; }
+      .tweet-header { display: flex; gap: 12px; margin-bottom: 4px; }
+      .tweet-images-grid {
+        display: grid; 
+        gap: 2px; 
+        border-radius: 16px; 
+        overflow: hidden; 
+        margin-top: 12px;
+        aspect-ratio: 16/9; /* Default aspect ratio */
+      }
+      .tweet-photo { 
+        position: relative; 
+        width: 100%; 
+        height: 100%; 
+        background: #eee;
+      }
+      .tweet-photo img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sidebar">
+      <div class="sidebar-header">
+        <h2 style="margin:0">🧩 插件测试台</h2>
+      </div>
+      
+      <div class="tabs">
+        <div class="tab active" data-target="panel-url">URL 构造器</div>
+        <div class="tab" data-target="panel-html">HTML 粘贴</div>
+      </div>
+
+      <div class="sidebar-content">
+        <!-- Panel 1: URL Builder -->
+        <div id="panel-url" class="panel active">
+          <div>
+            <label>推文链接 (Tweet URL)</label>
+            <input type="text" id="input-url" placeholder="https://x.com/username/status/..." />
+            <div class="hint">用于生成 ID 和用户信息的元数据。</div>
+          </div>
+
+          <div>
+            <label>图片链接 (Image URLs)</label>
+            <textarea id="input-images" placeholder="https://pbs.twimg.com/media/...
+https://pbs.twimg.com/media/..."></textarea>
+            <div class="hint">每行一个 URL。如果不填，将使用随机占位图。</div>
+          </div>
+          
+          <div>
+             <label>占位图数量 (仅当上方留空时)</label>
+             <select id="input-count" style="width:100%; padding:8px;">
+               <option value="4" selected>4 张 (田字格)</option>
+               <option value="3">3 张</option>
+               <option value="2">2 张</option>
+               <option value="1">1 张</option>
+             </select>
+          </div>
+
+          <button id="btn-build" class="primary">生成并注入</button>
+        </div>
+
+        <!-- Panel 2: HTML Paste -->
+        <div id="panel-html" class="panel">
+          <div>
+            <label>HTML 代码</label>
+            <textarea id="input-html" style="height: 300px;" placeholder="Paste <article>...</article> here"></textarea>
+          </div>
+          <button id="btn-inject" class="primary">渲染 HTML</button>
+        </div>
+
+        <div class="hint" style="margin-top: auto; border-top: 1px solid #eff3f4; padding-top: 10px;">
+          <strong>使用说明：</strong>
+          <ul style="padding-left: 20px; margin: 5px 0;">
+            <li>粘贴图片 URL 可测试真实长宽比布局。</li>
+            <li>插件按钮会自动出现在推文底部。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="content-area">
+      <div id="twitter-feed">
+        <div style="padding: 40px; text-align: center; color: #536471;">
+          请在左侧选择测试模式并生成推文。
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
