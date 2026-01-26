@@ -1111,12 +1111,12 @@ export function App({ task, onClose }: AppProps) {
                       fontSize: "0.9375rem",
                       fontWeight: 700,
                       boxShadow: splitBlobs.length > 0 ? "none" : "0 8px 16px rgba(37, 99, 235, 0.3)",
-                      backgroundColor: splitBlobs.length > 0 ? "rgba(255,255,255,0.05)" : "var(--color-primary)",
-                      color: splitBlobs.length > 0 ? "var(--color-text-muted)" : "white",
-                      border: splitBlobs.length > 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
-                      borderRadius: "var(--radius-lg)",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
-                    }}
+                    backgroundColor: splitBlobs.length > 0 ? "rgba(255,255,255,0.08)" : "var(--color-primary)",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "var(--radius-lg)",
+                    transition: "all var(--transition-normal)"
+                  }}
                   >
                     {isSplitting ? (
                       <>
@@ -1186,14 +1186,14 @@ export function App({ task, onClose }: AppProps) {
                       height: "3.25rem",
                       fontSize: "0.9375rem",
                       fontWeight: 700,
-                      backgroundColor: splitBlobs.length > 0 ? "var(--color-cta)" : "rgba(255,255,255,0.05)",
-                      color: splitBlobs.length > 0 ? "white" : "rgba(255,255,255,0.2)",
-                      boxShadow: splitBlobs.length > 0 ? "0 8px 16px rgba(244, 63, 94, 0.3)" : "none",
-                      cursor: splitBlobs.length > 0 ? "pointer" : "not-allowed",
-                      border: "none",
-                      borderRadius: "var(--radius-lg)",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
-                    }}
+                    backgroundColor: splitBlobs.length > 0 ? "var(--color-primary)" : "rgba(255,255,255,0.05)",
+                    color: "white",
+                    boxShadow: splitBlobs.length > 0 ? "0 8px 24px rgba(0, 122, 255, 0.3)" : "none",
+                    cursor: splitBlobs.length > 0 ? "pointer" : "not-allowed",
+                    border: "none",
+                    borderRadius: "var(--radius-lg)",
+                    transition: "all var(--transition-normal)"
+                  }}
                   >
                      <Download size={20} />
                      <span>{t("downloadAll")}</span>
@@ -1216,10 +1216,13 @@ export function App({ task, onClose }: AppProps) {
               <section style={{ marginBottom: "1rem" }}>
                 <h3
                   style={{
-                    fontSize: "0.875rem",
+                    fontSize: "0.7rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
                     fontWeight: 600,
-                    marginBottom: "0.5rem",
-                    color: "var(--color-text)",
+                    marginBottom: "0.6rem",
+                    color: "var(--color-text-muted)",
+                    paddingLeft: "2px"
                   }}
                 >
                   {t("layoutScheme")}
@@ -1261,10 +1264,13 @@ export function App({ task, onClose }: AppProps) {
               <section style={{ marginBottom: "1.25rem" }}>
                 <h3
                   style={{
-                    fontSize: "0.875rem",
+                    fontSize: "0.7rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
                     fontWeight: 600,
                     marginBottom: "0.75rem",
-                    color: "var(--color-text)",
+                    color: "var(--color-text-muted)",
+                    paddingLeft: "2px"
                   }}
                 >
                   {t("exportSettings")}
@@ -1273,10 +1279,10 @@ export function App({ task, onClose }: AppProps) {
                   <div
                     style={{
                       display: "flex",
-                      backgroundColor: "white",
+                      backgroundColor: "rgba(255,255,255,0.08)",
                       borderRadius: "var(--radius-md)",
                       padding: "3px",
-                      border: "1px solid var(--color-border)",
+                      border: "none",
                       gap: "2px",
                     }}
                   >
@@ -1303,16 +1309,13 @@ export function App({ task, onClose }: AppProps) {
                           borderRadius: "var(--radius-sm)",
                           backgroundColor:
                             outputFormat === fmt.toLowerCase()
-                              ? "var(--color-primary)"
+                              ? "rgba(255,255,255,0.15)"
                               : "transparent",
-                          color:
-                            outputFormat === fmt.toLowerCase()
-                              ? "white"
-                              : "var(--color-text)",
+                          color: "white",
                           fontSize: "10px",
                           fontWeight: "600",
                           cursor: "pointer",
-                          transition: "all 0.2s",
+                          transition: "all var(--transition-fast)",
                         }}
                       >
                         {fmt}

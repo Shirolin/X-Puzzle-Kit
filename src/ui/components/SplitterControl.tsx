@@ -49,17 +49,18 @@ export function SplitterControl({
   }, [layout, rows, cols, isTwitterOptimized, config.autoCropRatio]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%", gap: "1.25rem" }}>
       {/* 布局方案区块 */}
-      <section className="section-block">
+      <section>
         <h3
           style={{
-            fontSize: "0.75rem",
+            fontSize: "0.7rem",
             textTransform: "uppercase",
-            letterSpacing: "0.05em",
-            fontWeight: 700,
-            marginBottom: "0.75rem",
+            letterSpacing: "0.08em",
+            fontWeight: 600,
+            marginBottom: "0.6rem",
             color: "var(--color-text-muted)",
+            paddingLeft: "2px"
           }}
         >
           {t("layoutScheme")}
@@ -100,15 +101,16 @@ export function SplitterControl({
 
       {/* 自定义行列区块 */}
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
-         <section className="section-block">
+         <section>
              <h3
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.7rem",
                 textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                fontWeight: 700,
-                marginBottom: "0.75rem",
+                letterSpacing: "0.08em",
+                fontWeight: 600,
+                marginBottom: "0.6rem",
                 color: "var(--color-text-muted)",
+                paddingLeft: "2px"
               }}
             >
               {layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}
@@ -117,7 +119,7 @@ export function SplitterControl({
               style={{
                 display: "flex",
                 alignItems: "center",
-                background: "rgba(0,0,0,0.2)",
+                background: "rgba(255,255,255,0.05)",
                 borderRadius: "var(--radius-md)",
                 padding: "4px",
                 width: "min-content"
@@ -138,11 +140,11 @@ export function SplitterControl({
                  }}
                />
                <span style={{ 
-                   width: "40px", 
+                   width: "36px", 
                    textAlign: "center", 
-                   fontSize: "14px", 
-                   fontWeight: 700,
-                   color: "var(--color-primary)" 
+                   fontSize: "13px", 
+                   fontWeight: 600,
+                   color: "white" 
                }}>
                    {layout === "VERTICAL_1xN" ? rows : cols}
                </span>
@@ -165,16 +167,17 @@ export function SplitterControl({
       )}
 
       {/* 消除间距区块 */}
-      <section className="section-block" style={{ flex: 1 }}>
-        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "0.75rem"}}>
-             <h3
+      <section>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: "0.6rem"}}>
+            <h3
               style={{
-                fontSize: "0.75rem",
+                fontSize: "0.7rem",
                 textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                fontWeight: 700,
+                letterSpacing: "0.08em",
+                fontWeight: 600,
                 margin: 0,
                 color: "var(--color-text-muted)",
+                paddingLeft: "2px"
               }}
             >
               {t("gapRemoval")}
@@ -190,9 +193,9 @@ export function SplitterControl({
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      background: "rgba(0,0,0,0.2)",
+                      backgroundColor: "rgba(255,255,255,0.08)",
                       borderRadius: "var(--radius-sm)",
-                      padding: "2px",
+                      padding: "2px 6px",
                     }}
                   >
                     <input
@@ -204,18 +207,18 @@ export function SplitterControl({
                       }}
                       className="hide-arrows"
                       style={{
-                        width: "36px",
-                        height: "24px",
-                        fontSize: "12px",
+                        width: "32px",
+                        height: "22px",
+                        fontSize: "11px",
                         border: "none",
                         outline: "none",
                         textAlign: "center",
                         backgroundColor: "transparent",
-                        fontWeight: 700,
-                        color: "var(--color-primary)",
+                        fontWeight: 600,
+                        color: "white",
                       }}
                     />
-                    <span style={{ fontSize: "10px", color: "var(--color-text-muted)", marginRight: "6px", fontWeight: 700 }}>PX</span>
+                    <span style={{ fontSize: "10px", color: "var(--color-text-muted)", fontWeight: 700 }}>PX</span>
                   </div>
                    <IconButton
                       onClick={() => setGap(0)}
@@ -233,102 +236,100 @@ export function SplitterControl({
             onInput={(e) => setGap(parseInt(e.currentTarget.value) || 0)}
             className="vibrant-range"
         />
-        <div style={{ marginTop: "0.65rem", fontSize: "0.7rem", color: "var(--color-text-muted)", lineHeight: 1.4 }}>
+        <div style={{ marginTop: "0.6rem", fontSize: "0.65rem", color: "var(--color-text-muted)", lineHeight: 1.4, paddingLeft: "2px" }}>
            {t("gapRemovalTip")}
         </div>
        </section>
 
        {/* 针对推特选项区块 */}
-       <section className="section-block">
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-             {/* Twitter Optimization Toggle */}
-             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-                      <span style={{ fontSize: "0.8125rem", color: "var(--color-primary)", fontWeight: 700 }}>{t("twitterOptimize")}</span>
-                      <span style={{ fontSize: "0.6875rem", color: "var(--color-text-muted)", lineHeight: 1.4 }}>{t("twitterOptimizeTip")}</span>
-                  </div>
-                  <label className="switch" style={{ position: "relative", minWidth: "38px", height: "22px", marginTop: "2px" }}>
-                      <input 
-                        type="checkbox" 
-                        checked={isTwitterOptimized} 
-                        onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)}
-                        style={{ opacity: 0, width: 0, height: 0 }}
-                      />
-                      <span className="slider round" style={{ 
-                          position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, 
-                          backgroundColor: isTwitterOptimized ? "var(--color-primary)" : "rgba(255,255,255,0.1)", 
-                          transition: ".4s", borderRadius: "20px" 
-                      }}></span>
-                      <span style={{
-                          position: "absolute", content: '""', height: "16px", width: "16px", left: "3px", bottom: "3px",
-                          backgroundColor: "white", transition: ".4s", borderRadius: "50%",
-                          transform: isTwitterOptimized ? "translateX(16px)" : "translateX(0)",
-                          boxShadow: isTwitterOptimized ? "0 0 10px rgba(37,99,235,0.6)" : "none"
-                      }}></span>
-                  </label>
-             </div>
-        </div>
+       <section>
+         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {/* Twitter Optimization Toggle */}
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+                   <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                       <span style={{ fontSize: "0.8125rem", color: "white", fontWeight: 600 }}>{t("twitterOptimize")}</span>
+                       <span style={{ fontSize: "0.625rem", color: "var(--color-text-muted)", lineHeight: 1.4 }}>{t("twitterOptimizeTip")}</span>
+                   </div>
+                   <label className="switch" style={{ position: "relative", minWidth: "38px", height: "22px", marginTop: "2px" }}>
+                       <input 
+                         type="checkbox" 
+                         checked={isTwitterOptimized} 
+                         onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)}
+                         style={{ opacity: 0, width: 0, height: 0 }}
+                       />
+                       <span className="slider round" style={{ 
+                           position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, 
+                           backgroundColor: isTwitterOptimized ? "var(--color-primary)" : "rgba(255,255,255,0.1)", 
+                           transition: ".4s", borderRadius: "20px" 
+                       }}></span>
+                       <span style={{
+                           position: "absolute", content: '""', height: "16px", width: "16px", left: "3px", bottom: "3px",
+                           backgroundColor: "white", transition: ".4s", borderRadius: "50%",
+                           transform: isTwitterOptimized ? "translateX(16px)" : "translateX(0)",
+                           boxShadow: isTwitterOptimized ? "0 0 10px rgba(0, 122, 255, 0.4)" : "none"
+                       }}></span>
+                   </label>
+              </div>
+         </div>
        </section>
 
        {/* 导出设置区块 */}
-       <section className="section-block">
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-             {/* Format Selector */}
-             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ fontSize: "0.8125rem", color: "var(--color-text)", fontWeight: 600 }}>{t("formatLabel")}</span>
-                <div style={{ display: "flex", background: "rgba(0,0,0,0.2)", borderRadius: "var(--radius-md)", padding: "3px" }}>
-                    {(["png", "jpg", "webp"] as const).map(fmt => (
-                        <button
-                           key={fmt}
-                           onClick={() => onExportFormatChange(fmt)}
-                           style={{
-                                border: "none",
-                                background: exportFormat === fmt ? "var(--color-primary)" : "transparent",
-                                color: exportFormat === fmt ? "white" : "var(--color-text-muted)",
-                                fontSize: "0.75rem",
-                                padding: "4px 10px",
-                                borderRadius: "var(--radius-sm)",
-                                cursor: "pointer",
-                                fontWeight: 700,
-                                transition: "all var(--transition-fast)"
-                           }}
-                        >
-                            {fmt.toUpperCase()}
-                        </button>
-                    ))}
-                </div>
-             </div>
+       <section>
+         <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {/* Format Selector */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                 <span style={{ fontSize: "0.8125rem", color: "white", fontWeight: 600 }}>{t("formatLabel")}</span>
+                 <div style={{ display: "flex", background: "rgba(255,255,255,0.08)", borderRadius: "var(--radius-md)", padding: "3px" }}>
+                     {(["png", "jpg", "webp"] as const).map(fmt => (
+                         <button
+                            key={fmt}
+                            onClick={() => onExportFormatChange(fmt)}
+                            style={{
+                                 border: "none",
+                                 background: exportFormat === fmt ? "rgba(255,255,255,0.15)" : "transparent",
+                                 color: exportFormat === fmt ? "white" : "var(--color-text-muted)",
+                                 fontSize: "0.7rem",
+                                 padding: "4px 8px",
+                                 borderRadius: "var(--radius-sm)",
+                                 cursor: "pointer",
+                                 fontWeight: 600,
+                                 transition: "all var(--transition-fast)"
+                            }}
+                         >
+                             {fmt.toUpperCase()}
+                         </button>
+                     ))}
+                 </div>
+              </div>
 
-             {/* Zip Toggle */}
-             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-                      <span style={{ fontSize: "0.8125rem", color: "var(--color-text)", fontWeight: 600 }}>{t("zipLabel")}</span>
-                      <span style={{ fontSize: "0.6875rem", color: "var(--color-text-muted)", lineHeight: 1.4 }}>{t("zipTip")}</span>
-                  </div>
-                  <label className="switch" style={{ position: "relative", minWidth: "38px", height: "22px", marginTop: "2px" }}>
-                      <input 
-                        type="checkbox" 
-                        checked={isZip} 
-                        onChange={(e) => onIsZipChange((e.target as HTMLInputElement).checked)}
-                        style={{ opacity: 0, width: 0, height: 0 }}
-                      />
-                      <span className="slider round" style={{ 
-                          position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, 
-                          backgroundColor: isZip ? "var(--color-primary)" : "rgba(255,255,255,0.1)", 
-                          transition: ".4s", borderRadius: "20px" 
-                      }}></span>
-                      <span style={{
-                          position: "absolute", content: '""', height: "16px", width: "16px", left: "3px", bottom: "3px",
-                          backgroundColor: "white", transition: ".4s", borderRadius: "50%",
-                          transform: isZip ? "translateX(16px)" : "translateX(0)",
-                          boxShadow: isZip ? "0 0 10px rgba(37,99,235,0.6)" : "none"
-                      }}></span>
-                  </label>
-             </div>
-        </div>
+              {/* Zip Toggle */}
+              <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "1rem" }}>
+                   <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                       <span style={{ fontSize: "0.8125rem", color: "white", fontWeight: 600 }}>{t("zipLabel")}</span>
+                       <span style={{ fontSize: "0.625rem", color: "var(--color-text-muted)", lineHeight: 1.4 }}>{t("zipTip")}</span>
+                   </div>
+                   <label className="switch" style={{ position: "relative", minWidth: "38px", height: "22px", marginTop: "2px" }}>
+                       <input 
+                         type="checkbox" 
+                         checked={isZip} 
+                         onChange={(e) => onIsZipChange((e.target as HTMLInputElement).checked)}
+                         style={{ opacity: 0, width: 0, height: 0 }}
+                       />
+                       <span className="slider round" style={{ 
+                           position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, 
+                           backgroundColor: isZip ? "var(--color-primary)" : "rgba(255,255,255,0.1)", 
+                           transition: ".4s", borderRadius: "20px" 
+                       }}></span>
+                       <span style={{
+                           position: "absolute", content: '""', height: "16px", width: "16px", left: "3px", bottom: "3px",
+                           backgroundColor: "white", transition: ".4s", borderRadius: "50%",
+                           transform: isZip ? "translateX(16px)" : "translateX(0)",
+                           boxShadow: isZip ? "0 0 10px rgba(0, 122, 255, 0.4)" : "none"
+                       }}></span>
+                   </label>
+              </div>
+         </div>
        </section>
-
-
     </div>
   );
 }
