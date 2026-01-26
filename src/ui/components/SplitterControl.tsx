@@ -49,81 +49,82 @@ export function SplitterControl({
   }, [layout, rows, cols, isTwitterOptimized, config.autoCropRatio]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
       {/* 布局方案区块 */}
-      <section className="section-block">
-        <h3 className="section-header">{t("layoutScheme")}</h3>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.4rem" }}>
-          <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={15} />} label={t("layoutGrid")} />
-          <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={15} />} label={t("layoutTShape")} />
-          <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={15} />} label={t("layoutHorizontal")} />
-          <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={15} />} label={t("layoutVertical")} />
+      <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+        <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("layoutScheme")}</h3>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
+          <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
+          <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={13} />} label={t("layoutTShape")} />
+          <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={13} />} label={t("layoutHorizontal")} />
+          <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={13} />} label={t("layoutVertical")} />
         </div>
       </section>
 
       {/* 自定义行列区块 */}
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
-         <section className="section-block">
-            <h3 className="section-header">{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
-            <div style={{ display: "flex", alignItems: "center", background: "rgba(255, 255, 255, 0.05)", borderRadius: "var(--radius-sm)", padding: "2px", width: "min-content" }}>
+         <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+            <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
+            <div style={{ display: "flex", alignItems: "center", background: "rgba(0, 0, 0, 0.3)", borderRadius: "4px", padding: "1px 4px", width: "min-content" }}>
                <IconButton onClick={() => {
                      const val = layout === "VERTICAL_1xN" ? rows : cols;
                      const newVal = Math.max(2, val - 1);
                      if(layout === "VERTICAL_1xN") setRows(newVal); else setCols(newVal);
-                 }} icon={<Minus size={11} />} style={{ border: "none", background: "rgba(255, 255, 255, 0.05)", width: "22px", height: "22px" }} />
-               <span style={{ width: "30px", textAlign: "center", fontSize: "11px", fontWeight: 700, color: "white", fontFamily: "'Fira Code', monospace" }}>
+                 }} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
+               <span style={{ width: "24px", textAlign: "center", fontSize: "11px", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>
                    {layout === "VERTICAL_1xN" ? rows : cols}
                </span>
                <IconButton onClick={() => {
                      const val = layout === "VERTICAL_1xN" ? rows : cols;
                      const newVal = Math.min(10, val + 1);
                      if(layout === "VERTICAL_1xN") setRows(newVal); else setCols(newVal);
-                 }} icon={<Plus size={11} />} style={{ border: "none", background: "rgba(255, 255, 255, 0.05)", width: "22px", height: "22px" }} />
+                 }} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
             </div>
          </section>
       )}
 
       {/* 消除间距区块 */}
-      <section className="section-block">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.3rem" }}>
-            <h3 className="section-header" style={{ margin: 0 }}>{t("gapRemoval")}</h3>
-            <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                 <div style={{ display: "flex", alignItems: "center", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "1px 4px" }}>
+      <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
+            <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("gapRemoval")}</h3>
+            <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "rgba(0,0,0,0.3)", padding: "1px 4px", borderRadius: "4px" }}>
+                <IconButton onClick={() => setGap(Math.max(0, gap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
+                <div style={{ display: "flex", alignItems: "center" }}>
                     <input type="number" value={gap} onInput={(e) => {
                           const val = parseInt(e.currentTarget.value) || 0;
                           setGap(Math.max(0, Math.min(100, val)));
-                      }} className="hide-arrows" style={{ width: "24px", height: "16px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "white", fontFamily: "'Fira Code', monospace" }} />
-                    <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700 }}>PX</span>
-                  </div>
-                   <IconButton onClick={() => setGap(0)} title={t("resetToZero")} icon={<RotateCcw size={11} color="var(--color-text-muted)" />} style={{ border: "none", background: "rgba(255, 255, 255, 0.05)", padding: "2px" }} />
-              </div>
+                      }} className="hide-arrows" style={{ width: "22px", height: "14px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }} />
+                    <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700, marginLeft: "1px" }}>PX</span>
+                </div>
+                <IconButton onClick={() => setGap(Math.min(100, gap + 1))} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
+            </div>
         </div>
-        <input type="range" min="0" max="100" value={gap} onInput={(e) => setGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" />
+        <input type="range" min="0" max="100" value={gap} onInput={(e) => setGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" style={{ height: "3px", marginTop: "2px" }} />
        </section>
 
        {/* 针对推特选项区块 */}
-       <section className="section-block">
+       <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
                   <span style={{ fontSize: "0.75rem", color: "white", fontWeight: 600 }}>{t("twitterOptimize")}</span>
                   <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", lineHeight: 1.2 }}>{t("twitterOptimizeTip")}</span>
               </div>
-              <label className="switch" style={{ position: "relative", minWidth: "32px", height: "18px" }}>
+              <label className="switch" style={{ position: "relative", minWidth: "30px", height: "16px" }}>
                   <input type="checkbox" checked={isTwitterOptimized} onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)} style={{ opacity: 0, width: 0, height: 0 }} />
                   <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isTwitterOptimized ? "var(--color-primary)" : "rgba(255, 255, 255, 0.1)", transition: ".3s", borderRadius: "20px" }}></span>
-                  <span style={{ position: "absolute", content: '""', height: "12px", width: "12px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isTwitterOptimized ? "translateX(14px)" : "translateX(0)" }}></span>
+                  <span style={{ position: "absolute", content: '""', height: "10px", width: "10px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isTwitterOptimized ? "translateX(14px)" : "translateX(0)" }}></span>
               </label>
          </div>
        </section>
 
        {/* 导出设置区块 */}
-       <section className="section-block">
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+       <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: "0.75rem", color: "white", fontWeight: 600 }}>{t("formatLabel")}</span>
+                  <span style={{ fontSize: "0.7rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("formatLabel")}</span>
                   <div style={{ display: "flex", background: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
                       {(["png", "jpg", "webp"] as const).map(fmt => (
-                          <button key={fmt} onClick={() => onExportFormatChange(fmt)} style={{ border: "none", background: exportFormat === fmt ? "rgba(255, 255, 255, 0.15)" : "transparent", color: exportFormat === fmt ? "white" : "var(--color-text-muted)", fontSize: "0.65rem", padding: "3px 6px", borderRadius: "0.3rem", cursor: "pointer", fontWeight: 600, transition: "all var(--transition-fast)" }}>{fmt.toUpperCase()}</button>
+                          <button key={fmt} onClick={() => onExportFormatChange(fmt)} style={{ border: "none", background: exportFormat === fmt ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", fontSize: "10px", padding: "2px 6px", borderRadius: "3px", cursor: "pointer", fontWeight: 800, transition: "all var(--transition-fast)" }}>{fmt.toUpperCase()}</button>
                       ))}
                   </div>
                </div>
@@ -132,10 +133,10 @@ export function SplitterControl({
                         <span style={{ fontSize: "0.75rem", color: "white", fontWeight: 600 }}>{t("zipLabel")}</span>
                         <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", lineHeight: 1.2 }}>{t("zipTip")}</span>
                     </div>
-                    <label className="switch" style={{ position: "relative", minWidth: "32px", height: "18px" }}>
+                    <label className="switch" style={{ position: "relative", minWidth: "30px", height: "16px" }}>
                         <input type="checkbox" checked={isZip} onChange={(e) => onIsZipChange((e.target as HTMLInputElement).checked)} style={{ opacity: 0, width: 0, height: 0 }} />
                         <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isZip ? "var(--color-primary)" : "rgba(255, 255, 255, 0.1)", transition: ".3s", borderRadius: "20px" }}></span>
-                        <span style={{ position: "absolute", content: '""', height: "12px", width: "12px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isZip ? "translateX(14px)" : "translateX(0)" }}></span>
+                        <span style={{ position: "absolute", content: '""', height: "10px", width: "10px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isZip ? "translateX(14px)" : "translateX(0)" }}></span>
                     </label>
                </div>
           </div>
