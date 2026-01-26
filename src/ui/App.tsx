@@ -324,7 +324,7 @@ export function App({ task, onClose }: AppProps) {
       <div className="card apple-blur" style={{ width: "95%", maxWidth: "940px", height: "85vh", display: "flex", flexDirection: "column", backgroundColor: isThemeDark ? "rgba(0,0,0,0.85)" : "rgba(255,255,255,0.85)", color: "var(--color-text)", borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--color-glass-border)", boxShadow: "0 24px 80px rgba(0,0,0,0.4)" }}>
         
         {/* Header */}
-        <div style={{ padding: "0.5rem 1rem", borderBottom: "1px solid var(--color-glass-border)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(255,255,255,0.03)" }}>
+        <div style={{ padding: "0.5rem 1rem", borderBottom: "1px solid var(--color-border)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--color-surface-soft)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <img src={logoUrl} style={{ width: "28px", height: "28px" }} alt="Logo" title={t("appDesc")} />
             <h2 style={{ margin: 0, fontSize: "0.95rem", fontWeight: 700, display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--color-text)" }}>

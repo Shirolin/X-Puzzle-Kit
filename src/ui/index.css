@@ -22,36 +22,36 @@
   /* Default (Dark Mode) Variables */
   --color-background: #000000;
   --color-surface: rgba(255, 255, 255, 0.05);
-  --color-surface-soft: rgba(255, 255, 255, 0.1);
+  --color-surface-soft: rgba(255, 255, 255, 0.08);
   --color-text: #ffffff;
-  --color-text-muted: #8e8e93;
+  --color-text-muted: #86868b;
   --color-border: rgba(255, 255, 255, 0.1);
-  --color-glass-bg: rgba(28, 28, 30, 0.5);
-  --color-glass-border: rgba(255, 255, 255, 0.1);
-  --color-overlay: rgba(0, 0, 0, 0.82);
-  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-bg: rgba(28, 28, 30, 0.7);
+  --color-glass-border: rgba(255, 255, 255, 0.12);
+  --color-overlay: rgba(0, 0, 0, 0.85);
+  --color-card-bg: rgba(255, 255, 255, 0.04);
   
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
 }
 
-/* Light Mode Overrides */
+/* Light Mode Overrides - Apple Refined Light */
 [data-theme="light"] {
-  --color-background: #fbfbfd;
-  --color-surface: rgba(0, 0, 0, 0.03);
-  --color-surface-soft: rgba(0, 0, 0, 0.06);
-  --color-text: #1d1d1f;
-  --color-text-muted: #86868b;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-glass-bg: rgba(255, 255, 255, 0.75);
-  --color-glass-border: rgba(0, 0, 0, 0.06);
-  --color-overlay: rgba(255, 255, 255, 0.6);
-  --color-card-bg: rgba(0, 0, 0, 0.02);
+  --color-background: #f5f5f7;       /* Apple System Background */
+  --color-surface: #ffffff;
+  --color-surface-soft: #f2f2f7;    /* Apple Secondary Fill */
+  --color-text: #1d1d1f;            /* Apple Primary Text */
+  --color-text-muted: #6e6e73;      /* Apple Secondary Text */
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-glass-bg: rgba(255, 255, 255, 0.82);
+  --color-glass-border: rgba(0, 0, 0, 0.08);
+  --color-overlay: rgba(255, 255, 255, 0.65);
+  --color-card-bg: #ffffff;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-  --shadow-glass: 0 12px 40px rgba(0, 0, 0, 0.12);
-  --scrollbar-thumb: rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 20px 48px rgba(0, 0, 0, 0.08);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
 }
 
 * {
@@ -150,8 +150,8 @@
 /* Glassmorphism Refined */
 .glass-panel {
   background: var(--color-glass-bg);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
   border: 1px solid var(--color-glass-border);
   box-shadow: var(--shadow-glass);
 }
@@ -196,6 +196,7 @@
   border: 1px solid var(--color-glass-border);
   margin-bottom: 0.5rem;
   transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
 
 .section-block:hover {

@@ -20,24 +20,24 @@ export function LayoutButton({ active, onClick, icon, label }: LayoutButtonProps
         padding: "0.375rem 0.3rem",
         borderRadius: "var(--radius-sm)",
         border: active
-          ? "1px solid rgba(255, 255, 255, 0.15)"
-          : "1px solid rgba(255, 255, 255, 0.05)",
+          ? "1px solid var(--color-primary)"
+          : "1px solid var(--color-border)",
         backgroundColor: active
-          ? "rgba(255, 255, 255, 0.1)"
-          : "rgba(255, 255, 255, 0.03)",
+          ? "var(--color-primary)"
+          : "var(--color-surface-soft)",
         cursor: "pointer",
-        color: active ? "var(--color-primary)" : "var(--color-text-muted)",
+        color: active ? "white" : "var(--color-text-muted)",
         transition: "all var(--transition-fast)",
-        fontWeight: active ? "600" : "500",
-        boxShadow: active ? "0 4px 12px rgba(0, 0, 0, 0.2)" : "none",
+        fontWeight: active ? "700" : "500",
+        boxShadow: active ? "0 4px 15px rgba(0, 122, 255, 0.3)" : "none",
         outline: "none",
         flex: 1,
       }}
     >
       <div style={{ 
-        transform: active ? "scale(1.1)" : "scale(1)",
+        transform: active ? "scale(1.15)" : "scale(1)",
         transition: "transform var(--transition-fast)",
-        color: active ? "var(--color-primary)" : "inherit"
+        color: active ? "white" : "inherit"
       }}>{icon}</div>
       <span style={{ 
         fontSize: "0.65rem",
@@ -76,7 +76,7 @@ export function IconButton({
       className={className}
       style={{
         border: "none",
-        background: "rgba(255, 255, 255, 0.05)",
+        background: "var(--color-surface-soft)",
         borderRadius: "var(--radius-sm)",
         cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.2 : 1,
@@ -89,8 +89,8 @@ export function IconButton({
         WebkitAppRegion: "no-drag",
         ...style,
       }}
-      onMouseOver={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)")}
-      onMouseOut={(e) => (e.currentTarget.style.background = "rgba(255, 255, 255, 0.05)")}
+      onMouseOver={(e) => (e.currentTarget.style.background = "var(--color-surface)")}
+      onMouseOut={(e) => (e.currentTarget.style.background = "var(--color-surface-soft)")}
     >
       {icon}
     </button>
