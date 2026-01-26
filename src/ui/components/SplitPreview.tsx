@@ -5,13 +5,32 @@ import { t } from "../../core/i18n";
 import { SplitConfig } from "../../core/types";
 
 interface SplitPreviewProps {
+  source: ImageBitmap | null;
   blobs: Blob[];
   config: SplitConfig;
   aspectRatio?: number;
 }
 
-export function SplitPreview({ blobs, config, aspectRatio }: SplitPreviewProps) {
+export function SplitPreview({ source, blobs, config, aspectRatio }: SplitPreviewProps) {
   const [urls, setUrls] = useState<string[]>([]);
+  const [sourceUrl, setSourceUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (source) {
+       const blob = new Promise<Blob>((resolve) => {
+           const canvas = document.createElement('canvas');
+           canvas.width = source.width;
+           canvas.height = source.height;
+           canvas.getContext('2d')?.drawImage(source, 0, 0);
+           canvas.toBlob((b) => resolve(b!));
+       });
+       blob.then(b => {
+           const url = URL.createObjectURL(b);
+           setSourceUrl(url);
+       });
+    }
+    return () => { if(sourceUrl) URL.revokeObjectURL(sourceUrl); };
+  }, [source]);
 
   useEffect(() => {
     // Create Object URLs
@@ -24,38 +43,28 @@ export function SplitPreview({ blobs, config, aspectRatio }: SplitPreviewProps) 
     };
   }, [blobs]);
 
-  if (blobs.length === 0) return null;
+  if (blobs.length === 0) {
+      if (!sourceUrl) return null;
+      return (
+         <div style={{ borderRadius: "var(--radius-md)", overflow: "hidden", boxShadow: "0 32px 80px rgba(0,0,0,0.9)" }}>
+             <img src={sourceUrl} style={{ display: "block", maxWidth: "100%", maxHeight: "100%" }} />
+         </div>
+      );
+  }
 
 
   return (
     <div style={{ marginTop: "1.5rem" }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: "1rem",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: "1.125rem",
-            fontWeight: 500,
-            lineHeight: "1.5rem",
-            color: "#111827",
-            margin: 0,
-          }}
-        >
-          {t("splitResult")}
-        </h3>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.875rem" }}>
+        <h3 className="section-header" style={{ margin: 0 }}>{t("splitResult")}</h3>
       </div>
 
       <div
         style={{
           display: "grid",
-          gap: "4px", // Reduced gap for a tighter look
+          gap: "8px", 
           width: "100%",
-          maxWidth: aspectRatio && aspectRatio < 1 ? `${aspectRatio * 100}%` : "100%", // Handle tall images
+          maxWidth: aspectRatio && aspectRatio < 1 ? `${Math.min(100, aspectRatio * 100)}%` : "100%", 
           aspectRatio: aspectRatio ? `${aspectRatio}` : "auto",
           margin: "0 auto",
           ...getGridStyle(config),
@@ -67,10 +76,10 @@ export function SplitPreview({ blobs, config, aspectRatio }: SplitPreviewProps) 
             className="group"
             style={{
               position: "relative",
-              border: "1px solid #e5e7eb",
-              borderRadius: "0.5rem",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "var(--radius-md)",
               overflow: "hidden",
-              backgroundColor: "#1e293b", // Darker background for contrast
+              backgroundColor: "rgba(255,255,255,0.02)",
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",

@@ -16,9 +16,9 @@ export function LayoutButton({ active, onClick, icon, label }: LayoutButtonProps
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: "0.5rem",
-        padding: "0.8rem 0.6rem",
-        borderRadius: "var(--radius-lg)",
+        gap: "0.15rem",
+        padding: "0.375rem 0.3rem",
+        borderRadius: "var(--radius-sm)",
         border: active
           ? "1px solid rgba(255, 255, 255, 0.15)"
           : "1px solid rgba(255, 255, 255, 0.05)",
@@ -40,8 +40,9 @@ export function LayoutButton({ active, onClick, icon, label }: LayoutButtonProps
         color: active ? "var(--color-primary)" : "inherit"
       }}>{icon}</div>
       <span style={{ 
-        fontSize: "0.75rem",
-        color: active ? "white" : "inherit"
+        fontSize: "0.65rem",
+        color: active ? "white" : "inherit",
+        fontWeight: 600
       }}>{label}</span>
     </button>
   );
@@ -76,7 +77,7 @@ export function IconButton({
         borderRadius: "var(--radius-sm)",
         cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.2 : 1,
-        padding: "0.5rem",
+        padding: "0.25rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
