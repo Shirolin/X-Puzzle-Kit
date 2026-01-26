@@ -163,20 +163,21 @@ export function App({ task, onClose }: AppProps) {
     const cw = mode === 'split' ? splitSourceBitmap!.width : canvasSize.width;
     const ch = mode === 'split' ? splitSourceBitmap!.height : canvasSize.height;
 
-    const padding = 40; // Reduced padding for better space utilization
-    const availableWidth = Math.max(containerRef.current.clientWidth - padding, 100);
-    const availableHeight = Math.max(containerRef.current.clientHeight - padding, 100);
+    const padding = 48; // Standard padding from high-quality version
+    const availableWidth = containerRef.current.clientWidth - padding;
+    const availableHeight = containerRef.current.clientHeight - padding;
     const scale = Math.min(availableWidth / cw, availableHeight / ch, 1);
     
-    setViewerScale(scale); // Remove 0.9 multiplier to maximize size
+    setViewerScale(scale); 
     setViewerOffset({ x: 0, y: 0 });
     setViewerRotation(0);
   };
 
   useEffect(() => {
     fitToScreen();
-    window.addEventListener('resize', fitToScreen);
-    return () => window.removeEventListener('resize', fitToScreen);
+    const handleResize = () => fitToScreen();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [canvasSize, mode, splitSourceBitmap]);
 
   const resetViewer = () => fitToScreen();
@@ -207,8 +208,6 @@ export function App({ task, onClose }: AppProps) {
       setPreviewUrl(canvas.toDataURL("image/png"));
       // Human-perception delay as requested
       await new Promise(r => setTimeout(r, 50));
-      // Re-fit to screen after generation
-      fitToScreen();
     } catch (e) { console.error(e); } finally { setIsGenerating(false); }
   };
 
@@ -372,7 +371,7 @@ export function App({ task, onClose }: AppProps) {
 
           {/* Sidebar (Right) */}
           <div className="glass-panel" style={{ width: "260px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20 }}>
-            <div className="no-scrollbar" style={{ padding: "0.75rem", flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+            <div className="sidebar-content-root" style={{ padding: "0.75rem", flex: 1, overflow: "hidden" }}>
               {mode === "split" ? (
                 <SplitterControl 
                     config={splitConfig} onConfigChange={setSplitConfig} isProcessing={isSplitting}
@@ -408,12 +407,12 @@ export function App({ task, onClose }: AppProps) {
                     <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" />
                   </section>
 
-                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", flex: "2", minHeight: "300px" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+                  <section className="section-block sorting-area">
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem" }}>
                       <h3 className="section-header" style={{ margin: 0 }}>{t("imageSorting")}</h3>
                       <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("localGap")}</span>
                     </div>
-                    <div className="no-scrollbar" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.375rem", paddingRight: "4px" }}>
+                    <div className="no-scrollbar">
                         {images.map((img, idx) => (
                            <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.5rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.05)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
                               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>

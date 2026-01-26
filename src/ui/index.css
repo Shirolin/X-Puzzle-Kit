@@ -334,40 +334,36 @@ input:checked + .slider:before {
 /* Viewer Toolbar V2 - Match for Image 2 */
 .viewer-toolbar-v2 {
   display: flex;
-  flex-direction: column;
-  background: rgba(28, 28, 30, 0.8);
+  flex-direction: row; /* Default: Horizontal */
+  align-items: center;
+  background: rgba(28, 28, 30, 0.85);
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 1.25rem;
-  padding: 8px 12px;
+  border-radius: 2rem;
+  padding: 6px 14px;
   gap: 8px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  min-width: 140px;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  white-space: nowrap;
 }
 
 .toolbar-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.toolbar-row.secondary {
-  justify-content: center;
-  gap: 12px;
+  gap: 6px;
 }
 
 .zoom-percentage {
   font-size: 13px;
   font-weight: 700;
   color: white;
-  min-width: 45px;
+  min-width: 42px;
   text-align: center;
-  font-family: 'Fira Sans', sans-serif;
 }
 
 .toolbar-divider-h {
+  display: none; /* Hidden by default in row mode */
   height: 1px;
   background: rgba(255, 255, 255, 0.12);
   width: 100%;
@@ -376,28 +372,61 @@ input:checked + .slider:before {
 .toolbar-divider-v {
   width: 1px;
   height: 14px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 2px;
 }
 
 .toolbar-text-btn {
   background: none;
   border: none;
   color: white;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   padding: 4px 6px;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: all var(--transition-fast);
+  opacity: 0.9;
 }
 
 .toolbar-text-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  opacity: 1;
+}
+
+/* Sidebar Fixes: Proper elastic layout */
+.sidebar-content-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .sorting-area {
-  flex: 2 !important; /* Force priority */
-  max-height: none !important; /* Allow expansion within flex limits */
+  flex: 1 1 0% !important;
+  min-height: 0 !important; /* Allow shrinking below min-content */
+  display: flex;
+  flex-direction: column;
+}
+
+.sorting-area .no-scrollbar {
+  flex: 1;
+  overflow-y: auto !important;
+  padding-right: 4px;
+}
+
+@media (max-width: 768px) {
+  .viewer-toolbar-v2 {
+     flex-direction: column;
+     border-radius: 1.25rem;
+     padding: 8px 10px;
+     gap: 6px;
+  }
+  .toolbar-divider-h { display: block; }
+  .toolbar-divider-v { display: none; }
+  .toolbar-row.secondary {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .viewer-toolbar-v2 .toolbar-btn {
