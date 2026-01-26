@@ -1,3 +1,4 @@
+import { VNode, JSX } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 import {
   BackgroundColor,
@@ -22,7 +23,6 @@ import {
   Minus,
   RotateCcw,
   GripVertical,
-  Globe,
 } from "lucide-preact";
 
 interface AppProps {
@@ -31,7 +31,6 @@ interface AppProps {
 }
 
 export function App({ task, onClose }: AppProps) {
-  const extensionName = chrome.runtime.getManifest().name;
   const logoUrl = chrome.runtime.getURL("assets/icon-48.png");
 
   const [layout, setLayout] = useState<LayoutType>(task.layout);
@@ -53,8 +52,10 @@ export function App({ task, onClose }: AppProps) {
       })
       .then((res) => {
         setLang(res["x-puzzle-stitcher-lang"] as string);
-        setOutputFormat(res["x-puzzle-stitcher-format"] as any);
-        setBackgroundColor(res["x-puzzle-stitcher-bg"] as any);
+        setOutputFormat(
+          res["x-puzzle-stitcher-format"] as "png" | "jpg" | "webp",
+        );
+        setBackgroundColor(res["x-puzzle-stitcher-bg"] as BackgroundColor);
 
         setLanguage(res["x-puzzle-stitcher-lang"] as string).then(() => {
           setIsLangLoaded(true);
@@ -207,7 +208,7 @@ export function App({ task, onClose }: AppProps) {
     setDraggedIndex(index);
   };
 
-  const onDragOver = (e: any, index: number) => {
+  const onDragOver = (e: DragEvent, _index: number) => {
     e.preventDefault();
   };
 
@@ -801,7 +802,10 @@ export function App({ task, onClose }: AppProps) {
                       <button
                         key={fmt}
                         onClick={() => {
-                          const newFmt = fmt.toLowerCase() as any;
+                          const newFmt = fmt.toLowerCase() as
+                            | "png"
+                            | "jpg"
+                            | "webp";
                           setOutputFormat(newFmt);
                           if (
                             newFmt === "jpg" &&
@@ -1624,7 +1628,14 @@ export function App({ task, onClose }: AppProps) {
   );
 }
 
-function LayoutButton({ active, onClick, icon, label }: any) {
+interface LayoutButtonProps {
+  active: boolean;
+  onClick: () => void;
+  icon: VNode;
+  label: string;
+}
+
+function LayoutButton({ active, onClick, icon, label }: LayoutButtonProps) {
   return (
     <button
       onClick={onClick}
@@ -1654,7 +1665,21 @@ function LayoutButton({ active, onClick, icon, label }: any) {
   );
 }
 
-function IconButton({ onClick, disabled, icon, style = {}, title }: any) {
+interface IconButtonProps {
+  onClick: () => void;
+  disabled?: boolean;
+  icon: VNode;
+  style?: JSX.CSSProperties;
+  title?: string;
+}
+
+function IconButton({
+  onClick,
+  disabled,
+  icon,
+  style = {},
+  title,
+}: IconButtonProps) {
   return (
     <button
       onClick={(e) => {

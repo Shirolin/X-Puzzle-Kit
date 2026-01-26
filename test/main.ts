@@ -104,7 +104,7 @@ function generateMockHtml(
 
   const imagesHtml = images
     .map(
-      (src, i) => `
+      (src, _i) => `
     <div data-testid="tweetPhoto" style="position: relative; overflow: hidden; background: #eee;">
       <img src="${src}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
     </div>

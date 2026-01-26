@@ -3,14 +3,14 @@ import langZhCN from "../../public/_locales/zh_CN/messages.json";
 import langZhTW from "../../public/_locales/zh_TW/messages.json";
 import langJa from "../../public/_locales/ja/messages.json";
 
-const locales: Record<string, any> = {
+const locales: Record<string, Record<string, { message: string }>> = {
   en: langEn,
   zh_CN: langZhCN,
   zh_TW: langZhTW,
   ja: langJa,
 };
 
-let currentMessages: any = null;
+let currentMessages: Record<string, { message: string }> | null = null;
 
 /**
  * 识别浏览器当前语言

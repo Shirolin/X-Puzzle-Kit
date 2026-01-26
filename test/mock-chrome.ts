@@ -11,11 +11,15 @@ window.chrome = {
     // @ts-expect-error: Mock API
     onMessage: { addListener: () => {} },
     // @ts-expect-error: Mock API
-    sendMessage: async (message: any, callback: (response: any) => void) => {
+    sendMessage: async (
+      message: unknown,
+      callback: (response: unknown) => void,
+    ) => {
       console.log("[TestEnv] Mock sendMessage:", message);
 
-      if (message.type === "FETCH_IMAGE") {
-        const url = message.url;
+      const msg = message as { type: string; url: string };
+      if (msg.type === "FETCH_IMAGE") {
+        const url = msg.url;
 
         // 1. 尝试从缓存读取
         if (imageCache.has(url)) {
@@ -59,7 +63,7 @@ window.chrome = {
   },
 };
 
-function createPlaceholder(text: string): string {
+function createPlaceholder(_url: string): string {
   const canvas = document.createElement("canvas");
   canvas.width = 500;
   canvas.height = 500; // 默认正方形
