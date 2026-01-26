@@ -436,6 +436,16 @@ export function App({ task, onClose }: AppProps) {
                 <>
                   {/* Fixed Sections */}
                   <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+                      <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("layoutScheme")}</h3>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
+                        <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
+                        <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={13} />} label={t("layoutTShape")} />
+                        <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={13} />} label={t("layoutHorizontal")} />
+                        <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={13} />} label={t("layoutVertical")} />
+                      </div>
+                    </section>
+
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
          <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
             <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
