@@ -163,17 +163,21 @@ export function App({ task, onClose }: AppProps) {
     const cw = mode === 'split' ? splitSourceBitmap!.width : canvasSize.width;
     const ch = mode === 'split' ? splitSourceBitmap!.height : canvasSize.height;
 
-    const padding = 180; // Ultra-safe padding
-    const availableWidth = containerRef.current.clientWidth - padding;
-    const availableHeight = containerRef.current.clientHeight - padding;
+    const padding = 40; // Reduced padding for better space utilization
+    const availableWidth = Math.max(containerRef.current.clientWidth - padding, 100);
+    const availableHeight = Math.max(containerRef.current.clientHeight - padding, 100);
     const scale = Math.min(availableWidth / cw, availableHeight / ch, 1);
     
-    setViewerScale(scale * 0.9); // Absolute containment
+    setViewerScale(scale); // Remove 0.9 multiplier to maximize size
     setViewerOffset({ x: 0, y: 0 });
     setViewerRotation(0);
   };
 
-  useEffect(() => fitToScreen(), [canvasSize, mode]);
+  useEffect(() => {
+    fitToScreen();
+    window.addEventListener('resize', fitToScreen);
+    return () => window.removeEventListener('resize', fitToScreen);
+  }, [canvasSize, mode, splitSourceBitmap]);
 
   const resetViewer = () => fitToScreen();
 
@@ -203,6 +207,8 @@ export function App({ task, onClose }: AppProps) {
       setPreviewUrl(canvas.toDataURL("image/png"));
       // Human-perception delay as requested
       await new Promise(r => setTimeout(r, 50));
+      // Re-fit to screen after generation
+      fitToScreen();
     } catch (e) { console.error(e); } finally { setIsGenerating(false); }
   };
 
@@ -337,15 +343,20 @@ export function App({ task, onClose }: AppProps) {
                     </div>
                   ) : null}
 
-                  {/* Viewer Toolbar */}
-                  <div className="viewer-toolbar apple-blur" style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 30 }}>
-                      <IconButton onClick={() => setViewerScale(s => Math.max(0.1, s - 0.1))} icon={<Minus size={14} />} style={{ background: "none", border: "none" }} />
-                      <span style={{ fontSize: "11px", minWidth: "40px", textAlign: "center", fontWeight: 700 }}>{Math.round(viewerScale * 100)}%</span>
-                      <IconButton onClick={() => setViewerScale(s => Math.min(10, s + 0.1))} icon={<Plus size={14} />} style={{ background: "none", border: "none" }} />
-                      <div style={{ width: "1px", height: "14px", background: "rgba(255,255,255,0.15)", margin: "0 6px" }} />
-                      <button onClick={() => setViewerScale(1)} style={{ background: "none", border: "none", color: "white", fontSize: "11px", fontWeight: 700, cursor: "pointer", padding: "0 4px" }}>1:1</button>
-                      <button onClick={resetViewer} style={{ background: "none", border: "none", color: "white", fontSize: "11px", fontWeight: 700, cursor: "pointer", padding: "0 4px" }}>{t("reset")}</button>
-                      <IconButton onClick={() => setViewerRotation(r => (r + 90) % 360)} icon={<RotateCcw size={14} />} style={{ background: "none", border: "none" }} />
+                  {/* Viewer Toolbar - Precision Match for Image 2 */}
+                  <div className="viewer-toolbar-v2 apple-blur" style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 30 }}>
+                      <div className="toolbar-row">
+                          <IconButton className="toolbar-btn" onClick={() => setViewerScale(s => Math.max(0.1, s - 0.1))} icon={<Minus size={16} />} style={{ background: "none", border: "none" }} />
+                          <div className="zoom-percentage">{Math.round(viewerScale * 100)}%</div>
+                          <IconButton className="toolbar-btn" onClick={() => setViewerScale(s => Math.min(10, s + 0.1))} icon={<Plus size={16} />} style={{ background: "none", border: "none" }} />
+                      </div>
+                      <div className="toolbar-divider-h" />
+                      <div className="toolbar-row secondary">
+                          <button className="toolbar-text-btn" onClick={() => setViewerScale(1)}>1:1</button>
+                          <button className="toolbar-text-btn" onClick={resetViewer}>{t("reset")}</button>
+                          <div className="toolbar-divider-v" />
+                          <IconButton className="toolbar-btn" onClick={() => setViewerRotation(r => (r + 90) % 360)} icon={<RotateCcw size={16} />} style={{ background: "none", border: "none" }} />
+                      </div>
                   </div>
 
                   <div style={{ transform: `translate(${viewerOffset.x}px, ${viewerOffset.y}px) scale(${viewerScale}) rotate(${viewerRotation}deg)`, transition: isPanning ? "none" : "transform 0.2s cubic-bezier(0.2, 0, 0, 1)", transformOrigin: "center center" }}>
@@ -397,12 +408,12 @@ export function App({ task, onClose }: AppProps) {
                     <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" />
                   </section>
 
-                  <section className="section-block" style={{ display: "flex", flexDirection: "column", flex: "1", minHeight: "200px", maxHeight: "450px" }}>
+                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", flex: "2", minHeight: "300px" }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
                       <h3 className="section-header" style={{ margin: 0 }}>{t("imageSorting")}</h3>
                       <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("localGap")}</span>
                     </div>
-                    <div className="no-scrollbar" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+                    <div className="no-scrollbar" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.375rem", paddingRight: "4px" }}>
                         {images.map((img, idx) => (
                            <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.5rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.05)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
                               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>

@@ -54,6 +54,7 @@ interface IconButtonProps {
   icon: VNode;
   style?: JSX.CSSProperties;
   title?: string;
+  className?: string;
 }
 
 export function IconButton({
@@ -71,6 +72,7 @@ export function IconButton({
       }}
       disabled={disabled}
       title={title}
+      className={className}
       style={{
         border: "none",
         background: "rgba(255, 255, 255, 0.05)",
