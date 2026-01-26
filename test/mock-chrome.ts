@@ -61,6 +61,34 @@ window.chrome = {
     // @ts-expect-error: Mock API
     getMessage: (messageName: string) => messageName,
   },
+  storage: {
+    local: {
+      get: (
+        keys: string | string[] | { [key: string]: any } | null,
+      ): Promise<{ [key: string]: any }> => {
+        return new Promise((resolve) => {
+          console.log("[TestEnv] Mock storage.local.get:", keys);
+          const result: { [key: string]: any } = {};
+          if (
+            typeof keys === "object" &&
+            keys !== null &&
+            !Array.isArray(keys)
+          ) {
+            // Return defaults if keys provided as object
+            Object.assign(result, keys);
+          }
+          // In this simple mock, we just return what asked (defaults) or empty
+          resolve(result);
+        });
+      },
+      set: (items: { [key: string]: any }): Promise<void> => {
+        return new Promise((resolve) => {
+          console.log("[TestEnv] Mock storage.local.set:", items);
+          resolve();
+        });
+      },
+    },
+  },
 };
 
 function createPlaceholder(_url: string): string {

@@ -44,4 +44,6 @@ export interface SplitConfig {
   rows: number; // For Custom Grid
   cols: number; // For Custom Grid
   gap: number;
+  format?: "png" | "jpg" | "webp";
+  autoCropRatio?: number; // Ideal composite ratio (W/H) for the whole grid
 }

@@ -146,5 +146,73 @@
   "sourcedFrom": {
     "message": "來源於",
     "description": "用於來源標籤"
+  },
+  "splitImage": {
+    "message": "拆分圖片",
+    "description": "拆分按鈕文本"
+  },
+  "downloadAll": {
+    "message": "全部下載",
+    "description": "全部下載按鈕文本"
+  },
+  "uploadImage": {
+    "message": "上傳圖片",
+    "description": "上傳圖片按鈕文本"
+  },
+  "selectImageTip": {
+    "message": "請選擇一張圖片進行拆分",
+    "description": "選擇圖片提示"
+  },
+  "changeImage": {
+    "message": "更換",
+    "description": "更換圖片按鈕文本"
+  },
+  "gapRemoval": {
+    "message": "消除間隙",
+    "description": "消除間隙標籤"
+  },
+  "gapRemovalTip": {
+    "message": "將自動移除切片之間的間隙",
+    "description": "消除間隙說明"
+  },
+  "rowCount": {
+    "message": "行數 (N)",
+    "description": "行數標籤"
+  },
+  "colCount": {
+    "message": "列數 (N)",
+    "description": "列數標籤"
+  },
+  "sourceImage": {
+    "message": "原圖",
+    "description": "原圖標籤"
+  },
+  "splitResult": {
+    "message": "拆分結果",
+    "description": "拆分結果標籤"
+  },
+  "formatLabel": {
+    "message": "導出格式",
+    "description": "導出格式標籤"
+  },
+  "zipLabel": {
+    "message": "打包下載 (Zip)",
+    "description": "Zip下載開關標籤"
+  },
+  "zipTip": {
+    "message": "將所有圖片打包為一個壓縮文件下載",
+    "description": "Zip功能說明"
+  },
+  "restore": {
+    "message": "恢復原圖",
+    "description": "恢復拆分前狀態按鈕"
+  },
+  "twitterOptimize": {
+    "message": "推特 (X) 布局優化",
+    "description": "推特布局優化開關標籤"
+  },
+  "twitterOptimizeTip": {
+    "message": "自動裁切原圖以适配推特 2/3/4 圖展示比例，確保無縫銜接。",
+    "description": "推特布局優化說明"
   }
 }

@@ -146,5 +146,73 @@
   "sourcedFrom": {
     "message": "from",
     "description": "Used in the source badge"
+  },
+  "splitImage": {
+    "message": "Split Image",
+    "description": "Split button text"
+  },
+  "downloadAll": {
+    "message": "Download All",
+    "description": "Download all button text"
+  },
+  "uploadImage": {
+    "message": "Upload Image",
+    "description": "Upload image button text"
+  },
+  "selectImageTip": {
+    "message": "Select an image to split",
+    "description": "Select image tip"
+  },
+  "changeImage": {
+    "message": "Change",
+    "description": "Change image button text"
+  },
+  "gapRemoval": {
+    "message": "Gap Removal",
+    "description": "Gap removal label"
+  },
+  "gapRemovalTip": {
+    "message": "Pixels to verify and remove between split images.",
+    "description": "Gap removal description"
+  },
+  "rowCount": {
+    "message": "Row Count (N)",
+    "description": "Row count label"
+  },
+  "colCount": {
+    "message": "Col Count (N)",
+    "description": "Column count label"
+  },
+  "sourceImage": {
+    "message": "Source",
+    "description": "Source image label"
+  },
+  "splitResult": {
+    "message": "Split Result",
+    "description": "Split result label"
+  },
+  "formatLabel": {
+    "message": "Export Format",
+    "description": "Export format label"
+  },
+  "zipLabel": {
+    "message": "Download as Zip",
+    "description": "Zip download toggle label"
+  },
+  "zipTip": {
+    "message": "Package all images into a single zip file",
+    "description": "Zip feature description"
+  },
+  "restore": {
+    "message": "Restore",
+    "description": "Restore button text"
+  },
+  "twitterOptimize": {
+    "message": "Optimize for Twitter (X)",
+    "description": "Twitter optimization toggle label"
+  },
+  "twitterOptimizeTip": {
+    "message": "Auto-crop the source to fit Twitter's 2/3/4 grid ratios for a seamless look.",
+    "description": "Twitter optimization tip"
   }
 }

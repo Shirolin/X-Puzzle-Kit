@@ -146,5 +146,81 @@
   "sourcedFrom": {
     "message": "来源于",
     "description": "用于来源标签"
+  },
+  "splitImage": {
+    "message": "拆分图片",
+    "description": "拆分按钮文本"
+  },
+  "downloadAll": {
+    "message": "全部下载",
+    "description": "全部下载按钮文本"
+  },
+  "uploadImage": {
+    "message": "可以上传图片",
+    "description": "上传图片按钮文本"
+  },
+  "selectImageTip": {
+    "message": "请选择一张图片进行拆分",
+    "description": "选择图片提示"
+  },
+  "changeImage": {
+    "message": "更换",
+    "description": "更换图片按钮文本"
+  },
+  "gapRemoval": {
+    "message": "消除间隙",
+    "description": "消除间隙标签"
+  },
+  "gapRemovalTip": {
+    "message": "将自动移除切片之间的间隙",
+    "description": "消除间隙说明"
+  },
+  "rowCount": {
+    "message": "行数 (N)",
+    "description": "行数标签"
+  },
+  "colCount": {
+    "message": "列数 (N)",
+    "description": "列数标签"
+  },
+  "sourceImage": {
+    "message": "原图",
+    "description": "原图标签"
+  },
+  "splitResult": {
+    "message": "拆分结果",
+    "description": "拆分结果标签"
+  },
+  "exportFormat": {
+    "message": "导出格式",
+    "description": "导出格式标签"
+  },
+  "zipDownload": {
+    "message": "打包下载 (Zip)",
+    "description": "Zip下载开关标签"
+  },
+  "formatLabel": {
+    "message": "导出格式",
+    "description": "导出格式标签"
+  },
+  "zipLabel": {
+    "message": "打包下载 (Zip)",
+    "description": "Zip下载开关标签"
+  },
+  "zipTip": {
+    "message": "将所有图片打包为一个压缩文件下载",
+    "description": "Zip功能说明"
+  },
+  "restore": {
+    "message": "恢复原图",
+    "description": "恢复拆分前状态按钮"
+  },
+  "twitterOptimize": {
+    "message": "推特 (X) 布局优化",
+    "description": "推特布局优化开关标签"
+  },
+  "twitterOptimizeTip": {
+    "message": "自动裁切原图以适配推特 2/3/4 图展示比例，确保无缝衔接。",
+    "description": "推特布局优化说明"
   }
 }

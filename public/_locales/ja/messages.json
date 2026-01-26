@@ -145,6 +145,74 @@
   },
   "sourcedFrom": {
     "message": "作成者",
-    "description": "ソースバッジで使用"
+    "description": "ソースラベルに使用"
+  },
+  "splitImage": {
+    "message": "画像を分割",
+    "description": "分割ボタンのテキスト"
+  },
+  "downloadAll": {
+    "message": "すべてダウンロード",
+    "description": "すべてダウンロードボタンのテキスト"
+  },
+  "uploadImage": {
+    "message": "画像をアップロード",
+    "description": "画像をアップロードボタンのテキスト"
+  },
+  "selectImageTip": {
+    "message": "分割する画像を選択してください",
+    "description": "画像選択のヒント"
+  },
+  "changeImage": {
+    "message": "変更",
+    "description": "画像変更ボタンのテキスト"
+  },
+  "gapRemoval": {
+    "message": "隙間削除",
+    "description": "隙間削除ラベル"
+  },
+  "gapRemovalTip": {
+    "message": "分割画像の間の隙間を自動的に削除します",
+    "description": "隙間削除の説明"
+  },
+  "rowCount": {
+    "message": "行数 (N)",
+    "description": "行数ラベル"
+  },
+  "colCount": {
+    "message": "列数 (N)",
+    "description": "列数ラベル"
+  },
+  "sourceImage": {
+    "message": "元画像",
+    "description": "元画像ラベル"
+  },
+  "splitResult": {
+    "message": "分割結果",
+    "description": "分割結果ラベル"
+  },
+  "formatLabel": {
+    "message": "出力形式",
+    "description": "出力形式ラベル"
+  },
+  "zipLabel": {
+    "message": "ZIPで一括ダウンロード",
+    "description": "ZIPダウンロードスイッチのラベル"
+  },
+  "zipTip": {
+    "message": "すべての画像を1つのZIPファイルにまとめてダウンロードします",
+    "description": "ZIP機能の説明"
+  },
+  "restore": {
+    "message": "元に戻す",
+    "description": "分割前の状態に戻すボタン"
+  },
+  "twitterOptimize": {
+    "message": "Twitter (X) 最適化",
+    "description": "Twitter最適化スイッチのラベル"
+  },
+  "twitterOptimizeTip": {
+    "message": "Twitterの2/3/4枚投稿時の比率に合わせて自動的にトリミングし、シームレスな表示を実現します。",
+    "description": "Twitter最適化の説明"
   }
 }

@@ -30,6 +30,8 @@ import { SplitConfig } from "../core/types";
 import { splitImage } from "../core/splitter";
 import { SplitterControl } from "./components/SplitterControl";
 import { SplitPreview } from "./components/SplitPreview";
+import { LayoutButton, IconButton } from "./components/Common";
+import JSZip from "jszip";
 
 interface AppProps {
   task: StitchTask;
@@ -58,12 +60,74 @@ export function App({ task, onClose }: AppProps) {
     rows: 2,
     cols: 2,
     gap: 0,
+    format: "png",
   });
+  const [sourcePreviewUrl, setSourcePreviewUrl] = useState<string | null>(null);
+  const [isZip, setIsZip] = useState(false);
+  const [isTwitterOptimized, setIsTwitterOptimized] = useState(false);
+
+  // Persistence for Split Mode
+  useEffect(() => {
+    chrome.storage.local.get(["splitSettings"], (result) => {
+      const settings = result.splitSettings as {
+        format?: "png" | "jpg" | "webp";
+        isZip?: boolean;
+        isTwitterOptimized?: boolean;
+        gap?: number;
+        layout?: LayoutType;
+      } | undefined;
+
+      if (settings) {
+        const { format, isZip, isTwitterOptimized, gap, layout } = settings;
+        setSplitConfig(prev => ({
+          ...prev,
+          format: format || prev.format,
+          gap: typeof gap === 'number' ? gap : prev.gap,
+          layout: layout || prev.layout
+        }));
+        if (typeof isZip === 'boolean') setIsZip(isZip);
+        if (typeof isTwitterOptimized === 'boolean') setIsTwitterOptimized(isTwitterOptimized);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    chrome.storage.local.set({
+      splitSettings: {
+        format: splitConfig.format,
+        isZip,
+        isTwitterOptimized,
+        gap: splitConfig.gap,
+        layout: splitConfig.layout,
+      }
+    });
+  }, [splitConfig.format, isZip, isTwitterOptimized, splitConfig.gap, splitConfig.layout]);
 
   // Load split source image
   useEffect(() => {
     if (splitSource) {
-      createImageBitmap(splitSource).then(setSplitSourceBitmap);
+      const url = URL.createObjectURL(splitSource);
+      setSourcePreviewUrl(url);
+      setLoading(true);
+      createImageBitmap(splitSource)
+        .then((bitmap) => {
+           setSplitSourceBitmap(bitmap);
+           setLoading(false);
+        })
+        .catch((err) => {
+            console.error("Failed to load image bitmap:", err);
+            // Fallback? Or just alert
+            // Simple alert for now, a toast would be better but we don't have one readily available
+            alert("Failed to load image. Please try another file.");
+            setSplitSource(null);
+            setLoading(false);
+        });
+      
+      return () => {
+          URL.revokeObjectURL(url);
+      };
+    } else {
+        setSourcePreviewUrl(null);
     }
   }, [splitSource]);
 
@@ -554,7 +618,7 @@ export function App({ task, onClose }: AppProps) {
                   }}
                 >
                   <div style={{ marginBottom: "1rem", fontWeight: 500 }}>
-                    Select an image to split
+                    {t("selectImageTip")}
                   </div>
                   <label
                     style={{
@@ -567,7 +631,7 @@ export function App({ task, onClose }: AppProps) {
                       fontWeight: 600,
                     }}
                   >
-                    Upload Image
+                    {t("uploadImage")}
                     <input
                       type="file"
                       accept="image/*"
@@ -596,7 +660,51 @@ export function App({ task, onClose }: AppProps) {
                       flexDirection: "column",
                     }}
                   >
-                    <SplitPreview blobs={splitBlobs} />
+                    {splitBlobs.length > 0 ? (
+                        <SplitPreview 
+                            blobs={splitBlobs} 
+                            config={splitConfig} 
+                            aspectRatio={splitConfig.autoCropRatio || (splitSourceBitmap ? splitSourceBitmap.width / splitSourceBitmap.height : undefined)}
+                        />
+                    ) : (
+                        <div style={{
+                            width: '100%', 
+                            height: '100%', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            padding: '1rem'
+                        }}>
+                             {sourcePreviewUrl && (
+                                 <>
+                                    <img 
+                                        src={sourcePreviewUrl} 
+                                        style={{
+                                            maxWidth: '100%', 
+                                            maxHeight: '100%', 
+                                            objectFit: 'contain',
+                                            boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                                            borderRadius: '8px'
+                                        }} 
+                                     />
+                                     {splitSourceBitmap && (
+                                         <div style={{
+                                             position: 'absolute',
+                                             bottom: '10%',
+                                             backgroundColor: 'rgba(0,0,0,0.6)',
+                                             color: 'white',
+                                             padding: '4px 8px',
+                                             borderRadius: '4px',
+                                             fontSize: '12px',
+                                             backdropFilter: 'blur(4px)'
+                                         }}>
+                                             {splitSourceBitmap.width} x {splitSourceBitmap.height}
+                                         </div>
+                                     )}
+                                 </>
+                             )}
+                        </div>
+                    )}
                   </div>
                   {/* Source Info Small */}
                   <div
@@ -610,9 +718,21 @@ export function App({ task, onClose }: AppProps) {
                       gap: "8px",
                       fontSize: "12px",
                       color: "#94A3B8",
+                      overflow: "hidden", // Ensure container clips
                     }}
                   >
-                    <span>Source: {splitSource?.name}</span>
+                    <span
+                      style={{
+                        flex: 1,
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        minWidth: 0, // Flex child truncation fix
+                      }}
+                      title={splitSource?.name}
+                    >
+                      <span>{t("sourceImage")}: {splitSource?.name}</span>
+                    </span>
                     <button
                       onClick={() => {
                         setSplitSource(null);
@@ -625,11 +745,14 @@ export function App({ task, onClose }: AppProps) {
                         border: "none",
                         color: "#EF4444",
                         cursor: "pointer",
+                        whiteSpace: "nowrap", // Keep button text minimal width
+                        flexShrink: 0
                       }}
                     >
-                      Change
+                      {t("changeImage")}
                     </button>
                   </div>
+
                 </div>
               )}
             </div>
@@ -931,34 +1054,162 @@ export function App({ task, onClose }: AppProps) {
             )}
           </div>
 
-          {/* Split Sidebar */}
+
+          
+          {/* Split Mode Sidebar (Combined) */}
           {mode === "split" && (
-            <div
+             <div
+              className="glass-panel"
               style={{
-                width: "260px",
-                borderLeft: "1px solid var(--color-border)",
+                width: "280px",
+                borderLeft: "1px solid var(--color-glass-border)",
                 display: "flex",
                 flexDirection: "column",
-                backgroundColor: "var(--color-background)",
-                padding: "1rem",
+                zIndex: 20
               }}
             >
-              <SplitterControl
-                onConfigChange={(cfg) => setSplitConfig(cfg)}
-                onSplit={() => handleSplit(splitConfig)}
-                isProcessing={isSplitting}
-              />
+              <div style={{ padding: "1.25rem", flex: 1, overflowY: "auto" }}>
+                  <SplitterControl
+                    config={splitConfig}
+                    onConfigChange={(cfg) => setSplitConfig(cfg)}
+                    isProcessing={isSplitting}
+                    exportFormat={splitConfig.format || "png"}
+                    onExportFormatChange={(fmt) => setSplitConfig(prev => ({...prev, format: fmt}))}
+                    isZip={isZip}
+                    onIsZipChange={setIsZip}
+                    isTwitterOptimized={isTwitterOptimized}
+                    onIsTwitterOptimizedChange={setIsTwitterOptimized}
+                  />
+              </div>
+
+               <div
+                style={{
+                  borderTop: "1px solid var(--color-glass-border)",
+                  padding: "1.25rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.75rem",
+                  background: "rgba(0,0,0,0.2)"
+                }}
+              >
+                 {/* Split / Restore Button */}
+                 <button
+                    onClick={() => {
+                        if (splitBlobs.length > 0) {
+                            // Restore
+                            setSplitBlobs([]);
+                        } else {
+                            // Split
+                            handleSplit(splitConfig);
+                        }
+                    }}
+                    disabled={(!splitSource && splitBlobs.length === 0) || isSplitting}
+                    className="btn" // Use CTA style for primary action
+                    style={{
+                      width: "100%",
+                      height: "3.25rem",
+                      fontSize: "0.9375rem",
+                      fontWeight: 700,
+                      boxShadow: splitBlobs.length > 0 ? "none" : "0 8px 16px rgba(37, 99, 235, 0.3)",
+                      backgroundColor: splitBlobs.length > 0 ? "rgba(255,255,255,0.05)" : "var(--color-primary)",
+                      color: splitBlobs.length > 0 ? "var(--color-text-muted)" : "white",
+                      border: splitBlobs.length > 0 ? "1px solid rgba(255,255,255,0.1)" : "none",
+                      borderRadius: "var(--radius-lg)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+                    }}
+                  >
+                    {isSplitting ? (
+                      <>
+                          <div className="spinner" style={{ width: "20px", height: "20px", borderTopColor: "white" }}></div>
+                          <span>{t("processing")}</span>
+                      </>
+                    ) : (
+                      <>
+                         {splitBlobs.length > 0 ? (
+                             <>
+                                <RotateCcw size={20} />
+                                <span>{t("restore")}</span>
+                             </>
+                         ) : (
+                             <>
+                                <Scissors size={20} />
+                                <span>{t("splitImage")}</span>
+                             </>
+                         )}
+                      </>
+                    )}
+                  </button>
+                  
+                  {/* Download Button */}
+                  <button
+                    disabled={splitBlobs.length === 0}
+                    onClick={async () => {
+                        if (splitBlobs.length === 0) return;
+
+                        if (isZip) {
+                            const zip = new JSZip();
+                            const now = new Date();
+                            // Simple timestamp: YYYYMMDD_HHMMSS
+                            const timestamp = now.toISOString().slice(0,19).replace(/[:T-]/g, "");
+                            
+                            splitBlobs.forEach((blob, idx) => {
+                                const ext = blob.type.split('/')[1] || splitConfig.format || "png";
+                                zip.file(`split_${idx + 1}.${ext}`, blob);
+                            });
+
+                            const content = await zip.generateAsync({type:"blob"});
+                            const url = URL.createObjectURL(content);
+                            const a = document.createElement("a");
+                            a.href = url;
+                            a.download = `split_images_${timestamp}.zip`;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            URL.revokeObjectURL(url);
+                        } else {
+                            splitBlobs.forEach((blob, idx) => {
+                                const url = URL.createObjectURL(blob);
+                                const a = document.createElement("a");
+                                a.href = url;
+                                const ext = blob.type.split('/')[1] || splitConfig.format || "png";
+                                a.download = `split_part_${idx + 1}.${ext}`;
+                                document.body.appendChild(a);
+                                a.click();
+                                document.body.removeChild(a);
+                                URL.revokeObjectURL(url); 
+                            });
+                        }
+                    }}
+                    className="btn"
+                    style={{
+                      width: "100%",
+                      height: "3.25rem",
+                      fontSize: "0.9375rem",
+                      fontWeight: 700,
+                      backgroundColor: splitBlobs.length > 0 ? "var(--color-cta)" : "rgba(255,255,255,0.05)",
+                      color: splitBlobs.length > 0 ? "white" : "rgba(255,255,255,0.2)",
+                      boxShadow: splitBlobs.length > 0 ? "0 8px 16px rgba(244, 63, 94, 0.3)" : "none",
+                      cursor: splitBlobs.length > 0 ? "pointer" : "not-allowed",
+                      border: "none",
+                      borderRadius: "var(--radius-lg)",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+                    }}
+                  >
+                     <Download size={20} />
+                     <span>{t("downloadAll")}</span>
+                  </button>
+              </div>
             </div>
           )}
 
-          {/* Right: Sidebar Controls */}
+          {/* Right: Sidebar Controls (Stitch Mode) */}
           <div
+            className="glass-panel"
             style={{
-              width: "260px",
-              borderLeft: "1px solid var(--color-border)",
+              width: "280px",
+              borderLeft: "1px solid var(--color-glass-border)",
               display: mode === "stitch" ? "flex" : "none",
               flexDirection: "column",
-              backgroundColor: "var(--color-background)",
             }}
           >
             <div style={{ padding: "1rem", flex: 1, overflowY: "auto" }}>
@@ -1685,23 +1936,30 @@ export function App({ task, onClose }: AppProps) {
               </section>
             </div>
 
-            {/* Footer Actions */}
+            {/* Footer Actions (Stitch) */}
             <div
               style={{
-                padding: "1rem",
-                borderTop: "1px solid var(--color-border)",
-                backgroundColor: "var(--color-surface)",
+                padding: "1.25rem",
+                borderTop: "1px solid var(--color-glass-border)",
+                background: "rgba(0,0,0,0.2)"
               }}
             >
               <button
                 onClick={download}
                 disabled={isGenerating || loading || !previewUrl}
-                className="btn btn-cta"
+                className="btn"
                 style={{
                   width: "100%",
-                  height: "3rem",
-                  fontSize: "0.875rem",
-                  boxShadow: "0 4px 12px rgba(249, 115, 22, 0.3)",
+                  height: "3.25rem",
+                  fontSize: "0.9375rem",
+                  fontWeight: 700,
+                  backgroundColor: isGenerating || loading || !previewUrl ? "rgba(255,255,255,0.05)" : "var(--color-cta)",
+                  color: isGenerating || loading || !previewUrl ? "rgba(255,255,255,0.2)" : "white",
+                  boxShadow: isGenerating || loading || !previewUrl ? "none" : "0 8px 16px rgba(244, 63, 94, 0.3)",
+                  cursor: isGenerating || loading || !previewUrl ? "not-allowed" : "pointer",
+                  border: "none",
+                  borderRadius: "var(--radius-lg)",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                 }}
               >
                 {isGenerating ? (
@@ -1709,8 +1967,8 @@ export function App({ task, onClose }: AppProps) {
                     <div
                       className="spinner"
                       style={{
-                        width: "18px",
-                        height: "18px",
+                        width: "20px",
+                        height: "20px",
                         borderTopColor: "white",
                       }}
                     ></div>
@@ -1718,7 +1976,7 @@ export function App({ task, onClose }: AppProps) {
                   </>
                 ) : (
                   <>
-                    <Download size={18} />
+                    <Download size={20} />
                     <span>{t("stitchAndDownload")}</span>
                   </>
                 )}
@@ -1859,81 +2117,4 @@ export function App({ task, onClose }: AppProps) {
   );
 }
 
-interface LayoutButtonProps {
-  active: boolean;
-  onClick: () => void;
-  icon: VNode;
-  label: string;
-}
 
-function LayoutButton({ active, onClick, icon, label }: LayoutButtonProps) {
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "0.35rem",
-        padding: "0.6rem 0.4rem",
-        borderRadius: "var(--radius-lg)",
-        border: active
-          ? "2px solid var(--color-primary)"
-          : "1px solid var(--color-border)",
-        backgroundColor: active
-          ? "rgba(59, 130, 246, 0.05)"
-          : "var(--color-surface)",
-        cursor: "pointer",
-        color: active ? "var(--color-primary)" : "var(--color-text)",
-        transition: "all var(--transition-fast)",
-        fontWeight: active ? "700" : "400",
-        boxShadow: active ? "0 4px 12px rgba(59, 130, 246, 0.15)" : "none",
-      }}
-    >
-      <div style={{ opacity: active ? 1 : 0.6 }}>{icon}</div>
-      <span style={{ fontSize: "0.7rem" }}>{label}</span>
-    </button>
-  );
-}
-
-interface IconButtonProps {
-  onClick: () => void;
-  disabled?: boolean;
-  icon: VNode;
-  style?: JSX.CSSProperties;
-  title?: string;
-}
-
-function IconButton({
-  onClick,
-  disabled,
-  icon,
-  style = {},
-  title,
-}: IconButtonProps) {
-  return (
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick();
-      }}
-      disabled={disabled}
-      title={title}
-      style={{
-        border: "1px solid var(--color-border)",
-        backgroundColor: "var(--color-surface)",
-        borderRadius: "var(--radius-sm)",
-        cursor: disabled ? "not-allowed" : "pointer",
-        opacity: disabled ? 0.3 : 1,
-        padding: "0.375rem",
-        display: "flex",
-        color: "var(--color-text)",
-        transition: "all var(--transition-fast)",
-        ...style,
-      }}
-      className="icon-btn-hover"
-    >
-      {icon}
-    </button>
-  );
-}

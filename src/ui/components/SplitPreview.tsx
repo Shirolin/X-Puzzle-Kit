@@ -1,10 +1,16 @@
 import { useEffect, useState } from "preact/hooks";
+import { JSX } from "preact";
+import { t } from "../../core/i18n";
+
+import { SplitConfig } from "../../core/types";
 
 interface SplitPreviewProps {
   blobs: Blob[];
+  config: SplitConfig;
+  aspectRatio?: number;
 }
 
-export function SplitPreview({ blobs }: SplitPreviewProps) {
+export function SplitPreview({ blobs, config, aspectRatio }: SplitPreviewProps) {
   const [urls, setUrls] = useState<string[]>([]);
 
   useEffect(() => {
@@ -20,51 +26,167 @@ export function SplitPreview({ blobs }: SplitPreviewProps) {
 
   if (blobs.length === 0) return null;
 
-  const handleDownloadAll = () => {
-    urls.forEach((url, index) => {
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `split_image_${index + 1}.png`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    });
-  };
 
   return (
-    <div class="mt-6">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">
-          Result Preview
-        </h3>
-        <button
-          onClick={handleDownloadAll}
-          class="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+    <div style={{ marginTop: "1.5rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "1rem",
+        }}
+      >
+        <h3
+          style={{
+            fontSize: "1.125rem",
+            fontWeight: 500,
+            lineHeight: "1.5rem",
+            color: "#111827",
+            margin: 0,
+          }}
         >
-          Download All
-        </button>
+          {t("splitResult")}
+        </h3>
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
+      <div
+        style={{
+          display: "grid",
+          gap: "4px", // Reduced gap for a tighter look
+          width: "100%",
+          maxWidth: aspectRatio && aspectRatio < 1 ? `${aspectRatio * 100}%` : "100%", // Handle tall images
+          aspectRatio: aspectRatio ? `${aspectRatio}` : "auto",
+          margin: "0 auto",
+          ...getGridStyle(config),
+        }}
+      >
         {urls.map((url, idx) => (
           <div
             key={idx}
-            class="relative group border rounded-lg overflow-hidden bg-gray-100"
+            className="group"
+            style={{
+              position: "relative",
+              border: "1px solid #e5e7eb",
+              borderRadius: "0.5rem",
+              overflow: "hidden",
+              backgroundColor: "#1e293b", // Darker background for contrast
+              display: "flex", 
+              alignItems: "center", 
+              justifyContent: "center",
+              // T-Shape specific positioning
+              ...(config.layout === "T_SHAPE_3" ? getTShapeItemStyle(idx) : {})
+            }}
           >
             <img
               src={url}
               alt={`Split ${idx + 1}`}
-              class="w-full h-auto object-contain"
+              onLoad={(e) => {
+                  const img = e.currentTarget;
+                  const resText = `${img.naturalWidth} x ${img.naturalHeight}`;
+                  const badge = img.parentNode?.querySelector('.res-badge');
+                  if(badge) badge.textContent = resText;
+              }}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain", // Ensure full image is visible
+                display: "block"
+              }}
             />
-            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <span class="text-white font-bold text-lg">#{idx + 1}</span>
+            <div
+              className="overlay"
+              style={{
+                position: "absolute",
+                inset: 0,
+                backgroundColor: "rgba(0,0,0,0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                opacity: 0,
+                transition: "opacity 0.2s",
+                pointerEvents: "none"
+              }}
+            >
+              <span
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: "1.125rem",
+                }}
+              >
+                #{idx + 1}
+              </span>
             </div>
-            <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-xs p-1 text-center">
-              {blobs[idx].type} - {Math.round(blobs[idx].size / 1024)} KB
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                backgroundColor: "rgba(0,0,0,0.6)",
+                color: "white",
+                fontSize: "0.75rem",
+                padding: "2px 4px",
+                textAlign: "center",
+                whiteSpace: "nowrap",
+                overflow: "hidden", 
+                textOverflow: "ellipsis"
+              }}
+            >
+              <span className="res-badge">...</span> • {blobs[idx].type.split("/")[1]?.toUpperCase() || "IMG"}
             </div>
+            
+            <style>{`
+               .group:hover .overlay {
+                   opacity: 1 !important;
+               }
+            `}</style>
           </div>
         ))}
       </div>
     </div>
   );
+}
+
+function getGridStyle(config: SplitConfig): JSX.CSSProperties {
+    switch (config.layout) {
+        case "GRID_2x2":
+            return {
+                gridTemplateColumns: "1fr 1fr",
+                gridTemplateRows: "1fr 1fr",
+            };
+        case "VERTICAL_1xN":
+             return {
+                 gridTemplateColumns: "1fr",
+                 gridTemplateRows: `repeat(${config.rows || 2}, 1fr)`,
+             };
+        case "HORIZONTAL_Nx1":
+             return {
+                 gridTemplateColumns: `repeat(${config.cols || 2}, 1fr)`,
+                 gridTemplateRows: "1fr",
+             };
+        case "T_SHAPE_3":
+             return {
+                 gridTemplateColumns: "1fr 1fr",
+                 gridTemplateRows: "1fr 1fr",
+             };
+        default:
+            return {
+                 gridTemplateColumns: "repeat(2, 1fr)",
+            };
+    }
+}
+
+function getTShapeItemStyle(index: number): JSX.CSSProperties {
+    // 0: Left -> Column 1, Row 1-2
+    // 1: Top Right -> Col 2, Row 1
+    // 2: Bottom Right -> Col 2, Row 2
+    if (index === 0) {
+        return {
+            gridColumn: "1",
+            gridRow: "1 / span 2",
+        };
+    }
+    return {}; // Normal flow for 1 and 2 (will fill col 2 naturally)
 }

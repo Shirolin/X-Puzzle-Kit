@@ -34,6 +34,25 @@ export async function splitImage(
   const width = getDimension(src.width);
   const height = getDimension(src.height);
 
+  let drawX = 0;
+  let drawY = 0;
+  let drawW = width;
+  let drawH = height;
+
+  // Handle Auto-Crop for Twitter/Composite Ratios
+  if (config.autoCropRatio && config.autoCropRatio > 0) {
+    const currentRatio = width / height;
+    if (currentRatio > config.autoCropRatio) {
+      // Current is wider than target -> Crop sides
+      drawW = height * config.autoCropRatio;
+      drawX = (width - drawW) / 2;
+    } else if (currentRatio < config.autoCropRatio) {
+      // Current is taller than target -> Crop top/bottom
+      drawH = width / config.autoCropRatio;
+      drawY = (height - drawH) / 2;
+    }
+  }
+
   // Use an offscreen canvas (or a regular canvas element) for cropping
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
@@ -49,13 +68,23 @@ export async function splitImage(
     canvas.width = w;
     canvas.height = h;
     ctx.clearRect(0, 0, w, h);
-    ctx.drawImage(source, x, y, w, h, 0, 0, w, h);
+
+    // Calculate sx/sy based on the auto-cropped area
+    const sx = drawX + (x / width) * drawW;
+    const sy = drawY + (y / height) * drawH;
+    const sw = (w / width) * drawW;
+    const sh = (h / height) * drawH;
+
+    ctx.drawImage(source, sx, sy, sw, sh, 0, 0, w, h);
 
     return new Promise((resolve, reject) => {
-      canvas.toBlob((blob) => {
-        if (blob) resolve(blob);
-        else reject(new Error("Failed to create blob"));
-      }, "image/png"); // Default to PNG for high quality
+      canvas.toBlob(
+        (blob) => {
+          if (blob) resolve(blob);
+          else reject(new Error("Failed to create blob"));
+        },
+        `image/${config.format || "png"}`,
+      );
     });
   };
 
