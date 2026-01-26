@@ -402,15 +402,11 @@ input:checked + .slider:before {
 }
 
 .sorting-area {
-  flex: 1 1 0% !important;
-  min-height: 0 !important; /* Allow shrinking below min-content */
   display: flex;
   flex-direction: column;
 }
 
 .sorting-area .no-scrollbar {
-  flex: 1;
-  overflow-y: auto !important;
   padding-right: 4px;
 }
 

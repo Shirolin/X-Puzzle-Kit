@@ -174,10 +174,21 @@ export function App({ task, onClose }: AppProps) {
   };
 
   useEffect(() => {
-    fitToScreen();
-    const handleResize = () => fitToScreen();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const runRefit = () => {
+      fitToScreen();
+      // Debug Heights
+      const sidebar = document.querySelector('.sidebar-content-root');
+      if (sidebar) {
+        const sections = Array.from(sidebar.children).map(c => ({
+          tag: (c as HTMLElement).tagName,
+          height: (c as HTMLElement).offsetHeight
+        }));
+        console.log('[LayoutDebug] Sidebar Total:', sidebar.clientHeight, 'Sections:', sections);
+      }
+    };
+    runRefit();
+    window.addEventListener('resize', runRefit);
+    return () => window.removeEventListener('resize', runRefit);
   }, [canvasSize, mode, splitSourceBitmap]);
 
   const resetViewer = () => fitToScreen();
@@ -380,49 +391,49 @@ export function App({ task, onClose }: AppProps) {
                 />
               ) : (
                 <>
-                  <section className="section-block">
-                    <h3 className="section-header">{t("layoutScheme")}</h3>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.4rem" }}>
-                      <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={15} />} label={t("layoutGrid")} />
-                      <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={15} />} label={t("layoutTShape")} />
-                      <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={15} />} label={t("layoutHorizontal")} />
-                      <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={15} />} label={t("layoutVertical")} />
-                    </div>
-                  </section>
-
-                  <section className="section-block">
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.375rem" }}>
-                      <h3 className="section-header" style={{ margin: 0 }}>{t("globalGap")}</h3>
-                      <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                        <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={11} />} style={{ border: "none", background: "rgba(255,255,255,0.05)", padding: "2px" }} />
-                        <div style={{ display: "flex", alignItems: "center", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "1px 4px" }}>
-                          <input type="number" value={globalGap} onInput={(e) => setGlobalGap(Math.max(-20, Math.min(100, parseInt(e.currentTarget.value) || 0)))} className="hide-arrows" style={{ width: "24px", height: "16px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "white", fontFamily: "'Fira Code', monospace" }} />
-                          <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700 }}>PX</span>
-                        </div>
-                        <IconButton onClick={() => setGlobalGap(Math.min(100, globalGap + 1))} icon={<Plus size={11} />} style={{ border: "none", background: "rgba(255,255,255,0.05)", padding: "2px" }} />
-                        <div style={{ width: "1px", height: "12px", background: "rgba(255,255,255,0.1)", margin: "0 2px" }} />
-                        <IconButton onClick={() => setGlobalGap(0)} icon={<RotateCcw size={11} />} style={{ border: "none", background: "none", padding: "2px" }} />
+                  {/* Fixed Sections */}
+                  <div style={{ flexShrink: 0 }}>
+                    <section className="section-block" style={{ marginBottom: "0.75rem" }}>
+                      <h3 className="section-header" style={{ marginBottom: "0.4rem" }}>{t("layoutScheme")}</h3>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
+                        <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={14} />} label={t("layoutGrid")} />
+                        <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={14} />} label={t("layoutTShape")} />
+                        <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={14} />} label={t("layoutHorizontal")} />
+                        <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={14} />} label={t("layoutVertical")} />
                       </div>
-                    </div>
-                    <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" />
-                  </section>
+                    </section>
 
-                  <section className="section-block sorting-area">
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem" }}>
+                    <section className="section-block" style={{ marginBottom: "0.75rem" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
+                        <h3 className="section-header" style={{ margin: 0 }}>{t("globalGap")}</h3>
+                        <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "rgba(0,0,0,0.2)", padding: "2px 4px", borderRadius: "4px" }}>
+                          <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={11} />} style={{ border: "none", background: "none", padding: "2px" }} />
+                          <input type="number" value={globalGap} onInput={(e) => setGlobalGap(Math.max(-20, Math.min(100, parseInt(e.currentTarget.value) || 0)))} className="hide-arrows" style={{ width: "24px", height: "16px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "white", fontFamily: "'Fira Code', monospace" }} />
+                          <IconButton onClick={() => setGlobalGap(Math.min(100, globalGap + 1))} icon={<Plus size={11} />} style={{ border: "none", background: "none", padding: "2px" }} />
+                        </div>
+                      </div>
+                      <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" style={{ height: "4px", marginTop: "4px" }} />
+                    </section>
+                  </div>
+
+                  {/* Elastic Sorting Area */}
+                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem", flexShrink: 0 }}>
                       <h3 className="section-header" style={{ margin: 0 }}>{t("imageSorting")}</h3>
                       <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("localGap")}</span>
                     </div>
-                    <div className="no-scrollbar">
+                    <div className="no-scrollbar" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.5rem", paddingRight: "4px" }}>
                         {images.map((img, idx) => (
-                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.5rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.05)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                                 <GripVertical size={13} style={{ color: "var(--color-text-muted)", opacity: 0.5, cursor: "grab" }} />
+                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.625rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+                                 <GripVertical size={13} style={{ color: "var(--color-text-muted)", opacity: 0.4, cursor: "grab" }} />
                                  <div style={{ position: "relative", flexShrink: 0 }}>
-                                    <img src={img.thumbnailUrl} style={{ width: "32px", height: "32px", objectFit: "cover", borderRadius: "var(--radius-sm)" }} />
-                                    <div style={{ position: "absolute", top: "-4px", left: "-4px", width: "14px", height: "14px", background: "var(--color-primary)", color: "white", fontSize: "8px", fontWeight: "bold", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid black" }}>{idx + 1}</div>
+                                    <img src={img.thumbnailUrl} style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "var(--radius-sm)", border: "1px solid rgba(255,255,255,0.1)" }} />
+                                    <div style={{ position: "absolute", top: "-6px", left: "-6px", minWidth: "16px", height: "16px", background: "var(--color-primary)", color: "white", fontSize: "9px", fontWeight: "bold", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #111" }}>{idx + 1}</div>
                                  </div>
                                  <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: img.visible !== false ? "white" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
+                                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: img.visible !== false ? "white" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
+                                    <div style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", marginTop: "2px" }}>{img.width} × {img.height}</div>
                                  </div>
                                  <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                                     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -433,7 +444,7 @@ export function App({ task, onClose }: AppProps) {
                                  </div>
                               </div>
                               {img.visible !== false && idx < images.length - 1 && (
-                                 <div style={{ marginTop: "0.375rem", paddingTop: "0.375rem", borderTop: "1px solid rgba(255,255,255,0.05)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                                 <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                                     <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                                        <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("afterGap")}</span>
                                        <div style={{ display: "flex", alignItems: "center", backgroundColor: "rgba(0,0,0,0.3)", borderRadius: "4px" }}>
@@ -450,34 +461,37 @@ export function App({ task, onClose }: AppProps) {
                     </div>
                   </section>
 
-                  <section className="section-block">
-                    <h3 className="section-header">{t("exportSettings")}</h3>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-                       <div style={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
-                          {["PNG", "JPG", "WEBP"].map(fmt => (
-                             <button key={fmt} onClick={() => setOutputFormat(fmt.toLowerCase() as any)} style={{ flex: 1, padding: "4px", border: "none", borderRadius: "0.4rem", backgroundColor: outputFormat === fmt.toLowerCase() ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", fontSize: "10px", fontWeight: 700, cursor: "pointer" }}>{fmt}</button>
-                          ))}
-                       </div>
-                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                          <span style={{ fontSize: "0.7rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("backgroundColor")}</span>
-                          <div style={{ display: "flex", gap: "5px" }}>
-                             {(["transparent", "white", "black"] as const).map(bg => (
-                                <button key={bg} onClick={() => setBackgroundColor(bg)} disabled={outputFormat === "jpg" && bg === "transparent"} style={{ width: "14px", height: "14px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.2)", backgroundColor: bg === "transparent" ? "#333" : bg, outline: backgroundColor === bg ? "2px solid var(--color-primary)" : "none", outlineOffset: "2px", cursor: "pointer", opacity: (outputFormat === "jpg" && bg === "transparent") ? 0.2 : 1 }} />
-                             ))}
-                          </div>
-                       </div>
-                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                          <span style={{ fontSize: "0.7rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("language")}</span>
-                          <select value={lang} onChange={(e) => setLang(e.currentTarget.value)} className="apple-select" style={{ padding: "3px 20px 3px 8px", fontSize: "10px", width: "100px" }}>
-                             <option value="auto">Auto</option>
-                             <option value="zh_CN">简体中文</option>
-                             <option value="zh_TW">繁體中文</option>
-                             <option value="en">English</option>
-                             <option value="ja">日本語</option>
-                          </select>
-                       </div>
-                    </div>
-                  </section>
+                  {/* Fixed Export Section */}
+                  <div style={{ flexShrink: 0, marginTop: "0.75rem" }}>
+                    <section className="section-block">
+                      <h3 className="section-header" style={{ marginBottom: "0.5rem" }}>{t("exportSettings")}</h3>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                         <div style={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
+                            {["PNG", "JPG", "WEBP"].map(fmt => (
+                               <button key={fmt} onClick={() => setOutputFormat(fmt.toLowerCase() as any)} style={{ flex: 1, padding: "3px", border: "none", borderRadius: "4px", backgroundColor: outputFormat === fmt.toLowerCase() ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", fontSize: "10px", fontWeight: 700, cursor: "pointer" }}>{fmt}</button>
+                            ))}
+                         </div>
+                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <span style={{ fontSize: "0.65rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("backgroundColor")}</span>
+                            <div style={{ display: "flex", gap: "5px" }}>
+                               {(["transparent", "white", "black"] as const).map(bg => (
+                                  <button key={bg} onClick={() => setBackgroundColor(bg)} disabled={outputFormat === "jpg" && bg === "transparent"} style={{ width: "12px", height: "12px", borderRadius: "50%", border: "1px solid rgba(255,255,255,0.2)", backgroundColor: bg === "transparent" ? "#333" : bg, outline: backgroundColor === bg ? "2px solid var(--color-primary)" : "none", outlineOffset: "2px", cursor: "pointer", opacity: (outputFormat === "jpg" && bg === "transparent") ? 0.2 : 1 }} />
+                               ))}
+                            </div>
+                         </div>
+                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                            <span style={{ fontSize: "0.65rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("language")}</span>
+                            <select value={lang} onChange={(e) => setLang(e.currentTarget.value)} className="apple-select" style={{ padding: "1px 16px 1px 6px", fontSize: "10px", width: "90px" }}>
+                               <option value="auto">Auto</option>
+                               <option value="zh_CN">简体中文</option>
+                               <option value="zh_TW">繁體中文</option>
+                               <option value="en">English</option>
+                               <option value="ja">日本語</option>
+                            </select>
+                         </div>
+                      </div>
+                    </section>
+                  </div>
                 </>
               )}
             </div>
