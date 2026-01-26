@@ -370,16 +370,17 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row; /* Default: Horizontal */
   align-items: center;
-  background: rgba(28, 28, 30, 0.85);
+  background: var(--color-glass-bg);
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--color-glass-border);
   border-radius: 2rem;
   padding: 6px 14px;
   gap: 8px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-glass);
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
   white-space: nowrap;
+  color: var(--color-text);
 }
 
 .toolbar-row {
@@ -391,7 +392,7 @@ input:checked + .slider:before {
 .zoom-percentage {
   font-size: 13px;
   font-weight: 700;
-  color: white;
+  color: var(--color-text);
   min-width: 42px;
   text-align: center;
 }
@@ -406,14 +407,14 @@ input:checked + .slider:before {
 .toolbar-divider-v {
   width: 1px;
   height: 14px;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-border);
   margin: 0 2px;
 }
 
 .toolbar-text-btn {
   background: none;
   border: none;
-  color: white;
+  color: var(--color-text);
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;

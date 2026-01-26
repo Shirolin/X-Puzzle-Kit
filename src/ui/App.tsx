@@ -337,13 +337,13 @@ export function App({ task, onClose }: AppProps) {
 
           {/* Mode Switcher & Theme */}
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <div className="apple-blur" style={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.08)", padding: "2px", borderRadius: "0.6rem", border: "1px solid rgba(255, 255, 255, 0.05)" }}>
-              <button onClick={() => setMode("stitch")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "stitch" ? "rgba(255, 255, 255, 0.15)" : "transparent", color: mode === "stitch" || isThemeDark ? "white" : "var(--color-text)", cursor: "pointer", transition: "all 0.15s" }}>
-                <Images size={13} color={mode === "stitch" ? "var(--color-primary)" : (isThemeDark ? "white" : "var(--color-text)")} />
+            <div className="apple-blur" style={{ display: "flex", backgroundColor: "var(--color-surface-soft)", padding: "2px", borderRadius: "0.6rem", border: "1px solid var(--color-glass-border)" }}>
+              <button onClick={() => setMode("stitch")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "stitch" ? "var(--color-card-bg)" : "transparent", color: mode === "stitch" ? "var(--color-text)" : "var(--color-text-muted)", cursor: "pointer", transition: "all 0.15s", boxShadow: mode === "stitch" ? "0 2px 5px rgba(0,0,0,0.1)" : "none" }}>
+                <Images size={13} style={{ color: mode === "stitch" ? "var(--color-primary)" : "currentColor" }} />
                 <span>Stitch</span>
               </button>
-              <button onClick={() => setMode("split")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "split" ? "rgba(255, 255, 255, 0.15)" : "transparent", color: mode === "split" || isThemeDark ? "white" : "var(--color-text)", cursor: "pointer", transition: "all 0.15s" }}>
-                <Scissors size={13} color={mode === "split" ? "var(--color-primary)" : (isThemeDark ? "white" : "var(--color-text)")} />
+              <button onClick={() => setMode("split")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "split" ? "var(--color-card-bg)" : "transparent", color: mode === "split" ? "var(--color-text)" : "var(--color-text-muted)", cursor: "pointer", transition: "all 0.15s", boxShadow: mode === "split" ? "0 2px 5px rgba(0,0,0,0.1)" : "none" }}>
+                <Scissors size={13} style={{ color: mode === "split" ? "var(--color-primary)" : "currentColor" }} />
                 <span>Split</span>
               </button>
             </div>
