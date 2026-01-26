@@ -1,3 +1,15 @@
+import langEn from "../../public/_locales/en/messages.json";
+import langZhCN from "../../public/_locales/zh_CN/messages.json";
+import langZhTW from "../../public/_locales/zh_TW/messages.json";
+import langJa from "../../public/_locales/ja/messages.json";
+
+const locales: Record<string, any> = {
+  en: langEn,
+  zh_CN: langZhCN,
+  zh_TW: langZhTW,
+  ja: langJa,
+};
+
 let currentMessages: any = null;
 
 /**
@@ -13,24 +25,10 @@ function resolveAutoLanguage(): string {
 
 /**
  * 设置手动覆盖的语言
- * @param lang 语言代码 (en, zh_CN, ja, zh_TW) 或 'auto'
  */
 export async function setLanguage(lang: string) {
   const targetLang = lang === "auto" ? resolveAutoLanguage() : lang;
-
-  try {
-    const url = chrome.runtime.getURL(`_locales/${targetLang}/messages.json`);
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("File not found");
-    const data = await res.json();
-    currentMessages = data;
-  } catch (e) {
-    console.error("Failed to load language:", targetLang, e);
-    // 最终兜底使用中文
-    if (targetLang !== "zh_CN") {
-      await setLanguage("zh_CN");
-    }
-  }
+  currentMessages = locales[targetLang] || locales["zh_CN"];
 }
 
 // 自动初始化：从存储或浏览器语言读取
