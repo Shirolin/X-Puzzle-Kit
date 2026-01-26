@@ -123,22 +123,22 @@ export function App({ task, onClose }: AppProps) {
     });
   }, [lang, outputFormat, backgroundColor, splitConfig, isZip, isTwitterOptimized, isLangLoaded, theme]);
 
-  // Handle Theme Application
+  // Sync isThemeDark with theme and system preference
   useEffect(() => {
-    const applyTheme = (t: "light" | "dark") => {
-      const root = document.querySelector('.x-puzzle-stitcher-mount-point') as HTMLElement;
-      if (root) root.setAttribute('data-theme', t);
-      setIsThemeDark(t === 'dark');
+    const checkDark = () => {
+      if (theme === 'auto') {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      return theme === 'dark';
     };
+    
+    setIsThemeDark(checkDark());
 
     if (theme === 'auto') {
       const media = window.matchMedia('(prefers-color-scheme: dark)');
-      applyTheme(media.matches ? 'dark' : 'light');
-      const listener = (e: MediaQueryListEvent) => applyTheme(e.matches ? 'dark' : 'light');
+      const listener = (e: MediaQueryListEvent) => setIsThemeDark(e.matches);
       media.addEventListener('change', listener);
       return () => media.removeEventListener('change', listener);
-    } else {
-      applyTheme(theme);
     }
   }, [theme]);
 
@@ -320,16 +320,16 @@ export function App({ task, onClose }: AppProps) {
   const handleDoubleClick = () => viewerScale < 1 ? setViewerScale(1) : fitToScreen();
 
   return (
-    <div className="modal-overlay" style={{ position: "fixed", inset: 0, width: "100%", height: "100%", backgroundColor: "var(--color-overlay)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 99999, backdropFilter: "blur(8px)" }}>
-      <div className="card apple-blur" style={{ width: "95%", maxWidth: "940px", height: "85vh", display: "flex", flexDirection: "column", backgroundColor: "rgba(0,0,0,0.85)", color: "white", borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--color-glass-border)", boxShadow: "0 24px 80px rgba(0,0,0,0.7)" }}>
+    <div className="modal-overlay" data-theme={isThemeDark ? "dark" : "light"} style={{ position: "fixed", inset: 0, width: "100%", height: "100%", backgroundColor: "var(--color-overlay)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 99999, backdropFilter: "blur(8px)" }}>
+      <div className="card apple-blur" style={{ width: "95%", maxWidth: "940px", height: "85vh", display: "flex", flexDirection: "column", backgroundColor: isThemeDark ? "rgba(0,0,0,0.85)" : "rgba(255,255,255,0.85)", color: "var(--color-text)", borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--color-glass-border)", boxShadow: "0 24px 80px rgba(0,0,0,0.4)" }}>
         
         {/* Header */}
         <div style={{ padding: "0.5rem 1rem", borderBottom: "1px solid var(--color-glass-border)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "rgba(255,255,255,0.03)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
             <img src={logoUrl} style={{ width: "28px", height: "28px" }} alt="Logo" title={t("appDesc")} />
-            <h2 style={{ margin: 0, fontSize: "0.95rem", fontWeight: 700, display: "flex", alignItems: "center", gap: "0.4rem" }}>
+            <h2 style={{ margin: 0, fontSize: "0.95rem", fontWeight: 700, display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--color-text)" }}>
               <span className="appName-text">{t("appName")}</span>
-              <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "var(--color-primary)", backgroundColor: "rgba(0,122,255,0.12)", padding: "1px 6px", borderRadius: "10px" }}>
+              <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "var(--color-primary)", backgroundColor: isThemeDark ? "rgba(0,122,255,0.12)" : "rgba(0,122,255,0.08)", padding: "1px 6px", borderRadius: "10px" }}>
                 {mode === "stitch" ? t("previewTitle") : "Splitter"}
               </span>
             </h2>
