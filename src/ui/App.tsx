@@ -381,9 +381,8 @@ export function App({ task, onClose }: AppProps) {
           </div>
 
           {/* Sidebar (Right) */}
-          <div className="glass-panel" style={{ width: "260px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20 }}>
-            <div className="sidebar-content-root" style={{ padding: "0.5rem 0.75rem", flex: 1, overflow: "hidden" }}>
-              <div style={{ fontSize: "10px", color: "#ef4444", fontWeight: 800, textAlign: "center", marginBottom: "4px", backgroundColor: "rgba(239, 68, 68, 0.1)", borderRadius: "2px" }}>DEBUG: UI ACTIVATED</div>
+          <div className="glass-panel" style={{ width: "262px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20, backgroundColor: "rgba(0,0,0,0.2)" }}>
+            <div className="sidebar-content-root" style={{ padding: "0.5rem", flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
               {mode === "split" ? (
                 <SplitterControl 
                     config={splitConfig} onConfigChange={setSplitConfig} isProcessing={isSplitting}
@@ -393,68 +392,68 @@ export function App({ task, onClose }: AppProps) {
               ) : (
                 <>
                   {/* Fixed Sections */}
-                  <div style={{ flexShrink: 0 }}>
-                    <section className="section-block" style={{ marginBottom: "0.75rem" }}>
-                      <h3 className="section-header" style={{ marginBottom: "0.4rem" }}>{t("layoutScheme")}</h3>
+                  <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+                      <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("layoutScheme")}</h3>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
-                        <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={14} />} label={t("layoutGrid")} />
-                        <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={14} />} label={t("layoutTShape")} />
-                        <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={14} />} label={t("layoutHorizontal")} />
-                        <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={14} />} label={t("layoutVertical")} />
+                        <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
+                        <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={13} />} label={t("layoutTShape")} />
+                        <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={13} />} label={t("layoutHorizontal")} />
+                        <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={13} />} label={t("layoutVertical")} />
                       </div>
                     </section>
 
-                    <section className="section-block" style={{ marginBottom: "0.75rem" }}>
+                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
-                        <h3 className="section-header" style={{ margin: 0 }}>{t("globalGap")}</h3>
-                        <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "rgba(0,0,0,0.2)", padding: "2px 4px", borderRadius: "4px" }}>
-                          <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={11} />} style={{ border: "none", background: "none", padding: "2px" }} />
-                          <input type="number" value={globalGap} onInput={(e) => setGlobalGap(Math.max(-20, Math.min(100, parseInt(e.currentTarget.value) || 0)))} className="hide-arrows" style={{ width: "24px", height: "16px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "white", fontFamily: "'Fira Code', monospace" }} />
-                          <IconButton onClick={() => setGlobalGap(Math.min(100, globalGap + 1))} icon={<Plus size={11} />} style={{ border: "none", background: "none", padding: "2px" }} />
+                        <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("globalGap")}</h3>
+                        <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "rgba(0,0,0,0.3)", padding: "1px 4px", borderRadius: "4px" }}>
+                          <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
+                          <input type="number" value={globalGap} onInput={(e) => setGlobalGap(Math.max(-20, Math.min(100, parseInt(e.currentTarget.value) || 0)))} className="hide-arrows" style={{ width: "22px", height: "14px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }} />
+                          <IconButton onClick={() => setGlobalGap(Math.min(100, globalGap + 1))} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
                         </div>
                       </div>
-                      <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" style={{ height: "4px", marginTop: "4px" }} />
+                      <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" style={{ height: "3px", marginTop: "2px" }} />
                     </section>
                   </div>
 
                   {/* Elastic Sorting Area */}
-                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.4rem", flexShrink: 0 }}>
-                      <h3 className="section-header" style={{ margin: 0 }}>{t("imageSorting")}</h3>
-                      <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("localGap")}</span>
+                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden", margin: "0.375rem 0" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.375rem", padding: "0 0.25rem", flexShrink: 0 }}>
+                      <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("imageSorting")}</h3>
+                      <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", fontWeight: 500 }}>{t("localGap")}</span>
                     </div>
-                    <div className="no-scrollbar" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.5rem", paddingRight: "4px" }}>
+                    <div className="no-scrollbar" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.375rem", paddingBottom: "2px" }}>
                         {images.map((img, idx) => (
-                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.625rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                                 <GripVertical size={13} style={{ color: "var(--color-text-muted)", opacity: 0.4, cursor: "grab" }} />
+                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.5rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                                 <GripVertical size={13} style={{ color: "var(--color-text-muted)", opacity: 0.3, cursor: "grab" }} />
                                  <div style={{ position: "relative", flexShrink: 0 }}>
-                                    <img src={img.thumbnailUrl} style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "var(--radius-sm)", border: "1px solid rgba(255,255,255,0.1)" }} />
-                                    <div style={{ position: "absolute", top: "-6px", left: "-6px", minWidth: "16px", height: "16px", background: "var(--color-primary)", color: "white", fontSize: "9px", fontWeight: "bold", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #111" }}>{idx + 1}</div>
+                                    <img src={img.thumbnailUrl} style={{ width: "38px", height: "38px", objectFit: "cover", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.1)" }} />
+                                    <div style={{ position: "absolute", top: "-5px", left: "-5px", minWidth: "15px", height: "15px", background: "var(--color-primary)", color: "white", fontSize: "9px", fontWeight: 800, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #000", boxShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{idx + 1}</div>
                                  </div>
                                  <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: img.visible !== false ? "white" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
-                                    <div style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", marginTop: "2px" }}>{img.width} × {img.height}</div>
+                                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: img.visible !== false ? "white" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
+                                    <div style={{ fontSize: "10px", color: "var(--color-text-muted)", opacity: 0.6, marginTop: "1px", fontFamily: "'Fira Code', monospace" }}>{img.width}×{img.height}</div>
                                  </div>
-                                 <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                                 <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
                                     <div style={{ display: "flex", flexDirection: "column" }}>
-                                       <IconButton onClick={() => moveItem(idx, 'up')} disabled={idx === 0} icon={<ChevronUp size={11} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === 0 ? 0 : 0.6 }} />
-                                       <IconButton onClick={() => moveItem(idx, 'down')} disabled={idx === images.length - 1} icon={<ChevronDown size={11} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === images.length - 1 ? 0 : 0.6 }} />
+                                       <IconButton onClick={() => moveItem(idx, 'up')} disabled={idx === 0} icon={<ChevronUp size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === 0 ? 0 : 0.6, height: "12px" }} />
+                                       <IconButton onClick={() => moveItem(idx, 'down')} disabled={idx === images.length - 1} icon={<ChevronDown size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === images.length - 1 ? 0 : 0.6, height: "12px" }} />
                                     </div>
                                     <IconButton onClick={() => toggleVisibility(idx)} icon={img.visible !== false ? <Eye size={13} /> : <EyeOff size={13} />} style={{ border: "none", background: "none", padding: "2px" }} />
                                  </div>
                               </div>
                               {img.visible !== false && idx < images.length - 1 && (
-                                 <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                 <div style={{ marginTop: "0.375rem", paddingTop: "0.375rem", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                                    <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                                        <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("afterGap")}</span>
-                                       <div style={{ display: "flex", alignItems: "center", backgroundColor: "rgba(0,0,0,0.3)", borderRadius: "4px" }}>
-                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) - 1)} style={{ border: "none", background: "none", color: "white", padding: "1px 4px", cursor: "pointer" }}><Minus size={9} /></button>
-                                          <span style={{ fontSize: "10px", width: "20px", textAlign: "center", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>{img.localGap || 0}</span>
-                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) + 1)} style={{ border: "none", background: "none", color: "white", padding: "1px 4px", cursor: "pointer" }}><Plus size={9} /></button>
+                                       <div style={{ display: "flex", alignItems: "center", backgroundColor: "rgba(0,0,0,0.4)", borderRadius: "3px", padding: "0 2px" }}>
+                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) - 1)} style={{ border: "none", background: "none", color: "white", padding: "1px 3px", cursor: "pointer" }}><Minus size={8} /></button>
+                                          <span style={{ fontSize: "10px", width: "18px", textAlign: "center", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>{img.localGap || 0}</span>
+                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) + 1)} style={{ border: "none", background: "none", color: "white", padding: "1px 3px", cursor: "pointer" }}><Plus size={8} /></button>
                                        </div>
                                     </div>
-                                    <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", fontWeight: 700 }}>{t("gapLabel")} <span style={{ color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>{globalGap + (img.localGap || 0)}px</span></span>
+                                    <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700 }}>{t("gapLabel")} <span style={{ color: "var(--color-primary) opacity(0.8)", fontFamily: "'Fira Code', monospace" }}>{globalGap + (img.localGap || 0)}px</span></span>
                                  </div>
                               )}
                            </div>
@@ -463,13 +462,13 @@ export function App({ task, onClose }: AppProps) {
                   </section>
 
                   {/* Fixed Export Section */}
-                  <div style={{ flexShrink: 0, marginTop: "0.75rem" }}>
-                    <section className="section-block">
-                      <h3 className="section-header" style={{ marginBottom: "0.5rem" }}>{t("exportSettings")}</h3>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <div style={{ flexShrink: 0, marginTop: "0.25rem" }}>
+                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+                      <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("exportSettings")}</h3>
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                          <div style={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
                             {["PNG", "JPG", "WEBP"].map(fmt => (
-                               <button key={fmt} onClick={() => setOutputFormat(fmt.toLowerCase() as any)} style={{ flex: 1, padding: "3px", border: "none", borderRadius: "4px", backgroundColor: outputFormat === fmt.toLowerCase() ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", fontSize: "10px", fontWeight: 700, cursor: "pointer" }}>{fmt}</button>
+                               <button key={fmt} onClick={() => setOutputFormat(fmt.toLowerCase() as any)} style={{ flex: 1, padding: "2px", border: "none", borderRadius: "3px", backgroundColor: outputFormat === fmt.toLowerCase() ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", fontSize: "10px", fontWeight: 800, cursor: "pointer" }}>{fmt}</button>
                             ))}
                          </div>
                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
