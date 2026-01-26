@@ -7,40 +7,51 @@
 
 :host,
 .x-puzzle-stitcher-mount-point {
-  /* Apple Style - Refined Color Palette */
-  --color-primary: #007aff;        /* Apple Standard Blue */
+  /* Common Tokens */
+  --color-primary: #007aff;
   --color-primary-hover: #0062cc;
-  --color-secondary: #5856d6;      /* Apple Standard Indigo */
-  --color-cta: #007aff;           /* Use primary blue for CTA for minimalism */
-  --color-cta-hover: #0062cc;
-  
-  --color-background: #000000;     /* True Black for depth */
-  --color-surface: rgba(255, 255, 255, 0.05);
-  --color-surface-soft: rgba(255, 255, 255, 0.1);
-  
-  --color-text: #ffffff;
-  --color-text-muted: #8e8e93;     /* Apple Standard Muted Text */
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-glass-bg: rgba(28, 28, 30, 0.5); /* High transparency dark/light */
-  --color-glass-border: rgba(255, 255, 255, 0.08);
-  --color-overlay: rgba(0, 0, 0, 0.8);
-
-  /* Shadows - More subtle but deeper */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.4);
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
-
-  /* Radii - Larger for Apple look */
+  --color-secondary: #5856d6;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-full: 999px;
-
-  /* Transitions - Smoother */
   --transition-fast: 0.2s cubic-bezier(0.2, 0, 0, 1);
   --transition-normal: 0.4s cubic-bezier(0.2, 0, 0, 1);
+
+  /* Default (Dark Mode) Variables */
+  --color-background: #000000;
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-surface-soft: rgba(255, 255, 255, 0.1);
+  --color-text: #ffffff;
+  --color-text-muted: #8e8e93;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-glass-bg: rgba(28, 28, 30, 0.5);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-overlay: rgba(0, 0, 0, 0.82);
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] {
+  --color-background: #fbfbfd;
+  --color-surface: rgba(0, 0, 0, 0.03);
+  --color-surface-soft: rgba(0, 0, 0, 0.06);
+  --color-text: #1d1d1f;
+  --color-text-muted: #86868b;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-glass-bg: rgba(255, 255, 255, 0.75);
+  --color-glass-border: rgba(0, 0, 0, 0.06);
+  --color-overlay: rgba(255, 255, 255, 0.6);
+  --color-card-bg: rgba(0, 0, 0, 0.02);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-glass: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -112,9 +123,9 @@
 }
 
 .card {
-  background-color: var(--color-surface);
+  background-color: var(--color-background);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-glass);
   overflow: hidden;
 }
 
@@ -128,7 +139,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 
@@ -146,7 +157,7 @@
 }
 
 .apple-blur {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface);
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
 }
@@ -156,7 +167,7 @@
   -webkit-appearance: none;
   width: 100%;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-border);
   border-radius: 2px;
   outline: none;
 }
@@ -181,14 +192,14 @@
 .section-block {
   padding: 0.5rem 0.65rem;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-glass-border);
   margin-bottom: 0.5rem;
   transition: all var(--transition-fast);
 }
 
 .section-block:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-surface);
 }
 
 .section-header {
@@ -204,10 +215,10 @@
 /* Apple Style Select Control */
 .apple-select {
   appearance: none;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  color: white;
+  color: var(--color-text);
   padding: 0.375rem 1.75rem 0.375rem 0.625rem;
   font-size: 0.8125rem;
   font-weight: 500;
@@ -226,8 +237,8 @@
 }
 
 .apple-select:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--color-surface-soft);
+  border-color: var(--color-text-muted);
 }
 
 .apple-select:focus {
@@ -253,7 +264,7 @@
   position: absolute;
   cursor: pointer;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--color-border);
   transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 20px;
 }
@@ -283,8 +294,8 @@ input:checked + .slider:before {
 .spinner {
   width: 24px;
   height: 24px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-top-color: white;
+  border: 2px solid var(--color-border);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -302,14 +313,14 @@ input:checked + .slider:before {
 }
 
 .floating-badge {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--color-glass-bg);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-glass-border);
   padding: 4px 12px;
   border-radius: 1rem;
   font-size: 0.7rem;
   font-weight: 700;
-  color: white;
+  color: var(--color-text);
   font-family: 'Fira Code', monospace;
   white-space: nowrap;
 }

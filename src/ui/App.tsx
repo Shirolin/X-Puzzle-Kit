@@ -25,6 +25,9 @@ import {
   GripVertical,
   Scissors,
   Images,
+  Sun,
+  Moon,
+  Monitor,
 } from "lucide-preact";
 import { SplitConfig } from "../core/types";
 import { splitImage } from "../core/splitter";
@@ -72,17 +75,23 @@ export function App({ task, onClose }: AppProps) {
   const [globalGap, setGlobalGap] = useState<number>(task.globalGap || 0);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
+  // Theme State
+  const [theme, setTheme] = useState<"auto" | "light" | "dark">("auto");
+  const [isThemeDark, setIsThemeDark] = useState(true);
+
   // Load Settings
   useEffect(() => {
     chrome.storage.local.get({
       "x-puzzle-stitcher-lang": "auto",
       "x-puzzle-stitcher-format": "png",
       "x-puzzle-stitcher-bg": "transparent",
+      "x-puzzle-stitcher-theme": "auto",
       "splitSettings": null
     }).then((res) => {
       setLang(res["x-puzzle-stitcher-lang"] as string);
       setOutputFormat(res["x-puzzle-stitcher-format"] as any);
       setBackgroundColor(res["x-puzzle-stitcher-bg"] as any);
+      setTheme(res["x-puzzle-stitcher-theme"] as any);
       
       const splitSettings = res.splitSettings as any;
       if (splitSettings) {
@@ -105,13 +114,33 @@ export function App({ task, onClose }: AppProps) {
       "x-puzzle-stitcher-lang": lang,
       "x-puzzle-stitcher-format": outputFormat,
       "x-puzzle-stitcher-bg": backgroundColor,
+      "x-puzzle-stitcher-theme": theme,
       "splitSettings": {
         ...splitConfig,
         isZip,
         isTwitterOptimized
       }
     });
-  }, [lang, outputFormat, backgroundColor, splitConfig, isZip, isTwitterOptimized, isLangLoaded]);
+  }, [lang, outputFormat, backgroundColor, splitConfig, isZip, isTwitterOptimized, isLangLoaded, theme]);
+
+  // Handle Theme Application
+  useEffect(() => {
+    const applyTheme = (t: "light" | "dark") => {
+      const root = document.querySelector('.x-puzzle-stitcher-mount-point') as HTMLElement;
+      if (root) root.setAttribute('data-theme', t);
+      setIsThemeDark(t === 'dark');
+    };
+
+    if (theme === 'auto') {
+      const media = window.matchMedia('(prefers-color-scheme: dark)');
+      applyTheme(media.matches ? 'dark' : 'light');
+      const listener = (e: MediaQueryListEvent) => applyTheme(e.matches ? 'dark' : 'light');
+      media.addEventListener('change', listener);
+      return () => media.removeEventListener('change', listener);
+    } else {
+      applyTheme(theme);
+    }
+  }, [theme]);
 
   // Load split source image
   useEffect(() => {
@@ -306,19 +335,33 @@ export function App({ task, onClose }: AppProps) {
             </h2>
           </div>
 
-          {/* Mode Switcher */}
-          <div className="apple-blur" style={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.08)", padding: "2px", borderRadius: "0.6rem", border: "1px solid rgba(255, 255, 255, 0.05)" }}>
-            <button onClick={() => setMode("stitch")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "stitch" ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", cursor: "pointer", transition: "all 0.15s" }}>
-              <Images size={13} color={mode === "stitch" ? "var(--color-primary)" : "white"} />
-              <span>Stitch</span>
-            </button>
-            <button onClick={() => setMode("split")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "split" ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", cursor: "pointer", transition: "all 0.15s" }}>
-              <Scissors size={13} color={mode === "split" ? "var(--color-primary)" : "white"} />
-              <span>Split</span>
-            </button>
-          </div>
+          {/* Mode Switcher & Theme */}
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <div className="apple-blur" style={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.08)", padding: "2px", borderRadius: "0.6rem", border: "1px solid rgba(255, 255, 255, 0.05)" }}>
+              <button onClick={() => setMode("stitch")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "stitch" ? "rgba(255, 255, 255, 0.15)" : "transparent", color: mode === "stitch" || isThemeDark ? "white" : "var(--color-text)", cursor: "pointer", transition: "all 0.15s" }}>
+                <Images size={13} color={mode === "stitch" ? "var(--color-primary)" : (isThemeDark ? "white" : "var(--color-text)")} />
+                <span>Stitch</span>
+              </button>
+              <button onClick={() => setMode("split")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "split" ? "rgba(255, 255, 255, 0.15)" : "transparent", color: mode === "split" || isThemeDark ? "white" : "var(--color-text)", cursor: "pointer", transition: "all 0.15s" }}>
+                <Scissors size={13} color={mode === "split" ? "var(--color-primary)" : (isThemeDark ? "white" : "var(--color-text)")} />
+                <span>Split</span>
+              </button>
+            </div>
 
-          <button onClick={onClose} className="btn-ghost" style={{ width: "28px", height: "28px", borderRadius: "50%", border: "none", cursor: "pointer", color: "var(--color-text-muted)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={16} /></button>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <IconButton 
+                onClick={() => {
+                  const sequence: ("auto" | "light" | "dark")[] = ["auto", "light", "dark"];
+                  const next = sequence[(sequence.indexOf(theme) + 1) % 3];
+                  setTheme(next);
+                }} 
+                icon={theme === "auto" ? <Monitor size={15} /> : theme === "light" ? <Sun size={15} /> : <Moon size={15} />}
+                title={`Theme: ${theme.toUpperCase()}`}
+                style={{ width: "28px", height: "28px", color: "var(--color-text-muted)" }}
+              />
+              <button onClick={onClose} className="btn-ghost" style={{ width: "28px", height: "28px", borderRadius: "50%", border: "none", cursor: "pointer", color: "var(--color-text-muted)", display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={16} /></button>
+            </div>
+          </div>
         </div>
 
         {/* Content Area */}
