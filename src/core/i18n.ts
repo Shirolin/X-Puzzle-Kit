@@ -29,14 +29,26 @@ function resolveAutoLanguage(): string {
 export async function setLanguage(lang: string) {
   const targetLang = lang === "auto" ? resolveAutoLanguage() : lang;
   currentMessages = locales[targetLang] || locales["zh_CN"];
+  if (typeof chrome !== "undefined" && chrome.storage) {
+    await chrome.storage.local.set({ "x-puzzle-stitcher-lang": lang });
+  }
 }
 
-// 自动初始化：从存储或浏览器语言读取
-const savedLang =
-  typeof localStorage !== "undefined"
-    ? localStorage.getItem("x-puzzle-stitcher-lang") || "auto"
-    : "auto";
-export const i18nInit = setLanguage(savedLang);
+/**
+ * 初始化语言设置
+ */
+export async function initI18n() {
+  let savedLang = "auto";
+  if (typeof chrome !== "undefined" && chrome.storage) {
+    const res = await chrome.storage.local.get({
+      "x-puzzle-stitcher-lang": "auto",
+    });
+    savedLang = res["x-puzzle-stitcher-lang"] as string;
+  }
+  await setLanguage(savedLang);
+}
+
+export const i18nInit = initI18n();
 
 /**
  * 简单的 i18n 包装函数

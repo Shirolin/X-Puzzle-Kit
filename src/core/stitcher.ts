@@ -168,7 +168,7 @@ function stitchGrid2x2(
   backgroundColor: string,
 ) {
   if (images.length < 4)
-    return stitchHorizontal(images, ctx, canvas, globalGap);
+    return stitchHorizontal(images, ctx, canvas, globalGap, backgroundColor);
 
   // Row 1: img0, img1
   const h1 = Math.round(images[0].height);
@@ -221,7 +221,7 @@ function stitchTShape3(
   backgroundColor: string,
 ) {
   if (images.length < 3)
-    return stitchHorizontal(images, ctx, canvas, globalGap);
+    return stitchHorizontal(images, ctx, canvas, globalGap, backgroundColor);
 
   const imgLeft = images[0];
   const imgRight1 = images[1];

@@ -8,9 +8,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [
-    preact(),
-  ],
+  plugins: [preact()],
   root: "test", // 设置根目录为 test
   publicDir: "../public", // 如果有 public 资源
   build: {
@@ -18,5 +16,5 @@ export default defineConfig({
   },
   server: {
     open: true, // 自动打开浏览器
-  }
+  },
 });

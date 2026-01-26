@@ -10,17 +10,25 @@
     "dev": "vite",
     "dev:test": "vite serve -c vite.test.config.ts",
     "build": "vite build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@preact/preset-vite": "^2.10.2",
     "@types/chrome": "^0.1.36",
     "@types/node": "^25.0.10",
+    "eslint": "^9.39.2",
+    "globals": "^17.1.0",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1",
     "vite": "^7.3.1",
     "vite-plugin-web-extension": "^4.5.0"
   },

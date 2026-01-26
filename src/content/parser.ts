@@ -58,44 +58,82 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   container.style.alignItems = "center";
   container.style.flex = "1";
 
-  // 模拟 Twitter 图标按钮的 HTML 结构
-  // 颜色默认使用用户要求的 #71767b (即 rgb(113, 118, 123))
-  container.innerHTML = `
-    <div role="button" tabindex="0" title="${t("stitchBtnTitle")}" class="x-stitch-btn-inner" style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 34.75px;
-      height: 34.75px;
-      border-radius: 9999px;
-      cursor: pointer;
-      color: #71767b;
-      transition: background-color 0.2s, color 0.2s;
-      outline: none;
-    ">
-      <div class="x-stitch-icon-wrapper" style="display: flex; align-items: center; justify-content: center;">
-        <svg viewBox="0 0 512 512" style="width: 18.75px; height: 18.75px; fill: none;">
-          <g stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="32" y="32" width="448" height="448" rx="80" />
-            <line x1="256" y1="32" x2="256" y2="480" />
-            <line x1="32" y1="256" x2="480" y2="256" />
-            <path d="M166 166 L110 110 M166 166 V110 M166 166 H110" />
-            <path d="M346 166 L402 110 M346 166 V110 M346 166 H402" />
-            <path d="M166 346 L110 402 M166 346 V402 M166 346 H110" />
-            <path d="M346 346 L402 402 M346 346 V402 M346 346 H402" />
-          </g>
-        </svg>
-      </div>
-    </div>
-  `;
+  const innerBtn = document.createElement("div");
+  innerBtn.role = "button";
+  innerBtn.tabIndex = 0;
+  innerBtn.title = t("stitchBtnTitle");
+  innerBtn.className = "x-stitch-btn-inner";
+  Object.assign(innerBtn.style, {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "34.75px",
+    height: "34.75px",
+    borderRadius: "9999px",
+    cursor: "pointer",
+    color: "#71767b",
+    transition: "background-color 0.2s, color 0.2s",
+    outline: "none",
+  });
 
-  const innerBtn = container.querySelector(
-    ".x-stitch-btn-inner",
-  ) as HTMLElement;
-  const iconWrapper = container.querySelector(
-    ".x-stitch-icon-wrapper",
-  ) as HTMLElement;
-  const originalIconHtml = iconWrapper.innerHTML;
+  const iconWrapper = document.createElement("div");
+  iconWrapper.className = "x-stitch-icon-wrapper";
+  Object.assign(iconWrapper.style, {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  });
+
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 512 512");
+  Object.assign(svg.style, {
+    width: "18.75px",
+    height: "18.75px",
+    fill: "none",
+  });
+
+  const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  g.setAttribute("stroke", "currentColor");
+  g.setAttribute("stroke-width", "32");
+  g.setAttribute("stroke-linecap", "round");
+  g.setAttribute("stroke-linejoin", "round");
+
+  const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  rect.setAttribute("x", "32");
+  rect.setAttribute("y", "32");
+  rect.setAttribute("width", "448");
+  rect.setAttribute("height", "448");
+  rect.setAttribute("rx", "80");
+
+  const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line1.setAttribute("x1", "256");
+  line1.setAttribute("y1", "32");
+  line1.setAttribute("x2", "256");
+  line1.setAttribute("y2", "480");
+
+  const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line2.setAttribute("x1", "32");
+  line2.setAttribute("y1", "256");
+  line2.setAttribute("x2", "480");
+  line2.setAttribute("y2", "256");
+
+  const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path1.setAttribute("d", "M166 166 L110 110 M166 166 V110 M166 166 H110");
+
+  const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path2.setAttribute("d", "M346 166 L402 110 M346 166 V110 M346 166 H402");
+
+  const path3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path3.setAttribute("d", "M166 346 L110 402 M166 346 V402 M166 346 H110");
+
+  const path4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path4.setAttribute("d", "M346 346 L402 402 M346 346 V402 M346 346 H402");
+
+  g.append(rect, line1, line2, path1, path2, path3, path4);
+  svg.append(g);
+  iconWrapper.append(svg);
+  innerBtn.append(iconWrapper);
+  container.append(innerBtn);
 
   // 模拟 Twitter 的蓝光 Hover 效果
   innerBtn.onmouseenter = () => {
@@ -118,7 +156,12 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
     // 进入加载状态
     innerBtn.style.cursor = "not-allowed";
     innerBtn.style.color = "rgb(29, 155, 240)";
-    iconWrapper.innerHTML = '<div class="x-stitch-loading-spinner"></div>';
+
+    // 清空图标并显示旋转器
+    iconWrapper.innerHTML = "";
+    const spinner = document.createElement("div");
+    spinner.className = "x-stitch-loading-spinner";
+    iconWrapper.append(spinner);
 
     try {
       await handleStitchClick(tweet, photos);
@@ -129,7 +172,8 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
       innerBtn.style.cursor = "pointer";
       innerBtn.style.color = "#71767b";
       innerBtn.style.backgroundColor = "transparent";
-      iconWrapper.innerHTML = originalIconHtml;
+      iconWrapper.innerHTML = "";
+      iconWrapper.append(svg);
     }
   };
 

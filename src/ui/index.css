@@ -5,7 +5,8 @@
   display: block;
 }
 
-:host, .x-puzzle-stitcher-mount-point {
+:host,
+.x-puzzle-stitcher-mount-point {
   /* 颜色令牌 - 遵循 MASTER.md */
   --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;

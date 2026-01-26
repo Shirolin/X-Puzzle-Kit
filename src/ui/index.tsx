@@ -1,6 +1,6 @@
 import { render } from "preact";
 import { App } from "./App";
-// @ts-ignore
+// @ts-expect-error: Vite inline import
 import cssText from "./index.css?inline";
 import { StitchTask, ImageNode } from "../core/types";
 
@@ -34,7 +34,10 @@ export async function mountUI(task: StitchTask) {
     mountPoint = document.createElement("div");
     mountPoint.className = "x-puzzle-stitcher-mount-point";
     // 确保挂载点填满容器
-    mountPoint.setAttribute("style", "width: 100%; height: 100%; display: contents;");
+    mountPoint.setAttribute(
+      "style",
+      "width: 100%; height: 100%; display: contents;",
+    );
     shadowRoot.appendChild(mountPoint);
   }
 
@@ -50,11 +53,11 @@ export async function mountUI(task: StitchTask) {
               const res = await fetch(response.dataUrl);
               const blob = await res.blob();
               const bitmap = await createImageBitmap(blob);
-              resolve({ 
-                ...img, 
-                bitmap, 
-                width: bitmap.width, 
-                height: bitmap.height 
+              resolve({
+                ...img,
+                bitmap,
+                width: bitmap.width,
+                height: bitmap.height,
               });
             } else {
               console.error("Fetch image failed", response?.error);

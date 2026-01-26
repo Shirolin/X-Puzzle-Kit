@@ -8,9 +8,9 @@ window.chrome = {
   ...window.chrome,
   runtime: {
     ...window.chrome?.runtime,
-    // @ts-ignore
+    // @ts-expect-error: Mock API
     onMessage: { addListener: () => {} },
-    // @ts-ignore
+    // @ts-expect-error: Mock API
     sendMessage: async (message: any, callback: (response: any) => void) => {
       console.log("[TestEnv] Mock sendMessage:", message);
 
@@ -48,13 +48,13 @@ window.chrome = {
         }
       }
     },
-    // @ts-ignore
+    // @ts-expect-error: Mock API
     getURL: (path: string) => path,
-    // @ts-ignore
+    // @ts-expect-error: Mock API
     getManifest: () => ({ name: "X-Puzzle-Stitcher" }),
   },
   i18n: {
-    // @ts-ignore
+    // @ts-expect-error: Mock API
     getMessage: (messageName: string) => messageName,
   },
 };
