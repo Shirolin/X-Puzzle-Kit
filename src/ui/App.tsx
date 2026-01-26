@@ -174,9 +174,9 @@ export function App({ task, onClose }: AppProps) {
   };
 
   useEffect(() => {
+    console.log('[LayoutDebug] App Mounted at:', new Date().toLocaleTimeString());
     const runRefit = () => {
       fitToScreen();
-      // Debug Heights
       const sidebar = document.querySelector('.sidebar-content-root');
       if (sidebar) {
         const sections = Array.from(sidebar.children).map(c => ({
@@ -189,7 +189,7 @@ export function App({ task, onClose }: AppProps) {
     runRefit();
     window.addEventListener('resize', runRefit);
     return () => window.removeEventListener('resize', runRefit);
-  }, [canvasSize, mode, splitSourceBitmap]);
+  }, []); // Run only once on mount to avoid spam, resize listener handles the rest
 
   const resetViewer = () => fitToScreen();
 
@@ -382,7 +382,8 @@ export function App({ task, onClose }: AppProps) {
 
           {/* Sidebar (Right) */}
           <div className="glass-panel" style={{ width: "260px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20 }}>
-            <div className="sidebar-content-root" style={{ padding: "0.75rem", flex: 1, overflow: "hidden" }}>
+            <div className="sidebar-content-root" style={{ padding: "0.5rem 0.75rem", flex: 1, overflow: "hidden" }}>
+              <div style={{ fontSize: "10px", color: "#ef4444", fontWeight: 800, textAlign: "center", marginBottom: "4px", backgroundColor: "rgba(239, 68, 68, 0.1)", borderRadius: "2px" }}>DEBUG: UI ACTIVATED</div>
               {mode === "split" ? (
                 <SplitterControl 
                     config={splitConfig} onConfigChange={setSplitConfig} isProcessing={isSplitting}
