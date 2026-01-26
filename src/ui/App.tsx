@@ -435,7 +435,7 @@ export function App({ task, onClose }: AppProps) {
               ) : (
                 <>
                   {/* Fixed Sections */}
-                  <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+                  <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.25rem" }}>
                     <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
                       <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("layoutScheme")}</h3>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
