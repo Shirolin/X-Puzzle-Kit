@@ -31,6 +31,17 @@
   --color-overlay: rgba(0, 0, 0, 0.85);
   --color-card-bg: rgba(255, 255, 255, 0.04);
   
+  /* Semantic Tokens (Dark Defaults) */
+  --color-icon: #ffffff;
+  --color-icon-dim: rgba(255, 255, 255, 0.4);
+  --color-item-bg: rgba(255, 255, 255, 0.03);
+  --color-item-hover: rgba(255, 255, 255, 0.08);
+  --color-item-border: rgba(255, 255, 255, 0.06);
+  --color-handle: rgba(255, 255, 255, 0.3);
+  --color-badge-text: white;
+  --shadow-card: none;
+  --shadow-float: 0 4px 12px rgba(0, 0, 0, 0.3);
+
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
   --scrollbar-thumb: rgba(255, 255, 255, 0.2);
@@ -48,6 +59,17 @@
   --color-glass-border: rgba(0, 0, 0, 0.08);
   --color-overlay: rgba(255, 255, 255, 0.65);
   --color-card-bg: #ffffff;
+
+  /* Semantic Overrides (Light Mode) */
+  --color-icon: #1d1d1f;
+  --color-icon-dim: #86868b;
+  --color-item-bg: #f2f2f7;
+  --color-item-hover: #e5e5ea;
+  --color-item-border: rgba(0, 0, 0, 0.04);
+  --color-handle: #aeaeb2;
+  --color-badge-text: white;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-float: 0 8px 24px rgba(0, 0, 0, 0.12);
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-glass: 0 20px 48px rgba(0, 0, 0, 0.08);

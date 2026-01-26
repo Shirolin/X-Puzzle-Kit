@@ -436,25 +436,40 @@ export function App({ task, onClose }: AppProps) {
                 <>
                   {/* Fixed Sections */}
                   <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-                      <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("layoutScheme")}</h3>
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
-                        <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
-                        <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={13} />} label={t("layoutTShape")} />
-                        <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={13} />} label={t("layoutHorizontal")} />
-                        <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={13} />} label={t("layoutVertical")} />
-                      </div>
-                    </section>
+      {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
+         <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+            <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
+            <div style={{ display: "flex", alignItems: "center", background: "var(--color-item-bg)", borderRadius: "var(--radius-sm)", padding: "1px 4px", width: "min-content" }}>
+               <IconButton onClick={() => {
+                     const val = layout === "VERTICAL_1xN" ? splitConfig.rows : splitConfig.cols;
+                     const newVal = Math.max(2, val - 1);
+                     if(layout === "VERTICAL_1xN") setSplitConfig(prev => ({...prev, rows: newVal})); else setSplitConfig(prev => ({...prev, cols: newVal}));
+                 }} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
+               <span style={{ width: "24px", textAlign: "center", fontSize: "11px", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>
+                   {layout === "VERTICAL_1xN" ? splitConfig.rows : splitConfig.cols}
+               </span>
+               <IconButton onClick={() => {
+                     const val = layout === "VERTICAL_1xN" ? splitConfig.rows : splitConfig.cols;
+                     const newVal = Math.min(10, val + 1);
+                     if(layout === "VERTICAL_1xN") setSplitConfig(prev => ({...prev, rows: newVal})); else setSplitConfig(prev => ({...prev, cols: newVal}));
+                 }} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
+            </div>
+         </section>
+      )}
 
-                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
-                        <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("globalGap")}</h3>
-                        <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "rgba(0,0,0,0.3)", padding: "1px 4px", borderRadius: "4px" }}>
-                          <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
-                          <input type="number" value={globalGap} onInput={(e) => setGlobalGap(Math.max(-20, Math.min(100, parseInt(e.currentTarget.value) || 0)))} className="hide-arrows" style={{ width: "22px", height: "14px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }} />
-                          <IconButton onClick={() => setGlobalGap(Math.min(100, globalGap + 1))} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
-                        </div>
-                      </div>
+      {/* 消除间距区块 */}
+      <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
+            <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("globalGap")}</h3>
+            <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "var(--color-item-bg)", padding: "1px 4px", borderRadius: "4px" }}>
+                <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                    <input type="number" value={globalGap} onInput={(e) => setGlobalGap(Math.max(-20, Math.min(100, parseInt(e.currentTarget.value) || 0)))} className="hide-arrows" style={{ width: "22px", height: "14px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }} />
+                    <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700, marginLeft: "1px" }}>PX</span>
+                </div>
+                <IconButton onClick={() => setGlobalGap(Math.min(100, globalGap + 1))} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
+            </div>
+        </div>
                       <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" style={{ height: "3px", marginTop: "2px" }} />
                     </section>
                   </div>
@@ -467,33 +482,39 @@ export function App({ task, onClose }: AppProps) {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                         {images.map((img, idx) => (
-                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.625rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
+                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.625rem", backgroundColor: "var(--color-item-bg)", borderRadius: "var(--radius-md)", border: "1px solid var(--color-item-border)", opacity: draggedIndex === idx ? 0.3 : 1, boxShadow: "var(--shadow-card)" }}>
                               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                                 <GripVertical size={13} style={{ color: "var(--color-text-muted)", opacity: 0.3, cursor: "grab" }} />
+                                 <GripVertical size={13} style={{ color: "var(--color-handle)", opacity: 0.6, cursor: "grab" }} />
                                  <div style={{ position: "relative", flexShrink: 0 }}>
                                     <img src={img.thumbnailUrl} style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "5px", border: "1px solid rgba(255,255,255,0.12)" }} />
-                                    <div style={{ position: "absolute", top: "-6px", left: "-6px", minWidth: "16px", height: "16px", background: "var(--color-primary)", color: "white", fontSize: "9px", fontWeight: 800, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #000", boxShadow: "0 2px 5px rgba(0,0,0,0.4)" }}>{idx + 1}</div>
+                                    <div style={{ position: "absolute", top: "-6px", left: "-6px", minWidth: "16px", height: "16px", background: "var(--color-primary)", color: "var(--color-badge-text)", fontSize: "9px", fontWeight: 800, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(0,0,0,0.1)", boxShadow: "0 2px 5px rgba(0,0,0,0.2)" }}>{idx + 1}</div>
                                  </div>
                                  <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: img.visible !== false ? "white" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
-                                    <div style={{ fontSize: "10px", color: "var(--color-text-muted)", opacity: 0.6, marginTop: "2px", fontFamily: "'Fira Code', monospace" }}>{img.width} × {img.height}</div>
+                                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: img.visible !== false ? "var(--color-text)" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
+                                    <div style={{ fontSize: "10px", color: "var(--color-text-muted)", opacity: 0.8, marginTop: "2px", fontFamily: "'Fira Code', monospace" }}>{img.width} × {img.height}</div>
                                  </div>
                                  <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
                                     <div style={{ display: "flex", flexDirection: "column" }}>
-                                       <IconButton onClick={() => moveItem(idx, 'up')} disabled={idx === 0} icon={<ChevronUp size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === 0 ? 0 : 0.6, height: "12px" }} />
-                                       <IconButton onClick={() => moveItem(idx, 'down')} disabled={idx === images.length - 1} icon={<ChevronDown size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === images.length - 1 ? 0 : 0.6, height: "12px" }} />
+                                       <IconButton onClick={() => moveItem(idx, 'up')} disabled={idx === 0} icon={<ChevronUp size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === 0 ? 0 : 0.6, height: "12px", color: "var(--color-icon)" }} />
+                                       <IconButton onClick={() => moveItem(idx, 'down')} disabled={idx === images.length - 1} icon={<ChevronDown size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === images.length - 1 ? 0 : 0.6, height: "12px", color: "var(--color-icon)" }} />
                                     </div>
-                                    <IconButton onClick={() => toggleVisibility(idx)} icon={img.visible !== false ? <Eye size={13} /> : <EyeOff size={13} />} style={{ border: "none", background: "none", padding: "2px" }} />
+                                    <IconButton onClick={() => toggleVisibility(idx)} icon={img.visible !== false ? <Eye size={13} /> : <EyeOff size={13} />} style={{ border: "none", background: "none", padding: "2px", color: img.visible !== false ? "var(--color-icon)" : "var(--color-icon-dim)" }} />
                                  </div>
                               </div>
                               {img.visible !== false && idx < images.length - 1 && (
-                                 <div style={{ marginTop: "0.375rem", paddingTop: "0.375rem", borderTop: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                                 <div style={{ marginTop: "0.375rem", paddingTop: "0.375rem", borderTop: "1px solid var(--color-item-border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                                     <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                                        <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("afterGap")}</span>
-                                       <div style={{ display: "flex", alignItems: "center", backgroundColor: "rgba(0,0,0,0.4)", borderRadius: "3px", padding: "0 2px" }}>
-                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) - 1)} style={{ border: "none", background: "none", color: "white", padding: "1px 3px", cursor: "pointer" }}><Minus size={8} /></button>
-                                          <span style={{ fontSize: "10px", width: "18px", textAlign: "center", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>{img.localGap || 0}</span>
-                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) + 1)} style={{ border: "none", background: "none", color: "white", padding: "1px 3px", cursor: "pointer" }}><Plus size={8} /></button>
+                                       <div style={{ display: "flex", alignItems: "center", backgroundColor: "var(--color-surface-soft)", borderRadius: "3px", padding: "0 2px" }}>
+                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) - 1)} style={{ border: "none", background: "none", color: "var(--color-text)", padding: "1px 3px", cursor: "pointer" }}><Minus size={8} /></button>
+                                          <input 
+                                            type="number" 
+                                            value={img.localGap || 0} 
+                                            onInput={(e) => updateLocalGap(idx, parseInt(e.currentTarget.value) || 0)}
+                                            className="hide-arrows"
+                                            style={{ width: "16px", height: "12px", fontSize: "9px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", color: "var(--color-text)", fontWeight: 700, fontFamily: "'Fira Code', monospace" }}
+                                          />
+                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) + 1)} style={{ border: "none", background: "none", color: "var(--color-text)", padding: "1px 3px", cursor: "pointer" }}><Plus size={8} /></button>
                                        </div>
                                     </div>
                                     <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700 }}>{t("gapLabel")} <span style={{ color: "var(--color-primary) opacity(0.8)", fontFamily: "'Fira Code', monospace" }}>{globalGap + (img.localGap || 0)}px</span></span>
@@ -509,9 +530,9 @@ export function App({ task, onClose }: AppProps) {
                     <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
                       <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("exportSettings")}</h3>
                       <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-                         <div style={{ display: "flex", backgroundColor: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
-                            {["PNG", "JPG", "WEBP"].map(fmt => (
-                               <button key={fmt} onClick={() => setOutputFormat(fmt.toLowerCase() as any)} style={{ flex: 1, padding: "2px", border: "none", borderRadius: "3px", backgroundColor: outputFormat === fmt.toLowerCase() ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", fontSize: "10px", fontWeight: 800, cursor: "pointer" }}>{fmt}</button>
+                         <div style={{ display: "flex", background: "var(--color-item-bg)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
+                            {(["png", "jpg", "webp"] as const).map(fmt => (
+                                <button key={fmt} onClick={() => setOutputFormat(fmt)} style={{ flex: 1, border: "none", background: outputFormat === fmt ? "var(--color-primary)" : "transparent", color: outputFormat === fmt ? "white" : "var(--color-text-muted)", fontSize: "10px", padding: "2px 6px", borderRadius: "3px", cursor: "pointer", fontWeight: 800, transition: "all var(--transition-fast)" }}>{fmt.toUpperCase()}</button>
                             ))}
                          </div>
                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
