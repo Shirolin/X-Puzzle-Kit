@@ -381,8 +381,8 @@ export function App({ task, onClose }: AppProps) {
           </div>
 
           {/* Sidebar (Right) */}
-          <div className="glass-panel" style={{ width: "262px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20, backgroundColor: "rgba(0,0,0,0.2)" }}>
-            <div className="sidebar-content-root" style={{ padding: "0.5rem", flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div className="glass-panel" style={{ width: "262px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20, backgroundColor: "rgba(0,0,0,0.15)" }}>
+            <div className="sidebar-content-root no-scrollbar" style={{ padding: "0.625rem", flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
               {mode === "split" ? (
                 <SplitterControl 
                     config={splitConfig} onConfigChange={setSplitConfig} isProcessing={isSplitting}
@@ -416,24 +416,24 @@ export function App({ task, onClose }: AppProps) {
                     </section>
                   </div>
 
-                  {/* Elastic Sorting Area */}
-                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, overflow: "hidden", margin: "0.375rem 0" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.375rem", padding: "0 0.25rem", flexShrink: 0 }}>
+                  {/* Elastic Sorting Area - NO INTERNAL SCROLL */}
+                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", margin: "0.25rem 0" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem", padding: "0 0.25rem" }}>
                       <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("imageSorting")}</h3>
                       <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", fontWeight: 500 }}>{t("localGap")}</span>
                     </div>
-                    <div className="no-scrollbar" style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.375rem", paddingBottom: "2px" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                         {images.map((img, idx) => (
-                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.5rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.625rem", backgroundColor: "rgba(255,255,255,0.03)", borderRadius: "var(--radius-md)", border: "1px solid rgba(255,255,255,0.06)", opacity: draggedIndex === idx ? 0.3 : 1 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
                                  <GripVertical size={13} style={{ color: "var(--color-text-muted)", opacity: 0.3, cursor: "grab" }} />
                                  <div style={{ position: "relative", flexShrink: 0 }}>
-                                    <img src={img.thumbnailUrl} style={{ width: "38px", height: "38px", objectFit: "cover", borderRadius: "4px", border: "1px solid rgba(255,255,255,0.1)" }} />
-                                    <div style={{ position: "absolute", top: "-5px", left: "-5px", minWidth: "15px", height: "15px", background: "var(--color-primary)", color: "white", fontSize: "9px", fontWeight: 800, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #000", boxShadow: "0 2px 4px rgba(0,0,0,0.3)" }}>{idx + 1}</div>
+                                    <img src={img.thumbnailUrl} style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "5px", border: "1px solid rgba(255,255,255,0.12)" }} />
+                                    <div style={{ position: "absolute", top: "-6px", left: "-6px", minWidth: "16px", height: "16px", background: "var(--color-primary)", color: "white", fontSize: "9px", fontWeight: 800, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #000", boxShadow: "0 2px 5px rgba(0,0,0,0.4)" }}>{idx + 1}</div>
                                  </div>
                                  <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: img.visible !== false ? "white" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
-                                    <div style={{ fontSize: "10px", color: "var(--color-text-muted)", opacity: 0.6, marginTop: "1px", fontFamily: "'Fira Code', monospace" }}>{img.width}×{img.height}</div>
+                                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: img.visible !== false ? "white" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
+                                    <div style={{ fontSize: "10px", color: "var(--color-text-muted)", opacity: 0.6, marginTop: "2px", fontFamily: "'Fira Code', monospace" }}>{img.width} × {img.height}</div>
                                  </div>
                                  <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
                                     <div style={{ display: "flex", flexDirection: "column" }}>
