@@ -63,6 +63,7 @@ export function IconButton({
   icon,
   style = {},
   title,
+  className,
 }: IconButtonProps) {
   return (
     <button
