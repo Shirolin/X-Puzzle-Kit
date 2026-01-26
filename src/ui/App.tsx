@@ -425,7 +425,7 @@ export function App({ task, onClose }: AppProps) {
 
           {/* Sidebar (Right) */}
           <div className="glass-panel" style={{ width: "262px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20, backgroundColor: "rgba(0,0,0,0.15)" }}>
-            <div className="sidebar-content-root no-scrollbar" style={{ padding: "0.625rem", flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
+            <div className="sidebar-content-root no-scrollbar" style={{ padding: "0.625rem", flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {mode === "split" ? (
                 <SplitterControl 
                     config={splitConfig} onConfigChange={setSplitConfig} isProcessing={isSplitting}
@@ -435,9 +435,9 @@ export function App({ task, onClose }: AppProps) {
               ) : (
                 <>
                   {/* Fixed Sections */}
-                  <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-                      <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("layoutScheme")}</h3>
+                  <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                    <section className="section-block">
+                      <h3 className="section-header">{t("layoutScheme")}</h3>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
                         <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
                         <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={13} />} label={t("layoutTShape")} />
@@ -447,8 +447,8 @@ export function App({ task, onClose }: AppProps) {
                     </section>
 
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
-         <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-            <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
+         <section className="section-block">
+            <h3 className="section-header">{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
             <div style={{ display: "flex", alignItems: "center", background: "var(--color-item-bg)", borderRadius: "var(--radius-sm)", padding: "1px 4px", width: "min-content" }}>
                <IconButton onClick={() => {
                      const val = layout === "VERTICAL_1xN" ? splitConfig.rows : splitConfig.cols;
@@ -468,9 +468,9 @@ export function App({ task, onClose }: AppProps) {
       )}
 
       {/* 消除间距区块 */}
-      <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
-            <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("globalGap")}</h3>
+      <section className="section-block">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h3 className="section-header">{t("globalGap")}</h3>
             <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "var(--color-item-bg)", padding: "1px 4px", borderRadius: "4px" }}>
                 <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -484,10 +484,10 @@ export function App({ task, onClose }: AppProps) {
                     </section>
                   </div>
 
-                  {/* Elastic Sorting Area - NO INTERNAL SCROLL */}
-                  <section className="section-block sorting-area" style={{ display: "flex", flexDirection: "column", margin: "0.25rem 0" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem", padding: "0 0.25rem" }}>
-                      <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("imageSorting")}</h3>
+                  {/* Elastic Sorting Area - Full Expansion */}
+                  <section className="section-block sorting-area">
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <h3 className="section-header">{t("imageSorting")}</h3>
                       <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", fontWeight: 500 }}>{t("localGap")}</span>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
@@ -536,9 +536,9 @@ export function App({ task, onClose }: AppProps) {
                   </section>
 
                   {/* Fixed Export Section */}
-                  <div style={{ flexShrink: 0, marginTop: "0.25rem" }}>
-                    <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-                      <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("exportSettings")}</h3>
+                  <div style={{ flexShrink: 0 }}>
+                    <section className="section-block">
+                      <h3 className="section-header">{t("exportSettings")}</h3>
                       <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                          <div style={{ display: "flex", background: "var(--color-item-bg)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
                             {(["png", "jpg", "webp"] as const).map(fmt => (

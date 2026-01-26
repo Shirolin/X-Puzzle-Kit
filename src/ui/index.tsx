@@ -21,12 +21,16 @@ export async function mountUI(task: StitchTask) {
 
   // 3. 注入样式到 Shadow DOM
   // 使用 ?inline 导入的 CSS 字符串直接注入，确保完全隔离
-  if (!shadowRoot.querySelector("#x-puzzle-stitcher-styles")) {
-    const style = document.createElement("style");
+  // 3. 注入样式到 Shadow DOM
+  // 使用 ?inline 导入的 CSS 字符串直接注入，确保完全隔离
+  let style = shadowRoot.querySelector("#x-puzzle-stitcher-styles");
+  if (!style) {
+    style = document.createElement("style");
     style.id = "x-puzzle-stitcher-styles";
-    style.textContent = cssText;
     shadowRoot.appendChild(style);
   }
+  // 总是更新样式内容以支持 HMR 或重新挂载
+  style.textContent = cssText;
 
   // 创建一个内部挂载点，避免直接渲染到 shadowRoot 根部导致潜在冲突
   let mountPoint = shadowRoot.querySelector(".x-puzzle-stitcher-mount-point");

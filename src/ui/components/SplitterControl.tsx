@@ -49,10 +49,11 @@ export function SplitterControl({
   }, [layout, rows, cols, isTwitterOptimized, config.autoCropRatio]);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
       {/* 布局方案区块 */}
-      <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-        <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{t("layoutScheme")}</h3>
+      {/* 布局方案区块 */}
+      <section className="section-block">
+        <h3 className="section-header">{t("layoutScheme")}</h3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
           <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
           <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={13} />} label={t("layoutTShape")} />
@@ -63,8 +64,8 @@ export function SplitterControl({
 
       {/* 自定义行列区块 */}
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
-         <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-            <h3 className="section-header" style={{ marginBottom: "0.375rem", fontSize: "0.75rem" }}>{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
+         <section className="section-block">
+            <h3 className="section-header">{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
             <div style={{ display: "flex", alignItems: "center", background: "rgba(0, 0, 0, 0.3)", borderRadius: "4px", padding: "1px 4px", width: "min-content" }}>
                <IconButton onClick={() => {
                      const val = layout === "VERTICAL_1xN" ? rows : cols;
@@ -84,9 +85,9 @@ export function SplitterControl({
       )}
 
       {/* 消除间距区块 */}
-      <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
-            <h3 className="section-header" style={{ margin: 0, fontSize: "0.75rem" }}>{t("gapRemoval")}</h3>
+      <section className="section-block">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h3 className="section-header">{t("gapRemoval")}</h3>
             <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "rgba(0,0,0,0.3)", padding: "1px 4px", borderRadius: "4px" }}>
                 <IconButton onClick={() => setGap(Math.max(0, gap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
                 <div style={{ display: "flex", alignItems: "center" }}>
@@ -103,7 +104,7 @@ export function SplitterControl({
        </section>
 
        {/* 针对推特选项区块 */}
-       <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+       <section className="section-block">
          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
                   <span style={{ fontSize: "0.75rem", color: "white", fontWeight: 600 }}>{t("twitterOptimize")}</span>
@@ -118,7 +119,7 @@ export function SplitterControl({
        </section>
 
        {/* 导出设置区块 */}
-       <section className="section-block" style={{ padding: "0.5rem 0.625rem" }}>
+       <section className="section-block">
           <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <span style={{ fontSize: "0.7rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("formatLabel")}</span>
