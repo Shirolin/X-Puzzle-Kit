@@ -9,6 +9,9 @@ interface AppProps {
 }
 
 export function App({ task, onClose }: AppProps) {
+  const extensionName = chrome.runtime.getManifest().name;
+  const logoUrl = chrome.runtime.getURL("assets/icon-48.png");
+
   const [layout, setLayout] = useState<LayoutType>(task.layout);
   const [images, setImages] = useState<ImageNode[]>(task.userImages);
   const [previewUrl, setPreviewUrl] = useState<string>("");
@@ -239,11 +242,24 @@ export function App({ task, onClose }: AppProps) {
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
           backgroundColor: 'var(--color-surface)'
         }}>
-          <div>
-            <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text)' }}>拼图预览</h2>
-            <p style={{ margin: '0.125rem 0 0', fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
-              @{task.artistHandle} (ID: {task.tweetId})
-            </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <img 
+              src={logoUrl} 
+              style={{ width: '28px', height: '28px', flexShrink: 0 }} 
+              alt="Logo" 
+            />
+            <div>
+              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                {extensionName}
+                <span style={{ fontSize: '0.75rem', fontWeight: 400, color: 'var(--color-text-muted)', marginLeft: '0.25rem', padding: '2px 6px', backgroundColor: 'var(--color-background)', borderRadius: '4px' }}>拼图预览</span>
+              </h2>
+              <p style={{ margin: '0.125rem 0 0', fontSize: '0.7rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ opacity: 0.7 }}>来自</span>
+                <span style={{ fontWeight: 600, color: 'var(--color-primary)' }}>@{task.artistHandle}</span>
+                <span style={{ opacity: 0.5 }}>•</span>
+                <span style={{ opacity: 0.7 }}>推文 ID: {task.tweetId}</span>
+              </p>
+            </div>
           </div>
           <button 
             onClick={onClose} 
@@ -303,38 +319,42 @@ export function App({ task, onClose }: AppProps) {
             {/* Viewer Toolbar */}
             <div style={{ 
               position: 'absolute', bottom: '1.5rem', left: '50%', transform: 'translateX(-50%)',
-              zIndex: 30, display: 'flex', alignItems: 'center', gap: '8px',
-              backgroundColor: 'rgba(30, 41, 59, 0.8)', padding: '6px 12px',
-              borderRadius: '30px', border: '1px solid rgba(255,255,255,0.1)',
-              backdropFilter: 'blur(10px)', boxShadow: '0 10px 25px rgba(0,0,0,0.3)'
-            }}>
+              zIndex: 30, display: 'flex', alignItems: 'center', gap: '4px',
+              backgroundColor: 'rgba(30, 41, 59, 0.88)', padding: '6px 10px',
+              borderRadius: '30px', border: '1px solid rgba(255,255,255,0.15)',
+              backdropFilter: 'blur(12px)', boxShadow: '0 12px 30px rgba(0,0,0,0.5)',
+              maxWidth: 'calc(100% - 2rem)', width: 'max-content',
+              overflowX: 'auto',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }} className="no-scrollbar">
                <IconButton 
                 onClick={() => setViewerScale(s => Math.max(0.1, s - 0.1))} 
                 icon={<Minus size={14} color="white"/>} 
-                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none' }}
+                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
               />
-              <span style={{ fontSize: '11px', color: 'white', minWidth: '40px', textAlign: 'center', fontWeight: 'bold' }}>
+              <span style={{ fontSize: '11px', color: 'white', minWidth: '40px', textAlign: 'center', fontWeight: 'bold', whiteSpace: 'nowrap', flexShrink: 0 }}>
                 {Math.round(viewerScale * 100)}%
               </span>
               <IconButton 
                 onClick={() => setViewerScale(s => Math.min(10, s + 0.1))} 
                 icon={<Plus size={14} color="white"/>} 
-                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none' }}
+                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
               />
-              <div style={{ width: '1px', height: '16px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px' }}></div>
+              <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px', flexShrink: 0 }}></div>
               <button 
                 onClick={() => setViewerScale(1)}
-                style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', opacity: viewerScale === 1 ? 0.5 : 1 }}
+                style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', opacity: viewerScale === 1 ? 0.5 : 1, padding: '4px 6px', whiteSpace: 'nowrap', flexShrink: 0 }}
               >1:1</button>
               <button 
                 onClick={() => resetViewer()}
-                style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', padding: '4px 6px', whiteSpace: 'nowrap', flexShrink: 0 }}
               >重置</button>
-              <div style={{ width: '1px', height: '16px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px' }}></div>
+              <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px', flexShrink: 0 }}></div>
               <IconButton 
                 onClick={() => setViewerRotation(r => (r + 90) % 360)} 
                 icon={<RotateCcw size={14} color="white" style={{ transform: 'scaleX(-1)' }}/>} 
-                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none' }}
+                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
               />
             </div>
 
@@ -769,6 +789,14 @@ export function App({ task, onClose }: AppProps) {
         .gap-slider::-webkit-slider-thumb:hover {
           transform: scale(1.1);
           box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          user-select: none;
         }
       `}</style>
     </div>
