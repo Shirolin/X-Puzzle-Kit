@@ -189,7 +189,7 @@ export function App({ task, onClose }: AppProps) {
     runRefit();
     window.addEventListener('resize', runRefit);
     return () => window.removeEventListener('resize', runRefit);
-  }, []); // Run only once on mount to avoid spam, resize listener handles the rest
+  }, [canvasSize, mode, splitSourceBitmap]);
 
   const resetViewer = () => fitToScreen();
 
