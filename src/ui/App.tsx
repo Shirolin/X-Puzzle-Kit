@@ -23,7 +23,13 @@ import {
   Minus,
   RotateCcw,
   GripVertical,
+  Scissors,
+  Images,
 } from "lucide-preact";
+import { SplitConfig } from "../core/types";
+import { splitImage } from "../core/splitter";
+import { SplitterControl } from "./components/SplitterControl";
+import { SplitPreview } from "./components/SplitPreview";
 
 interface AppProps {
   task: StitchTask;
@@ -37,7 +43,52 @@ export function App({ task, onClose }: AppProps) {
   const [images, setImages] = useState<ImageNode[]>(task.userImages);
   const [previewUrl, setPreviewUrl] = useState<string>("");
   const [loading, setLoading] = useState(true);
+
   const [isGenerating, setIsGenerating] = useState(false);
+
+  // Split Mode State
+  const [mode, setMode] = useState<"stitch" | "split">("stitch");
+  const [splitSource, setSplitSource] = useState<File | null>(null);
+  const [splitSourceBitmap, setSplitSourceBitmap] =
+    useState<ImageBitmap | null>(null);
+  const [splitBlobs, setSplitBlobs] = useState<Blob[]>([]);
+  const [isSplitting, setIsSplitting] = useState(false);
+  const [splitConfig, setSplitConfig] = useState<SplitConfig>({
+    layout: "GRID_2x2",
+    rows: 2,
+    cols: 2,
+    gap: 0,
+  });
+
+  // Load split source image
+  useEffect(() => {
+    if (splitSource) {
+      createImageBitmap(splitSource).then(setSplitSourceBitmap);
+    }
+  }, [splitSource]);
+
+  const handleSplit = async (config: SplitConfig) => {
+    if (!splitSourceBitmap) return;
+    setIsSplitting(true);
+    try {
+      // 延迟一下让 UI 渲染 loading
+      await new Promise((r) => setTimeout(r, 50));
+      const blobs = await splitImage(splitSourceBitmap, config);
+      setSplitBlobs(blobs);
+    } catch (error) {
+      console.error("Splitting failed:", error);
+    } finally {
+      setIsSplitting(false);
+    }
+  };
+
+  const handleSplitFileSelect = (e: Event) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (file) {
+      setSplitSource(file);
+      setSplitBlobs([]); // Clear previous results
+    }
+  };
 
   const [lang, setLang] = useState("auto");
   const [isLangLoaded, setIsLangLoaded] = useState(false);
@@ -384,11 +435,65 @@ export function App({ task, onClose }: AppProps) {
                     letterSpacing: "0.02em",
                   }}
                 >
-                  {t("previewTitle")}
+                  {mode === "stitch" ? t("previewTitle") : "Splitter"}
                 </span>
               </h2>
             </div>
           </div>
+
+          {/* Mode Switcher */}
+          <div
+            style={{
+              display: "flex",
+              backgroundColor: "#F1F5F9",
+              padding: "2px",
+              borderRadius: "6px",
+            }}
+          >
+            <button
+              onClick={() => setMode("stitch")}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "4px 12px",
+                fontSize: "12px",
+                fontWeight: 600,
+                border: "none",
+                borderRadius: "4px",
+                backgroundColor: mode === "stitch" ? "white" : "transparent",
+                color: mode === "stitch" ? "var(--color-primary)" : "#64748B",
+                boxShadow:
+                  mode === "stitch" ? "0 1px 2px rgba(0,0,0,0.05)" : "none",
+                cursor: "pointer",
+              }}
+            >
+              <Images size={14} />
+              <span>Stitch</span>
+            </button>
+            <button
+              onClick={() => setMode("split")}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "4px 12px",
+                fontSize: "12px",
+                fontWeight: 600,
+                border: "none",
+                borderRadius: "4px",
+                backgroundColor: mode === "split" ? "white" : "transparent",
+                color: mode === "split" ? "var(--color-primary)" : "#64748B",
+                boxShadow:
+                  mode === "split" ? "0 1px 2px rgba(0,0,0,0.05)" : "none",
+                cursor: "pointer",
+              }}
+            >
+              <Scissors size={14} />
+              <span>Split</span>
+            </button>
+          </div>
+
           <button
             onClick={onClose}
             className="btn-ghost"
@@ -424,13 +529,119 @@ export function App({ task, onClose }: AppProps) {
 
         {/* Content */}
         <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
+          {/* Split Preview Area */}
+          {mode === "split" && (
+            <div
+              style={{
+                flex: 1,
+                backgroundColor: "#0F172A",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "1.5rem",
+                overflow: "hidden",
+                flexDirection: "column",
+              }}
+            >
+              {!splitSourceBitmap ? (
+                <div
+                  style={{
+                    color: "#94A3B8",
+                    textAlign: "center",
+                    border: "2px dashed #334155",
+                    borderRadius: "12px",
+                    padding: "3rem",
+                  }}
+                >
+                  <div style={{ marginBottom: "1rem", fontWeight: 500 }}>
+                    Select an image to split
+                  </div>
+                  <label
+                    style={{
+                      display: "inline-block",
+                      padding: "8px 16px",
+                      backgroundColor: "var(--color-primary)",
+                      color: "white",
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                      fontWeight: 600,
+                    }}
+                  >
+                    Upload Image
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleSplitFileSelect}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                </div>
+              ) : (
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  {/* Result Blobs */}
+                  <div
+                    style={{
+                      flex: 1,
+                      overflowY: "auto",
+                      paddingBottom: "1rem",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <SplitPreview blobs={splitBlobs} />
+                  </div>
+                  {/* Source Info Small */}
+                  <div
+                    style={{
+                      padding: "8px",
+                      backgroundColor: "rgba(30, 41, 59, 0.5)",
+                      borderRadius: "8px",
+                      marginTop: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      fontSize: "12px",
+                      color: "#94A3B8",
+                    }}
+                  >
+                    <span>Source: {splitSource?.name}</span>
+                    <button
+                      onClick={() => {
+                        setSplitSource(null);
+                        setSplitBlobs([]);
+                        setSplitSourceBitmap(null);
+                      }}
+                      style={{
+                        marginLeft: "auto",
+                        background: "none",
+                        border: "none",
+                        color: "#EF4444",
+                        cursor: "pointer",
+                      }}
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Left: Preview Area */}
           <div
             ref={containerRef}
             style={{
               flex: 1,
               backgroundColor: "#0F172A",
-              display: "flex",
+              display: mode === "stitch" ? "flex" : "none",
               justifyContent: "center",
               alignItems: "center",
               padding: "1.5rem",
@@ -720,12 +931,32 @@ export function App({ task, onClose }: AppProps) {
             )}
           </div>
 
+          {/* Split Sidebar */}
+          {mode === "split" && (
+            <div
+              style={{
+                width: "260px",
+                borderLeft: "1px solid var(--color-border)",
+                display: "flex",
+                flexDirection: "column",
+                backgroundColor: "var(--color-background)",
+                padding: "1rem",
+              }}
+            >
+              <SplitterControl
+                onConfigChange={(cfg) => setSplitConfig(cfg)}
+                onSplit={() => handleSplit(splitConfig)}
+                isProcessing={isSplitting}
+              />
+            </div>
+          )}
+
           {/* Right: Sidebar Controls */}
           <div
             style={{
               width: "260px",
               borderLeft: "1px solid var(--color-border)",
-              display: "flex",
+              display: mode === "stitch" ? "flex" : "none",
               flexDirection: "column",
               backgroundColor: "var(--color-background)",
             }}

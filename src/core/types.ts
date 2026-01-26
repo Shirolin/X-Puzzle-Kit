@@ -38,3 +38,10 @@ export interface StitchTask {
   backgroundColor: BackgroundColor;
   globalGap: number; // 全局基础间距
 }
+
+export interface SplitConfig {
+  layout: LayoutType;
+  rows: number; // For Custom Grid
+  cols: number; // For Custom Grid
+  gap: number;
+}
