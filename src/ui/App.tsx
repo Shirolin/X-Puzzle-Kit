@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "preact/hooks";
 import { ImageNode, LayoutType, StitchTask } from "../core/types";
 import { stitchImages } from "../core/stitcher";
-import { t } from "../core/i18n";
-import { ChevronUp, ChevronDown, X, Download, LayoutGrid, Rows, Columns, Layout, Eye, EyeOff, Plus, Minus, RotateCcw, GripVertical } from "lucide-preact";
+import { t, setLanguage } from "../core/i18n";
+import { ChevronUp, ChevronDown, X, Download, LayoutGrid, Rows, Columns, Layout, Eye, EyeOff, Plus, Minus, RotateCcw, GripVertical, Globe } from "lucide-preact";
 
 interface AppProps {
   task: StitchTask;
@@ -19,10 +19,24 @@ export function App({ task, onClose }: AppProps) {
   const [loading, setLoading] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
 
+  const [lang, setLang] = useState(() => localStorage.getItem('x-puzzle-stitcher-lang') || 'auto');
+  const [isLangLoaded, setIsLangLoaded] = useState(lang === 'auto');
+
+  useEffect(() => {
+    setLoading(true);
+    setLanguage(lang).then(() => {
+      setIsLangLoaded(true);
+      setLoading(false);
+    });
+    localStorage.setItem('x-puzzle-stitcher-lang', lang);
+  }, [lang]);
+
   useEffect(() => {
     // 初始挂载后立即将准备状态设为完成（资源由 mountUI 预取）
-    setLoading(false);
-  }, []);
+    if (isLangLoaded) {
+      setLoading(false);
+    }
+  }, [isLangLoaded]);
   const [outputFormat, setOutputFormat] = useState<'png' | 'jpg' | 'webp'>(() => {
     const saved = localStorage.getItem('x-puzzle-stitcher-format');
     return (saved as any) || task.outputFormat || 'png';
@@ -248,18 +262,18 @@ export function App({ task, onClose }: AppProps) {
               src={logoUrl} 
               style={{ width: '28px', height: '28px', flexShrink: 0 }} 
               alt="Logo" 
+              title={t("appDesc")}
             />
             <div>
-              <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                {extensionName}
-                <span style={{ fontSize: '0.75rem', fontWeight: 400, color: 'var(--color-text-muted)', marginLeft: '0.25rem', padding: '2px 6px', backgroundColor: 'var(--color-background)', borderRadius: '4px' }}>{t("previewTitle")}</span>
+              <h2 
+                title={t("appDesc")}
+                style={{ margin: 0, fontSize: '1.05rem', fontWeight: 700, color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '0.4rem', cursor: 'help' }}
+              >
+                <span className="appName-text">{t("appName")}</span>
+                <span style={{ fontSize: '0.7rem', fontWeight: 500, color: 'var(--color-primary)', marginLeft: '0.25rem', padding: '1px 6px', backgroundColor: 'rgba(29, 155, 240, 0.1)', borderRadius: '4px', letterSpacing: '0.02em' }}>
+                  {t("previewTitle")}
+                </span>
               </h2>
-              <p style={{ margin: '0.125rem 0 0', fontSize: '0.7rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <span style={{ opacity: 0.7 }}>{t("fromArtist")}</span>
-                <span style={{ fontWeight: 600, color: 'var(--color-primary)' }}>@{task.artistHandle}</span>
-                <span style={{ opacity: 0.5 }}>•</span>
-                <span style={{ opacity: 0.7 }}>{t("tweetId")}: {task.tweetId}</span>
-              </p>
             </div>
           </div>
           <button 
@@ -318,53 +332,76 @@ export function App({ task, onClose }: AppProps) {
             )}
             
             {/* Viewer Toolbar */}
-            <div style={{ 
-              position: 'absolute', bottom: '1.5rem', left: '50%', transform: 'translateX(-50%)',
-              zIndex: 30, display: 'flex', alignItems: 'center', gap: '4px',
-              backgroundColor: 'rgba(30, 41, 59, 0.88)', padding: '6px 10px',
-              borderRadius: '30px', border: '1px solid rgba(255,255,255,0.15)',
-              backdropFilter: 'blur(12px)', boxShadow: '0 12px 30px rgba(0,0,0,0.5)',
-              maxWidth: 'calc(100% - 2rem)', width: 'max-content',
-              overflowX: 'auto',
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
-            }} className="no-scrollbar">
-               <IconButton 
-                onClick={() => setViewerScale(s => Math.max(0.1, s - 0.1))} 
-                icon={<Minus size={14} color="white"/>} 
-                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
-              />
-              <span style={{ fontSize: '11px', color: 'white', minWidth: '40px', textAlign: 'center', fontWeight: 'bold', whiteSpace: 'nowrap', flexShrink: 0 }}>
-                {Math.round(viewerScale * 100)}%
-              </span>
-              <IconButton 
-                onClick={() => setViewerScale(s => Math.min(10, s + 0.1))} 
-                icon={<Plus size={14} color="white"/>} 
-                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
-              />
-              <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px', flexShrink: 0 }}></div>
-              <button 
-                onClick={() => setViewerScale(1)}
-                style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', opacity: viewerScale === 1 ? 0.5 : 1, padding: '4px 6px', whiteSpace: 'nowrap', flexShrink: 0 }}
-              >1:1</button>
-              <button 
-                onClick={() => resetViewer()}
-                style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', padding: '4px 6px', whiteSpace: 'nowrap', flexShrink: 0 }}
-              >{t("reset")}</button>
-              <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px', flexShrink: 0 }}></div>
-              <IconButton 
-                onClick={() => setViewerRotation(r => (r + 90) % 360)} 
-                icon={<RotateCcw size={14} color="white" style={{ transform: 'scaleX(-1)' }}/>} 
-                style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
-              />
+            <div 
+              style={{ 
+                position: 'absolute', bottom: '1.25rem', left: '50%', transform: 'translateX(-50%)',
+                zIndex: 30, display: 'flex', alignItems: 'center', gap: '4px',
+                backgroundColor: 'rgba(30, 41, 59, 0.82)', padding: '6px 12px',
+                borderRadius: '30px', border: '1px solid rgba(255,255,255,0.12)',
+                backdropFilter: 'blur(16px)', boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+                width: 'max-content', maxWidth: 'calc(100% - 2rem)',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                flexWrap: 'wrap', justifyContent: 'center'
+              }} 
+              className="viewer-toolbar no-scrollbar"
+            >
+               {/* Group 1: Zoom Controls */}
+               <div style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+                <IconButton 
+                  onClick={() => setViewerScale(s => Math.max(0.1, s - 0.1))} 
+                  icon={<Minus size={14} color="white"/>} 
+                  style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
+                />
+                <span style={{ fontSize: '11px', color: 'white', minWidth: '40px', textAlign: 'center', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                  {Math.round(viewerScale * 100)}%
+                </span>
+                <IconButton 
+                  onClick={() => setViewerScale(s => Math.min(10, s + 0.1))} 
+                  icon={<Plus size={14} color="white"/>} 
+                  style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
+                />
+               </div>
+
+               <div className="toolbar-sep" style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px' }}></div>
+
+               {/* Group 2: Action Controls */}
+               <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <button 
+                  onClick={() => setViewerScale(1)}
+                  style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', opacity: viewerScale === 1 ? 0.5 : 1, padding: '4px 6px', whiteSpace: 'nowrap' }}
+                >1:1</button>
+                <button 
+                  onClick={() => resetViewer()}
+                  style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', padding: '4px 6px', whiteSpace: 'nowrap' }}
+                >{t("reset")}</button>
+                <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px' }}></div>
+                <IconButton 
+                  onClick={() => setViewerRotation(r => (r + 90) % 360)} 
+                  icon={<RotateCcw size={14} color="white" style={{ transform: 'scaleX(-1)' }}/>} 
+                  style={{ padding: '6px', backgroundColor: 'transparent', border: 'none', flexShrink: 0 }}
+                />
+               </div>
             </div>
 
             {previewUrl && (
-              <div style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10 }}>
+              <div 
+                className="preview-badges"
+                style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10, display: 'flex', gap: '6px', flexWrap: 'wrap', justifyContent: 'flex-end' }}
+              >
+                <div style={{ 
+                  backgroundColor: 'rgba(30, 41, 59, 0.7)', color: 'white', padding: '4px 12px', 
+                  borderRadius: '20px', fontSize: '0.7rem', fontWeight: 500, backdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '8px',
+                  whiteSpace: 'nowrap'
+                }}>
+                  <span style={{ color: 'var(--color-primary)', fontWeight: 700 }}>@{task.artistHandle}</span>
+                  <span className="badge-sep" style={{ opacity: 0.3, width: '1px', height: '10px', backgroundColor: 'white' }}></span>
+                  <span className="badge-id" style={{ opacity: 0.5, fontSize: '0.65rem' }}>{task.tweetId}</span>
+                </div>
                 <div style={{ 
                   backgroundColor: 'rgba(0,0,0,0.6)', color: 'white', padding: '4px 10px', 
                   borderRadius: '20px', fontSize: '0.7rem', fontWeight: 'bold', backdropFilter: 'blur(4px)',
-                  border: '1px solid rgba(255,255,255,0.1)'
+                  border: '1px solid rgba(255,255,255,0.1)', whiteSpace: 'nowrap'
                 }}>
                   {canvasSize.width} × {canvasSize.height} PX
                 </div>
@@ -413,6 +450,7 @@ export function App({ task, onClose }: AppProps) {
             display: 'flex', flexDirection: 'column', backgroundColor: 'var(--color-background)'
           }}>
             <div style={{ padding: '1rem', flex: 1, overflowY: 'auto' }}>
+
               <section style={{ marginBottom: '1rem' }}>
                 <h3 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-text)' }}>{t("layoutScheme")}</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.35rem' }}>
@@ -467,6 +505,26 @@ export function App({ task, onClose }: AppProps) {
                       >{bg === 'transparent' ? t('transparent') : bg === 'white' ? t('white') : t('black')}</button>
                     ))}
                   </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.75rem' }}>
+                   <span style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>{t("language")}:</span>
+                   <select 
+                    value={lang} 
+                    onChange={(e) => setLang((e.target as HTMLSelectElement).value)}
+                    style={{
+                      flex: 1, padding: '4px 6px', fontSize: '9px', fontWeight: '600',
+                      borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)',
+                      backgroundColor: 'white', color: 'var(--color-text)', outline: 'none',
+                      cursor: 'pointer'
+                    }}
+                   >
+                     <option value="auto">Auto (Browser)</option>
+                     <option value="zh_CN">简体中文</option>
+                     <option value="zh_TW">繁體中文</option>
+                     <option value="en">English</option>
+                     <option value="ja">日本語</option>
+                   </select>
                 </div>
               </section>
 
@@ -798,6 +856,38 @@ export function App({ task, onClose }: AppProps) {
           -ms-overflow-style: none;
           scrollbar-width: none;
           user-select: none;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 640px) {
+          .badge-id, .badge-sep {
+            display: none;
+          }
+          .preview-badges {
+            top: 0.5rem !important;
+            right: 0.5rem !important;
+          }
+          .appName-text {
+            display: none;
+          }
+          .viewer-toolbar {
+            flex-direction: column !important;
+            border-radius: 18px !important;
+            padding: 10px 6px !important;
+            left: unset !important;
+            right: 0.75rem !important;
+            transform: none !important;
+            bottom: 0.75rem !important;
+            gap: 12px !important;
+            background-color: rgba(30, 41, 59, 0.92) !important;
+            border: 1px solid rgba(255,255,255,0.08) !important;
+          }
+          .toolbar-sep {
+            height: 1px !important;
+            width: 16px !important;
+            margin: 0 !important;
+            opacity: 0.4 !important;
+          }
         }
       `}</style>
     </div>

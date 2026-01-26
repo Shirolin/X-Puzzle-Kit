@@ -138,5 +138,13 @@
   "stitchBtnTitle": {
     "message": "拼接图片",
     "description": "注入推特的拼接按钮工具提示"
+  },
+  "language": {
+    "message": "语言",
+    "description": "语言选择器标签"
+  },
+  "sourcedFrom": {
+    "message": "来源于",
+    "description": "用于来源标签"
   }
 }

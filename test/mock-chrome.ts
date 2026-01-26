@@ -36,8 +36,11 @@ window.chrome = {
           };
           reader.readAsDataURL(blob);
         } catch (e) {
-          console.warn("[TestEnv] Fetch failed (likely CORS). Generating placeholder.", e);
-          
+          console.warn(
+            "[TestEnv] Fetch failed (likely CORS). Generating placeholder.",
+            e,
+          );
+
           // 3. CORS 失败时的回退方案：生成一个带颜色的占位图
           // 这样你仍然可以测试拼图布局逻辑，只是看不到真实图片内容
           const placeholder = createPlaceholder(url);
@@ -45,6 +48,14 @@ window.chrome = {
         }
       }
     },
+    // @ts-ignore
+    getURL: (path: string) => path,
+    // @ts-ignore
+    getManifest: () => ({ name: "X-Puzzle-Stitcher" }),
+  },
+  i18n: {
+    // @ts-ignore
+    getMessage: (messageName: string) => messageName,
   },
 };
 
@@ -53,18 +64,18 @@ function createPlaceholder(text: string): string {
   canvas.width = 500;
   canvas.height = 500; // 默认正方形
   const ctx = canvas.getContext("2d")!;
-  
+
   // 生成随机背景色
   const hue = Math.floor(Math.random() * 360);
   ctx.fillStyle = `hsl(${hue}, 70%, 80%)`;
   ctx.fillRect(0, 0, 500, 500);
-  
+
   ctx.fillStyle = "#333";
   ctx.font = "20px sans-serif";
   ctx.textAlign = "center";
   ctx.fillText("CORS Blocked", 250, 230);
   ctx.font = "12px sans-serif";
   ctx.fillText("Check Console", 250, 260);
-  
+
   return canvas.toDataURL("image/jpeg");
 }

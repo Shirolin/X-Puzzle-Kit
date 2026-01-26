@@ -138,5 +138,13 @@
   "stitchBtnTitle": {
     "message": "画像を結合",
     "description": "Twitterに埋め込まれる結合ボタンのツールチップ"
+  },
+  "language": {
+    "message": "言語",
+    "description": "言語設定ラベル"
+  },
+  "sourcedFrom": {
+    "message": "作成者",
+    "description": "ソースバッジで使用"
   }
 }

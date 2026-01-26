@@ -138,5 +138,13 @@
   "stitchBtnTitle": {
     "message": "Stitch Images",
     "description": "Tooltip for the stitch button embedded in Twitter"
+  },
+  "language": {
+    "message": "Language",
+    "description": "Language selector label"
+  },
+  "sourcedFrom": {
+    "message": "from",
+    "description": "Used in the source badge"
   }
 }
