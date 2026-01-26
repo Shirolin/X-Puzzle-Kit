@@ -1,0 +1,142 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Stitcher",
+    "description": "アプリ名"
+  },
+  "appDesc": {
+    "message": "Twitter (X) パズル復元アシスタント。Twitterの複数画像をワンクリックでシームレスに結合します。",
+    "description": "アプリの説明"
+  },
+  "previewTitle": {
+    "message": "結合プレビュー",
+    "description": "プレビューウィンドウのタイトル"
+  },
+  "fromArtist": {
+    "message": "作成者",
+    "description": "作者プレフィックス"
+  },
+  "tweetId": {
+    "message": "ツイート ID",
+    "description": "ツイート ID ラベル"
+  },
+  "stitching": {
+    "message": "結合中...",
+    "description": "プレビュー生成中のテキスト"
+  },
+  "preparingHighRes": {
+    "message": "高画質リソースを準備中...",
+    "description": "高画質画像読み込み中のテキスト"
+  },
+  "reset": {
+    "message": "リセット",
+    "description": "リセットボタンのテキスト"
+  },
+  "layoutScheme": {
+    "message": "レイアウト",
+    "description": "レイアウトセクションのヘッダー"
+  },
+  "layoutGrid": {
+    "message": "田の字",
+    "description": "2x2レイアウトラベル"
+  },
+  "layoutTShape": {
+    "message": "T型(左)",
+    "description": "T型レイアウトラベル"
+  },
+  "layoutHorizontal": {
+    "message": "横方向",
+    "description": "横方向レイアウトラベル"
+  },
+  "layoutVertical": {
+    "message": "縦方向",
+    "description": "縦方向レイアウトラベル"
+  },
+  "exportSettings": {
+    "message": "書き出し設定",
+    "description": "書き出し設定セクションのヘッダー"
+  },
+  "backgroundColor": {
+    "message": "背景色",
+    "description": "背景色のラベル"
+  },
+  "transparent": {
+    "message": "透明",
+    "description": "透明背景オプション"
+  },
+  "white": {
+    "message": "白",
+    "description": "白い背景オプション"
+  },
+  "black": {
+    "message": "黒",
+    "description": "黒い背景オプション"
+  },
+  "globalGap": {
+    "message": "全体の余白",
+    "description": "全体の余白ラベル"
+  },
+  "resetToZero": {
+    "message": "0にリセット",
+    "description": "余白リセットのツールチップ"
+  },
+  "imageSorting": {
+    "message": "画像の順序",
+    "description": "画像順序セクションのヘッダー"
+  },
+  "localGap": {
+    "message": "個別余白の調整",
+    "description": "画像順序のサブタイトル"
+  },
+  "imageLabel": {
+    "message": "画像",
+    "description": "画像のラベル"
+  },
+  "moveUp": {
+    "message": "上へ",
+    "description": "上へ移動のツールチップ"
+  },
+  "moveDown": {
+    "message": "下へ",
+    "description": "下へ移動のツールチップ"
+  },
+  "hideImage": {
+    "message": "画像を非表示",
+    "description": "画像非表示のツールチップ"
+  },
+  "showImage": {
+    "message": "画像を表示",
+    "description": "画像表示のツールチップ"
+  },
+  "afterGap": {
+    "message": "後ろの余白",
+    "description": "画像の後ろの個別余白ラベル"
+  },
+  "decreaseGap": {
+    "message": "余白を減らす",
+    "description": "余白減少のツールチップ"
+  },
+  "increaseGap": {
+    "message": "余白を増やす",
+    "description": "余白増加のツールチップ"
+  },
+  "gapLabel": {
+    "message": "隙間",
+    "description": "最終的な隙間のラベル"
+  },
+  "resetLocalGap": {
+    "message": "個別の余白をリセット",
+    "description": "個別余白リセットのツールチップ"
+  },
+  "processing": {
+    "message": "処理中...",
+    "description": "処理中のボタンテキスト"
+  },
+  "stitchAndDownload": {
+    "message": "結合してダウンロード",
+    "description": "最終ダウンロードボタンのテキスト"
+  },
+  "stitchBtnTitle": {
+    "message": "画像を結合",
+    "description": "Twitterに埋め込まれる結合ボタンのツールチップ"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Stitcher",
+    "description": "插件名稱"
+  },
+  "appDesc": {
+    "message": "Twitter (X) 拼圖還原助手，一鍵無縫拼接推特多圖。",
+    "description": "插件描述"
+  },
+  "previewTitle": {
+    "message": "拼圖預覽",
+    "description": "預覽視窗標題"
+  },
+  "fromArtist": {
+    "message": "來自",
+    "description": "作者前綴"
+  },
+  "tweetId": {
+    "message": "推文 ID",
+    "description": "推文 ID 標籤"
+  },
+  "stitching": {
+    "message": "拼圖中...",
+    "description": "預覽生成時的載入文字"
+  },
+  "preparingHighRes": {
+    "message": "高清資源準備中...",
+    "description": "高清圖片載入時的文字"
+  },
+  "reset": {
+    "message": "重置",
+    "description": "重置按鈕文字"
+  },
+  "layoutScheme": {
+    "message": "佈局方案",
+    "description": "佈局部分標題"
+  },
+  "layoutGrid": {
+    "message": "田字格",
+    "description": "田字格佈局標籤"
+  },
+  "layoutTShape": {
+    "message": "T型(左)",
+    "description": "T型佈局標籤"
+  },
+  "layoutHorizontal": {
+    "message": "橫向",
+    "description": "橫向佈局標籤"
+  },
+  "layoutVertical": {
+    "message": "縱向",
+    "description": "縱向佈局標籤"
+  },
+  "exportSettings": {
+    "message": "匯出設定",
+    "description": "匯出設定部分標題"
+  },
+  "backgroundColor": {
+    "message": "底色",
+    "description": "底色標籤"
+  },
+  "transparent": {
+    "message": "透明",
+    "description": "透明背景選項"
+  },
+  "white": {
+    "message": "白色",
+    "description": "白色背景選項"
+  },
+  "black": {
+    "message": "黑色",
+    "description": "黑色背景選項"
+  },
+  "globalGap": {
+    "message": "全局間距",
+    "description": "全局間距標籤"
+  },
+  "resetToZero": {
+    "message": "重置為0",
+    "description": "重置間距的工具提示"
+  },
+  "imageSorting": {
+    "message": "圖片排序",
+    "description": "圖片排序部分標題"
+  },
+  "localGap": {
+    "message": "可調節局部間距",
+    "description": "圖片排序副標題"
+  },
+  "imageLabel": {
+    "message": "圖片",
+    "description": "圖片標籤"
+  },
+  "moveUp": {
+    "message": "上移",
+    "description": "上移工具提示"
+  },
+  "moveDown": {
+    "message": "下移",
+    "description": "下移工具提示"
+  },
+  "hideImage": {
+    "message": "隱藏圖片",
+    "description": "隱藏圖片工具提示"
+  },
+  "showImage": {
+    "message": "顯示圖片",
+    "description": "顯示圖片工具提示"
+  },
+  "afterGap": {
+    "message": "後間距",
+    "description": "圖片後方的局部間距標籤"
+  },
+  "decreaseGap": {
+    "message": "減小間距",
+    "description": "減小間距工具提示"
+  },
+  "increaseGap": {
+    "message": "增大間距",
+    "description": "增大間距工具提示"
+  },
+  "gapLabel": {
+    "message": "縫隙",
+    "description": "最終縫隙標籤"
+  },
+  "resetLocalGap": {
+    "message": "重置局部間距",
+    "description": "重置局部間距工具提示"
+  },
+  "processing": {
+    "message": "處理中...",
+    "description": "處理時的按鈕文字"
+  },
+  "stitchAndDownload": {
+    "message": "立即拼接並下載",
+    "description": "最終下載按鈕文字"
+  },
+  "stitchBtnTitle": {
+    "message": "拼接圖片",
+    "description": "注入推特的拼接按鈕工具提示"
+  }
+}

@@ -1,6 +1,7 @@
 import { mountUI } from "../ui";
 import { recommendLayout } from "../core/layout";
 import { ImageNode, StitchTask } from "../core/types";
+import { t } from "../core/i18n";
 
 /**
  * 解析页面上的推文并注入拼接按钮
@@ -60,7 +61,7 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   // 模拟 Twitter 图标按钮的 HTML 结构
   // 颜色默认使用用户要求的 #71767b (即 rgb(113, 118, 123))
   container.innerHTML = `
-    <div role="button" tabindex="0" title="拼接图片" class="x-stitch-btn-inner" style="
+    <div role="button" tabindex="0" title="${t("stitchBtnTitle")}" class="x-stitch-btn-inner" style="
       display: flex;
       align-items: center;
       justify-content: center;
@@ -195,6 +196,7 @@ async function handleStitchClick(
     userImages: imageNodes,
     layout: layout,
     outputFormat: "png",
+    backgroundColor: "transparent",
     globalGap: 0,
   };
 

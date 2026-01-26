@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "preact/hooks";
 import { ImageNode, LayoutType, StitchTask } from "../core/types";
 import { stitchImages } from "../core/stitcher";
+import { t } from "../core/i18n";
 import { ChevronUp, ChevronDown, X, Download, LayoutGrid, Rows, Columns, Layout, Eye, EyeOff, Plus, Minus, RotateCcw, GripVertical } from "lucide-preact";
 
 interface AppProps {
@@ -251,13 +252,13 @@ export function App({ task, onClose }: AppProps) {
             <div>
               <h2 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 700, color: 'var(--color-text)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 {extensionName}
-                <span style={{ fontSize: '0.75rem', fontWeight: 400, color: 'var(--color-text-muted)', marginLeft: '0.25rem', padding: '2px 6px', backgroundColor: 'var(--color-background)', borderRadius: '4px' }}>拼图预览</span>
+                <span style={{ fontSize: '0.75rem', fontWeight: 400, color: 'var(--color-text-muted)', marginLeft: '0.25rem', padding: '2px 6px', backgroundColor: 'var(--color-background)', borderRadius: '4px' }}>{t("previewTitle")}</span>
               </h2>
               <p style={{ margin: '0.125rem 0 0', fontSize: '0.7rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <span style={{ opacity: 0.7 }}>来自</span>
+                <span style={{ opacity: 0.7 }}>{t("fromArtist")}</span>
                 <span style={{ fontWeight: 600, color: 'var(--color-primary)' }}>@{task.artistHandle}</span>
                 <span style={{ opacity: 0.5 }}>•</span>
-                <span style={{ opacity: 0.7 }}>推文 ID: {task.tweetId}</span>
+                <span style={{ opacity: 0.7 }}>{t("tweetId")}: {task.tweetId}</span>
               </p>
             </div>
           </div>
@@ -312,7 +313,7 @@ export function App({ task, onClose }: AppProps) {
                 pointerEvents: 'none'
               }}>
                 <div className="spinner"></div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>拼图中...</div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>{t("stitching")}</div>
               </div>
             )}
             
@@ -349,7 +350,7 @@ export function App({ task, onClose }: AppProps) {
               <button 
                 onClick={() => resetViewer()}
                 style={{ background: 'none', border: 'none', color: 'white', fontSize: '10px', cursor: 'pointer', padding: '4px 6px', whiteSpace: 'nowrap', flexShrink: 0 }}
-              >重置</button>
+              >{t("reset")}</button>
               <div style={{ width: '1px', height: '14px', backgroundColor: 'rgba(255,255,255,0.2)', margin: '0 4px', flexShrink: 0 }}></div>
               <IconButton 
                 onClick={() => setViewerRotation(r => (r + 90) % 360)} 
@@ -373,7 +374,7 @@ export function App({ task, onClose }: AppProps) {
             {loading ? (
               <div style={{ color: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
                 <div className="spinner"></div>
-                <span style={{ fontSize: '0.75rem', opacity: 0.8 }}>高清资源准备中...</span>
+                <span style={{ fontSize: '0.75rem', opacity: 0.8 }}>{t("preparingHighRes")}</span>
               </div>
             ) : (
               <div 
@@ -413,18 +414,18 @@ export function App({ task, onClose }: AppProps) {
           }}>
             <div style={{ padding: '1rem', flex: 1, overflowY: 'auto' }}>
               <section style={{ marginBottom: '1rem' }}>
-                <h3 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-text)' }}>布局方案</h3>
+                <h3 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-text)' }}>{t("layoutScheme")}</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.35rem' }}>
-                  <LayoutButton active={layout === 'GRID_2x2'} onClick={() => setLayout('GRID_2x2')} icon={<LayoutGrid size={16}/>} label="田字格" />
-                  <LayoutButton active={layout === 'T_SHAPE_3'} onClick={() => setLayout('T_SHAPE_3')} icon={<Layout size={16}/>} label="T型(左)" />
-                  <LayoutButton active={layout === 'HORIZONTAL_Nx1'} onClick={() => setLayout('HORIZONTAL_Nx1')} icon={<Columns size={16}/>} label="横向" />
-                  <LayoutButton active={layout === 'VERTICAL_1xN'} onClick={() => setLayout('VERTICAL_1xN')} icon={<Rows size={16}/>} label="纵向" />
+                  <LayoutButton active={layout === 'GRID_2x2'} onClick={() => setLayout('GRID_2x2')} icon={<LayoutGrid size={16}/>} label={t("layoutGrid")} />
+                  <LayoutButton active={layout === 'T_SHAPE_3'} onClick={() => setLayout('T_SHAPE_3')} icon={<Layout size={16}/>} label={t("layoutTShape")} />
+                  <LayoutButton active={layout === 'HORIZONTAL_Nx1'} onClick={() => setLayout('HORIZONTAL_Nx1')} icon={<Columns size={16}/>} label={t("layoutHorizontal")} />
+                  <LayoutButton active={layout === 'VERTICAL_1xN'} onClick={() => setLayout('VERTICAL_1xN')} icon={<Rows size={16}/>} label={t("layoutVertical")} />
                 </div>
               </section>
 
 
               <section style={{ marginBottom: '1.25rem' }}>
-                <h3 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--color-text)' }}>导出设置</h3>
+                <h3 style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.75rem', color: 'var(--color-text)' }}>{t("exportSettings")}</h3>
                 <div style={{ marginBottom: '0.5rem' }}>
                   <div style={{ display: 'flex', backgroundColor: 'white', borderRadius: 'var(--radius-md)', padding: '3px', border: '1px solid var(--color-border)', gap: '2px' }}>
                     {['PNG', 'JPG', 'WEBP'].map(fmt => (
@@ -448,8 +449,8 @@ export function App({ task, onClose }: AppProps) {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                   <span style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>底色:</span>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                   <span style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)', fontWeight: 500 }}>{t("backgroundColor")}:</span>
                    <div style={{ display: 'flex', backgroundColor: 'white', borderRadius: 'var(--radius-md)', padding: '3px', border: '1px solid var(--color-border)', gap: '2px', flex: 1 }}>
                     {(['transparent', 'white', 'black'] as const).map(bg => (
                       <button 
@@ -463,15 +464,15 @@ export function App({ task, onClose }: AppProps) {
                           fontSize: '9px', fontWeight: '600', cursor: (outputFormat === 'jpg' && bg === 'transparent') ? 'not-allowed' : 'pointer', transition: 'all 0.2s',
                           opacity: (outputFormat === 'jpg' && bg === 'transparent') ? 0.3 : 1
                         }}
-                      >{bg === 'transparent' ? '透明' : bg === 'white' ? '白色' : '黑色'}</button>
+                      >{bg === 'transparent' ? t('transparent') : bg === 'white' ? t('white') : t('black')}</button>
                     ))}
                   </div>
                 </div>
               </section>
 
-              <section style={{ marginBottom: '1.25rem' }}>
+               <section style={{ marginBottom: '1.25rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                  <h3 style={{ fontSize: '0.875rem', fontWeight: 600, margin: 0, color: 'var(--color-text)' }}>全局间距</h3>
+                  <h3 style={{ fontSize: '0.875rem', fontWeight: 600, margin: 0, color: 'var(--color-text)' }}>{t("globalGap")}</h3>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', backgroundColor: 'white', border: '1px solid var(--color-border)', borderRadius: '4px', overflow: 'hidden' }}>
                       <button 
@@ -502,7 +503,7 @@ export function App({ task, onClose }: AppProps) {
                     </div>
                     <button 
                       onClick={() => setGlobalGap(0)}
-                      title="重置为0"
+                      title={t("resetToZero")}
                       style={{ 
                         padding: '4px', border: 'none', background: 'rgba(0,0,0,0.05)', 
                         borderRadius: '4px', cursor: 'pointer', display: 'flex', transition: 'all 0.2s'
@@ -524,8 +525,8 @@ export function App({ task, onClose }: AppProps) {
 
               <section>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                  <h3 style={{ fontSize: '0.875rem', fontWeight: 600, margin: 0, color: 'var(--color-text)' }}>图片排序</h3>
-                  <span style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)' }}>可调节局部间距</span>
+                  <h3 style={{ fontSize: '0.875rem', fontWeight: 600, margin: 0, color: 'var(--color-text)' }}>{t("imageSorting")}</h3>
+                  <span style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)' }}>{t("localGap")}</span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {images.map((img, idx) => (
@@ -580,9 +581,9 @@ export function App({ task, onClose }: AppProps) {
                             fontWeight: '600',
                             color: img.visible !== false ? '#1E293B' : '#94A3B8', 
                             textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap',
-                            textDecoration: img.visible !== false ? 'none' : 'line-through'
+                             textDecoration: img.visible !== false ? 'none' : 'line-through'
                           }}>
-                            {img.name || `图片 ${parseInt(img.id) + 1}`}
+                            {img.name || `${t("imageLabel")} ${parseInt(img.id) + 1}`}
                           </div>
                         </div>
 
@@ -590,20 +591,20 @@ export function App({ task, onClose }: AppProps) {
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '0px' }}>
                             <button 
-                              title="上移"
+                              title={t("moveUp")}
                               onClick={() => moveImage(idx, 'up')} 
                               disabled={idx === 0}
                               style={{ border: 'none', background: 'none', padding: '2px', cursor: idx === 0 ? 'not-allowed' : 'pointer', color: '#94A3B8', opacity: idx === 0 ? 0.2 : 0.6 }}
                             ><ChevronUp size={14}/></button>
                             <button 
-                              title="下移"
+                              title={t("moveDown")}
                               onClick={() => moveImage(idx, 'down')} 
                               disabled={idx === images.length - 1}
                               style={{ border: 'none', background: 'none', padding: '2px', cursor: idx === images.length - 1 ? 'not-allowed' : 'pointer', color: '#94A3B8', opacity: idx === images.length - 1 ? 0.2 : 0.6 }}
                             ><ChevronDown size={14}/></button>
                           </div>
                           <button 
-                            title={img.visible !== false ? "隐藏图片" : "显示图片"}
+                            title={img.visible !== false ? t("hideImage") : t("showImage")}
                             onClick={() => toggleVisibility(idx)} 
                             style={{ 
                               border: 'none', background: 'none', padding: '6px', cursor: 'pointer',
@@ -617,20 +618,20 @@ export function App({ task, onClose }: AppProps) {
                       </div>
                       
                       {img.visible !== false && idx < images.length - 1 && (
-                        <div style={{ 
+                         <div style={{ 
                           display: 'flex', alignItems: 'center', justifyContent: 'space-between', 
                           paddingTop: '0.4rem', borderTop: '1px solid #F8FAFC',
                           marginTop: '0.2rem'
                         }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <span style={{ fontSize: '0.65rem', color: '#94A3B8', fontWeight: '500' }}>后间距</span>
+                            <span style={{ fontSize: '0.65rem', color: '#94A3B8', fontWeight: '500' }}>{t("afterGap")}</span>
                             <div style={{ 
                               display: 'flex', alignItems: 'center', 
                               backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', 
                               borderRadius: '6px', overflow: 'hidden'
                             }}>
                               <button 
-                                title="减小间距"
+                                title={t("decreaseGap")}
                                 onClick={() => updateLocalGap(idx, Math.max(-20, (img.localGap || 0) - 1))}
                                 style={{ border: 'none', background: 'none', cursor: 'pointer', padding: '2px 6px', color: '#64748B', display: 'flex' }}
                               ><Minus size={10}/></button>
@@ -644,14 +645,14 @@ export function App({ task, onClose }: AppProps) {
                                   updateLocalGap(idx, val);
                                 }}
                                 className="hide-arrows"
-                                style={{ 
+                                 style={{ 
                                   width: '32px', height: '18px', fontSize: '11px', border: 'none',
                                   outline: 'none', textAlign: 'center', backgroundColor: 'transparent',
                                   fontWeight: '700', color: 'var(--color-primary)'
                                 }}
                               />
                               <button 
-                                title="增大间距"
+                                title={t("increaseGap")}
                                 onClick={() => updateLocalGap(idx, Math.min(100, (img.localGap || 0) + 1))}
                                 style={{ border: 'none', background: 'none', cursor: 'pointer', padding: '2px 6px', color: '#64748B', display: 'flex' }}
                               ><Plus size={10}/></button>
@@ -660,11 +661,11 @@ export function App({ task, onClose }: AppProps) {
                           
                           <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                             <span style={{ fontSize: '0.625rem', color: '#94A3B8', fontWeight: '500' }}>
-                              缝隙 <span style={{ color: 'var(--color-primary)', fontWeight: '700' }}>{globalGap + (img.localGap || 0)}px</span>
+                              {t("gapLabel")} <span style={{ color: 'var(--color-primary)', fontWeight: '700' }}>{globalGap + (img.localGap || 0)}px</span>
                             </span>
                             {(img.localGap || 0) !== 0 && (
                               <button 
-                                title="重置局部间距"
+                                title={t("resetLocalGap")}
                                 onClick={() => updateLocalGap(idx, 0)} 
                                 style={{ border: 'none', background: 'none', cursor: 'pointer', padding: '2px', color: '#94A3B8', display: 'flex' }}
                               ><RotateCcw size={10}/></button>
@@ -690,12 +691,12 @@ export function App({ task, onClose }: AppProps) {
                 {isGenerating ? (
                    <>
                     <div className="spinner" style={{ width: '18px', height: '18px', borderTopColor: 'white' }}></div>
-                    <span>处理中...</span>
+                    <span>{t("processing")}</span>
                    </>
                 ) : (
                   <>
                     <Download size={18} />
-                    <span>立即拼接并下载</span>
+                    <span>{t("stitchAndDownload")}</span>
                   </>
                 )}
               </button>

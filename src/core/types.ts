@@ -8,6 +8,7 @@ export interface ImageNode {
   bitmap?: ImageBitmap | HTMLImageElement;
   visible?: boolean;
   localGap?: number; // 单图后方的间距
+  name?: string; // 图片名称（可选）
 }
 
 export type BackgroundColor = "transparent" | "white" | "black";

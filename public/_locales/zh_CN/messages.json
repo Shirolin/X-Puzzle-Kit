@@ -1,0 +1,142 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Stitcher",
+    "description": "插件名称"
+  },
+  "appDesc": {
+    "message": "Twitter (X) 拼图还原助手，一键无缝拼接推特多图。",
+    "description": "插件描述"
+  },
+  "previewTitle": {
+    "message": "拼图预览",
+    "description": "预览窗口标题"
+  },
+  "fromArtist": {
+    "message": "来自",
+    "description": "作者前缀"
+  },
+  "tweetId": {
+    "message": "推文 ID",
+    "description": "推文 ID 标签"
+  },
+  "stitching": {
+    "message": "拼图中...",
+    "description": "预览生成时的加载文本"
+  },
+  "preparingHighRes": {
+    "message": "高清资源准备中...",
+    "description": "高清图片加载时的文本"
+  },
+  "reset": {
+    "message": "重置",
+    "description": "重置按钮文本"
+  },
+  "layoutScheme": {
+    "message": "布局方案",
+    "description": "布局部分标题"
+  },
+  "layoutGrid": {
+    "message": "田字格",
+    "description": "田字格布局标签"
+  },
+  "layoutTShape": {
+    "message": "T型(左)",
+    "description": "T型布局标签"
+  },
+  "layoutHorizontal": {
+    "message": "横向",
+    "description": "横向布局标签"
+  },
+  "layoutVertical": {
+    "message": "纵向",
+    "description": "纵向布局标签"
+  },
+  "exportSettings": {
+    "message": "导出设置",
+    "description": "导出设置部分标题"
+  },
+  "backgroundColor": {
+    "message": "底色",
+    "description": "底色标签"
+  },
+  "transparent": {
+    "message": "透明",
+    "description": "透明背景选项"
+  },
+  "white": {
+    "message": "白色",
+    "description": "白色背景选项"
+  },
+  "black": {
+    "message": "黑色",
+    "description": "黑色背景选项"
+  },
+  "globalGap": {
+    "message": "全局间距",
+    "description": "全局间距标签"
+  },
+  "resetToZero": {
+    "message": "重置为0",
+    "description": "重置间距的工具提示"
+  },
+  "imageSorting": {
+    "message": "图片排序",
+    "description": "图片排序部分标题"
+  },
+  "localGap": {
+    "message": "可调节局部间距",
+    "description": "图片排序副标题"
+  },
+  "imageLabel": {
+    "message": "图片",
+    "description": "图片标签"
+  },
+  "moveUp": {
+    "message": "上移",
+    "description": "上移工具提示"
+  },
+  "moveDown": {
+    "message": "下移",
+    "description": "下移工具提示"
+  },
+  "hideImage": {
+    "message": "隐藏图片",
+    "description": "隐藏图片工具提示"
+  },
+  "showImage": {
+    "message": "显示图片",
+    "description": "显示图片工具提示"
+  },
+  "afterGap": {
+    "message": "后间距",
+    "description": "图片后方的局部间距标签"
+  },
+  "decreaseGap": {
+    "message": "减小间距",
+    "description": "减小间距工具提示"
+  },
+  "increaseGap": {
+    "message": "增大间距",
+    "description": "增大间距工具提示"
+  },
+  "gapLabel": {
+    "message": "缝隙",
+    "description": "最终缝隙标签"
+  },
+  "resetLocalGap": {
+    "message": "重置局部间距",
+    "description": "重置局部间距工具提示"
+  },
+  "processing": {
+    "message": "处理中...",
+    "description": "处理时的按钮文本"
+  },
+  "stitchAndDownload": {
+    "message": "立即拼接并下载",
+    "description": "最终下载按钮文本"
+  },
+  "stitchBtnTitle": {
+    "message": "拼接图片",
+    "description": "注入推特的拼接按钮工具提示"
+  }
+}
