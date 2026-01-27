@@ -66,7 +66,7 @@ export function SplitterControl({
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
          <section className="section-block">
             <h3 className="section-header">{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
-            <div style={{ display: "flex", alignItems: "center", background: "rgba(0, 0, 0, 0.3)", borderRadius: "4px", padding: "1px 4px", width: "min-content" }}>
+            <div style={{ display: "flex", alignItems: "center", background: "var(--color-item-bg)", borderRadius: "4px", padding: "1px 4px", width: "min-content" }}>
                <IconButton onClick={() => {
                      const val = layout === "VERTICAL_1xN" ? rows : cols;
                      const newVal = Math.max(2, val - 1);
@@ -88,7 +88,7 @@ export function SplitterControl({
       <section className="section-block">
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <h3 className="section-header">{t("gapRemoval")}</h3>
-            <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "rgba(0,0,0,0.3)", padding: "1px 4px", borderRadius: "4px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "var(--color-item-bg)", padding: "1px 4px", borderRadius: "4px" }}>
                 <IconButton onClick={() => setGap(Math.max(0, gap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
                 <div style={{ display: "flex", alignItems: "center" }}>
                     <input type="number" value={gap} onInput={(e) => {
@@ -112,7 +112,7 @@ export function SplitterControl({
               </div>
               <label className="switch" style={{ position: "relative", minWidth: "30px", height: "16px" }}>
                   <input type="checkbox" checked={isTwitterOptimized} onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)} style={{ opacity: 0, width: 0, height: 0 }} />
-                  <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isTwitterOptimized ? "var(--color-primary)" : "rgba(255, 255, 255, 0.1)", transition: ".3s", borderRadius: "20px" }}></span>
+                  <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isTwitterOptimized ? "var(--color-primary)" : "var(--color-surface)", transition: ".3s", borderRadius: "20px" }}></span>
                   <span style={{ position: "absolute", content: '""', height: "10px", width: "10px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isTwitterOptimized ? "translateX(14px)" : "translateX(0)" }}></span>
               </label>
          </div>
@@ -136,7 +136,7 @@ export function SplitterControl({
                     </div>
                     <label className="switch" style={{ position: "relative", minWidth: "30px", height: "16px" }}>
                         <input type="checkbox" checked={isZip} onChange={(e) => onIsZipChange((e.target as HTMLInputElement).checked)} style={{ opacity: 0, width: 0, height: 0 }} />
-                        <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isZip ? "var(--color-primary)" : "rgba(255, 255, 255, 0.1)", transition: ".3s", borderRadius: "20px" }}></span>
+                        <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isZip ? "var(--color-primary)" : "var(--color-surface)", transition: ".3s", borderRadius: "20px" }}></span>
                         <span style={{ position: "absolute", content: '""', height: "10px", width: "10px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isZip ? "translateX(14px)" : "translateX(0)" }}></span>
                     </label>
                </div>

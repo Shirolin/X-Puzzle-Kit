@@ -9,6 +9,7 @@ export interface ImageNode {
   visible?: boolean;
   localGap?: number; // 单图后方的间距
   name?: string; // 图片名称（可选）
+  originalIndex?: number; // 初始索引标识
 }
 
 export type BackgroundColor = "transparent" | "white" | "black";

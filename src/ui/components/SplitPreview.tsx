@@ -76,10 +76,10 @@ export function SplitPreview({ source, blobs, config, aspectRatio }: SplitPrevie
             className="group"
             style={{
               position: "relative",
-              border: "1px solid rgba(255,255,255,0.08)",
+              border: "1px solid var(--color-item-border)",
               borderRadius: "var(--radius-md)",
               overflow: "hidden",
-              backgroundColor: "rgba(255,255,255,0.02)",
+              backgroundColor: "var(--color-card-bg)",
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center",
@@ -108,7 +108,7 @@ export function SplitPreview({ source, blobs, config, aspectRatio }: SplitPrevie
               style={{
                 position: "absolute",
                 inset: 0,
-                backgroundColor: "rgba(0,0,0,0.3)",
+                backgroundColor: "var(--color-overlay)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",

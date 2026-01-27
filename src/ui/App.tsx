@@ -1,40 +1,26 @@
-import { VNode, JSX } from "preact";
+import { h, VNode, JSX } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 import {
   BackgroundColor,
   ImageNode,
   LayoutType,
   StitchTask,
+  SplitConfig
 } from "../core/types";
 import { stitchImages } from "../core/stitcher";
 import { t, setLanguage } from "../core/i18n";
 import {
-  ChevronUp,
-  ChevronDown,
   X,
-  Download,
-  LayoutGrid,
-  Rows,
-  Columns,
-  Layout,
-  Eye,
-  EyeOff,
-  Plus,
-  Minus,
-  RotateCcw,
-  GripVertical,
-  Scissors,
   Images,
   Sun,
   Moon,
   Monitor,
+  Scissors
 } from "lucide-preact";
-import { SplitConfig } from "../core/types";
 import { splitImage } from "../core/splitter";
-import { SplitterControl } from "./components/SplitterControl";
-import { SplitPreview } from "./components/SplitPreview";
-import { LayoutButton, IconButton } from "./components/Common";
-import JSZip from "jszip";
+import { IconButton } from "./components/Common";
+import { Sidebar } from "./components/Sidebar";
+import { ViewerArea } from "./components/ViewerArea";
 
 interface AppProps {
   task: StitchTask;
@@ -45,7 +31,9 @@ export function App({ task, onClose }: AppProps) {
   const logoUrl = chrome.runtime.getURL("assets/icon-48.png");
 
   const [layout, setLayout] = useState<LayoutType>(task.layout);
-  const [images, setImages] = useState<ImageNode[]>(task.userImages);
+  const [images, setImages] = useState<ImageNode[]>(() => 
+    task.userImages.map((img, i) => ({ ...img, originalIndex: img.originalIndex ?? (i + 1) }))
+  );
   const [previewUrl, setPreviewUrl] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -63,7 +51,6 @@ export function App({ task, onClose }: AppProps) {
     gap: 0,
     format: "png",
   });
-  const [sourcePreviewUrl, setSourcePreviewUrl] = useState<string | null>(null);
   const [isZip, setIsZip] = useState(false);
   const [isTwitterOptimized, setIsTwitterOptimized] = useState(false);
 
@@ -145,8 +132,6 @@ export function App({ task, onClose }: AppProps) {
   // Load split source image
   useEffect(() => {
     if (splitSource) {
-      const url = URL.createObjectURL(splitSource);
-      setSourcePreviewUrl(url);
       setLoading(true);
       createImageBitmap(splitSource)
         .then((bitmap) => {
@@ -164,9 +149,7 @@ export function App({ task, onClose }: AppProps) {
             setSplitSource(null);
             setLoading(false);
         });
-      return () => URL.revokeObjectURL(url);
     } else {
-        setSourcePreviewUrl(null);
         setSplitSourceBitmap(null);
     }
   }, [splitSource]);
@@ -203,17 +186,8 @@ export function App({ task, onClose }: AppProps) {
   };
 
   useEffect(() => {
-    console.log('[LayoutDebug] App Mounted at:', new Date().toLocaleTimeString());
     const runRefit = () => {
       fitToScreen();
-      const sidebar = document.querySelector('.sidebar-content-root');
-      if (sidebar) {
-        const sections = Array.from(sidebar.children).map(c => ({
-          tag: (c as HTMLElement).tagName,
-          height: (c as HTMLElement).offsetHeight
-        }));
-        console.log('[LayoutDebug] Sidebar Total:', sidebar.clientHeight, 'Sections:', sections);
-      }
     };
     runRefit();
     window.addEventListener('resize', runRefit);
@@ -320,35 +294,35 @@ export function App({ task, onClose }: AppProps) {
   const handleDoubleClick = () => viewerScale < 1 ? setViewerScale(1) : fitToScreen();
 
   return (
-    <div className="modal-overlay" data-theme={isThemeDark ? "dark" : "light"} style={{ position: "fixed", inset: 0, width: "100%", height: "100%", backgroundColor: "var(--color-overlay)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 99999, backdropFilter: "blur(8px)" }}>
-      <div className="card apple-blur" style={{ width: "95%", maxWidth: "940px", height: "85vh", display: "flex", flexDirection: "column", backgroundColor: isThemeDark ? "rgba(0,0,0,0.85)" : "rgba(255,255,255,0.85)", color: "var(--color-text)", borderRadius: "1.25rem", overflow: "hidden", border: "1px solid var(--color-glass-border)", boxShadow: "0 24px 80px rgba(0,0,0,0.4)" }}>
+    <div className="app-overlay" data-theme={isThemeDark ? "dark" : "light"}>
+      <div className="app-container">
         
         {/* Header */}
-        <div style={{ padding: "0.5rem 1rem", borderBottom: "1px solid var(--color-border)", display: "flex", justifyContent: "space-between", alignItems: "center", background: "var(--color-surface-soft)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <img src={logoUrl} style={{ width: "28px", height: "28px" }} alt="Logo" title={t("appDesc")} />
-            <h2 style={{ margin: 0, fontSize: "0.95rem", fontWeight: 700, display: "flex", alignItems: "center", gap: "0.4rem", color: "var(--color-text)" }}>
+        <div className="app-header">
+          <div className="header-group">
+            <img src={logoUrl} className="app-logo" alt="Logo" title={t("appDesc")} />
+            <h2 className="app-title">
               <span className="appName-text">{t("appName")}</span>
-              <span style={{ fontSize: "0.65rem", fontWeight: 700, color: "var(--color-primary)", backgroundColor: isThemeDark ? "rgba(0,122,255,0.12)" : "rgba(0,122,255,0.08)", padding: "1px 6px", borderRadius: "10px" }}>
+              <span className="app-badge">
                 {mode === "stitch" ? t("previewTitle") : "Splitter"}
               </span>
             </h2>
           </div>
 
           {/* Mode Switcher & Theme */}
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <div className="apple-blur" style={{ display: "flex", backgroundColor: "var(--color-surface-soft)", padding: "2px", borderRadius: "0.6rem", border: "1px solid var(--color-glass-border)" }}>
-              <button onClick={() => setMode("stitch")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "stitch" ? "var(--color-card-bg)" : "transparent", color: mode === "stitch" ? "var(--color-text)" : "var(--color-text-muted)", cursor: "pointer", transition: "all 0.15s", boxShadow: mode === "stitch" ? "0 2px 5px rgba(0,0,0,0.1)" : "none" }}>
+          <div className="header-group" style={{ gap: "1rem" }}>
+            <div className="mode-switcher">
+              <button onClick={() => setMode("stitch")} className={`mode-btn ${mode === "stitch" ? "active" : ""}`}>
                 <Images size={13} style={{ color: mode === "stitch" ? "var(--color-primary)" : "currentColor" }} />
                 <span>Stitch</span>
               </button>
-              <button onClick={() => setMode("split")} style={{ display: "flex", alignItems: "center", gap: "6px", padding: "4px 12px", fontSize: "11px", fontWeight: 600, border: "none", borderRadius: "0.5rem", backgroundColor: mode === "split" ? "var(--color-card-bg)" : "transparent", color: mode === "split" ? "var(--color-text)" : "var(--color-text-muted)", cursor: "pointer", transition: "all 0.15s", boxShadow: mode === "split" ? "0 2px 5px rgba(0,0,0,0.1)" : "none" }}>
+              <button onClick={() => setMode("split")} className={`mode-btn ${mode === "split" ? "active" : ""}`}>
                 <Scissors size={13} style={{ color: mode === "split" ? "var(--color-primary)" : "currentColor" }} />
                 <span>Split</span>
               </button>
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+            <div className="header-group" style={{ gap: "0.4rem" }}>
               <IconButton 
                 onClick={() => {
                   const sequence: ("auto" | "light" | "dark")[] = ["auto", "light", "dark"];
@@ -365,246 +339,72 @@ export function App({ task, onClose }: AppProps) {
         </div>
 
         {/* Content Area */}
-        <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-          
-          {/* Main Visualizer (Left) */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", position: "relative", backgroundColor: "#000", overflow: "hidden" }}>
-             {mode === "split" && !splitSourceBitmap ? (
-                <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", padding: "2rem" }}>
-                   <div style={{ textAlign: "center", border: "2px dashed rgba(255,255,255,0.1)", borderRadius: "1.5rem", padding: "4rem", maxWidth: "420px" }}>
-                      <div style={{ marginBottom: "1.5rem", color: "var(--color-text-muted)", fontSize: "0.9375rem" }}>{t("selectImageTip")}</div>
-                      <label className="btn btn-primary" style={{ padding: "0.75rem 2rem", cursor: "pointer" }}>
-                         {t("uploadImage")}
-                         <input type="file" accept="image/*" onChange={handleSplitFileSelect} style={{ display: "none" }} />
-                      </label>
-                   </div>
-                </div>
-             ) : (
-                <div ref={containerRef} style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", position: "relative", cursor: isPanning ? "grabbing" : "grab", overflow: "hidden" }}
-                     onWheel={handleWheel} onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp} onDblClick={handleDoubleClick}>
-                  
-                  {/* Metadata Floating Badges - Absolute Top Right */}
-                  <div className="floating-badge-container">
-                     <div className="floating-badge badge-primary">@{task.artistHandle} / x.com/{task.tweetId}</div>
-                     <div className="floating-badge">{mode === 'split' ? (splitSourceBitmap ? `${splitSourceBitmap.width} x ${splitSourceBitmap.height} PX` : "") : (canvasSize.width > 0 ? `${canvasSize.width} x ${canvasSize.height} PX` : "")}</div>
-                  </div>
-                  
-                  {isGenerating || isSplitting ? (
-                    <div style={{ position: "absolute", inset: 0, zIndex: 100, backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(12px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-                       <div className="spinner"></div>
-                       <div style={{ fontWeight: 600, fontSize: "0.95rem", letterSpacing: "0.05em" }}>{mode === "stitch" && isGenerating ? t("stitching") : t("processing")}</div>
-                    </div>
-                  ) : null}
+        <div className="app-content">
+          <ViewerArea 
+            mode={mode}
+            splitSourceBitmap={splitSourceBitmap}
+            canvasSize={canvasSize}
+            containerRef={containerRef}
+            isPanning={isPanning}
+            handleWheel={handleWheel}
+            handleMouseDown={handleMouseDown}
+            handleMouseMove={handleMouseMove}
+            handleMouseUp={handleMouseUp}
+            handleDoubleClick={handleDoubleClick}
+            task={task}
+            isGenerating={isGenerating}
+            isSplitting={isSplitting}
+            viewerScale={viewerScale}
+            setViewerScale={setViewerScale}
+            resetViewer={resetViewer}
+            viewerRotation={viewerRotation}
+            setViewerRotation={setViewerRotation}
+            viewerOffset={viewerOffset}
+            previewUrl={previewUrl}
+            splitBlobs={splitBlobs}
+            splitConfig={splitConfig}
+            handleSplitFileSelect={handleSplitFileSelect}
+          />
 
-                  {/* Viewer Toolbar - Precision Match for Image 2 */}
-                  <div className="viewer-toolbar-v2 apple-blur" style={{ position: "absolute", bottom: "1.5rem", left: "50%", transform: "translateX(-50%)", zIndex: 30 }}>
-                      <div className="toolbar-row">
-                          <IconButton className="toolbar-btn" onClick={() => setViewerScale(s => Math.max(0.1, s - 0.1))} icon={<Minus size={16} />} style={{ background: "none", border: "none" }} />
-                          <div className="zoom-percentage">{Math.round(viewerScale * 100)}%</div>
-                          <IconButton className="toolbar-btn" onClick={() => setViewerScale(s => Math.min(10, s + 0.1))} icon={<Plus size={16} />} style={{ background: "none", border: "none" }} />
-                      </div>
-                      <div className="toolbar-divider-h" />
-                      <div className="toolbar-row secondary">
-                          <button className="toolbar-text-btn" onClick={() => setViewerScale(1)}>1:1</button>
-                          <button className="toolbar-text-btn" onClick={resetViewer}>{t("reset")}</button>
-                          <div className="toolbar-divider-v" />
-                          <IconButton className="toolbar-btn" onClick={() => setViewerRotation(r => (r + 90) % 360)} icon={<RotateCcw size={16} />} style={{ background: "none", border: "none" }} />
-                      </div>
-                  </div>
-
-                  <div style={{ transform: `translate(${viewerOffset.x}px, ${viewerOffset.y}px) scale(${viewerScale}) rotate(${viewerRotation}deg)`, transition: isPanning ? "none" : "transform 0.2s cubic-bezier(0.2, 0, 0, 1)", transformOrigin: "center center" }}>
-                      {mode === "split" ? (
-                         <SplitPreview source={splitSourceBitmap} blobs={splitBlobs} config={splitConfig} aspectRatio={splitConfig.autoCropRatio || (splitSourceBitmap ? splitSourceBitmap.width / splitSourceBitmap.height : undefined)} />
-                      ) : (
-                         previewUrl ? <img src={previewUrl} style={{ width: `${canvasSize.width}px`, height: `${canvasSize.height}px`, borderRadius: "var(--radius-md)", boxShadow: "0 32px 80px rgba(0,0,0,0.9)" }} /> : null
-                      )}
-                  </div>
-                </div>
-             )}
-          </div>
-
-          {/* Sidebar (Right) */}
-          <div className="glass-panel" style={{ width: "262px", borderLeft: "1px solid var(--color-glass-border)", display: "flex", flexDirection: "column", zIndex: 20, backgroundColor: "rgba(0,0,0,0.15)" }}>
-            <div className="sidebar-content-root no-scrollbar" style={{ padding: "0.625rem", flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-              {mode === "split" ? (
-                <SplitterControl 
-                    config={splitConfig} onConfigChange={setSplitConfig} isProcessing={isSplitting}
-                    exportFormat={splitConfig.format || "png"} onExportFormatChange={(fmt) => setSplitConfig(prev => ({...prev, format: fmt}))}
-                    isZip={isZip} onIsZipChange={setIsZip} isTwitterOptimized={isTwitterOptimized} onIsTwitterOptimizedChange={setIsTwitterOptimized} 
-                />
-              ) : (
-                <>
-                  {/* Fixed Sections */}
-                  <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                    <section className="section-block">
-                      <h3 className="section-header">{t("layoutScheme")}</h3>
-                      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
-                        <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
-                        <LayoutButton active={layout === "T_SHAPE_3"} onClick={() => setLayout("T_SHAPE_3")} icon={<Layout size={13} />} label={t("layoutTShape")} />
-                        <LayoutButton active={layout === "HORIZONTAL_Nx1"} onClick={() => setLayout("HORIZONTAL_Nx1")} icon={<Columns size={13} />} label={t("layoutHorizontal")} />
-                        <LayoutButton active={layout === "VERTICAL_1xN"} onClick={() => setLayout("VERTICAL_1xN")} icon={<Rows size={13} />} label={t("layoutVertical")} />
-                      </div>
-                    </section>
-
-      {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
-         <section className="section-block">
-            <h3 className="section-header">{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
-            <div style={{ display: "flex", alignItems: "center", background: "var(--color-item-bg)", borderRadius: "var(--radius-sm)", padding: "1px 4px", width: "min-content" }}>
-               <IconButton onClick={() => {
-                     const val = layout === "VERTICAL_1xN" ? splitConfig.rows : splitConfig.cols;
-                     const newVal = Math.max(2, val - 1);
-                     if(layout === "VERTICAL_1xN") setSplitConfig(prev => ({...prev, rows: newVal})); else setSplitConfig(prev => ({...prev, cols: newVal}));
-                 }} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
-               <span style={{ width: "24px", textAlign: "center", fontSize: "11px", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>
-                   {layout === "VERTICAL_1xN" ? splitConfig.rows : splitConfig.cols}
-               </span>
-               <IconButton onClick={() => {
-                     const val = layout === "VERTICAL_1xN" ? splitConfig.rows : splitConfig.cols;
-                     const newVal = Math.min(10, val + 1);
-                     if(layout === "VERTICAL_1xN") setSplitConfig(prev => ({...prev, rows: newVal})); else setSplitConfig(prev => ({...prev, cols: newVal}));
-                 }} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
-            </div>
-         </section>
-      )}
-
-      {/* 消除间距区块 */}
-      <section className="section-block">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <h3 className="section-header">{t("globalGap")}</h3>
-            <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "var(--color-item-bg)", padding: "1px 4px", borderRadius: "4px" }}>
-                <IconButton onClick={() => setGlobalGap(Math.max(-20, globalGap - 1))} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
-                <div style={{ display: "flex", alignItems: "center" }}>
-                    <input type="number" value={globalGap} onInput={(e) => setGlobalGap(Math.max(-20, Math.min(100, parseInt(e.currentTarget.value) || 0)))} className="hide-arrows" style={{ width: "22px", height: "14px", fontSize: "11px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }} />
-                    <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700, marginLeft: "1px" }}>PX</span>
-                </div>
-                <IconButton onClick={() => setGlobalGap(Math.min(100, globalGap + 1))} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }} />
-            </div>
-        </div>
-                      <input type="range" min="-20" max="100" value={globalGap} onInput={(e) => setGlobalGap(parseInt(e.currentTarget.value) || 0)} className="vibrant-range" style={{ height: "3px", marginTop: "2px" }} />
-                    </section>
-                  </div>
-
-                  {/* Elastic Sorting Area - Full Expansion */}
-                  <section className="section-block sorting-area">
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <h3 className="section-header">{t("imageSorting")}</h3>
-                      <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", fontWeight: 500 }}>{t("localGap")}</span>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                        {images.map((img, idx) => (
-                           <div key={img.id} draggable onDragStart={() => onDragStart(idx)} onDragOver={(e) => onDragOver(e, idx)} onDrop={() => onDrop(idx)} onDragEnd={onDragEnd} style={{ padding: "0.625rem", backgroundColor: "var(--color-item-bg)", borderRadius: "var(--radius-md)", border: "1px solid var(--color-item-border)", opacity: draggedIndex === idx ? 0.3 : 1, boxShadow: "var(--shadow-card)" }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-                                 <GripVertical size={13} style={{ color: "var(--color-handle)", opacity: 0.6, cursor: "grab" }} />
-                                 <div style={{ position: "relative", flexShrink: 0 }}>
-                                    <img src={img.thumbnailUrl} style={{ width: "42px", height: "42px", objectFit: "cover", borderRadius: "5px", border: "1px solid rgba(255,255,255,0.12)" }} />
-                                    <div style={{ position: "absolute", top: "-6px", left: "-6px", minWidth: "16px", height: "16px", background: "var(--color-primary)", color: "var(--color-badge-text)", fontSize: "9px", fontWeight: 800, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(0,0,0,0.1)", boxShadow: "0 2px 5px rgba(0,0,0,0.2)" }}>{idx + 1}</div>
-                                 </div>
-                                 <div style={{ flex: 1, minWidth: 0 }}>
-                                    <div style={{ fontSize: "0.75rem", fontWeight: 700, color: img.visible !== false ? "var(--color-text)" : "var(--color-text-muted)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{img.name || `${t("imageLabel")} ${idx + 1}`}</div>
-                                    <div style={{ fontSize: "10px", color: "var(--color-text-muted)", opacity: 0.8, marginTop: "2px", fontFamily: "'Fira Code', monospace" }}>{img.width} × {img.height}</div>
-                                 </div>
-                                 <div style={{ display: "flex", alignItems: "center", gap: "2px" }}>
-                                    <div style={{ display: "flex", flexDirection: "column" }}>
-                                       <IconButton onClick={() => moveItem(idx, 'up')} disabled={idx === 0} icon={<ChevronUp size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === 0 ? 0 : 0.6, height: "12px", color: "var(--color-icon)" }} />
-                                       <IconButton onClick={() => moveItem(idx, 'down')} disabled={idx === images.length - 1} icon={<ChevronDown size={12} />} style={{ padding: "0", background: "none", border: "none", opacity: idx === images.length - 1 ? 0 : 0.6, height: "12px", color: "var(--color-icon)" }} />
-                                    </div>
-                                    <IconButton onClick={() => toggleVisibility(idx)} icon={img.visible !== false ? <Eye size={13} /> : <EyeOff size={13} />} style={{ border: "none", background: "none", padding: "2px", color: img.visible !== false ? "var(--color-icon)" : "var(--color-icon-dim)" }} />
-                                 </div>
-                              </div>
-                              {img.visible !== false && idx < images.length - 1 && (
-                                 <div style={{ marginTop: "0.375rem", paddingTop: "0.375rem", borderTop: "1px solid var(--color-item-border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                                    <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                                       <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)" }}>{t("afterGap")}</span>
-                                       <div style={{ display: "flex", alignItems: "center", backgroundColor: "var(--color-surface-soft)", borderRadius: "3px", padding: "0 2px" }}>
-                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) - 1)} style={{ border: "none", background: "none", color: "var(--color-text)", padding: "1px 3px", cursor: "pointer" }}><Minus size={8} /></button>
-                                          <input 
-                                            type="number" 
-                                            value={img.localGap || 0} 
-                                            onInput={(e) => updateLocalGap(idx, parseInt(e.currentTarget.value) || 0)}
-                                            className="hide-arrows"
-                                            style={{ width: "16px", height: "12px", fontSize: "9px", border: "none", outline: "none", textAlign: "center", backgroundColor: "transparent", color: "var(--color-text)", fontWeight: 700, fontFamily: "'Fira Code', monospace" }}
-                                          />
-                                          <button onClick={() => updateLocalGap(idx, (img.localGap || 0) + 1)} style={{ border: "none", background: "none", color: "var(--color-text)", padding: "1px 3px", cursor: "pointer" }}><Plus size={8} /></button>
-                                       </div>
-                                    </div>
-                                    <span style={{ fontSize: "9px", color: "var(--color-text-muted)", fontWeight: 700 }}>{t("gapLabel")} <span style={{ color: "var(--color-primary) opacity(0.8)", fontFamily: "'Fira Code', monospace" }}>{globalGap + (img.localGap || 0)}px</span></span>
-                                 </div>
-                              )}
-                           </div>
-                        ))}
-                    </div>
-                  </section>
-
-                  {/* Fixed Export Section */}
-                  <div style={{ flexShrink: 0 }}>
-                    <section className="section-block">
-                      <h3 className="section-header">{t("exportSettings")}</h3>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
-                         <div style={{ display: "flex", background: "var(--color-item-bg)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
-                            {(["png", "jpg", "webp"] as const).map(fmt => (
-                                <button key={fmt} onClick={() => setOutputFormat(fmt)} style={{ flex: 1, border: "none", background: outputFormat === fmt ? "var(--color-primary)" : "transparent", color: outputFormat === fmt ? "white" : "var(--color-text-muted)", fontSize: "10px", padding: "2px 6px", borderRadius: "3px", cursor: "pointer", fontWeight: 800, transition: "all var(--transition-fast)" }}>{fmt.toUpperCase()}</button>
-                            ))}
-                         </div>
-                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                            <span style={{ fontSize: "0.65rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("backgroundColor")}</span>
-                            <div style={{ display: "flex", gap: "5px" }}>
-                               {(["transparent", "white", "black"] as const).map(bg => (
-                                  <button key={bg} onClick={() => setBackgroundColor(bg)} disabled={outputFormat === "jpg" && bg === "transparent"} style={{ width: "12px", height: "12px", borderRadius: "50%", border: "1px solid var(--color-border)", backgroundColor: bg === "transparent" ? "#333" : bg, outline: backgroundColor === bg ? "2px solid var(--color-primary)" : "none", outlineOffset: "2px", cursor: "pointer", opacity: (outputFormat === "jpg" && bg === "transparent") ? 0.2 : 1 }} />
-                               ))}
-                            </div>
-                         </div>
-                         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                            <span style={{ fontSize: "0.65rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("language")}</span>
-                            <select value={lang} onChange={(e) => setLang(e.currentTarget.value)} className="apple-select" style={{ padding: "1px 16px 1px 6px", fontSize: "10px", width: "90px" }}>
-                               <option value="auto">Auto</option>
-                               <option value="zh_CN">简体中文</option>
-                               <option value="zh_TW">繁體中文</option>
-                               <option value="en">English</option>
-                               <option value="ja">日本語</option>
-                            </select>
-                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Sidebar Footer */}
-            <div style={{ padding: "0.875rem", borderTop: "1px solid var(--color-glass-border)", background: "rgba(255, 255, 255, 0.03)" }}>
-               {mode === "split" ? (
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
-                     <button onClick={() => splitBlobs.length > 0 ? setSplitBlobs([]) : handleSplit(splitConfig)} disabled={(!splitSourceBitmap && splitBlobs.length === 0) || isSplitting} className="btn btn-primary" style={{ height: "2.75rem", fontSize: "0.875rem", backgroundColor: splitBlobs.length > 0 ? "rgba(255, 255, 255, 0.1)" : "var(--color-primary)" }}>
-                        {isSplitting ? <div className="spinner" style={{ width: "18px", height: "18px" }} /> : splitBlobs.length > 0 ? <><RotateCcw size={16} /><span>{t("restore")}</span></> : <><Scissors size={16} /><span>{t("splitImage")}</span></>}
-                     </button>
-                     <button disabled={splitBlobs.length === 0} onClick={async () => {
-                        if (splitBlobs.length === 0) return;
-                        if (isZip) {
-                           const zip = new JSZip();
-                           splitBlobs.forEach((b, i) => zip.file(`split_${i+1}.${b.type.split('/')[1] || splitConfig.format}`, b));
-                           const content = await zip.generateAsync({type:"blob"});
-                           const url = URL.createObjectURL(content);
-                           const a = document.createElement("a"); a.href = url; a.download = `split_${new Date().getTime()}.zip`; a.click(); URL.revokeObjectURL(url);
-                        } else {
-                           splitBlobs.forEach((b, i) => {
-                              const url = URL.createObjectURL(b);
-                              const a = document.createElement("a"); a.href = url; a.download = `split_${i+1}.${b.type.split('/')[1] || splitConfig.format}`; a.click(); URL.revokeObjectURL(url);
-                           });
-                        }
-                     }} className="btn" style={{ height: "2.75rem", fontSize: "0.875rem", backgroundColor: splitBlobs.length > 0 ? "var(--color-primary)" : "rgba(255, 255, 255, 0.05)", color: "white", boxShadow: splitBlobs.length > 0 ? "0 8px 20px rgba(0, 122, 255, 0.3)" : "none" }}>
-                        <Download size={16} /><span>{t("downloadAll")}</span>
-                     </button>
-                  </div>
-               ) : (
-                  <button onClick={handleStitch} disabled={images.length === 0 || loading || isGenerating} className="btn btn-primary" style={{ width: "100%", height: "2.875rem", fontSize: "0.9375rem", boxShadow: "0 10px 24px rgba(0, 122, 255, 0.35)" }}>
-                     <Download size={20} /><span>{t("stitchAndDownload")}</span>
-                  </button>
-               )}
-            </div>
-          </div>
+          <Sidebar
+            mode={mode}
+            layout={layout}
+            setLayout={setLayout}
+            images={images}
+            draggedIndex={draggedIndex}
+            onDragStart={onDragStart}
+            onDragOver={onDragOver}
+            onDrop={onDrop}
+            onDragEnd={onDragEnd}
+            moveItem={moveItem}
+            toggleVisibility={toggleVisibility}
+            updateLocalGap={updateLocalGap}
+            globalGap={globalGap}
+            setGlobalGap={setGlobalGap}
+            splitConfig={splitConfig}
+            setSplitConfig={setSplitConfig}
+            isSplitting={isSplitting}
+            handleSplit={handleSplit}
+            splitBlobs={splitBlobs}
+            setSplitBlobs={setSplitBlobs}
+            isZip={isZip}
+            setIsZip={setIsZip}
+            isTwitterOptimized={isTwitterOptimized}
+            setIsTwitterOptimized={setIsTwitterOptimized}
+            outputFormat={outputFormat}
+            setOutputFormat={setOutputFormat}
+            backgroundColor={backgroundColor}
+            setBackgroundColor={setBackgroundColor}
+            lang={lang}
+            setLang={setLang}
+            hasSplitSource={!!splitSourceBitmap}
+            handleStitch={handleStitch}
+            loading={loading}
+            isGenerating={isGenerating}
+          />
         </div>
       </div>
-
+      
       <style>{`
         .spinner { width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.15); border-top: 2px solid white; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
