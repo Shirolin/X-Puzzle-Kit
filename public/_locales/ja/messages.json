@@ -220,7 +220,7 @@
     "description": "Twitter最適化スイッチのラベル"
   },
   "twitterOptimizeTip": {
-    "message": "Twitterの2/3/4枚投稿時の比率に合わせて自動的にトリミングし、シームレスな表示を実現します。",
+    "message": "Twitterのグリッド比率に自動的に合わせ、プレビューでの二次トリミングを防ぎ、シームレスなパズル効果を実現します。",
     "description": "Twitter最適化の説明"
   },
   "settings": {

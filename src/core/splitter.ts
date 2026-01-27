@@ -70,10 +70,14 @@ export async function splitImage(
     ctx.clearRect(0, 0, w, h);
 
     // Calculate sx/sy based on the auto-cropped area
-    const sx = drawX + (x / width) * drawW;
-    const sy = drawY + (y / height) * drawH;
-    const sw = (w / width) * drawW;
-    const sh = (h / height) * drawH;
+    // x and y are now relative to the cropped area (drawX, drawY)
+    const sx = drawX + x;
+    const sy = drawY + y;
+
+    // We strictly do NOT scale. source w/h matches dest w/h
+    // This prevents the stretching issue.
+    const sw = w;
+    const sh = h;
 
     ctx.drawImage(source, sx, sy, sw, sh, 0, 0, w, h);
 
@@ -90,22 +94,25 @@ export async function splitImage(
 
   const blobs: Blob[] = [];
 
+  // Use drawW / drawH for all logic instead of width / height
+  // This ensures we are splitting the *effective* (cropped) area
+  const effectiveWidth = drawW;
+  const effectiveHeight = drawH;
+
   switch (layout) {
     case "HORIZONTAL_Nx1": {
       // Split horizontally into N columns
-      // Logic: Total Width = N * SegmentWidth + (N-1) * Gap
-      // SegmentWidth = (TotalWidth - (N-1) * Gap) / N
       const n = cols || 2; // Default to 2 if not provided
       const totalGap = (n - 1) * gap;
-      const segmentWidth = Math.floor((width - totalGap) / n);
+      // Use effectiveWidth
+      const segmentWidth = Math.floor((effectiveWidth - totalGap) / n);
 
       for (let i = 0; i < n; i++) {
         const x = i * (segmentWidth + gap);
-        // For the last segment, use the remaining width to avoid rounding errors,
-        // but considering the gap logic, we should probably stick to calculated width
-        // or just take the rest.
-        // To be safe with gaps, let's use fixed segment width.
-        await blobs.push(await extractRegion(x, 0, segmentWidth, height));
+        // Use effectiveHeight
+        await blobs.push(
+          await extractRegion(x, 0, segmentWidth, effectiveHeight),
+        );
       }
       break;
     }
@@ -114,11 +121,15 @@ export async function splitImage(
       // Split vertically into N rows
       const n = rows || 2;
       const totalGap = (n - 1) * gap;
-      const segmentHeight = Math.floor((height - totalGap) / n);
+      // Use effectiveHeight
+      const segmentHeight = Math.floor((effectiveHeight - totalGap) / n);
 
       for (let i = 0; i < n; i++) {
         const y = i * (segmentHeight + gap);
-        await blobs.push(await extractRegion(0, y, width, segmentHeight));
+        // Use effectiveWidth
+        await blobs.push(
+          await extractRegion(0, y, effectiveWidth, segmentHeight),
+        );
       }
       break;
     }
@@ -130,8 +141,8 @@ export async function splitImage(
       const wGap = (nCols - 1) * gap;
       const hGap = (nRows - 1) * gap;
 
-      const segmentWidth = Math.floor((width - wGap) / nCols);
-      const segmentHeight = Math.floor((height - hGap) / nRows);
+      const segmentWidth = Math.floor((effectiveWidth - wGap) / nCols);
+      const segmentHeight = Math.floor((effectiveHeight - hGap) / nRows);
 
       // Top-Left
       blobs.push(await extractRegion(0, 0, segmentWidth, segmentHeight));
@@ -161,18 +172,11 @@ export async function splitImage(
     }
 
     case "T_SHAPE_3": {
-      // Left: 50% width, full height (minus gaps?)
-      // Right Top: 50% width, 50% height
-      // Right Bottom: 50% width, 50% height
-      // Gap logic is tricky here.
-      // Left Width = (TotalWidth - Gap) / 2
-      // Right X = Left Width + Gap
-
-      const halfWidth = Math.floor((width - gap) / 2);
-      const halfHeight = Math.floor((height - gap) / 2);
+      const halfWidth = Math.floor((effectiveWidth - gap) / 2);
+      const halfHeight = Math.floor((effectiveHeight - gap) / 2);
 
       // Left Image (Full Height)
-      blobs.push(await extractRegion(0, 0, halfWidth, height));
+      blobs.push(await extractRegion(0, 0, halfWidth, effectiveHeight));
 
       // Right Top
       blobs.push(
@@ -203,7 +207,8 @@ export async function splitImage(
 
     default:
       // console.warn("Unsupported layout for splitting, returning original", layout);
-      blobs.push(await extractRegion(0, 0, width, height));
+      // Just extract the cropped area in full if no layout matches
+      blobs.push(await extractRegion(0, 0, effectiveWidth, effectiveHeight));
   }
 
   return blobs;

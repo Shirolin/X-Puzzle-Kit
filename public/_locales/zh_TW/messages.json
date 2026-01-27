@@ -220,7 +220,7 @@
     "description": "推特布局優化開關標籤"
   },
   "twitterOptimizeTip": {
-    "message": "自動裁切原圖以适配推特 2/3/4 圖展示比例，確保無縫銜接。",
+    "message": "自動適配推特網格比例，防止預覽圖被二次裁切，實現無縫拼圖效果。",
     "description": "推特布局優化說明"
   },
   "settings": {

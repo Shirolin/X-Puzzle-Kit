@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap");
 
 :host {
   all: initial;
@@ -101,7 +101,20 @@
 
 .x-puzzle-stitcher-mount-point {
   margin: 0;
-  font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family:
+    "Fira Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "SF Pro Display",
+    "Inter",
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -162,7 +175,9 @@
 .btn-ghost {
   background: transparent;
   color: var(--color-text-muted);
-  border-radius: var(--radius-md); /* Keep ghost buttons squarer if needed, or pill */
+  border-radius: var(
+    --radius-md
+  ); /* Keep ghost buttons squarer if needed, or pill */
 }
 
 .btn-ghost:hover {
@@ -329,20 +344,20 @@
   right: 0;
   bottom: 0;
   background-color: rgba(120, 120, 128, 0.32); /* iOS default off state */
-  transition: .25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 99px;
-  box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .slider {
-   background-color: rgba(120, 120, 128, 0.16);
+  background-color: rgba(120, 120, 128, 0.16);
 }
 
 .switch:hover .slider {
-   background-color: rgba(120, 120, 128, 0.4);
+  background-color: rgba(120, 120, 128, 0.4);
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: #34c759; /* iOS Green */
 }
 
@@ -354,12 +369,15 @@ input:checked+.slider {
   left: 2px;
   bottom: 2px;
   background-color: white;
-  transition: .25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50%;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0,0,0,0.16), 0 3px 1px rgba(0,0,0,0.1); /* iOS shadow */
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.15),
+    0 1px 1px rgba(0, 0, 0, 0.16),
+    0 3px 1px rgba(0, 0, 0, 0.1); /* iOS shadow */
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   transform: translateX(20px);
 }
 
@@ -403,7 +421,7 @@ input:checked+.slider:before {
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--color-text);
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   white-space: nowrap;
   max-width: 80vw; /* Prevent crossing left edge on narrow screens */
   overflow: hidden;
@@ -546,7 +564,6 @@ input:checked+.slider:before {
 .sorting-area .no-scrollbar {
   min-height: 0;
 }
-
 
 @media (max-height: 700px) {
   .section-block {
@@ -931,7 +948,7 @@ input:checked+.slider:before {
 .item-meta {
   font-size: 8.5px !important;
   color: var(--color-text-muted);
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   opacity: 0.85;
 }
 
@@ -950,7 +967,7 @@ input:checked+.slider:before {
 }
 
 .gap-value-text {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-size: 9px !important;
   font-weight: 700;
   color: var(--color-primary);
@@ -991,7 +1008,7 @@ input:checked+.slider:before {
 /* Invisible Hit Area Expansion */
 .item-actions-group .btn-icon::after,
 .item-gap-compact button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: -6px;
   bottom: -6px;
@@ -1117,7 +1134,7 @@ input:checked+.slider:before {
 }
 
 .color-circle::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: -3px;
   border-radius: 50%;
@@ -1138,7 +1155,11 @@ input:checked+.slider:before {
     linear-gradient(45deg, transparent 75%, #bbb 75%),
     linear-gradient(-45deg, transparent 75%, #bbb 75%);
   background-size: 6px 6px;
-  background-position: 0 0, 0 3px, 3px -3px, -3px 0px;
+  background-position:
+    0 0,
+    0 3px,
+    3px -3px,
+    -3px 0px;
 }
 
 /* --- Polished Visuals (Checkerboard, Shadows, Animations) --- */
@@ -1152,7 +1173,11 @@ input:checked+.slider:before {
     linear-gradient(45deg, transparent 75%, var(--check-2) 75%),
     linear-gradient(-45deg, transparent 75%, var(--check-2) 75%);
   background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0px;
 }
 
 /* Viewer Image with Adaptive Shadow */

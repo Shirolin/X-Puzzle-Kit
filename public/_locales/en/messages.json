@@ -220,7 +220,7 @@
     "description": "Twitter optimization toggle label"
   },
   "twitterOptimizeTip": {
-    "message": "Auto-crop the source to fit Twitter's 2/3/4 grid ratios for a seamless look.",
+    "message": "Automatically adapts to Twitter's grid layout ratio to prevent preview cropping and ensure a seamless stitching effect.",
     "description": "Twitter optimization tip"
   },
   "settings": {

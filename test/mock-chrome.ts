@@ -64,15 +64,15 @@ window.chrome = {
   storage: {
     local: {
       get: (
-        keys: string | string[] | { [key: string]: any } | null,
-      ): Promise<{ [key: string]: any }> => {
+        keys: string | string[] | { [key: string]: unknown } | null,
+      ): Promise<{ [key: string]: unknown }> => {
         return new Promise((resolve) => {
-          const result: { [key: string]: any } = {};
+          const result: { [key: string]: unknown } = {};
 
           // Load all form localStorage first
           const stored = JSON.parse(
             localStorage.getItem("mock-chrome-storage") || "{}",
-          );
+          ) as Record<string, unknown>;
 
           if (keys === null) {
             resolve(stored);
@@ -88,7 +88,10 @@ window.chrome = {
           } else if (typeof keys === "object") {
             // Keys with defaults
             Object.keys(keys).forEach((k) => {
-              result[k] = stored[k] !== undefined ? stored[k] : keys[k];
+              result[k] =
+                stored[k] !== undefined
+                  ? stored[k]
+                  : (keys as Record<string, unknown>)[k];
             });
           }
           console.log(
@@ -100,12 +103,12 @@ window.chrome = {
           resolve(result);
         });
       },
-      set: (items: { [key: string]: any }): Promise<void> => {
+      set: (items: { [key: string]: unknown }): Promise<void> => {
         return new Promise((resolve) => {
           console.log("[TestEnv] Mock storage.local.set:", items);
           const stored = JSON.parse(
             localStorage.getItem("mock-chrome-storage") || "{}",
-          );
+          ) as Record<string, unknown>;
           const updated = { ...stored, ...items };
           localStorage.setItem("mock-chrome-storage", JSON.stringify(updated));
           resolve();
