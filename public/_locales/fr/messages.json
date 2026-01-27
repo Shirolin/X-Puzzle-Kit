@@ -1,0 +1,238 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Stitcher",
+    "description": "Nom de l'extension"
+  },
+  "appDesc": {
+    "message": "Assistant de restauration de puzzle Twitter (X), fusionne plusieurs images Twitter de manière transparente en un clic.",
+    "description": "Description de l'extension"
+  },
+  "previewTitle": {
+    "message": "Aperçu de la fusion",
+    "description": "Titre de la fenêtre d'aperçu"
+  },
+  "splitterTitle": {
+    "message": "Diviseur",
+    "description": "Titre de la fenêtre de division"
+  },
+  "removeImage": {
+    "message": "Supprimer l'image",
+    "description": "Info-bulle pour supprimer l'image"
+  },
+  "fromArtist": {
+    "message": "De",
+    "description": "Préfixe de l'auteur"
+  },
+  "tweetId": {
+    "message": "ID Tweet",
+    "description": "Libellé pour ID du Tweet"
+  },
+  "stitching": {
+    "message": "Fusion en cours...",
+    "description": "Texte de chargement pendant la génération de l'aperçu"
+  },
+  "preparingHighRes": {
+    "message": "Préparation des ressources HD...",
+    "description": "Texte de chargement pour les images HD"
+  },
+  "reset": {
+    "message": "Réinitialiser",
+    "description": "Texte du bouton réinitialiser"
+  },
+  "layoutScheme": {
+    "message": "Mise en page",
+    "description": "En-tête de la section mise en page"
+  },
+  "layoutGrid": {
+    "message": "Grille 2x2",
+    "description": "Libellé de mise en page grille 2x2"
+  },
+  "layoutTShape": {
+    "message": "Forme en T",
+    "description": "Libellé de mise en page en forme de T"
+  },
+  "layoutHorizontal": {
+    "message": "Horizontal",
+    "description": "Libellé de mise en page horizontale"
+  },
+  "layoutVertical": {
+    "message": "Vertical",
+    "description": "Libellé de mise en page verticale"
+  },
+  "exportSettings": {
+    "message": "Paramètres d'exportation",
+    "description": "En-tête de la section paramètres d'exportation"
+  },
+  "backgroundColor": {
+    "message": "Couleur de fond",
+    "description": "Libellé pour couleur de fond"
+  },
+  "transparent": {
+    "message": "Transp.",
+    "description": "Option de fond transparent"
+  },
+  "white": {
+    "message": "Blanc",
+    "description": "Option de fond blanc"
+  },
+  "black": {
+    "message": "Noir",
+    "description": "Option de fond noir"
+  },
+  "globalGap": {
+    "message": "Espacement global",
+    "description": "Libellé pour espacement global"
+  },
+  "resetToZero": {
+    "message": "RAZ à 0",
+    "description": "Info-bulle pour réinitialiser l'espacement"
+  },
+  "imageSorting": {
+    "message": "Ordre des images",
+    "description": "En-tête de la section ordre des images"
+  },
+  "localGap": {
+    "message": "Ajuster l'espace local",
+    "description": "Sous-titre pour l'ordre des images"
+  },
+  "imageLabel": {
+    "message": "Image",
+    "description": "Libellé pour image"
+  },
+  "moveUp": {
+    "message": "Monter",
+    "description": "Info-bulle pour monter"
+  },
+  "moveDown": {
+    "message": "Descendre",
+    "description": "Info-bulle pour descendre"
+  },
+  "hideImage": {
+    "message": "Masquer l'image",
+    "description": "Info-bulle pour masquer l'image"
+  },
+  "showImage": {
+    "message": "Afficher l'image",
+    "description": "Info-bulle pour afficher l'image"
+  },
+  "afterGap": {
+    "message": "Espace après",
+    "description": "Libellé pour l'espace local après l'image"
+  },
+  "decreaseGap": {
+    "message": "Réduire l'espace",
+    "description": "Info-bulle pour réduire l'espace"
+  },
+  "increaseGap": {
+    "message": "Augmenter l'espace",
+    "description": "Info-bulle pour augmenter l'espace"
+  },
+  "gapLabel": {
+    "message": "Espace",
+    "description": "Libellé pour l'espace résultant"
+  },
+  "resetLocalGap": {
+    "message": "RAZ espace local",
+    "description": "Info-bulle pour réinitialiser l'espace local"
+  },
+  "processing": {
+    "message": "Traitement...",
+    "description": "Texte du bouton pendant le traitement"
+  },
+  "stitchAndDownload": {
+    "message": "Fusionner et télécharger",
+    "description": "Texte du bouton de téléchargement final"
+  },
+  "stitchBtnTitle": {
+    "message": "Fusionner les images",
+    "description": "Info-bulle pour le bouton de fusion intégré à Twitter"
+  },
+  "language": {
+    "message": "Langue",
+    "description": "Libellé du sélecteur de langue"
+  },
+  "sourcedFrom": {
+    "message": "de",
+    "description": "Utilisé dans le badge source"
+  },
+  "splitImage": {
+    "message": "Diviser l'image",
+    "description": "Texte du bouton diviser"
+  },
+  "downloadAll": {
+    "message": "Tout télécharger",
+    "description": "Texte du bouton tout télécharger"
+  },
+  "uploadImage": {
+    "message": "Uploader une image",
+    "description": "Texte du bouton uploader image"
+  },
+  "selectImageTip": {
+    "message": "Sélectionnez une image à diviser",
+    "description": "Conseil pour sélectionner une image"
+  },
+  "changeImage": {
+    "message": "Changer",
+    "description": "Texte du bouton changer image"
+  },
+  "gapRemoval": {
+    "message": "Suppression d'espace",
+    "description": "Libellé de suppression d'espace"
+  },
+  "gapRemovalTip": {
+    "message": "Pixels à vérifier et supprimer entre les images divisées.",
+    "description": "Description de la suppression d'espace"
+  },
+  "rowCount": {
+    "message": "Lignes (N)",
+    "description": "Libellé du nombre de lignes"
+  },
+  "colCount": {
+    "message": "Colonnes (N)",
+    "description": "Libellé du nombre de colonnes"
+  },
+  "sourceImage": {
+    "message": "Source",
+    "description": "Libellé de l'image source"
+  },
+  "splitResult": {
+    "message": "Résultat",
+    "description": "Libellé du résultat de division"
+  },
+  "formatLabel": {
+    "message": "Format",
+    "description": "Libellé du format d'exportation"
+  },
+  "zipLabel": {
+    "message": "Télécharger en Zip",
+    "description": "Libellé du commutateur de téléchargement Zip"
+  },
+  "zipTip": {
+    "message": "Regrouper toutes les images dans un seul fichier zip",
+    "description": "Description de la fonction Zip"
+  },
+  "restore": {
+    "message": "Restaurer",
+    "description": "Texte du bouton restaurer"
+  },
+  "twitterOptimize": {
+    "message": "Optimiser pour Twitter (X)",
+    "description": "Libellé du commutateur d'optimisation Twitter"
+  },
+  "twitterOptimizeTip": {
+    "message": "S'adapte automatiquement au ratio de la grille Twitter pour éviter le recadrage de l'aperçu et assurer un effet de fusion transparent.",
+    "description": "Conseil d'optimisation Twitter"
+  },
+  "settings": {
+    "message": "Paramètres",
+    "description": "Titre de la section paramètres généraux"
+  },
+  "modeStitch": {
+    "message": "Fusionner",
+    "description": "Bouton mode fusionner"
+  },
+  "modeSplit": {
+    "message": "Diviser",
+    "description": "Bouton mode diviser"
+  }
+}

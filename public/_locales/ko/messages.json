@@ -1,0 +1,238 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Stitcher",
+    "description": "확장 프로그램 이름"
+  },
+  "appDesc": {
+    "message": "트위터(X) 퍼즐 복원 도우미, 트위터 다중 이미지를 클릭 한 번으로 매끄럽게 연결합니다.",
+    "description": "확장 프로그램 설명"
+  },
+  "previewTitle": {
+    "message": "연결 미리보기",
+    "description": "미리보기 창 제목"
+  },
+  "splitterTitle": {
+    "message": "이미지 분할",
+    "description": "분할 창 제목"
+  },
+  "removeImage": {
+    "message": "이미지 제거",
+    "description": "이미지 제거 툴팁"
+  },
+  "fromArtist": {
+    "message": "출처",
+    "description": "작성자 접두사"
+  },
+  "tweetId": {
+    "message": "트윗 ID",
+    "description": "트윗 ID 라벨"
+  },
+  "stitching": {
+    "message": "연결 중...",
+    "description": "미리보기 생성 중 로딩 텍스트"
+  },
+  "preparingHighRes": {
+    "message": "고해상도 리소스 준비 중...",
+    "description": "고해상도 이미지 로딩 텍스트"
+  },
+  "reset": {
+    "message": "초기화",
+    "description": "초기화 버튼 텍스트"
+  },
+  "layoutScheme": {
+    "message": "레이아웃",
+    "description": "레이아웃 섹션 헤더"
+  },
+  "layoutGrid": {
+    "message": "격자 (2x2)",
+    "description": "격자 레이아웃 라벨"
+  },
+  "layoutTShape": {
+    "message": "T형 (왼쪽)",
+    "description": "T형 레이아웃 라벨"
+  },
+  "layoutHorizontal": {
+    "message": "가로",
+    "description": "가로 레이아웃 라벨"
+  },
+  "layoutVertical": {
+    "message": "세로",
+    "description": "세로 레이아웃 라벨"
+  },
+  "exportSettings": {
+    "message": "내보내기 설정",
+    "description": "내보내기 설정 섹션 헤더"
+  },
+  "backgroundColor": {
+    "message": "배경색",
+    "description": "배경색 라벨"
+  },
+  "transparent": {
+    "message": "투명",
+    "description": "투명 배경 옵션"
+  },
+  "white": {
+    "message": "흰색",
+    "description": "흰색 배경 옵션"
+  },
+  "black": {
+    "message": "검은색",
+    "description": "검은색 배경 옵션"
+  },
+  "globalGap": {
+    "message": "전체 간격",
+    "description": "전체 간격 라벨"
+  },
+  "resetToZero": {
+    "message": "0으로 초기화",
+    "description": "간격 초기화 툴팁"
+  },
+  "imageSorting": {
+    "message": "이미지 정렬",
+    "description": "이미지 정렬 섹션 헤더"
+  },
+  "localGap": {
+    "message": "개별 간격 조정",
+    "description": "이미지 정렬 부제"
+  },
+  "imageLabel": {
+    "message": "이미지",
+    "description": "이미지 라벨"
+  },
+  "moveUp": {
+    "message": "위로 이동",
+    "description": "위로 이동 툴팁"
+  },
+  "moveDown": {
+    "message": "아래로 이동",
+    "description": "아래로 이동 툴팁"
+  },
+  "hideImage": {
+    "message": "이미지 숨기기",
+    "description": "이미지 숨기기 툴팁"
+  },
+  "showImage": {
+    "message": "이미지 표시",
+    "description": "이미지 표시 툴팁"
+  },
+  "afterGap": {
+    "message": "뒤쪽 간격",
+    "description": "이미지 뒤쪽 개별 간격 라벨"
+  },
+  "decreaseGap": {
+    "message": "간격 줄이기",
+    "description": "간격 줄이기 툴팁"
+  },
+  "increaseGap": {
+    "message": "간격 늘리기",
+    "description": "간격 늘리기 툴팁"
+  },
+  "gapLabel": {
+    "message": "간격",
+    "description": "최종 간격 라벨"
+  },
+  "resetLocalGap": {
+    "message": "개별 간격 초기화",
+    "description": "개별 간격 초기화 툴팁"
+  },
+  "processing": {
+    "message": "처리 중...",
+    "description": "처리 중 버튼 텍스트"
+  },
+  "stitchAndDownload": {
+    "message": "연결 및 다운로드",
+    "description": "최종 다운로드 버튼 텍스트"
+  },
+  "stitchBtnTitle": {
+    "message": "이미지 연결",
+    "description": "트위터에 삽입된 연결 버튼 툴팁"
+  },
+  "language": {
+    "message": "언어",
+    "description": "언어 선택기 라벨"
+  },
+  "sourcedFrom": {
+    "message": "출처",
+    "description": "출처 라벨에 사용"
+  },
+  "splitImage": {
+    "message": "이미지 분할",
+    "description": "분할 버튼 텍스트"
+  },
+  "downloadAll": {
+    "message": "모두 다운로드",
+    "description": "모두 다운로드 버튼 텍스트"
+  },
+  "uploadImage": {
+    "message": "이미지 업로드",
+    "description": "이미지 업로드 버튼 텍스트"
+  },
+  "selectImageTip": {
+    "message": "분할할 이미지를 선택하세요",
+    "description": "이미지 선택 팁"
+  },
+  "changeImage": {
+    "message": "변경",
+    "description": "이미지 변경 버튼 텍스트"
+  },
+  "gapRemoval": {
+    "message": "간격 제거",
+    "description": "간격 제거 라벨"
+  },
+  "gapRemovalTip": {
+    "message": "분할된 이미지 사이의 간격을 확인하고 제거합니다.",
+    "description": "간격 제거 설명"
+  },
+  "rowCount": {
+    "message": "행 수 (N)",
+    "description": "행 수 라벨"
+  },
+  "colCount": {
+    "message": "열 수 (N)",
+    "description": "열 수 라벨"
+  },
+  "sourceImage": {
+    "message": "원본",
+    "description": "원본 이미지 라벨"
+  },
+  "splitResult": {
+    "message": "분할 결과",
+    "description": "분할 결과 라벨"
+  },
+  "formatLabel": {
+    "message": "내보내기 형식",
+    "description": "내보내기 형식 라벨"
+  },
+  "zipLabel": {
+    "message": "Zip으로 다운로드",
+    "description": "Zip 다운로드 토글 라벨"
+  },
+  "zipTip": {
+    "message": "모든 이미지를 하나의 Zip 파일로 압축합니다",
+    "description": "Zip 기능 설명"
+  },
+  "restore": {
+    "message": "복원",
+    "description": "복원 버튼 텍스트"
+  },
+  "twitterOptimize": {
+    "message": "트위터 (X) 최적화",
+    "description": "트위터 최적화 토글 라벨"
+  },
+  "twitterOptimizeTip": {
+    "message": "트위터 그리드 비율에 자동으로 맞춰 미리보기 잘림을 방지하고 매끄러운 연결 효과를 보장합니다.",
+    "description": "트위터 최적화 팁"
+  },
+  "settings": {
+    "message": "설정",
+    "description": "일반 설정 섹션 제목"
+  },
+  "modeStitch": {
+    "message": "연결",
+    "description": "연결 모드 버튼"
+  },
+  "modeSplit": {
+    "message": "분할",
+    "description": "분할 모드 버튼"
+  }
+}

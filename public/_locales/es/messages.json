@@ -1,0 +1,238 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Stitcher",
+    "description": "Nombre de la extensión"
+  },
+  "appDesc": {
+    "message": "Asistente de restauración de puzles de Twitter (X), une múltiples imágenes de Twitter sin problemas con un solo clic.",
+    "description": "Descripción de la extensión"
+  },
+  "previewTitle": {
+    "message": "Vista previa de unión",
+    "description": "Título de la ventana de vista previa"
+  },
+  "splitterTitle": {
+    "message": "Divisor de imágenes",
+    "description": "Título de la ventana del divisor"
+  },
+  "removeImage": {
+    "message": "Eliminar imagen",
+    "description": "Información sobre herramientas para eliminar imagen"
+  },
+  "fromArtist": {
+    "message": "De",
+    "description": "Prefijo de autor"
+  },
+  "tweetId": {
+    "message": "ID del Tweet",
+    "description": "Etiqueta para ID del Tweet"
+  },
+  "stitching": {
+    "message": "Uniendo...",
+    "description": "Texto de carga durante la generación de vista previa"
+  },
+  "preparingHighRes": {
+    "message": "Preparando recursos de alta resolución...",
+    "description": "Texto de carga para imágenes de alta resolución"
+  },
+  "reset": {
+    "message": "Restablecer",
+    "description": "Texto del botón Restablecer"
+  },
+  "layoutScheme": {
+    "message": "Esquema de diseño",
+    "description": "Encabezado de la sección de diseño"
+  },
+  "layoutGrid": {
+    "message": "Cuadrícula 2x2",
+    "description": "Etiqueta de diseño de cuadrícula 2x2"
+  },
+  "layoutTShape": {
+    "message": "Forma de T",
+    "description": "Etiqueta de diseño en forma de T"
+  },
+  "layoutHorizontal": {
+    "message": "Horizontal",
+    "description": "Etiqueta de diseño horizontal"
+  },
+  "layoutVertical": {
+    "message": "Vertical",
+    "description": "Etiqueta de diseño vertical"
+  },
+  "exportSettings": {
+    "message": "Configuración de exportación",
+    "description": "Encabezado de la sección de configuración de exportación"
+  },
+  "backgroundColor": {
+    "message": "Color de fondo",
+    "description": "Etiqueta para color de fondo"
+  },
+  "transparent": {
+    "message": "Trans.",
+    "description": "Opción de fondo transparente"
+  },
+  "white": {
+    "message": "Blanco",
+    "description": "Opción de fondo blanco"
+  },
+  "black": {
+    "message": "Negro",
+    "description": "Opción de fondo negro"
+  },
+  "globalGap": {
+    "message": "Espacio global",
+    "description": "Etiqueta para espacio global"
+  },
+  "resetToZero": {
+    "message": "Restablecer a 0",
+    "description": "Información sobre herramientas para restablecer el espacio"
+  },
+  "imageSorting": {
+    "message": "Orden de imágenes",
+    "description": "Encabezado de la sección de orden de imágenes"
+  },
+  "localGap": {
+    "message": "Ajustar espacio local",
+    "description": "Subtítulo para orden de imágenes"
+  },
+  "imageLabel": {
+    "message": "Imagen",
+    "description": "Etiqueta para imagen"
+  },
+  "moveUp": {
+    "message": "Mover arriba",
+    "description": "Información sobre herramientas para mover arriba"
+  },
+  "moveDown": {
+    "message": "Mover abajo",
+    "description": "Información sobre herramientas para mover abajo"
+  },
+  "hideImage": {
+    "message": "Ocultar imagen",
+    "description": "Información sobre herramientas para ocultar imagen"
+  },
+  "showImage": {
+    "message": "Mostrar imagen",
+    "description": "Información sobre herramientas para mostrar imagen"
+  },
+  "afterGap": {
+    "message": "Espacio después",
+    "description": "Etiqueta para espacio local después de la imagen"
+  },
+  "decreaseGap": {
+    "message": "Disminuir espacio",
+    "description": "Información sobre herramientas para disminuir espacio"
+  },
+  "increaseGap": {
+    "message": "Aumentar espacio",
+    "description": "Información sobre herramientas para aumentar espacio"
+  },
+  "gapLabel": {
+    "message": "Espacio",
+    "description": "Etiqueta para el espacio resultante"
+  },
+  "resetLocalGap": {
+    "message": "Restablecer espacio local",
+    "description": "Información sobre herramientas para restablecer espacio local"
+  },
+  "processing": {
+    "message": "Procesando...",
+    "description": "Texto del botón durante el procesamiento"
+  },
+  "stitchAndDownload": {
+    "message": "Unir y descargar",
+    "description": "Texto del botón de descarga final"
+  },
+  "stitchBtnTitle": {
+    "message": "Unir imágenes",
+    "description": "Información sobre herramientas para el botón de unión en Twitter"
+  },
+  "language": {
+    "message": "Idioma",
+    "description": "Etiqueta del selector de idioma"
+  },
+  "sourcedFrom": {
+    "message": "de",
+    "description": "Usado en la insignia de fuente"
+  },
+  "splitImage": {
+    "message": "Dividir imagen",
+    "description": "Texto del botón dividir"
+  },
+  "downloadAll": {
+    "message": "Descargar todo",
+    "description": "Texto del botón descargar todo"
+  },
+  "uploadImage": {
+    "message": "Subir imagen",
+    "description": "Texto del botón subir imagen"
+  },
+  "selectImageTip": {
+    "message": "Selecciona una imagen para dividir",
+    "description": "Consejo para seleccionar imagen"
+  },
+  "changeImage": {
+    "message": "Cambiar",
+    "description": "Texto del botón cambiar imagen"
+  },
+  "gapRemoval": {
+    "message": "Eliminación de espacios",
+    "description": "Etiqueta de eliminación de espacios"
+  },
+  "gapRemovalTip": {
+    "message": "Píxeles para verificar y eliminar entre imágenes divididas.",
+    "description": "Descripción de eliminación de espacios"
+  },
+  "rowCount": {
+    "message": "Filas (N)",
+    "description": "Etiqueta de número de filas"
+  },
+  "colCount": {
+    "message": "Columnas (N)",
+    "description": "Etiqueta de número de columnas"
+  },
+  "sourceImage": {
+    "message": "Fuente",
+    "description": "Etiqueta de imagen fuente"
+  },
+  "splitResult": {
+    "message": "Resultado",
+    "description": "Etiqueta de resultado de división"
+  },
+  "formatLabel": {
+    "message": "Formato",
+    "description": "Etiqueta de formato de exportación"
+  },
+  "zipLabel": {
+    "message": "Descargar como Zip",
+    "description": "Etiqueta del interruptor de descarga Zip"
+  },
+  "zipTip": {
+    "message": "Empaqueta todas las imágenes en un solo archivo zip",
+    "description": "Descripción de la función Zip"
+  },
+  "restore": {
+    "message": "Restaurar",
+    "description": "Texto del botón restaurar"
+  },
+  "twitterOptimize": {
+    "message": "Optimizar para Twitter (X)",
+    "description": "Etiqueta del interruptor de optimización de Twitter"
+  },
+  "twitterOptimizeTip": {
+    "message": "Se adapta automáticamente a la proporción de la cuadrícula de Twitter para evitar recortes en la vista previa y asegurar un efecto de unión perfecto.",
+    "description": "Consejo de optimización de Twitter"
+  },
+  "settings": {
+    "message": "Ajustes",
+    "description": "Título de la sección de configuración general"
+  },
+  "modeStitch": {
+    "message": "Unir",
+    "description": "Botón de modo unir"
+  },
+  "modeSplit": {
+    "message": "Dividir",
+    "description": "Botón de modo dividir"
+  }
+}
