@@ -606,6 +606,9 @@ export function Sidebar({
                         { value: "zh_TW", label: "繁體中文" },
                         { value: "en", label: "English" },
                         { value: "ja", label: "日本語" },
+                        { value: "ko", label: "한국어" },
+                        { value: "es", label: "Español" },
+                        { value: "fr", label: "Français" },
                       ]}
                       style={{ width: "90px" }}
                       direction="top"

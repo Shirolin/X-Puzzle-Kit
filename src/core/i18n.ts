@@ -2,12 +2,18 @@ import langEn from "../../public/_locales/en/messages.json";
 import langZhCN from "../../public/_locales/zh_CN/messages.json";
 import langZhTW from "../../public/_locales/zh_TW/messages.json";
 import langJa from "../../public/_locales/ja/messages.json";
+import langKo from "../../public/_locales/ko/messages.json";
+import langEs from "../../public/_locales/es/messages.json";
+import langFr from "../../public/_locales/fr/messages.json";
 
 const locales: Record<string, Record<string, { message: string }>> = {
   en: langEn,
   zh_CN: langZhCN,
   zh_TW: langZhTW,
   ja: langJa,
+  ko: langKo,
+  es: langEs,
+  fr: langFr,
 };
 
 let currentMessages: Record<string, { message: string }> | null = null;
@@ -20,6 +26,9 @@ function resolveAutoLanguage(): string {
   if (lang.startsWith("zh-cn")) return "zh_CN";
   if (lang.startsWith("zh")) return "zh_TW";
   if (lang.startsWith("ja")) return "ja";
+  if (lang.startsWith("ko")) return "ko";
+  if (lang.startsWith("es")) return "es";
+  if (lang.startsWith("fr")) return "fr";
   return "en";
 }
 
