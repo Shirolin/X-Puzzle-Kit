@@ -108,59 +108,66 @@
   background-color: var(--color-background);
 }
 
+/* Button Refinement - Apple Style */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  border-radius: var(--radius-md);
+  padding: 0.6rem 1.25rem;
+  border-radius: 99px; /* Rounded pill style */
   font-weight: 600;
   font-size: 0.9375rem;
+  letter-spacing: -0.01em;
   cursor: pointer;
   transition: all var(--transition-fast);
   border: none;
   background-color: var(--color-surface-soft);
-  color: white;
+  color: var(--color-text);
   user-select: none;
+  text-decoration: none;
 }
 
 .btn:hover {
-  filter: brightness(1.15);
-  transform: scale(1.02);
+  filter: brightness(1.05); /* Subtle change */
+  transform: scale(1.01);
 }
 
 .btn:active {
-  transform: scale(0.97);
-  opacity: 0.8;
+  transform: scale(0.96);
+  opacity: 0.9;
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background-color: #007aff; /* Apple Blue */
   color: white;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.1);
+  background-color: #0071eb; /* Slightly darker */
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.4);
 }
 
-.btn-cta {
-  background-color: var(--color-primary);
-  color: white;
+.btn-secondary {
+  background-color: rgba(120, 120, 128, 0.16);
+  color: var(--color-primary);
 }
 
-.btn-cta:hover {
-  box-shadow: 0 0 20px rgba(0, 122, 255, 0.4);
+[data-theme="dark"] .btn-secondary {
+  background-color: rgba(120, 120, 128, 0.24);
+  color: #0a84ff; /* Lighter blue for dark mode */
 }
 
 .btn-ghost {
   background: transparent;
   color: var(--color-text-muted);
+  border-radius: var(--radius-md); /* Keep ghost buttons squarer if needed, or pill */
 }
 
 .btn-ghost:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  color: white;
+  background-color: rgba(120, 120, 128, 0.1);
+  color: var(--color-text);
 }
 
 .card {
@@ -300,12 +307,12 @@
   box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
 }
 
-/* Switch Styling Refinement */
+/* Switch Styling Refinement - iOS Style */
 .switch {
   position: relative;
   display: inline-block;
-  width: 38px;
-  height: 22px;
+  width: 44px; /* Increased width for better touch target */
+  height: 24px; /* Slightly taller */
 }
 
 .switch input {
@@ -321,30 +328,39 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--color-border);
-  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 20px;
+  background-color: rgba(120, 120, 128, 0.32); /* iOS default off state */
+  transition: .25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 99px;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .slider {
+   background-color: rgba(120, 120, 128, 0.16);
+}
+
+.switch:hover .slider {
+   background-color: rgba(120, 120, 128, 0.4);
 }
 
 input:checked+.slider {
-  background-color: var(--color-primary);
+  background-color: #34c759; /* iOS Green */
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   left: 2px;
   bottom: 2px;
   background-color: white;
-  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: .25s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0,0,0,0.16), 0 3px 1px rgba(0,0,0,0.1); /* iOS shadow */
 }
 
 input:checked+.slider:before {
-  transform: translateX(16px);
+  transform: translateX(20px);
 }
 
 /* 动画和工具类 */

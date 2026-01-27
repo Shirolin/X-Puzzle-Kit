@@ -105,39 +105,39 @@ export function SplitterControl({
 
        {/* 针对推特选项区块 */}
        <section className="section-block">
+         <h3 className="section-header">{t("twitterOptimize")}</h3>
          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
-                  <span style={{ fontSize: "0.75rem", color: "white", fontWeight: 600 }}>{t("twitterOptimize")}</span>
-                  <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", lineHeight: 1.2 }}>{t("twitterOptimizeTip")}</span>
-              </div>
-              <label className="switch" style={{ position: "relative", minWidth: "30px", height: "16px" }}>
-                  <input type="checkbox" checked={isTwitterOptimized} onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)} style={{ opacity: 0, width: 0, height: 0 }} />
-                  <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isTwitterOptimized ? "var(--color-primary)" : "var(--color-surface)", transition: ".3s", borderRadius: "20px" }}></span>
-                  <span style={{ position: "absolute", content: '""', height: "10px", width: "10px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isTwitterOptimized ? "translateX(14px)" : "translateX(0)" }}></span>
+              <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", lineHeight: 1.3, flex: 1 }}>{t("twitterOptimizeTip")}</span>
+              <label className="switch">
+                  <input type="checkbox" checked={isTwitterOptimized} onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)} />
+                  <span className="slider"></span>
               </label>
          </div>
        </section>
 
        {/* 导出设置区块 */}
        <section className="section-block">
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.375rem" }}>
+          <h3 className="section-header">{t("exportSettings")}</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                   <span style={{ fontSize: "0.7rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("formatLabel")}</span>
-                  <div style={{ display: "flex", background: "rgba(255, 255, 255, 0.08)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
+                  <div style={{ display: "flex", background: "var(--color-surface-soft)", borderRadius: "var(--radius-sm)", padding: "2px" }}>
                       {(["png", "jpg", "webp"] as const).map(fmt => (
-                          <button key={fmt} onClick={() => onExportFormatChange(fmt)} style={{ border: "none", background: exportFormat === fmt ? "rgba(255, 255, 255, 0.15)" : "transparent", color: "white", fontSize: "10px", padding: "2px 6px", borderRadius: "3px", cursor: "pointer", fontWeight: 800, transition: "all var(--transition-fast)" }}>{fmt.toUpperCase()}</button>
+                          <button key={fmt} onClick={() => onExportFormatChange(fmt)} style={{ border: "none", background: exportFormat === fmt ? "var(--color-background)" : "transparent", color: exportFormat === fmt ? "var(--color-text)" : "var(--color-text-muted)", boxShadow: exportFormat === fmt ? "0 1px 3px rgba(0,0,0,0.1)" : "none", fontSize: "10px", padding: "2px 8px", borderRadius: "6px", cursor: "pointer", fontWeight: 700, transition: "all var(--transition-fast)" }}>{fmt.toUpperCase()}</button>
                       ))}
                   </div>
                </div>
+               
+               <div style={{ height: "1px", background: "var(--color-border)", opacity: 0.5 }}></div>
+
                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem" }}>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
-                        <span style={{ fontSize: "0.75rem", color: "white", fontWeight: 600 }}>{t("zipLabel")}</span>
+                        <span style={{ fontSize: "0.75rem", color: "var(--color-text)", fontWeight: 600 }}>{t("zipLabel")}</span>
                         <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", lineHeight: 1.2 }}>{t("zipTip")}</span>
                     </div>
-                    <label className="switch" style={{ position: "relative", minWidth: "30px", height: "16px" }}>
-                        <input type="checkbox" checked={isZip} onChange={(e) => onIsZipChange((e.target as HTMLInputElement).checked)} style={{ opacity: 0, width: 0, height: 0 }} />
-                        <span className="slider round" style={{ position: "absolute", cursor: "pointer", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: isZip ? "var(--color-primary)" : "var(--color-surface)", transition: ".3s", borderRadius: "20px" }}></span>
-                        <span style={{ position: "absolute", content: '""', height: "10px", width: "10px", left: "3px", bottom: "3px", backgroundColor: "white", transition: ".3s", borderRadius: "50%", transform: isZip ? "translateX(14px)" : "translateX(0)" }}></span>
+                    <label className="switch">
+                        <input type="checkbox" checked={isZip} onChange={(e) => onIsZipChange((e.target as HTMLInputElement).checked)} />
+                        <span className="slider"></span>
                     </label>
                </div>
           </div>
