@@ -92,7 +92,7 @@
     "description": "图片排序部分标题"
   },
   "localGap": {
-    "message": "可调节局部间距",
+    "message": "局部间距",
     "description": "图片排序副标题"
   },
   "imageLabel": {
@@ -128,7 +128,7 @@
     "description": "增大间距工具提示"
   },
   "gapLabel": {
-    "message": "缝隙",
+    "message": "间距",
     "description": "最终缝隙标签"
   },
   "resetLocalGap": {
@@ -198,14 +198,6 @@
   "splitResult": {
     "message": "拆分结果",
     "description": "拆分结果标签"
-  },
-  "exportFormat": {
-    "message": "导出格式",
-    "description": "导出格式标签"
-  },
-  "zipDownload": {
-    "message": "打包下载 (Zip)",
-    "description": "Zip下载开关标签"
   },
   "formatLabel": {
     "message": "导出格式",

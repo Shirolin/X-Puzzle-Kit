@@ -92,7 +92,7 @@
     "description": "圖片排序部分標題"
   },
   "localGap": {
-    "message": "可調節局部間距",
+    "message": "局部間距",
     "description": "圖片排序副標題"
   },
   "imageLabel": {
@@ -128,7 +128,7 @@
     "description": "增大間距工具提示"
   },
   "gapLabel": {
-    "message": "縫隙",
+    "message": "間距",
     "description": "最終縫隙標籤"
   },
   "resetLocalGap": {
@@ -216,7 +216,7 @@
     "description": "恢復拆分前狀態按鈕"
   },
   "twitterOptimize": {
-    "message": "推特 (X) 布局優化",
+    "message": "推特 (X) 佈局優化",
     "description": "推特布局優化開關標籤"
   },
   "twitterOptimizeTip": {
