@@ -214,5 +214,13 @@
   "twitterOptimizeTip": {
     "message": "Twitterの2/3/4枚投稿時の比率に合わせて自動的にトリミングし、シームレスな表示を実現します。",
     "description": "Twitter最適化の説明"
+  },
+  "modeStitch": {
+    "message": "結合",
+    "description": "結合モードボタン"
+  },
+  "modeSplit": {
+    "message": "分割",
+    "description": "分割モードボタン"
   }
 }

@@ -214,5 +214,13 @@
   "twitterOptimizeTip": {
     "message": "自動裁切原圖以适配推特 2/3/4 圖展示比例，確保無縫銜接。",
     "description": "推特布局優化說明"
+  },
+  "modeStitch": {
+    "message": "拼接",
+    "description": "拼接模式按鈕"
+  },
+  "modeSplit": {
+    "message": "拆分",
+    "description": "拆分模式按鈕"
   }
 }

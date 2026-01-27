@@ -214,5 +214,13 @@
   "twitterOptimizeTip": {
     "message": "Auto-crop the source to fit Twitter's 2/3/4 grid ratios for a seamless look.",
     "description": "Twitter optimization tip"
+  },
+  "modeStitch": {
+    "message": "Stitch",
+    "description": "Stitch mode button"
+  },
+  "modeSplit": {
+    "message": "Split",
+    "description": "Split mode button"
   }
 }

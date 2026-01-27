@@ -110,6 +110,8 @@ export function App({ task, onClose }: AppProps) {
     });
   }, [lang, outputFormat, backgroundColor, splitConfig, isZip, isTwitterOptimized, isLangLoaded, theme]);
 
+
+
   // Sync isThemeDark with theme and system preference
   useEffect(() => {
     const checkDark = () => {
@@ -314,11 +316,11 @@ export function App({ task, onClose }: AppProps) {
             <div className="mode-switcher">
               <button onClick={() => setMode("stitch")} className={`mode-btn ${mode === "stitch" ? "active" : ""}`}>
                 <Images size={13} style={{ color: mode === "stitch" ? "var(--color-primary)" : "currentColor" }} />
-                <span>Stitch</span>
+                <span>{t("modeStitch")}</span>
               </button>
               <button onClick={() => setMode("split")} className={`mode-btn ${mode === "split" ? "active" : ""}`}>
                 <Scissors size={13} style={{ color: mode === "split" ? "var(--color-primary)" : "currentColor" }} />
-                <span>Split</span>
+                <span>{t("modeSplit")}</span>
               </button>
             </div>
 
@@ -396,7 +398,7 @@ export function App({ task, onClose }: AppProps) {
             backgroundColor={backgroundColor}
             setBackgroundColor={setBackgroundColor}
             lang={lang}
-            setLang={setLang}
+            setLang={(l) => { setLanguage(l); setLang(l); }}
             hasSplitSource={!!splitSourceBitmap}
             handleStitch={handleStitch}
             loading={loading}
