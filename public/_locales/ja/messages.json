@@ -11,6 +11,14 @@
     "message": "結合プレビュー",
     "description": "プレビューウィンドウのタイトル"
   },
+  "splitterTitle": {
+    "message": "画像分割",
+    "description": "分割ウィンドウのタイトル"
+  },
+  "removeImage": {
+    "message": "画像を削除",
+    "description": "画像削除のツールチップ"
+  },
   "fromArtist": {
     "message": "作成者",
     "description": "作者プレフィックス"
@@ -214,6 +222,10 @@
   "twitterOptimizeTip": {
     "message": "Twitterの2/3/4枚投稿時の比率に合わせて自動的にトリミングし、シームレスな表示を実現します。",
     "description": "Twitter最適化の説明"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "一般設定セクションのヘッダー"
   },
   "modeStitch": {
     "message": "結合",

@@ -44,14 +44,20 @@ export function SplitPreview({ source, blobs, config, aspectRatio }: SplitPrevie
   }, [blobs]);
 
   if (blobs.length === 0) {
-      if (!sourceUrl) return null;
+      if (!sourceUrl || !source) return null;
       return (
-         <div style={{ borderRadius: "var(--radius-md)", overflow: "hidden", boxShadow: "0 32px 80px rgba(0,0,0,0.9)" }}>
-             <img src={sourceUrl} style={{ display: "block", maxWidth: "100%", maxHeight: "100%" }} />
+         <div style={{ 
+             width: source.width, 
+             height: source.height, 
+             borderRadius: "var(--radius-md)", 
+             overflow: "hidden", 
+             boxShadow: "0 32px 80px rgba(0,0,0,0.9)",
+             background: "var(--color-card-bg)"
+         }}>
+             <img src={sourceUrl} style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
          </div>
       );
   }
-
 
   return (
     <div style={{ marginTop: "1.5rem" }}>
@@ -63,9 +69,8 @@ export function SplitPreview({ source, blobs, config, aspectRatio }: SplitPrevie
         style={{
           display: "grid",
           gap: "8px", 
-          width: "100%",
-          maxWidth: aspectRatio && aspectRatio < 1 ? `${Math.min(100, aspectRatio * 100)}%` : "100%", 
-          aspectRatio: aspectRatio ? `${aspectRatio}` : "auto",
+          width: source ? source.width : "100%", 
+          // aspectRatio: aspectRatio ? `${aspectRatio}` : "auto", // Remove aspect ratio constraint, let content drive it or fixed width drive it
           margin: "0 auto",
           ...getGridStyle(config),
         }}
@@ -99,7 +104,7 @@ export function SplitPreview({ source, blobs, config, aspectRatio }: SplitPrevie
               style={{
                 width: "100%",
                 height: "100%",
-                objectFit: "contain", // Ensure full image is visible
+                objectFit: "contain",
                 display: "block"
               }}
             />

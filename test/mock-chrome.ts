@@ -67,23 +67,47 @@ window.chrome = {
         keys: string | string[] | { [key: string]: any } | null,
       ): Promise<{ [key: string]: any }> => {
         return new Promise((resolve) => {
-          console.log("[TestEnv] Mock storage.local.get:", keys);
           const result: { [key: string]: any } = {};
-          if (
-            typeof keys === "object" &&
-            keys !== null &&
-            !Array.isArray(keys)
-          ) {
-            // Return defaults if keys provided as object
-            Object.assign(result, keys);
+
+          // Load all form localStorage first
+          const stored = JSON.parse(
+            localStorage.getItem("mock-chrome-storage") || "{}",
+          );
+
+          if (keys === null) {
+            resolve(stored);
+            return;
           }
-          // In this simple mock, we just return what asked (defaults) or empty
+
+          if (typeof keys === "string") {
+            result[keys] = stored[keys];
+          } else if (Array.isArray(keys)) {
+            keys.forEach((k) => {
+              result[k] = stored[k];
+            });
+          } else if (typeof keys === "object") {
+            // Keys with defaults
+            Object.keys(keys).forEach((k) => {
+              result[k] = stored[k] !== undefined ? stored[k] : keys[k];
+            });
+          }
+          console.log(
+            "[TestEnv] Mock storage.local.get:",
+            keys,
+            "Result:",
+            result,
+          );
           resolve(result);
         });
       },
       set: (items: { [key: string]: any }): Promise<void> => {
         return new Promise((resolve) => {
           console.log("[TestEnv] Mock storage.local.set:", items);
+          const stored = JSON.parse(
+            localStorage.getItem("mock-chrome-storage") || "{}",
+          );
+          const updated = { ...stored, ...items };
+          localStorage.setItem("mock-chrome-storage", JSON.stringify(updated));
           resolve();
         });
       },

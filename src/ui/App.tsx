@@ -73,21 +73,37 @@ export function App({ task, onClose }: AppProps) {
       "x-puzzle-stitcher-format": "png",
       "x-puzzle-stitcher-bg": "transparent",
       "x-puzzle-stitcher-theme": "auto",
-      "splitSettings": null
+      "x-puzzle-stitcher-split-options": null
     }).then((res) => {
       setLang(res["x-puzzle-stitcher-lang"] as string);
       setOutputFormat(res["x-puzzle-stitcher-format"] as any);
       setBackgroundColor(res["x-puzzle-stitcher-bg"] as any);
       setTheme(res["x-puzzle-stitcher-theme"] as any);
       
-      const splitSettings = res.splitSettings as any;
-      if (splitSettings) {
-        setSplitConfig(prev => ({...prev, ...splitSettings}));
-        if (typeof splitSettings.isZip === 'boolean') setIsZip(splitSettings.isZip);
-        if (typeof splitSettings.isTwitterOptimized === 'boolean') setIsTwitterOptimized(splitSettings.isTwitterOptimized);
+      const splitOpts = res["x-puzzle-stitcher-split-options"] as any;
+      if (splitOpts) {
+        if (splitOpts.format) {
+            setSplitConfig(prev => ({ ...prev, format: splitOpts.format }));
+        }
+        if (typeof splitOpts.isZip === 'boolean') setIsZip(splitOpts.isZip);
+        if (typeof splitOpts.isTwitterOptimized === 'boolean') setIsTwitterOptimized(splitOpts.isTwitterOptimized);
       }
 
-      setLanguage(res["x-puzzle-stitcher-lang"] as string).then(() => {
+      setLanguage(res["x-puzzle-stitcher-lang"] as string)
+        .then(() => {
+          setIsLangLoaded(true);
+          setLoading(false);
+        })
+        .catch(err => {
+          console.error("Failed to load language:", err);
+          // Fallback to ensure we still save future settings even if lang load fails partially
+          setIsLangLoaded(true);
+          setLoading(false);
+        });
+    }).catch(err => {
+      console.error("Failed to load settings from storage:", err);
+      // Even if storage load fails, we should enable UI
+      setLanguage("auto").finally(() => {
         setIsLangLoaded(true);
         setLoading(false);
       });
@@ -97,18 +113,23 @@ export function App({ task, onClose }: AppProps) {
   // Save Settings
   useEffect(() => {
     if (!isLangLoaded) return;
-    chrome.storage.local.set({
+    
+    const settingsToSave = {
       "x-puzzle-stitcher-lang": lang,
       "x-puzzle-stitcher-format": outputFormat,
       "x-puzzle-stitcher-bg": backgroundColor,
       "x-puzzle-stitcher-theme": theme,
-      "splitSettings": {
-        ...splitConfig,
+      "x-puzzle-stitcher-split-options": {
+        format: splitConfig.format,
         isZip,
         isTwitterOptimized
       }
+    };
+
+    chrome.storage.local.set(settingsToSave).catch(err => {
+      console.error("Failed to save settings:", err);
     });
-  }, [lang, outputFormat, backgroundColor, splitConfig, isZip, isTwitterOptimized, isLangLoaded, theme]);
+  }, [lang, outputFormat, backgroundColor, splitConfig.format, isZip, isTwitterOptimized, isLangLoaded, theme]);
 
 
 
@@ -306,7 +327,7 @@ export function App({ task, onClose }: AppProps) {
             <h2 className="app-title">
               <span className="appName-text">{t("appName")}</span>
               <span className="app-badge">
-                {mode === "stitch" ? t("previewTitle") : "Splitter"}
+                {mode === "stitch" ? t("previewTitle") : t("splitterTitle")}
               </span>
             </h2>
           </div>
@@ -366,6 +387,11 @@ export function App({ task, onClose }: AppProps) {
             splitBlobs={splitBlobs}
             splitConfig={splitConfig}
             handleSplitFileSelect={handleSplitFileSelect}
+            onClearSplit={() => {
+                setSplitSource(null);
+                setSplitBlobs([]);
+                setSplitSourceBitmap(null);
+            }}
           />
 
           <Sidebar

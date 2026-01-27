@@ -11,6 +11,14 @@
     "message": "拼图预览",
     "description": "预览窗口标题"
   },
+  "splitterTitle": {
+    "message": "图片拆分",
+    "description": "拆分窗口标题"
+  },
+  "removeImage": {
+    "message": "移除图片",
+    "description": "移除图片工具提示"
+  },
   "fromArtist": {
     "message": "来自",
     "description": "作者前缀"
@@ -156,7 +164,7 @@
     "description": "全部下载按钮文本"
   },
   "uploadImage": {
-    "message": "可以上传图片",
+    "message": "上传图片",
     "description": "上传图片按钮文本"
   },
   "selectImageTip": {
@@ -222,6 +230,10 @@
   "twitterOptimizeTip": {
     "message": "自动裁切原图以适配推特 2/3/4 图展示比例，确保无缝衔接。",
     "description": "推特布局优化说明"
+  },
+  "settings": {
+    "message": "设置",
+    "description": "通用设置部分标题"
   },
   "modeStitch": {
     "message": "拼接",

@@ -14,6 +14,7 @@ interface SplitterControlProps {
   isTwitterOptimized: boolean;
   onIsTwitterOptimizedChange: (val: boolean) => void;
   config: SplitConfig;
+  disabled?: boolean;
 }
 
 export function SplitterControl({
@@ -26,13 +27,14 @@ export function SplitterControl({
   isTwitterOptimized,
   onIsTwitterOptimizedChange,
   config,
+  disabled = false,
 }: SplitterControlProps) {
   const { layout, rows, cols, gap } = config;
 
-  const setLayout = (l: LayoutType) => onConfigChange({ ...config, layout: l });
-  const setRows = (r: number) => onConfigChange({ ...config, rows: r });
-  const setCols = (c: number) => onConfigChange({ ...config, cols: c });
-  const setGap = (g: number) => onConfigChange({ ...config, gap: g });
+  const setLayout = (l: LayoutType) => !disabled && onConfigChange({ ...config, layout: l });
+  const setRows = (r: number) => !disabled && onConfigChange({ ...config, rows: r });
+  const setCols = (c: number) => !disabled && onConfigChange({ ...config, cols: c });
+  const setGap = (g: number) => !disabled && onConfigChange({ ...config, gap: g });
 
   useEffect(() => {
     // Determine the ideal ratio for Twitter if optimized
@@ -48,11 +50,12 @@ export function SplitterControl({
     }
   }, [layout, rows, cols, isTwitterOptimized, config.autoCropRatio]);
 
+  const containerStyle = disabled ? { opacity: 0.5, pointerEvents: "none" as const, filter: "grayscale(100%)" } : {};
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
       {/* 布局方案区块 */}
-      {/* 布局方案区块 */}
-      <section className="section-block">
+      <section className="section-block" style={containerStyle}>
         <h3 className="section-header">{t("layoutScheme")}</h3>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.25rem" }}>
           <LayoutButton active={layout === "GRID_2x2"} onClick={() => setLayout("GRID_2x2")} icon={<LayoutGrid size={13} />} label={t("layoutGrid")} />
@@ -63,29 +66,32 @@ export function SplitterControl({
       </section>
 
       {/* 自定义行列区块 */}
+      {/* 自定义行列区块 */}
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
-         <section className="section-block">
-            <h3 className="section-header">{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
-            <div style={{ display: "flex", alignItems: "center", background: "var(--color-item-bg)", borderRadius: "4px", padding: "1px 4px", width: "min-content" }}>
-               <IconButton onClick={() => {
-                     const val = layout === "VERTICAL_1xN" ? rows : cols;
-                     const newVal = Math.max(2, val - 1);
-                     if(layout === "VERTICAL_1xN") setRows(newVal); else setCols(newVal);
-                 }} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
-               <span style={{ width: "24px", textAlign: "center", fontSize: "11px", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>
-                   {layout === "VERTICAL_1xN" ? rows : cols}
-               </span>
-               <IconButton onClick={() => {
-                     const val = layout === "VERTICAL_1xN" ? rows : cols;
-                     const newVal = Math.min(10, val + 1);
-                     if(layout === "VERTICAL_1xN") setRows(newVal); else setCols(newVal);
-                 }} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
+         <section className="section-block" style={containerStyle}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <h3 className="section-header">{layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}</h3>
+                <div style={{ display: "flex", alignItems: "center", background: "var(--color-item-bg)", borderRadius: "4px", padding: "1px 4px", width: "min-content" }}>
+                   <IconButton onClick={() => {
+                         const val = layout === "VERTICAL_1xN" ? rows : cols;
+                         const newVal = Math.max(2, val - 1);
+                         if(layout === "VERTICAL_1xN") setRows(newVal); else setCols(newVal);
+                     }} icon={<Minus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
+                   <span style={{ width: "24px", textAlign: "center", fontSize: "11px", fontWeight: 700, color: "var(--color-primary)", fontFamily: "'Fira Code', monospace" }}>
+                       {layout === "VERTICAL_1xN" ? rows : cols}
+                   </span>
+                   <IconButton onClick={() => {
+                         const val = layout === "VERTICAL_1xN" ? rows : cols;
+                         const newVal = Math.min(10, val + 1);
+                         if(layout === "VERTICAL_1xN") setRows(newVal); else setCols(newVal);
+                     }} icon={<Plus size={10} />} style={{ border: "none", background: "none", padding: "1px" }} />
+                </div>
             </div>
          </section>
       )}
 
       {/* 消除间距区块 */}
-      <section className="section-block">
+      <section className="section-block" style={containerStyle}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <h3 className="section-header">{t("gapRemoval")}</h3>
             <div style={{ display: "flex", alignItems: "center", gap: "2px", backgroundColor: "var(--color-item-bg)", padding: "1px 4px", borderRadius: "4px" }}>
@@ -104,12 +110,12 @@ export function SplitterControl({
        </section>
 
        {/* 针对推特选项区块 */}
-       <section className="section-block">
+       <section className="section-block" style={containerStyle}>
          <h3 className="section-header">{t("twitterOptimize")}</h3>
          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem" }}>
               <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", lineHeight: 1.3, flex: 1 }}>{t("twitterOptimizeTip")}</span>
-              <label className="switch">
-                  <input type="checkbox" checked={isTwitterOptimized} onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)} />
+              <label className="switch" style={{ flexShrink: 0 }}>
+                  <input type="checkbox" checked={isTwitterOptimized} onChange={(e) => onIsTwitterOptimizedChange((e.target as HTMLInputElement).checked)} disabled={disabled} />
                   <span className="slider"></span>
               </label>
          </div>
@@ -132,10 +138,10 @@ export function SplitterControl({
 
                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem" }}>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
-                        <span style={{ fontSize: "0.75rem", color: "var(--color-text)", fontWeight: 600 }}>{t("zipLabel")}</span>
+                        <span style={{ fontSize: "0.7rem", color: "var(--color-text-muted)", fontWeight: 600 }}>{t("zipLabel")}</span>
                         <span style={{ fontSize: "0.6rem", color: "var(--color-text-muted)", lineHeight: 1.2 }}>{t("zipTip")}</span>
                     </div>
-                    <label className="switch">
+                    <label className="switch" style={{ flexShrink: 0 }}>
                         <input type="checkbox" checked={isZip} onChange={(e) => onIsZipChange((e.target as HTMLInputElement).checked)} />
                         <span className="slider"></span>
                     </label>

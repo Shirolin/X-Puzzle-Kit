@@ -11,6 +11,14 @@
     "message": "Stitch Preview",
     "description": "Title of the preview window"
   },
+  "splitterTitle": {
+    "message": "Splitter",
+    "description": "Title of the splitter window"
+  },
+  "removeImage": {
+    "message": "Remove Image",
+    "description": "Tooltip for remove image"
+  },
   "fromArtist": {
     "message": "From",
     "description": "Author prefix"
@@ -214,6 +222,10 @@
   "twitterOptimizeTip": {
     "message": "Auto-crop the source to fit Twitter's 2/3/4 grid ratios for a seamless look.",
     "description": "Twitter optimization tip"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "General settings section title"
   },
   "modeStitch": {
     "message": "Stitch",
