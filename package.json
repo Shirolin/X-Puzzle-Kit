@@ -13,7 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "package": "npm run build && node scripts/package.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,8 @@
     "@preact/preset-vite": "^2.10.2",
     "@types/chrome": "^0.1.36",
     "@types/node": "^25.0.10",
+    "archiver": "^7.0.1",
+    "crx": "^5.0.1",
     "eslint": "^9.39.2",
     "globals": "^17.1.0",
     "prettier": "^3.8.1",

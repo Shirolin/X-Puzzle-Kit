@@ -617,7 +617,6 @@ export function Sidebar({
                     />
                   </div>
 
-                  
                   <div
                     style={{
                       height: "1px",
