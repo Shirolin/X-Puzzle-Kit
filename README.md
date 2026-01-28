@@ -1,51 +1,117 @@
-# X-Puzzle-Kit
+<div align="center">
+  <img src="public/assets/icon-128.png" width="120" height="120" alt="Icon" />
 
-[中文](./README_CN.md) | English
+  <h1>X-Puzzle-Kit</h1>
+  <p>
+    <b>Creative Puzzle & Stitching Toolkit for Twitter (X)</b>
+  </p>
+  <p>
+    <b>English</b> | <a href="./README_CN.md">简体中文</a>
+  </p>
 
-**X-Puzzle-Kit** is a Chrome Extension designed for Twitter (X) users to seamlessly stitch or split images with original quality. It's the essential grid toolkit for creators and collectors.
+  <p>
+    <a href="https://github.com/shirolin/x-puzzle-stitcher/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/shirolin/x-puzzle-stitcher/release.yml?style=flat-square" alt="Build Status" />
+    </a>
+    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
+        <img src="https://img.shields.io/github/v/release/shirolin/x-puzzle-stitcher?label=version&style=flat-square&color=blue" alt="Version" />
+    </a>
+    <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
+  </p>
 
-## Features
+  <br/>
+  
+  <p>
+    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
+      <img src="https://img.shields.io/badge/Download_Latest_Release-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
+    </a>
+  </p>
+</div>
 
-- **Stitch Images**: Combine multi-image tweets into a single seamless image.
-- **Split Images**: Split large images into grids (2x2, 3x3, etc.) for creative posting.
-- **High Resolution**: Always processes original quality images.
-- **Gap Removal**: Automatically remove gaps between image slices.
-- **Smart Layout**: Optimized for Twitter's grid layout.
-- **Privacy First**: All processing happens locally in your browser.
+<br/>
 
-## Installation
+> **X-Puzzle-Kit** is a modern browser extension designed specifically for Twitter (X). It allows you to seamlessly stitch multiple images into a high-quality long image or split a large image into a creative 9-grid layout, making your tweets stand out.
 
-### From Source (Developer Mode)
+## ✨ Highlights
 
-1. Clone or download this repository.
-2. Run `npm install` to install dependencies.
-3. Run `npm run build` to generate the `dist` folder.
-4. Open Chrome and navigate to `chrome://extensions`.
-5. Enable **Developer mode** (top right).
-6. Click **Load unpacked** and select the `dist` folder.
+<div align="center">
+    <!-- Demo GIF or Screenshot placeholder -->
+    <!-- <img src="docs/demo.gif" width="100%" alt="Demo" /> -->
+</div>
 
-## Project Structure
+| Feature                 | Description                                                                                    |
+| :---------------------- | :--------------------------------------------------------------------------------------------- |
+| 🖼️ **Smart Stitching**  | Seamlessly combine multiple images from a tweet into one long image with customizable margins. |
+| 🧩 **Creative Split**   | Powerful image splitter supporting 3x3 (9-grid), 2x2, and other creative layout modes.         |
+| 💎 **Original Quality** | No compression! Always processes and exports images in original quality for maximum clarity.   |
+| 📏 **Gap Removal**      | Intelligently detects and removes visual gaps from Twitter's grid layout.                      |
+| 🔒 **Privacy First**    | All processing happens locally in your browser. No images are uploaded to any server.          |
 
-This project is built with React + TypeScript + Vite. Here is the main directory structure:
+## 📦 Installation
 
-- **`src/core`**: Core business logic, including image stitching (`stitcher.ts`) and splitting (`splitter.ts`) algorithms.
-- **`src/ui`**: User interface code, including React components (`components/`) and page entries.
-- **`src/content`**: Chrome Extension content script, responsible for interacting with Twitter pages.
-- **`src/background`**: Chrome Extension background service worker.
-- **`public/_locales`**: Multi-language internationalization resources.
+### Method 1: Install from Release (Recommended)
 
-## Usage
+1. Go to the **[Releases Page](https://github.com/shirolin/x-puzzle-stitcher/releases/latest)** and download the latest `.zip` file.
+2. Unzip the downloaded file.
+3. Open Chrome and navigate to `chrome://extensions/`.
+4. Enable **"Developer mode"** in the top right corner.
+5. Click **"Load unpacked"** and select the unzipped folder.
 
-1. **Stitch**: Navigate to any Tweet with multiple images. Click the "Stitch" button in the toolbar.
-2. **Split**: Click the extension icon to open the popup/sidebar mode, upload an image, and choose your split settings.
+### Method 2: Build from Source
 
-## License
+For developers who want to contribute or build from source:
 
-ISC
+```bash
+git clone https://github.com/shirolin/x-puzzle-stitcher.git
+cd x-puzzle-stitcher
+npm install
+npm run build
+# Then load the 'dist' directory in Chrome
+```
 
-## Support
+## 🛠️ Tech Stack
 
-If you find this project helpful, consider buying me a coffee ☕️
+Built with modern web technologies for performance and experience:
+
+- **Framework**: [React](https://react.dev/) + [Preact](https://preactjs.com/) (Lite weight)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Extension**: Chrome Extension Manifest V3
+- **Styling**: TailwindCSS-like Utility Classes / SCSS
+
+## 🔖 Release & Build
+
+This project uses an automated release workflow.
+
+### Automated Release
+
+Simply push a version tag, and GitHub Actions will automatically package and release it:
+
+```bash
+npm version patch  # or minor / major
+git push --follow-tags
+```
+
+### Manual Packaging
+
+To build `.zip` and `.crx` files locally:
+
+```bash
+npm run package
+```
+
+Artifacts will be generated in the `release/` directory.
+
+## 🤝 Contribution & Support
+
+Issues and Pull Requests are welcome!
+
+If you find this project helpful, please give it a Star ⭐️ or buy me a coffee:
 
 - [Afdian](https://ifdian.net/a/shirolin)
 - [Ko-fi](https://ko-fi.com/shirolin)
+
+## 📄 License
+
+[MIT](./LICENSE) License © 2024 shirolin

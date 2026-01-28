@@ -1,51 +1,117 @@
-# X-Puzzle-Kit
+<div align="center">
+  <img src="public/assets/icon-128.png" width="120" height="120" alt="Icon" />
 
-中文 | [English](./README.md)
+  <h1>X-Puzzle-Kit</h1>
+  <p>
+    <b>Twitter (X) 创意拼图/拆分工具箱</b>
+  </p>
+  <p>
+    <a href="./README.md">English</a> | <b>简体中文</b>
+  </p>
 
-**X-Puzzle-Kit** 是一款专为 Twitter (X) 用户设计的 Chrome 扩展，能够无缝拼接或创意拆分图片，并支持原图画质导出。它是创作者和收藏家必备的网格工具箱。
+  <p>
+    <a href="https://github.com/shirolin/x-puzzle-stitcher/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/shirolin/x-puzzle-stitcher/release.yml?style=flat-square" alt="Build Status" />
+    </a>
+    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
+        <img src="https://img.shields.io/github/v/release/shirolin/x-puzzle-stitcher?label=version&style=flat-square&color=blue" alt="Version" />
+    </a>
+    <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
+  </p>
 
-## 主要功能
+  <br/>
+  
+  <p>
+    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
+      <img src="https://img.shields.io/badge/下载最新离线包-Download-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
+    </a>
+  </p>
+</div>
 
-- **图片拼接**: 将推文中的多张图片拼接为一张无缝长图。
-- **图片拆分**: 将大图拆分为九宫格（2x2, 3x3 等）用于创意发布。
-- **原图画质**: 始终处理和导出原始高质量图片。
-- **消除间隙**: 自动检测并移除切片之间的间隙。
-- **智能布局**: 专为 Twitter 网格布局优化。
-- **隐私优先**: 所有图片处理均在本地浏览器中完成。
+<br/>
 
-## 安装说明
+> **X-Puzzle-Kit** 是一款专为 Twitter (X) 设计的现代浏览器扩展。它不仅支持将多张图片无缝拼接为高清长图，还能将大图创意拆分为九宫格，让您的推文展示更具吸引力。
 
-### 源码安装 (开发者模式)
+## ✨ 核心亮点
 
-1. 克隆或下载本仓库。
-2. 运行 `npm install` 安装依赖。
-3. 运行 `npm run build` 生成 `dist` 目录。
-4. 打开 Chrome 浏览器，访问 `chrome://extensions`。
-5. 开启右上角的 **开发者模式** (Developer mode)。
-6. 点击 **加载已解压的扩展程序** (Load unpacked)，选择 `dist` 目录。
+<div align="center">
+    <!-- 这里可以放置演示 GIF 或截图 -->
+    <!-- <img src="docs/demo.gif" width="100%" alt="Demo" /> -->
+</div>
 
-## 项目结构
+| 功能            | 描述                                                              |
+| :-------------- | :---------------------------------------------------------------- |
+| 🖼️ **智能拼接** | 将推文中的多张图片一键拼接为无缝长图，支持自定义边距和布局。      |
+| 🧩 **创意拆分** | 强大的图片分割器，支持九宫格 (3x3)、四宫格 (2x2) 等多种切分模式。 |
+| 💎 **原图画质** | 告别压缩！始终基于原图 (Original) 进行处理，确保最高清晰度导出。  |
+| 📏 **消除间隙** | 智能检测并移除 Twitter 网格布局中的视觉间隙，还原图片本真。       |
+| 🔒 **隐私优先** | 所有处理逻辑完全在本地浏览器运行，无需上传图片至任何服务器。      |
 
-本项目采用 React + TypeScript + Vite 构建，主要目录结构如下：
+## 📦 安装指南
 
-- **`src/core`**: 核心业务逻辑，包括拼图 (`stitcher.ts`)、拆分 (`splitter.ts`) 等算法实现。
-- **`src/ui`**: 用户界面相关代码，包含 React 组件 (`components/`) 和页面入口。
-- **`src/content`**: Chrome 扩展 Content Script，负责与推特页面交互。
-- **`src/background`**: Chrome 扩展 Background Service Worker。
-- **`public/_locales`**: 多语言国际化资源文件。
+### 方法一：下载安装包 (推荐)
 
-## 使用方法
+1. 前往 **[Releases 页面](https://github.com/shirolin/x-puzzle-stitcher/releases/latest)** 下载最新的 `.zip` 文件。
+2. 解压下载的文件。
+3. 打开 Chrome 浏览器，访问 `chrome://extensions/`。
+4. 开启右上角的 **"开发者模式" (Developer mode)**。
+5. 点击 **"加载已解压的扩展程序" (Load unpacked)**，选择解压后的文件夹。
 
-1. **拼接**: 浏览带有已图片的推文，点击工具栏中的“拼接”按钮。
-2. **拆分**: 点击浏览器扩展图标打开侧边栏/弹窗，上传图片并选择拆分设置。
+### 方法二：源码编译安装
 
-## 许可证
+如果您是开发者，可以从源码构建：
 
-ISC
+```bash
+git clone https://github.com/shirolin/x-puzzle-stitcher.git
+cd x-puzzle-stitcher
+npm install
+npm run build
+# 然后在 Chrome 加载 dist 目录
+```
 
-## 支持项目
+## 🛠️ 技术栈
 
-如果这个项目对您有帮助，欢迎请作者喝杯咖啡 ☕️
+本项目基于现代 Web 技术构建，旨在提供极致的性能和开发体验：
 
-- [爱发电](https://ifdian.net/a/shirolin)
+- **Framework**: [React](https://react.dev/) + [Preact](https://preactjs.com/) (Lite weight)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Extension**: Chrome Extension Manifest V3
+- **Styling**: TailwindCSS-like Utility Classes / SCSS
+
+## 🔖 版本发布与构建
+
+本项目采用自动化流程管理发布。
+
+### 自动发布
+
+只需推送版本标签，GitHub Actions 会自动打包并发布 Release：
+
+```bash
+npm version patch  # 或 minor / major
+git push --follow-tags
+```
+
+### 手动打包
+
+构建 `.zip` 和 `.crx` 文件：
+
+```bash
+npm run package
+```
+
+产物将生成在 `release/` 目录下。
+
+## 🤝 贡献与支持
+
+欢迎提交 [Issue](https://github.com/shirolin/x-puzzle-stitcher/issues) 或 Pull Request！
+
+如果这个项目对您有帮助，请给项目点个 Star ⭐️，或请作者喝杯咖啡：
+
+- [爱发电 (Afdian)](https://ifdian.net/a/shirolin)
 - [Ko-fi](https://ko-fi.com/shirolin)
+
+## 📄 许可证
+
+[MIT](./LICENSE) License © 2024 shirolin
