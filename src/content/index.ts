@@ -1,5 +1,3 @@
-console.log("[X-Puzzle-Stitcher] Content script loaded");
-
 import { parseTweets } from "./parser";
 import { i18nInit } from "../core/i18n";
 

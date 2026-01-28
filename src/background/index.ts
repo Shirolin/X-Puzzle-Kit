@@ -11,5 +11,3 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true;
   }
 });
-
-console.log("[X-Puzzle-Stitcher] Background worker initialized");
