@@ -10,11 +10,11 @@
   </p>
 
   <p>
-    <a href="https://github.com/shirolin/x-puzzle-stitcher/actions">
-      <img src="https://img.shields.io/github/actions/workflow/status/shirolin/x-puzzle-stitcher/release.yml?style=flat-square" alt="Build Status" />
+    <a href="https://github.com/Shirolin/X-Puzzle-Kit/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/Shirolin/X-Puzzle-Kit/release.yml?style=flat-square" alt="Build Status" />
     </a>
-    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
-        <img src="https://img.shields.io/github/v/release/shirolin/x-puzzle-stitcher?label=version&style=flat-square&color=blue" alt="Version" />
+    <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
+        <img src="https://img.shields.io/github/v/release/Shirolin/X-Puzzle-Kit?label=version&style=flat-square&color=blue" alt="Version" />
     </a>
     <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
     <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
@@ -23,7 +23,7 @@
   <br/>
   
   <p>
-    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
+    <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
       <img src="https://img.shields.io/badge/Download_Latest_Release-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
     </a>
   </p>
@@ -52,7 +52,7 @@
 
 ### Method 1: Install from Release (Recommended)
 
-1. Go to the **[Releases Page](https://github.com/shirolin/x-puzzle-stitcher/releases/latest)** and download the latest `.zip` file.
+1. Go to the **[Releases Page](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest)** and download the latest `.zip` file.
 2. Unzip the downloaded file.
 3. Open Chrome and navigate to `chrome://extensions/`.
 4. Enable **"Developer mode"** in the top right corner.
@@ -63,7 +63,7 @@
 For developers who want to contribute or build from source:
 
 ```bash
-git clone https://github.com/shirolin/x-puzzle-stitcher.git
+git clone https://github.com/Shirolin/X-Puzzle-Kit.git
 cd x-puzzle-stitcher
 npm install
 npm run build

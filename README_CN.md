@@ -10,11 +10,11 @@
   </p>
 
   <p>
-    <a href="https://github.com/shirolin/x-puzzle-stitcher/actions">
-      <img src="https://img.shields.io/github/actions/workflow/status/shirolin/x-puzzle-stitcher/release.yml?style=flat-square" alt="Build Status" />
+    <a href="https://github.com/Shirolin/X-Puzzle-Kit/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/Shirolin/X-Puzzle-Kit/release.yml?style=flat-square" alt="Build Status" />
     </a>
-    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
-        <img src="https://img.shields.io/github/v/release/shirolin/x-puzzle-stitcher?label=version&style=flat-square&color=blue" alt="Version" />
+    <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
+        <img src="https://img.shields.io/github/v/release/Shirolin/X-Puzzle-Kit?label=version&style=flat-square&color=blue" alt="Version" />
     </a>
     <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
     <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
@@ -23,7 +23,7 @@
   <br/>
   
   <p>
-    <a href="https://github.com/shirolin/x-puzzle-stitcher/releases/latest">
+    <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
       <img src="https://img.shields.io/badge/下载最新离线包-Download-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
     </a>
   </p>
@@ -52,7 +52,7 @@
 
 ### 方法一：下载安装包 (推荐)
 
-1. 前往 **[Releases 页面](https://github.com/shirolin/x-puzzle-stitcher/releases/latest)** 下载最新的 `.zip` 文件。
+1. 前往 **[Releases 页面](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest)** 下载最新的 `.zip` 文件。
 2. 解压下载的文件。
 3. 打开 Chrome 浏览器，访问 `chrome://extensions/`。
 4. 开启右上角的 **"开发者模式" (Developer mode)**。
@@ -63,7 +63,7 @@
 如果您是开发者，可以从源码构建：
 
 ```bash
-git clone https://github.com/shirolin/x-puzzle-stitcher.git
+git clone https://github.com/Shirolin/X-Puzzle-Kit.git
 cd x-puzzle-stitcher
 npm install
 npm run build
@@ -105,7 +105,7 @@ npm run package
 
 ## 🤝 贡献与支持
 
-欢迎提交 [Issue](https://github.com/shirolin/x-puzzle-stitcher/issues) 或 Pull Request！
+欢迎提交 [Issue](https://github.com/Shirolin/X-Puzzle-Kit/issues) 或 Pull Request！
 
 如果这个项目对您有帮助，请给项目点个 Star ⭐️，或请作者喝杯咖啡：
 
