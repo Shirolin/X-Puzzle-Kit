@@ -42,3 +42,10 @@
 ## 许可证
 
 ISC
+
+## 支持项目
+
+如果这个项目对您有帮助，欢迎请作者喝杯咖啡 ☕️
+
+- [爱发电](https://ifdian.net/a/shirolin)
+- [Ko-fi](https://ko-fi.com/shirolin)

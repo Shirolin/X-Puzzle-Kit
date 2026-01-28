@@ -234,5 +234,13 @@
   "modeSplit": {
     "message": "拆分",
     "description": "拆分模式按钮"
+  },
+  "support": {
+    "message": "支持项目",
+    "description": "支持项目部分标题"
+  },
+  "buyMeCoffee": {
+    "message": "请喝咖啡",
+    "description": "赞助按钮文本"
   }
 }

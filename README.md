@@ -42,3 +42,10 @@ This project is built with React + TypeScript + Vite. Here is the main directory
 ## License
 
 ISC
+
+## Support
+
+If you find this project helpful, consider buying me a coffee ☕️
+
+- [Afdian](https://ifdian.net/a/shirolin)
+- [Ko-fi](https://ko-fi.com/shirolin)

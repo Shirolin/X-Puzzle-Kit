@@ -234,5 +234,13 @@
   "modeSplit": {
     "message": "Split",
     "description": "Split mode button"
+  },
+  "support": {
+    "message": "Support",
+    "description": "Support section title"
+  },
+  "buyMeCoffee": {
+    "message": "Buy me a coffee",
+    "description": "Sponsorship button text"
   }
 }

@@ -234,5 +234,13 @@
   "modeSplit": {
     "message": "Diviser",
     "description": "Bouton mode diviser"
+  },
+  "support": {
+    "message": "Soutien",
+    "description": "Titre de la section de soutien"
+  },
+  "buyMeCoffee": {
+    "message": "Offrez-moi un café",
+    "description": "Texte du bouton de parrainage"
   }
 }

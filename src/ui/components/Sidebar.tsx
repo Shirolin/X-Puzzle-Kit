@@ -13,6 +13,8 @@ import {
   Scissors,
   ChevronUp,
   ChevronDown,
+  Coffee,
+  Zap,
 } from "lucide-preact";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
@@ -613,6 +615,71 @@ export function Sidebar({
                       style={{ width: "90px" }}
                       direction="top"
                     />
+                  </div>
+
+                  
+                  <div
+                    style={{
+                      height: "1px",
+                      background: "var(--color-border)",
+                      opacity: 0.5,
+                    }}
+                  ></div>
+
+                  <div className="flex-between">
+                    <span
+                      style={{
+                        fontSize: "0.7rem",
+                        color: "var(--color-text-muted)",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {t("support")}
+                    </span>
+                    <div style={{ display: "flex", gap: "6px" }}>
+                      <a
+                        href="https://ifdian.net/a/shirolin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-icon"
+                        title="爱发电 (Afdian)"
+                        style={{
+                          textDecoration: "none",
+                          color: "var(--color-text)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: "28px",
+                          height: "28px",
+                          borderRadius: "6px",
+                          backgroundColor: "var(--color-surface-soft)",
+                          transition: "all 0.2s",
+                        }}
+                      >
+                        <Zap size={15} />
+                      </a>
+                      <a
+                        href="https://ko-fi.com/shirolin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-icon"
+                        title="Ko-fi"
+                        style={{
+                          textDecoration: "none",
+                          color: "var(--color-text)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: "28px",
+                          height: "28px",
+                          borderRadius: "6px",
+                          backgroundColor: "var(--color-surface-soft)",
+                          transition: "all 0.2s",
+                        }}
+                      >
+                        <Coffee size={15} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </section>

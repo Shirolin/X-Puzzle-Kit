@@ -234,5 +234,13 @@
   "modeSplit": {
     "message": "分割",
     "description": "分割モードボタン"
+  },
+  "support": {
+    "message": "サポート",
+    "description": "サポートセクションのタイトル"
+  },
+  "buyMeCoffee": {
+    "message": "コーヒーを奢る",
+    "description": "スポンサーボタンのテキスト"
   }
 }

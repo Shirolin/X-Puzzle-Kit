@@ -234,5 +234,13 @@
   "modeSplit": {
     "message": "분할",
     "description": "분할 모드 버튼"
+  },
+  "support": {
+    "message": "후원",
+    "description": "후원 섹션 제목"
+  },
+  "buyMeCoffee": {
+    "message": "커피 사주기",
+    "description": "후원 버튼 텍스트"
   }
 }
