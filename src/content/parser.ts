@@ -4,16 +4,16 @@ import { ImageNode, StitchTask } from "../core/types";
 import { t } from "../core/i18n";
 
 /**
- * 解析页面上的推文并注入拼接按钮
+ * Parse tweets on the page and inject stitch buttons
  */
 export function parseTweets() {
   const tweets = document.querySelectorAll('article[data-testid="tweet"]');
 
   tweets.forEach((tweet) => {
-    // 检查是否已经注入过按钮
+    // Check if button is already injected
     if (tweet.querySelector(".x-puzzle-stitcher-btn")) return;
 
-    // 查找推文中的图片
+    // Find images in the tweet
     const photoContainers = tweet.querySelectorAll(
       'div[data-testid="tweetPhoto"]',
     );
@@ -24,40 +24,103 @@ export function parseTweets() {
 }
 
 /**
- * 在推文中注入“拼接”按钮（SVG 图标版）
+ * Inject "Stitch" button (SVG Icon version) into the tweet
  */
 function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
-  // 查找推文的工具栏 (转发、点赞所在的那一行)
+  // Find tweet action bar (where Retweet/Like buttons are)
   const actionBar = tweet.querySelector('div[role="group"][aria-label]');
   if (!actionBar) return;
 
-  // 动态注入样式（如果尚未存在）
-  if (!document.getElementById("x-puzzle-stitcher-styles")) {
-    const style = document.createElement("style");
-    style.id = "x-puzzle-stitcher-styles";
-    style.textContent = `
-      @keyframes x-spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      .x-stitch-loading-spinner {
-        width: 16px;
-        height: 16px;
-        border: 2px solid rgba(113, 118, 123, 0.2);
-        border-top: 2px solid rgb(29, 155, 240);
-        border-radius: 50%;
-        animation: x-spin 0.8s linear infinite;
-      }
-    `;
-    document.head.appendChild(style);
-  }
+  // Dynamically inject styles
+  injectStyles();
 
+  const container = createButtonContainer();
+  const innerBtn = createInnerButton();
+  const iconWrapper = createIconWrapper();
+  const svg = createStitchIcon();
+
+  iconWrapper.append(svg);
+  innerBtn.append(iconWrapper);
+  container.append(innerBtn);
+
+  // Simulate Twitter blue glow Hover effect
+  innerBtn.onmouseenter = () => {
+    if (innerBtn.style.cursor === "not-allowed") return;
+    innerBtn.style.backgroundColor = "rgba(29, 155, 240, 0.1)";
+    innerBtn.style.color = "rgb(29, 155, 240)";
+  };
+  innerBtn.onmouseleave = () => {
+    if (innerBtn.style.cursor === "not-allowed") return;
+    innerBtn.style.backgroundColor = "transparent";
+    innerBtn.style.color = "#71767b";
+  };
+
+  innerBtn.onclick = async (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    if (innerBtn.style.cursor === "not-allowed") return;
+
+    // Enter loading state
+    innerBtn.style.cursor = "not-allowed";
+    innerBtn.style.color = "rgb(29, 155, 240)";
+
+    // Clear icon and show spinner
+    iconWrapper.innerHTML = "";
+    const spinner = document.createElement("div");
+    spinner.className = "x-stitch-loading-spinner";
+    iconWrapper.append(spinner);
+
+    try {
+      await handleStitchClick(tweet, photos);
+    } catch (err) {
+      console.error("Stitch error:", err);
+    } finally {
+      // Restore state
+      innerBtn.style.cursor = "pointer";
+      innerBtn.style.color = "#71767b";
+      innerBtn.style.backgroundColor = "transparent";
+      iconWrapper.innerHTML = "";
+      iconWrapper.append(svg);
+    }
+  };
+
+  actionBar.appendChild(container);
+}
+
+function injectStyles() {
+  if (document.getElementById("x-puzzle-stitcher-styles")) return;
+  const style = document.createElement("style");
+  style.id = "x-puzzle-stitcher-styles";
+  style.textContent = `
+    @keyframes x-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .x-stitch-loading-spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(113, 118, 123, 0.2);
+      border-top: 2px solid rgb(29, 155, 240);
+      border-radius: 50%;
+      animation: x-spin 0.8s linear infinite;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function createButtonContainer() {
   const container = document.createElement("div");
   container.className = "x-puzzle-stitcher-btn";
-  container.style.display = "flex";
-  container.style.alignItems = "center";
-  container.style.flex = "1";
+  Object.assign(container.style, {
+    display: "flex",
+    alignItems: "center",
+    flex: "1",
+  });
+  return container;
+}
 
+function createInnerButton() {
   const innerBtn = document.createElement("div");
   innerBtn.role = "button";
   innerBtn.tabIndex = 0;
@@ -75,7 +138,10 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
     transition: "background-color 0.2s, color 0.2s",
     outline: "none",
   });
+  return innerBtn;
+}
 
+function createIconWrapper() {
   const iconWrapper = document.createElement("div");
   iconWrapper.className = "x-stitch-icon-wrapper";
   Object.assign(iconWrapper.style, {
@@ -83,7 +149,10 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
     alignItems: "center",
     justifyContent: "center",
   });
+  return iconWrapper;
+}
 
+function createStitchIcon() {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("viewBox", "0 0 512 512");
   Object.assign(svg.style, {
@@ -131,63 +200,17 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
 
   g.append(rect, line1, line2, path1, path2, path3, path4);
   svg.append(g);
-  iconWrapper.append(svg);
-  innerBtn.append(iconWrapper);
-  container.append(innerBtn);
-
-  // 模拟 Twitter 的蓝光 Hover 效果
-  innerBtn.onmouseenter = () => {
-    if (innerBtn.style.cursor === "not-allowed") return;
-    innerBtn.style.backgroundColor = "rgba(29, 155, 240, 0.1)";
-    innerBtn.style.color = "rgb(29, 155, 240)";
-  };
-  innerBtn.onmouseleave = () => {
-    if (innerBtn.style.cursor === "not-allowed") return;
-    innerBtn.style.backgroundColor = "transparent";
-    innerBtn.style.color = "#71767b";
-  };
-
-  innerBtn.onclick = async (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if (innerBtn.style.cursor === "not-allowed") return;
-
-    // 进入加载状态
-    innerBtn.style.cursor = "not-allowed";
-    innerBtn.style.color = "rgb(29, 155, 240)";
-
-    // 清空图标并显示旋转器
-    iconWrapper.innerHTML = "";
-    const spinner = document.createElement("div");
-    spinner.className = "x-stitch-loading-spinner";
-    iconWrapper.append(spinner);
-
-    try {
-      await handleStitchClick(tweet, photos);
-    } catch (err) {
-      console.error("Stitch error:", err);
-    } finally {
-      // 恢复状态
-      innerBtn.style.cursor = "pointer";
-      innerBtn.style.color = "#71767b";
-      innerBtn.style.backgroundColor = "transparent";
-      iconWrapper.innerHTML = "";
-      iconWrapper.append(svg);
-    }
-  };
-
-  actionBar.appendChild(container);
+  return svg;
 }
 
 /**
- * 点击拼接按钮后的处理逻辑
+ * Logic handling stitch button click
  */
 async function handleStitchClick(
   tweet: HTMLElement,
   photos: NodeListOf<Element>,
 ) {
-  // 提取画师和推文 ID
+  // Extract artist handle and tweet ID
   let artistHandle = "unknown";
   let tweetId = "unknown";
 

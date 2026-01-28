@@ -18,6 +18,7 @@ export async function splitImage(
       val !== null &&
       "baseVal" in val &&
       typeof val.baseVal === "object" &&
+      val.baseVal !== null &&
       "value" in val.baseVal
     ) {
       return val.baseVal.value;

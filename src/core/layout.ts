@@ -12,7 +12,7 @@ export interface ImageSize {
 }
 
 /**
- * 根据图片数量和尺寸推荐布局
+ * Recommend layout based on image quantity and dimensions
  */
 export function recommendLayout(images: ImageSize[]): LayoutType {
   const n = images.length;
@@ -21,7 +21,7 @@ export function recommendLayout(images: ImageSize[]): LayoutType {
 
   if (n === 3) {
     const r1 = images[0].width / images[0].height;
-    // 如果第一张图是显著的竖图，推荐 T 型布局 (左一右二)
+    // If the first image is significantly tall, recommend T-Shape layout (Left 1 Right 2)
     if (r1 < 0.9) return "T_SHAPE_3";
     return "HORIZONTAL_Nx1";
   }
@@ -31,8 +31,8 @@ export function recommendLayout(images: ImageSize[]): LayoutType {
     const r2 = images[1].width / images[1].height;
     const avgRatio = (r1 + r2) / 2;
 
-    if (avgRatio < 0.8) return "HORIZONTAL_2x1"; // 两个窄图横着拼成一个宽图
-    if (avgRatio > 1.2) return "VERTICAL_1x2"; // 两个宽图竖着拼成一个长图
+    if (avgRatio < 0.8) return "HORIZONTAL_2x1"; // Two narrow images stitched horizontally to form a wide image
+    if (avgRatio > 1.2) return "VERTICAL_1x2"; // Two wide images stitched vertically to form a tall image
     return "HORIZONTAL_2x1";
   }
 

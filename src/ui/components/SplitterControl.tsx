@@ -65,7 +65,7 @@ export function SplitterControl({
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-      {/* 布局方案区块 */}
+      {/* Layout Scheme Section */}
       <section className="section-block" style={containerStyle}>
         <h3 className="section-header">{t("layoutScheme")}</h3>
         <div
@@ -103,7 +103,7 @@ export function SplitterControl({
       </section>
 
       {/* 自定义行列区块 */}
-      {/* 自定义行列区块 */}
+      {/* Custom Rows/Cols Section */}
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
         <section className="section-block" style={containerStyle}>
           <div
@@ -163,7 +163,7 @@ export function SplitterControl({
         </section>
       )}
 
-      {/* 消除间距区块 */}
+      {/* Gap Removal Section */}
       <section className="section-block" style={containerStyle}>
         <div
           style={{
@@ -239,7 +239,7 @@ export function SplitterControl({
         />
       </section>
 
-      {/* 针对推特选项区块 */}
+      {/* Twitter Options Section */}
       <section className="section-block" style={containerStyle}>
         <h3 className="section-header">{t("twitterOptimize")}</h3>
         <div
@@ -276,7 +276,7 @@ export function SplitterControl({
         </div>
       </section>
 
-      {/* 导出设置区块 */}
+      {/* Export Settings Section */}
       <section className="section-block">
         <h3 className="section-header">{t("exportSettings")}</h3>
         <div

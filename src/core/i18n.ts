@@ -19,21 +19,27 @@ const locales: Record<string, Record<string, { message: string }>> = {
 let currentMessages: Record<string, { message: string }> | null = null;
 
 /**
- * 识别浏览器当前语言
+ * Identify the current browser language
  */
 function resolveAutoLanguage(): string {
   const lang = navigator.language.toLowerCase();
-  if (lang.startsWith("zh-cn")) return "zh_CN";
-  if (lang.startsWith("zh")) return "zh_TW";
-  if (lang.startsWith("ja")) return "ja";
-  if (lang.startsWith("ko")) return "ko";
-  if (lang.startsWith("es")) return "es";
-  if (lang.startsWith("fr")) return "fr";
+  const prefixMap: Record<string, string> = {
+    "zh-cn": "zh_CN",
+    zh: "zh_TW",
+    ja: "ja",
+    ko: "ko",
+    es: "es",
+    fr: "fr",
+  };
+
+  for (const [prefix, locale] of Object.entries(prefixMap)) {
+    if (lang.startsWith(prefix)) return locale;
+  }
   return "en";
 }
 
 /**
- * 设置手动覆盖的语言
+ * Set the manually overridden language
  */
 export async function setLanguage(lang: string) {
   const targetLang = lang === "auto" ? resolveAutoLanguage() : lang;
@@ -44,7 +50,7 @@ export async function setLanguage(lang: string) {
 }
 
 /**
- * 初始化语言设置
+ * Initialize language settings
  */
 export async function initI18n() {
   let savedLang = "auto";
@@ -60,10 +66,10 @@ export async function initI18n() {
 export const i18nInit = initI18n();
 
 /**
- * 简单的 i18n 包装函数
- * @param messageName 消息 key
- * @param substitutions 替换参数
- * @returns 翻译后的文本
+ * Simple i18n wrapper function
+ * @param messageName Message key
+ * @param substitutions Substitution parameters
+ * @returns Translated text
  */
 export function t(
   messageName: string,

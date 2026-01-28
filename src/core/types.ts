@@ -7,9 +7,9 @@ export interface ImageNode {
   blob?: Blob;
   bitmap?: ImageBitmap | HTMLImageElement;
   visible?: boolean;
-  localGap?: number; // 单图后方的间距
-  name?: string; // 图片名称（可选）
-  originalIndex?: number; // 初始索引标识
+  localGap?: number; // Gap after a single image
+  name?: string; // Image name (optional)
+  originalIndex?: number; // Initial index identifier
 }
 
 export type BackgroundColor = "transparent" | "white" | "black";
@@ -37,7 +37,7 @@ export interface StitchTask {
   layout: LayoutType;
   outputFormat: "png" | "jpg" | "webp";
   backgroundColor: BackgroundColor;
-  globalGap: number; // 全局基础间距
+  globalGap: number; // Global base gap
 }
 
 export interface SplitConfig {

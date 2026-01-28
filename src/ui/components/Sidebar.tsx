@@ -372,7 +372,7 @@ export function Sidebar({
                                       opacity: 0.6,
                                       letterSpacing: "-0.5px",
                                     }}
-                                    title={t("finalGap") || "最终间距"}
+                                    title={t("finalGap") || "Final Gap"}
                                   >
                                     ({globalGap + (img.localGap || 0)})
                                   </span>
