@@ -212,7 +212,10 @@ export function CustomSelect({
                 justifyContent: "space-between",
                 padding: "6px 10px",
                 fontSize: "11px",
-                color: "var(--color-text)",
+                color:
+                  option.value === value
+                    ? "white"
+                    : "var(--color-text)",
                 background:
                   option.value === value
                     ? "var(--color-primary)"
