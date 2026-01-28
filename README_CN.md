@@ -24,6 +24,16 @@
 5. 开启右上角的 **开发者模式** (Developer mode)。
 6. 点击 **加载已解压的扩展程序** (Load unpacked)，选择 `dist` 目录。
 
+## 项目结构
+
+本项目采用 React + TypeScript + Vite 构建，主要目录结构如下：
+
+- **`src/core`**: 核心业务逻辑，包括拼图 (`stitcher.ts`)、拆分 (`splitter.ts`) 等算法实现。
+- **`src/ui`**: 用户界面相关代码，包含 React 组件 (`components/`) 和页面入口。
+- **`src/content`**: Chrome 扩展 Content Script，负责与推特页面交互。
+- **`src/background`**: Chrome 扩展 Background Service Worker。
+- **`public/_locales`**: 多语言国际化资源文件。
+
 ## 使用方法
 
 1. **拼接**: 浏览带有已图片的推文，点击工具栏中的“拼接”按钮。

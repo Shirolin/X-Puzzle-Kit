@@ -24,6 +24,16 @@
 5. Enable **Developer mode** (top right).
 6. Click **Load unpacked** and select the `dist` folder.
 
+## Project Structure
+
+This project is built with React + TypeScript + Vite. Here is the main directory structure:
+
+- **`src/core`**: Core business logic, including image stitching (`stitcher.ts`) and splitting (`splitter.ts`) algorithms.
+- **`src/ui`**: User interface code, including React components (`components/`) and page entries.
+- **`src/content`**: Chrome Extension content script, responsible for interacting with Twitter pages.
+- **`src/background`**: Chrome Extension background service worker.
+- **`public/_locales`**: Multi-language internationalization resources.
+
 ## Usage
 
 1. **Stitch**: Navigate to any Tweet with multiple images. Click the "Stitch" button in the toolbar.
