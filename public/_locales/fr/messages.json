@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "X-Puzzle-Stitcher",
+    "message": "X-Puzzle-Kit : Assemblage et Découpe",
     "description": "Nom de l'extension"
   },
   "appDesc": {
-    "message": "Assistant de restauration de puzzle Twitter (X), fusionne plusieurs images Twitter de manière transparente en un clic.",
+    "message": "Assemblez ou découpez vos images Twitter (X) en un clic. Le kit indispensable pour créer et sauvegarder en haute qualité.",
     "description": "Description de l'extension"
   },
   "previewTitle": {

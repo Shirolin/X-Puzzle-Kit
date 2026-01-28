@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "X-Puzzle-Stitcher",
+    "message": "X-Puzzle-Kit - X画像結合・分割ツール",
     "description": "アプリ名"
   },
   "appDesc": {
-    "message": "Twitter (X) パズル復元アシスタント。Twitterの複数画像をワンクリックでシームレスに結合します。",
+    "message": "Twitter(X)の画像をワンクリックで結合・分割。高画質のまま保存できる、シンプルで強力なパズルツール。",
     "description": "アプリの説明"
   },
   "previewTitle": {

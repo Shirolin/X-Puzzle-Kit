@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "X-Puzzle-Stitcher",
+    "message": "X-Puzzle-Kit - 트위터 이미지 병합/분할",
     "description": "확장 프로그램 이름"
   },
   "appDesc": {
-    "message": "트위터(X) 퍼즐 복원 도우미, 트위터 다중 이미지를 클릭 한 번으로 매끄럽게 연결합니다.",
+    "message": "트위터(X) 이미지를 원본 화질로 병합하거나 분할하세요. 간편한 퍼즐/그리드 제작 키트.",
     "description": "확장 프로그램 설명"
   },
   "previewTitle": {

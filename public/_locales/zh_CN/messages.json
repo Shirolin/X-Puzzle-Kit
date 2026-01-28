@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "X-Puzzle-Stitcher",
+    "message": "X-Puzzle-Kit - 推特拼图/切图助手",
     "description": "插件名称"
   },
   "appDesc": {
-    "message": "Twitter (X) 拼图还原助手，一键无缝拼接推特多图。",
+    "message": "一键无缝拼接或创意拆分 Twitter (X) 图片，支持原图画质导出。您的推特网格必备工具箱。",
     "description": "插件描述"
   },
   "previewTitle": {

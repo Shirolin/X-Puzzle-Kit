@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "X-Puzzle-Stitcher",
+    "message": "X-Puzzle-Kit - Twitter 拼圖/裁切小工具",
     "description": "插件名稱"
   },
   "appDesc": {
-    "message": "Twitter (X) 拼圖還原助手，一鍵無縫拼接推特多圖。",
+    "message": "一鍵還原推特拼圖，支援無縫拼接與創意裁切。保留原圖畫質，輕鬆製作九宮格。",
     "description": "插件描述"
   },
   "previewTitle": {
