@@ -20,6 +20,13 @@ if (!fs.existsSync(RELEASE_DIR)) {
   fs.mkdirSync(RELEASE_DIR);
 }
 
+// Copy LICENSE to dist to ensure it is included
+const licensePath = path.resolve(__dirname, "../LICENSE");
+if (fs.existsSync(licensePath)) {
+  fs.copyFileSync(licensePath, path.join(DIST_DIR, "LICENSE"));
+  console.log("✅ Copied LICENSE to dist");
+}
+
 // 1. Create ZIP
 const zipName = `${appName}-v${appVersion}.zip`;
 const zipOutput = fs.createWriteStream(path.join(RELEASE_DIR, zipName));
