@@ -1,0 +1,254 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Kit - Twitter 拼圖/裁切小工具",
+    "description": "插件名稱"
+  },
+  "appDesc": {
+    "message": "一鍵還原推特拼圖，支援無縫拼接與創意裁切。保留原圖畫質，輕鬆製作九宮格。",
+    "description": "插件描述"
+  },
+  "previewTitle": {
+    "message": "拼圖預覽",
+    "description": "預覽視窗標題"
+  },
+  "splitterTitle": {
+    "message": "圖片拆分",
+    "description": "拆分視窗標題"
+  },
+  "removeImage": {
+    "message": "移除圖片",
+    "description": "移除圖片工具提示"
+  },
+  "fromArtist": {
+    "message": "來自",
+    "description": "作者前綴"
+  },
+  "tweetId": {
+    "message": "推文 ID",
+    "description": "推文 ID 標籤"
+  },
+  "stitching": {
+    "message": "拼圖中...",
+    "description": "預覽生成時的載入文字"
+  },
+  "preparingHighRes": {
+    "message": "高清資源準備中...",
+    "description": "高清圖片載入時的文字"
+  },
+  "reset": {
+    "message": "重置",
+    "description": "重置按鈕文字"
+  },
+  "layoutScheme": {
+    "message": "佈局方案",
+    "description": "佈局部分標題"
+  },
+  "layoutGrid": {
+    "message": "田字格",
+    "description": "田字格佈局標籤"
+  },
+  "layoutTShape": {
+    "message": "T型(左)",
+    "description": "T型佈局標籤"
+  },
+  "layoutHorizontal": {
+    "message": "橫向",
+    "description": "橫向佈局標籤"
+  },
+  "layoutVertical": {
+    "message": "縱向",
+    "description": "縱向佈局標籤"
+  },
+  "exportSettings": {
+    "message": "匯出設定",
+    "description": "匯出設定部分標題"
+  },
+  "backgroundColor": {
+    "message": "底色",
+    "description": "底色標籤"
+  },
+  "transparent": {
+    "message": "透明",
+    "description": "透明背景選項"
+  },
+  "white": {
+    "message": "白色",
+    "description": "白色背景選項"
+  },
+  "black": {
+    "message": "黑色",
+    "description": "黑色背景選項"
+  },
+  "globalGap": {
+    "message": "全局間距",
+    "description": "全局間距標籤"
+  },
+  "resetToZero": {
+    "message": "重置為0",
+    "description": "重置間距的工具提示"
+  },
+  "imageSorting": {
+    "message": "圖片排序",
+    "description": "圖片排序部分標題"
+  },
+  "localGap": {
+    "message": "局部間距",
+    "description": "圖片排序副標題"
+  },
+  "imageLabel": {
+    "message": "圖片",
+    "description": "圖片標籤"
+  },
+  "moveUp": {
+    "message": "上移",
+    "description": "上移工具提示"
+  },
+  "moveDown": {
+    "message": "下移",
+    "description": "下移工具提示"
+  },
+  "hideImage": {
+    "message": "隱藏圖片",
+    "description": "隱藏圖片工具提示"
+  },
+  "showImage": {
+    "message": "顯示圖片",
+    "description": "顯示圖片工具提示"
+  },
+  "afterGap": {
+    "message": "後間距",
+    "description": "圖片後方的局部間距標籤"
+  },
+  "decreaseGap": {
+    "message": "減小間距",
+    "description": "減小間距工具提示"
+  },
+  "increaseGap": {
+    "message": "增大間距",
+    "description": "增大間距工具提示"
+  },
+  "gapLabel": {
+    "message": "間距",
+    "description": "最終縫隙標籤"
+  },
+  "resetLocalGap": {
+    "message": "重置局部間距",
+    "description": "重置局部間距工具提示"
+  },
+  "processing": {
+    "message": "處理中...",
+    "description": "處理時的按鈕文字"
+  },
+  "stitchAndDownload": {
+    "message": "立即拼接並下載",
+    "description": "最終下載按鈕文字"
+  },
+  "stitchBtnTitle": {
+    "message": "拼接圖片",
+    "description": "注入推特的拼接按鈕工具提示"
+  },
+  "language": {
+    "message": "語言",
+    "description": "語言選擇器標籤"
+  },
+  "sourcedFrom": {
+    "message": "來源於",
+    "description": "用於來源標籤"
+  },
+  "splitImage": {
+    "message": "拆分圖片",
+    "description": "拆分按鈕文本"
+  },
+  "downloadAll": {
+    "message": "全部下載",
+    "description": "全部下載按鈕文本"
+  },
+  "uploadImage": {
+    "message": "上傳圖片",
+    "description": "上傳圖片按鈕文本"
+  },
+  "selectImageTip": {
+    "message": "請選擇一張圖片進行拆分",
+    "description": "選擇圖片提示"
+  },
+  "changeImage": {
+    "message": "更換",
+    "description": "更換圖片按鈕文本"
+  },
+  "gapRemoval": {
+    "message": "消除間隙",
+    "description": "消除間隙標籤"
+  },
+  "gapRemovalTip": {
+    "message": "將自動移除切片之間的間隙",
+    "description": "消除間隙說明"
+  },
+  "rowCount": {
+    "message": "行數 (N)",
+    "description": "行數標籤"
+  },
+  "colCount": {
+    "message": "列數 (N)",
+    "description": "列數標籤"
+  },
+  "sourceImage": {
+    "message": "原圖",
+    "description": "原圖標籤"
+  },
+  "splitResult": {
+    "message": "拆分結果",
+    "description": "拆分結果標籤"
+  },
+  "formatLabel": {
+    "message": "導出格式",
+    "description": "導出格式標籤"
+  },
+  "zipLabel": {
+    "message": "打包下載 (Zip)",
+    "description": "Zip下載開關標籤"
+  },
+  "zipTip": {
+    "message": "將所有圖片打包為一個壓縮文件下載",
+    "description": "Zip功能說明"
+  },
+  "restore": {
+    "message": "恢復原圖",
+    "description": "恢復拆分前狀態按鈕"
+  },
+  "twitterOptimize": {
+    "message": "推特 (X) 佈局優化",
+    "description": "推特布局優化開關標籤"
+  },
+  "twitterOptimizeTip": {
+    "message": "自動適配推特網格比例，防止預覽圖被二次裁切，實現無縫拼圖效果。",
+    "description": "推特布局優化說明"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "通用設定部分標題"
+  },
+  "modeStitch": {
+    "message": "拼接",
+    "description": "拼接模式按鈕"
+  },
+  "modeSplit": {
+    "message": "拆分",
+    "description": "拆分模式按鈕"
+  },
+  "support": {
+    "message": "支持專案",
+    "description": "支持項目部分標題"
+  },
+  "buyMeCoffee": {
+    "message": "請喝咖啡",
+    "description": "贊助按鈕文本"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: 拆分圖片",
+    "description": "右鍵菜單標題"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "擴充功能已更新，請重新整理頁面",
+    "description": "擴充功能上下文失效時的提示"
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Kit - X画像結合・分割ツール",
+    "description": "アプリ名"
+  },
+  "appDesc": {
+    "message": "Twitter(X)の画像をワンクリックで結合・分割。高画質のまま保存できる、シンプルで強力なパズルツール。",
+    "description": "アプリの説明"
+  },
+  "previewTitle": {
+    "message": "結合プレビュー",
+    "description": "プレビューウィンドウのタイトル"
+  },
+  "splitterTitle": {
+    "message": "画像分割",
+    "description": "分割ウィンドウのタイトル"
+  },
+  "removeImage": {
+    "message": "画像を削除",
+    "description": "画像削除のツールチップ"
+  },
+  "fromArtist": {
+    "message": "作成者",
+    "description": "作者プレフィックス"
+  },
+  "tweetId": {
+    "message": "ツイート ID",
+    "description": "ツイート ID ラベル"
+  },
+  "stitching": {
+    "message": "結合中...",
+    "description": "プレビュー生成中のテキスト"
+  },
+  "preparingHighRes": {
+    "message": "高画質リソースを準備中...",
+    "description": "高画質画像読み込み中のテキスト"
+  },
+  "reset": {
+    "message": "リセット",
+    "description": "リセットボタンのテキスト"
+  },
+  "layoutScheme": {
+    "message": "レイアウト",
+    "description": "レイアウトセクションのヘッダー"
+  },
+  "layoutGrid": {
+    "message": "田の字",
+    "description": "2x2レイアウトラベル"
+  },
+  "layoutTShape": {
+    "message": "T型(左)",
+    "description": "T型レイアウトラベル"
+  },
+  "layoutHorizontal": {
+    "message": "横方向",
+    "description": "横方向レイアウトラベル"
+  },
+  "layoutVertical": {
+    "message": "縦方向",
+    "description": "縦方向レイアウトラベル"
+  },
+  "exportSettings": {
+    "message": "書き出し設定",
+    "description": "書き出し設定セクションのヘッダー"
+  },
+  "backgroundColor": {
+    "message": "背景色",
+    "description": "背景色のラベル"
+  },
+  "transparent": {
+    "message": "透明",
+    "description": "透明背景オプション"
+  },
+  "white": {
+    "message": "白",
+    "description": "白い背景オプション"
+  },
+  "black": {
+    "message": "黒",
+    "description": "黒い背景オプション"
+  },
+  "globalGap": {
+    "message": "全体の余白",
+    "description": "全体の余白ラベル"
+  },
+  "resetToZero": {
+    "message": "0にリセット",
+    "description": "余白リセットのツールチップ"
+  },
+  "imageSorting": {
+    "message": "画像の順序",
+    "description": "画像順序セクションのヘッダー"
+  },
+  "localGap": {
+    "message": "個別余白の調整",
+    "description": "画像順序のサブタイトル"
+  },
+  "imageLabel": {
+    "message": "画像",
+    "description": "画像のラベル"
+  },
+  "moveUp": {
+    "message": "上へ",
+    "description": "上へ移動のツールチップ"
+  },
+  "moveDown": {
+    "message": "下へ",
+    "description": "下へ移動のツールチップ"
+  },
+  "hideImage": {
+    "message": "画像を非表示",
+    "description": "画像非表示のツールチップ"
+  },
+  "showImage": {
+    "message": "画像を表示",
+    "description": "画像表示のツールチップ"
+  },
+  "afterGap": {
+    "message": "後ろの余白",
+    "description": "画像の後ろの個別余白ラベル"
+  },
+  "decreaseGap": {
+    "message": "余白を減らす",
+    "description": "余白減少のツールチップ"
+  },
+  "increaseGap": {
+    "message": "余白を増やす",
+    "description": "余白増加のツールチップ"
+  },
+  "gapLabel": {
+    "message": "隙間",
+    "description": "最終的な隙間のラベル"
+  },
+  "resetLocalGap": {
+    "message": "個別の余白をリセット",
+    "description": "個別余白リセットのツールチップ"
+  },
+  "processing": {
+    "message": "処理中...",
+    "description": "処理中のボタンテキスト"
+  },
+  "stitchAndDownload": {
+    "message": "結合してダウンロード",
+    "description": "最終ダウンロードボタンのテキスト"
+  },
+  "stitchBtnTitle": {
+    "message": "画像を結合",
+    "description": "Twitterに埋め込まれる結合ボタンのツールチップ"
+  },
+  "language": {
+    "message": "言語",
+    "description": "言語設定ラベル"
+  },
+  "sourcedFrom": {
+    "message": "作成者",
+    "description": "ソースラベルに使用"
+  },
+  "splitImage": {
+    "message": "画像を分割",
+    "description": "分割ボタンのテキスト"
+  },
+  "downloadAll": {
+    "message": "すべてダウンロード",
+    "description": "すべてダウンロードボタンのテキスト"
+  },
+  "uploadImage": {
+    "message": "画像をアップロード",
+    "description": "画像をアップロードボタンのテキスト"
+  },
+  "selectImageTip": {
+    "message": "分割する画像を選択してください",
+    "description": "画像選択のヒント"
+  },
+  "changeImage": {
+    "message": "変更",
+    "description": "画像変更ボタンのテキスト"
+  },
+  "gapRemoval": {
+    "message": "隙間削除",
+    "description": "隙間削除ラベル"
+  },
+  "gapRemovalTip": {
+    "message": "分割画像の間の隙間を自動的に削除します",
+    "description": "隙間削除の説明"
+  },
+  "rowCount": {
+    "message": "行数 (N)",
+    "description": "行数ラベル"
+  },
+  "colCount": {
+    "message": "列数 (N)",
+    "description": "列数ラベル"
+  },
+  "sourceImage": {
+    "message": "元画像",
+    "description": "元画像ラベル"
+  },
+  "splitResult": {
+    "message": "分割結果",
+    "description": "分割結果ラベル"
+  },
+  "formatLabel": {
+    "message": "出力形式",
+    "description": "出力形式ラベル"
+  },
+  "zipLabel": {
+    "message": "ZIPで一括ダウンロード",
+    "description": "ZIPダウンロードスイッチのラベル"
+  },
+  "zipTip": {
+    "message": "すべての画像を1つのZIPファイルにまとめてダウンロードします",
+    "description": "ZIP機能の説明"
+  },
+  "restore": {
+    "message": "元に戻す",
+    "description": "分割前の状態に戻すボタン"
+  },
+  "twitterOptimize": {
+    "message": "Twitter (X) 最適化",
+    "description": "Twitter最適化スイッチのラベル"
+  },
+  "twitterOptimizeTip": {
+    "message": "Twitterのグリッド比率に自動的に合わせ、プレビューでの二次トリミングを防ぎ、シームレスなパズル効果を実現します。",
+    "description": "Twitter最適化の説明"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "一般設定セクションのヘッダー"
+  },
+  "modeStitch": {
+    "message": "結合",
+    "description": "結合モードボタン"
+  },
+  "modeSplit": {
+    "message": "分割",
+    "description": "分割モードボタン"
+  },
+  "support": {
+    "message": "サポート",
+    "description": "サポートセクションのタイトル"
+  },
+  "buyMeCoffee": {
+    "message": "コーヒーを奢る",
+    "description": "スポンサーボタンのテキスト"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: 画像を分割",
+    "description": "右クリックメニューのタイトル"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "拡張機能が更新されました。ページを更新してください。",
+    "description": "拡張機能のコンテキストが無効になったときのメッセージ"
+  }
+}

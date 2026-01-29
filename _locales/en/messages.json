@@ -1,0 +1,254 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Kit: Stitch & Split for X",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Seamlessly stitch or split Twitter (X) images in original quality. The essential grid toolkit for creators and collectors.",
+    "description": "The description of the extension"
+  },
+  "previewTitle": {
+    "message": "Stitch Preview",
+    "description": "Title of the preview window"
+  },
+  "splitterTitle": {
+    "message": "Splitter",
+    "description": "Title of the splitter window"
+  },
+  "removeImage": {
+    "message": "Remove Image",
+    "description": "Tooltip for remove image"
+  },
+  "fromArtist": {
+    "message": "From",
+    "description": "Author prefix"
+  },
+  "tweetId": {
+    "message": "Tweet ID",
+    "description": "Label for Tweet ID"
+  },
+  "stitching": {
+    "message": "Stitching...",
+    "description": "Loading text during preview generation"
+  },
+  "preparingHighRes": {
+    "message": "Preparing high-res resources...",
+    "description": "Loading text for high-res images"
+  },
+  "reset": {
+    "message": "Reset",
+    "description": "Reset button text"
+  },
+  "layoutScheme": {
+    "message": "Layout Scheme",
+    "description": "Section header for layout"
+  },
+  "layoutGrid": {
+    "message": "2x2 Grid",
+    "description": "2x2 layout label"
+  },
+  "layoutTShape": {
+    "message": "T-Shape",
+    "description": "T-Shape layout label"
+  },
+  "layoutHorizontal": {
+    "message": "Horizontal",
+    "description": "Horizontal layout label"
+  },
+  "layoutVertical": {
+    "message": "Vertical",
+    "description": "Vertical layout label"
+  },
+  "exportSettings": {
+    "message": "Export Settings",
+    "description": "Section header for export settings"
+  },
+  "backgroundColor": {
+    "message": "BG Color",
+    "description": "Label for background color"
+  },
+  "transparent": {
+    "message": "Trans",
+    "description": "Transparent background option"
+  },
+  "white": {
+    "message": "White",
+    "description": "White background option"
+  },
+  "black": {
+    "message": "Black",
+    "description": "Black background option"
+  },
+  "globalGap": {
+    "message": "Global Gap",
+    "description": "Label for global gap"
+  },
+  "resetToZero": {
+    "message": "Reset to 0",
+    "description": "Tooltip for reset gap"
+  },
+  "imageSorting": {
+    "message": "Image Sorting",
+    "description": "Section header for image sorting"
+  },
+  "localGap": {
+    "message": "Adjust local gap",
+    "description": "Subtitle for image sorting"
+  },
+  "imageLabel": {
+    "message": "Image",
+    "description": "Label for image"
+  },
+  "moveUp": {
+    "message": "Move Up",
+    "description": "Tooltip for move up"
+  },
+  "moveDown": {
+    "message": "Move Down",
+    "description": "Tooltip for move down"
+  },
+  "hideImage": {
+    "message": "Hide Image",
+    "description": "Tooltip for hide image"
+  },
+  "showImage": {
+    "message": "Show Image",
+    "description": "Tooltip for show image"
+  },
+  "afterGap": {
+    "message": "Gap after",
+    "description": "Label for local gap after image"
+  },
+  "decreaseGap": {
+    "message": "Decrease gap",
+    "description": "Tooltip for decrease gap"
+  },
+  "increaseGap": {
+    "message": "Increase gap",
+    "description": "Tooltip for increase gap"
+  },
+  "gapLabel": {
+    "message": "Gap",
+    "description": "Label for the resulting gap"
+  },
+  "resetLocalGap": {
+    "message": "Reset local gap",
+    "description": "Tooltip for reset local gap"
+  },
+  "processing": {
+    "message": "Processing...",
+    "description": "Button text while processing"
+  },
+  "stitchAndDownload": {
+    "message": "Stitch & Download",
+    "description": "Final download button text"
+  },
+  "stitchBtnTitle": {
+    "message": "Stitch Images",
+    "description": "Tooltip for the stitch button embedded in Twitter"
+  },
+  "language": {
+    "message": "Language",
+    "description": "Language selector label"
+  },
+  "sourcedFrom": {
+    "message": "from",
+    "description": "Used in the source badge"
+  },
+  "splitImage": {
+    "message": "Split Image",
+    "description": "Split button text"
+  },
+  "downloadAll": {
+    "message": "Download All",
+    "description": "Download all button text"
+  },
+  "uploadImage": {
+    "message": "Upload Image",
+    "description": "Upload image button text"
+  },
+  "selectImageTip": {
+    "message": "Select an image to split",
+    "description": "Select image tip"
+  },
+  "changeImage": {
+    "message": "Change",
+    "description": "Change image button text"
+  },
+  "gapRemoval": {
+    "message": "Gap Removal",
+    "description": "Gap removal label"
+  },
+  "gapRemovalTip": {
+    "message": "Pixels to verify and remove between split images.",
+    "description": "Gap removal description"
+  },
+  "rowCount": {
+    "message": "Row Count (N)",
+    "description": "Row count label"
+  },
+  "colCount": {
+    "message": "Col Count (N)",
+    "description": "Column count label"
+  },
+  "sourceImage": {
+    "message": "Source",
+    "description": "Source image label"
+  },
+  "splitResult": {
+    "message": "Split Result",
+    "description": "Split result label"
+  },
+  "formatLabel": {
+    "message": "Export Format",
+    "description": "Export format label"
+  },
+  "zipLabel": {
+    "message": "Download as Zip",
+    "description": "Zip download toggle label"
+  },
+  "zipTip": {
+    "message": "Package all images into a single zip file",
+    "description": "Zip feature description"
+  },
+  "restore": {
+    "message": "Restore",
+    "description": "Restore button text"
+  },
+  "twitterOptimize": {
+    "message": "Optimize for Twitter (X)",
+    "description": "Twitter optimization toggle label"
+  },
+  "twitterOptimizeTip": {
+    "message": "Automatically adapts to Twitter's grid layout ratio to prevent preview cropping and ensure a seamless stitching effect.",
+    "description": "Twitter optimization tip"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "General settings section title"
+  },
+  "modeStitch": {
+    "message": "Stitch",
+    "description": "Stitch mode button"
+  },
+  "modeSplit": {
+    "message": "Split",
+    "description": "Split mode button"
+  },
+  "support": {
+    "message": "Support",
+    "description": "Support section title"
+  },
+  "buyMeCoffee": {
+    "message": "Buy me a coffee",
+    "description": "Sponsorship button text"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: Split Image",
+    "description": "Context menu item title"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "Extension updated. Please refresh the page.",
+    "description": "Message shown when extension context is invalidated"
+  }
+}
