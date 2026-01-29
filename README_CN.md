@@ -16,7 +16,7 @@
     <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
       <img src="https://img.shields.io/github/v/release/Shirolin/X-Puzzle-Kit?label=version&style=flat-square&color=blue" alt="Version" />
     </a>
-    <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/license-GPLv3-blue?style=flat-square" alt="License" />
     <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
   </p>
 
@@ -114,4 +114,4 @@ npm run package
 
 ## 📄 许可证
 
-[MIT](./LICENSE) License © 2026 shirolin
+[GPL-3.0](./LICENSE) License © 2026 shirolin

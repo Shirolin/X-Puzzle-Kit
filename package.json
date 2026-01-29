@@ -19,7 +19,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "type": "commonjs",
   "devDependencies": {
     "@eslint/js": "^9.39.2",
