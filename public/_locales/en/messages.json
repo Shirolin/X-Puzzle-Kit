@@ -242,5 +242,13 @@
   "buyMeCoffee": {
     "message": "Buy me a coffee",
     "description": "Sponsorship button text"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: Split Image",
+    "description": "Context menu item title"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "Extension updated. Please refresh the page.",
+    "description": "Message shown when extension context is invalidated"
   }
 }

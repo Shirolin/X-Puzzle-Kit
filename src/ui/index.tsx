@@ -4,12 +4,12 @@ import { App } from "./App";
 import cssText from "./index.css?inline";
 import { StitchTask, ImageNode } from "../core/types";
 
-export async function mountUI(task: StitchTask) {
+export async function mountUI(task: StitchTask, splitImageUrl?: string) {
   // 1. 创建或获取外部容器
-  let container = document.getElementById("x-puzzle-stitcher-root");
+  let container = document.getElementById("x-puzzle-kit-root");
   if (!container) {
     container = document.createElement("div");
-    container.id = "x-puzzle-stitcher-root";
+    container.id = "x-puzzle-kit-root";
     document.body.appendChild(container);
   }
 
@@ -23,20 +23,20 @@ export async function mountUI(task: StitchTask) {
   // 使用 ?inline 导入的 CSS 字符串直接注入，确保完全隔离
   // 3. 注入样式到 Shadow DOM
   // 使用 ?inline 导入的 CSS 字符串直接注入，确保完全隔离
-  let style = shadowRoot.querySelector("#x-puzzle-stitcher-styles");
+  let style = shadowRoot.querySelector("#x-puzzle-kit-styles");
   if (!style) {
     style = document.createElement("style");
-    style.id = "x-puzzle-stitcher-styles";
+    style.id = "x-puzzle-kit-styles";
     shadowRoot.appendChild(style);
   }
   // 总是更新样式内容以支持 HMR 或重新挂载
   style.textContent = cssText;
 
   // 创建一个内部挂载点，避免直接渲染到 shadowRoot 根部导致潜在冲突
-  let mountPoint = shadowRoot.querySelector(".x-puzzle-stitcher-mount-point");
+  let mountPoint = shadowRoot.querySelector(".x-puzzle-kit-mount-point");
   if (!mountPoint) {
     mountPoint = document.createElement("div");
-    mountPoint.className = "x-puzzle-stitcher-mount-point";
+    mountPoint.className = "x-puzzle-kit-mount-point";
     // 确保挂载点填满容器
     mountPoint.setAttribute(
       "style",
@@ -79,6 +79,8 @@ export async function mountUI(task: StitchTask) {
   render(
     <App
       task={task}
+      initialMode={splitImageUrl ? "split" : "stitch"}
+      initialSplitImageUrl={splitImageUrl}
       onClose={() => {
         render(null, mountPoint!);
       }}

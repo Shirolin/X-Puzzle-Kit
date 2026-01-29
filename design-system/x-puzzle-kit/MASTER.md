@@ -6,7 +6,7 @@
 
 ---
 
-**Project:** X-Puzzle-Stitcher
+**Project:** X-Puzzle-Kit
 **Generated:** 2026-01-26 16:01:31
 **Category:** Productivity Tool
 

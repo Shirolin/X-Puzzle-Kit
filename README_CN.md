@@ -14,7 +14,7 @@
       <img src="https://img.shields.io/github/actions/workflow/status/Shirolin/X-Puzzle-Kit/release.yml?style=flat-square" alt="Build Status" />
     </a>
     <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
-        <img src="https://img.shields.io/github/v/release/Shirolin/X-Puzzle-Kit?label=version&style=flat-square&color=blue" alt="Version" />
+      <img src="https://img.shields.io/github/v/release/Shirolin/X-Puzzle-Kit?label=version&style=flat-square&color=blue" alt="Version" />
     </a>
     <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License" />
     <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
@@ -64,7 +64,7 @@
 
 ```bash
 git clone https://github.com/Shirolin/X-Puzzle-Kit.git
-cd x-puzzle-stitcher
+cd x-puzzle-kit
 npm install
 npm run build
 # 然后在 Chrome 加载 dist 目录
@@ -114,4 +114,4 @@ npm run package
 
 ## 📄 许可证
 
-[MIT](./LICENSE) License © 2024 shirolin
+[MIT](./LICENSE) License © 2026 shirolin

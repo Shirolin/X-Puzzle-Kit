@@ -156,13 +156,17 @@ export function Sidebar({
                     label={t("layoutTShape")}
                   />
                   <LayoutButton
-                    active={layout === "HORIZONTAL_Nx1"}
+                    active={
+                      layout === "HORIZONTAL_Nx1" || layout === "HORIZONTAL_2x1"
+                    }
                     onClick={() => setLayout("HORIZONTAL_Nx1")}
                     icon={<Columns size={13} />}
                     label={t("layoutHorizontal")}
                   />
                   <LayoutButton
-                    active={layout === "VERTICAL_1xN"}
+                    active={
+                      layout === "VERTICAL_1xN" || layout === "VERTICAL_1x2"
+                    }
                     onClick={() => setLayout("VERTICAL_1xN")}
                     icon={<Rows size={13} />}
                     label={t("layoutVertical")}

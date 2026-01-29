@@ -242,5 +242,13 @@
   "buyMeCoffee": {
     "message": "Invítame a un café",
     "description": "Texto del botón de patrocinio"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: Dividir imagen",
+    "description": "Título del menú contextual"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "La extensión se ha actualizado. Por favor, actualice la página.",
+    "description": "Mensaje mostrado cuando el contexto de la extensión se invalida"
   }
 }

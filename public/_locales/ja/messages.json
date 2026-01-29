@@ -242,5 +242,13 @@
   "buyMeCoffee": {
     "message": "コーヒーを奢る",
     "description": "スポンサーボタンのテキスト"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: 画像を分割",
+    "description": "右クリックメニューのタイトル"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "拡張機能が更新されました。ページを更新してください。",
+    "description": "拡張機能のコンテキストが無効になったときのメッセージ"
   }
 }

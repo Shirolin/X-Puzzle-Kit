@@ -55,7 +55,7 @@ window.chrome = {
     // @ts-expect-error: Mock API
     getURL: (path: string) => path,
     // @ts-expect-error: Mock API
-    getManifest: () => ({ name: "X-Puzzle-Stitcher" }),
+    getManifest: () => ({ name: "X-Puzzle-Kit" }),
   },
   i18n: {
     // @ts-expect-error: Mock API

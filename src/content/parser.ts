@@ -6,21 +6,28 @@ import { t } from "../core/i18n";
 /**
  * Parse tweets on the page and inject stitch buttons
  */
-export function parseTweets() {
-  const tweets = document.querySelectorAll('article[data-testid="tweet"]');
+export function parseTweets(root: ParentNode = document) {
+  // 1. Check if the root element itself is a tweet
+  if (root instanceof Element && root.matches('article[data-testid="tweet"]')) {
+    processTweet(root as HTMLElement);
+  }
 
-  tweets.forEach((tweet) => {
-    // Check if button is already injected
-    if (tweet.querySelector(".x-puzzle-stitcher-btn")) return;
+  // 2. Find descendant tweets
+  const tweets = root.querySelectorAll('article[data-testid="tweet"]');
+  tweets.forEach((tweet) => processTweet(tweet as HTMLElement));
+}
 
-    // Find images in the tweet
-    const photoContainers = tweet.querySelectorAll(
-      'div[data-testid="tweetPhoto"]',
-    );
-    if (photoContainers.length >= 2 && photoContainers.length <= 4) {
-      injectStitchButton(tweet as HTMLElement, photoContainers);
-    }
-  });
+function processTweet(tweet: HTMLElement) {
+  // Check if button is already injected
+  if (tweet.querySelector(".x-puzzle-kit-btn")) return;
+
+  // Find images in the tweet
+  const photoContainers = tweet.querySelectorAll(
+    'div[data-testid="tweetPhoto"]',
+  );
+  if (photoContainers.length >= 2 && photoContainers.length <= 4) {
+    injectStitchButton(tweet, photoContainers);
+  }
 }
 
 /**
@@ -31,9 +38,6 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   const actionBar = tweet.querySelector('div[role="group"][aria-label]');
   if (!actionBar) return;
 
-  // Dynamically inject styles
-  injectStyles();
-
   const container = createButtonContainer();
   const innerBtn = createInnerButton();
   const iconWrapper = createIconWrapper();
@@ -43,27 +47,14 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   innerBtn.append(iconWrapper);
   container.append(innerBtn);
 
-  // Simulate Twitter blue glow Hover effect
-  innerBtn.onmouseenter = () => {
-    if (innerBtn.style.cursor === "not-allowed") return;
-    innerBtn.style.backgroundColor = "rgba(29, 155, 240, 0.1)";
-    innerBtn.style.color = "rgb(29, 155, 240)";
-  };
-  innerBtn.onmouseleave = () => {
-    if (innerBtn.style.cursor === "not-allowed") return;
-    innerBtn.style.backgroundColor = "transparent";
-    innerBtn.style.color = "#71767b";
-  };
-
   innerBtn.onclick = async (e) => {
     e.stopPropagation();
     e.preventDefault();
 
-    if (innerBtn.style.cursor === "not-allowed") return;
+    if (innerBtn.classList.contains("x-loading")) return;
 
     // Enter loading state
-    innerBtn.style.cursor = "not-allowed";
-    innerBtn.style.color = "rgb(29, 155, 240)";
+    innerBtn.classList.add("x-loading");
 
     // Clear icon and show spinner
     iconWrapper.innerHTML = "";
@@ -75,11 +66,19 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
       await handleStitchClick(tweet, photos);
     } catch (err) {
       console.error("Stitch error:", err);
+      // Handle extension context invalidated (common during dev)
+      if (
+        err instanceof Error &&
+        err.message.includes("Extension context invalidated")
+      ) {
+        alert(
+          t("extensionUpdatedRefresh") ||
+            "Extension updated. Please refresh the page.",
+        );
+      }
     } finally {
       // Restore state
-      innerBtn.style.cursor = "pointer";
-      innerBtn.style.color = "#71767b";
-      innerBtn.style.backgroundColor = "transparent";
+      innerBtn.classList.remove("x-loading");
       iconWrapper.innerHTML = "";
       iconWrapper.append(svg);
     }
@@ -88,35 +87,9 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   actionBar.appendChild(container);
 }
 
-function injectStyles() {
-  if (document.getElementById("x-puzzle-stitcher-styles")) return;
-  const style = document.createElement("style");
-  style.id = "x-puzzle-stitcher-styles";
-  style.textContent = `
-    @keyframes x-spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .x-stitch-loading-spinner {
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(113, 118, 123, 0.2);
-      border-top: 2px solid rgb(29, 155, 240);
-      border-radius: 50%;
-      animation: x-spin 0.8s linear infinite;
-    }
-  `;
-  document.head.appendChild(style);
-}
-
 function createButtonContainer() {
   const container = document.createElement("div");
-  container.className = "x-puzzle-stitcher-btn";
-  Object.assign(container.style, {
-    display: "flex",
-    alignItems: "center",
-    flex: "1",
-  });
+  container.className = "x-puzzle-kit-btn";
   return container;
 }
 
@@ -126,40 +99,19 @@ function createInnerButton() {
   innerBtn.tabIndex = 0;
   innerBtn.title = t("stitchBtnTitle");
   innerBtn.className = "x-stitch-btn-inner";
-  Object.assign(innerBtn.style, {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "34.75px",
-    height: "34.75px",
-    borderRadius: "9999px",
-    cursor: "pointer",
-    color: "#71767b",
-    transition: "background-color 0.2s, color 0.2s",
-    outline: "none",
-  });
   return innerBtn;
 }
 
 function createIconWrapper() {
   const iconWrapper = document.createElement("div");
   iconWrapper.className = "x-stitch-icon-wrapper";
-  Object.assign(iconWrapper.style, {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  });
   return iconWrapper;
 }
 
 function createStitchIcon() {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("viewBox", "0 0 512 512");
-  Object.assign(svg.style, {
-    width: "18.75px",
-    height: "18.75px",
-    fill: "none",
-  });
+  svg.classList.add("x-stitch-svg");
 
   const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
   g.setAttribute("stroke", "currentColor");

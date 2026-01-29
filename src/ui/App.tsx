@@ -17,9 +17,26 @@ import { ViewerArea } from "./components/ViewerArea";
 interface AppProps {
   task: StitchTask;
   onClose: () => void;
+  initialMode?: "stitch" | "split";
+  initialSplitImageUrl?: string;
+  isPopup?: boolean;
 }
 
-export function App({ task, onClose }: AppProps) {
+const STORAGE_KEYS = {
+  LANG: "x-puzzle-kit-lang",
+  FORMAT: "x-puzzle-kit-format",
+  BG: "x-puzzle-kit-bg",
+  THEME: "x-puzzle-kit-theme",
+  SPLIT_OPTIONS: "x-puzzle-kit-split-options",
+};
+
+export function App({
+  task,
+  onClose,
+  initialMode = "stitch",
+  initialSplitImageUrl,
+  isPopup = false,
+}: AppProps) {
   const logoUrl = chrome.runtime.getURL("assets/icon-48.png");
 
   const [layout, setLayout] = useState<LayoutType>(task.layout);
@@ -34,7 +51,7 @@ export function App({ task, onClose }: AppProps) {
   const [isGenerating, setIsGenerating] = useState(false);
 
   // Split Mode State
-  const [mode, setMode] = useState<"stitch" | "split">("stitch");
+  const [mode, setMode] = useState<"stitch" | "split">(initialMode);
   const [splitSource, setSplitSource] = useState<File | null>(null);
   const [splitSourceBitmap, setSplitSourceBitmap] =
     useState<ImageBitmap | null>(null);
@@ -69,21 +86,19 @@ export function App({ task, onClose }: AppProps) {
   useEffect(() => {
     chrome.storage.local
       .get({
-        "x-puzzle-stitcher-lang": "auto",
-        "x-puzzle-stitcher-format": "png",
-        "x-puzzle-stitcher-bg": "transparent",
-        "x-puzzle-stitcher-theme": "auto",
-        "x-puzzle-stitcher-split-options": null,
+        [STORAGE_KEYS.LANG]: "auto",
+        [STORAGE_KEYS.FORMAT]: "png",
+        [STORAGE_KEYS.BG]: "transparent",
+        [STORAGE_KEYS.THEME]: "auto",
+        [STORAGE_KEYS.SPLIT_OPTIONS]: null,
       })
       .then((res) => {
-        setLang(res["x-puzzle-stitcher-lang"] as string);
-        setOutputFormat(
-          res["x-puzzle-stitcher-format"] as "png" | "jpg" | "webp",
-        );
-        setBackgroundColor(res["x-puzzle-stitcher-bg"] as BackgroundColor);
-        setTheme(res["x-puzzle-stitcher-theme"] as "auto" | "light" | "dark");
+        setLang(res[STORAGE_KEYS.LANG] as string);
+        setOutputFormat(res[STORAGE_KEYS.FORMAT] as "png" | "jpg" | "webp");
+        setBackgroundColor(res[STORAGE_KEYS.BG] as BackgroundColor);
+        setTheme(res[STORAGE_KEYS.THEME] as "auto" | "light" | "dark");
 
-        const splitOpts = res["x-puzzle-stitcher-split-options"] as {
+        const splitOpts = res[STORAGE_KEYS.SPLIT_OPTIONS] as {
           format?: "png" | "jpg" | "webp";
           isZip?: boolean;
           isTwitterOptimized?: boolean;
@@ -97,7 +112,7 @@ export function App({ task, onClose }: AppProps) {
             setIsTwitterOptimized(splitOpts.isTwitterOptimized);
         }
 
-        setLanguage(res["x-puzzle-stitcher-lang"] as string)
+        setLanguage(res[STORAGE_KEYS.LANG] as string)
           .then(() => {
             setIsLangLoaded(true);
             setLoading(false);
@@ -124,11 +139,11 @@ export function App({ task, onClose }: AppProps) {
     if (!isLangLoaded) return;
 
     const settingsToSave = {
-      "x-puzzle-stitcher-lang": lang,
-      "x-puzzle-stitcher-format": outputFormat,
-      "x-puzzle-stitcher-bg": backgroundColor,
-      "x-puzzle-stitcher-theme": theme,
-      "x-puzzle-stitcher-split-options": {
+      [STORAGE_KEYS.LANG]: lang,
+      [STORAGE_KEYS.FORMAT]: outputFormat,
+      [STORAGE_KEYS.BG]: backgroundColor,
+      [STORAGE_KEYS.THEME]: theme,
+      [STORAGE_KEYS.SPLIT_OPTIONS]: {
         format: splitConfig.format,
         isZip,
         isTwitterOptimized,
@@ -168,12 +183,16 @@ export function App({ task, onClose }: AppProps) {
     }
   }, [theme]);
 
+  const lastLoadedUrlRef = useRef<string | null>(null);
+
   // Load split source image
   useEffect(() => {
+    let active = true;
     if (splitSource) {
       setLoading(true);
       createImageBitmap(splitSource)
         .then((bitmap) => {
+          if (!active) return;
           setSplitSourceBitmap(bitmap);
           if (mode === "split") {
             // Small timeout to ensure state update before fitToScreen
@@ -182,15 +201,48 @@ export function App({ task, onClose }: AppProps) {
           setLoading(false);
         })
         .catch((err) => {
+          if (!active) return;
           console.error("Failed to load image bitmap:", err);
-          alert("Failed to load image. Please try another file.");
+          // alert("Failed to load image. Please try another file.");
           setSplitSource(null);
           setLoading(false);
         });
+    } else if (
+      initialSplitImageUrl &&
+      !splitSourceBitmap &&
+      lastLoadedUrlRef.current !== initialSplitImageUrl
+    ) {
+      // Handle initial image from context menu
+      // Only load if we haven't loaded this specific URL yet (prevents reloading after clear)
+      lastLoadedUrlRef.current = initialSplitImageUrl;
+      setLoading(true);
+      chrome.runtime.sendMessage(
+        { type: "FETCH_IMAGE", url: initialSplitImageUrl },
+        async (response) => {
+          if (response && response.dataUrl) {
+            try {
+              const res = await fetch(response.dataUrl);
+              const blob = await res.blob();
+              const file = new File([blob], "split_image.png", {
+                type: blob.type,
+              });
+              setSplitSource(file); // This will trigger the effect above
+            } catch (e) {
+              console.error(e);
+              setLoading(false);
+            }
+          } else {
+            setLoading(false);
+          }
+        },
+      );
     } else {
       setSplitSourceBitmap(null);
     }
-  }, [splitSource]);
+    return () => {
+      active = false;
+    };
+  }, [splitSource, initialSplitImageUrl]);
 
   // Preview Generation for Stitch
   useEffect(() => {
@@ -254,8 +306,7 @@ export function App({ task, onClose }: AppProps) {
     }
   };
 
-  const handleSplitFileSelect = (e: Event) => {
-    const file = (e.target as HTMLInputElement).files?.[0];
+  const handleSplitFileSelect = (file: File) => {
     if (file) {
       setSplitSource(file);
       setSplitBlobs([]);
@@ -375,9 +426,13 @@ export function App({ task, onClose }: AppProps) {
   const handleDoubleClick = () =>
     viewerScale < 1 ? setViewerScale(1) : fitToScreen();
 
+  // If running in popup mode, we use different container classes
+  const containerClass = isPopup ? "app-popup-container" : "app-container";
+  const wrapperClass = isPopup ? "app-popup-wrapper" : "app-overlay";
+
   return (
-    <div className="app-overlay" data-theme={isThemeDark ? "dark" : "light"}>
-      <div className="app-container">
+    <div className={wrapperClass} data-theme={isThemeDark ? "dark" : "light"}>
+      <div className={containerClass}>
         {/* Header */}
         <div className="app-header">
           <div className="header-group">
@@ -503,7 +558,7 @@ export function App({ task, onClose }: AppProps) {
             previewUrl={previewUrl}
             splitBlobs={splitBlobs}
             splitConfig={splitConfig}
-            handleSplitFileSelect={handleSplitFileSelect}
+            onSplitFileSelect={handleSplitFileSelect}
             onClearSplit={() => {
               setSplitSource(null);
               setSplitBlobs([]);

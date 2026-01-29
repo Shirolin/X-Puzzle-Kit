@@ -3,141 +3,336 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>X-Puzzle-Stitcher Test Bench</title>
+    <title>X-Puzzle-Kit Test Bench</title>
     <style>
+      :root {
+        --primary: #1d9bf0;
+        --primary-hover: #1a8cd8;
+        --bg-app: #f7f9f9;
+        --bg-surface: #ffffff;
+        --border: #eff3f4;
+        --border-hover: #cfd9de;
+        --text-main: #0f1419;
+        --text-secondary: #536471;
+        --danger: #f4212e;
+        --success: #00ba7c;
+        --font-stack:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         display: flex;
         height: 100vh;
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-          Arial, sans-serif;
-        color: #0f1419;
+        font-family: var(--font-stack);
+        color: var(--text-main);
+        background: var(--bg-app);
+        line-height: 1.5;
+        overflow: hidden;
       }
+
+      /* Sidebar */
       #sidebar {
-        width: 420px;
-        background: #fff;
-        border-right: 1px solid #eff3f4;
+        width: 320px;
+        background: var(--bg-surface);
+        border-right: 1px solid var(--border);
         display: flex;
         flex-direction: column;
         overflow-y: auto;
+        overflow-x: hidden;
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.02);
+        z-index: 10;
+        height: 100%;
+        flex-shrink: 0;
+        transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
       }
+      #sidebar.collapsed {
+        width: 60px;
+      }
+      #sidebar.collapsed .sidebar-content {
+        display: none;
+      }
+      #sidebar.collapsed .sidebar-header {
+        padding: 0;
+        justify-content: center;
+      }
+      #sidebar.collapsed .sidebar-header h2 {
+        display: none;
+      }
+      #sidebar.collapsed .btn-toggle {
+        transform: rotate(180deg);
+        margin: 0;
+      }
+
       .sidebar-header {
-        padding: 20px;
-        border-bottom: 1px solid #eff3f4;
+        padding: 16px 20px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        white-space: nowrap;
+      }
+      .sidebar-header h2 {
+        font-size: 18px;
+        font-weight: 800;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: -0.5px;
+        transition: opacity 0.2s;
       }
       .sidebar-content {
         padding: 20px;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
+        flex: 1;
+        transition: opacity 0.2s;
+        width: 320px;
       }
+
+      /* Toggle Button */
+      .btn-toggle {
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+        padding: 0;
+      }
+      .btn-toggle:hover {
+        background: var(--border);
+        color: var(--primary);
+      }
+
+      /* Floating Build Button (Visible only when collapsed) */
+      #btn-floating-build {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        box-shadow: 0 4px 12px rgba(29, 155, 240, 0.4);
+        margin: 20px auto; /* Center in sidebar */
+        transition:
+          transform 0.2s,
+          background 0.2s;
+        flex-shrink: 0;
+      }
+      #btn-floating-build:hover {
+        background: var(--primary-hover);
+        transform: scale(1.1);
+      }
+      #btn-floating-build:active {
+        transform: scale(0.95);
+      }
+      #sidebar.collapsed #btn-floating-build {
+        display: flex;
+        animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      @keyframes popIn {
+        from {
+          transform: scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Form Elements */
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      label {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-hover);
+        border-radius: 4px;
+        padding: 10px 12px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        color: var(--text-main);
+        font-family: var(--font-stack);
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #8899a6;
+      }
+      input[type="text"] {
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+      }
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(29, 155, 240, 0.2);
+      }
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+        line-height: 1.6;
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+      }
+      .hint {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.4;
+      }
+
+      /* Buttons & Presets */
+      .preset-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .preset-group {
+        display: flex;
+        gap: 6px;
+      }
+      .btn-preset {
+        background: var(--bg-app);
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--text-secondary);
+        transition: all 0.2s;
+      }
+      .btn-preset:hover {
+        background: #e8f5fd;
+        color: var(--primary);
+        border-color: rgba(29, 155, 240, 0.3);
+      }
+
+      button.primary {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 9999px;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 15px;
+        transition:
+          background 0.2s,
+          transform 0.1s;
+        width: 100%;
+        margin-top: 10px;
+        box-shadow: 0 4px 12px rgba(29, 155, 240, 0.3);
+      }
+      button.primary:hover {
+        background: var(--primary-hover);
+      }
+      button.primary:active {
+        transform: scale(0.98);
+        box-shadow: none;
+      }
+
+      /* Content Area */
       #content-area {
         flex: 1;
-        background: #f7f9f9;
+        background: var(--bg-app);
         overflow: auto;
-        padding: 40px;
+        padding: 60px 40px;
         display: flex;
         justify-content: center;
         align-items: flex-start;
       }
       #twitter-feed {
         width: 600px;
-        background: #fff;
-        border: 1px solid #eff3f4;
-        border-radius: 16px;
-        min-height: 200px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        max-width: 100%;
       }
 
-      /* Tabs */
-      .tabs {
-        display: flex;
-        border-bottom: 1px solid #eff3f4;
-      }
-      .tab {
-        flex: 1;
-        padding: 15px;
-        text-align: center;
-        cursor: pointer;
-        font-weight: bold;
-        color: #536471;
-        border-bottom: 3px solid transparent;
-      }
-      .tab.active {
-        color: #0f1419;
-        border-bottom-color: #1d9bf0;
-      }
-      .panel {
-        display: none;
-      }
-      .panel.active {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      /* Form Elements */
-      label {
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 4px;
-        display: block;
-      }
-      input,
-      textarea {
-        width: 100%;
-        border: 1px solid #cfd9de;
-        border-radius: 4px;
-        padding: 8px;
-        font-family: monospace;
-        box-sizing: border-box;
-      }
-      input:focus,
-      textarea:focus {
-        outline: none;
-        border-color: #1d9bf0;
-      }
-      textarea {
-        resize: vertical;
-        min-height: 100px;
-      }
-      .hint {
-        font-size: 12px;
-        color: #536471;
-        margin-top: 4px;
-      }
-
-      button.primary {
-        background: #1d9bf0;
-        color: white;
-        border: none;
-        padding: 12px;
-        border-radius: 9999px;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: 15px;
-        transition: background 0.2s;
-      }
-      button.primary:hover {
-        background: #1a8cd8;
-      }
-
-      /* Twitter Styles Simulation */
+      /* Mock Tweet Card */
       article {
+        background: var(--bg-surface);
         padding: 16px;
-        border-bottom: 1px solid #eff3f4;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        margin-bottom: 24px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      }
+      article:hover {
+        background: rgba(0, 0, 0, 0.005);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
       .mock-avatar {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
         background: #cfd9de;
         border-radius: 50%;
+        flex-shrink: 0;
       }
       .tweet-header {
         display: flex;
         gap: 12px;
+      }
+      .tweet-content {
+        flex: 1;
+        min-width: 0;
+      }
+      .user-meta {
         margin-bottom: 4px;
+        font-size: 15px;
+        line-height: 20px;
+      }
+      .user-meta strong {
+        color: var(--text-main);
+      }
+      .user-meta span {
+        color: var(--text-secondary);
+      }
+
+      .tweet-text {
+        font-size: 15px;
+        line-height: 20px;
+        margin-bottom: 12px;
+        white-space: pre-wrap;
       }
       .tweet-images-grid {
         display: grid;
@@ -145,7 +340,7 @@
         border-radius: 16px;
         overflow: hidden;
         margin-top: 12px;
-        aspect-ratio: 16/9; /* Default aspect ratio */
+        border: 1px solid var(--border);
       }
       .tweet-photo {
         position: relative;
@@ -159,89 +354,229 @@
         object-fit: cover;
         display: block;
       }
+
+      /* Empty State */
+      .empty-state {
+        padding: 60px 40px;
+        text-align: center;
+        color: var(--text-secondary);
+        background: var(--bg-surface);
+        border-radius: 16px;
+        border: 1px dashed var(--border-hover);
+      }
+
+      /* Scrollbar Styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 99px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      /* Dark Mode Support (Class-based + Media Query Fallback) */
+      body.dark {
+        --primary: #1d9bf0;
+        --primary-hover: #1a8cd8;
+        --bg-app: #15202b;
+        --bg-surface: #1e2732;
+        --border: #38444d;
+        --border-hover: #5c6e7e;
+        --text-main: #f7f9f9;
+        --text-secondary: #8b98a5;
+        --danger: #f4212e;
+        --success: #00ba7c;
+      }
+      body.dark .tweet-photo {
+        background: #38444d;
+      }
+      body.dark ::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      body.dark ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+      body.dark article:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      body.dark input,
+      body.dark textarea,
+      body.dark select {
+        background: #273340;
+        color: white;
+      }
+      body.dark .sidebar-header {
+        background: rgba(30, 39, 50, 0.9);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 800px) {
+        #sidebar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          z-index: 100;
+          box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+        }
+        #content-area {
+          margin-left: 60px; /* Space for mini-sidebar */
+          padding: 20px 10px;
+          justify-content: center; /* Ensure centered */
+        }
+        #twitter-feed {
+          width: 100%;
+        }
+
+        /* When sidebar is expanded on mobile, it overlays content */
+        /* You might want to auto-collapse it initially via JS */
+      }
     </style>
   </head>
   <body>
     <div id="sidebar">
       <div class="sidebar-header">
-        <h2 style="margin: 0">🧩 插件测试台</h2>
-      </div>
-
-      <div class="tabs">
-        <div class="tab active" data-target="panel-url">URL 构造器</div>
-        <div class="tab" data-target="panel-html">HTML 粘贴</div>
+        <h2><span>🧩 测试台</span></h2>
+        <div style="display: flex; gap: 4px">
+          <button id="btn-theme-toggle" class="btn-toggle" title="Toggle Theme">
+            🌞
+          </button>
+          <button
+            id="btn-toggle-sidebar"
+            class="btn-toggle"
+            title="Toggle Sidebar"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div class="sidebar-content">
         <!-- Panel 1: URL Builder -->
-        <div id="panel-url" class="panel active">
-          <div>
-            <label>推文链接 (Tweet URL)</label>
+        <div
+          id="panel-url"
+          style="display: flex; flex-direction: column; gap: 24px"
+        >
+          <div class="form-group">
+            <label>Mock 用例链接 (Target URL)</label>
             <input
               type="text"
               id="input-url"
               placeholder="https://x.com/username/status/..."
             />
-            <div class="hint">用于生成 ID 和用户信息的元数据。</div>
+            <div class="hint">
+              解析此 URL 获取用户名与ID，用于生成模拟元数据。
+            </div>
           </div>
 
-          <div>
-            <label>图片链接 (Image URLs)</label>
+          <div class="form-group">
+            <div class="preset-actions">
+              <label style="margin: 0">图片资源 (Images)</label>
+              <div class="preset-group">
+                <button class="btn-preset" data-ratio="800x600">4:3</button>
+                <button class="btn-preset" data-ratio="600x800">3:4</button>
+                <button class="btn-preset" data-ratio="1600x900">16:9</button>
+                <button class="btn-preset" data-ratio="900x1600">9:16</button>
+              </div>
+            </div>
             <textarea
               id="input-images"
-              placeholder="https://pbs.twimg.com/media/...
-https://pbs.twimg.com/media/..."
+              placeholder="输入 URL (https://...)
+或者输入尺寸 (800x600)
+1000x2000
+..."
             ></textarea>
-            <div class="hint">每行一个 URL。如果不填，将使用随机占位图。</div>
+            <div class="hint">
+              每行一张。支持输入 <b>宽x高</b> (如 1200x600)
+              自动生成占位图，或直接粘贴 URL。
+            </div>
           </div>
 
-          <div>
-            <label>占位图数量 (仅当上方留空时)</label>
-            <select id="input-count" style="width: 100%; padding: 8px">
-              <option value="4" selected>4 张 (田字格)</option>
-              <option value="3">3 张</option>
-              <option value="2">2 张</option>
-              <option value="1">1 张</option>
-            </select>
+          <div class="form-group">
+            <label>生成设置 (Generation Settings)</label>
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px"
+            >
+              <div>
+                <select id="input-count">
+                  <option value="4" selected>4 张 (田字格)</option>
+                  <option value="3">3 张</option>
+                  <option value="2">2 张</option>
+                  <option value="1">1 张</option>
+                </select>
+                <div class="hint">数量</div>
+              </div>
+              <div>
+                <select id="input-ratio">
+                  <option value="500/500" selected>1:1 (正方形)</option>
+                  <option value="800/600">4:3 (横图)</option>
+                  <option value="600/800">3:4 (竖图)</option>
+                  <option value="1600/900">16:9 (宽屏)</option>
+                  <option value="900/1600">9:16 (竖屏)</option>
+                </select>
+                <div class="hint">默认比例</div>
+              </div>
+            </div>
+            <div class="hint" style="margin-top: 8px">
+              * 仅当上方“图片资源”留空时生效
+            </div>
           </div>
 
           <button id="btn-build" class="primary">生成并注入</button>
-        </div>
-
-        <!-- Panel 2: HTML Paste -->
-        <div id="panel-html" class="panel">
-          <div>
-            <label>HTML 代码</label>
-            <textarea
-              id="input-html"
-              style="height: 300px"
-              placeholder="Paste <article>...</article> here"
-            ></textarea>
-          </div>
-          <button id="btn-inject" class="primary">渲染 HTML</button>
         </div>
 
         <div
           class="hint"
           style="
             margin-top: auto;
-            border-top: 1px solid #eff3f4;
-            padding-top: 10px;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
           "
         >
-          <strong>使用说明：</strong>
-          <ul style="padding-left: 20px; margin: 5px 0">
-            <li>粘贴图片 URL 可测试真实长宽比布局。</li>
-            <li>插件按钮会自动出现在推文底部。</li>
+          <strong>💡 开发者指南：</strong>
+          <ul
+            style="
+              padding-left: 20px;
+              margin: 8px 0;
+              gap: 4px;
+              display: flex;
+              flex-direction: column;
+            "
+          >
+            <li>此页面仅用于 Mock 数据生成，无法请求真实 API。</li>
+            <li>生成的 DOM 结构已对齐 Twitter 生产环境 `data-testid`。</li>
+            <li>插件按钮将自动注入到推文卡片底部。</li>
           </ul>
         </div>
       </div>
+      <button id="btn-floating-build" title="生成并注入 (Generate & Inject)">
+        ⚡
+      </button>
     </div>
 
     <div id="content-area">
       <div id="twitter-feed">
-        <div style="padding: 40px; text-align: center; color: #536471">
-          请在左侧选择测试模式并生成推文。
+        <div class="empty-state">
+          <h3>👋 欢迎使用测试台</h3>
+          <p>请在左侧配置参数并点击“生成并注入”以创建测试用例。</p>
         </div>
       </div>
     </div>

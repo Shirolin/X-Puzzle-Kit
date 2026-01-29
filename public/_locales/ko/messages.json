@@ -242,5 +242,13 @@
   "buyMeCoffee": {
     "message": "커피 사주기",
     "description": "후원 버튼 텍스트"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: 이미지 나누기",
+    "description": "컨텍스트 메뉴 제목"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "확장 프로그램이 업데이트되었습니다. 페이지를 새로 고치십시오.",
+    "description": "확장 프로그램 컨텍스트가 무효화되었을 때의 메시지"
   }
 }

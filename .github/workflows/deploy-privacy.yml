@@ -1,0 +1,35 @@
+name: Deploy Privacy Policy
+
+on:
+  push:
+    paths:
+      - "doc/privacy.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Convert Markdown to HTML
+        uses: docker://pandoc/core:2.11
+        with:
+          args: >-
+            --standalone
+            --metadata title="X-Puzzle-Kit Privacy Policy"
+            --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
+            --output=public/index.html
+            doc/privacy.md
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true

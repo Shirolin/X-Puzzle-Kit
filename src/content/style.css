@@ -1,0 +1,65 @@
+@keyframes x-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.x-stitch-loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(113, 118, 123, 0.2);
+  border-top: 2px solid rgb(29, 155, 240);
+  border-radius: 50%;
+  animation: x-spin 0.8s linear infinite;
+}
+
+.x-puzzle-kit-btn {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.x-stitch-btn-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34.75px;
+  height: 34.75px;
+  border-radius: 9999px;
+  cursor: pointer;
+  color: #71767b;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+  outline: none;
+}
+
+.x-stitch-btn-inner:hover {
+  background-color: rgba(29, 155, 240, 0.1);
+  color: rgb(29, 155, 240);
+}
+
+.x-stitch-btn-inner:active {
+  background-color: rgba(29, 155, 240, 0.2);
+  color: rgb(29, 155, 240);
+}
+
+.x-stitch-btn-inner.x-loading {
+  cursor: not-allowed;
+  color: rgb(29, 155, 240);
+}
+
+.x-stitch-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.x-stitch-svg {
+  width: 18.75px;
+  height: 18.75px;
+  fill: none;
+}

@@ -45,7 +45,7 @@ export async function setLanguage(lang: string) {
   const targetLang = lang === "auto" ? resolveAutoLanguage() : lang;
   currentMessages = locales[targetLang] || locales["zh_CN"];
   if (typeof chrome !== "undefined" && chrome.storage) {
-    await chrome.storage.local.set({ "x-puzzle-stitcher-lang": lang });
+    await chrome.storage.local.set({ "x-puzzle-kit-lang": lang });
   }
 }
 
@@ -56,9 +56,9 @@ export async function initI18n() {
   let savedLang = "auto";
   if (typeof chrome !== "undefined" && chrome.storage) {
     const res = await chrome.storage.local.get({
-      "x-puzzle-stitcher-lang": "auto",
+      "x-puzzle-kit-lang": "auto",
     });
-    savedLang = res["x-puzzle-stitcher-lang"] as string;
+    savedLang = res["x-puzzle-kit-lang"] as string;
   }
   await setLanguage(savedLang);
 }

@@ -11,3 +11,21 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     return true;
   }
 });
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    id: "split-image",
+    title: chrome.i18n.getMessage("contextMenuTitle"),
+    contexts: ["image"],
+    documentUrlPatterns: ["https://twitter.com/*", "https://x.com/*"],
+  });
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "split-image" && tab?.id) {
+    chrome.tabs.sendMessage(tab.id, {
+      type: "OPEN_SPLITTER",
+      url: info.srcUrl,
+    });
+  }
+});

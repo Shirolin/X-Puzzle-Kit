@@ -242,5 +242,13 @@
   "buyMeCoffee": {
     "message": "Offrez-moi un café",
     "description": "Texte du bouton de parrainage"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: Diviser l'image",
+    "description": "Titre du menu contextuel"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "L'extension a été mise à jour. Veuillez rafraîchir la page.",
+    "description": "Message affiché lorsque le contexte de l'extension est invalidé"
   }
 }

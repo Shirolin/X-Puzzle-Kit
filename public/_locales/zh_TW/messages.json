@@ -242,5 +242,13 @@
   "buyMeCoffee": {
     "message": "請喝咖啡",
     "description": "贊助按鈕文本"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: 拆分圖片",
+    "description": "右鍵菜單標題"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "擴充功能已更新，請重新整理頁面",
+    "description": "擴充功能上下文失效時的提示"
   }
 }

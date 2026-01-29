@@ -1,4 +1,5 @@
 import { RefObject } from "preact";
+import { useState } from "preact/hooks";
 import { Plus, Minus, RotateCcw, Upload, Trash2 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { StitchTask, SplitConfig } from "../../core/types";
@@ -29,7 +30,7 @@ interface ViewerAreaProps {
   splitBlobs: Blob[];
   splitConfig: SplitConfig;
   // ... existing props
-  handleSplitFileSelect: (e: Event) => void;
+  onSplitFileSelect: (file: File) => void;
   onClearSplit?: () => void;
 }
 
@@ -56,14 +57,65 @@ export function ViewerArea({
   previewUrl,
   splitBlobs,
   splitConfig,
-  handleSplitFileSelect,
+  onSplitFileSelect,
   onClearSplit,
 }: ViewerAreaProps) {
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleDragOver = (e: DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // Only disable if we are strictly leaving the container, not entering a child
+    // If relatedTarget is null, it means we left the window/document, so we should disable.
+    if (
+      !e.relatedTarget ||
+      (e.currentTarget &&
+        !(e.currentTarget as Node).contains(e.relatedTarget as Node))
+    ) {
+      setIsDragging(false);
+    }
+  };
+
+  const handleDrop = (e: DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    if (!e.dataTransfer?.files?.length) return;
+
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith("image/")) {
+      onSplitFileSelect(file);
+    }
+  };
+
   return (
     <div className="viewer-area">
       {mode === "split" && !splitSourceBitmap ? (
-        <div className="viewer-empty-state">
-          <div className="viewer-upload-box">
+        <div
+          className="viewer-empty-state"
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+        >
+          <div
+            className={`viewer-upload-box ${isDragging ? "dragging" : ""}`}
+            style={
+              isDragging
+                ? {
+                    borderColor: "var(--color-primary)",
+                    backgroundColor: "rgba(var(--color-primary-rgb), 0.1)",
+                    transform: "scale(1.02)",
+                  }
+                : {}
+            }
+          >
             <div
               style={{
                 marginBottom: "1rem",
@@ -95,7 +147,10 @@ export function ViewerArea({
               <input
                 type="file"
                 accept="image/*"
-                onChange={handleSplitFileSelect}
+                onChange={(e) => {
+                  const file = e.currentTarget.files?.[0];
+                  if (file) onSplitFileSelect(file);
+                }}
                 style={{ display: "none" }}
               />
             </label>
@@ -115,11 +170,13 @@ export function ViewerArea({
         >
           {/* Metadata Floating Badges */}
           <div className="floating-badge-container">
-            {mode === "stitch" && (
-              <div className="floating-badge badge-primary">
-                @{task.artistHandle} / x.com/{task.tweetId}
-              </div>
-            )}
+            {mode === "stitch" &&
+              task.tweetId !== "external" &&
+              task.tweetId !== "none" && (
+                <div className="floating-badge badge-primary">
+                  @{task.artistHandle} / x.com/{task.tweetId}
+                </div>
+              )}
             {/* Split Result Badge - Moved here to prevent overlap on narrow screens */}
             {mode === "split" && splitBlobs.length > 0 && (
               <div
@@ -137,15 +194,14 @@ export function ViewerArea({
                 {t("splitResult")}
               </div>
             )}
-            <div className="floating-badge">
-              {mode === "split"
-                ? splitSourceBitmap
-                  ? `${splitSourceBitmap.width} × ${splitSourceBitmap.height} px`
-                  : ""
-                : canvasSize.width > 0
-                  ? `${canvasSize.width} × ${canvasSize.height} px`
-                  : ""}
-            </div>
+            {(mode === "split" && splitSourceBitmap) ||
+            (mode === "stitch" && canvasSize.width > 0) ? (
+              <div className="floating-badge">
+                {mode === "split"
+                  ? `${splitSourceBitmap!.width} × ${splitSourceBitmap!.height} px`
+                  : `${canvasSize.width} × ${canvasSize.height} px`}
+              </div>
+            ) : null}
           </div>
 
           {/* Remove Image Floating Button (Split Mode Only) */}

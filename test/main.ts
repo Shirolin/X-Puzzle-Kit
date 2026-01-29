@@ -1,32 +1,73 @@
 import "./mock-chrome"; // Init Mock
 import { parseTweets } from "../src/content/parser";
+import "../src/content/style.css";
 
 // Elements
 const feed = document.getElementById("twitter-feed") as HTMLDivElement;
-const tabs = document.querySelectorAll(".tab");
-const panels = document.querySelectorAll(".panel");
-
-// Panel 1: URL Builder
 const inputUrl = document.getElementById("input-url") as HTMLInputElement;
 const inputImages = document.getElementById(
   "input-images",
 ) as HTMLTextAreaElement;
 const inputCount = document.getElementById("input-count") as HTMLSelectElement;
+const inputRatio = document.getElementById("input-ratio") as HTMLSelectElement;
 const btnBuild = document.getElementById("btn-build") as HTMLButtonElement;
+const presetBtns = document.querySelectorAll(".btn-preset");
 
-// Panel 2: HTML Paste
-const inputHtml = document.getElementById("input-html") as HTMLTextAreaElement;
-const btnInject = document.getElementById("btn-inject") as HTMLButtonElement;
+const sidebar = document.getElementById("sidebar") as HTMLDivElement;
+const btnToggle = document.getElementById(
+  "btn-toggle-sidebar",
+) as HTMLButtonElement;
+const btnFloatingBuild = document.getElementById(
+  "btn-floating-build",
+) as HTMLButtonElement;
+const btnThemeToggle = document.getElementById(
+  "btn-theme-toggle",
+) as HTMLButtonElement;
 
-// --- Tab Logic ---
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    tabs.forEach((t) => t.classList.remove("active"));
-    panels.forEach((p) => p.classList.remove("active"));
+// Theme Toggle Logic
+function updateTheme(isDark: boolean) {
+  if (isDark) {
+    document.body.classList.add("dark");
+    btnThemeToggle.textContent = "🌙";
+  } else {
+    document.body.classList.remove("dark");
+    btnThemeToggle.textContent = "🌞";
+  }
+}
 
-    tab.classList.add("active");
-    const target = tab.getAttribute("data-target");
-    if (target) document.getElementById(target)?.classList.add("active");
+// Init Theme
+const savedTheme = localStorage.getItem("theme");
+const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+let isDark = savedTheme ? savedTheme === "dark" : systemDark;
+updateTheme(isDark);
+
+btnThemeToggle.addEventListener("click", () => {
+  isDark = !isDark;
+  updateTheme(isDark);
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
+// Sidebar Toggle
+btnToggle.addEventListener("click", () => {
+  sidebar.classList.toggle("collapsed");
+});
+
+// Floating Build Button
+btnFloatingBuild.addEventListener("click", () => {
+  btnBuild.click();
+});
+
+// Auto-collapse on small screens
+if (window.innerWidth <= 800) {
+  sidebar.classList.add("collapsed");
+}
+
+presetBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const ratio = btn.getAttribute("data-ratio");
+    if (ratio) {
+      inputImages.value += (inputImages.value ? "\n" : "") + ratio;
+    }
   });
 });
 
@@ -39,13 +80,34 @@ btnBuild.addEventListener("click", () => {
     .split("\n")
     .filter((s) => s.trim());
 
-  const imageUrls = rawImages;
+  // Process inputs: URLs or Dimensions
+  const imageUrls: string[] = [];
 
-  // 如果没填图片，使用占位图
+  if (rawImages.length > 0) {
+    rawImages.forEach((line) => {
+      const dimMatch = line.match(/^(\d+)[xX×](\d+)$/);
+      if (dimMatch) {
+        // It's a dimension: 800x600
+        const [, w, h] = dimMatch;
+        imageUrls.push(
+          `https://picsum.photos/${w}/${h}?random=${Math.random()}`,
+        );
+      } else if (line.startsWith("http")) {
+        // It's a (valid-ish) URL
+        imageUrls.push(line);
+      }
+    });
+  }
+
+  // Fallback if empty: use global presets
   if (imageUrls.length === 0) {
-    const count = parseInt(inputCount.value);
+    const count = parseInt(inputCount.value) || 4;
+    const ratioStr = inputRatio.value || "500/500";
+
     for (let i = 0; i < count; i++) {
-      imageUrls.push(`https://picsum.photos/500/500?random=${Date.now() + i}`);
+      imageUrls.push(
+        `https://picsum.photos/${ratioStr}?random=${Date.now() + i}`,
+      );
     }
   }
 
@@ -63,21 +125,13 @@ btnBuild.addEventListener("click", () => {
   renderAndRun(html);
 });
 
-// --- HTML Paste Logic ---
-btnInject.addEventListener("click", () => {
-  const rawHtml = inputHtml.value;
-  if (!rawHtml.trim()) return;
-  const cleanHtml = cleanTwitterHTML(rawHtml);
-  renderAndRun(cleanHtml);
-});
-
 // --- Core Functions ---
 
 function renderAndRun(html: string) {
   feed.innerHTML = html;
 
   // Remove existing plugins if any (simple reset)
-  const existingBtns = document.querySelectorAll(".x-puzzle-stitcher-btn");
+  const existingBtns = document.querySelectorAll(".x-puzzle-kit-btn");
   existingBtns.forEach((b) => b.remove());
 
   setTimeout(() => {
@@ -139,25 +193,4 @@ function generateMockHtml(
       </div>
     </article>
   `;
-}
-
-/**
- * 清洗 Twitter 的 HTML，移除导致错位的绝对定位和 transform
- */
-function cleanTwitterHTML(html: string): string {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
-
-  const cellInnerDivs = doc.querySelectorAll('div[data-testid="cellInnerDiv"]');
-  cellInnerDivs.forEach((div) => {
-    (div as HTMLElement).style.transform = "none";
-    (div as HTMLElement).style.position = "static";
-  });
-
-  const articles = doc.querySelectorAll("article");
-  articles.forEach((article) => {
-    (article as HTMLElement).style.transform = "none";
-  });
-
-  return doc.body.innerHTML;
 }
