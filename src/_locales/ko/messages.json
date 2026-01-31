@@ -15,6 +15,10 @@
     "message": "이미지 분할",
     "description": "분할 창 제목"
   },
+  "stitching": {
+    "message": "연결 중...",
+    "description": "미리보기 생성 중 로딩 텍스트"
+  },
   "removeImage": {
     "message": "이미지 제거",
     "description": "이미지 제거 툴팁"
@@ -26,10 +30,6 @@
   "tweetId": {
     "message": "트윗 ID",
     "description": "트윗 ID 라벨"
-  },
-  "stitching": {
-    "message": "연결 중...",
-    "description": "미리보기 생성 중 로딩 텍스트"
   },
   "preparingHighRes": {
     "message": "고해상도 리소스 준비 중...",
@@ -171,6 +171,22 @@
     "message": "분할할 이미지를 선택하세요",
     "description": "이미지 선택 팁"
   },
+  "uploadImages": {
+    "message": "이미지 업로드",
+    "description": "여러 이미지 업로드 버튼 텍스트"
+  },
+  "selectImagesTip": {
+    "message": "병합할 이미지를 선택해 주세요",
+    "description": "이미지 선택 팁"
+  },
+  "addMoreImages": {
+    "message": "이미지 추가하기",
+    "description": "미리보기가 비어있을 때 이미지 추가 버튼 텍스트"
+  },
+  "dragAndDropTip": {
+    "message": "또는 여기에 이미지를 드래그 앤 드롭 하세요",
+    "description": "드래그 앤 드롭 이미지 가이드 텍스트"
+  },
   "changeImage": {
     "message": "변경",
     "description": "이미지 변경 버튼 텍스트"
@@ -250,5 +266,13 @@
   "extensionUpdatedRefresh": {
     "message": "확장 프로그램이 업데이트되었습니다. 페이지를 새로 고치십시오.",
     "description": "확장 프로그램 컨텍스트가 무효화되었을 때의 메시지"
+  },
+  "confirmClearAll": {
+    "message": "모든 이미지를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "description": "모든 이미지 삭제 시 확인 메시지"
+  },
+  "clearAll": {
+    "message": "모두 삭제",
+    "description": "모든 이미지 삭제 버튼 텍스트"
   }
 }

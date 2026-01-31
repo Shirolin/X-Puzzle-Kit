@@ -15,6 +15,10 @@
     "message": "Divisor de imágenes",
     "description": "Título de la ventana del divisor"
   },
+  "stitching": {
+    "message": "Uniendo...",
+    "description": "Texto de carga durante la generación de vista previa"
+  },
   "removeImage": {
     "message": "Eliminar imagen",
     "description": "Información sobre herramientas para eliminar imagen"
@@ -26,10 +30,6 @@
   "tweetId": {
     "message": "ID del Tweet",
     "description": "Etiqueta para ID del Tweet"
-  },
-  "stitching": {
-    "message": "Uniendo...",
-    "description": "Texto de carga durante la generación de vista previa"
   },
   "preparingHighRes": {
     "message": "Preparando recursos de alta resolución...",
@@ -171,6 +171,22 @@
     "message": "Selecciona una imagen para dividir",
     "description": "Consejo para seleccionar imagen"
   },
+  "uploadImages": {
+    "message": "Subir imágenes",
+    "description": "Texto del botón para subir múltiples imágenes"
+  },
+  "selectImagesTip": {
+    "message": "Por favor, selecciona las imágenes para unir",
+    "description": "Consejo para seleccionar múltiples imágenes"
+  },
+  "addMoreImages": {
+    "message": "Añadir más imágenes",
+    "description": "Texto para añadir más imágenes cuando el lienzo está vacío"
+  },
+  "dragAndDropTip": {
+    "message": "O arrastra y suelta aquí",
+    "description": "Instrucción de arrastrar y soltar"
+  },
   "changeImage": {
     "message": "Cambiar",
     "description": "Texto del botón cambiar imagen"
@@ -250,5 +266,13 @@
   "extensionUpdatedRefresh": {
     "message": "La extensión se ha actualizado. Por favor, actualice la página.",
     "description": "Mensaje mostrado cuando el contexto de la extensión se invalida"
+  },
+  "confirmClearAll": {
+    "message": "¿Estás seguro de que quieres borrar todas las imágenes? Esta acción no se puede deshacer.",
+    "description": "Mensaje de confirmación al borrar todas las imágenes"
+  },
+  "clearAll": {
+     "message": "Borrar todo",
+     "description": "Texto del botón para borrar todas las imágenes"
   }
 }

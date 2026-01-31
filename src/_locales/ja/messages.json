@@ -15,6 +15,10 @@
     "message": "画像分割",
     "description": "分割ウィンドウのタイトル"
   },
+  "stitching": {
+    "message": "結合中...",
+    "description": "プレビュー生成中のテキスト"
+  },
   "removeImage": {
     "message": "画像を削除",
     "description": "画像削除のツールチップ"
@@ -26,10 +30,6 @@
   "tweetId": {
     "message": "ツイート ID",
     "description": "ツイート ID ラベル"
-  },
-  "stitching": {
-    "message": "結合中...",
-    "description": "プレビュー生成中のテキスト"
   },
   "preparingHighRes": {
     "message": "高画質リソースを準備中...",
@@ -171,6 +171,22 @@
     "message": "分割する画像を選択してください",
     "description": "画像選択のヒント"
   },
+  "uploadImages": {
+    "message": "画像をアップロード",
+    "description": "多画画像のアップロードボタンのテキスト"
+  },
+  "selectImagesTip": {
+    "message": "結合する画像を選択してください",
+    "description": "画像選択のヒント"
+  },
+  "addMoreImages": {
+    "message": "さらに画像を追加",
+    "description": "プレビューが空のときの引導メッセージ"
+  },
+  "dragAndDropTip": {
+    "message": "またはここに画像をドラッグ＆ドロップ",
+    "description": "ドラッグ＆ドロップの説明文"
+  },
   "changeImage": {
     "message": "変更",
     "description": "画像変更ボタンのテキスト"
@@ -250,5 +266,13 @@
   "extensionUpdatedRefresh": {
     "message": "拡張機能が更新されました。ページを更新してください。",
     "description": "拡張機能のコンテキストが無効になったときのメッセージ"
+  },
+  "confirmClearAll": {
+    "message": "すべての画像を消去してもよろしいですか？この操作は取り消せません。",
+    "description": "画像をすべて消去するときの確認メッセージ"
+  },
+  "clearAll": {
+    "message": "すべて消去",
+    "description": "全画像消去ボタンのテキスト"
   }
 }

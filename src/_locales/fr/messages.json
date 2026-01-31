@@ -15,6 +15,10 @@
     "message": "Diviseur",
     "description": "Titre de la fenêtre de division"
   },
+  "stitching": {
+    "message": "Fusion en cours...",
+    "description": "Texte de chargement pendant la génération de l'aperçu"
+  },
   "removeImage": {
     "message": "Supprimer l'image",
     "description": "Info-bulle pour supprimer l'image"
@@ -26,10 +30,6 @@
   "tweetId": {
     "message": "ID Tweet",
     "description": "Libellé pour ID du Tweet"
-  },
-  "stitching": {
-    "message": "Fusion en cours...",
-    "description": "Texte de chargement pendant la génération de l'aperçu"
   },
   "preparingHighRes": {
     "message": "Préparation des ressources HD...",
@@ -171,6 +171,22 @@
     "message": "Sélectionnez une image à diviser",
     "description": "Conseil pour sélectionner une image"
   },
+  "uploadImages": {
+    "message": "Uploader des images",
+    "description": "Texte du bouton pour uploader plusieurs images"
+  },
+  "selectImagesTip": {
+    "message": "Veuillez sélectionner les images à fusionner",
+    "description": "Conseil pour sélectionner plusieurs images"
+  },
+  "addMoreImages": {
+    "message": "Ajouter plus d'images",
+    "description": "Texte pour ajouter plus d'images quand le canevas est vide"
+  },
+  "dragAndDropTip": {
+    "message": "Ou glisser-déposer ici",
+    "description": "Instruction de glisser-déposer"
+  },
   "changeImage": {
     "message": "Changer",
     "description": "Texte du bouton changer image"
@@ -250,5 +266,13 @@
   "extensionUpdatedRefresh": {
     "message": "L'extension a été mise à jour. Veuillez rafraîchir la page.",
     "description": "Message affiché lorsque le contexte de l'extension est invalidé"
+  },
+  "confirmClearAll": {
+    "message": "Êtes-vous sûr de vouloir effacer toutes les images ? Cette opération est irréversible.",
+    "description": "Message de confirmation lors de l'effacement de toutes les images"
+  },
+  "clearAll": {
+    "message": "Tout effacer",
+    "description": "Texte du bouton pour tout effacer"
   }
 }
