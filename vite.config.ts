@@ -14,6 +14,7 @@ export default defineConfig({
     webExtension({
       manifest: "src/manifest.json",
       watchMode: true,
+      disableAutoLaunch: true,
     }),
   ],
 });

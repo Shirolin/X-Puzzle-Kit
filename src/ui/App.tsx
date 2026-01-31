@@ -13,6 +13,7 @@ import { splitImage } from "../core/splitter";
 import { IconButton } from "./components/Common";
 import { Sidebar } from "./components/Sidebar";
 import { ViewerArea } from "./components/ViewerArea";
+import { platformStorage, getAssetUrl, fetchImageData } from "../core/platform";
 
 interface AppProps {
   task: StitchTask;
@@ -37,7 +38,7 @@ export function App({
   initialSplitImageUrl,
   isPopup = false,
 }: AppProps) {
-  const logoUrl = chrome.runtime.getURL("assets/icon-48.png");
+  const logoUrl = getAssetUrl("assets/icon-48.png");
 
   const [layout, setLayout] = useState<LayoutType>(task.layout);
   const [images, setImages] = useState<ImageNode[]>(() =>
@@ -84,7 +85,7 @@ export function App({
 
   // Load Settings
   useEffect(() => {
-    chrome.storage.local
+    platformStorage
       .get({
         [STORAGE_KEYS.LANG]: "auto",
         [STORAGE_KEYS.FORMAT]: "png",
@@ -150,7 +151,7 @@ export function App({
       },
     };
 
-    chrome.storage.local.set(settingsToSave).catch((err) => {
+    platformStorage.set(settingsToSave).catch((err) => {
       console.error("Failed to save settings:", err);
     });
   }, [
@@ -216,10 +217,8 @@ export function App({
       // Only load if we haven't loaded this specific URL yet (prevents reloading after clear)
       lastLoadedUrlRef.current = initialSplitImageUrl;
       setLoading(true);
-      chrome.runtime.sendMessage(
-        { type: "FETCH_IMAGE", url: initialSplitImageUrl },
-        async (response) => {
-          if (response && response.dataUrl) {
+      fetchImageData(initialSplitImageUrl).then(async (response) => {
+        if (response && response.dataUrl) {
             try {
               const res = await fetch(response.dataUrl);
               const blob = await res.blob();

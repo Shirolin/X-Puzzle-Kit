@@ -10,6 +10,7 @@
     "dev": "vite",
     "dev:test": "vite serve -c vite.test.config.ts",
     "build": "vite build",
+    "build:web": "vite build -c vite.config.web.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",

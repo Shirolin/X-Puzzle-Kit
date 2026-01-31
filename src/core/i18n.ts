@@ -49,17 +49,18 @@ export async function setLanguage(lang: string) {
   }
 }
 
+import { platformStorage } from "./platform";
+
+// ... (locales 定义保持不变)
+
 /**
  * Initialize language settings
  */
 export async function initI18n() {
-  let savedLang = "auto";
-  if (typeof chrome !== "undefined" && chrome.storage) {
-    const res = await chrome.storage.local.get({
-      "x-puzzle-kit-lang": "auto",
-    });
-    savedLang = res["x-puzzle-kit-lang"] as string;
-  }
+  const res = await platformStorage.get({
+    "x-puzzle-kit-lang": "auto",
+  });
+  const savedLang = res["x-puzzle-kit-lang"] as string;
   await setLanguage(savedLang);
 }
 
@@ -67,9 +68,6 @@ export const i18nInit = initI18n();
 
 /**
  * Simple i18n wrapper function
- * @param messageName Message key
- * @param substitutions Substitution parameters
- * @returns Translated text
  */
 export function t(
   messageName: string,
@@ -78,5 +76,9 @@ export function t(
   if (currentMessages && currentMessages[messageName]) {
     return currentMessages[messageName].message;
   }
-  return chrome?.i18n?.getMessage(messageName, substitutions) || messageName;
+  // 如果在插件环境且没有本地翻译，尝试调用原生 API
+  if (typeof chrome !== "undefined" && chrome.i18n) {
+    return chrome.i18n.getMessage(messageName, substitutions) || messageName;
+  }
+  return messageName;
 }
