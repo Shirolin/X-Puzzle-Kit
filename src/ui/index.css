@@ -119,9 +119,60 @@
     "Apple Color Emoji",
     "Segoe UI Emoji";
   color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+/* 多语言字体优化 - CJK 语种专项配置 (修复选择器层级) */
+[data-lang="zh_CN"],
+[data-lang="zh_CN"] * {
+  font-family:
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Heiti SC",
+    "Microsoft YaHei UI",
+    "Microsoft YaHei",
+    "Source Han Sans CN",
+    sans-serif !important;
+}
+
+[data-lang="zh_TW"],
+[data-lang="zh_TW"] * {
+  font-family:
+    "PingFang TC",
+    "Lantinghei TC",
+    "Microsoft JhengHei UI",
+    "Microsoft JhengHei",
+    "Source Han Sans TC",
+    sans-serif !important;
+}
+
+[data-lang="ja"],
+[data-lang="ja"] * {
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "BIZ UDPGothic",
+    "Meiryo UI",
+    "Meiryo",
+    "Yu Gothic",
+    sans-serif !important;
+}
+
+[data-lang="ko"],
+[data-lang="ko"] * {
+  font-family:
+    "Apple SD Gothic Neo",
+    "Malgun Gothic",
+    "Nanum Gothic",
+    "Dotum",
+    sans-serif !important;
+}
+
+:host,
+.x-puzzle-kit-mount-point {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background);
+  text-rendering: optimizeLegibility;
 }
 
 /* Button Refinement - Apple Style */

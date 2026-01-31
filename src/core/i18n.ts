@@ -49,6 +49,14 @@ export async function setLanguage(lang: string) {
   }
 }
 
+/**
+ * Get the currently effective language code (e.g. "zh_CN" instead of "auto")
+ */
+export function getResolvedLanguage(currentLangSetting: string): string {
+  if (currentLangSetting === "auto") return resolveAutoLanguage();
+  return locales[currentLangSetting] ? currentLangSetting : "en";
+}
+
 import { platformStorage } from "./platform";
 
 // ... (locales 定义保持不变)

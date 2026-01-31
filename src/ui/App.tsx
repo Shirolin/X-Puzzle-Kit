@@ -7,7 +7,7 @@ import {
   SplitConfig,
 } from "../core/types";
 import { stitchImages } from "../core/stitcher";
-import { t, setLanguage } from "../core/i18n";
+import { t, setLanguage, getResolvedLanguage } from "../core/i18n";
 import { X, Images, Sun, Moon, Monitor, Scissors } from "lucide-preact";
 import { splitImage } from "../core/splitter";
 import { IconButton } from "./components/Common";
@@ -471,7 +471,11 @@ export function App({
   const wrapperClass = isPopup ? "app-popup-wrapper" : "app-overlay";
 
   return (
-    <div className={wrapperClass} data-theme={isThemeDark ? "dark" : "light"}>
+    <div
+      className={wrapperClass}
+      data-theme={isThemeDark ? "dark" : "light"}
+      data-lang={getResolvedLanguage(lang)}
+    >
       <div className={containerClass}>
         {/* Header */}
         <div className="app-header">
