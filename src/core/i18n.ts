@@ -1,10 +1,10 @@
-import langEn from "../../public/_locales/en/messages.json";
-import langZhCN from "../../public/_locales/zh_CN/messages.json";
-import langZhTW from "../../public/_locales/zh_TW/messages.json";
-import langJa from "../../public/_locales/ja/messages.json";
-import langKo from "../../public/_locales/ko/messages.json";
-import langEs from "../../public/_locales/es/messages.json";
-import langFr from "../../public/_locales/fr/messages.json";
+import langEn from "../_locales/en/messages.json";
+import langZhCN from "../_locales/zh_CN/messages.json";
+import langZhTW from "../_locales/zh_TW/messages.json";
+import langJa from "../_locales/ja/messages.json";
+import langKo from "../_locales/ko/messages.json";
+import langEs from "../_locales/es/messages.json";
+import langFr from "../_locales/fr/messages.json";
 
 const locales: Record<string, Record<string, { message: string }>> = {
   en: langEn,
