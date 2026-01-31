@@ -263,7 +263,9 @@ export function Sidebar({
             {/* Elastic Sorting Area */}
             <section className="section-block sorting-area">
               <div className="flex-between">
-                <h3 className="section-header" style={{ marginBottom: 0 }}>{t("imageSorting")}</h3>
+                <h3 className="section-header" style={{ marginBottom: 0 }}>
+                  {t("imageSorting")}
+                </h3>
                 <div className="flex-row-center gap-sm">
                   <IconButton
                     icon={<Plus size={11} />}

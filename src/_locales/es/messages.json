@@ -272,7 +272,7 @@
     "description": "Mensaje de confirmación al borrar todas las imágenes"
   },
   "clearAll": {
-     "message": "Borrar todo",
-     "description": "Texto del botón para borrar todas las imágenes"
+    "message": "Borrar todo",
+    "description": "Texto del botón para borrar todas las imágenes"
   }
 }

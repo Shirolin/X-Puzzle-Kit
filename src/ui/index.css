@@ -126,46 +126,28 @@
 [data-lang="zh_CN"],
 [data-lang="zh_CN"] * {
   font-family:
-    "PingFang SC",
-    "Hiragino Sans GB",
-    "Heiti SC",
-    "Microsoft YaHei UI",
-    "Microsoft YaHei",
-    "Source Han Sans CN",
-    sans-serif !important;
+    "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei UI",
+    "Microsoft YaHei", "Source Han Sans CN", sans-serif !important;
 }
 
 [data-lang="zh_TW"],
 [data-lang="zh_TW"] * {
   font-family:
-    "PingFang TC",
-    "Lantinghei TC",
-    "Microsoft JhengHei UI",
-    "Microsoft JhengHei",
-    "Source Han Sans TC",
-    sans-serif !important;
+    "PingFang TC", "Lantinghei TC", "Microsoft JhengHei UI",
+    "Microsoft JhengHei", "Source Han Sans TC", sans-serif !important;
 }
 
 [data-lang="ja"],
 [data-lang="ja"] * {
   font-family:
-    "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans",
-    "BIZ UDPGothic",
-    "Meiryo UI",
-    "Meiryo",
-    "Yu Gothic",
-    sans-serif !important;
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", "Meiryo UI",
+    "Meiryo", "Yu Gothic", sans-serif !important;
 }
 
 [data-lang="ko"],
 [data-lang="ko"] * {
   font-family:
-    "Apple SD Gothic Neo",
-    "Malgun Gothic",
-    "Nanum Gothic",
-    "Dotum",
-    sans-serif !important;
+    "Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", "Dotum", sans-serif !important;
 }
 
 :host,
@@ -591,23 +573,41 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
   .viewer-toolbar-v2 {
-    flex-direction: column;
-    border-radius: 1.25rem;
-    padding: 8px 10px;
-    gap: 6px;
+    flex-direction: row;
+    border-radius: 99px;
+    padding: 4px 10px;
+    gap: 4px;
   }
 
   .toolbar-divider-h {
     display: block;
+    width: 1px;
+    height: 14px;
+    background: var(--color-border);
+    margin: 0 4px;
   }
 
   .toolbar-divider-v {
-    display: none;
+    display: block;
   }
 
   .toolbar-row.secondary {
-    width: 100%;
-    justify-content: center;
+    width: auto;
+    justify-content: flex-start;
+  }
+
+  .toolbar-row {
+    gap: 4px;
+  }
+
+  .toolbar-text-btn {
+    padding: 4px 4px;
+    font-size: 10px;
+  }
+
+  .zoom-percentage {
+    min-width: 36px;
+    font-size: 12px;
   }
 }
 
@@ -1471,5 +1471,7 @@ input:checked + .slider:before {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }

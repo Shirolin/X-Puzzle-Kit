@@ -198,10 +198,14 @@ export function ViewerArea({
             onStitchFilesSelect(e.dataTransfer.files);
           }}
           onClick={(e) => {
-             // If clicking the empty background area (not an image/badge)
-             if (mode === "stitch" && !previewUrl && e.target === e.currentTarget) {
-               fileInputRef.current?.click();
-             }
+            // If clicking the empty background area (not an image/badge)
+            if (
+              mode === "stitch" &&
+              !previewUrl &&
+              e.target === e.currentTarget
+            ) {
+              fileInputRef.current?.click();
+            }
           }}
         >
           {/* Hidden Input for Canvas Click */}
@@ -434,10 +438,16 @@ export function ViewerArea({
                 }}
               >
                 <div className="flex-column-center gap-sm">
-                   <div className="spinner-sm" />
-                   <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--color-primary)" }}>
-                     {t("stitching") || "Stitching..."}
-                   </span>
+                  <div className="spinner-sm" />
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      fontWeight: 600,
+                      color: "var(--color-primary)",
+                    }}
+                  >
+                    {t("stitching") || "Stitching..."}
+                  </span>
                 </div>
               </div>
             )}
