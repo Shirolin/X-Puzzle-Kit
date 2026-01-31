@@ -1,5 +1,5 @@
 import { RefObject } from "preact";
-import { useState } from "preact/hooks";
+import { useState, useRef } from "preact/hooks";
 import { Plus, Minus, RotateCcw, Upload, Trash2 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { StitchTask, SplitConfig, ImageNode } from "../../core/types";
@@ -64,6 +64,7 @@ export function ViewerArea({
   onClearSplit,
 }: ViewerAreaProps) {
   const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleDragOver = (e: DragEvent) => {
     e.preventDefault();
@@ -186,7 +187,35 @@ export function ViewerArea({
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
           onDblClick={handleDoubleClick}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsDragging(true); // Small hack: show feedback
+            setTimeout(() => setIsDragging(false), 500);
+            if (!e.dataTransfer?.files?.length) return;
+            onStitchFilesSelect(e.dataTransfer.files);
+          }}
+          onClick={(e) => {
+             // If clicking the empty background area (not an image/badge)
+             if (mode === "stitch" && !previewUrl && e.target === e.currentTarget) {
+               fileInputRef.current?.click();
+             }
+          }}
         >
+          {/* Hidden Input for Canvas Click */}
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            multiple
+            accept="image/*"
+            onChange={(e) => {
+              const files = e.currentTarget.files;
+              if (files && files.length > 0) onStitchFilesSelect(files);
+            }}
+          />
           {/* Metadata Floating Badges */}
           <div className="floating-badge-container">
             {mode === "stitch" &&
@@ -283,6 +312,24 @@ export function ViewerArea({
                 style={{ background: "none", border: "none" }}
               />
 
+              {/* Add Image Button (Stitch Mode) */}
+              {mode === "stitch" && (
+                <>
+                  <div className="toolbar-divider-v" />
+                  <IconButton
+                    className="toolbar-btn"
+                    onClick={() => fileInputRef.current?.click()}
+                    icon={<Upload size={16} />}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: "var(--color-primary)",
+                    }}
+                    title={t("uploadImages")}
+                  />
+                </>
+              )}
+
               {/* Remove Image Button (Split Mode Only) */}
               {mode === "split" && splitSourceBitmap && onClearSplit && (
                 <>
@@ -331,9 +378,69 @@ export function ViewerArea({
                 style={{
                   width: `${canvasSize.width}px`,
                   height: `${canvasSize.height}px`,
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
                 }}
               />
+            ) : mode === "stitch" ? (
+              <div
+                className="flex-column-center"
+                style={{
+                  padding: "2rem",
+                  borderRadius: "1rem",
+                  background: "rgba(var(--color-surface-rgb), 0.5)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px dashed var(--color-border)",
+                  cursor: isGenerating ? "wait" : "pointer",
+                }}
+                onClick={() => !isGenerating && fileInputRef.current?.click()}
+              >
+                <Plus
+                  size={32}
+                  style={{
+                    color: "var(--color-primary)",
+                    marginBottom: "1rem",
+                    opacity: isGenerating ? 0.5 : 1,
+                  }}
+                />
+                <div style={{ color: "var(--color-text)", fontWeight: 600 }}>
+                  {isGenerating
+                    ? t("stitching") || "Stitching..."
+                    : t("addMoreImages") || "Add more images"}
+                </div>
+                {!isGenerating && (
+                  <div
+                    style={{
+                      color: "var(--color-text-muted)",
+                      fontSize: "0.8rem",
+                      marginTop: "0.5rem",
+                    }}
+                  >
+                    {t("dragAndDropTip") || "Or drag and drop here"}
+                  </div>
+                )}
+              </div>
             ) : null}
+
+            {/* Global Processing Spinner */}
+            {isGenerating && previewUrl && (
+              <div
+                className="flex-column-center apple-blur"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 10,
+                  background: "rgba(var(--color-surface-rgb), 0.4)",
+                  borderRadius: "var(--radius-lg)",
+                }}
+              >
+                <div className="flex-column-center gap-sm">
+                   <div className="spinner-sm" />
+                   <span style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--color-primary)" }}>
+                     {t("stitching") || "Stitching..."}
+                   </span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}

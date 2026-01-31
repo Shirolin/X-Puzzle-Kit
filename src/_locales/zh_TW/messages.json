@@ -15,6 +15,10 @@
     "message": "圖片拆分",
     "description": "拆分視窗標題"
   },
+  "stitching": {
+    "message": "正在拼接...",
+    "description": "拼圖生成中的載入狀態"
+  },
   "removeImage": {
     "message": "移除圖片",
     "description": "移除圖片工具提示"
@@ -26,10 +30,6 @@
   "tweetId": {
     "message": "推文 ID",
     "description": "推文 ID 標籤"
-  },
-  "stitching": {
-    "message": "拼圖中...",
-    "description": "預覽生成時的載入文字"
   },
   "preparingHighRes": {
     "message": "高清資源準備中...",
@@ -179,6 +179,14 @@
     "message": "請選擇要拼接的多張圖片",
     "description": "選擇多張圖片提示"
   },
+  "addMoreImages": {
+    "message": "繼續添加圖片",
+    "description": "畫布空內容時的引導文案"
+  },
+  "dragAndDropTip": {
+    "message": "或直接拖放圖片到此處",
+    "description": "拖曳提示文案"
+  },
   "changeImage": {
     "message": "更換",
     "description": "更換圖片按鈕文本"
@@ -258,5 +266,13 @@
   "extensionUpdatedRefresh": {
     "message": "擴充功能已更新，請重新整理頁面",
     "description": "擴充功能上下文失效時的提示"
+  },
+  "confirmClearAll": {
+    "message": "確定要清空所有圖片嗎？此操作不可撤銷。",
+    "description": "清空全部圖片時的確認文案"
+  },
+  "clearAll": {
+    "message": "清空全部",
+    "description": "清空全部圖片按鈕文本"
   }
 }

@@ -15,7 +15,9 @@ import {
   ChevronDown,
   Coffee,
   Zap,
+  Trash2,
 } from "lucide-preact";
+import { useRef } from "preact/hooks";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
 import {
@@ -67,6 +69,9 @@ interface SidebarProps {
   handleStitch: () => void;
   loading: boolean;
   isGenerating: boolean;
+  removeImage: (id: string) => void;
+  clearAllImages: () => void;
+  onStitchFilesSelect: (files: FileList | File[]) => void;
 }
 
 export function Sidebar({
@@ -104,7 +109,11 @@ export function Sidebar({
   handleStitch,
   loading,
   isGenerating,
+  removeImage,
+  clearAllImages,
+  onStitchFilesSelect,
 }: SidebarProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
   return (
     <div className="sidebar-panel">
       <div className="sidebar-content-root no-scrollbar sidebar-scroll-area">
@@ -254,16 +263,44 @@ export function Sidebar({
             {/* Elastic Sorting Area */}
             <section className="section-block sorting-area">
               <div className="flex-between">
-                <h3 className="section-header">{t("imageSorting")}</h3>
-                <span
-                  style={{
-                    fontSize: "0.6rem",
-                    color: "var(--color-text-muted)",
-                    fontWeight: 500,
-                  }}
-                >
-                  {t("localGap")}
-                </span>
+                <h3 className="section-header" style={{ marginBottom: 0 }}>{t("imageSorting")}</h3>
+                <div className="flex-row-center gap-sm">
+                  <IconButton
+                    icon={<Plus size={11} />}
+                    onClick={() => fileInputRef.current?.click()}
+                    title={t("uploadImages") || "Add Images"}
+                    className="btn-icon-sm"
+                    style={{
+                      padding: "2px",
+                      background: "rgba(var(--color-primary-rgb), 0.1)",
+                      color: "var(--color-primary)",
+                      borderRadius: "6px",
+                    }}
+                  />
+                  <IconButton
+                    icon={<Trash2 size={11} />}
+                    onClick={clearAllImages}
+                    title={t("clearAll") || "Clear All"}
+                    className="btn-icon-sm"
+                    style={{
+                      padding: "2px",
+                      background: "rgba(var(--color-danger-rgb), 0.1)",
+                      color: "var(--color-danger)",
+                      borderRadius: "6px",
+                    }}
+                  />
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: "none" }}
+                    multiple
+                    accept="image/*"
+                    onChange={(e) => {
+                      const files = e.currentTarget.files;
+                      if (files && files.length > 0) onStitchFilesSelect(files);
+                    }}
+                  />
+                </div>
               </div>
               <div className="sorting-area-list">
                 {images.map((img, idx) => (
@@ -437,6 +474,18 @@ export function Sidebar({
                                 ? "var(--color-icon)"
                                 : "var(--color-icon-dim)",
                           }}
+                        />
+                        <IconButton
+                          className="btn-icon"
+                          onClick={() => removeImage(img.id)}
+                          icon={<Trash2 size={13} />}
+                          style={{
+                            border: "none",
+                            background: "none",
+                            padding: "2px",
+                            color: "#ff453a",
+                          }}
+                          title={t("removeImage")}
                         />
                       </div>
                     </div>

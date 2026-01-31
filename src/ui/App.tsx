@@ -242,11 +242,10 @@ export function App({
     };
   }, [splitSource, initialSplitImageUrl]);
 
-  // Preview Generation for Stitch
   useEffect(() => {
     const timer = setTimeout(() => generatePreview(), 400);
     return () => clearTimeout(timer);
-  }, [layout, images, globalGap, backgroundColor]);
+  }, [layout, images, globalGap, backgroundColor, mode]);
 
   // Viewer State
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
@@ -313,13 +312,15 @@ export function App({
 
   const handleStitchFilesSelect = async (files: FileList | File[]) => {
     setLoading(true);
+    const currentLength = images.length;
     const newNodes: ImageNode[] = await Promise.all(
       Array.from(files).map(async (file, i) => {
         return new Promise<ImageNode>((resolve) => {
           const reader = new FileReader();
           reader.onload = (e) => {
             const img = new Image();
-            img.onload = () => {
+            img.onload = async () => {
+              const bitmap = await createImageBitmap(img);
               resolve({
                 id: Math.random().toString(36).substr(2, 9),
                 name: file.name,
@@ -328,7 +329,8 @@ export function App({
                 width: img.width,
                 height: img.height,
                 visible: true,
-                originalIndex: images.length + i + 1,
+                originalIndex: currentLength + i + 1,
+                bitmap,
               });
             };
             img.src = e.target?.result as string;
@@ -339,6 +341,16 @@ export function App({
     );
     setImages((prev) => [...prev, ...newNodes]);
     setLoading(false);
+  };
+
+  const removeImage = (id: string) => {
+    setImages((prev) => prev.filter((img) => img.id !== id));
+  };
+
+  const clearAllImages = () => {
+    if (window.confirm(t("confirmClearAll") || "Clear all images?")) {
+      setImages([]);
+    }
   };
 
   const generatePreview = async () => {
@@ -634,6 +646,9 @@ export function App({
             handleStitch={handleStitch}
             loading={loading}
             isGenerating={isGenerating}
+            removeImage={removeImage}
+            clearAllImages={clearAllImages}
+            onStitchFilesSelect={handleStitchFilesSelect}
           />
         </div>
       </div>

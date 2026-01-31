@@ -15,6 +15,10 @@
     "message": "Splitter",
     "description": "Title of the splitter window"
   },
+  "stitching": {
+    "message": "Stitching...",
+    "description": "Loading status during stitch generation"
+  },
   "removeImage": {
     "message": "Remove Image",
     "description": "Tooltip for remove image"
@@ -26,10 +30,6 @@
   "tweetId": {
     "message": "Tweet ID",
     "description": "Label for Tweet ID"
-  },
-  "stitching": {
-    "message": "Stitching...",
-    "description": "Loading text during preview generation"
   },
   "preparingHighRes": {
     "message": "Preparing high-res resources...",
@@ -179,6 +179,14 @@
     "message": "Please select images to stitch",
     "description": "Tip for selecting multiple images"
   },
+  "addMoreImages": {
+    "message": "Add more images",
+    "description": "Button text to add more images when preview is empty"
+  },
+  "dragAndDropTip": {
+    "message": "Or drag and drop here",
+    "description": "Drag and drop instruction"
+  },
   "changeImage": {
     "message": "Change",
     "description": "Change image button text"
@@ -258,5 +266,13 @@
   "extensionUpdatedRefresh": {
     "message": "Extension updated. Please refresh the page.",
     "description": "Message shown when extension context is invalidated"
+  },
+  "confirmClearAll": {
+    "message": "Are you sure you want to clear all images? This cannot be undone.",
+    "description": "Confirmation message when clearing all images"
+  },
+  "clearAll": {
+    "message": "Clear All",
+    "description": "Clear all images button text"
   }
 }
