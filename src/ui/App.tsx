@@ -219,22 +219,21 @@ export function App({
       setLoading(true);
       fetchImageData(initialSplitImageUrl).then(async (response) => {
         if (response && response.dataUrl) {
-            try {
-              const res = await fetch(response.dataUrl);
-              const blob = await res.blob();
-              const file = new File([blob], "split_image.png", {
-                type: blob.type,
-              });
-              setSplitSource(file); // This will trigger the effect above
-            } catch (e) {
-              console.error(e);
-              setLoading(false);
-            }
-          } else {
+          try {
+            const res = await fetch(response.dataUrl);
+            const blob = await res.blob();
+            const file = new File([blob], "split_image.png", {
+              type: blob.type,
+            });
+            setSplitSource(file); // This will trigger the effect above
+          } catch (e) {
+            console.error(e);
             setLoading(false);
           }
-        },
-      );
+        } else {
+          setLoading(false);
+        }
+      });
     } else {
       setSplitSourceBitmap(null);
     }
@@ -310,6 +309,36 @@ export function App({
       setSplitSource(file);
       setSplitBlobs([]);
     }
+  };
+
+  const handleStitchFilesSelect = async (files: FileList | File[]) => {
+    setLoading(true);
+    const newNodes: ImageNode[] = await Promise.all(
+      Array.from(files).map(async (file, i) => {
+        return new Promise<ImageNode>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+              resolve({
+                id: Math.random().toString(36).substr(2, 9),
+                name: file.name,
+                originalUrl: e.target?.result as string,
+                thumbnailUrl: e.target?.result as string,
+                width: img.width,
+                height: img.height,
+                visible: true,
+                originalIndex: images.length + i + 1,
+              });
+            };
+            img.src = e.target?.result as string;
+          };
+          reader.readAsDataURL(file);
+        });
+      }),
+    );
+    setImages((prev) => [...prev, ...newNodes]);
+    setLoading(false);
   };
 
   const generatePreview = async () => {
@@ -546,6 +575,7 @@ export function App({
             handleMouseUp={handleMouseUp}
             handleDoubleClick={handleDoubleClick}
             task={task}
+            images={images}
             isGenerating={isGenerating}
             isSplitting={isSplitting}
             viewerScale={viewerScale}
@@ -558,6 +588,7 @@ export function App({
             splitBlobs={splitBlobs}
             splitConfig={splitConfig}
             onSplitFileSelect={handleSplitFileSelect}
+            onStitchFilesSelect={handleStitchFilesSelect}
             onClearSplit={() => {
               setSplitSource(null);
               setSplitBlobs([]);

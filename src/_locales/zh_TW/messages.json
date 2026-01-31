@@ -171,6 +171,14 @@
     "message": "請選擇一張圖片進行拆分",
     "description": "選擇圖片提示"
   },
+  "uploadImages": {
+    "message": "上傳圖片",
+    "description": "上傳多張圖片按鈕文本"
+  },
+  "selectImagesTip": {
+    "message": "請選擇要拼接的多張圖片",
+    "description": "選擇多張圖片提示"
+  },
   "changeImage": {
     "message": "更換",
     "description": "更換圖片按鈕文本"

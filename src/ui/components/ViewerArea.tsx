@@ -2,7 +2,7 @@ import { RefObject } from "preact";
 import { useState } from "preact/hooks";
 import { Plus, Minus, RotateCcw, Upload, Trash2 } from "lucide-preact";
 import { t } from "../../core/i18n";
-import { StitchTask, SplitConfig } from "../../core/types";
+import { StitchTask, SplitConfig, ImageNode } from "../../core/types";
 import { IconButton } from "./Common";
 import { SplitPreview } from "./SplitPreview";
 
@@ -18,6 +18,7 @@ interface ViewerAreaProps {
   handleMouseUp: () => void;
   handleDoubleClick: () => void;
   task: StitchTask;
+  images: ImageNode[];
   isGenerating: boolean;
   isSplitting: boolean;
   viewerScale: number;
@@ -29,8 +30,8 @@ interface ViewerAreaProps {
   previewUrl: string;
   splitBlobs: Blob[];
   splitConfig: SplitConfig;
-  // ... existing props
   onSplitFileSelect: (file: File) => void;
+  onStitchFilesSelect: (files: FileList | File[]) => void;
   onClearSplit?: () => void;
 }
 
@@ -46,6 +47,7 @@ export function ViewerArea({
   handleMouseUp,
   handleDoubleClick,
   task,
+  images,
   isGenerating,
   isSplitting,
   viewerScale,
@@ -58,6 +60,7 @@ export function ViewerArea({
   splitBlobs,
   splitConfig,
   onSplitFileSelect,
+  onStitchFilesSelect,
   onClearSplit,
 }: ViewerAreaProps) {
   const [isDragging, setIsDragging] = useState(false);
@@ -82,27 +85,31 @@ export function ViewerArea({
     }
   };
 
-  const handleDrop = (e: DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
-
-    if (!e.dataTransfer?.files?.length) return;
-
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith("image/")) {
-      onSplitFileSelect(file);
-    }
-  };
-
   return (
     <div className="viewer-area">
-      {mode === "split" && !splitSourceBitmap ? (
+      {(mode === "split" && !splitSourceBitmap) ||
+      (mode === "stitch" && images.length === 0) ? (
         <div
           className="viewer-empty-state"
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
+          onDrop={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsDragging(false);
+            if (!e.dataTransfer?.files?.length) return;
+            if (mode === "split") {
+              const file = e.dataTransfer.files[0];
+              if (file && file.type.startsWith("image/")) {
+                onSplitFileSelect(file);
+              }
+            } else {
+              const files = Array.from(e.dataTransfer.files).filter((f) =>
+                f.type.startsWith("image/"),
+              );
+              if (files.length) onStitchFilesSelect(files);
+            }
+          }}
         >
           <div
             className={`viewer-upload-box ${isDragging ? "dragging" : ""}`}
@@ -126,7 +133,9 @@ export function ViewerArea({
                 lineHeight: "1.4",
               }}
             >
-              {t("selectImageTip")}
+              {mode === "split"
+                ? t("selectImageTip")
+                : t("selectImagesTip") || "Select images to stitch"}
             </div>
             <label
               className="btn btn-primary"
@@ -143,13 +152,23 @@ export function ViewerArea({
               }}
             >
               <Upload size={18} style={{ flexShrink: 0 }} />
-              <span className="upload-btn-text">{t("uploadImage")}</span>
+              <span className="upload-btn-text">
+                {mode === "split"
+                  ? t("uploadImage")
+                  : t("uploadImages") || "Upload Images"}
+              </span>
               <input
                 type="file"
                 accept="image/*"
+                multiple={mode === "stitch"}
                 onChange={(e) => {
-                  const file = e.currentTarget.files?.[0];
-                  if (file) onSplitFileSelect(file);
+                  const files = e.currentTarget.files;
+                  if (!files || files.length === 0) return;
+                  if (mode === "split") {
+                    onSplitFileSelect(files[0]);
+                  } else {
+                    onStitchFilesSelect(files);
+                  }
                 }}
                 style={{ display: "none" }}
               />

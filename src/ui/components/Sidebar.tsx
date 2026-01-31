@@ -136,13 +136,7 @@ export function Sidebar({
             >
               <section className="section-block">
                 <h3 className="section-header">{t("layoutScheme")}</h3>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(2, 1fr)",
-                    gap: "0.25rem",
-                  }}
-                >
+                <div className="layout-grid-container">
                   <LayoutButton
                     active={layout === "GRID_2x2"}
                     onClick={() => setLayout("GRID_2x2")}
@@ -271,13 +265,7 @@ export function Sidebar({
                   {t("localGap")}
                 </span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.5rem",
-                }}
-              >
+              <div className="sorting-area-list">
                 {images.map((img, idx) => (
                   <div
                     key={img.id}

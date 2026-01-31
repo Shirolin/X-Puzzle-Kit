@@ -171,6 +171,14 @@
     "message": "Select an image to split",
     "description": "Select image tip"
   },
+  "uploadImages": {
+    "message": "Upload Images",
+    "description": "Button text for uploading multiple images"
+  },
+  "selectImagesTip": {
+    "message": "Please select images to stitch",
+    "description": "Tip for selecting multiple images"
+  },
   "changeImage": {
     "message": "Change",
     "description": "Change image button text"
