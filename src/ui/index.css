@@ -1884,5 +1884,39 @@ input:checked + .slider:before {
     padding: 2.5rem 1rem;
     font-size: 0.875rem;
   }
+
+  /* 1. Viewer Toolbar Mobile Fix (Prevent Overflow) */
+  .viewer-toolbar-v2 {
+    padding: 6px 10px !important;
+    gap: 4px !important;
+    max-width: 95vw;
+  }
+
+  .toolbar-row {
+    gap: 4px !important;
+  }
+
+  /* 2. Image List Actions Mobile Fix (Always Visible & Touch Optimized) */
+  .item-actions-group {
+    opacity: 1 !important;
+    transform: translateY(-50%) translateX(0) !important;
+    background: var(--color-surface) !important;
+    box-shadow: -5px 0 15px var(--color-item-bg) !important;
+    padding: 4px 8px !important;
+  }
+
+  .item-actions-group .btn-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .item-info {
+    padding-right: 84px !important; /* Ensure space for always-visible icons */
+  }
+
+  .sort-arrows-col {
+    height: 32px !important;
+    width: 24px !important;
+  }
 }
 
