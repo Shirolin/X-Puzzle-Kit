@@ -487,7 +487,8 @@ export function App({
               title={t("appDesc")}
             />
             <h2 className="app-title">
-              <span className="appName-text">{t("appName")}</span>
+              <span className="appName-text">X-Puzzle-Kit</span>
+              <span className="app-slogan-text"> - {t("appName").split(" - ")[1]}</span>
               <span className="app-badge">
                 {mode === "stitch" ? t("previewTitle") : t("splitterTitle")}
               </span>

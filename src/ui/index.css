@@ -704,10 +704,9 @@ input:checked + .slider:before {
   border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-  .appName-text {
-    display: none;
-  }
+/* Base App Title - Desktop First */
+.appName-text {
+  display: inline-block;
 }
 
 /* Mode Switcher */
@@ -1793,16 +1792,16 @@ input:checked + .slider:before {
     min-height: 30vh;
   }
 
-  /* 2. Stable Bottom Sheet */
+  /* 2. Elevated Settings Panel (Apple Sheet Layer) */
   .sidebar-panel {
     width: 100% !important;
     height: 60vh;
     min-height: 40vh;
     border: none !important;
-    background-color: var(--color-background) !important;
+    background-color: var(--color-surface) !important; /* Pure White/Solid Surface to stand out from gray canvas */
     border-top-left-radius: var(--radius-xl) !important;
     border-top-right-radius: var(--radius-xl) !important;
-    box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.18) !important; /* Deeper shadow for elevation */
     position: relative;
     z-index: 40;
     display: flex;
@@ -1811,8 +1810,8 @@ input:checked + .slider:before {
   }
 
   [data-theme="dark"] .sidebar-panel {
-    box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.5) !important;
-    /* Edge Glow for Dark Mode */
+    background-color: #121214 !important;
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
@@ -2190,10 +2189,102 @@ input:checked + .slider:before {
     font-size: 0.8125rem !important;
   }
 
-  /* 7. App Header & Title */
-  .appName-text { display: none !important; }
-  .app-logo { width: 28px; height: 28px; }
-  .app-header { padding: 0.75rem 1rem !important; }
+  /* 7. App Header & Title (Crystalline Branding) */
+  .app-header {
+    height: 52px !important;
+    padding: 0 12px !important;
+    background: var(--color-glass-bg) !important;
+    backdrop-filter: blur(25px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+    border-bottom: 1px solid var(--color-glass-border) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative;
+    z-index: 50;
+  }
+
+  .header-group {
+    gap: 0.5rem !important; 
+  }
+
+  .app-logo { 
+    width: 24px !important; 
+    height: 24px !important; 
+  }
+
+  .appName-text { 
+    display: inline-block !important; 
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    margin-right: 0 !important;
+    color: var(--color-text) !important; /* Reverted to professional Black/White */
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.02em;
+  }
+
+  .app-slogan-text {
+    display: none !important; 
+  }
+
+  .app-badge {
+    display: none !important; 
+  }
+
+  /* Canvas Layer (Viewer Area) */
+  .app-content {
+    background-color: var(--color-background) !important; /* System Gray Canvas */
+  }
+
+  /* Component Polish (Unified Ghost Utility Buttons) */
+  .mode-switcher {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+  }
+
+  /* Target utility buttons ONLY within the header to avoid leakage */
+  .app-header .icon-btn, .app-header .close-btn {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--color-text-muted) !important;
+    transition: all var(--transition-fast) !important;
+  }
+
+  /* Hover & Active Feedbacks for Header Utilities */
+  .app-header .icon-btn:hover, .app-header .close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: var(--color-text) !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .app-header .icon-btn:active, .app-header .close-btn:active {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+    transform: scale(0.92) !important;
+  }
+
+  [data-theme="dark"] .mode-switcher {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  }
+
+  [data-theme="dark"] .app-header .icon-btn:hover, 
+  [data-theme="dark"] .app-header .close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--color-text) !important;
+  }
+
+  [data-theme="dark"] .app-header .icon-btn:active, 
+  [data-theme="dark"] .app-header .close-btn:active {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+  }
   
   .mode-switcher { padding: 3px !important; }
   .mode-btn {
