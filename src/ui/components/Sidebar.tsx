@@ -523,17 +523,11 @@ export function Sidebar({
                     >
                       {t("formatLabel")}
                     </span>
-                    <div
-                      style={{
-                        display: "flex",
-                        background: "var(--color-surface-soft)",
-                        borderRadius: "var(--radius-sm)",
-                        padding: "2px",
-                      }}
-                    >
+                    <div className="format-selector">
                       {(["png", "jpg", "webp"] as const).map((fmt) => (
                         <button
                           key={fmt}
+                          className={`format-btn ${outputFormat === fmt ? "active" : ""}`}
                           onClick={() => {
                             setOutputFormat(fmt);
                             if (
@@ -542,27 +536,6 @@ export function Sidebar({
                             ) {
                               setBackgroundColor("white");
                             }
-                          }}
-                          style={{
-                            border: "none",
-                            background:
-                              outputFormat === fmt
-                                ? "var(--color-background)"
-                                : "transparent",
-                            color:
-                              outputFormat === fmt
-                                ? "var(--color-text)"
-                                : "var(--color-text-muted)",
-                            boxShadow:
-                              outputFormat === fmt
-                                ? "0 1px 3px rgba(0,0,0,0.1)"
-                                : "none",
-                            fontSize: "10px",
-                            padding: "2px 8px",
-                            borderRadius: "6px",
-                            cursor: "pointer",
-                            fontWeight: 700,
-                            transition: "all var(--transition-fast)",
                           }}
                         >
                           {fmt.toUpperCase()}

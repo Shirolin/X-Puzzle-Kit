@@ -597,17 +597,51 @@ input:checked + .slider:before {
   }
 
   .toolbar-row {
-    gap: 4px;
+    gap: 6px; /* 增大间距 */
+  }
+
+  /* 增大按钮触摸区域 */
+  .toolbar-text-btn,
+  .toolbar-btn {
+    padding: 8px !important;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .toolbar-text-btn {
-    padding: 4px 4px;
-    font-size: 10px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .toolbar-btn svg {
+    width: 20px;
+    height: 20px;
   }
 
   .zoom-percentage {
-    min-width: 36px;
-    font-size: 12px;
+    min-width: 44px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  /* 增强玻璃态效果 */
+  .viewer-toolbar-v2 {
+    padding: 6px 12px;
+    gap: 6px;
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .toolbar-divider-h,
+  .toolbar-divider-v {
+    height: 18px;
+    margin: 0 6px;
   }
 }
 
@@ -670,6 +704,29 @@ input:checked + .slider:before {
   .app-overlay {
     background-color: var(--color-background) !important;
     backdrop-filter: none !important;
+  }
+
+  /* 优化顶部导航栏 */
+  .app-header {
+    padding: 0.75rem 1rem !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 优化模式切换器 */
+  .mode-switcher {
+    padding: 3px;
+  }
+
+  .mode-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+    min-height: 36px;
+    gap: 6px;
+  }
+
+  .mode-btn svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -743,11 +800,18 @@ input:checked + .slider:before {
     display: none;
   }
   .app-header {
-    padding: 0.5rem 0.75rem !important;
+    padding: 0.75rem !important;
   }
   .app-badge {
-    padding: 1px 4px !important;
-    font-size: 0.6rem !important;
+    padding: 2px 6px !important;
+    font-size: 0.625rem !important;
+  }
+
+  /* 优化模式切换器 - 小屏幕 */
+  .mode-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+    gap: 4px;
   }
 }
 
@@ -843,13 +907,14 @@ input:checked + .slider:before {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-surface-soft); /* Subtle background */
-  transition: all 0.2s ease;
+  background-color: var(--color-surface-soft);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 改进过渡效果 */
 }
 
 .viewer-upload-box:hover {
   border-color: var(--color-primary);
   background-color: var(--color-background);
+  transform: scale(1.01); /* 添加微妙缩放 */
 }
 
 @media (max-width: 640px) {
@@ -857,8 +922,15 @@ input:checked + .slider:before {
     display: none;
   }
   .viewer-upload-box .btn {
-    padding: 0.75rem; /* Make it square-ish/circle-ish when icon only */
+    padding: 1rem; /* 增大触摸区域 */
     border-radius: 50%;
+    width: 56px;
+    height: 56px;
+  }
+
+  .viewer-upload-box .btn svg {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -1226,28 +1298,27 @@ input:checked + .slider:before {
 
 .format-selector {
   display: flex;
-  background: var(--color-item-bg);
+  background: var(--color-surface-soft);
   border-radius: var(--radius-sm);
   padding: 2px;
-  width: 100%;
 }
 
 .format-btn {
-  flex: 1;
   border: none;
   background: transparent;
   color: var(--color-text-muted);
   font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 3px;
+  padding: 2px 8px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: 800;
+  font-weight: 700;
   transition: all var(--transition-fast);
 }
 
 .format-btn.active {
-  background: var(--color-primary);
-  color: white;
+  background: var(--color-background);
+  color: var(--color-text);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* Color Circles */
@@ -1475,3 +1546,167 @@ input:checked + .slider:before {
     transform: rotate(360deg);
   }
 }
+
+/* ========================================
+   移动端专属优化 (Modern Mobile Design)
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* 布局选择器优化 - 增大触摸区域 */
+  .layout-btn {
+    padding: 0.625rem 0.5rem !important;
+    min-height: 56px; /* 增大触摸目标 */
+    gap: 0.375rem;
+    border-radius: var(--radius-md);
+    font-size: 11px;
+  }
+
+  .layout-btn .layout-icon svg {
+    width: 24px; /* 增大图标 */
+    height: 24px;
+  }
+
+  .layout-btn.active {
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.35); /* 增强选中阴影 */
+  }
+
+  /* 颜色选择器优化 */
+  .color-circle {
+    width: 32px; /* 增大色块 */
+    height: 32px;
+    border-width: 2px;
+  }
+
+  .color-circle::after {
+    inset: -4px; /* 增大选中指示器 */
+    border-width: 2px;
+  }
+
+  /* 下载按钮增强 */
+  .sidebar-footer .btn {
+    min-height: 48px; /* 增大按钮高度 */
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0.875rem 1.5rem;
+  }
+
+  .btn-primary {
+    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4); /* 增强阴影 */
+  }
+
+  /* 间距控制器优化 */
+  .vibrant-range {
+    height: 6px; /* 增大滑块轨道 */
+  }
+
+  .vibrant-range::-webkit-slider-thumb {
+    width: 24px; /* 增大滑块按钮 */
+    height: 24px;
+    border-width: 3px;
+  }
+
+  /* Section 标题优化 */
+  .section-header {
+    font-size: 0.8125rem; /* 增大字体 */
+    letter-spacing: 0.06em;
+  }
+
+  /* 格式选择器优化 - 移动端更紧凑 */
+  .format-btn {
+    padding: 4px 10px;
+    font-size: 11px;
+    min-height: 28px;
+    font-weight: 700;
+    border-radius: 5px;
+  }
+
+  .format-selector {
+    padding: 2px;
+    gap: 2px;
+  }
+
+  /* 通用按钮触摸反馈 */
+  .btn:active,
+  .layout-btn:active,
+  .icon-btn:active,
+  button:active {
+    transform: scale(0.96); /* 点击缩放反馈 */
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 通用按钮触摸反馈 */
+  .sidebar-scroll-area {
+    padding: 1rem 0.75rem; /* 增大内边距 */
+  }
+
+  /* 图片列表项优化 */
+  .sortable-item {
+    padding: 0.625rem; /* 增大内边距 */
+    margin-bottom: 0.5rem;
+  }
+
+  .item-thumb-container {
+    width: 44px; /* 增大缩略图 */
+    height: 44px;
+  }
+
+  .item-name {
+    font-size: 12px !important; /* 增大字体 */
+  }
+
+  .item-meta {
+    font-size: 10px !important;
+  }
+
+  /* 拖拽反馈增强 */
+  .sortable-item.dragging {
+    transform: scale(1.08) rotate(2deg); /* 增强拖拽效果 */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 浮动徽章优化 */
+  .floating-badge {
+    font-size: 0.75rem; /* 增大字体 */
+    padding: 6px 14px;
+    border-radius: 1.25rem;
+  }
+
+  /* 空状态优化 */
+  .viewer-empty-state {
+    padding: 3rem 1.5rem; /* 增大内边距 */
+  }
+
+  /* 加载动画优化 */
+  .spinner {
+    width: 32px; /* 增大加载图标 */
+    height: 32px;
+    border-width: 3px;
+  }
+
+  .loading-text {
+    font-size: 1rem; /* 增大加载文字 */
+  }
+}
+
+/* 小屏幕设备额外优化 */
+@media (max-width: 480px) {
+  /* 进一步增大关键触摸目标 */
+  .layout-btn {
+    min-height: 60px;
+  }
+
+  .sidebar-footer .btn {
+    min-height: 52px;
+    font-size: 16px;
+  }
+
+  /* 优化间距 */
+  .sidebar-scroll-area {
+    padding: 0.875rem 0.625rem;
+  }
+
+  .section-block {
+    padding: 0.75rem;
+  }
+}
+
