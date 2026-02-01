@@ -68,13 +68,7 @@ export function SplitterControl({
       {/* Layout Scheme Section */}
       <section className="section-block" style={containerStyle}>
         <h3 className="section-header">{t("layoutScheme")}</h3>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "0.25rem",
-          }}
-        >
+        <div className="layout-grid-container">
           <LayoutButton
             active={layout === "GRID_2x2"}
             onClick={() => setLayout("GRID_2x2")}
@@ -116,16 +110,7 @@ export function SplitterControl({
             <h3 className="section-header">
               {layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}
             </h3>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                background: "var(--color-item-bg)",
-                borderRadius: "4px",
-                padding: "1px 4px",
-                width: "min-content",
-              }}
-            >
+            <div className="control-group-pill">
               <IconButton
                 onClick={() => {
                   const val = layout === "VERTICAL_1xN" ? rows : cols;
@@ -134,7 +119,8 @@ export function SplitterControl({
                   else setCols(newVal);
                 }}
                 icon={<Minus size={10} />}
-                style={{ border: "none", background: "none", padding: "1px" }}
+                className="global-gap-btn"
+                style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
               />
               <span
                 style={{
@@ -144,6 +130,7 @@ export function SplitterControl({
                   fontWeight: 700,
                   color: "var(--color-primary)",
                   fontFamily: "'Fira Code', monospace",
+                  lineHeight: 1
                 }}
               >
                 {layout === "VERTICAL_1xN" ? rows : cols}
@@ -156,7 +143,8 @@ export function SplitterControl({
                   else setCols(newVal);
                 }}
                 icon={<Plus size={10} />}
-                style={{ border: "none", background: "none", padding: "1px" }}
+                className="global-gap-btn"
+                style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
               />
             </div>
           </div>
@@ -173,22 +161,14 @@ export function SplitterControl({
           }}
         >
           <h3 className="section-header">{t("gapRemoval")}</h3>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "2px",
-              backgroundColor: "var(--color-item-bg)",
-              padding: "1px 4px",
-              borderRadius: "4px",
-            }}
-          >
+          <div className="control-group-pill">
             <IconButton
               onClick={() => setGap(Math.max(0, gap - 1))}
               icon={<Minus size={10} />}
-              style={{ border: "none", background: "none", padding: "1px" }}
+              className="global-gap-btn"
+              style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
             />
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div className="flex-row-center">
               <input
                 type="number"
                 value={gap}
@@ -224,7 +204,8 @@ export function SplitterControl({
             <IconButton
               onClick={() => setGap(Math.min(100, gap + 1))}
               icon={<Plus size={10} />}
-              style={{ border: "none", background: "none", padding: "1px" }}
+              className="global-gap-btn"
+              style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
             />
           </div>
         </div>
@@ -298,39 +279,12 @@ export function SplitterControl({
             >
               {t("formatLabel")}
             </span>
-            <div
-              style={{
-                display: "flex",
-                background: "var(--color-surface-soft)",
-                borderRadius: "var(--radius-sm)",
-                padding: "2px",
-              }}
-            >
+            <div className="format-selector">
               {(["png", "jpg", "webp"] as const).map((fmt) => (
                 <button
                   key={fmt}
+                  className={`format-btn ${exportFormat === fmt ? "active" : ""}`}
                   onClick={() => onExportFormatChange(fmt)}
-                  style={{
-                    border: "none",
-                    background:
-                      exportFormat === fmt
-                        ? "var(--color-background)"
-                        : "transparent",
-                    color:
-                      exportFormat === fmt
-                        ? "var(--color-text)"
-                        : "var(--color-text-muted)",
-                    boxShadow:
-                      exportFormat === fmt
-                        ? "0 1px 3px rgba(0,0,0,0.1)"
-                        : "none",
-                    fontSize: "10px",
-                    padding: "2px 8px",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    fontWeight: 700,
-                    transition: "all var(--transition-fast)",
-                  }}
                 >
                   {fmt.toUpperCase()}
                 </button>

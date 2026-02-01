@@ -1589,8 +1589,15 @@ input:checked + .slider:before {
 
 @media (max-width: 768px) {
   .layout-grid-container {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.375rem;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 0.625rem !important;
+    padding: 0.25rem 0.125rem 0.75rem 0 !important;
+    margin-bottom: -0.25rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
 }
 
@@ -1676,9 +1683,34 @@ input:checked + .slider:before {
     padding: 0.875rem 1.5rem;
   }
 
-  .btn-primary {
-    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4); /* 增强阴影 */
+  /* Format Selector Mobile */
+  .format-selector {
+    height: 32px !important;
+    padding: 3px !important;
   }
+
+  .format-btn {
+    font-size: 12px !important;
+    padding: 0 12px !important;
+  }
+
+  /* Switch Mobile */
+  .switch {
+    width: 44px !important;
+    height: 24px !important;
+  }
+
+  .slider:before {
+    height: 18px !important;
+    width: 18px !important;
+    left: 3px !important;
+    bottom: 3px !important;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(20px) !important;
+  }
+}
 
   /* 间距控制器优化 */
   .vibrant-range {
@@ -1772,7 +1804,6 @@ input:checked + .slider:before {
   .loading-text {
     font-size: 1rem; /* 增大加载文字 */
   }
-}
 
 /* 小屏幕设备额外优化 */
 @media (max-width: 480px) {
