@@ -389,8 +389,12 @@
   background-color: rgba(120, 120, 128, 0.16);
 }
 
-.switch:hover .slider {
+.switch:hover input:not(:checked) + .slider {
   background-color: rgba(120, 120, 128, 0.4);
+}
+
+input:checked + .slider:hover {
+  filter: brightness(1.05); /* Subtle brighten on hover when active */
 }
 
 input:checked + .slider {
@@ -1897,7 +1901,18 @@ input:checked + .slider:before {
     min-height: 40px;
   }
 
-  /* Empty State Message moved to global scope */
+  /* 3. Mobile Background Refinement (Card-on-Background Look) */
+  .sidebar-panel {
+    background-color: var(--color-background) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* 4. Mobile Dark Mode Refinement (Better Card Contrast) */
+  [data-theme="dark"] .section-block {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
 }
 
 /* Empty State Message - Shared for PC and Mobile */
