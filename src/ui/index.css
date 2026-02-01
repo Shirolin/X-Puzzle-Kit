@@ -1948,6 +1948,113 @@ input:checked + .slider:before {
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
 
+  /* 4b. Image Sort Action Buttons (Enlarged for touch) */
+  .section-header-actions .btn-icon,
+  .item-actions-group .btn-icon,
+  .image-sort-add-btn,
+  .image-sort-clear-btn {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    transition: transform 0.1s ease, background-color 0.2s ease !important;
+    background: var(--color-surface-soft) !important;
+  }
+
+  .image-sort-add-btn {
+    background: rgba(var(--color-primary-rgb), 0.15) !important;
+    color: var(--color-primary) !important;
+  }
+
+  .image-sort-clear-btn {
+    background: rgba(var(--color-danger-rgb), 0.15) !important;
+    color: var(--color-danger) !important;
+  }
+
+  .section-header-actions .btn-icon svg,
+  .item-actions-group .btn-icon svg,
+  .image-sort-add-btn svg,
+  .image-sort-clear-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    stroke-width: 2.2 !important;
+  }
+
+  .section-header-actions .btn-icon:active,
+  .item-actions-group .btn-icon:active,
+  .image-sort-add-btn:active,
+  .image-sort-clear-btn:active {
+    transform: scale(0.92);
+    opacity: 0.7 !important;
+  }
+
+  [data-theme="dark"] .section-header-actions .btn-icon,
+  [data-theme="dark"] .item-actions-group .btn-icon {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  [data-theme="dark"] .section-header-actions .btn-icon:active,
+  [data-theme="dark"] .item-actions-group .btn-icon:active {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /* 4c. Footer & Global Controls Adaptation */
+  .custom-select-trigger {
+    height: 44px !important;
+    min-width: 110px !important; /* Balanced for full "简体中文" visibility */
+    max-width: 45vw !important; /* Safety cap to prevent sidebar overflow */
+    width: auto !important;
+    padding: 0 10px !important; /* Slightly tighter for extra clearance */
+    border-radius: 12px !important;
+    font-size: 14px !important;
+  }
+
+  .custom-select-trigger svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .custom-select-dropdown button {
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+  }
+
+  /* Force sidebar footer links to meet 44px target */
+  .sidebar-content-root .btn-icon[href] {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    background-color: var(--color-surface-soft) !important;
+  }
+
+  .sidebar-content-root .btn-icon[href] svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* Ensure rows have enough room for enlarged controls and perfect alignment */
+  .flex-between {
+    min-height: 48px;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  /* Reset any container widths that might break alignment */
+  .custom-select-container {
+    width: auto !important;
+    min-width: auto !important;
+  }
+
+  /* Right-align specific groups */
+  .flex-row-center[style*="gap: 8px"] {
+    margin-right: -4px; /* Compensate for internal padding of color circles to align edges */
+  }
+
   /* 5. Viewer Elements */
   .viewer-empty-state {
     padding: 1rem !important;
@@ -2030,7 +2137,52 @@ input:checked + .slider:before {
 
   .sort-arrows-col {
     height: 44px !important;
-    width: 30px !important;
+    width: 38px !important; /* Wider for better touch */
+    display: flex !important;
+    flex-direction: column !important;
+    background: var(--color-surface-soft) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    gap: 0 !important;
+    border: 1px solid rgba(0, 0, 0, 0.02) !important;
+  }
+
+  [data-theme="dark"] .sort-arrows-col {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .sort-arrow-btn {
+    flex: 1 !important;
+    width: 100% !important;
+    height: 22px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: none !important;
+    border: none !important;
+    color: var(--color-icon) !important;
+    transition: background-color 0.2s ease !important;
+  }
+
+  .sort-arrow-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke-width: 3 !important;
+  }
+
+  .sort-arrow-btn:active:not(:disabled) {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+  }
+
+  [data-theme="dark"] .sort-arrow-btn:active:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .sort-arrow-btn:disabled {
+    opacity: 0.2 !important;
+    cursor: not-allowed !important;
   }
 
   .empty-state-message {
