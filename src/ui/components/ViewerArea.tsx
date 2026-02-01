@@ -112,7 +112,7 @@ export function ViewerArea({
             }
           }}
         >
-          <div
+          <label
             className={`viewer-upload-box ${isDragging ? "dragging" : ""}`}
             style={
               isDragging
@@ -124,57 +124,33 @@ export function ViewerArea({
                 : {}
             }
           >
-            <div
-              style={{
-                marginBottom: "1rem",
-                color: "var(--color-text-muted)",
-                fontSize: "0.85rem",
-                maxWidth: "100%",
-                margin: "0 auto 1rem",
-                lineHeight: "1.4",
-              }}
-            >
+            <div className="upload-icon-container">
+              <Upload size={32} strokeWidth={2.5} />
+            </div>
+            <div className="upload-tip">
               {mode === "split"
                 ? t("selectImageTip")
                 : t("selectImagesTip") || "Select images to stitch"}
             </div>
-            <label
-              className="btn btn-primary"
-              style={{
-                display: "inline-flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "8px",
-                padding: "0.6rem 1.25rem",
-                cursor: "pointer",
-                width: "auto",
-                maxWidth: "100%",
-                whiteSpace: "nowrap",
+            <div className="upload-sub-tip">
+              {t("dragAndDropTip") || "Or drag and drop images here"}
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              multiple={mode === "stitch"}
+              onChange={(e) => {
+                const files = e.currentTarget.files;
+                if (!files || files.length === 0) return;
+                if (mode === "split") {
+                  onSplitFileSelect(files[0]);
+                } else {
+                  onStitchFilesSelect(files);
+                }
               }}
-            >
-              <Upload size={18} style={{ flexShrink: 0 }} />
-              <span className="upload-btn-text">
-                {mode === "split"
-                  ? t("uploadImage")
-                  : t("uploadImages") || "Upload Images"}
-              </span>
-              <input
-                type="file"
-                accept="image/*"
-                multiple={mode === "stitch"}
-                onChange={(e) => {
-                  const files = e.currentTarget.files;
-                  if (!files || files.length === 0) return;
-                  if (mode === "split") {
-                    onSplitFileSelect(files[0]);
-                  } else {
-                    onStitchFilesSelect(files);
-                  }
-                }}
-                style={{ display: "none" }}
-              />
-            </label>
-          </div>
+              style={{ display: "none" }}
+            />
+          </label>
         </div>
       ) : (
         <div

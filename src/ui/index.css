@@ -897,24 +897,94 @@ input:checked + .slider:before {
 
 .viewer-upload-box {
   text-align: center;
-  border: 2px dashed var(--color-border);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  width: 100%;
-  max-width: 320px;
-  color: var(--color-text-muted);
+  border: 1px solid var(--color-glass-border);
+  border-radius: 2.5rem;
+  padding: 4rem 2rem;
+  width: 90%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-surface-soft);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 改进过渡效果 */
+  background: var(--color-glass-bg);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.12),
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08); /* Sophisticated Inner Glow */
+  transition: all var(--transition-normal);
+  cursor: pointer;
 }
 
 .viewer-upload-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.18),
+    0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+  background: var(--color-surface);
+}
+
+.viewer-upload-box:active {
+  transform: translateY(-4px) scale(0.98);
+}
+
+.viewer-upload-box.dragging {
   border-color: var(--color-primary);
-  background-color: var(--color-background);
-  transform: scale(1.01); /* 添加微妙缩放 */
+  background: rgba(var(--color-primary-rgb), 0.1);
+  transform: scale(1.04);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.upload-icon-container {
+  width: 64px;
+  height: 64px;
+  background: var(--color-primary);
+  border-radius: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: white;
+  box-shadow: 0 12px 24px rgba(var(--color-primary-rgb), 0.3);
+  transition: transform var(--transition-fast);
+}
+
+.viewer-upload-box:hover .upload-icon-container {
+  transform: translateY(-8px) scale(1.05); /* Professional floating effect */
+}
+
+.upload-tip {
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.upload-sub-tip {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 640px) {
+  .viewer-upload-box {
+    padding: 3rem 1.5rem;
+    border-radius: 2rem;
+  }
+  
+  .upload-icon-container {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .upload-tip {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1503,9 +1573,9 @@ input:checked + .slider:before {
   gap: 0.25rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .layout-grid-container {
-    grid-template-columns: 1fr; /* Single column for very small screens */
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.375rem;
   }
 }
@@ -1554,11 +1624,13 @@ input:checked + .slider:before {
 @media (max-width: 768px) {
   /* 布局选择器优化 - 增大触摸区域 */
   .layout-btn {
-    padding: 0.625rem 0.5rem !important;
-    min-height: 56px; /* 增大触摸目标 */
-    gap: 0.375rem;
+    padding: 0.5rem 0.25rem !important;
+    min-height: 52px; /* 稍微减小高度以适应单行 */
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
     border-radius: var(--radius-md);
-    font-size: 11px;
+    font-size: 10px; /* 减小字体以适应空间 */
   }
 
   .layout-btn .layout-icon svg {
