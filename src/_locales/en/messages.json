@@ -274,5 +274,9 @@
   "clearAll": {
     "message": "Clear All",
     "description": "Clear all images button text"
+  },
+  "emptyImageText": {
+    "message": "No images, please upload",
+    "description": "Message shown when image list is empty"
   }
 }

@@ -274,5 +274,9 @@
   "clearAll": {
     "message": "清空全部",
     "description": "清空全部图片按钮文本"
+  },
+  "emptyImageText": {
+    "message": "暂无图片，请上传",
+    "description": "图片列表为空时的提示"
   }
 }

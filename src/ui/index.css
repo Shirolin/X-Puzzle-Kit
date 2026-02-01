@@ -1710,3 +1710,93 @@ input:checked + .slider:before {
   }
 }
 
+/* ========================================
+   Mobile Optimization V2 (Refined)
+   ======================================== */
+@media (max-width: 768px) {
+  /* Unified Spacing for Sections */
+  .section-block {
+    padding: 0.75rem !important;
+    gap: 0.625rem !important;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Optimize Global Gap Buttons (+/-) */
+  .global-gap-btn {
+    width: 40px !important;
+    height: 40px !important;
+    background: var(--color-surface-soft) !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .global-gap-btn:active {
+    background: var(--color-item-hover) !important;
+    transform: scale(0.92);
+  }
+
+  .global-gap-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    stroke-width: 2.5px;
+  }
+
+  /* Optimize Image Sort Action Buttons (Add/Delete) */
+  .image-sort-add-btn,
+  .image-sort-clear-btn {
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+  }
+
+  .image-sort-add-btn svg,
+  .image-sort-clear-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+    stroke-width: 2.5px;
+  }
+  
+  /* Make the header row in sorting area align nicely with larger buttons */
+  .sorting-area .flex-between {
+    align-items: center;
+    min-height: 40px;
+  }
+
+  /* Empty State Message moved to global scope */
+}
+
+/* Empty State Message - Shared for PC and Mobile */
+.empty-state-message {
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(var(--color-primary-rgb), 0.03);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-border);
+  margin-top: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+[data-theme="light"] .empty-state-message {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 768px) {
+  .empty-state-message {
+    padding: 2.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+

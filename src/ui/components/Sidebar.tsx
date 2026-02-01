@@ -182,18 +182,19 @@ export function Sidebar({
                 <div className="flex-between">
                   <h3 className="section-header">{t("globalGap")}</h3>
                   <div className="control-group-pill">
-                    <IconButton
-                      onClick={() =>
-                        setGlobalGap(Math.max(-500, globalGap - 1))
-                      }
-                      icon={<Minus size={10} />}
-                      style={{
-                        border: "none",
-                        background: "none",
-                        padding: "1px",
-                        color: "var(--color-text)",
-                      }}
-                    />
+                      <IconButton
+                        onClick={() =>
+                          setGlobalGap(Math.max(-500, globalGap - 1))
+                        }
+                        icon={<Minus size={10} />}
+                        className="global-gap-btn"
+                        style={{
+                          border: "none",
+                          background: "none",
+                          padding: "1px",
+                          color: "var(--color-text)",
+                        }}
+                      />
                     <div className="flex-row-center">
                       <input
                         type="number"
@@ -237,6 +238,7 @@ export function Sidebar({
                     <IconButton
                       onClick={() => setGlobalGap(Math.min(500, globalGap + 1))}
                       icon={<Plus size={10} />}
+                      className="global-gap-btn"
                       style={{
                         border: "none",
                         background: "none",
@@ -271,7 +273,7 @@ export function Sidebar({
                     icon={<Plus size={11} />}
                     onClick={() => fileInputRef.current?.click()}
                     title={t("uploadImages") || "Add Images"}
-                    className="btn-icon-sm"
+                    className="btn-icon-sm image-sort-add-btn"
                     style={{
                       padding: "2px",
                       background: "rgba(var(--color-primary-rgb), 0.1)",
@@ -283,7 +285,7 @@ export function Sidebar({
                     icon={<Trash2 size={11} />}
                     onClick={clearAllImages}
                     title={t("clearAll") || "Clear All"}
-                    className="btn-icon-sm"
+                    className="btn-icon-sm image-sort-clear-btn"
                     style={{
                       padding: "2px",
                       background: "rgba(var(--color-danger-rgb), 0.1)",
@@ -305,194 +307,200 @@ export function Sidebar({
                 </div>
               </div>
               <div className="sorting-area-list">
-                {images.map((img, idx) => (
-                  <div
-                    key={img.id}
-                    draggable
-                    onDragStart={() => onDragStart(idx)}
-                    onDragOver={(e) => onDragOver(e, idx)}
-                    onDrop={() => onDrop(idx)}
-                    onDragEnd={onDragEnd}
-                    className={`sortable-item ${draggedIndex === idx ? "dragging" : ""}`}
-                    style={{ opacity: img.visible === false ? 0.6 : 1 }}
-                  >
-                    <div className="item-header">
-                      <GripVertical
-                        size={13}
-                        style={{
-                          color: "var(--color-handle)",
-                          opacity: 0.6,
-                          cursor: "grab",
-                        }}
-                      />
-                      <div className="item-thumb-container">
-                        <img
-                          src={img.thumbnailUrl}
-                          className="item-thumb"
-                          title={`${img.width}×${img.height}`}
+                {images.length === 0 ? (
+                  <div className="empty-state-message">
+                    {t("emptyImageText")}
+                  </div>
+                ) : (
+                  images.map((img, idx) => (
+                    <div
+                      key={img.id}
+                      draggable
+                      onDragStart={() => onDragStart(idx)}
+                      onDragOver={(e) => onDragOver(e, idx)}
+                      onDrop={() => onDrop(idx)}
+                      onDragEnd={onDragEnd}
+                      className={`sortable-item ${draggedIndex === idx ? "dragging" : ""}`}
+                      style={{ opacity: img.visible === false ? 0.6 : 1 }}
+                    >
+                      <div className="item-header">
+                        <GripVertical
+                          size={13}
+                          style={{
+                            color: "var(--color-handle)",
+                            opacity: 0.6,
+                            cursor: "grab",
+                          }}
                         />
-                        <div className="item-index-badge">{idx + 1}</div>
-                      </div>
-                      <div className="item-info">
-                        <div className="item-name">
-                          {img.name ||
-                            `${t("imageLabel")} ${img.originalIndex ?? idx + 1}`}
+                        <div className="item-thumb-container">
+                          <img
+                            src={img.thumbnailUrl}
+                            className="item-thumb"
+                            title={`${img.width}×${img.height}`}
+                          />
+                          <div className="item-index-badge">{idx + 1}</div>
                         </div>
-                        <div
-                          className="flex-row-center gap-sm"
-                          style={{ marginTop: "2px" }}
-                        >
-                          {/* <span className="item-meta">{img.width}×{img.height}</span>  Hidden to save space */}
-                          {/* Inline Gap Control (Only show if relevant or hovered) */}
-                          {idx < images.length - 1 && (
-                            <div
-                              className="item-gap-compact"
-                              title={t("localGap")}
-                            >
-                              <button
-                                onClick={() =>
-                                  updateLocalGap(idx, (img.localGap || 0) - 1)
-                                }
-                                style={{
-                                  border: "none",
-                                  background: "none",
-                                  color: "var(--color-text)",
-                                  padding: "0",
-                                  cursor: "pointer",
-                                  display: "flex",
-                                }}
-                              >
-                                <Minus size={8} />
-                              </button>
-                              <div
-                                style={{
-                                  display: "flex",
-                                  alignItems: "baseline",
-                                  justifyContent: "center",
-                                  gap: "2px",
-                                  minWidth: "14px",
-                                }}
-                              >
-                                <input
-                                  type="number"
-                                  value={img.localGap || 0}
-                                  onInput={(e) =>
-                                    updateLocalGap(
-                                      idx,
-                                      parseInt(e.currentTarget.value) || 0,
-                                    )
-                                  }
-                                  className="hide-arrows"
-                                  style={{
-                                    width: "20px",
-                                    fontSize: "10px",
-                                    border: "none",
-                                    outline: "none",
-                                    textAlign: "center",
-                                    backgroundColor: "transparent",
-                                    fontWeight: 600,
-                                    color: "var(--color-text)",
-                                    fontFamily: "'Fira Code', monospace",
-                                    padding: 0,
-                                  }}
-                                />
-                                {globalGap !== 0 && (
-                                  <span
-                                    style={{
-                                      fontSize: "8px",
-                                      color: "var(--color-text-muted)",
-                                      fontFamily: "'Fira Code', monospace",
-                                      opacity: 0.6,
-                                      letterSpacing: "-0.5px",
-                                    }}
-                                    title={t("finalGap") || "Final Gap"}
-                                  >
-                                    ({globalGap + (img.localGap || 0)})
-                                  </span>
-                                )}
-                              </div>
-                              <button
-                                onClick={() =>
-                                  updateLocalGap(idx, (img.localGap || 0) + 1)
-                                }
-                                style={{
-                                  border: "none",
-                                  background: "none",
-                                  color: "var(--color-text)",
-                                  padding: "0",
-                                  cursor: "pointer",
-                                  display: "flex",
-                                }}
-                              >
-                                <Plus size={8} />
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Actions Group (Auto-hidden) */}
-                      <div className="item-actions-group flex-row-center gap-sm">
-                        {/* Split Vertical Arrows Container */}
-                        <div className="sort-arrows-col">
-                          <button
-                            onClick={() => moveItem(idx, "up")}
-                            disabled={idx === 0}
-                            className="sort-arrow-btn"
-                          >
-                            <ChevronUp size={10} strokeWidth={3} />
-                          </button>
+                        <div className="item-info">
+                          <div className="item-name">
+                            {img.name ||
+                              `${t("imageLabel")} ${img.originalIndex ?? idx + 1}`}
+                          </div>
                           <div
-                            style={{
-                              height: "1px",
-                              background: "var(--color-border)",
-                              opacity: 0.5,
-                            }}
-                          ></div>
-                          <button
-                            onClick={() => moveItem(idx, "down")}
-                            disabled={idx === images.length - 1}
-                            className="sort-arrow-btn"
+                            className="flex-row-center gap-sm"
+                            style={{ marginTop: "2px" }}
                           >
-                            <ChevronDown size={10} strokeWidth={3} />
-                          </button>
+                            {/* <span className="item-meta">{img.width}×{img.height}</span>  Hidden to save space */}
+                            {/* Inline Gap Control (Only show if relevant or hovered) */}
+                            {idx < images.length - 1 && (
+                              <div
+                                className="item-gap-compact"
+                                title={t("localGap")}
+                              >
+                                <button
+                                  onClick={() =>
+                                    updateLocalGap(idx, (img.localGap || 0) - 1)
+                                  }
+                                  style={{
+                                    border: "none",
+                                    background: "none",
+                                    color: "var(--color-text)",
+                                    padding: "0",
+                                    cursor: "pointer",
+                                    display: "flex",
+                                  }}
+                                >
+                                  <Minus size={8} />
+                                </button>
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    alignItems: "baseline",
+                                    justifyContent: "center",
+                                    gap: "2px",
+                                    minWidth: "14px",
+                                  }}
+                                >
+                                  <input
+                                    type="number"
+                                    value={img.localGap || 0}
+                                    onInput={(e) =>
+                                      updateLocalGap(
+                                        idx,
+                                        parseInt(e.currentTarget.value) || 0,
+                                      )
+                                    }
+                                    className="hide-arrows"
+                                    style={{
+                                      width: "20px",
+                                      fontSize: "10px",
+                                      border: "none",
+                                      outline: "none",
+                                      textAlign: "center",
+                                      backgroundColor: "transparent",
+                                      fontWeight: 600,
+                                      color: "var(--color-text)",
+                                      fontFamily: "'Fira Code', monospace",
+                                      padding: 0,
+                                    }}
+                                  />
+                                  {globalGap !== 0 && (
+                                    <span
+                                      style={{
+                                        fontSize: "8px",
+                                        color: "var(--color-text-muted)",
+                                        fontFamily: "'Fira Code', monospace",
+                                        opacity: 0.6,
+                                        letterSpacing: "-0.5px",
+                                      }}
+                                      title={t("finalGap") || "Final Gap"}
+                                    >
+                                      ({globalGap + (img.localGap || 0)})
+                                    </span>
+                                  )}
+                                </div>
+                                <button
+                                  onClick={() =>
+                                    updateLocalGap(idx, (img.localGap || 0) + 1)
+                                  }
+                                  style={{
+                                    border: "none",
+                                    background: "none",
+                                    color: "var(--color-text)",
+                                    padding: "0",
+                                    cursor: "pointer",
+                                    display: "flex",
+                                  }}
+                                >
+                                  <Plus size={8} />
+                                </button>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                        <IconButton
-                          className="btn-icon"
-                          onClick={() => toggleVisibility(idx)}
-                          icon={
-                            img.visible !== false ? (
-                              <Eye size={13} />
-                            ) : (
-                              <EyeOff size={13} />
-                            )
-                          }
-                          style={{
-                            border: "none",
-                            background: "none",
-                            padding: "2px",
-                            color:
-                              img.visible !== false
-                                ? "var(--color-icon)"
-                                : "var(--color-icon-dim)",
-                          }}
-                        />
-                        <IconButton
-                          className="btn-icon"
-                          onClick={() => removeImage(img.id)}
-                          icon={<Trash2 size={13} />}
-                          style={{
-                            border: "none",
-                            background: "none",
-                            padding: "2px",
-                            color: "#ff453a",
-                          }}
-                          title={t("removeImage")}
-                        />
+
+                        {/* Actions Group (Auto-hidden) */}
+                        <div className="item-actions-group flex-row-center gap-sm">
+                          {/* Split Vertical Arrows Container */}
+                          <div className="sort-arrows-col">
+                            <button
+                              onClick={() => moveItem(idx, "up")}
+                              disabled={idx === 0}
+                              className="sort-arrow-btn"
+                            >
+                              <ChevronUp size={10} strokeWidth={3} />
+                            </button>
+                            <div
+                              style={{
+                                height: "1px",
+                                background: "var(--color-border)",
+                                opacity: 0.5,
+                              }}
+                            ></div>
+                            <button
+                              onClick={() => moveItem(idx, "down")}
+                              disabled={idx === images.length - 1}
+                              className="sort-arrow-btn"
+                            >
+                              <ChevronDown size={10} strokeWidth={3} />
+                            </button>
+                          </div>
+                          <IconButton
+                            className="btn-icon"
+                            onClick={() => toggleVisibility(idx)}
+                            icon={
+                              img.visible !== false ? (
+                                <Eye size={13} />
+                              ) : (
+                                <EyeOff size={13} />
+                              )
+                            }
+                            style={{
+                              border: "none",
+                              background: "none",
+                              padding: "2px",
+                              color:
+                                img.visible !== false
+                                  ? "var(--color-icon)"
+                                  : "var(--color-icon-dim)",
+                            }}
+                          />
+                          <IconButton
+                            className="btn-icon"
+                            onClick={() => removeImage(img.id)}
+                            icon={<Trash2 size={13} />}
+                            style={{
+                              border: "none",
+                              background: "none",
+                              padding: "2px",
+                              color: "#ff453a",
+                            }}
+                            title={t("removeImage")}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </section>
 
