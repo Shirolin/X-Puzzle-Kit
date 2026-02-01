@@ -201,9 +201,15 @@ export function ViewerArea({
             {mode === "stitch" &&
               task.tweetId !== "external" &&
               task.tweetId !== "none" && (
-                <div className="floating-badge badge-primary">
+                <a
+                  href={`https://x.com/i/status/${task.tweetId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="floating-badge badge-primary source-link"
+                  title={t("openSourcePage") || "Open Source Page"}
+                >
                   @{task.artistHandle} / x.com/{task.tweetId}
-                </div>
+                </a>
               )}
             {/* Split Result Badge - Moved here to prevent overlap on narrow screens */}
             {mode === "split" && splitBlobs.length > 0 && (

@@ -116,6 +116,7 @@ export function Sidebar({
   const fileInputRef = useRef<HTMLInputElement>(null);
   return (
     <div className="sidebar-panel">
+      <div className="sidebar-grab-indicator" />
       <div className="sidebar-content-root no-scrollbar sidebar-scroll-area">
         {mode === "split" ? (
           <SplitterControl
