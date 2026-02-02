@@ -495,15 +495,27 @@ export function App({
             />
             <div className="app-brand-stack">
               <span className="appName-text">X-Puzzle-Kit</span>
-              <span className="app-slogan-divider"> - </span>
-              <span className="app-slogan-text">
-                {t("appName").split(" - ")[1]}
-              </span>
+              {t("appName").includes(" - ") && (
+                <>
+                  <span className="app-slogan-divider"> - </span>
+                  <span className="app-slogan-text">
+                    {t("appName").split(" - ")[1]}
+                  </span>
+                </>
+              )}
             </div>
           </div>
 
           {/* Mode Switcher & Theme */}
           <div className="header-group" style={{ gap: "1rem" }}>
+            {isExtension && (
+              <IconButton
+                icon={<X size={16} />}
+                onClick={onClose}
+                title={t("close")}
+                className="close-btn-mobile-hidden"
+              />
+            )}
             <div className="mode-switcher">
               <button
                 onClick={() => setMode("stitch")}
@@ -564,23 +576,25 @@ export function App({
                   color: "var(--color-text-muted)",
                 }}
               />
-              <button
-                onClick={onClose}
-                className="btn-ghost"
-                style={{
-                  width: "28px",
-                  height: "28px",
-                  borderRadius: "50%",
-                  border: "none",
-                  cursor: "pointer",
-                  color: "var(--color-text-muted)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <X size={16} />
-              </button>
+              {isExtension && (
+                <button
+                  onClick={onClose}
+                  className="btn-ghost"
+                  style={{
+                    width: "28px",
+                    height: "28px",
+                    borderRadius: "50%",
+                    border: "none",
+                    cursor: "pointer",
+                    color: "var(--color-text-muted)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <X size={16} />
+                </button>
+              )}
             </div>
           </div>
         </div>

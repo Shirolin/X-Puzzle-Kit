@@ -23,9 +23,14 @@ let currentMessages: Record<string, { message: string }> | null = null;
  */
 function resolveAutoLanguage(): string {
   const lang = navigator.language.toLowerCase();
+
+  // 优先全字匹配
+  if (lang === "zh-cn" || lang === "zh") return "zh_CN";
+  if (lang === "zh-tw" || lang === "zh-hk") return "zh_TW";
+
   const prefixMap: Record<string, string> = {
     "zh-cn": "zh_CN",
-    zh: "zh_TW",
+    zh: "zh_CN", // 兜底中文
     ja: "ja",
     ko: "ko",
     es: "es",
