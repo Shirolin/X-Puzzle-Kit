@@ -17,8 +17,7 @@ import {
   Zap,
   Trash2,
 } from "lucide-preact";
-import { useRef, useEffect } from "preact/hooks";
-import { useAutoAnimate } from "@formkit/auto-animate/preact";
+import { useRef, useEffect, useLayoutEffect } from "preact/hooks";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
 import {
@@ -115,7 +114,59 @@ export function Sidebar({
   onStitchFilesSelect,
 }: SidebarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [parent] = useAutoAnimate({ duration: 350, easing: "ease-in-out" });
+  
+  // Custom FLIP Animation for Shadow DOM compatibility
+  const listRef = useRef<HTMLDivElement>(null);
+  const prevRects = useRef<Map<string, DOMRect>>(new Map());
+
+  // Capture positions before update (in useEffect, assumed immediate render)
+  // Actually, we need to capture BEFORE changes.
+  // In React/Preact, we can use useLayoutEffect to capture "current" (which is new) 
+  // and compare with "previous" (stored in ref from last render).
+  
+  useLayoutEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+
+    // 2. Measure NEW positions
+    const newRects = new Map<string, DOMRect>();
+    const children = Array.from(list.children) as HTMLElement[];
+    
+    children.forEach(child => {
+       // Assuming child has an ID or we use index if stable, 
+       // but images have IDs. We need to find the ID.
+       // We can pass ID as data attribute.
+       const id = child.getAttribute('data-id');
+       if (id) newRects.set(id, child.getBoundingClientRect());
+    });
+
+    // 3. FLIP
+    children.forEach(child => {
+      const id = child.getAttribute('data-id');
+      if (!id) return;
+      
+      const prev = prevRects.current.get(id);
+      const output = newRects.get(id);
+      
+      if (prev && output) {
+        const dy = prev.top - output.top;
+        if (dy !== 0) {
+          // Invert
+          child.style.transition = 'none';
+          child.style.transform = `translateY(${dy}px)`;
+          
+          // Play
+          requestAnimationFrame(() => {
+            child.style.transition = 'transform 300ms cubic-bezier(0.2, 0, 0, 1)';
+            child.style.transform = '';
+          });
+        }
+      }
+    });
+
+    // 4. Update refs for next time
+    prevRects.current = newRects;
+  }, [images]); // Dependency on images ensures this runs on reorder
 
   return (
     <div className="sidebar-panel">
@@ -312,7 +363,7 @@ export function Sidebar({
                   />
                 </div>
               </div>
-              <div className="sorting-area-list" ref={parent}>
+              <div className="sorting-area-list" ref={listRef}>
                 {images.length === 0 ? (
                   <div className="empty-state-message">
                     {t("emptyImageText")}
@@ -321,6 +372,7 @@ export function Sidebar({
                   images.map((img, idx) => (
                     <div
                       key={img.id}
+                      data-id={img.id}
                       draggable
                       onDragStart={() => onDragStart(idx)}
                       onDragOver={(e) => onDragOver(e, idx)}
