@@ -286,5 +286,9 @@
   "installDesc": {
     "message": "Tap the Share button below, then select 'Add to Home Screen'.",
     "description": "iOS install prompt description"
+  },
+  "installDescChrome": {
+    "message": "Tap the Share button top-right, then select 'Add to Home Screen'.",
+    "description": "iOS Chrome install prompt description"
   }
 }

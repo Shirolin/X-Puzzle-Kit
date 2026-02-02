@@ -286,5 +286,9 @@
   "installDesc": {
     "message": "轻点下方分享按钮，然后选择‘添加到主屏幕’。",
     "description": "iOS安装提示说明"
+  },
+  "installDescChrome": {
+    "message": "轻点右上角分享按钮，然后选择‘添加到主屏幕’。",
+    "description": "iOS Chrome安装提示说明"
   }
 }

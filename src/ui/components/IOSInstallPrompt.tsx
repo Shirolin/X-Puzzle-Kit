@@ -64,7 +64,9 @@ export function IOSInstallPrompt() {
           />
           <div className="ios-prompt-text">
             <div className="ios-prompt-title">{t("installTitle")}</div>
-            <div className="ios-prompt-desc">{t("installDesc")}</div>
+            <div className="ios-prompt-desc">
+              {t(isChrome ? "installDescChrome" : "installDesc")}
+            </div>
           </div>
         </div>
         {/* 指向箭头: Chrome 指向上方，Safari 指向下方 */}

@@ -19,6 +19,22 @@
     "message": "正在拼接...",
     "description": "拼圖生成中的載入狀態"
   },
+  "emptyImageText": {
+    "message": "暫無圖片，請上傳",
+    "description": "圖片列表為空時的提示"
+  },
+  "installTitle": {
+    "message": "加入主畫面",
+    "description": "iOS安裝提示標題"
+  },
+  "installDesc": {
+    "message": "點擊下方分享按鈕，然後選擇「加入主畫面」。",
+    "description": "iOS安裝提示說明"
+  },
+  "installDescChrome": {
+    "message": "點擊右上角分享按鈕，然後選擇「加入主畫面」。",
+    "description": "iOS Chrome安裝提示說明"
+  },
   "removeImage": {
     "message": "移除圖片",
     "description": "移除圖片工具提示"

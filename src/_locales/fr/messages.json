@@ -139,6 +139,22 @@
     "message": "Traitement...",
     "description": "Texte du bouton pendant le traitement"
   },
+  "emptyImageText": {
+    "message": "Aucune image, veuillez en télécharger",
+    "description": "Message affiché lorsque la liste d'images est vide"
+  },
+  "installTitle": {
+    "message": "Sur l'écran d'accueil",
+    "description": "Titre de l'invite d'installation iOS"
+  },
+  "installDesc": {
+    "message": "Touchez le bouton Partager en bas, puis 'Sur l'écran d'accueil'.",
+    "description": "Description de l'invite d'installation iOS"
+  },
+  "installDescChrome": {
+    "message": "Touchez le bouton Partager en haut à droite, puis 'Sur l'écran d'accueil'.",
+    "description": "Description de l'invite d'installation iOS Chrome"
+  },
   "stitchAndDownload": {
     "message": "Fusionner et télécharger",
     "description": "Texte du bouton de téléchargement final"

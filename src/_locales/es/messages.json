@@ -171,6 +171,22 @@
     "message": "Selecciona una imagen para dividir",
     "description": "Consejo para seleccionar imagen"
   },
+  "emptyImageText": {
+    "message": "No hay imágenes, por favor sube",
+    "description": "Mensaje mostrado cuando la lista de imágenes está vacía"
+  },
+  "installTitle": {
+    "message": "Añadir a inicio",
+    "description": "Título del aviso de instalación en iOS"
+  },
+  "installDesc": {
+    "message": "Toca el botón Compartir abajo y selecciona 'Añadir a inicio'.",
+    "description": "Descripción del aviso de instalación en iOS"
+  },
+  "installDescChrome": {
+    "message": "Toca el botón Compartir arriba a la derecha y selecciona 'Añadir a inicio'.",
+    "description": "Descripción del aviso de instalación en iOS Chrome"
+  },
   "uploadImages": {
     "message": "Subir imágenes",
     "description": "Texto del botón para subir múltiples imágenes"

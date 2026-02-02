@@ -163,6 +163,22 @@
     "message": "모두 다운로드",
     "description": "모두 다운로드 버튼 텍스트"
   },
+  "emptyImageText": {
+    "message": "이미지가 없습니다. 업로드해주세요.",
+    "description": "이미지 목록이 비어 있을 때 표시되는 메시지"
+  },
+  "installTitle": {
+    "message": "홈 화면에 추가",
+    "description": "iOS 설치 프롬프트 제목"
+  },
+  "installDesc": {
+    "message": "하단 공유 버튼을 눌러 '홈 화면에 추가'를 선택하세요.",
+    "description": "iOS 설치 프롬프트 설명"
+  },
+  "installDescChrome": {
+    "message": "우측 상단 공유 버튼을 눌러 '홈 화면에 추가'를 선택하세요.",
+    "description": "iOS Chrome 설치 프롬프트 설명"
+  },
   "uploadImage": {
     "message": "이미지 업로드",
     "description": "이미지 업로드 버튼 텍스트"
