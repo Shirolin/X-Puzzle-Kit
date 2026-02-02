@@ -704,9 +704,31 @@ input:checked + .slider:before {
   border-radius: 10px;
 }
 
-/* Base App Title - Desktop First */
+/* Base App Title & Branding - Single Line Desktop Default */
+.app-brand-stack {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
 .appName-text {
   display: inline-block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.app-slogan-divider {
+  display: inline;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 0 4px;
+}
+
+.app-slogan-text {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
 }
 
 /* Mode Switcher */
@@ -859,7 +881,7 @@ input:checked + .slider:before {
   background: var(--color-glass-bg);
   backdrop-filter: blur(30px) saturate(180%);
   -webkit-backdrop-filter: blur(30px) saturate(180%);
-  box-shadow: 
+  box-shadow:
     0 30px 60px rgba(0, 0, 0, 0.12),
     0 10px 20px rgba(0, 0, 0, 0.05),
     inset 0 0 0 1px rgba(255, 255, 255, 0.08); /* Sophisticated Inner Glow */
@@ -871,7 +893,7 @@ input:checked + .slider:before {
   transform: translateY(-10px);
   background: var(--color-surface);
   border-color: transparent; /* Remove harsh border */
-  box-shadow: 
+  box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.16),
     0 15px 30px rgba(0, 0, 0, 0.08),
     inset 0 0 0 1px rgba(255, 255, 255, 0.1); /* Subtle inner glow */
@@ -879,7 +901,7 @@ input:checked + .slider:before {
 
 [data-theme="dark"] .viewer-upload-box:hover {
   background-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 
+  box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.4),
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
@@ -933,13 +955,13 @@ input:checked + .slider:before {
     padding: 3rem 1.5rem;
     border-radius: 2rem;
   }
-  
+
   .upload-icon-container {
     width: 56px;
     height: 56px;
     margin-bottom: 1.5rem;
   }
-  
+
   .upload-tip {
     font-size: 1rem;
   }
@@ -1639,98 +1661,98 @@ input:checked + .slider:before {
   }
 }
 
-  /* 间距控制器优化 */
-  .vibrant-range {
-    height: 6px; /* 增大滑块轨道 */
-  }
+/* 间距控制器优化 */
+.vibrant-range {
+  height: 6px; /* 增大滑块轨道 */
+}
 
-  .vibrant-range::-webkit-slider-thumb {
-    width: 24px; /* 增大滑块按钮 */
-    height: 24px;
-    border-width: 3px;
-  }
+.vibrant-range::-webkit-slider-thumb {
+  width: 24px; /* 增大滑块按钮 */
+  height: 24px;
+  border-width: 3px;
+}
 
-  /* Section 标题优化 */
-  .section-header {
-    font-size: 0.8125rem; /* 增大字体 */
-    letter-spacing: 0.06em;
-  }
+/* Section 标题优化 */
+.section-header {
+  font-size: 0.8125rem; /* 增大字体 */
+  letter-spacing: 0.06em;
+}
 
-  /* 格式选择器优化 - 移动端更紧凑 */
-  .format-btn {
-    padding: 4px 10px;
-    font-size: 11px;
-    min-height: 28px;
-    font-weight: 700;
-    border-radius: 5px;
-  }
+/* 格式选择器优化 - 移动端更紧凑 */
+.format-btn {
+  padding: 4px 10px;
+  font-size: 11px;
+  min-height: 28px;
+  font-weight: 700;
+  border-radius: 5px;
+}
 
-  .format-selector {
-    padding: 2px;
-    gap: 2px;
-  }
+.format-selector {
+  padding: 2px;
+  gap: 2px;
+}
 
-  /* 通用按钮触摸反馈 */
-  .btn:active,
-  .layout-btn:active,
-  .icon-btn:active,
-  button:active {
-    transform: scale(0.96); /* 点击缩放反馈 */
-    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+/* 通用按钮触摸反馈 */
+.btn:active,
+.layout-btn:active,
+.icon-btn:active,
+button:active {
+  transform: scale(0.96); /* 点击缩放反馈 */
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  /* 通用按钮触摸反馈 */
-  .sidebar-scroll-area {
-    padding: 1rem 0.75rem; /* 增大内边距 */
-  }
+/* 通用按钮触摸反馈 */
+.sidebar-scroll-area {
+  padding: 1rem 0.75rem; /* 增大内边距 */
+}
 
-  /* 图片列表项优化 */
-  .sortable-item {
-    padding: 0.625rem; /* 增大内边距 */
-    margin-bottom: 0.5rem;
-  }
+/* 图片列表项优化 */
+.sortable-item {
+  padding: 0.625rem; /* 增大内边距 */
+  margin-bottom: 0.5rem;
+}
 
-  .item-thumb-container {
-    width: 44px; /* 增大缩略图 */
-    height: 44px;
-  }
+.item-thumb-container {
+  width: 44px; /* 增大缩略图 */
+  height: 44px;
+}
 
-  .item-name {
-    font-size: 12px !important; /* 增大字体 */
-  }
+.item-name {
+  font-size: 12px !important; /* 增大字体 */
+}
 
-  .item-meta {
-    font-size: 10px !important;
-  }
+.item-meta {
+  font-size: 10px !important;
+}
 
-  /* 拖拽反馈增强 */
-  .sortable-item.dragging {
-    transform: scale(1.08) rotate(2deg); /* 增强拖拽效果 */
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-  }
+/* 拖拽反馈增强 */
+.sortable-item.dragging {
+  transform: scale(1.08) rotate(2deg); /* 增强拖拽效果 */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
 
-  /* 浮动徽章优化 */
-  .floating-badge {
-    font-size: 0.75rem; /* 增大字体 */
-    padding: 6px 14px;
-    border-radius: 1.25rem;
-  }
+/* 浮动徽章优化 */
+.floating-badge {
+  font-size: 0.75rem; /* 增大字体 */
+  padding: 6px 14px;
+  border-radius: 1.25rem;
+}
 
-  /* 空状态优化 */
-  .viewer-empty-state {
-    padding: 3rem 1.5rem; /* 增大内边距 */
-  }
+/* 空状态优化 */
+.viewer-empty-state {
+  padding: 3rem 1.5rem; /* 增大内边距 */
+}
 
-  /* 加载动画优化 */
-  .spinner {
-    width: 32px; /* 增大加载图标 */
-    height: 32px;
-    border-width: 3px;
-  }
+/* 加载动画优化 */
+.spinner {
+  width: 32px; /* 增大加载图标 */
+  height: 32px;
+  border-width: 3px;
+}
 
-  .loading-text {
-    font-size: 1rem; /* 增大加载文字 */
-  }
+.loading-text {
+  font-size: 1rem; /* 增大加载文字 */
+}
 
 /* 小屏幕设备额外优化 */
 /* Note: Small screen target target overrides and card padding moved to consolidated block */
@@ -1760,9 +1782,6 @@ input:checked + .slider:before {
 [data-theme="light"] .empty-state-message {
   background: rgba(0, 0, 0, 0.02);
 }
-
-
-
 
 /* ========================================
    Consolidated Mobile Optimization (V3)
@@ -1798,7 +1817,9 @@ input:checked + .slider:before {
     height: 60vh;
     min-height: 40vh;
     border: none !important;
-    background-color: var(--color-surface) !important; /* Pure White/Solid Surface to stand out from gray canvas */
+    background-color: var(
+      --color-surface
+    ) !important; /* Pure White/Solid Surface to stand out from gray canvas */
     border-top-left-radius: var(--radius-xl) !important;
     border-top-right-radius: var(--radius-xl) !important;
     box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.18) !important; /* Deeper shadow for elevation */
@@ -1831,7 +1852,12 @@ input:checked + .slider:before {
   }
 
   [data-theme="dark"] .sidebar-header-mobile {
-    background: rgba(10, 10, 12, 0.65) !important; /* More translucent for better blur effect */
+    background: rgba(
+      10,
+      10,
+      12,
+      0.65
+    ) !important; /* More translucent for better blur effect */
   }
 
   .sidebar-grab-indicator {
@@ -1843,7 +1869,12 @@ input:checked + .slider:before {
   }
 
   [data-theme="dark"] .sidebar-grab-indicator {
-    background-color: rgba(255, 255, 255, 0.65) !important; /* Higher contrast handle */
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.65
+    ) !important; /* Higher contrast handle */
     opacity: 0.8 !important;
   }
 
@@ -1959,7 +1990,9 @@ input:checked + .slider:before {
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
-    transition: transform 0.1s ease, background-color 0.2s ease !important;
+    transition:
+      transform 0.1s ease,
+      background-color 0.2s ease !important;
     background: var(--color-surface-soft) !important;
   }
 
@@ -2090,14 +2123,14 @@ input:checked + .slider:before {
     background: rgba(255, 255, 255, 0.62) !important;
     backdrop-filter: blur(25px) saturate(210%) !important;
     -webkit-backdrop-filter: blur(25px) saturate(210%) !important;
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.12),
       inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
   }
 
   [data-theme="dark"] .viewer-toolbar-v2 {
     background: rgba(20, 20, 25, 0.55) !important;
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.4),
       inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
   }
@@ -2106,7 +2139,8 @@ input:checked + .slider:before {
     gap: 6px !important;
   }
 
-  .toolbar-text-btn, .toolbar-btn {
+  .toolbar-text-btn,
+  .toolbar-btn {
     min-width: 40px;
     min-height: 40px;
     display: flex;
@@ -2189,9 +2223,9 @@ input:checked + .slider:before {
     font-size: 0.8125rem !important;
   }
 
-  /* 7. App Header & Title (Crystalline Branding) */
+  /* 7. App Header & Title (Crystallized Geometry) */
   .app-header {
-    height: 52px !important;
+    height: 60px !important; /* Slightly taller for two-line branding */
     padding: 0 12px !important;
     background: var(--color-glass-bg) !important;
     backdrop-filter: blur(25px) saturate(180%) !important;
@@ -2205,52 +2239,86 @@ input:checked + .slider:before {
   }
 
   .header-group {
-    gap: 0.5rem !important; 
+    gap: 0.625rem !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
-  .app-logo { 
-    width: 24px !important; 
-    height: 24px !important; 
+  /* Two-Line Branding System (MOBILE ONLY) */
+  .app-brand-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    line-height: 1.1 !important;
   }
 
-  .appName-text { 
-    display: inline-block !important; 
+  .app-slogan-divider {
+    display: none !important; /* Hide hyphen on mobile */
+  }
+
+  .app-logo {
+    width: 30px !important;
+    height: 30px !important;
+    display: block !important;
+  }
+
+  .appName-text {
+    display: block !important;
     font-size: 0.95rem !important;
     font-weight: 800 !important;
-    margin-right: 0 !important;
-    color: var(--color-text) !important; /* Reverted to professional Black/White */
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
-    white-space: nowrap !important;
-    letter-spacing: -0.02em;
+    color: var(--color-text) !important;
+    letter-spacing: -0.01em;
   }
 
   .app-slogan-text {
-    display: none !important; 
+    display: block !important;
+    font-size: 0.65rem !important;
+    font-weight: 500 !important;
+    color: var(--color-text-muted) !important;
+    opacity: 0.8;
   }
 
-  .app-badge {
-    display: none !important; 
-  }
-
-  /* Canvas Layer (Viewer Area) */
-  .app-content {
-    background-color: var(--color-background) !important; /* System Gray Canvas */
-  }
-
-  /* Component Polish (Unified Ghost Utility Buttons) */
+  /* Precise Control Geometry (36px Standard) */
   .mode-switcher {
-    background-color: rgba(0, 0, 0, 0.05) !important;
-    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    height: 36px !important;
+    padding: 3px !important; /* Forces a clear 3px inset */
+    background-color: var(--color-surface-soft) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
   }
 
-  /* Target utility buttons ONLY within the header to avoid leakage */
-  .app-header .icon-btn, .app-header .close-btn {
+  .mode-btn {
+    height: 28px !important; /* 36 - 3 - 3 - 2(border) = 28px exactly fill inner */
+    /* wait, if padding is 3px and container is 36px, inner is 30px. 
+       If I want a 1px gap inside the padding, button should be 28px.
+    */
+    height: 26px !important; /* More gap for a cleaner 'floating' slider look */
+    min-height: 26px !important;
+    padding: 0 14px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    border-radius: 9px !important;
+    border: none !important;
+    transition: all var(--transition-medium) !important;
+  }
+
+  .mode-btn.active {
+    background-color: var(--color-surface) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    color: var(--color-primary) !important;
+  }
+
+  .app-header .icon-btn,
+  .app-header .close-btn {
     background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    width: 40px !important;
-    height: 40px !important;
+    width: 36px !important; /* Unified precision height */
+    height: 36px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -2259,13 +2327,15 @@ input:checked + .slider:before {
   }
 
   /* Hover & Active Feedbacks for Header Utilities */
-  .app-header .icon-btn:hover, .app-header .close-btn:hover {
+  .app-header .icon-btn:hover,
+  .app-header .close-btn:hover {
     background-color: rgba(0, 0, 0, 0.04) !important;
     color: var(--color-text) !important;
     border-radius: var(--radius-md) !important;
   }
 
-  .app-header .icon-btn:active, .app-header .close-btn:active {
+  .app-header .icon-btn:active,
+  .app-header .close-btn:active {
     background-color: rgba(0, 0, 0, 0.08) !important;
     transform: scale(0.92) !important;
   }
@@ -2275,32 +2345,34 @@ input:checked + .slider:before {
     border: 1px solid rgba(255, 255, 255, 0.04) !important;
   }
 
-  [data-theme="dark"] .app-header .icon-btn:hover, 
+  [data-theme="dark"] .app-header .icon-btn:hover,
   [data-theme="dark"] .app-header .close-btn:hover {
     background-color: rgba(255, 255, 255, 0.08) !important;
     color: var(--color-text) !important;
   }
 
-  [data-theme="dark"] .app-header .icon-btn:active, 
+  [data-theme="dark"] .app-header .icon-btn:active,
   [data-theme="dark"] .app-header .close-btn:active {
     background-color: rgba(255, 255, 255, 0.12) !important;
   }
-  
-  .mode-switcher { padding: 3px !important; }
-  .mode-btn {
-    padding: 8px 14px !important;
-    font-size: 13px !important;
-    min-height: 38px !important;
-  }
 
   /* Scale Feedback */
-  .btn:active, .layout-btn:active, .icon-btn:active, button:active {
+  .btn:active,
+  .layout-btn:active,
+  .icon-btn:active,
+  button:active {
     transform: scale(0.95) !important;
   }
 }
 
 /* Small screen targets */
 @media (max-width: 480px) {
-  .layout-btn { min-width: 72px; min-height: 68px; }
-  .sidebar-footer .btn { min-height: 54px; font-size: 16px; }
+  .layout-btn {
+    min-width: 72px;
+    min-height: 68px;
+  }
+  .sidebar-footer .btn {
+    min-height: 54px;
+    font-size: 16px;
+  }
 }

@@ -185,19 +185,19 @@ export function Sidebar({
                 <div className="flex-between">
                   <h3 className="section-header">{t("globalGap")}</h3>
                   <div className="control-group-pill">
-                      <IconButton
-                        onClick={() =>
-                          setGlobalGap(Math.max(-500, globalGap - 1))
-                        }
-                        icon={<Minus size={10} />}
-                        className="global-gap-btn"
-                        style={{
-                          border: "none",
-                          background: "none",
-                          padding: "1px",
-                          color: "var(--color-text)",
-                        }}
-                      />
+                    <IconButton
+                      onClick={() =>
+                        setGlobalGap(Math.max(-500, globalGap - 1))
+                      }
+                      icon={<Minus size={10} />}
+                      className="global-gap-btn"
+                      style={{
+                        border: "none",
+                        background: "none",
+                        padding: "1px",
+                        color: "var(--color-text)",
+                      }}
+                    />
                     <div className="flex-row-center">
                       <input
                         type="number"

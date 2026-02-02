@@ -120,7 +120,12 @@ export function SplitterControl({
                 }}
                 icon={<Minus size={10} />}
                 className="global-gap-btn"
-                style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
+                style={{
+                  border: "none",
+                  background: "none",
+                  padding: "1px",
+                  color: "var(--color-text)",
+                }}
               />
               <span
                 style={{
@@ -130,7 +135,7 @@ export function SplitterControl({
                   fontWeight: 700,
                   color: "var(--color-primary)",
                   fontFamily: "'Fira Code', monospace",
-                  lineHeight: 1
+                  lineHeight: 1,
                 }}
               >
                 {layout === "VERTICAL_1xN" ? rows : cols}
@@ -144,7 +149,12 @@ export function SplitterControl({
                 }}
                 icon={<Plus size={10} />}
                 className="global-gap-btn"
-                style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
+                style={{
+                  border: "none",
+                  background: "none",
+                  padding: "1px",
+                  color: "var(--color-text)",
+                }}
               />
             </div>
           </div>
@@ -166,7 +176,12 @@ export function SplitterControl({
               onClick={() => setGap(Math.max(0, gap - 1))}
               icon={<Minus size={10} />}
               className="global-gap-btn"
-              style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
+              style={{
+                border: "none",
+                background: "none",
+                padding: "1px",
+                color: "var(--color-text)",
+              }}
             />
             <div className="flex-row-center">
               <input
@@ -205,7 +220,12 @@ export function SplitterControl({
               onClick={() => setGap(Math.min(100, gap + 1))}
               icon={<Plus size={10} />}
               className="global-gap-btn"
-              style={{ border: "none", background: "none", padding: "1px", color: "var(--color-text)" }}
+              style={{
+                border: "none",
+                background: "none",
+                padding: "1px",
+                color: "var(--color-text)",
+              }}
             />
           </div>
         </div>

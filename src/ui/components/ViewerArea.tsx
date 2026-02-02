@@ -170,6 +170,9 @@ export function ViewerArea({
             e.stopPropagation();
             setIsDragging(true); // Small hack: show feedback
             setTimeout(() => setIsDragging(false), 500);
+
+            // Only process if it's external files
+            if (!e.dataTransfer?.types.includes("Files")) return;
             if (!e.dataTransfer?.files?.length) return;
             onStitchFilesSelect(e.dataTransfer.files);
           }}
@@ -361,6 +364,7 @@ export function ViewerArea({
               <img
                 src={previewUrl}
                 className="viewer-image"
+                draggable={false}
                 style={{
                   width: `${canvasSize.width}px`,
                   height: `${canvasSize.height}px`,

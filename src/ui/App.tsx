@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useState, useEffect, useRef, useCallback } from "preact/hooks";
 import {
   BackgroundColor,
   ImageNode,
-  LayoutType,
   StitchTask,
   SplitConfig,
 } from "../core/types";
@@ -14,6 +13,7 @@ import { IconButton } from "./components/Common";
 import { Sidebar } from "./components/Sidebar";
 import { ViewerArea } from "./components/ViewerArea";
 import { platformStorage, getAssetUrl, fetchImageData } from "../core/platform";
+import { useStitchManager } from "./hooks/useStitchManager";
 
 interface AppProps {
   task: StitchTask;
@@ -40,16 +40,36 @@ export function App({
 }: AppProps) {
   const logoUrl = getAssetUrl("assets/icon-48.png");
 
-  const [layout, setLayout] = useState<LayoutType>(task.layout);
-  const [images, setImages] = useState<ImageNode[]>(() =>
-    task.userImages.map((img, i) => ({
+  const {
+    images,
+    setImages,
+    layout,
+    updateLayout,
+    globalGap,
+    updateGlobalGap,
+    backgroundColor,
+    updateBackgroundColor,
+    isGenerating,
+    setIsGenerating,
+    previewUrl,
+    canvasSize,
+    addImages,
+    removeImage,
+    clearAllImages,
+    toggleVisibility,
+    updateLocalGap,
+    triggerGeneration,
+  } = useStitchManager({
+    initialImages: task.userImages.map((img, i) => ({
       ...img,
       originalIndex: img.originalIndex ?? i + 1,
     })),
-  );
-  const [previewUrl, setPreviewUrl] = useState<string>("");
+    initialLayout: task.layout,
+    initialGap: task.globalGap || 0,
+    initialBackgroundColor: "transparent",
+  });
+
   const [loading, setLoading] = useState(true);
-  const [isGenerating, setIsGenerating] = useState(false);
 
   // Split Mode State
   const [mode, setMode] = useState<"stitch" | "split">(initialMode);
@@ -74,9 +94,8 @@ export function App({
   const [outputFormat, setOutputFormat] = useState<"png" | "jpg" | "webp">(
     "png",
   );
-  const [backgroundColor, setBackgroundColor] =
+  const [persistedBG, setPersistedBG] =
     useState<BackgroundColor>("transparent");
-  const [globalGap, setGlobalGap] = useState<number>(task.globalGap || 0);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   // Theme State
@@ -96,7 +115,7 @@ export function App({
       .then((res) => {
         setLang(res[STORAGE_KEYS.LANG] as string);
         setOutputFormat(res[STORAGE_KEYS.FORMAT] as "png" | "jpg" | "webp");
-        setBackgroundColor(res[STORAGE_KEYS.BG] as BackgroundColor);
+        setPersistedBG(res[STORAGE_KEYS.BG] as BackgroundColor);
         setTheme(res[STORAGE_KEYS.THEME] as "auto" | "light" | "dark");
 
         const splitOpts = res[STORAGE_KEYS.SPLIT_OPTIONS] as {
@@ -142,7 +161,7 @@ export function App({
     const settingsToSave = {
       [STORAGE_KEYS.LANG]: lang,
       [STORAGE_KEYS.FORMAT]: outputFormat,
-      [STORAGE_KEYS.BG]: backgroundColor,
+      [STORAGE_KEYS.BG]: persistedBG,
       [STORAGE_KEYS.THEME]: theme,
       [STORAGE_KEYS.SPLIT_OPTIONS]: {
         format: splitConfig.format,
@@ -157,13 +176,18 @@ export function App({
   }, [
     lang,
     outputFormat,
-    backgroundColor,
+    persistedBG,
     splitConfig.format,
     isZip,
     isTwitterOptimized,
     isLangLoaded,
     theme,
   ]);
+
+  // Sync background color from setting
+  useEffect(() => {
+    if (persistedBG) updateBackgroundColor(persistedBG);
+  }, [persistedBG, updateBackgroundColor]);
 
   // Sync isThemeDark with theme and system preference
   useEffect(() => {
@@ -242,13 +266,7 @@ export function App({
     };
   }, [splitSource, initialSplitImageUrl]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => generatePreview(), 400);
-    return () => clearTimeout(timer);
-  }, [layout, images, globalGap, backgroundColor, mode]);
-
-  // Viewer State
-  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  // Shared Viewport State
   const [viewerScale, setViewerScale] = useState(1);
   const [viewerOffset, setViewerOffset] = useState({ x: 0, y: 0 });
   const [viewerRotation, setViewerRotation] = useState(0);
@@ -312,69 +330,39 @@ export function App({
 
   const handleStitchFilesSelect = async (files: FileList | File[]) => {
     setLoading(true);
-    const currentLength = images.length;
-    const newNodes: ImageNode[] = await Promise.all(
-      Array.from(files).map(async (file, i) => {
-        return new Promise<ImageNode>((resolve) => {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const img = new Image();
-            img.onload = async () => {
-              const bitmap = await createImageBitmap(img);
-              resolve({
-                id: Math.random().toString(36).substr(2, 9),
-                name: file.name,
-                originalUrl: e.target?.result as string,
-                thumbnailUrl: e.target?.result as string,
-                width: img.width,
-                height: img.height,
-                visible: true,
-                originalIndex: currentLength + i + 1,
-                bitmap,
-              });
-            };
-            img.src = e.target?.result as string;
-          };
-          reader.readAsDataURL(file);
-        });
-      }),
-    );
-    setImages((prev) => [...prev, ...newNodes]);
-    setLoading(false);
-  };
-
-  const removeImage = (id: string) => {
-    setImages((prev) => prev.filter((img) => img.id !== id));
-  };
-
-  const clearAllImages = () => {
-    if (window.confirm(t("confirmClearAll") || "Clear all images?")) {
-      setImages([]);
-    }
-  };
-
-  const generatePreview = async () => {
-    setIsGenerating(true);
     try {
-      const visibleImages = images.filter((img) => img.visible !== false);
-      if (visibleImages.length === 0) {
-        setPreviewUrl("");
-        return;
-      }
-      const canvas = await stitchImages(
-        visibleImages,
-        layout,
-        globalGap,
-        backgroundColor,
+      const currentLength = images.length;
+      const newNodes: ImageNode[] = await Promise.all(
+        Array.from(files).map(async (file, i) => {
+          return new Promise<ImageNode>((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              const img = new Image();
+              img.onload = async () => {
+                const bitmap = await createImageBitmap(img);
+                resolve({
+                  id: Math.random().toString(36).substr(2, 9),
+                  name: file.name,
+                  originalUrl: e.target?.result as string,
+                  thumbnailUrl: e.target?.result as string,
+                  width: img.width,
+                  height: img.height,
+                  visible: true,
+                  originalIndex: currentLength + i + 1,
+                  bitmap,
+                });
+              };
+              img.src = e.target?.result as string;
+            };
+            reader.readAsDataURL(file);
+          });
+        }),
       );
-      setCanvasSize({ width: canvas.width, height: canvas.height });
-      setPreviewUrl(canvas.toDataURL("image/png"));
-      // Human-perception delay as requested
-      await new Promise((r) => setTimeout(r, 50));
+      addImages(newNodes);
     } catch (e) {
       console.error(e);
     } finally {
-      setIsGenerating(false);
+      setLoading(false);
     }
   };
 
@@ -404,18 +392,6 @@ export function App({
     }
   };
 
-  const toggleVisibility = (idx: number) => {
-    const newImages = [...images];
-    newImages[idx] = { ...newImages[idx], visible: !newImages[idx].visible };
-    setImages(newImages);
-  };
-
-  const updateLocalGap = (idx: number, gap: number) => {
-    const newImages = [...images];
-    newImages[idx] = { ...newImages[idx], localGap: gap };
-    setImages(newImages);
-  };
-
   const onDragStart = (idx: number) => setDraggedIndex(idx);
   const onDragOver = (e: DragEvent, _idx: number) => e.preventDefault();
   const onDrop = (idx: number) => {
@@ -423,7 +399,8 @@ export function App({
     const newImages = [...images];
     const [item] = newImages.splice(draggedIndex, 1);
     newImages.splice(idx, 0, item);
-    setImages(newImages);
+    setImages(newImages); // Hook provides setImages for manual sorting
+    triggerGeneration();
     setDraggedIndex(null);
   };
   const onDragEnd = () => setDraggedIndex(null);
@@ -435,6 +412,7 @@ export function App({
     const [item] = newImages.splice(idx, 1);
     newImages.splice(newIdx, 0, item);
     setImages(newImages);
+    triggerGeneration();
   };
 
   // Viewer Handlers
@@ -466,6 +444,35 @@ export function App({
   const handleDoubleClick = () =>
     viewerScale < 1 ? setViewerScale(1) : fitToScreen();
 
+  const handlePaste = useCallback(
+    (e: ClipboardEvent) => {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+
+      const files: File[] = [];
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") !== -1) {
+          const blob = items[i].getAsFile();
+          if (blob) files.push(blob);
+        }
+      }
+
+      if (files.length > 0) {
+        if (mode === "split") {
+          handleSplitFileSelect(files[0]);
+        } else {
+          handleStitchFilesSelect(files);
+        }
+      }
+    },
+    [mode, handleStitchFilesSelect, handleSplitFileSelect],
+  );
+
+  useEffect(() => {
+    window.addEventListener("paste", handlePaste);
+    return () => window.removeEventListener("paste", handlePaste);
+  }, [handlePaste]);
+
   // If running in popup mode, we use different container classes
   const containerClass = isPopup ? "app-popup-container" : "app-container";
   const wrapperClass = isPopup ? "app-popup-wrapper" : "app-overlay";
@@ -486,13 +493,13 @@ export function App({
               alt="Logo"
               title={t("appDesc")}
             />
-            <h2 className="app-title">
+            <div className="app-brand-stack">
               <span className="appName-text">X-Puzzle-Kit</span>
-              <span className="app-slogan-text"> - {t("appName").split(" - ")[1]}</span>
-              <span className="app-badge">
-                {mode === "stitch" ? t("previewTitle") : t("splitterTitle")}
+              <span className="app-slogan-divider"> - </span>
+              <span className="app-slogan-text">
+                {t("appName").split(" - ")[1]}
               </span>
-            </h2>
+            </div>
           </div>
 
           {/* Mode Switcher & Theme */}
@@ -616,7 +623,7 @@ export function App({
           <Sidebar
             mode={mode}
             layout={layout}
-            setLayout={setLayout}
+            setLayout={updateLayout}
             images={images}
             draggedIndex={draggedIndex}
             onDragStart={onDragStart}
@@ -627,7 +634,7 @@ export function App({
             toggleVisibility={toggleVisibility}
             updateLocalGap={updateLocalGap}
             globalGap={globalGap}
-            setGlobalGap={setGlobalGap}
+            setGlobalGap={updateGlobalGap}
             splitConfig={splitConfig}
             setSplitConfig={setSplitConfig}
             isSplitting={isSplitting}
@@ -640,8 +647,11 @@ export function App({
             setIsTwitterOptimized={setIsTwitterOptimized}
             outputFormat={outputFormat}
             setOutputFormat={setOutputFormat}
-            backgroundColor={backgroundColor}
-            setBackgroundColor={setBackgroundColor}
+            backgroundColor={persistedBG as BackgroundColor}
+            setBackgroundColor={(c) => {
+              setPersistedBG(c);
+              updateBackgroundColor(c);
+            }}
             lang={lang}
             setLang={(l) => {
               setLanguage(l);

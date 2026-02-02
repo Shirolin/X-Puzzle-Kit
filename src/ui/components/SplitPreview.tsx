@@ -64,6 +64,7 @@ export function SplitPreview({
       >
         <img
           src={sourceUrl}
+          draggable={false}
           style={{
             width: "100%",
             height: "100%",
@@ -106,6 +107,7 @@ export function SplitPreview({
           <img
             src={url}
             alt={`Split ${idx + 1}`}
+            draggable={false}
             onLoad={(e) => {
               const img = e.currentTarget;
               const resText = `${img.naturalWidth} x ${img.naturalHeight}`;

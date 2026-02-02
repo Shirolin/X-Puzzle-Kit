@@ -1,7 +1,25 @@
 import { ImageNode, LayoutType } from "./types";
 
 /**
- * Stitch multiple images according to the specified layout and return a Canvas
+ * Indicates where an image should be placed on the final canvas.
+ */
+interface Placement {
+  img: ImageNode;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+interface Scene {
+  width: number;
+  height: number;
+  placements: Placement[];
+}
+
+/**
+ * Main entrance: Stitch multiple images based on the specified layout and return a Canvas.
+ * Refactoring logic: Decouple "coordinate calculation" from "canvas rendering".
  */
 export async function stitchImages(
   images: ImageNode[],
@@ -9,265 +27,202 @@ export async function stitchImages(
   globalGap: number = 0,
   backgroundColor: string = "transparent",
 ): Promise<HTMLCanvasElement> {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("Failed to get canvas context");
+  // 1. Data validation and preparation
+  const visibleImages = images.filter((img) => img.visible !== false);
+  if (visibleImages.length === 0) return document.createElement("canvas");
 
-  // Deep alignment: disable image smoothing to prevent transparent seams from sub-pixel interpolation
-  ctx.imageSmoothingEnabled = false;
-
-  // Ensure all images have loaded bitmaps
-  for (const img of images) {
-    if (!img.bitmap) throw new Error(`Image ${img.id} not loaded`);
+  for (const img of visibleImages) {
+    if (!img.bitmap) throw new Error(`Image data not loaded: ${img.id}`);
   }
 
-  // Filter invisible images (already handled in App.tsx, but kept here for robustness)
-  const visibleImages = images.filter((img) => img.visible !== false);
-  if (visibleImages.length === 0) return canvas;
+  // 2. Select layout strategy to calculate positions (Pure Logic)
+  const scene = calculateLayout(visibleImages, layout, globalGap);
 
+  // 3. Execute unified rendering stream (Render Side-effect)
+  return drawScene(scene, backgroundColor);
+}
+
+/**
+ * Layout strategy router
+ */
+function calculateLayout(
+  images: ImageNode[],
+  layout: LayoutType,
+  gap: number,
+): Scene {
   switch (layout) {
     case "HORIZONTAL_2x1":
     case "HORIZONTAL_Nx1":
-      return stitchHorizontal(
-        visibleImages,
-        ctx,
-        canvas,
-        globalGap,
-        backgroundColor,
-      );
+      return layoutHorizontal(images, gap);
     case "VERTICAL_1x2":
     case "VERTICAL_1xN":
-      return stitchVertical(
-        visibleImages,
-        ctx,
-        canvas,
-        globalGap,
-        backgroundColor,
-      );
+      return layoutVertical(images, gap);
     case "GRID_2x2":
-      return stitchGrid2x2(
-        visibleImages,
-        ctx,
-        canvas,
-        globalGap,
-        backgroundColor,
-      );
+      // Smart fallback: use T-Shape if less than 4 images, use horizontal if less than 3
+      if (images.length === 3) return layoutTShape3(images, gap);
+      if (images.length < 3) return layoutHorizontal(images, gap);
+      return layoutGrid2x2(images, gap);
     case "T_SHAPE_3":
-      return stitchTShape3(
-        visibleImages,
-        ctx,
-        canvas,
-        globalGap,
-        backgroundColor,
-      );
+      // Smart fallback: use horizontal if less than 3 images
+      if (images.length < 3) return layoutHorizontal(images, gap);
+      return layoutTShape3(images, gap);
     default:
-      return canvas;
+      return layoutHorizontal(images, gap);
   }
 }
 
 /**
- * Fill background
+ * Layout: Horizontal stitching
  */
-function fillBackground(
-  ctx: CanvasRenderingContext2D,
-  width: number,
-  height: number,
-  color: string,
-) {
-  if (color === "transparent") return;
-  ctx.save();
-  ctx.fillStyle = color;
-  ctx.fillRect(0, 0, width, height);
-  ctx.restore();
-}
-
-function stitchHorizontal(
-  images: ImageNode[],
-  ctx: CanvasRenderingContext2D,
-  canvas: HTMLCanvasElement,
-  globalGap: number,
-  backgroundColor: string,
-) {
+function layoutHorizontal(images: ImageNode[], globalGap: number): Scene {
   const baseImg = images[0];
   const targetHeight = Math.round(baseImg.height);
-
   let currentX = 0;
-  const scaledImages = images.map((img, idx) => {
+
+  const placements: Placement[] = images.map((img, idx) => {
     const scale = targetHeight / img.height;
-    const scaledWidth = Math.round(img.width * scale);
+    const width = Math.round(img.width * scale);
     const x = currentX;
 
-    // Gap calculation: global gap + local gap specific to this image (no gap for the last image)
     const gap =
       idx === images.length - 1
         ? 0
         : Math.round(globalGap + (img.localGap || 0));
+    currentX += width + gap;
 
-    // Enforce accumulation using rounded components to ensure x is always an integer with no gaps
-    currentX += scaledWidth + gap;
-
-    return { img, x, scaledWidth };
+    return { img, x, y: 0, width, height: targetHeight };
   });
 
-  canvas.width = currentX;
-  canvas.height = targetHeight;
-
-  fillBackground(ctx, canvas.width, canvas.height, backgroundColor);
-
-  scaledImages.forEach(({ img, x, scaledWidth }) => {
-    ctx.drawImage(img.bitmap!, x, 0, scaledWidth, targetHeight);
-  });
-
-  return canvas;
+  return { width: currentX, height: targetHeight, placements };
 }
 
-function stitchVertical(
-  images: ImageNode[],
-  ctx: CanvasRenderingContext2D,
-  canvas: HTMLCanvasElement,
-  globalGap: number,
-  backgroundColor: string,
-) {
+/**
+ * Layout: Vertical stitching
+ */
+function layoutVertical(images: ImageNode[], globalGap: number): Scene {
   const baseImg = images[0];
   const targetWidth = Math.round(baseImg.width);
-
   let currentY = 0;
-  const scaledImages = images.map((img, idx) => {
+
+  const placements: Placement[] = images.map((img, idx) => {
     const scale = targetWidth / img.width;
-    const scaledHeight = Math.round(img.height * scale);
+    const height = Math.round(img.height * scale);
     const y = currentY;
 
     const gap =
       idx === images.length - 1
         ? 0
         : Math.round(globalGap + (img.localGap || 0));
+    currentY += height + gap;
 
-    // Accumulate in physical pixels
-    currentY += scaledHeight + gap;
-
-    return { img, y, scaledHeight };
+    return { img, x: 0, y, width: targetWidth, height };
   });
 
-  canvas.width = targetWidth;
-  canvas.height = currentY;
-
-  fillBackground(ctx, canvas.width, canvas.height, backgroundColor);
-
-  scaledImages.forEach(({ img, y, scaledHeight }) => {
-    ctx.drawImage(img.bitmap!, 0, y, targetWidth, scaledHeight);
-  });
-
-  return canvas;
+  return { width: targetWidth, height: currentY, placements };
 }
 
-function stitchGrid2x2(
-  images: ImageNode[],
-  ctx: CanvasRenderingContext2D,
-  canvas: HTMLCanvasElement,
-  globalGap: number,
-  backgroundColor: string,
-) {
-  if (images.length < 4)
-    return stitchHorizontal(images, ctx, canvas, globalGap, backgroundColor);
-
-  // Row 1: img0, img1
+/**
+ * Layout: Grid (2x2)
+ * Based on top-row alignment principle; eliminate 1px gaps via difference calculation.
+ */
+function layoutGrid2x2(images: ImageNode[], globalGap: number): Scene {
   const h1 = Math.round(images[0].height);
-  const gap1 = Math.round(globalGap + (images[0].localGap || 0));
+  const gapRow1 = Math.round(globalGap + (images[0].localGap || 0));
   const s1 = h1 / images[1].height;
   const w1_0 = Math.round(images[0].width);
   const w1_1 = Math.round(images[1].width * s1);
-  const row1Width = w1_0 + gap1 + w1_1;
+  const rowWidth = w1_0 + gapRow1 + w1_1;
 
-  // Row 2: img2, img3
-  const gap2 = Math.round(globalGap + (images[2].localGap || 0));
+  const gapRow2 = Math.round(globalGap + (images[2].localGap || 0));
   const ratioSum2 =
     images[2].width / images[2].height + images[3].width / images[3].height;
-  const h2Prime = Math.round((row1Width - gap2) / ratioSum2);
+  const h2 = Math.round((rowWidth - gapRow2) / ratioSum2);
+  const w2_2 = Math.round((images[2].width / images[2].height) * h2);
+  const w2_3 = rowWidth - gapRow2 - w2_2; // Eliminate 1px gap
 
-  const w2_2Prime = Math.round((images[2].width / images[2].height) * h2Prime);
-  // To ensure the total width of Row 2 strictly equals row1Width, calculate the width of the last image by difference to eliminate 1px gaps
-  const w2_3Prime = row1Width - gap2 - w2_2Prime;
+  const vGap = Math.round(globalGap + (images[1].localGap || 0));
 
-  // Vertical gap between rows
-  const verticalGap = Math.round(globalGap + (images[1].localGap || 0));
-
-  canvas.width = row1Width;
-  canvas.height = h1 + verticalGap + h2Prime;
-
-  fillBackground(ctx, canvas.width, canvas.height, backgroundColor);
-
-  // Draw Row 1
-  ctx.drawImage(images[0].bitmap!, 0, 0, w1_0, h1);
-  ctx.drawImage(images[1].bitmap!, w1_0 + gap1, 0, w1_1, h1);
-
-  // Draw Row 2
-  ctx.drawImage(images[2].bitmap!, 0, h1 + verticalGap, w2_2Prime, h2Prime);
-  ctx.drawImage(
-    images[3].bitmap!,
-    w2_2Prime + gap2,
-    h1 + verticalGap,
-    w2_3Prime,
-    h2Prime,
-  );
-
-  return canvas;
+  return {
+    width: rowWidth,
+    height: h1 + vGap + h2,
+    placements: [
+      { img: images[0], x: 0, y: 0, width: w1_0, height: h1 },
+      { img: images[1], x: w1_0 + gapRow1, y: 0, width: w1_1, height: h1 },
+      { img: images[2], x: 0, y: h1 + vGap, width: w2_2, height: h2 },
+      {
+        img: images[3],
+        x: w2_2 + gapRow2,
+        y: h1 + vGap,
+        width: w2_3,
+        height: h2,
+      },
+    ],
+  };
 }
 
-function stitchTShape3(
-  images: ImageNode[],
-  ctx: CanvasRenderingContext2D,
-  canvas: HTMLCanvasElement,
-  globalGap: number,
-  backgroundColor: string,
-) {
-  if (images.length < 3)
-    return stitchHorizontal(images, ctx, canvas, globalGap, backgroundColor);
+/**
+ * Layout: T-Shape (Large image on the left, two small images on the right)
+ */
+function layoutTShape3(images: ImageNode[], globalGap: number): Scene {
+  const imgL = images[0];
+  const imgR1 = images[1];
+  const imgR2 = images[2];
 
-  const imgLeft = images[0];
-  const imgRight1 = images[1];
-  const imgRight2 = images[2];
+  const targetHeight = Math.round(imgL.height);
+  const vGap = Math.round(globalGap + (imgR1.localGap || 0));
+  const hGap = Math.round(globalGap + (imgL.localGap || 0));
 
-  const targetHeight = Math.round(imgLeft.height);
-
-  // Right vertical gap
-  const vGap = Math.round(globalGap + (imgRight1.localGap || 0));
-  // Horizontal gap between left and right
-  const hGap = Math.round(globalGap + (imgLeft.localGap || 0));
-
-  // Calculate width of the right column W_right
-  const sumRatio =
-    imgRight1.height / imgRight1.width + imgRight2.height / imgRight2.width;
+  const sumRatio = imgR1.height / imgR1.width + imgR2.height / imgR2.width;
   const rightWidth = Math.round((targetHeight - vGap) / sumRatio);
+  const hR1 = Math.round((imgR1.height / imgR1.width) * rightWidth);
+  const hR2 = targetHeight - vGap - hR1; // Eliminate 1px gap
 
-  const hRight1 = Math.round((imgRight1.height / imgRight1.width) * rightWidth);
-  // To ensure the total height of the right column strictly equals targetHeight, calculate the height of the last image by difference
-  const hRight2 = targetHeight - vGap - hRight1;
+  const wL = Math.round(imgL.width);
+  const totalWidth = wL + hGap + rightWidth;
 
-  canvas.width = Math.round(imgLeft.width + hGap + rightWidth);
-  canvas.height = targetHeight;
+  return {
+    width: totalWidth,
+    height: targetHeight,
+    placements: [
+      { img: imgL, x: 0, y: 0, width: wL, height: targetHeight },
+      { img: imgR1, x: wL + hGap, y: 0, width: rightWidth, height: hR1 },
+      {
+        img: imgR2,
+        x: wL + hGap,
+        y: hR1 + vGap,
+        width: rightWidth,
+        height: hR2,
+      },
+    ],
+  };
+}
 
-  fillBackground(ctx, canvas.width, canvas.height, backgroundColor);
+/**
+ * Rendering Engine: Draw the calculated position information onto the Canvas.
+ */
+function drawScene(scene: Scene, backgroundColor: string): HTMLCanvasElement {
+  const canvas = document.createElement("canvas");
+  canvas.width = scene.width;
+  canvas.height = scene.height;
 
-  // Draw left large image - physical pixel alignment
-  ctx.drawImage(imgLeft.bitmap!, 0, 0, Math.round(imgLeft.width), targetHeight);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return canvas;
 
-  // Draw right top image
-  ctx.drawImage(
-    imgRight1.bitmap!,
-    Math.round(imgLeft.width + hGap),
-    0,
-    rightWidth,
-    hRight1,
-  );
+  // Key: Disable image smoothing to ensure physical pixel alignment and prevent semi-transparent seams.
+  ctx.imageSmoothingEnabled = false;
 
-  // Draw right bottom image
-  ctx.drawImage(
-    imgRight2.bitmap!,
-    Math.round(imgLeft.width + hGap),
-    hRight1 + vGap,
-    rightWidth,
-    hRight2,
-  );
+  // Fill background
+  if (backgroundColor !== "transparent") {
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Iterate and draw images
+  for (const p of scene.placements) {
+    if (p.img.bitmap) {
+      ctx.drawImage(p.img.bitmap, p.x, p.y, p.width, p.height);
+    }
+  }
 
   return canvas;
 }

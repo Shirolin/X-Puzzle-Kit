@@ -1,0 +1,55 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: # 允许手动触发
+
+# ===========================================
+# GitHub Secrets & Variables 配置说明
+# ===========================================
+#
+# 【必须配置 - Secrets】
+#   CLOUDFLARE_API_TOKEN  : Cloudflare API 访问令牌
+#   CLOUDFLARE_ACCOUNT_ID : Cloudflare 账户 ID
+#
+# ===========================================
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Web
+        run: npm run build:web
+
+      - name: Create Pages Project (if not exists)
+        uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create x-puzzle-kit --production-branch main
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist-web --project-name=x-puzzle-kit
