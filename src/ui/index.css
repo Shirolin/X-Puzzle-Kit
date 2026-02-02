@@ -2387,7 +2387,7 @@ button:active {
   border-radius: var(--radius-md);
   padding: 0.5rem; /* Increased padding */
   margin-bottom: 0.5rem;
-  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  /* transition: all 0.2s cubic-bezier(0.2, 0, 0, 1); */ /* Removed for auto-animate */
   user-select: none;
   touch-action: none; /* Critical for reliable touch dragging */
   min-height: 56px; /* Taller for mobile touch */
