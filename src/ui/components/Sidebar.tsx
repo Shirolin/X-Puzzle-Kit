@@ -17,7 +17,7 @@ import {
   Zap,
   Trash2,
 } from "lucide-preact";
-import { useRef } from "preact/hooks";
+import { useRef, useEffect } from "preact/hooks";
 import { useAutoAnimate } from "@formkit/auto-animate/preact";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
@@ -116,6 +116,7 @@ export function Sidebar({
 }: SidebarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [parent] = useAutoAnimate({ duration: 350, easing: "ease-in-out" });
+
   return (
     <div className="sidebar-panel">
       <div className="sidebar-header-mobile">

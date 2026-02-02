@@ -405,8 +405,9 @@ export function App({
     const [item] = newImages.splice(draggedIndex, 1);
     newImages.splice(idx, 0, item);
     setImages(newImages); // Hook provides setImages for manual sorting
-    triggerGeneration();
     setDraggedIndex(null);
+    // Defer generation to prevent blocking the animation
+    setTimeout(() => triggerGeneration(), 400);
   };
   const onDragEnd = () => setDraggedIndex(null);
 
@@ -417,7 +418,7 @@ export function App({
     const [item] = newImages.splice(idx, 1);
     newImages.splice(newIdx, 0, item);
     setImages(newImages);
-    triggerGeneration();
+    setTimeout(() => triggerGeneration(), 400);
   };
 
   // Viewer Handlers
