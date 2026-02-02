@@ -514,7 +514,6 @@ export function Sidebar({
                       className="sortable-item"
                       style={{
                         opacity: img.visible === false ? 0.6 : 1,
-                        touchAction: "none",
                       }}
                     >
                       <div className="item-header">

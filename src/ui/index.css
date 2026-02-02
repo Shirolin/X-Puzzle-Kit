@@ -1067,7 +1067,6 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  touch-action: none;
   user-select: none;
 }
 
