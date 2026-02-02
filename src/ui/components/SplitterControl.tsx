@@ -235,8 +235,7 @@ export function SplitterControl({
           max="100"
           value={gap}
           onInput={(e) => setGap(parseInt(e.currentTarget.value) || 0)}
-          className="vibrant-range"
-          style={{ height: "3px", marginTop: "2px" }}
+          className="vibrant-range range-slider-control"
         />
       </section>
 

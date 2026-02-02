@@ -18,6 +18,7 @@ import {
   Trash2,
 } from "lucide-preact";
 import { useRef, useEffect, useLayoutEffect } from "preact/hooks";
+import Sortable from "sortablejs";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
 import {
@@ -29,16 +30,44 @@ import {
 import { LayoutButton, IconButton, CustomSelect } from "./Common";
 import { SplitterControl } from "./SplitterControl";
 
+// 分隔线组件
+const Divider = () => (
+  <div
+    style={{
+      height: "1px",
+      background: "var(--color-border)",
+      opacity: 0.5,
+    }}
+  />
+);
+
+// 检测当前主题是否为暗色
+const detectIsDarkTheme = (element: HTMLElement): boolean => {
+  let ancestor: HTMLElement | null = element;
+  while (ancestor) {
+    const theme = ancestor.getAttribute?.("data-theme");
+    if (theme) return theme === "dark";
+    ancestor = ancestor.parentElement;
+  }
+  return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ?? false;
+};
+
+// 下载文件工具函数
+const downloadBlob = (blob: Blob, filename: string): void => {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+};
+
 interface SidebarProps {
   mode: "stitch" | "split";
   layout: LayoutType;
   setLayout: (l: LayoutType) => void;
   images: ImageNode[];
-  draggedIndex: number | null;
-  onDragStart: (idx: number) => void;
-  onDragOver: (e: DragEvent, idx: number) => void;
-  onDrop: (idx: number) => void;
-  onDragEnd: () => void;
+  onSortEnd: (oldIdx: number, newIdx: number) => void;
   moveItem: (idx: number, dir: "up" | "down") => void;
   toggleVisibility: (idx: number) => void;
   updateLocalGap: (idx: number, gap: number) => void;
@@ -79,11 +108,7 @@ export function Sidebar({
   layout,
   setLayout,
   images,
-  draggedIndex,
-  onDragStart,
-  onDragOver,
-  onDrop,
-  onDragEnd,
+  onSortEnd,
   moveItem,
   toggleVisibility,
   updateLocalGap,
@@ -114,10 +139,121 @@ export function Sidebar({
   onStitchFilesSelect,
 }: SidebarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
+
   // Custom FLIP Animation for Shadow DOM compatibility
   const listRef = useRef<HTMLDivElement>(null);
-  const prevRects = useRef<Map<string, { top: number; left: number }>>(new Map());
+  const prevRects = useRef<Map<string, { top: number; left: number }>>(
+    new Map(),
+  );
+
+  const onSortEndRef = useRef(onSortEnd);
+  useEffect(() => {
+    onSortEndRef.current = onSortEnd;
+  }, [onSortEnd]);
+
+  useEffect(() => {
+    if (!listRef.current) return;
+
+    const sortable = new Sortable(listRef.current, {
+      forceFallback: true,
+      fallbackClass: "sortable-fallback", // 使用专门的类名
+      fallbackOnBody: true, // 放到 body 以避免被容器裁切
+      swapThreshold: 0.65,
+      animation: 250,
+      delay: 100,
+      touchStartThreshold: 5,
+      delayOnTouchOnly: true,
+      handle: ".drag-handle",
+      draggable: ".sortable-item",
+      ghostClass: "sortable-ghost",
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+
+      onStart: (evt) => {
+        document.body.style.userSelect = "none";
+        document.body.style.webkitUserSelect = "none";
+
+        // fallbackOnBody: true 会把克隆体放到 body，脱离 Shadow DOM 后样式丢失
+        // 需要手动为它设置内联样式
+        const ghost = document.querySelector(
+          ".sortable-fallback",
+        ) as HTMLElement;
+        const original = evt.item;
+
+        if (ghost && original) {
+          const rect = original.getBoundingClientRect();
+
+          // 检测当前主题
+          const isDark = detectIsDarkTheme(original);
+
+          // 从原元素获取计算样式
+          const computedStyle = window.getComputedStyle(original);
+
+          // 强制锁定尺寸
+          ghost.style.width = `${rect.width}px`;
+          ghost.style.height = `${rect.height}px`;
+
+          // 根据主题应用不同的颜色方案
+          ghost.style.backgroundColor = isDark ? "#1e1e2e" : "#f8fafc";
+          ghost.style.borderRadius = computedStyle.borderRadius || "12px";
+          ghost.style.border = `2px solid ${isDark ? "#6366f1" : "#3b82f6"}`;
+          ghost.style.boxShadow = isDark
+            ? "0 15px 50px rgba(99, 102, 241, 0.3), 0 5px 20px rgba(0, 0, 0, 0.5)"
+            : "0 15px 50px rgba(59, 130, 246, 0.25), 0 5px 20px rgba(0, 0, 0, 0.15)";
+          ghost.style.opacity = "0.95";
+          ghost.style.overflow = "hidden";
+
+          // 定位和层级
+          ghost.style.position = "fixed";
+          ghost.style.zIndex = "100000";
+          ghost.style.pointerEvents = "none";
+          ghost.style.boxSizing = "border-box";
+          ghost.style.margin = "0";
+          ghost.style.transformOrigin = "0 0";
+
+          // 隐藏内部无样式内容，只保留干净的占位框
+          ghost.innerHTML = "";
+        }
+      },
+
+      onEnd: (evt) => {
+        document.body.style.userSelect = "";
+        document.body.style.webkitUserSelect = "";
+
+        const { oldIndex, newIndex } = evt;
+        if (
+          oldIndex === undefined ||
+          newIndex === undefined ||
+          oldIndex === newIndex
+        )
+          return;
+        onSortEndRef.current(oldIndex, newIndex);
+      },
+    });
+
+    // 阻止移动端浏览器的原生长按/拖拽行为
+    const container = listRef.current;
+
+    const preventNativeDrag = (e: TouchEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest(".drag-handle")) {
+        e.preventDefault();
+      }
+    };
+
+    container.addEventListener("touchstart", preventNativeDrag, {
+      passive: false,
+    });
+    container.addEventListener("touchmove", preventNativeDrag, {
+      passive: false,
+    });
+
+    return () => {
+      sortable.destroy();
+      container.removeEventListener("touchstart", preventNativeDrag);
+      container.removeEventListener("touchmove", preventNativeDrag);
+    };
+  }, []);
 
   useLayoutEffect(() => {
     const list = listRef.current;
@@ -126,40 +262,42 @@ export function Sidebar({
     // 2. Measure NEW positions (relative to container)
     const newRects = new Map<string, { top: number; left: number }>();
     const children = Array.from(list.children) as HTMLElement[];
-    
-    children.forEach(child => {
-       const id = child.getAttribute('data-id');
-       // Use offsetTop/offsetLeft which are stable relative to container (unaffected by scroll)
-       if (id) newRects.set(id, { top: child.offsetTop, left: child.offsetLeft });
+
+    children.forEach((child) => {
+      const id = child.getAttribute("data-id");
+      // Use offsetTop/offsetLeft which are stable relative to container (unaffected by scroll)
+      if (id)
+        newRects.set(id, { top: child.offsetTop, left: child.offsetLeft });
     });
 
     // 3. FLIP
-    children.forEach(child => {
-      const id = child.getAttribute('data-id');
+    children.forEach((child) => {
+      const id = child.getAttribute("data-id");
       if (!id) return;
-      
+
       const prev = prevRects.current.get(id);
       const output = newRects.get(id);
-      
+
       if (prev && output) {
         const dy = prev.top - output.top;
         const dx = prev.left - output.left;
-        
+
         // Only animate if position actually changed
         if (dy !== 0 || dx !== 0) {
           // Verify reasonable delta to avoid "initial load" jumps
           // If delta is huge (e.g. > 2000px), it might be an artifact, but let's trust offset for now.
-          
+
           // Invert
-          child.style.transition = 'none';
+          child.style.transition = "none";
           child.style.transform = `translate(${dx}px, ${dy}px)`;
-          
+
           // Play
           requestAnimationFrame(() => {
             // Force reflow
-            void child.offsetHeight; 
-            child.style.transition = 'transform 300ms cubic-bezier(0.2, 0, 0, 1)';
-            child.style.transform = '';
+            void child.offsetHeight;
+            child.style.transition =
+              "transform 300ms cubic-bezier(0.2, 0, 0, 1)";
+            child.style.transform = "";
           });
         }
       }
@@ -314,8 +452,7 @@ export function Sidebar({
                   onInput={(e) =>
                     setGlobalGap(parseInt(e.currentTarget.value) || 0)
                   }
-                  className="vibrant-range"
-                  style={{ height: "3px", marginTop: "2px" }}
+                  className="vibrant-range range-slider-control"
                 />
               </section>
             </div>
@@ -374,27 +511,38 @@ export function Sidebar({
                     <div
                       key={img.id}
                       data-id={img.id}
-                      draggable
-                      onDragStart={() => onDragStart(idx)}
-                      onDragOver={(e) => onDragOver(e, idx)}
-                      onDrop={() => onDrop(idx)}
-                      onDragEnd={onDragEnd}
-                      className={`sortable-item ${draggedIndex === idx ? "dragging" : ""}`}
-                      style={{ opacity: img.visible === false ? 0.6 : 1 }}
+                      className="sortable-item"
+                      style={{
+                        opacity: img.visible === false ? 0.6 : 1,
+                        touchAction: "none",
+                      }}
                     >
                       <div className="item-header">
                         <GripVertical
                           size={13}
+                          className="drag-handle"
+                          onDragStart={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                          }}
                           style={{
                             color: "var(--color-handle)",
                             opacity: 0.6,
                             cursor: "grab",
+                            touchAction: "none",
                           }}
                         />
                         <div className="item-thumb-container">
-                          <img
-                            src={img.thumbnailUrl}
+                          {/* 使用 div + background-image 替代 img，彻底杜绝浏览器原生图片拖拽 */}
+                          <div
                             className="item-thumb"
+                            style={{
+                              backgroundImage: `url(${img.thumbnailUrl})`,
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              WebkitTouchCallout: "none",
+                              userSelect: "none",
+                            }}
                             title={`${img.width}×${img.height}`}
                           />
                           <div className="item-index-badge">{idx + 1}</div>
@@ -611,13 +759,7 @@ export function Sidebar({
                     </div>
                   </div>
 
-                  <div
-                    style={{
-                      height: "1px",
-                      background: "var(--color-border)",
-                      opacity: 0.5,
-                    }}
-                  ></div>
+                  <Divider />
 
                   <div className="flex-between">
                     <span
@@ -664,13 +806,7 @@ export function Sidebar({
                     </div>
                   </div>
 
-                  <div
-                    style={{
-                      height: "1px",
-                      background: "var(--color-border)",
-                      opacity: 0.5,
-                    }}
-                  ></div>
+                  <Divider />
 
                   <div className="flex-between">
                     <span
@@ -700,13 +836,7 @@ export function Sidebar({
                     />
                   </div>
 
-                  <div
-                    style={{
-                      height: "1px",
-                      background: "var(--color-border)",
-                      opacity: 0.5,
-                    }}
-                  ></div>
+                  <Divider />
 
                   <div className="flex-between">
                     <span
@@ -812,29 +942,17 @@ export function Sidebar({
               disabled={splitBlobs.length === 0}
               onClick={async () => {
                 if (splitBlobs.length === 0) return;
+                const format = splitConfig.format || "png";
                 if (isZip) {
                   const zip = new JSZip();
                   splitBlobs.forEach((b, i) =>
-                    zip.file(
-                      `split_${i + 1}.${b.type.split("/")[1] || splitConfig.format}`,
-                      b,
-                    ),
+                    zip.file(`split_${i + 1}.${b.type.split("/")[1] || format}`, b),
                   );
                   const content = await zip.generateAsync({ type: "blob" });
-                  const url = URL.createObjectURL(content);
-                  const a = document.createElement("a");
-                  a.href = url;
-                  a.download = `split_${new Date().getTime()}.zip`;
-                  a.click();
-                  URL.revokeObjectURL(url);
+                  downloadBlob(content, `split_${Date.now()}.zip`);
                 } else {
                   splitBlobs.forEach((b, i) => {
-                    const url = URL.createObjectURL(b);
-                    const a = document.createElement("a");
-                    a.href = url;
-                    a.download = `split_${i + 1}.${b.type.split("/")[1] || splitConfig.format}`;
-                    a.click();
-                    URL.revokeObjectURL(url);
+                    downloadBlob(b, `split_${i + 1}.${b.type.split("/")[1] || format}`);
                   });
                 }
               }}

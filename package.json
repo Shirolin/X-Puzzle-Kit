@@ -28,6 +28,7 @@
     "@preact/preset-vite": "^2.10.2",
     "@types/chrome": "^0.1.36",
     "@types/node": "^25.0.10",
+    "@types/sortablejs": "^1.15.9",
     "archiver": "^7.0.1",
     "crx": "^5.0.1",
     "eslint": "^9.39.2",
@@ -44,6 +45,7 @@
     "@types/jszip": "^3.4.0",
     "jszip": "^3.10.1",
     "lucide-preact": "^0.563.0",
-    "preact": "^10.28.2"
+    "preact": "^10.28.2",
+    "sortablejs": "^1.15.6"
   }
 }

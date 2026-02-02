@@ -101,7 +101,6 @@ export function App({
   );
   const [persistedBG, setPersistedBG] =
     useState<BackgroundColor>("transparent");
-  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
   // Theme State
   const [theme, setTheme] = useState<"auto" | "light" | "dark">("auto");
@@ -279,7 +278,7 @@ export function App({
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const fitToScreen = () => {
+  const fitToScreen = useCallback(() => {
     if (
       !containerRef.current ||
       (mode === "stitch" && canvasSize.width === 0) ||
@@ -290,7 +289,7 @@ export function App({
     const cw = mode === "split" ? splitSourceBitmap!.width : canvasSize.width;
     const ch = mode === "split" ? splitSourceBitmap!.height : canvasSize.height;
 
-    const padding = 48; // Standard padding from high-quality version
+    const padding = 48;
     const availableWidth = containerRef.current.clientWidth - padding;
     const availableHeight = containerRef.current.clientHeight - padding;
     const scale = Math.min(availableWidth / cw, availableHeight / ch, 1);
@@ -298,7 +297,7 @@ export function App({
     setViewerScale(scale);
     setViewerOffset({ x: 0, y: 0 });
     setViewerRotation(0);
-  };
+  }, [mode, canvasSize, splitSourceBitmap]);
 
   useEffect(() => {
     const runRefit = () => {
@@ -326,50 +325,53 @@ export function App({
     }
   };
 
-  const handleSplitFileSelect = (file: File) => {
+  const handleSplitFileSelect = useCallback((file: File) => {
     if (file) {
       setSplitSource(file);
       setSplitBlobs([]);
     }
-  };
+  }, []);
 
-  const handleStitchFilesSelect = async (files: FileList | File[]) => {
-    setLoading(true);
-    try {
-      const currentLength = images.length;
-      const newNodes: ImageNode[] = await Promise.all(
-        Array.from(files).map(async (file, i) => {
-          return new Promise<ImageNode>((resolve) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              const img = new Image();
-              img.onload = async () => {
-                const bitmap = await createImageBitmap(img);
-                resolve({
-                  id: Math.random().toString(36).substr(2, 9),
-                  name: file.name,
-                  originalUrl: e.target?.result as string,
-                  thumbnailUrl: e.target?.result as string,
-                  width: img.width,
-                  height: img.height,
-                  visible: true,
-                  originalIndex: currentLength + i + 1,
-                  bitmap,
-                });
+  const handleStitchFilesSelect = useCallback(
+    async (files: FileList | File[]) => {
+      setLoading(true);
+      try {
+        const currentLength = images.length;
+        const newNodes: ImageNode[] = await Promise.all(
+          Array.from(files).map(async (file, i) => {
+            return new Promise<ImageNode>((resolve) => {
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                const img = new Image();
+                img.onload = async () => {
+                  const bitmap = await createImageBitmap(img);
+                  resolve({
+                    id: Math.random().toString(36).substr(2, 9),
+                    name: file.name,
+                    originalUrl: e.target?.result as string,
+                    thumbnailUrl: e.target?.result as string,
+                    width: img.width,
+                    height: img.height,
+                    visible: true,
+                    originalIndex: currentLength + i + 1,
+                    bitmap,
+                  });
+                };
+                img.src = e.target?.result as string;
               };
-              img.src = e.target?.result as string;
-            };
-            reader.readAsDataURL(file);
-          });
-        }),
-      );
-      addImages(newNodes);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  };
+              reader.readAsDataURL(file);
+            });
+          }),
+        );
+        addImages(newNodes);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [images.length, addImages],
+  );
 
   const handleStitch = async () => {
     setIsGenerating(true);
@@ -397,19 +399,21 @@ export function App({
     }
   };
 
-  const onDragStart = (idx: number) => setDraggedIndex(idx);
-  const onDragOver = (e: DragEvent, _idx: number) => e.preventDefault();
-  const onDrop = (idx: number) => {
-    if (draggedIndex === null || draggedIndex === idx) return;
-    const newImages = [...images];
-    const [item] = newImages.splice(draggedIndex, 1);
-    newImages.splice(idx, 0, item);
-    setImages(newImages); // Hook provides setImages for manual sorting
-    setDraggedIndex(null);
-    // Defer generation to prevent blocking the animation
-    setTimeout(() => triggerGeneration(), 400);
-  };
-  const onDragEnd = () => setDraggedIndex(null);
+  // 适配 SortableJS 的排序逻辑
+  const handleSortEnd = useCallback(
+    (oldIndex: number, newIndex: number) => {
+      if (oldIndex === newIndex) return;
+      setImages((prev) => {
+        const newImages = [...prev];
+        const [item] = newImages.splice(oldIndex, 1);
+        newImages.splice(newIndex, 0, item);
+        return newImages;
+      });
+      // Defer generation to prevent blocking the animation
+      setTimeout(() => triggerGeneration(), 400);
+    },
+    [images.length, triggerGeneration, setImages],
+  ); // 仅在长度变化或函数变化时更新
 
   const moveItem = (idx: number, dir: "up" | "down") => {
     const newIdx = dir === "up" ? idx - 1 : idx + 1;
@@ -480,7 +484,12 @@ export function App({
   }, [handlePaste]);
 
   // If running in popup mode, we use different container classes
-  const containerClass = isPopup ? "app-popup-container" : "app-container";
+  const isWebFullscreen = !isExtension && !isPopup;
+  const containerClass = isPopup
+    ? "app-popup-container"
+    : isWebFullscreen
+      ? "app-container app-fullscreen"
+      : "app-container";
   const wrapperClass = isPopup ? "app-popup-wrapper" : "app-overlay";
 
   return (
@@ -514,14 +523,6 @@ export function App({
 
           {/* Mode Switcher & Theme */}
           <div className="header-group" style={{ gap: "1rem" }}>
-            {isExtension && (
-              <IconButton
-                icon={<X size={16} />}
-                onClick={onClose}
-                title={t("close")}
-                className="close-btn-mobile-hidden"
-              />
-            )}
             <div className="mode-switcher">
               <button
                 onClick={() => setMode("stitch")}
@@ -558,13 +559,8 @@ export function App({
             <div className="header-group" style={{ gap: "0.4rem" }}>
               <IconButton
                 onClick={() => {
-                  const sequence: ("auto" | "light" | "dark")[] = [
-                    "auto",
-                    "light",
-                    "dark",
-                  ];
-                  const next = sequence[(sequence.indexOf(theme) + 1) % 3];
-                  setTheme(next);
+                  const themeSequence = ["auto", "light", "dark"] as const;
+                  setTheme(themeSequence[(themeSequence.indexOf(theme) + 1) % 3]);
                 }}
                 icon={
                   theme === "auto" ? (
@@ -583,23 +579,16 @@ export function App({
                 }}
               />
               {isExtension && (
-                <button
+                <IconButton
+                  icon={<X size={16} />}
                   onClick={onClose}
-                  className="btn-ghost"
+                  title={t("close")}
                   style={{
                     width: "28px",
                     height: "28px",
-                    borderRadius: "50%",
-                    border: "none",
-                    cursor: "pointer",
                     color: "var(--color-text-muted)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
                   }}
-                >
-                  <X size={16} />
-                </button>
+                />
               )}
             </div>
           </div>
@@ -645,11 +634,7 @@ export function App({
             layout={layout}
             setLayout={updateLayout}
             images={images}
-            draggedIndex={draggedIndex}
-            onDragStart={onDragStart}
-            onDragOver={onDragOver}
-            onDrop={onDrop}
-            onDragEnd={onDragEnd}
+            onSortEnd={handleSortEnd}
             moveItem={moveItem}
             toggleVisibility={toggleVisibility}
             updateLocalGap={updateLocalGap}
