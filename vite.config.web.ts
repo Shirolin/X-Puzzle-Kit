@@ -23,6 +23,15 @@ export default defineConfig({
         short_name: "X-Puzzle-Kit",
         description: "专业的推特多图拼接与长图切割工具",
         theme_color: "#007aff",
+        share_target: {
+          action: "/",
+          method: "GET",
+          params: {
+            title: "title",
+            text: "text",
+            url: "url",
+          },
+        },
         icons: [
           {
             src: "assets/icon-128.png",

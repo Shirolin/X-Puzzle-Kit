@@ -20,6 +20,11 @@ import {
 } from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
 import { IOSInstallPrompt } from "./components/IOSInstallPrompt";
+import {
+  extractTwitterUrl,
+  parseTwitterMetadata,
+  fetchTwitterImageBlob,
+} from "../core/twitter";
 
 interface AppProps {
   task: StitchTask;
@@ -76,6 +81,7 @@ export function App({
   });
 
   const [loading, setLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState("");
 
   // Split Mode State
   const [mode, setMode] = useState<"stitch" | "split">(initialMode);
@@ -266,6 +272,9 @@ export function App({
     } else {
       setSplitSourceBitmap(null);
     }
+    return () => {
+      active = false;
+    };
     return () => {
       active = false;
     };
@@ -493,6 +502,98 @@ export function App({
       : "app-container";
   const wrapperClass = isPopup ? "app-popup-wrapper" : "app-overlay";
 
+  const [showUrlInput, setShowUrlInput] = useState(false);
+  const [urlInputValue, setUrlInputValue] = useState("");
+
+  const handleImportUrl = useCallback(
+    async (urlToProcess: string) => {
+      const twitterUrl = extractTwitterUrl(urlToProcess);
+      if (!twitterUrl) {
+        alert(t("invalidUrl") || "Invalid Twitter URL");
+        return;
+      }
+
+      console.log("Processing Twitter URL:", twitterUrl);
+      setLoading(true);
+      setLoadingMessage(t("analyzingLink") || "🔍 Analyzing Link...");
+
+      try {
+        // 1. Parse Metadata
+        const images = await parseTwitterMetadata(twitterUrl);
+
+        if (images.length === 0) {
+          alert(t("noImagesFound") || "No images found in this Tweet");
+          setLoading(false);
+          setLoadingMessage("");
+          return;
+        }
+
+        // 2. Download Images
+        const blobs: Blob[] = [];
+        for (let i = 0; i < images.length; i++) {
+          setLoadingMessage(
+            `${t("downloadingImages") || "📥 Downloading Images"} (${i + 1}/${images.length})...`,
+          );
+          try {
+            const blob = await fetchTwitterImageBlob(images[i]);
+            blobs.push(blob);
+          } catch (err) {
+            console.error(`Failed to load image ${i}`, err);
+            // Continue loading others
+          }
+        }
+
+        if (blobs.length === 0) {
+          throw new Error("Failed to download any images");
+        }
+
+        setLoadingMessage(t("processingImages") || "⚡ Processing...");
+
+        // 3. Convert to Files
+        const files = blobs.map(
+          (blob, i) =>
+            new File([blob], `twitter_image_${i}.jpg`, { type: blob.type }),
+        );
+
+        // 4. Add to Stitcher
+        await handleStitchFilesSelect(files);
+      } catch (e: unknown) {
+        console.error("Twitter share handling failed:", e);
+        const errorMessage = e instanceof Error ? e.message : String(e);
+        alert((t("parseFailed") || "Failed to parse Tweet") + ": " + errorMessage);
+      } finally {
+        setLoading(false);
+        setLoadingMessage("");
+      }
+    },
+    [handleStitchFilesSelect],
+  );
+
+  // Handle Share Target (Twitter)
+  useEffect(() => {
+    const handleShareTarget = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const title = params.get("title");
+      const text = params.get("text");
+      const url = params.get("url");
+
+      const shareContent = [title, text, url].filter(Boolean).join(" ");
+
+      // Only trigger if there is actual content
+      if (extractTwitterUrl(shareContent)) {
+        await handleImportUrl(shareContent);
+        // Clean URL
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname,
+        );
+      }
+    };
+
+    handleShareTarget();
+  }, [handleImportUrl]);
+
   return (
     <div
       className={wrapperClass}
@@ -561,7 +662,9 @@ export function App({
               <IconButton
                 onClick={() => {
                   const themeSequence = ["auto", "light", "dark"] as const;
-                  setTheme(themeSequence[(themeSequence.indexOf(theme) + 1) % 3]);
+                  setTheme(
+                    themeSequence[(themeSequence.indexOf(theme) + 1) % 3],
+                  );
                 }}
                 icon={
                   theme === "auto" ? (
@@ -670,6 +773,7 @@ export function App({
             removeImage={removeImage}
             clearAllImages={clearAllImages}
             onStitchFilesSelect={handleStitchFilesSelect}
+            onImportFromUrl={() => setShowUrlInput(true)}
           />
         </div>
       </div>
@@ -677,12 +781,124 @@ export function App({
       <style>{`
         .spinner { width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.15); border-top: 2px solid white; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .loading-overlay {
+          position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0,0,0,0.7); display: flex; flex-direction: column;
+          align-items: center; justify-content: center; z-index: 9999;
+          backdrop-filter: blur(4px);
+        }
+        .loading-text {
+          margin-top: 1rem; color: white; font-weight: 500; font-size: 0.95rem;
+          font-family: system-ui, -apple-system, sans-serif;
+        }
         .hide-arrows::-webkit-inner-spin-button, .hide-arrows::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         .hide-arrows { -moz-appearance: textfield; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .apple-select:hover { border-color: rgba(255,255,255,0.3) !important; background-color: rgba(255,255,255,0.15) !important; }
       `}</style>
+
+      <>
+        {loading && loadingMessage && (
+          <div className="loading-overlay">
+            <div
+              className="spinner"
+              style={{
+                width: "40px",
+                height: "40px",
+                borderTopColor: "var(--color-primary, #007aff)",
+              }}
+            />
+            <div className="loading-text">{loadingMessage}</div>
+          </div>
+        )}
+
+        {/* Simple URL Input Modal */}
+        {showUrlInput && (
+          <div
+            className="loading-overlay"
+            onClick={() => setShowUrlInput(false)}
+          >
+            <div
+              className="section-block"
+              style={{
+                background: "var(--color-bg-panel)",
+                padding: "20px",
+                borderRadius: "12px",
+                minWidth: "300px",
+                maxWidth: "90%",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3 className="section-header" style={{ marginBottom: "12px" }}>
+                {t("importFromUrl") || "Import from URL"}
+              </h3>
+              <input
+                type="text"
+                placeholder="https://x.com/..."
+                value={urlInputValue}
+                onInput={(e) => setUrlInputValue(e.currentTarget.value)}
+                style={{
+                  width: "100%",
+                  padding: "8px 12px",
+                  borderRadius: "8px",
+                  border: "1px solid var(--color-border)",
+                  background: "var(--color-bg)",
+                  color: "var(--color-text)",
+                  marginBottom: "16px",
+                  outline: "none",
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleImportUrl(urlInputValue);
+                    setShowUrlInput(false);
+                    setUrlInputValue("");
+                  }
+                }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  gap: "8px",
+                }}
+              >
+                <button
+                  onClick={() => setShowUrlInput(false)}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "none",
+                    background: "transparent",
+                    color: "var(--color-text-muted)",
+                    cursor: "pointer",
+                  }}
+                >
+                  {t("cancel") || "Cancel"}
+                </button>
+                <button
+                  onClick={() => {
+                    handleImportUrl(urlInputValue);
+                    setShowUrlInput(false);
+                    setUrlInputValue("");
+                  }}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "none",
+                    background: "var(--color-primary)",
+                    color: "white",
+                    cursor: "pointer",
+                  }}
+                >
+                  {t("import") || "Import"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+
       <IOSInstallPrompt />
     </div>
   );

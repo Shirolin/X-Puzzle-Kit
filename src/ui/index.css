@@ -2655,18 +2655,22 @@ button:active {
   transform: translateX(-50%) rotate(45deg);
   width: 16px;
   height: 16px;
-  background:inherit; /* Inherit from card bg */
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  border-right: 1px solid rgba(255,255,255,0.1);
-  background-color: rgb(30, 30, 35); /* Solid specific bg for arrow to hide transparency overlap issues if needed, but inheriting might be tricky with blur. */
+  background: inherit; /* Inherit from card bg */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgb(
+    30,
+    30,
+    35
+  ); /* Solid specific bg for arrow to hide transparency overlap issues if needed, but inheriting might be tricky with blur. */
   /* For blur consistency, pure CSS arrow with backdrop-filter is tricky. Using solid color approximation or clip-path is safer. */
   /* Let's use a simple pseudo-element with solid background color matching the theme roughly */
   z-index: -1;
 }
 [data-theme="light"] .ios-prompt-arrow {
   background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  border-right: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Chrome Arrow: Point Up */

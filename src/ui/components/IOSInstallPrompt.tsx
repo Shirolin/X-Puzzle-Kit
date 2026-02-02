@@ -1,5 +1,5 @@
 import { useState, useEffect } from "preact/hooks";
-import { Share, X } from "lucide-preact";
+import { X } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { getAssetUrl } from "../../core/platform";
 
@@ -11,8 +11,8 @@ export function IOSInstallPrompt() {
     const userAgent = navigator.userAgent;
     // 1. Detect iOS
     const isIOS =
-      /iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream;
-    
+      /iPad|iPhone|iPod/.test(userAgent) && !(window as unknown as { MSStream: unknown }).MSStream;
+
     // 2. Detect Chrome on iOS
     const isChromeIOS = /CriOS/.test(userAgent);
     setIsChrome(isChromeIOS);
@@ -20,7 +20,7 @@ export function IOSInstallPrompt() {
     // 3. Detect Standalone (PWA mode)
     const isStandalone =
       window.matchMedia("(display-mode: standalone)").matches ||
-      (navigator as any).standalone;
+      (navigator as unknown as { standalone: boolean }).standalone;
 
     if (!isIOS || isStandalone) return;
 
@@ -49,9 +49,7 @@ export function IOSInstallPrompt() {
   if (!isVisible) return null;
 
   return (
-    <div
-      className={`ios-prompt-container ${isChrome ? "is-chrome" : ""}`}
-    >
+    <div className={`ios-prompt-container ${isChrome ? "is-chrome" : ""}`}>
       <div className="ios-prompt-card apple-blur">
         <button className="ios-prompt-close" onClick={handleClose}>
           <X size={16} />
@@ -70,7 +68,9 @@ export function IOSInstallPrompt() {
           </div>
         </div>
         {/* 指向箭头: Chrome 指向上方，Safari 指向下方 */}
-        <div className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}></div>
+        <div
+          className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}
+        ></div>
       </div>
     </div>
   );

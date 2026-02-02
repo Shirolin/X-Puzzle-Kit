@@ -16,6 +16,7 @@ import {
   Coffee,
   Zap,
   Trash2,
+  Link as LinkIcon,
 } from "lucide-preact";
 import { useRef, useEffect, useLayoutEffect } from "preact/hooks";
 import Sortable from "sortablejs";
@@ -101,6 +102,7 @@ interface SidebarProps {
   removeImage: (id: string) => void;
   clearAllImages: () => void;
   onStitchFilesSelect: (files: FileList | File[]) => void;
+  onImportFromUrl: () => void;
 }
 
 export function Sidebar({
@@ -137,6 +139,7 @@ export function Sidebar({
   removeImage,
   clearAllImages,
   onStitchFilesSelect,
+  onImportFromUrl,
 }: SidebarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -469,6 +472,18 @@ export function Sidebar({
                     onClick={() => fileInputRef.current?.click()}
                     title={t("uploadImages") || "Add Images"}
                     className="btn-icon-sm image-sort-add-btn"
+                    style={{
+                      padding: "2px",
+                      background: "rgba(var(--color-primary-rgb), 0.1)",
+                      color: "var(--color-primary)",
+                      borderRadius: "6px",
+                    }}
+                  />
+                  <IconButton
+                    icon={<LinkIcon size={11} />}
+                    onClick={onImportFromUrl}
+                    title={t("importFromUrl") || "Import from URL"}
+                    className="btn-icon-sm image-sort-import-btn"
                     style={{
                       padding: "2px",
                       background: "rgba(var(--color-primary-rgb), 0.1)",
@@ -945,13 +960,19 @@ export function Sidebar({
                 if (isZip) {
                   const zip = new JSZip();
                   splitBlobs.forEach((b, i) =>
-                    zip.file(`split_${i + 1}.${b.type.split("/")[1] || format}`, b),
+                    zip.file(
+                      `split_${i + 1}.${b.type.split("/")[1] || format}`,
+                      b,
+                    ),
                   );
                   const content = await zip.generateAsync({ type: "blob" });
                   downloadBlob(content, `split_${Date.now()}.zip`);
                 } else {
                   splitBlobs.forEach((b, i) => {
-                    downloadBlob(b, `split_${i + 1}.${b.type.split("/")[1] || format}`);
+                    downloadBlob(
+                      b,
+                      `split_${i + 1}.${b.type.split("/")[1] || format}`,
+                    );
                   });
                 }
               }}
