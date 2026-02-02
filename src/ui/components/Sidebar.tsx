@@ -18,6 +18,7 @@ import {
   Trash2,
 } from "lucide-preact";
 import { useRef } from "preact/hooks";
+import { useAutoAnimate } from "@formkit/auto-animate/preact";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
 import {
@@ -114,6 +115,7 @@ export function Sidebar({
   onStitchFilesSelect,
 }: SidebarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [parent] = useAutoAnimate();
   return (
     <div className="sidebar-panel">
       <div className="sidebar-header-mobile">
@@ -309,7 +311,7 @@ export function Sidebar({
                   />
                 </div>
               </div>
-              <div className="sorting-area-list">
+              <div className="sorting-area-list" ref={parent}>
                 {images.length === 0 ? (
                   <div className="empty-state-message">
                     {t("emptyImageText")}

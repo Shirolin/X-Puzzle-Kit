@@ -41,6 +41,7 @@
     "vite-plugin-web-extension": "^4.5.0"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.9.0",
     "@types/jszip": "^3.4.0",
     "jszip": "^3.10.1",
     "lucide-preact": "^0.563.0",
