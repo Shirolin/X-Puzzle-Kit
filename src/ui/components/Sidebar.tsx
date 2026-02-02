@@ -115,7 +115,7 @@ export function Sidebar({
   onStitchFilesSelect,
 }: SidebarProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [parent] = useAutoAnimate();
+  const [parent] = useAutoAnimate({ duration: 350, easing: "ease-in-out" });
   return (
     <div className="sidebar-panel">
       <div className="sidebar-header-mobile">
