@@ -278,5 +278,13 @@
   "emptyImageText": {
     "message": "暂无图片，请上传",
     "description": "图片列表为空时的提示"
+  },
+  "installTitle": {
+    "message": "添加到主屏幕",
+    "description": "iOS安装提示标题"
+  },
+  "installDesc": {
+    "message": "轻点下方分享按钮，然后选择‘添加到主屏幕’。",
+    "description": "iOS安装提示说明"
   }
 }

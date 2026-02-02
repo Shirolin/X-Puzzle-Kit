@@ -278,5 +278,13 @@
   "emptyImageText": {
     "message": "No images, please upload",
     "description": "Message shown when image list is empty"
+  },
+  "installTitle": {
+    "message": "Add to Home Screen",
+    "description": "iOS install prompt title"
+  },
+  "installDesc": {
+    "message": "Tap the Share button below, then select 'Add to Home Screen'.",
+    "description": "iOS install prompt description"
   }
 }

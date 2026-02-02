@@ -19,6 +19,7 @@ import {
   isExtension,
 } from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
+import { IOSInstallPrompt } from "./components/IOSInstallPrompt";
 
 interface AppProps {
   task: StitchTask;
@@ -682,6 +683,7 @@ export function App({
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .apple-select:hover { border-color: rgba(255,255,255,0.3) !important; background-color: rgba(255,255,255,0.15) !important; }
       `}</style>
+      <IOSInstallPrompt />
     </div>
   );
 }
