@@ -117,27 +117,20 @@ export function Sidebar({
   
   // Custom FLIP Animation for Shadow DOM compatibility
   const listRef = useRef<HTMLDivElement>(null);
-  const prevRects = useRef<Map<string, DOMRect>>(new Map());
+  const prevRects = useRef<Map<string, { top: number; left: number }>>(new Map());
 
-  // Capture positions before update (in useEffect, assumed immediate render)
-  // Actually, we need to capture BEFORE changes.
-  // In React/Preact, we can use useLayoutEffect to capture "current" (which is new) 
-  // and compare with "previous" (stored in ref from last render).
-  
   useLayoutEffect(() => {
     const list = listRef.current;
     if (!list) return;
 
-    // 2. Measure NEW positions
-    const newRects = new Map<string, DOMRect>();
+    // 2. Measure NEW positions (relative to container)
+    const newRects = new Map<string, { top: number; left: number }>();
     const children = Array.from(list.children) as HTMLElement[];
     
     children.forEach(child => {
-       // Assuming child has an ID or we use index if stable, 
-       // but images have IDs. We need to find the ID.
-       // We can pass ID as data attribute.
        const id = child.getAttribute('data-id');
-       if (id) newRects.set(id, child.getBoundingClientRect());
+       // Use offsetTop/offsetLeft which are stable relative to container (unaffected by scroll)
+       if (id) newRects.set(id, { top: child.offsetTop, left: child.offsetLeft });
     });
 
     // 3. FLIP
@@ -150,13 +143,21 @@ export function Sidebar({
       
       if (prev && output) {
         const dy = prev.top - output.top;
-        if (dy !== 0) {
+        const dx = prev.left - output.left;
+        
+        // Only animate if position actually changed
+        if (dy !== 0 || dx !== 0) {
+          // Verify reasonable delta to avoid "initial load" jumps
+          // If delta is huge (e.g. > 2000px), it might be an artifact, but let's trust offset for now.
+          
           // Invert
           child.style.transition = 'none';
-          child.style.transform = `translateY(${dy}px)`;
+          child.style.transform = `translate(${dx}px, ${dy}px)`;
           
           // Play
           requestAnimationFrame(() => {
+            // Force reflow
+            void child.offsetHeight; 
             child.style.transition = 'transform 300ms cubic-bezier(0.2, 0, 0, 1)';
             child.style.transform = '';
           });

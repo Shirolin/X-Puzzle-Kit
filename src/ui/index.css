@@ -1564,6 +1564,7 @@ input:checked + .slider:before {
 }
 
 .sorting-area-list {
+  position: relative; /* Added context for offsetTop/offsetLeft FLIP animation */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -2386,7 +2387,7 @@ button:active {
   border: 1px solid var(--color-item-border);
   border-radius: var(--radius-md);
   padding: 0.5rem; /* Increased padding */
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */ /* Removed to rely on flex gap */
   /* transition: all 0.2s cubic-bezier(0.2, 0, 0, 1); */ /* Removed for auto-animate */
   user-select: none;
   touch-action: none; /* Critical for reliable touch dragging */
