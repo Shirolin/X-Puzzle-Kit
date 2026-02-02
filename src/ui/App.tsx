@@ -12,7 +12,12 @@ import { splitImage } from "../core/splitter";
 import { IconButton } from "./components/Common";
 import { Sidebar } from "./components/Sidebar";
 import { ViewerArea } from "./components/ViewerArea";
-import { platformStorage, getAssetUrl, fetchImageData } from "../core/platform";
+import {
+  platformStorage,
+  getAssetUrl,
+  fetchImageData,
+  isExtension,
+} from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
 
 interface AppProps {
