@@ -2535,9 +2535,12 @@ button:active {
 }
 
 @media (max-width: 600px) {
-  /* HIDE redundant arrows on mobile to save space */
+  /* Restore arrows for precision sorting */
   .sort-arrows-col {
-    display: none !important;
+    display: flex !important;
+    height: 32px; /* Slightly taller for mobile */
+    min-width: 24px;
+    background-color: var(--color-surface-soft); /* Distinct background */
   }
   
   /* Make item actions group tighter */
