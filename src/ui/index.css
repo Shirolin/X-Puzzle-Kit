@@ -2376,3 +2376,172 @@ button:active {
     font-size: 16px;
   }
 }
+/* --- Mobile Sorting Optimization (Branch: style/ui-polish) --- */
+
+/* 1. Base Item Styling - Increased Height & Spacing */
+.sortable-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-item-bg);
+  border: 1px solid var(--color-item-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem; /* Increased padding */
+  margin-bottom: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  user-select: none;
+  touch-action: none; /* Critical for reliable touch dragging */
+  min-height: 56px; /* Taller for mobile touch */
+}
+
+/* 2. Drag Feedback - Lift Effect */
+.sortable-item.dragging {
+  opacity: 0.9;
+  transform: scale(1.02);
+  box-shadow: var(--shadow-float);
+  border-color: var(--color-primary);
+  z-index: 10;
+  background-color: var(--color-surface);
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+}
+
+/* 3. Drag Handle - Enhanced Touch Target */
+.item-header > svg:first-child {
+  min-width: 24px; /* Larger hit area */
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  color: var(--color-text-muted); /* More visible */
+  opacity: 0.8; 
+}
+
+/* 4. Thumb & Layout */
+.item-thumb-container {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+}
+
+.item-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-index-badge {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: white;
+  font-size: 9px;
+  padding: 1px 4px;
+  border-top-left-radius: 4px;
+  font-weight: 700;
+  font-family: "Fira Code", monospace;
+}
+
+.item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.item-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-text);
+  margin-right: 4px;
+}
+
+/* 5. Gap Control - Larger Touch Targets */
+.item-gap-compact {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-surface);
+  border-radius: 12px;
+  padding: 2px 4px;
+  border: 1px solid var(--color-border);
+}
+
+.item-gap-compact button {
+  width: 24px; /* Larger target */
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+.item-gap-compact button:active {
+  opacity: 1;
+  background-color: var(--color-surface-soft);
+  border-radius: 50%;
+}
+
+.item-gap-compact input {
+  font-size: 11px !important;
+  width: 24px !important;
+  color: var(--color-primary) !important;
+}
+
+/* 6. Sorting Arrows - Hide on Mobile */
+.sort-arrows-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  height: 28px;
+  width: 20px;
+}
+
+.sort-arrow-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  width: 100%;
+  height: 50%;
+}
+
+.sort-arrow-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+@media (max-width: 600px) {
+  /* HIDE redundant arrows on mobile to save space */
+  .sort-arrows-col {
+    display: none !important;
+  }
+  
+  /* Make item actions group tighter */
+  .item-actions-group {
+    gap: 0.25rem;
+  }
+}
