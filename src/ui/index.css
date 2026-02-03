@@ -1950,9 +1950,10 @@ button:active {
     min-height: 30vh;
     display: flex;
     flex-direction: column;
-    /* Create a "Safe Area" to account for the -32px sidebar crossover overlap.
-       This will shrink the .viewer-canvas internally, ensuring auto-fit logic clears the sidebar. */
+    /* padding-bottom 给图片自适应留安全区域 */
     padding-bottom: 2rem !important;
+    /* margin-bottom 让棋盘格向下延伸，填充 sidebar-panel 圆角区域 */
+    margin-bottom: calc(-2rem - var(--radius-2xl));
   }
 
   .viewer-empty-state {
@@ -1988,7 +1989,7 @@ button:active {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    margin-top: -32px; /* Increased to exactly match 32px radius, fully masking the "horse's foot" bleed */
+    margin-top: -32px; /* 向上覆盖预览区域，实现 Bottom Sheet 效果 */
   }
 
   [data-theme="dark"] .sidebar-panel {
@@ -2295,8 +2296,8 @@ button:active {
       0 8px 32px rgba(0, 0, 0, 0.12),
       inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
 
-    /* Lift slightly to clear the -32px sidebar overlap */
-    bottom: 3rem !important;
+    /* Lift to clear the sidebar overlap + viewer-area 向下延伸的部分 */
+    bottom: calc(3rem + var(--radius-2xl)) !important;
   }
 
   [data-theme="dark"] .viewer-toolbar-v2 {
