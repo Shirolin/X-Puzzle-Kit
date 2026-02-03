@@ -304,6 +304,7 @@ textarea {
   background: var(--color-border);
   border-radius: 2px;
   outline: none;
+  touch-action: pan-y;
 }
 
 .range-slider-control {
@@ -323,6 +324,20 @@ textarea {
   cursor: pointer;
   transition: transform var(--transition-fast);
   box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+  touch-action: pan-y;
+}
+
+.vibrant-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--color-primary);
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+  touch-action: pan-y;
+  border: none;
 }
 
 @media (hover: hover) {
@@ -2353,6 +2368,7 @@ button:active {
 
   .item-info {
     padding-right: 96px !important;
+    min-width: 0;
   }
 
   .sort-arrows-col {
@@ -2633,6 +2649,10 @@ button:active {
   .item-name {
     font-size: 0.85rem;
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
   }
 
   /* Restore arrows for precision sorting */

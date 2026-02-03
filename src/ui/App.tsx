@@ -332,9 +332,6 @@ export function App({
     return () => {
       active = false;
     };
-    return () => {
-      active = false;
-    };
   }, [splitSource, initialSplitImageUrl]);
 
   // Shared Viewport State
