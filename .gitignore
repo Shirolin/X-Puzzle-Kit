@@ -31,4 +31,4 @@ release
 # Cloudflare Workers
 .wrangler
 worker-sites-init.js
-wrangler.toml
+

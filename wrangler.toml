@@ -1,0 +1,10 @@
+name = "cloudflare-twitter-proxy"
+main = "workers/cloudflare-twitter-proxy.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# 这里可以添加环境变量，如果需要的话
+
+# 开启本地缓存支持
+[site]
+bucket = "./public"
