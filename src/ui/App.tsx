@@ -111,7 +111,11 @@ export function App({
     initialBackgroundColor: "transparent",
   });
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(() => {
+    // If we have share target params, start in loading state
+    const params = new URLSearchParams(window.location.search);
+    return !!(params.get("title") || params.get("text") || params.get("url"));
+  });
   const [loadingMessage, setLoadingMessage] = useState("");
 
   // Split Mode State
@@ -177,7 +181,15 @@ export function App({
         setLanguage(res[STORAGE_KEYS.LANG] as string)
           .then(() => {
             setIsLangLoaded(true);
-            setLoading(false);
+            // Only turn off loading if we are NOT potentially processing a share target
+            const params = new URLSearchParams(window.location.search);
+            if (
+              !params.get("title") &&
+              !params.get("text") &&
+              !params.get("url")
+            ) {
+              setLoading(false);
+            }
           })
           .catch((err) => {
             console.error("Failed to load language:", err);
@@ -580,7 +592,7 @@ export function App({
 
       try {
         // 1. Parse Metadata
-        const images = await parseTwitterMetadata(twitterUrl);
+        let images = await parseTwitterMetadata(twitterUrl);
 
         if (images.length === 0) {
           toast.error(t("noImagesFound") || "No images found in this Tweet");
@@ -588,6 +600,9 @@ export function App({
           setLoadingMessage("");
           return;
         }
+
+        // Deduplicate images
+        images = [...new Set(images)];
 
         // 2. Download Images
         const blobs: Blob[] = [];
@@ -633,6 +648,8 @@ export function App({
   );
 
   // Handle Share Target (Twitter)
+  const processedShareRef = useRef<string | null>(null);
+
   useEffect(() => {
     const handleShareTarget = async () => {
       const params = new URLSearchParams(window.location.search);
@@ -641,16 +658,25 @@ export function App({
       const url = params.get("url");
 
       const shareContent = [title, text, url].filter(Boolean).join(" ");
+      const twitterUrl = extractTwitterUrl(shareContent);
 
-      // Only trigger if there is actual content
-      if (extractTwitterUrl(shareContent)) {
+      // Only trigger if there is actual content and we haven't processed it yet
+      if (twitterUrl && processedShareRef.current !== twitterUrl) {
+        processedShareRef.current = twitterUrl;
         await handleImportUrl(shareContent);
-        // Clean URL
-        window.history.replaceState(
-          {},
-          document.title,
-          window.location.pathname,
-        );
+        // Clean URL after successful processing
+        if (window.history.replaceState) {
+          const newUrl =
+            window.location.protocol +
+            "//" +
+            window.location.host +
+            window.location.pathname;
+          window.history.replaceState({ path: newUrl }, "", newUrl);
+        }
+      } else if (!twitterUrl && loading) {
+        // If there is no share content but we are stuck in loading (e.g. malformed share),
+        // we should turn off loading.
+        // Wait for language to load first though (handled in simple useEffect above)
       }
     };
 

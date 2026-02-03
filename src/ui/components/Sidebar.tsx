@@ -24,6 +24,7 @@ import { useRef, useEffect, useLayoutEffect } from "preact/hooks";
 import Sortable from "sortablejs";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
+import { toast } from "sonner";
 import {
   ImageNode,
   LayoutType,
@@ -560,8 +561,19 @@ export function Sidebar({
                               backgroundPosition: "center",
                               WebkitTouchCallout: "none",
                               userSelect: "none",
+                              cursor: "pointer",
                             }}
-                            title={`${img.width}×${img.height}`}
+                            onClick={(e) => {
+                              // Show resolution
+                              e.stopPropagation();
+                              toast(
+                                `${t("imageResolution") || "Resolution"}: ${img.width} x ${img.height}`,
+                                {
+                                  duration: 2000,
+                                },
+                              );
+                            }}
+                            title={`${t("clickToShowResolution") || "Click to see resolution"}: ${img.width}×${img.height}`}
                           />
                           <div className="item-index-badge">{idx + 1}</div>
                         </div>

@@ -1226,35 +1226,39 @@ input:checked + .slider:before {
   flex-shrink: 0;
   width: 36px;
   height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  /* overflow: hidden; Removed to allow badge to overlay border cleanly */
 }
 
 .item-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid var(--color-border);
+  border-radius: 7px; /* Inner radius (8px - 1px border) */
+  /* Border moved to container */
 }
 
 /* Clean Index Badge (Glassmorphic) */
 .item-index-badge {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  min-width: 14px;
-  height: 14px;
+  bottom: -1px; /* Overlay the border */
+  right: -1px;  /* Overlay the border */
+  min-width: 16px;
+  height: 16px;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   color: white;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1;
   font-weight: 700;
-  border-top-left-radius: 4px;
+  border-top-left-radius: 6px;
+  border-bottom-right-radius: 8px; /* Match container outer radius */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1px 4px;
+  padding: 0 4px;
   font-family: "Fira Code", monospace;
   z-index: 2;
 }
