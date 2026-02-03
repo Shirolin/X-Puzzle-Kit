@@ -28,7 +28,7 @@ export function ReloadPrompt() {
         cancel: {
           label: "忽略",
           onClick: () => {
-             setNeedRefresh(false);
+            setNeedRefresh(false);
           },
         },
         duration: Infinity, // 保持显示直到用户操作

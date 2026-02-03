@@ -43,7 +43,7 @@ export function InputDialog({
   useEffect(() => {
     const handleConfirm = () => {
       if (!value.trim()) return;
-      
+
       if (validator) {
         const validationResult = validator(value);
         if (typeof validationResult === "string") {
@@ -52,8 +52,8 @@ export function InputDialog({
           inputRef.current?.focus();
           return;
         } else if (validationResult === false) {
-           setError(t("invalidFormat") || "Invalid format"); 
-           return;
+          setError(t("invalidFormat") || "Invalid format");
+          return;
         }
       }
       onConfirm(value);
@@ -69,19 +69,19 @@ export function InputDialog({
   }, [isOpen, onCancel, onConfirm, value, validator]);
 
   const handleManualConfirm = () => {
-     if (!value.trim()) return;
-      if (validator) {
-        const validationResult = validator(value);
-        if (typeof validationResult === "string") {
-          setError(validationResult);
-          return;
-        } else if (validationResult === false) {
-           setError(t("invalidFormat") || "Invalid format"); 
-           return;
-        }
+    if (!value.trim()) return;
+    if (validator) {
+      const validationResult = validator(value);
+      if (typeof validationResult === "string") {
+        setError(validationResult);
+        return;
+      } else if (validationResult === false) {
+        setError(t("invalidFormat") || "Invalid format");
+        return;
       }
-      onConfirm(value);
-  }
+    }
+    onConfirm(value);
+  };
 
   if (!isOpen) return null;
 
@@ -117,48 +117,58 @@ export function InputDialog({
             value={value}
             placeholder={placeholder}
             onInput={(e) => {
-                setValue(e.currentTarget.value);
-                if (error) setError(null);
+              setValue(e.currentTarget.value);
+              if (error) setError(null);
             }}
             className={`app-input ${error ? "input-error" : ""}`}
-            style={{ paddingRight: "32px", width: "100%", boxSizing: "border-box" }}
+            style={{
+              paddingRight: "32px",
+              width: "100%",
+              boxSizing: "border-box",
+            }}
           />
           {value && (
             <button
-               type="button"
-               onMouseDown={(e) => e.preventDefault()}
-               onClick={() => {
-                   setValue("");
-                   setError(null);
-                   // Ensure focus remains or is restored
-                   requestAnimationFrame(() => inputRef.current?.focus());
-               }}
-               style={{
-                   position: "absolute",
-                   right: "8px",
-                   top: "50%",
-                   transform: "translateY(-50%)",
-                   background: "none",
-                   border: "none",
-                   color: "var(--color-text-muted)",
-                   cursor: "pointer",
-                   padding: "4px",
-                   display: "flex",
-                   alignItems: "center",
-                   justifyContent: "center",
-                   borderRadius: "50%",
-                   zIndex: 10,
-                   outline: "none",
-               }}
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => {
+                setValue("");
+                setError(null);
+                // Ensure focus remains or is restored
+                requestAnimationFrame(() => inputRef.current?.focus());
+              }}
+              style={{
+                position: "absolute",
+                right: "8px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                color: "var(--color-text-muted)",
+                cursor: "pointer",
+                padding: "4px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "50%",
+                zIndex: 10,
+                outline: "none",
+              }}
             >
-                <X size={16} />
+              <X size={16} />
             </button>
           )}
         </div>
         {error && (
-            <div style={{ color: "var(--color-danger)", fontSize: "0.8rem", marginTop: "-0.5rem" }}>
-                {error}
-            </div>
+          <div
+            style={{
+              color: "var(--color-danger)",
+              fontSize: "0.8rem",
+              marginTop: "-0.5rem",
+            }}
+          >
+            {error}
+          </div>
         )}
 
         <div

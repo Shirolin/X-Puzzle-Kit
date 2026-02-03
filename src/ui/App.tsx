@@ -901,7 +901,7 @@ export function App({
         onCancel={() => setShowUrlInput(false)}
         container={mountNode}
       />
-      
+
       <ReloadPrompt />
     </div>
   );

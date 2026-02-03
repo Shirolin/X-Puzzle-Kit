@@ -766,7 +766,9 @@ export function Sidebar({
                   <Divider />
 
                   <div className="section-row-standard">
-                    <h3 className="section-sub-header">{t("backgroundColor")}</h3>
+                    <h3 className="section-sub-header">
+                      {t("backgroundColor")}
+                    </h3>
                     <div
                       className="flex-row-center"
                       style={{ gap: "8px", paddingRight: "4px" }}

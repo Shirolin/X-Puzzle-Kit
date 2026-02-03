@@ -1482,13 +1482,15 @@ input:checked + .slider:before {
   background: #ffffff; /* Explicit white for contrast in light mode */
   color: var(--color-text);
   /* Stronger shadow for light mode visibility */
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.04); 
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
 [data-theme="dark"] .format-btn.active {
   background: var(--color-background); /* Dark grey in dark mode */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Softer shadow for dark mode */
-  border: 1px solid rgba(255,255,255,0.1); /* Subtle border for definition */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
 }
 
 /* Color Circles */
@@ -1812,7 +1814,7 @@ input:checked + .slider:before {
   letter-spacing: 0.04em;
   color: var(--color-text-muted);
   font-weight: 600; /* Revert to SemiBold for crispness */
-  opacity: 0.8;     /* Lower opacity for clear hierarchy */
+  opacity: 0.8; /* Lower opacity for clear hierarchy */
   margin: 0;
 }
 
@@ -1946,7 +1948,7 @@ button:active {
     flex-direction: column;
     /* Create a "Safe Area" to account for the -32px sidebar crossover overlap.
        This will shrink the .viewer-canvas internally, ensuring auto-fit logic clears the sidebar. */
-    padding-bottom: 2rem !important; 
+    padding-bottom: 2rem !important;
   }
 
   .viewer-empty-state {
