@@ -11,6 +11,7 @@ import { X, Images, Sun, Moon, Monitor, Scissors } from "lucide-preact";
 import { splitImage } from "../core/splitter";
 import { IconButton } from "./components/Common";
 import { Sidebar } from "./components/Sidebar";
+import { updateToasterTheme } from "./index";
 import { ViewerArea } from "./components/ViewerArea";
 import {
   platformStorage,
@@ -25,8 +26,11 @@ import {
   parseTwitterMetadata,
   fetchTwitterImageBlob,
 } from "../core/twitter";
-
 import { APP_CONFIG } from "../core/config";
+import { toast } from "sonner";
+import { ConfirmDialog } from "./components/ConfirmDialog";
+import { InputDialog } from "./components/InputDialog";
+import { ReloadPrompt } from "./components/ReloadPrompt";
 
 interface AppProps {
   task: StitchTask;
@@ -34,6 +38,7 @@ interface AppProps {
   initialMode?: "stitch" | "split";
   initialSplitImageUrl?: string;
   isPopup?: boolean;
+  mountNode?: HTMLElement;
 }
 
 const STORAGE_KEYS = APP_CONFIG.STORAGE;
@@ -44,8 +49,38 @@ export function App({
   initialMode = "stitch",
   initialSplitImageUrl,
   isPopup = false,
+  mountNode,
 }: AppProps) {
   const logoUrl = getAssetUrl("assets/icon-48.png");
+
+  // Confirm Dialog State
+  const [confirmDialog, setConfirmDialog] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    onConfirm: () => void;
+    isDestructive?: boolean;
+  }>({
+    isOpen: false,
+    title: "",
+    message: "",
+    onConfirm: () => {},
+  });
+
+  const showConfirm = (
+    title: string,
+    message: string,
+    onConfirm: () => void,
+    isDestructive = false,
+  ) => {
+    setConfirmDialog({
+      isOpen: true,
+      title,
+      message,
+      onConfirm,
+      isDestructive,
+    });
+  };
 
   const {
     images,
@@ -214,6 +249,20 @@ export function App({
       return () => media.removeEventListener("change", listener);
     }
   }, [theme]);
+
+  // Sync DOM attributes for CSS styling
+  useEffect(() => {
+    const effectiveTheme = isThemeDark ? "dark" : "light";
+    const effectiveLang = getResolvedLanguage(lang);
+
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
+    document.documentElement.setAttribute("data-lang", effectiveLang);
+
+    if (mountNode && mountNode instanceof Element) {
+      mountNode.setAttribute("data-theme", effectiveTheme);
+      mountNode.setAttribute("data-lang", effectiveLang);
+    }
+  }, [isThemeDark, lang, mountNode]);
 
   const lastLoadedUrlRef = useRef<string | null>(null);
 
@@ -460,6 +509,22 @@ export function App({
   const handleDoubleClick = () =>
     viewerScale < 1 ? setViewerScale(1) : fitToScreen();
 
+  // Initial Theme Sync
+  useEffect(() => {
+    if (theme) {
+      updateToasterTheme(theme as "light" | "dark" | "system");
+    }
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === "light" ? "dark" : "light";
+      platformStorage.set({ [STORAGE_KEYS.THEME]: next });
+      updateToasterTheme(next);
+      return next;
+    });
+  }, [setTheme]);
+
   const handlePaste = useCallback(
     (e: ClipboardEvent) => {
       const items = e.clipboardData?.items;
@@ -505,7 +570,7 @@ export function App({
     async (urlToProcess: string) => {
       const twitterUrl = extractTwitterUrl(urlToProcess);
       if (!twitterUrl) {
-        alert(t("invalidUrl") || "Invalid Twitter URL");
+        toast.error(t("invalidUrl") || "Invalid Twitter URL");
         return;
       }
 
@@ -518,7 +583,7 @@ export function App({
         const images = await parseTwitterMetadata(twitterUrl);
 
         if (images.length === 0) {
-          alert(t("noImagesFound") || "No images found in this Tweet");
+          toast.error(t("noImagesFound") || "No images found in this Tweet");
           setLoading(false);
           setLoadingMessage("");
           return;
@@ -556,7 +621,9 @@ export function App({
       } catch (e: unknown) {
         console.error("Twitter share handling failed:", e);
         const errorMessage = e instanceof Error ? e.message : String(e);
-        alert((t("parseFailed") || "Failed to parse Tweet") + ": " + errorMessage);
+        toast.error(
+          (t("parseFailed") || "Failed to parse Tweet") + ": " + errorMessage,
+        );
       } finally {
         setLoading(false);
         setLoadingMessage("");
@@ -767,7 +834,15 @@ export function App({
             loading={loading}
             isGenerating={isGenerating}
             removeImage={removeImage}
-            clearAllImages={clearAllImages}
+            clearAllImages={() => {
+              showConfirm(
+                t("clearAll") || "Clear All",
+                t("confirmClearAll") ||
+                  "Are you sure you want to clear all images?",
+                clearAllImages,
+                true,
+              );
+            }}
             onStitchFilesSelect={handleStitchFilesSelect}
             onImportFromUrl={() => setShowUrlInput(true)}
           />
@@ -775,18 +850,6 @@ export function App({
       </div>
 
       <style>{`
-        .spinner { width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.15); border-top: 2px solid white; border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .loading-overlay {
-          position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-          background: rgba(0,0,0,0.7); display: flex; flex-direction: column;
-          align-items: center; justify-content: center; z-index: 9999;
-          backdrop-filter: blur(4px);
-        }
-        .loading-text {
-          margin-top: 1rem; color: white; font-weight: 500; font-size: 0.95rem;
-          font-family: system-ui, -apple-system, sans-serif;
-        }
         .hide-arrows::-webkit-inner-spin-button, .hide-arrows::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
         .hide-arrows { -moz-appearance: textfield; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -796,106 +859,50 @@ export function App({
 
       <>
         {loading && loadingMessage && (
-          <div className="loading-overlay">
-            <div
-              className="spinner"
-              style={{
-                width: "40px",
-                height: "40px",
-                borderTopColor: "var(--color-primary, #007aff)",
-              }}
-            />
+          <div className="app-overlay">
+            <div className="app-spinner" />
             <div className="loading-text">{loadingMessage}</div>
           </div>
         )}
 
-        {/* Simple URL Input Modal */}
-        {showUrlInput && (
-          <div
-            className="loading-overlay"
-            onClick={() => setShowUrlInput(false)}
-          >
-            <div
-              className="section-block"
-              style={{
-                background: "var(--color-bg-panel)",
-                padding: "20px",
-                borderRadius: "12px",
-                minWidth: "300px",
-                maxWidth: "90%",
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h3 className="section-header" style={{ marginBottom: "12px" }}>
-                {t("importFromUrl") || "Import from URL"}
-              </h3>
-              <input
-                type="text"
-                placeholder="https://x.com/..."
-                value={urlInputValue}
-                onInput={(e) => setUrlInputValue(e.currentTarget.value)}
-                style={{
-                  width: "100%",
-                  padding: "8px 12px",
-                  borderRadius: "8px",
-                  border: "1px solid var(--color-border)",
-                  background: "var(--color-bg)",
-                  color: "var(--color-text)",
-                  marginBottom: "16px",
-                  outline: "none",
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleImportUrl(urlInputValue);
-                    setShowUrlInput(false);
-                    setUrlInputValue("");
-                  }
-                }}
-              />
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  gap: "8px",
-                }}
-              >
-                <button
-                  onClick={() => setShowUrlInput(false)}
-                  style={{
-                    padding: "6px 12px",
-                    borderRadius: "6px",
-                    border: "none",
-                    background: "transparent",
-                    color: "var(--color-text-muted)",
-                    cursor: "pointer",
-                  }}
-                >
-                  {t("cancel") || "Cancel"}
-                </button>
-                <button
-                  onClick={() => {
-                    handleImportUrl(urlInputValue);
-                    setShowUrlInput(false);
-                    setUrlInputValue("");
-                  }}
-                  style={{
-                    padding: "6px 12px",
-                    borderRadius: "6px",
-                    border: "none",
-                    background: "var(--color-primary)",
-                    color: "white",
-                    cursor: "pointer",
-                  }}
-                >
-                  {t("import") || "Import"}
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Simple URL Input Modal replaced by InputDialog */}
       </>
 
       <IOSInstallPrompt />
+      {isPopup && <div className="app-popup-spacer" />}
+      <ConfirmDialog
+        isOpen={confirmDialog.isOpen}
+        title={confirmDialog.title}
+        message={confirmDialog.message}
+        isDestructive={confirmDialog.isDestructive}
+        onConfirm={() => {
+          confirmDialog.onConfirm();
+          setConfirmDialog((prev) => ({ ...prev, isOpen: false }));
+        }}
+        onCancel={() =>
+          setConfirmDialog((prev) => ({ ...prev, isOpen: false }))
+        }
+        container={mountNode}
+      />
+
+      <InputDialog
+        isOpen={showUrlInput}
+        title={t("importFromUrl") || "Import from URL"}
+        placeholder="https://x.com/..."
+        validator={(val) =>
+          !extractTwitterUrl(val)
+            ? t("invalidUrl") || "Invalid Twitter URL"
+            : undefined
+        }
+        onConfirm={(val) => {
+          handleImportUrl(val);
+          setShowUrlInput(false);
+        }}
+        onCancel={() => setShowUrlInput(false)}
+        container={mountNode}
+      />
+      
+      <ReloadPrompt />
     </div>
   );
 }

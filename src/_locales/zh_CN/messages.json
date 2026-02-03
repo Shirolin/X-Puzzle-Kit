@@ -290,5 +290,45 @@
   "installDescChrome": {
     "message": "轻点右上角分享按钮，然后选择‘添加到主屏幕’。",
     "description": "iOS Chrome安装提示说明"
+  },
+  "importFromUrl": {
+    "message": "从链接导入",
+    "description": "导入按钮标题"
+  },
+  "invalidUrl": {
+    "message": "链接无效，请提供正确的推文 (X) 链接",
+    "description": "无效链接提示"
+  },
+  "analyzingLink": {
+    "message": "正在解析链接...",
+    "description": "解析链接中的状态"
+  },
+  "noImagesFound": {
+    "message": "推文中未发现可导入的图片",
+    "description": "未发现图片提示"
+  },
+  "downloadingImages": {
+    "message": "正在下载图片",
+    "description": "下载图片状态"
+  },
+  "processingImages": {
+    "message": "正在处理图片...",
+    "description": "处理图片状态"
+  },
+  "parseFailed": {
+    "message": "解析推文失败",
+    "description": "解析失败提示"
+  },
+  "import": {
+    "message": "导入",
+    "description": "导入操作按钮"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "取消操作按钮"
+  },
+  "confirm": {
+    "message": "确定",
+    "description": "确定操作按钮"
   }
 }

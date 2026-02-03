@@ -290,5 +290,41 @@
   "clearAll": {
     "message": "Tout effacer",
     "description": "Texte du bouton pour tout effacer"
+  },
+  "invalidUrl": {
+    "message": "Lien invalide, veuillez fournir un lien Tweet (X) valide",
+    "description": "Conseil de lien invalide"
+  },
+  "analyzingLink": {
+    "message": "Analyse du lien...",
+    "description": "État de l'analyse du lien"
+  },
+  "noImagesFound": {
+    "message": "Aucune image importable trouvée dans ce Tweet",
+    "description": "Conseil d'images non trouvées"
+  },
+  "downloadingImages": {
+    "message": "Téléchargement des images",
+    "description": "État du téléchargement des images"
+  },
+  "processingImages": {
+    "message": "Traitement des images...",
+    "description": "État du traitement des images"
+  },
+  "parseFailed": {
+    "message": "Échec de l'analyse du Tweet",
+    "description": "Conseil d'échec de l'analyse"
+  },
+  "import": {
+    "message": "Importer",
+    "description": "Bouton d'action d'importation"
+  },
+  "cancel": {
+    "message": "Annuler",
+    "description": "Bouton d'action d'annulation"
+  },
+  "confirm": {
+    "message": "Confirmer",
+    "description": "Bouton d'action de confirmation"
   }
 }

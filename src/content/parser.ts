@@ -1,7 +1,8 @@
-import { mountUI } from "../ui";
+import { mountUI, initToaster } from "../ui";
 import { recommendLayout } from "../core/layout";
 import { ImageNode, StitchTask } from "../core/types";
 import { t } from "../core/i18n";
+import { toast } from "sonner";
 
 /**
  * Parse tweets on the page and inject stitch buttons
@@ -71,10 +72,15 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
         err instanceof Error &&
         err.message.includes("Extension context invalidated")
       ) {
-        alert(
+        await initToaster();
+        toast.error(
           t("extensionUpdatedRefresh") ||
             "Extension updated. Please refresh the page.",
         );
+      } else {
+        await initToaster();
+        const errorMessage = err instanceof Error ? err.message : String(err);
+        toast.error("Error: " + errorMessage);
       }
     } finally {
       // Restore state

@@ -12,20 +12,22 @@ export default {
 
     // --- 0. 基础安全校验 & CORS ---
     if (request.method === "OPTIONS") return handleOptions(request);
-    
+
     const headers = getCorsHeaders(request);
-    
+
     // --- Mock Mode (本地调试救星) ---
     if (isMock) {
-        await new Promise(r => setTimeout(r, 1500)); // 模拟网络延迟
-        const mockData = {
-           images: [
-               "https://pbs.twimg.com/media/GicXRbWbMAAlF_V?format=jpg&name=large",
-               "https://pbs.twimg.com/media/GicXRbXboAACDK9?format=jpg&name=large",
-               "https://pbs.twimg.com/media/GicXRbWbAAIm1dG?format=jpg&name=large"
-           ]
-        };
-        return new Response(JSON.stringify(mockData), { headers: { ...headers, "Content-Type": "application/json" } });
+      await new Promise((r) => setTimeout(r, 1500)); // 模拟网络延迟
+      const mockData = {
+        images: [
+          "https://pbs.twimg.com/media/GicXRbWbMAAlF_V?format=jpg&name=large",
+          "https://pbs.twimg.com/media/GicXRbXboAACDK9?format=jpg&name=large",
+          "https://pbs.twimg.com/media/GicXRbWbAAIm1dG?format=jpg&name=large",
+        ],
+      };
+      return new Response(JSON.stringify(mockData), {
+        headers: { ...headers, "Content-Type": "application/json" },
+      });
     }
 
     if (!target) return new Response("Missing URL", { status: 400, headers });
@@ -102,7 +104,9 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
   console.log("Cache Miss:", tweetUrl);
 
   // 提取 Tweet ID 和 Username
-  const match = tweetUrl.match(/(twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/(\d+)/);
+  const match = tweetUrl.match(
+    /(twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/(\d+)/,
+  );
   const username = match ? match[2] : "Twitter";
   const tweetId = match ? match[3] : null;
 
@@ -137,9 +141,10 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
       const apiUrl = source.path(username, tweetId);
       const apiResp = await fetch(apiUrl, {
         headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          "Accept": "application/json"
-        }
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          Accept: "application/json",
+        },
       });
 
       if (apiResp.ok) {
@@ -161,10 +166,10 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
           finalData = { images };
           break; // 成功拿到数据，跳出循环
         } else {
-            errors.push(`${source.name}: No images found in response`);
+          errors.push(`${source.name}: No images found in response`);
         }
       } else {
-          errors.push(`${source.name}: HTTP ${apiResp.status}`);
+        errors.push(`${source.name}: HTTP ${apiResp.status}`);
       }
     } catch (e) {
       console.error(`Source ${source.name} failed:`, e);
@@ -175,9 +180,9 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
 
   if (!finalData) {
     return new Response(
-      JSON.stringify({ 
-          error: "All upstream services failed",
-          details: errors 
+      JSON.stringify({
+        error: "All upstream services failed",
+        details: errors,
       }),
       {
         status: 502,

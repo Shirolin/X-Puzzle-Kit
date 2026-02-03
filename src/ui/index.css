@@ -18,7 +18,8 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-full: 999px;
   --transition-fast: 0.2s cubic-bezier(0.2, 0, 0, 1);
   --transition-normal: 0.4s cubic-bezier(0.2, 0, 0, 1);
@@ -32,7 +33,11 @@
   --color-border: rgba(255, 255, 255, 0.1);
   --color-glass-bg: rgba(28, 28, 30, 0.7);
   --color-glass-border: rgba(255, 255, 255, 0.12);
-  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-overlay: rgba(0, 0, 0, 0.4);
+  --color-success-bg: rgba(48, 209, 88, 0.15);
+  --color-success-text: #30d158;
+  --color-error-bg: rgba(255, 69, 58, 0.15);
+  --color-error-text: #ff453a;
   --color-card-bg: rgba(255, 255, 255, 0.04);
 
   /* Semantic Tokens (Dark Defaults) */
@@ -59,6 +64,7 @@
 }
 
 /* Light Mode Overrides - Apple Refined Light */
+:host([data-theme="light"]),
 [data-theme="light"] {
   --color-background: #f5f5f7;
   /* Apple System Background */
@@ -72,7 +78,11 @@
   --color-border: rgba(0, 0, 0, 0.1);
   --color-glass-bg: rgba(255, 255, 255, 0.82);
   --color-glass-border: rgba(0, 0, 0, 0.08);
-  --color-overlay: rgba(0, 0, 0, 0.25);
+  --color-overlay: rgba(0, 0, 0, 0.2);
+  --color-success-bg: rgba(52, 199, 89, 0.1);
+  --color-success-text: #1a6d2f;
+  --color-error-bg: rgba(255, 59, 48, 0.08);
+  --color-error-text: #b71c1c;
   --color-card-bg: #ffffff;
 
   /* Semantic Overrides (Light Mode) */
@@ -102,6 +112,16 @@
   box-sizing: border-box;
 }
 
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 .x-puzzle-kit-mount-point {
   margin: 0;
   font-family:
@@ -120,6 +140,8 @@
     "Segoe UI Emoji";
   color: var(--color-text);
   background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* 多语言字体优化 - CJK 语种专项配置 (修复选择器层级) */
@@ -165,16 +187,18 @@
   gap: 0.5rem;
   padding: 0.6rem 1.25rem;
   border-radius: 99px; /* Rounded pill style */
+  font-family: inherit; /* MUST inherit to use CJK stack */
   font-weight: 600;
   font-size: 0.9375rem;
   letter-spacing: -0.01em;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: var(--transition-normal);
   border: none;
   background-color: var(--color-surface-soft);
   color: var(--color-text);
   user-select: none;
   text-decoration: none;
+  outline: none;
 }
 
 .btn:hover {
@@ -307,7 +331,7 @@
 }
 
 .section-block:hover {
-  background: var(--color-surface);
+  background: var(--color-card-bg);
 }
 
 .section-header {
@@ -352,14 +376,24 @@
   color: #1d1d1f;
 }
 
-.apple-select:hover {
-  background-color: var(--color-surface-soft);
-  border-color: var(--color-text-muted);
-}
-
 .apple-select:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.25);
+}
+
+.app-input:focus {
+  border-color: var(--color-primary);
+  background: var(--color-item-bg);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+
+.input-error {
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 0 0 1px var(--color-danger) !important;
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 3px var(--color-error-bg) !important;
 }
 
 /* Switch Styling Refinement - iOS Style */
@@ -523,6 +557,13 @@ input:checked + .slider:before {
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
   white-space: nowrap;
   color: var(--color-text);
+
+  /* Default Positioning (moved from inline) */
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
 }
 
 .toolbar-row {
@@ -601,21 +642,6 @@ input:checked + .slider:before {
 /* Note: Small screen height override moved to consolidated block */
 
 /* --- Refactored App Structure (Replacing Inline Styles) --- */
-
-/* Modal Overlay */
-.app-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-overlay);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
 
 /* Main Container Window */
 .app-container {
@@ -810,8 +836,9 @@ input:checked + .slider:before {
 
   /* 4. Mobile Dark Mode Refinement (Better Card Contrast) */
   [data-theme="dark"] .section-block {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: #2c2c2e !important; /* Apple Tertiary Dark Background - creates "Pop" */
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
   }
 
   /* 5. Premium Scroll Refinements (Sticky & Blur) */
@@ -1046,11 +1073,28 @@ input:checked + .slider:before {
 .sidebar-footer {
   padding: 0.875rem;
   border-top: 1px solid var(--color-glass-border);
-  background: var(--color-surface);
-  /* Replaces rgba(255, 255, 255, 0.03) */
+  background: var(--color-surface-soft);
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
+}
+
+/* Horizontal group for side-by-side actions in footer */
+.footer-button-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0.625rem;
+  width: 100%;
+}
+
+.footer-button-group .btn {
+  flex: 1;
+  min-width: 0; /* Prevent overflow if text is long */
+}
+
+[data-theme="dark"] .sidebar-footer {
+  background: #1c1c1e !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* --- Optimized List Items (Auto-hide, Lift-up) --- */
@@ -1290,6 +1334,21 @@ input:checked + .slider:before {
   align-items: center;
 }
 
+/* Standardized row for headers with side actions/controls */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Always top-aligned title */
+  margin-bottom: 0.5rem;
+}
+
+.section-row-standard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
 /* --- Usability: Expanded Hit Areas (Fitts's Law) --- */
 
 /* Action Button Base (Eye, Arrows) */
@@ -1397,27 +1456,39 @@ input:checked + .slider:before {
 
 .format-selector {
   display: flex;
+  align-items: center; /* Fix spacing/alignment */
   background: var(--color-surface-soft);
   border-radius: var(--radius-sm);
-  padding: 2px;
+  padding: 1.5px; /* Slightly reduced container padding */
 }
 
 .format-btn {
   border: none;
   background: transparent;
   color: var(--color-text-muted);
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 6px;
+  font-size: 9px; /* Slightly reduced font size */
+  padding: 1px 6px; /* Reduced button padding */
+  border-radius: 5px; /* Slightly tighter radius */
   cursor: pointer;
   font-weight: 700;
   transition: all var(--transition-fast);
+  /* Center text inside button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .format-btn.active {
-  background: var(--color-background);
+  background: #ffffff; /* Explicit white for contrast in light mode */
   color: var(--color-text);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /* Stronger shadow for light mode visibility */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.04); 
+}
+
+[data-theme="dark"] .format-btn.active {
+  background: var(--color-background); /* Dark grey in dark mode */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Softer shadow for dark mode */
+  border: 1px solid rgba(255,255,255,0.1); /* Subtle border for definition */
 }
 
 /* Color Circles */
@@ -1600,6 +1671,8 @@ input:checked + .slider:before {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.25rem;
+  padding: 0 4px 4px 4px; /* Give room for blue glow shadow on all sides */
+  margin: 0 -4px;
 }
 
 /* Note: Layout grid mobile overrides moved to consolidated block */
@@ -1734,6 +1807,15 @@ input:checked + .slider:before {
   letter-spacing: 0.06em;
 }
 
+.section-sub-header {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  font-weight: 600; /* Revert to SemiBold for crispness */
+  opacity: 0.8;     /* Lower opacity for clear hierarchy */
+  margin: 0;
+}
+
 /* 格式选择器优化 - 移动端更紧凑 */
 .format-btn {
   padding: 4px 10px;
@@ -1857,63 +1939,76 @@ button:active {
     border: none !important;
   }
 
-  .app-overlay {
-    background-color: var(--color-background) !important;
-    backdrop-filter: none !important;
-  }
-
   .viewer-area {
     flex: 1;
     min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    /* Create a "Safe Area" to account for the -32px sidebar crossover overlap.
+       This will shrink the .viewer-canvas internally, ensuring auto-fit logic clears the sidebar. */
+    padding-bottom: 2rem !important; 
+  }
+
+  .viewer-empty-state {
+    padding: 1rem !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding-bottom: 0 !important; /* Reset manual lift since viewer-area has safe padding */
+  }
+
+  .viewer-upload-box {
+    padding: 2.5rem 1.5rem !important; /* Slightly more compact for mobile */
+    border-radius: var(--radius-2xl) !important;
+    width: 85% !important;
+    margin-top: 0 !important; /* Reset manual lift */
+  }
+
+  .viewer-upload-box .upload-icon-container {
+    margin-bottom: 1rem !important;
   }
 
   /* 2. Elevated Settings Panel (Apple Sheet Layer) */
   .sidebar-panel {
     width: 100% !important;
-    height: 60vh;
+    height: 58vh;
     min-height: 40vh;
     border: none !important;
-    background-color: var(
-      --color-surface
-    ) !important; /* Pure White/Solid Surface to stand out from gray canvas */
-    border-top-left-radius: var(--radius-xl) !important;
-    border-top-right-radius: var(--radius-xl) !important;
-    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.18) !important; /* Deeper shadow for elevation */
+    background-color: var(--color-surface-soft) !important;
+    border-top-left-radius: var(--radius-2xl) !important;
+    border-top-right-radius: var(--radius-2xl) !important;
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.1) !important;
     position: relative;
     z-index: 40;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin-top: -32px; /* Increased to exactly match 32px radius, fully masking the "horse's foot" bleed */
   }
 
   [data-theme="dark"] .sidebar-panel {
-    background-color: #121214 !important;
-    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.6) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background-color: #1c1c1e !important; /* Apple Secondary Dark Background */
+    box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
   }
 
   .sidebar-header-mobile {
     position: sticky;
     top: 0;
-    height: 32px; /* Increased for better breathing space */
+    height: 24px; /* Reduced and centered for better visual balance in the 32px curve */
     z-index: 100;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background: rgba(245, 245, 247, 0.82);
+    background: var(--color-surface-soft);
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    /* Removed individual radii to fix corner bleed artifacts, relying on .sidebar-panel clipping */
+    border-top-left-radius: var(--radius-2xl);
+    border-top-right-radius: var(--radius-2xl);
+    border-bottom: none !important;
   }
 
   [data-theme="dark"] .sidebar-header-mobile {
-    background: rgba(
-      10,
-      10,
-      12,
-      0.65
-    ) !important; /* More translucent for better blur effect */
+    background: #1c1c1e !important; /* Must match panel background */
+    border-bottom: none !important;
   }
 
   .sidebar-grab-indicator {
@@ -1925,25 +2020,21 @@ button:active {
   }
 
   [data-theme="dark"] .sidebar-grab-indicator {
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.65
-    ) !important; /* Higher contrast handle */
-    opacity: 0.8 !important;
+    background-color: #3a3a3c !important; /* Subtle but clear handle */
+    opacity: 1 !important;
   }
 
   .sidebar-scroll-area {
-    padding: 0.75rem 0.625rem !important; /* Unified padding for cards */
+    padding: 0.4rem 0.625rem !important; /* Reduced top padding for a more compact start */
     padding-bottom: 3rem !important;
-    scroll-padding-top: 32px;
+    scroll-padding-top: 24px; /* Match new header height */
     flex: 1;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-direction: column;
     gap: 0.625rem !important;
+    background-color: transparent !important; /* Inherit from panel */
   }
 
   /* 3. Restored Card Integrity (Clean Look) */
@@ -1952,11 +2043,15 @@ button:active {
     gap: 0.75rem !important;
     margin-bottom: 0.25rem;
     border-radius: var(--radius-lg) !important;
+    background-color: var(--color-card-bg) !important; /* White in light mode */
+    box-shadow: var(--shadow-sm) !important; /* Make sections "pop" */
+    border: 1px solid var(--color-glass-border) !important;
   }
 
   [data-theme="dark"] .section-block {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: #2c2c2e !important; /* Apple Tertiary Dark Background - creates "Pop" */
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
   }
 
   .section-header {
@@ -1977,8 +2072,10 @@ button:active {
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     gap: 0.75rem !important;
-    padding: 0.25rem 0.25rem 0.875rem 0.25rem !important;
-    margin: 0 -0.25rem;
+    /* Increase padding to match card edges and allow shadows to breathe; 
+       1rem (16px) is sufficient to accommodate the 20px blue glow without clipping */
+    padding: 0.25rem 1rem 1.25rem 1rem !important;
+    margin: 0 -1rem;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
@@ -2038,7 +2135,8 @@ button:active {
   .section-header-actions .btn-icon,
   .item-actions-group .btn-icon,
   .image-sort-add-btn,
-  .image-sort-clear-btn {
+  .image-sort-clear-btn,
+  .image-sort-import-btn {
     width: 44px !important;
     height: 44px !important;
     border-radius: 12px !important;
@@ -2057,6 +2155,12 @@ button:active {
     color: var(--color-primary) !important;
   }
 
+  /* Import Button Style - Matches 'Add' button style as requested */
+  .image-sort-import-btn {
+    background: rgba(var(--color-primary-rgb), 0.1) !important;
+    color: var(--color-primary) !important;
+  }
+
   .image-sort-clear-btn {
     background: rgba(var(--color-danger-rgb), 0.15) !important;
     color: var(--color-danger) !important;
@@ -2065,7 +2169,8 @@ button:active {
   .section-header-actions .btn-icon svg,
   .item-actions-group .btn-icon svg,
   .image-sort-add-btn svg,
-  .image-sort-clear-btn svg {
+  .image-sort-clear-btn svg,
+  .image-sort-import-btn svg {
     width: 18px !important;
     height: 18px !important;
     stroke-width: 2.2 !important;
@@ -2074,7 +2179,8 @@ button:active {
   .section-header-actions .btn-icon:active,
   .item-actions-group .btn-icon:active,
   .image-sort-add-btn:active,
-  .image-sort-clear-btn:active {
+  .image-sort-clear-btn:active,
+  .image-sort-import-btn:active {
     transform: scale(0.92);
     opacity: 0.7 !important;
   }
@@ -2182,6 +2288,9 @@ button:active {
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.12),
       inset 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+
+    /* Lift slightly to clear the -32px sidebar overlap */
+    bottom: 3rem !important;
   }
 
   [data-theme="dark"] .viewer-toolbar-v2 {
@@ -2397,13 +2506,13 @@ button:active {
   }
 
   [data-theme="dark"] .mode-switcher {
-    background-color: rgba(255, 255, 255, 0.08) !important;
+    background-color: #2c2c2e !important; /* Apple Tertiary Dark Background - creates "Pop" */
     border: 1px solid rgba(255, 255, 255, 0.04) !important;
   }
 
   [data-theme="dark"] .app-header .icon-btn:hover,
   [data-theme="dark"] .app-header .close-btn:hover {
-    background-color: rgba(255, 255, 255, 0.08) !important;
+    background-color: #2c2c2e !important; /* Apple Tertiary Dark Background - creates "Pop" */
     color: var(--color-text) !important;
   }
 
@@ -2692,4 +2801,251 @@ button:active {
      Let's keep borders same and just rotate 225deg (or -135deg).
   */
   transform: translateX(-50%) rotate(225deg);
+}
+
+/* Sidebar Action Buttons Refactor */
+.action-row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.action-btn {
+  flex: 1;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.action-btn:hover {
+  transform: scale(1.02);
+}
+.action-btn:active {
+  transform: scale(0.96);
+}
+
+.action-btn.primary {
+  background-color: rgba(0, 122, 255, 0.1); /* Primary Light */
+  color: var(--color-primary);
+}
+[data-theme="dark"] .action-btn.primary {
+  background-color: rgba(10, 132, 255, 0.15);
+}
+
+.action-btn.secondary {
+  background-color: var(--color-surface-soft);
+  color: var(--color-text);
+}
+
+.action-btn.danger {
+  background-color: rgba(255, 69, 58, 0.1);
+  color: var(--color-danger);
+}
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Restored Utility Classes */
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gap-sm {
+  gap: 8px;
+}
+/* ========================================
+   Shared Modern UI (Unified PC & Mobile)
+   ======================================== */
+
+.app-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-overlay);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  display: flex;
+  flex-direction: column; /* Stack spinner and text vertically */
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem; /* Handle spacing here instead of margin */
+  z-index: 9999;
+  animation: overlayFadeIn 0.3s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.glass-panel {
+  background: var(--color-glass-bg);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+/* --- Sonner Toast (Unified Design) --- */
+:host {
+  --toast-width: 380px;
+}
+
+[data-sonner-toaster] {
+  position: fixed !important;
+  top: max(64px, env(safe-area-inset-top)) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 10000 !important;
+  pointer-events: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: auto !important;
+}
+
+[data-sonner-toast] {
+  pointer-events: auto !important;
+  width: auto !important;
+  min-width: 240px !important;
+  max-width: min(92vw, 420px) !important;
+  margin: 0 auto 10px auto !important;
+
+  /* Premium Crystalline Base */
+  background: var(--color-glass-bg) !important;
+  border: 1px solid var(--color-glass-border) !important;
+  border-radius: var(--radius-full) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: blur(40px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+
+  font-family: inherit !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: var(--color-text) !important;
+  letter-spacing: -0.01em !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 22px !important;
+  min-height: 40px !important;
+
+  box-sizing: border-box !important;
+  transition:
+    transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28),
+    opacity 0.3s ease !important;
+}
+
+/* Success State - Refined Contrast */
+[data-sonner-toast][data-type="success"] {
+  background: var(--color-success-bg) !important;
+  border-color: rgba(52, 199, 89, 0.4) !important;
+  color: var(--color-success-text) !important;
+}
+
+/* Error State - Refined Contrast */
+[data-sonner-toast][data-type="error"] {
+  background: var(--color-error-bg) !important;
+  border-color: rgba(255, 59, 48, 0.4) !important;
+  color: var(--color-error-text) !important;
+}
+
+[data-sonner-toast] [data-icon] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
+}
+
+[data-sonner-toast] [data-icon] svg {
+  color: currentColor !important;
+  stroke-width: 2.5 !important;
+}
+
+/* Unified Spinner */
+.app-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2.5px solid rgba(var(--color-primary-rgb), 0.15);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: appSpin 0.8s linear infinite;
+}
+
+@keyframes appSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  /* margin-top removed, using gap in .app-overlay */
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.app-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.app-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
 }

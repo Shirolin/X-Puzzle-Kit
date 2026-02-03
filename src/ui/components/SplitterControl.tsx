@@ -100,14 +100,8 @@ export function SplitterControl({
       {/* Custom Rows/Cols Section */}
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
         <section className="section-block" style={containerStyle}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <h3 className="section-header">
+          <div className="section-header-row">
+            <h3 className="section-header" style={{ margin: 0 }}>
               {layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}
             </h3>
             <div className="control-group-pill">
@@ -163,14 +157,10 @@ export function SplitterControl({
 
       {/* Gap Removal Section */}
       <section className="section-block" style={containerStyle}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <h3 className="section-header">{t("gapRemoval")}</h3>
+        <div className="section-header-row">
+          <h3 className="section-header" style={{ margin: 0 }}>
+            {t("gapRemoval")}
+          </h3>
           <div className="control-group-pill">
             <IconButton
               onClick={() => setGap(Math.max(0, gap - 1))}
@@ -282,22 +272,8 @@ export function SplitterControl({
         <div
           style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "0.7rem",
-                color: "var(--color-text-muted)",
-                fontWeight: 600,
-              }}
-            >
-              {t("formatLabel")}
-            </span>
+          <div className="section-row-standard">
+            <h3 className="section-sub-header">{t("formatLabel")}</h3>
             <div className="format-selector">
               {(["png", "jpg", "webp"] as const).map((fmt) => (
                 <button
@@ -319,14 +295,7 @@ export function SplitterControl({
             }}
           ></div>
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: "0.75rem",
-            }}
-          >
+          <div className="section-row-standard">
             <div
               style={{
                 display: "flex",
@@ -334,15 +303,9 @@ export function SplitterControl({
                 gap: "0.1rem",
               }}
             >
-              <span
-                style={{
-                  fontSize: "0.7rem",
-                  color: "var(--color-text-muted)",
-                  fontWeight: 600,
-                }}
-              >
+              <h3 className="section-sub-header" style={{ margin: 0 }}>
                 {t("zipLabel")}
-              </span>
+              </h3>
               <span
                 style={{
                   fontSize: "0.6rem",

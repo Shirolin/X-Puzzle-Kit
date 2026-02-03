@@ -6,17 +6,19 @@ import {
   Layout,
   Eye,
   EyeOff,
-  Plus,
-  Minus,
-  RotateCcw,
   GripVertical,
+  Minus,
+  Plus,
+  Trash2,
+  X,
+  Zap,
+  ArrowRight,
+  Link,
+  RotateCcw,
   Scissors,
   ChevronUp,
   ChevronDown,
   Coffee,
-  Zap,
-  Trash2,
-  Link as LinkIcon,
 } from "lucide-preact";
 import { useRef, useEffect, useLayoutEffect } from "preact/hooks";
 import Sortable from "sortablejs";
@@ -378,8 +380,10 @@ export function Sidebar({
 
               {/* Global Gap */}
               <section className="section-block">
-                <div className="flex-between">
-                  <h3 className="section-header">{t("globalGap")}</h3>
+                <div className="section-header-row">
+                  <h3 className="section-header" style={{ margin: 0 }}>
+                    {t("globalGap")}
+                  </h3>
                   <div className="control-group-pill">
                     <IconButton
                       onClick={() =>
@@ -462,8 +466,8 @@ export function Sidebar({
 
             {/* Elastic Sorting Area */}
             <section className="section-block sorting-area">
-              <div className="flex-between">
-                <h3 className="section-header" style={{ marginBottom: 0 }}>
+              <div className="section-header-row">
+                <h3 className="section-header" style={{ margin: 0 }}>
                   {t("imageSorting")}
                 </h3>
                 <div className="flex-row-center gap-sm">
@@ -480,7 +484,7 @@ export function Sidebar({
                     }}
                   />
                   <IconButton
-                    icon={<LinkIcon size={11} />}
+                    icon={<Link size={11} />}
                     onClick={onImportFromUrl}
                     title={t("importFromUrl") || "Import from URL"}
                     className="btn-icon-sm image-sort-import-btn"
@@ -736,22 +740,8 @@ export function Sidebar({
                   }}
                 >
                   {/* Format Selector */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "0.7rem",
-                        color: "var(--color-text-muted)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {t("formatLabel")}
-                    </span>
+                  <div className="section-row-standard">
+                    <h3 className="section-sub-header">{t("formatLabel")}</h3>
                     <div className="format-selector">
                       {(["png", "jpg", "webp"] as const).map((fmt) => (
                         <button
@@ -775,16 +765,8 @@ export function Sidebar({
 
                   <Divider />
 
-                  <div className="flex-between">
-                    <span
-                      style={{
-                        fontSize: "0.7rem",
-                        color: "var(--color-text-muted)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {t("backgroundColor")}
-                    </span>
+                  <div className="section-row-standard">
+                    <h3 className="section-sub-header">{t("backgroundColor")}</h3>
                     <div
                       className="flex-row-center"
                       style={{ gap: "8px", paddingRight: "4px" }}
@@ -822,16 +804,8 @@ export function Sidebar({
 
                   <Divider />
 
-                  <div className="flex-between">
-                    <span
-                      style={{
-                        fontSize: "0.7rem",
-                        color: "var(--color-text-muted)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {t("language")}
-                    </span>
+                  <div className="section-row-standard">
+                    <h3 className="section-sub-header">{t("language")}</h3>
                     <CustomSelect
                       value={lang}
                       onChange={setLang}
@@ -852,16 +826,8 @@ export function Sidebar({
 
                   <Divider />
 
-                  <div className="flex-between">
-                    <span
-                      style={{
-                        fontSize: "0.7rem",
-                        color: "var(--color-text-muted)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {t("support")}
-                    </span>
+                  <div className="section-row-standard">
+                    <h3 className="section-sub-header">{t("support")}</h3>
                     <div style={{ display: "flex", gap: "6px" }}>
                       <a
                         href="https://ifdian.net/a/shirolin"
@@ -916,13 +882,7 @@ export function Sidebar({
 
       <div className="sidebar-footer">
         {mode === "split" ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "0.625rem",
-            }}
-          >
+          <div className="footer-button-group">
             <button
               onClick={() =>
                 splitBlobs.length > 0

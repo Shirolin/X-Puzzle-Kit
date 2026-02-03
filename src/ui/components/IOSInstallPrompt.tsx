@@ -12,7 +12,8 @@ export function IOSInstallPrompt() {
     const userAgent = navigator.userAgent;
     // 1. Detect iOS
     const isIOS =
-      /iPad|iPhone|iPod/.test(userAgent) && !(window as unknown as { MSStream: unknown }).MSStream;
+      /iPad|iPhone|iPod/.test(userAgent) &&
+      !(window as unknown as { MSStream: unknown }).MSStream;
 
     // 2. Detect Chrome on iOS
     const isChromeIOS = /CriOS/.test(userAgent);
@@ -26,7 +27,9 @@ export function IOSInstallPrompt() {
     if (!isIOS || isStandalone) return;
 
     // 4. Check dismissal history
-    const dismissed = localStorage.getItem(APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED);
+    const dismissed = localStorage.getItem(
+      APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED,
+    );
     if (dismissed) {
       const dismissedTime = parseInt(dismissed, 10);
       const now = Date.now();
@@ -44,7 +47,10 @@ export function IOSInstallPrompt() {
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem(APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED, Date.now().toString());
+    localStorage.setItem(
+      APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED,
+      Date.now().toString(),
+    );
   };
 
   if (!isVisible) return null;

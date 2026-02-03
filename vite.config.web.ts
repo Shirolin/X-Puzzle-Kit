@@ -16,7 +16,7 @@ export default defineConfig({
   plugins: [
     preact(),
     VitePWA({
-      registerType: "autoUpdate",
+      registerType: "prompt",
       includeAssets: ["favicon.ico", "assets/*.png", "assets/*.svg"],
       manifest: {
         name: "X-Puzzle-Kit - 推特拼图/切图助手",
@@ -54,12 +54,6 @@ export default defineConfig({
             src: "assets/icon-512.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "maskable",
-          },
-          {
-            src: "assets/x-puzzle-stitcher.svg",
-            sizes: "any",
-            type: "image/svg+xml",
             purpose: "maskable",
           },
         ],

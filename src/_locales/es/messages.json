@@ -290,5 +290,41 @@
   "clearAll": {
     "message": "Borrar todo",
     "description": "Texto del botón para borrar todas las imágenes"
+  },
+  "invalidUrl": {
+    "message": "Enlace no válido, por favor proporcione un enlace de Tweet (X) válido",
+    "description": "Consejo de enlace no válido"
+  },
+  "analyzingLink": {
+    "message": "Analizando enlace...",
+    "description": "Estado de análisis de enlace"
+  },
+  "noImagesFound": {
+    "message": "No se encontraron imágenes importables en este Tweet",
+    "description": "Consejo de imágenes no encontradas"
+  },
+  "downloadingImages": {
+    "message": "Descargando imágenes",
+    "description": "Estado de descarga de imágenes"
+  },
+  "processingImages": {
+    "message": "Procesando imágenes...",
+    "description": "Estado de procesamiento de imágenes"
+  },
+  "parseFailed": {
+    "message": "Error al analizar el Tweet",
+    "description": "Consejo de error de análisis"
+  },
+  "import": {
+    "message": "Importar",
+    "description": "Botón de acción de importación"
+  },
+  "cancel": {
+    "message": "Cancelar",
+    "description": "Botón de acción de cancelación"
+  },
+  "confirm": {
+    "message": "Confirmar",
+    "description": "Botón de acción de confirmación"
   }
 }

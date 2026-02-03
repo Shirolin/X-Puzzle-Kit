@@ -286,5 +286,41 @@
   "clearAll": {
     "message": "すべて消去",
     "description": "全画像消去ボタンのテキスト"
+  },
+  "confirm": {
+    "message": "確定",
+    "description": "確定ボタン"
+  },
+  "cancel": {
+    "message": "キャンセル",
+    "description": "キャンセルボタン"
+  },
+  "import": {
+    "message": "インポート",
+    "description": "インポートボタン"
+  },
+  "invalidUrl": {
+    "message": "無効なリンクです。正しいツイート (X) リンクを入力してください",
+    "description": "無効なリンクのヒント"
+  },
+  "analyzingLink": {
+    "message": "リンクを解析中...",
+    "description": "リンク解析状態"
+  },
+  "noImagesFound": {
+    "message": "このツイートからインポート可能な画像が見つかりませんでした",
+    "description": "画像未発見のヒント"
+  },
+  "downloadingImages": {
+    "message": "画像をダウンロード中",
+    "description": "画像ダウンロード状態"
+  },
+  "processingImages": {
+    "message": "画像を処理中...",
+    "description": "画像処理状態"
+  },
+  "parseFailed": {
+    "message": "ツイートの解析に失敗しました",
+    "description": "解析失敗のヒント"
   }
 }

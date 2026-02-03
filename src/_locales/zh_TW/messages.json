@@ -290,5 +290,41 @@
   "clearAll": {
     "message": "清空全部",
     "description": "清空全部圖片按鈕文本"
+  },
+  "invalidUrl": {
+    "message": "連結無效，請提供正確的推文 (X) 連結",
+    "description": "無效連結提示"
+  },
+  "analyzingLink": {
+    "message": "正在解析連結...",
+    "description": "解析連結中的狀態"
+  },
+  "noImagesFound": {
+    "message": "推文中未發現可匯入的圖片",
+    "description": "未發現圖片提示"
+  },
+  "downloadingImages": {
+    "message": "正在下載圖片",
+    "description": "下載圖片狀態"
+  },
+  "processingImages": {
+    "message": "正在處理圖片...",
+    "description": "處理圖片狀態"
+  },
+  "parseFailed": {
+    "message": "解析推文失敗",
+    "description": "解析失敗提示"
+  },
+  "import": {
+    "message": "匯入",
+    "description": "匯入操作按鈕"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "取消操作按鈕"
+  },
+  "confirm": {
+    "message": "確定",
+    "description": "確定操作按鈕"
   }
 }

@@ -255,16 +255,7 @@ export function ViewerArea({
           ) : null}
 
           {/* Viewer Toolbar - Precision Match for Image 2 */}
-          <div
-            className="viewer-toolbar-v2 apple-blur"
-            style={{
-              position: "absolute",
-              bottom: "1.5rem",
-              left: "50%",
-              transform: "translateX(-50%)",
-              zIndex: 30,
-            }}
-          >
+          <div className="viewer-toolbar-v2 apple-blur">
             <div className="toolbar-row">
               <IconButton
                 className="toolbar-btn"

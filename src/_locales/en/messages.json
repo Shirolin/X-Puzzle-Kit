@@ -290,5 +290,45 @@
   "installDescChrome": {
     "message": "Tap the Share button top-right, then select 'Add to Home Screen'.",
     "description": "iOS Chrome install prompt description"
+  },
+  "importFromUrl": {
+    "message": "Import from URL",
+    "description": "Import button title"
+  },
+  "invalidUrl": {
+    "message": "Invalid URL, please provide a valid Tweet (X) link",
+    "description": "Invalid URL tip"
+  },
+  "analyzingLink": {
+    "message": "Analyzing link...",
+    "description": "Analyzing link state"
+  },
+  "noImagesFound": {
+    "message": "No importable images found in this Tweet",
+    "description": "No images found tip"
+  },
+  "downloadingImages": {
+    "message": "Downloading images",
+    "description": "Downloading images state"
+  },
+  "processingImages": {
+    "message": "Processing images...",
+    "description": "Processing images state"
+  },
+  "parseFailed": {
+    "message": "Failed to parse Tweet",
+    "description": "Parse failed tip"
+  },
+  "import": {
+    "message": "Import",
+    "description": "Import action button"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Cancel action button"
+  },
+  "confirm": {
+    "message": "Confirm",
+    "description": "Confirm action button"
   }
 }
