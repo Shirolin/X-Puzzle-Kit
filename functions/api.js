@@ -8,7 +8,7 @@ const PRODUCTION_ORIGIN = "https://x-puzzle-kit.pages.dev";
 const CACHE_TTL = 3600;
 
 export async function onRequest(context) {
-    const { request, ctx } = context;
+    const { request, waitUntil } = context;
     const url = new URL(request.url);
     const mode = url.searchParams.get("mode");
     const target = url.searchParams.get("url");
@@ -32,7 +32,7 @@ export async function onRequest(context) {
 
     try {
         if (mode === "parse") {
-            return await handleParseWithCache(target, request, ctx, headers);
+            return await handleParseWithCache(target, request, waitUntil, headers);
         } else if (mode === "proxy") {
             return await handleProxy(target, headers);
         }
@@ -67,7 +67,7 @@ function handleOptions(request) {
     return new Response(null, { headers: getCorsHeaders(request) });
 }
 
-async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
+async function handleParseWithCache(tweetUrl, request, waitUntil, corsHeadersObj) {
     const cacheUrl = new URL(request.url);
     const cacheKey = new Request(cacheUrl.toString(), request);
     
@@ -159,8 +159,8 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
     });
 
     // 异步写入缓存
-    if (cache) {
-        ctx.waitUntil(cache.put(cacheKey, response.clone()).catch(e => console.error("Cache put failed", e)));
+    if (cache && waitUntil) {
+        waitUntil(cache.put(cacheKey, response.clone()).catch(e => console.error("Cache put failed", e)));
     }
 
     return response;
