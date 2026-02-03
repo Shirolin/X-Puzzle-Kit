@@ -6,13 +6,12 @@
 export const APP_CONFIG = {
   // Network & API Configuration
   WORKER: {
-    // Production Cloudflare Worker URL
-    PRODUCTION_URL: "https://cloudflare-twitter-proxy.shirolin.workers.dev",
-    // Local Development URL
-    LOCAL_URL: "http://localhost:8787",
-    // Current Active URL (Change this for local debugging)
-    // process.env.NODE_ENV is handled by Vite, but here we can manually toggle if needed
-    DEFAULT_URL: "http://localhost:8787",
+    // Production Cloudflare Pages Function path
+    PRODUCTION_URL: "/api",
+    // Local Development URL (When using wrangler pages dev)
+    LOCAL_URL: "http://localhost:8888/api",
+    // Current Active URL
+    DEFAULT_URL: "/api",
   },
 
   // LocalStorage Keys
