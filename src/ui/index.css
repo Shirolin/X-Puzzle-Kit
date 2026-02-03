@@ -110,6 +110,13 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root,
+body,
+.x-puzzle-kit-mount-point {
+  overscroll-behavior: none;
 }
 
 button,
@@ -201,9 +208,11 @@ textarea {
   outline: none;
 }
 
-.btn:hover {
-  filter: brightness(1.05); /* Subtle change */
-  transform: scale(1.01);
+@media (hover: hover) {
+  .btn:hover {
+    filter: brightness(1.05); /* Subtle change */
+    transform: scale(1.01);
+  }
 }
 
 .btn:active {
@@ -240,9 +249,11 @@ textarea {
   ); /* Keep ghost buttons squarer if needed, or pill */
 }
 
-.btn-ghost:hover {
-  background-color: rgba(120, 120, 128, 0.1);
-  color: var(--color-text);
+@media (hover: hover) {
+  .btn-ghost:hover {
+    background-color: rgba(120, 120, 128, 0.1);
+    color: var(--color-text);
+  }
 }
 
 .card {
@@ -314,8 +325,10 @@ textarea {
   box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
 }
 
-.vibrant-range::-webkit-slider-thumb:hover {
-  transform: scale(1.2);
+@media (hover: hover) {
+  .vibrant-range::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
 }
 
 .section-block {
@@ -1399,9 +1412,11 @@ input:checked + .slider:before {
   color: var(--color-icon-dim);
 }
 
-.item-gap-compact button:hover {
-  background-color: rgba(0, 122, 255, 0.1);
-  color: var(--color-primary);
+@media (hover: hover) {
+  .item-gap-compact button:hover {
+    background-color: rgba(0, 122, 255, 0.1);
+    color: var(--color-primary);
+  }
 }
 
 /* Sort Arrows Container - Split 50/50 vertically */
@@ -2408,6 +2423,8 @@ button:active {
     justify-content: space-between !important;
     position: relative;
     z-index: 50;
+    padding-top: env(safe-area-inset-top, 0) !important;
+    height: calc(60px + env(safe-area-inset-top, 0)) !important;
   }
 
   .header-group {
@@ -2576,9 +2593,11 @@ button:active {
   color: var(--color-icon-dim);
 }
 
-.item-gap-compact button:hover {
-  background-color: rgba(0, 122, 255, 0.1);
-  color: var(--color-primary);
+@media (hover: hover) {
+  .item-gap-compact button:hover {
+    background-color: rgba(0, 122, 255, 0.1);
+    color: var(--color-primary);
+  }
 }
 
 .sort-arrow-btn:disabled {

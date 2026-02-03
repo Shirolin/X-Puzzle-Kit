@@ -343,6 +343,8 @@ export function App({
   const [viewerRotation, setViewerRotation] = useState(0);
   const [isPanning, setIsPanning] = useState(false);
   const [panStart, setPanStart] = useState({ x: 0, y: 0 });
+  const [touchStartDist, setTouchStartDist] = useState<number | null>(null);
+  const [touchStartScale, setTouchStartScale] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const fitToScreen = useCallback(() => {
@@ -524,6 +526,47 @@ export function App({
   const handleMouseUp = () => setIsPanning(false);
   const handleDoubleClick = () =>
     viewerScale < 1 ? setViewerScale(1) : fitToScreen();
+
+  // Touch Handlers
+  const handleTouchStart = (e: TouchEvent) => {
+    if (e.touches.length === 1) {
+      setIsPanning(true);
+      setPanStart({
+        x: e.touches[0].clientX - viewerOffset.x,
+        y: e.touches[0].clientY - viewerOffset.y,
+      });
+      setTouchStartDist(null);
+    } else if (e.touches.length === 2) {
+      setIsPanning(false);
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY,
+      );
+      setTouchStartDist(dist);
+      setTouchStartScale(viewerScale);
+    }
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (e.touches.length === 1 && isPanning) {
+      setViewerOffset({
+        x: e.touches[0].clientX - panStart.x,
+        y: e.touches[0].clientY - panStart.y,
+      });
+    } else if (e.touches.length === 2 && touchStartDist !== null) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY,
+      );
+      const scale = (dist / touchStartDist) * touchStartScale;
+      setViewerScale(Math.min(10, Math.max(0.1, scale)));
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsPanning(false);
+    setTouchStartDist(null);
+  };
 
   // Initial Theme Sync
   useEffect(() => {
@@ -720,7 +763,12 @@ export function App({
           <div className="header-group" style={{ gap: "1rem" }}>
             <div className="mode-switcher">
               <button
-                onClick={() => setMode("stitch")}
+                onClick={() => {
+                  if (mode !== "stitch") {
+                    setMode("stitch");
+                    window.navigator?.vibrate?.(10);
+                  }
+                }}
                 className={`mode-btn ${mode === "stitch" ? "active" : ""}`}
               >
                 <Images
@@ -735,7 +783,12 @@ export function App({
                 <span>{t("modeStitch")}</span>
               </button>
               <button
-                onClick={() => setMode("split")}
+                onClick={() => {
+                  if (mode !== "split") {
+                    setMode("split");
+                    window.navigator?.vibrate?.(10);
+                  }
+                }}
                 className={`mode-btn ${mode === "split" ? "active" : ""}`}
               >
                 <Scissors
@@ -803,6 +856,9 @@ export function App({
             handleMouseDown={handleMouseDown}
             handleMouseMove={handleMouseMove}
             handleMouseUp={handleMouseUp}
+            handleTouchStart={handleTouchStart}
+            handleTouchMove={handleTouchMove}
+            handleTouchEnd={handleTouchEnd}
             handleDoubleClick={handleDoubleClick}
             task={task}
             images={images}

@@ -16,6 +16,9 @@ interface ViewerAreaProps {
   handleMouseDown: (e: MouseEvent) => void;
   handleMouseMove: (e: MouseEvent) => void;
   handleMouseUp: () => void;
+  handleTouchStart: (e: TouchEvent) => void;
+  handleTouchMove: (e: TouchEvent) => void;
+  handleTouchEnd: (e: TouchEvent) => void;
   handleDoubleClick: () => void;
   task: StitchTask;
   images: ImageNode[];
@@ -45,6 +48,9 @@ export function ViewerArea({
   handleMouseDown,
   handleMouseMove,
   handleMouseUp,
+  handleTouchStart,
+  handleTouchMove,
+  handleTouchEnd,
   handleDoubleClick,
   task,
   images,
@@ -162,6 +168,9 @@ export function ViewerArea({
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
           onMouseLeave={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           onDblClick={handleDoubleClick}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}

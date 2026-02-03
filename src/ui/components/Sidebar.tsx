@@ -179,6 +179,11 @@ export function Sidebar({
         document.body.style.userSelect = "none";
         document.body.style.webkitUserSelect = "none";
 
+        // 触感反馈：排序开始
+        if (window.navigator && window.navigator.vibrate) {
+          window.navigator.vibrate(10);
+        }
+
         // fallbackOnBody: true 会把克隆体放到 body，脱离 Shadow DOM 后样式丢失
         // 需要手动为它设置内联样式
         const ghost = document.querySelector(
