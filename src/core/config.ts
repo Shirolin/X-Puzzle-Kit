@@ -12,7 +12,7 @@ export const APP_CONFIG = {
     LOCAL_URL: "http://localhost:8787",
     // Current Active URL (Change this for local debugging)
     // process.env.NODE_ENV is handled by Vite, but here we can manually toggle if needed
-    DEFAULT_URL: "https://cloudflare-twitter-proxy.shirolin.workers.dev",
+    DEFAULT_URL: "http://localhost:8787",
   },
 
   // LocalStorage Keys
