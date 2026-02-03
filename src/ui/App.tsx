@@ -565,10 +565,29 @@ export function App({
     setTouchStartDist(null);
   };
 
-  // Initial Theme Sync
+  // Initial Theme Sync & PWA Status Bar Optimization
   useEffect(() => {
     if (theme) {
       updateToasterTheme(theme as "light" | "dark" | "system");
+
+      // Dynamic Meta Theme Color & Notch Adaptation
+      const themeColor = theme === "dark" ? "#111111" : "#ffffff";
+      let metaTheme = document.querySelector('meta[name="theme-color"]');
+      if (!metaTheme) {
+        metaTheme = document.createElement("meta");
+        metaTheme.setAttribute("name", "theme-color");
+        document.head.appendChild(metaTheme);
+      }
+      metaTheme.setAttribute("content", themeColor);
+
+      // iOS Status Bar Style Adaptation
+      let metaStatus = document.querySelector(
+        'meta[name="apple-mobile-web-app-status-bar-style"]',
+      );
+      if (metaStatus) {
+        // black-translucent allows content to flow behind status bar, required for notch
+        metaStatus.setAttribute("content", "black-translucent");
+      }
     }
   }, [theme]);
 
