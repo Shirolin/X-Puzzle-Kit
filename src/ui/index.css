@@ -1990,10 +1990,14 @@ button:active {
     padding: 1rem !important;
     justify-content: center !important;
     align-items: center !important;
-    padding-bottom: 0 !important; /* Reset manual lift since viewer-area has safe padding */
+    padding-bottom: 0 !important;
   }
 
+  /* 移动端上传卡片向上平移，补偿侧边栏遮挡的视觉偏差。
+     这里使用 top 而不是 transform，以保留 hover/dragging 时的 transform 动画 */
   .viewer-upload-box {
+    position: relative;
+    top: -32px;
     padding: 2.5rem 1.5rem !important; /* Slightly more compact for mobile */
     border-radius: var(--radius-2xl) !important;
     width: 85% !important;
