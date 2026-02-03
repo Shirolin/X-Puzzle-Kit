@@ -2,6 +2,7 @@ import { useState, useEffect } from "preact/hooks";
 import { X } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { getAssetUrl } from "../../core/platform";
+import { APP_CONFIG } from "../../core/config";
 
 export function IOSInstallPrompt() {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,25 +26,25 @@ export function IOSInstallPrompt() {
     if (!isIOS || isStandalone) return;
 
     // 4. Check dismissal history
-    const dismissed = localStorage.getItem("xpuzzle_ios_prompt_dismissed");
+    const dismissed = localStorage.getItem(APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED);
     if (dismissed) {
       const dismissedTime = parseInt(dismissed, 10);
       const now = Date.now();
       const daysSince = (now - dismissedTime) / (1000 * 60 * 60 * 24);
-      if (daysSince < 7) return; // 7 days cooldown
+      if (daysSince < APP_CONFIG.UI.IOS_PROMPT_COOLDOWN_DAYS) return;
     }
 
     // 5. Delay show
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 3000);
+    }, APP_CONFIG.UI.IOS_PROMPT_DELAY_MS);
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem("xpuzzle_ios_prompt_dismissed", Date.now().toString());
+    localStorage.setItem(APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED, Date.now().toString());
   };
 
   if (!isVisible) return null;

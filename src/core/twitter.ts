@@ -1,6 +1,7 @@
+import { APP_CONFIG } from "./config";
+
 // 这里的 workerBase 应该替换为你实际部署后的 Worker 地址
-export const DEFAULT_WORKER_URL =
-  "https://cloudflare-twitter-proxy.shirolin.workers.dev";
+export const DEFAULT_WORKER_URL = APP_CONFIG.WORKER.DEFAULT_URL;
 
 export interface ParsedTwitterData {
   images: string[];
@@ -11,9 +12,7 @@ export interface ParsedTwitterData {
  * 检查字符串是否包含推特链接
  */
 export function extractTwitterUrl(text: string): string | null {
-  const match = text.match(
-    /https?:\/\/(twitter\.com|x\.com)\/[a-zA-Z0-9_]+\/status\/[0-9]+/,
-  );
+  const match = text.match(APP_CONFIG.TWITTER.URL_REGEX);
   return match ? match[0] : null;
 }
 
@@ -24,9 +23,9 @@ export function cleanTwitterUrl(url: string): string {
   try {
     const u = new URL(url);
     // 移除常见追踪参数
-    u.searchParams.delete("s");
-    u.searchParams.delete("t");
-    u.searchParams.delete("ref_src");
+    APP_CONFIG.TWITTER.TRACKING_PARAMS.forEach((param) =>
+      u.searchParams.delete(param),
+    );
     return u.toString();
   } catch {
     return url;

@@ -27,3 +27,8 @@ dist-ssr
 # Packaging
 release
 *.pem
+
+# Cloudflare Workers
+.wrangler
+worker-sites-init.js
+wrangler.toml

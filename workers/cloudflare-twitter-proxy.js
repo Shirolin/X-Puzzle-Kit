@@ -8,11 +8,25 @@ export default {
     const url = new URL(request.url);
     const mode = url.searchParams.get("mode");
     const target = url.searchParams.get("url");
+    const isMock = url.searchParams.get("mock") === "true";
 
     // --- 0. 基础安全校验 & CORS ---
     if (request.method === "OPTIONS") return handleOptions(request);
-
+    
     const headers = getCorsHeaders(request);
+    
+    // --- Mock Mode (本地调试救星) ---
+    if (isMock) {
+        await new Promise(r => setTimeout(r, 1500)); // 模拟网络延迟
+        const mockData = {
+           images: [
+               "https://pbs.twimg.com/media/GicXRbWbMAAlF_V?format=jpg&name=large",
+               "https://pbs.twimg.com/media/GicXRbXboAACDK9?format=jpg&name=large",
+               "https://pbs.twimg.com/media/GicXRbWbAAIm1dG?format=jpg&name=large"
+           ]
+        };
+        return new Response(JSON.stringify(mockData), { headers: { ...headers, "Content-Type": "application/json" } });
+    }
 
     if (!target) return new Response("Missing URL", { status: 400, headers });
 
@@ -87,23 +101,24 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
   // 2. 缓存未命中，执行解析
   console.log("Cache Miss:", tweetUrl);
 
+  // 提取 Tweet ID 和 Username
+  const match = tweetUrl.match(/(twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/(\d+)/);
+  const username = match ? match[2] : "Twitter";
+  const tweetId = match ? match[3] : null;
+
   // 定义解析源策略
   const sources = [
     {
       name: "FxTwitter",
       host: "api.fxtwitter.com",
-      path: (id) => `https://api.fxtwitter.com/status/${id}`,
+      path: (user, id) => `https://api.fxtwitter.com/${user}/status/${id}`,
     },
     {
       name: "VxTwitter",
       host: "api.vxtwitter.com",
-      path: (id) => `https://api.vxtwitter.com/Twitter/status/${id}`,
+      path: (user, id) => `https://api.vxtwitter.com/${user}/status/${id}`,
     },
   ];
-
-  // 提取 Tweet ID
-  const tweetIdMatch = tweetUrl.match(/\/status\/(\d+)/);
-  const tweetId = tweetIdMatch ? tweetIdMatch[1] : null;
 
   if (!tweetId) {
     return new Response(JSON.stringify({ error: "Invalid Tweet URL" }), {
@@ -112,15 +127,20 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
     });
   }
 
-  let finalData = null;
-  let lastError = null;
+  let errors = [];
+  let finalData = null; // 修复 ReferenceError
 
   // 3. 轮询尝试解析源
   for (const source of sources) {
     try {
       console.log(`Trying source: ${source.name}`);
-      const apiUrl = source.path(tweetId);
-      const apiResp = await fetch(apiUrl);
+      const apiUrl = source.path(username, tweetId);
+      const apiResp = await fetch(apiUrl, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Accept": "application/json"
+        }
+      });
 
       if (apiResp.ok) {
         const data = await apiResp.json();
@@ -140,17 +160,25 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
         if (images.length > 0) {
           finalData = { images };
           break; // 成功拿到数据，跳出循环
+        } else {
+            errors.push(`${source.name}: No images found in response`);
         }
+      } else {
+          errors.push(`${source.name}: HTTP ${apiResp.status}`);
       }
     } catch (e) {
       console.error(`Source ${source.name} failed:`, e);
+      errors.push(`${source.name}: ${e.message}`);
       lastError = e;
     }
   }
 
   if (!finalData) {
     return new Response(
-      JSON.stringify({ error: "All upstream services failed" }),
+      JSON.stringify({ 
+          error: "All upstream services failed",
+          details: errors 
+      }),
       {
         status: 502,
         headers: { ...corsHeadersObj, "Content-Type": "application/json" },

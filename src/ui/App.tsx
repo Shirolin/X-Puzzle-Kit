@@ -26,6 +26,8 @@ import {
   fetchTwitterImageBlob,
 } from "../core/twitter";
 
+import { APP_CONFIG } from "../core/config";
+
 interface AppProps {
   task: StitchTask;
   onClose: () => void;
@@ -34,13 +36,7 @@ interface AppProps {
   isPopup?: boolean;
 }
 
-const STORAGE_KEYS = {
-  LANG: "x-puzzle-kit-lang",
-  FORMAT: "x-puzzle-kit-format",
-  BG: "x-puzzle-kit-bg",
-  THEME: "x-puzzle-kit-theme",
-  SPLIT_OPTIONS: "x-puzzle-kit-split-options",
-};
+const STORAGE_KEYS = APP_CONFIG.STORAGE;
 
 export function App({
   task,
