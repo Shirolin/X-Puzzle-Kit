@@ -358,11 +358,15 @@ export function App({
 
     const padding = 48;
     const availableWidth = containerRef.current.clientWidth - padding;
-    const availableHeight = containerRef.current.clientHeight - padding;
+    // 移动端需要额外减去 sidebar 覆盖区域的高度（margin-bottom 向下延伸 + 工具栏提升的距离）
+    const isMobile = window.innerWidth <= 768;
+    const mobileBottomOffset = isMobile ? 96 : 0; // 约 3rem + radius-2xl
+    const availableHeight = containerRef.current.clientHeight - padding - mobileBottomOffset;
     const scale = Math.min(availableWidth / cw, availableHeight / ch, 1);
 
     setViewerScale(scale);
-    setViewerOffset({ x: 0, y: 0 });
+    // 移动端需要向上偏移，让图片在有效可视区域内居中
+    setViewerOffset({ x: 0, y: isMobile ? -mobileBottomOffset / 2 : 0 });
     setViewerRotation(0);
   }, [mode, canvasSize, splitSourceBitmap]);
 
