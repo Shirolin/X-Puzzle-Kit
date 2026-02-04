@@ -2007,29 +2007,78 @@ button:active {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    /* 黄金比例重校：取之前 2.5rem(太低) 与 6rem(太高) 的中间平衡点 */
-    padding: 2rem 1.5rem !important; 
-    padding-bottom: calc(32px + 4.25rem) !important; 
+    /* 强力回归中心：给一个较大的底部 Padding 以抵消巨型面板 */
+    padding: 1rem 1rem !important;
+    padding-bottom: 120px !important;
     box-sizing: border-box;
-    min-height: 280px !important;
+    min-height: 0 !important;
   }
 
   .viewer-upload-box {
     position: relative;
-    top: 0; /* 依靠父容器 padding 居中，不再手动位移 */
-    padding: 2rem 1.75rem !important;
+    padding: 2.25rem 1.75rem !important; 
     border-radius: 2.5rem !important;
     width: 90% !important;
+    max-width: 400px !important;
     height: auto !important;
     max-height: 100% !important; 
-    margin-top: 0 !important;
+    margin: 0 !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
+    min-height: 0 !important;
+    box-shadow: var(--shadow-glass) !important;
   }
 
-  .viewer-upload-box .upload-icon-container {
-    margin-bottom: 1rem !important;
+  /* 1.1 Short Screen Optimizations (<= 750px) */
+  @media (max-height: 750px) {
+    .viewer-empty-state {
+      padding-bottom: 100px !important; 
+    }
+
+    .viewer-upload-box {
+      padding: 1.75rem 1.5rem !important;
+      border-radius: 2rem !important;
+    }
+
+    .viewer-upload-box .upload-icon-container {
+      width: 56px !important;
+      height: 56px !important;
+      margin-bottom: 0.75rem !important;
+      border-radius: 16px !important;
+    }
+
+    .upload-tip {
+      font-size: 1rem !important;
+    }
+
+    .upload-sub-tip {
+      display: block !important; /* 714px 高度下必须显示，保持饱满感 */
+      opacity: 0.7;
+    }
+  }
+
+  /* 1.2 Tiny Screen Optimizations (<= 640px) */
+  @media (max-height: 640px) {
+    .viewer-empty-state {
+      padding-bottom: 80px !important;
+    }
+    
+    .viewer-upload-box {
+      padding: 1rem 1.25rem !important;
+      border-radius: 1.5rem !important;
+    }
+
+    .viewer-upload-box .upload-icon-container {
+      width: 44px !important;
+      height: 44px !important;
+      margin-bottom: 0.5rem !important;
+      border-radius: 12px !important;
+    }
+
+    .upload-sub-tip {
+      display: none !important; /* 只有在此极低高度下才隐藏 */
+    }
   }
 
   /* 2. Elevated Settings Panel (Apple Sheet Layer) */
