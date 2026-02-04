@@ -2539,11 +2539,27 @@ button:active {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    /* 强力回归中心：给一个较大的底部 Padding 以抵消巨型面板 */
-    padding: 1rem 1rem !important;
-    padding-bottom: 120px !important;
+    flex-direction: column !important; /* 切换为纵向 Flex 以容纳 Spacer */
+    padding: 0 1rem !important; /* 移除固定纵向 Padding */
+    justify-content: space-between !important; /* 让 Spacer 吸收剩余空间 */
     box-sizing: border-box;
     min-height: 0 !important;
+  }
+
+  /* 动态权重居中：顶部 Spacer */
+  .viewer-empty-state::before {
+    content: "";
+    flex: 1 !important; /* 顶部权重 1 */
+    min-height: 20px;
+    display: block;
+  }
+
+  /* 动态权重居中：底部 Spacer (负责抵消 Sidebar 偏置) */
+  .viewer-empty-state::after {
+    content: "";
+    flex: 3 !important; /* 强化比例至 1:3，确保在极小空间下依然有足够的“避让力” */
+    min-height: 48px; /* 提升固定最小避让距离 */
+    display: block;
   }
 
   .viewer-upload-box {
@@ -2559,14 +2575,15 @@ button:active {
     flex-direction: column !important;
     justify-content: center !important;
     min-height: 0 !important;
+    flex-shrink: 0 !important; /* 确保卡片内容不被压缩 */
     box-shadow: var(--shadow-glass) !important;
   }
 
   /* 1.1 Short Screen Optimizations (<= 750px) */
   @media (max-height: 750px) {
-    .viewer-empty-state {
-      padding-bottom: 100px !important;
-    }
+    /* 移除阶梯式 min-height 降级，改用稳定值防止高度切换时发生 Sag */
+    .viewer-empty-state::before { min-height: 15px; }
+    .viewer-empty-state::after { min-height: 48px; }
 
     .viewer-upload-box {
       padding: 1.75rem 1.5rem !important;
@@ -2592,9 +2609,9 @@ button:active {
 
   /* 1.2 Tiny Screen Optimizations (<= 640px) */
   @media (max-height: 640px) {
-    .viewer-empty-state {
-      padding-bottom: 80px !important;
-    }
+    /* 只有在极低屏幕下才允许最小值缩减，但增加比例系数 */
+    .viewer-empty-state::before { min-height: 5px; }
+    .viewer-empty-state::after { min-height: 32px; }
 
     .viewer-upload-box {
       padding: 1rem 1.25rem !important;
