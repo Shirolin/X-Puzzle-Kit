@@ -662,6 +662,9 @@ export function App({
 
   const handleImportUrl = useCallback(
     async (urlToProcess: string) => {
+      // Logic guard
+      if (__IS_EXTENSION__) return;
+
       const twitterUrl = extractTwitterUrl(urlToProcess);
       if (!twitterUrl) {
         toast.error(t("invalidUrl") || "Invalid Twitter URL");
@@ -733,6 +736,8 @@ export function App({
   const processedShareRef = useRef<string | null>(null);
 
   useEffect(() => {
+    if (__IS_EXTENSION__) return; // Disable Share Target in Extension
+
     const handleShareTarget = async () => {
       const params = new URLSearchParams(window.location.search);
       const title = params.get("title");
@@ -968,7 +973,9 @@ export function App({
               );
             }}
             onStitchFilesSelect={handleStitchFilesSelect}
-            onImportFromUrl={() => setShowUrlInput(true)}
+            onImportFromUrl={
+              __IS_EXTENSION__ ? undefined : () => setShowUrlInput(true)
+            }
           />
         </div>
       </div>
@@ -1009,22 +1016,24 @@ export function App({
         container={mountNode}
       />
 
-      <InputDialog
-        isOpen={showUrlInput}
-        title={t("importFromUrl") || "Import from URL"}
-        placeholder="https://x.com/..."
-        validator={(val) =>
-          !extractTwitterUrl(val)
-            ? t("invalidUrl") || "Invalid Twitter URL"
-            : undefined
-        }
-        onConfirm={(val) => {
-          handleImportUrl(val);
-          setShowUrlInput(false);
-        }}
-        onCancel={() => setShowUrlInput(false)}
-        container={mountNode}
-      />
+      {!__IS_EXTENSION__ && (
+        <InputDialog
+          isOpen={showUrlInput}
+          title={t("importFromUrl") || "Import from URL"}
+          placeholder="https://x.com/..."
+          validator={(val) =>
+            !extractTwitterUrl(val)
+              ? t("invalidUrl") || "Invalid Twitter URL"
+              : undefined
+          }
+          onConfirm={(val) => {
+            handleImportUrl(val);
+            setShowUrlInput(false);
+          }}
+          onCancel={() => setShowUrlInput(false)}
+          container={mountNode}
+        />
+      )}
 
       <ReloadPrompt />
     </div>

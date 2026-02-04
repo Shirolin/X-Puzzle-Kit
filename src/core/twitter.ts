@@ -63,6 +63,10 @@ export async function parseTwitterMetadata(
   tweetUrl: string,
   workerUrl: string = DEFAULT_WORKER_URL,
 ): Promise<string[]> {
+  if (__IS_EXTENSION__) {
+    throw new Error("Twitter parsing is not supported in extension mode");
+  }
+
   try {
     const cleanedUrl = cleanTwitterUrl(tweetUrl);
     const apiUrl = `${workerUrl}/?mode=parse&url=${encodeURIComponent(cleanedUrl)}`;
@@ -94,6 +98,12 @@ export async function fetchTwitterImageBlob(
   workerUrl: string = DEFAULT_WORKER_URL,
   _onProgress?: (loaded: number, total: number) => void, // 预留，fetch流式进度较为复杂，暂不实现
 ): Promise<Blob> {
+  if (__IS_EXTENSION__) {
+    throw new Error(
+      "Twitter image fetching is not supported in extension mode",
+    );
+  }
+
   const proxyUrl = `${workerUrl}/?mode=proxy&url=${encodeURIComponent(imageUrl)}`;
 
   const resp = await fetchWithRetry(proxyUrl);

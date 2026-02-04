@@ -11,14 +11,23 @@ export default defineConfig({
         __dirname,
         "./src/mocks/pwa-register.ts",
       ),
+      "@/core/twitter": path.resolve(__dirname, "./src/mocks/twitter.ts"),
+      // Also map the direct path if imported relatively
+      [path.resolve(__dirname, "./src/core/twitter")]: path.resolve(
+        __dirname,
+        "./src/mocks/twitter.ts",
+      ),
     },
   },
   plugins: [
     preact(),
     webExtension({
       manifest: "src/manifest.json",
-      watchMode: true,
+
       disableAutoLaunch: true,
     }),
   ],
+  define: {
+    __IS_EXTENSION__: true,
+  },
 });

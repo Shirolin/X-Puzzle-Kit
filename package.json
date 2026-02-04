@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:web": "vite dev -c vite.config.web.ts",
     "dev:test": "vite serve -c vite.test.config.ts",
     "build": "vite build",
     "build:web": "vite build -c vite.config.web.ts",

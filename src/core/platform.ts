@@ -3,8 +3,7 @@
  * 用于隔离 Chrome 插件 API 与标准 Web API (PWA/Website)
  */
 
-export const isExtension =
-  typeof chrome !== "undefined" && !!chrome.runtime?.getURL;
+export const isExtension = __IS_EXTENSION__;
 
 /**
  * 抽象存储接口：优先使用 chrome.storage.local，环境不存在时回退到 localStorage
@@ -13,7 +12,7 @@ export const platformStorage = {
   async get<T extends Record<string, unknown>>(
     keys: string | string[] | T,
   ): Promise<T> {
-    if (isExtension) {
+    if (__IS_EXTENSION__ && typeof chrome !== "undefined" && chrome.storage) {
       return chrome.storage.local.get(keys) as Promise<T>;
     }
 
@@ -42,7 +41,7 @@ export const platformStorage = {
   },
 
   async set(items: Record<string, unknown>): Promise<void> {
-    if (isExtension) {
+    if (__IS_EXTENSION__ && typeof chrome !== "undefined" && chrome.storage) {
       return chrome.storage.local.set(items);
     }
 
@@ -58,7 +57,7 @@ export const platformStorage = {
 export const fetchImageData = async (
   url: string,
 ): Promise<{ dataUrl?: string; error?: string }> => {
-  if (isExtension) {
+  if (__IS_EXTENSION__ && typeof chrome !== "undefined" && chrome.runtime) {
     return new Promise((resolve) => {
       chrome.runtime.sendMessage({ type: "FETCH_IMAGE", url }, (response) => {
         resolve(response);
@@ -84,7 +83,7 @@ export const fetchImageData = async (
  * 资产路径适配：插件环境使用 chrome-extension://，Web 环境使用相对路径
  */
 export const getAssetUrl = (path: string): string => {
-  if (isExtension) {
+  if (__IS_EXTENSION__ && typeof chrome !== "undefined" && chrome.runtime) {
     return chrome.runtime.getURL(path);
   }
   // Web 版本直接返回相对或绝对路径

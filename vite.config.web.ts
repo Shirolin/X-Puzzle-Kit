@@ -64,6 +64,10 @@ export default defineConfig({
       },
     }),
   ],
+  define: {
+    __IS_EXTENSION__: false,
+  },
+
   build: {
     outDir: "dist-web",
     emptyOutDir: true,

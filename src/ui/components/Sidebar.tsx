@@ -209,8 +209,9 @@ interface SidebarProps {
   isGenerating: boolean;
   removeImage: (id: string) => void;
   clearAllImages: () => void;
+
   onStitchFilesSelect: (files: FileList | File[]) => void;
-  onImportFromUrl: () => void;
+  onImportFromUrl?: () => void;
 }
 
 export function Sidebar({
@@ -596,12 +597,14 @@ export function Sidebar({
                     title={t("uploadImages") || "Add Images"}
                     className="sorting-toolbar-btn primary"
                   />
-                  <IconButton
-                    icon={<Link size={14} />}
-                    onClick={onImportFromUrl}
-                    title={t("importFromUrl") || "Import from URL"}
-                    className="sorting-toolbar-btn secondary"
-                  />
+                  {onImportFromUrl && (
+                    <IconButton
+                      icon={<Link size={14} />}
+                      onClick={onImportFromUrl}
+                      title={t("importFromUrl") || "Import from URL"}
+                      className="sorting-toolbar-btn secondary"
+                    />
+                  )}
                   <IconButton
                     icon={<Trash2 size={14} />}
                     onClick={clearAllImages}

@@ -1,5 +1,18 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "FETCH_IMAGE") {
+    // SECURITY: Validate URL against allowed domains to prevent SSRF
+    try {
+      const urlObj = new URL(message.url);
+      const allowedDomains = ["twitter.com", "x.com", "pbs.twimg.com"];
+      if (!allowedDomains.some((d) => urlObj.hostname.endsWith(d))) {
+        sendResponse({ error: "Domain not allowed" });
+        return true;
+      }
+    } catch {
+      sendResponse({ error: "Invalid URL" });
+      return true;
+    }
+
     fetch(message.url)
       .then((response) => response.blob())
       .then((blob) => {
