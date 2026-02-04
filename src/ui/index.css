@@ -946,9 +946,9 @@ input:checked + .slider:before {
   backdrop-filter: blur(40px) saturate(210%);
   -webkit-backdrop-filter: blur(40px) saturate(210%);
   /* Apple 风格的多层弥散投影 */
-  box-shadow: 
+  box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.1),
-    0 1px 1px rgba(255, 255, 255, 0.1) inset; 
+    0 1px 1px rgba(255, 255, 255, 0.1) inset;
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); /* 更加从容的时间曲线 */
   cursor: pointer;
   position: relative;
@@ -957,7 +957,7 @@ input:checked + .slider:before {
 [data-theme="light"] .viewer-upload-box {
   background: rgba(255, 255, 255, 0.72);
   border-color: rgba(0, 0, 0, 0.04);
-  box-shadow: 
+  box-shadow:
     0 30px 60px rgba(0, 0, 0, 0.05),
     0 1px 1px rgba(255, 255, 255, 0.8) inset;
 }
@@ -965,7 +965,7 @@ input:checked + .slider:before {
 .viewer-upload-box:hover {
   transform: translateY(-5px); /* 克制的位移 */
   background: var(--color-surface);
-  box-shadow: 
+  box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.12),
     0 1px 1px rgba(255, 255, 255, 0.15) inset;
 }
@@ -978,7 +978,7 @@ input:checked + .slider:before {
 .upload-icon-container {
   width: 72px;
   height: 72px;
-  background: linear-gradient(180deg, #007AFF 0%, #0063D1 100%); 
+  background: linear-gradient(180deg, #007aff 0%, #0063d1 100%);
   border-radius: 18px; /* 典型的方形圆角，增强视觉结构感 */
   display: flex;
   align-items: center;
@@ -986,24 +986,28 @@ input:checked + .slider:before {
   margin-bottom: 2rem;
   color: white;
   position: relative;
-  box-shadow: 
+  box-shadow:
     0 12px 30px rgba(0, 122, 255, 0.3),
     0 1px 0 rgba(255, 255, 255, 0.3) inset;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .upload-icon-container::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
   pointer-events: none;
 }
 
 .viewer-upload-box:hover .upload-icon-container {
   transform: translateY(-4px) scale(1.04); /* 剔除旋转，仅保留精密位移 */
-  box-shadow: 
+  box-shadow:
     0 25px 50px rgba(0, 122, 255, 0.35),
     0 1px 0 rgba(255, 255, 255, 0.3) inset;
 }
@@ -2016,12 +2020,12 @@ button:active {
 
   .viewer-upload-box {
     position: relative;
-    padding: 2.25rem 1.75rem !important; 
+    padding: 2.25rem 1.75rem !important;
     border-radius: 2.5rem !important;
     width: 90% !important;
     max-width: 400px !important;
     height: auto !important;
-    max-height: 100% !important; 
+    max-height: 100% !important;
     margin: 0 !important;
     display: flex !important;
     flex-direction: column !important;
@@ -2033,7 +2037,7 @@ button:active {
   /* 1.1 Short Screen Optimizations (<= 750px) */
   @media (max-height: 750px) {
     .viewer-empty-state {
-      padding-bottom: 100px !important; 
+      padding-bottom: 100px !important;
     }
 
     .viewer-upload-box {
@@ -2063,7 +2067,7 @@ button:active {
     .viewer-empty-state {
       padding-bottom: 80px !important;
     }
-    
+
     .viewer-upload-box {
       padding: 1rem 1.25rem !important;
       border-radius: 1.5rem !important;
