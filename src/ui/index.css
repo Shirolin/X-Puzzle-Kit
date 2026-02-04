@@ -980,57 +980,36 @@ input:checked + .slider:before {
 }
 
 .upload-icon-container {
-  width: 80px;
-  height: 80px;
-  aspect-ratio: 1 / 1;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, var(--color-primary) 0%, #3a91ff 100%);
-  border-radius: 1.75rem; /* 更具 Apple 风格的大圆角矩形 */
+  width: 64px;
+  height: 64px;
+  background: var(--color-primary);
+  border-radius: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
   color: white;
-  box-shadow: 
-    0 15px 35px rgba(var(--color-primary-rgb), 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-  transition: all var(--transition-normal);
-  position: relative;
-}
-
-.upload-icon-container::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.2) 0%, transparent 70%);
-  z-index: -1;
-  transition: opacity var(--transition-normal);
+  box-shadow: 0 12px 24px rgba(var(--color-primary-rgb), 0.3);
+  transition: transform var(--transition-fast);
 }
 
 .viewer-upload-box:hover .upload-icon-container {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 
-    0 20px 40px rgba(var(--color-primary-rgb), 0.4),
-    0 0 15px rgba(var(--color-primary-rgb), 0.5);
+  transform: translateY(-8px) scale(1.05); /* Professional floating effect */
 }
 
 .upload-tip {
-  flex-shrink: 0;
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.5rem;
   color: var(--color-text);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .upload-sub-tip {
-  flex-shrink: 0;
   color: var(--color-text-muted);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  margin-bottom: 0; /* Let flex gap or outer padding handle this */
-  opacity: 0.7;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -2002,9 +1981,8 @@ button:active {
     min-height: 30vh;
     display: flex;
     flex-direction: column;
-    /* 核心修复：补偿由于负边距导致的 96px 被遮挡区域 (viewer 负边距 64px + sidebar 负边距 32px)。
-       这会使得容器的逻辑中心正好位于 Header 底部与 Sidebar 顶部的视觉中心。 */
-    padding-bottom: 96px !important;
+    /* padding-bottom 给图片自适应留安全区域 */
+    padding-bottom: 2rem !important;
     /* margin-bottom 让棋盘格向下延伸，填充 sidebar-panel 圆角区域 */
     margin-bottom: calc(-2rem - var(--radius-2xl));
   }
@@ -2020,46 +1998,15 @@ button:active {
      这里使用 top 而不是 transform，以保留 hover/dragging 时的 transform 动画 */
   .viewer-upload-box {
     position: relative;
-    top: 0;
-    padding: 1.5rem 1.25rem !important;
+    top: -32px;
+    padding: 2.5rem 1.5rem !important; /* Slightly more compact for mobile */
     border-radius: var(--radius-2xl) !important;
     width: 85% !important;
-    max-width: 320px !important; /* 防止在宽屏移动设备上拉得太宽 */
-    max-height: 85%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: var(--color-surface) !important; /* 在移动端使用更实一点的背景增强对比 */
-    margin-top: 0 !important;
-    flex-shrink: 0; /* 禁止自身被父容器压缩 */
+    margin-top: 0 !important; /* Reset manual lift */
   }
 
   .viewer-upload-box .upload-icon-container {
-    flex-shrink: 0 !important; /* 禁止图标被高度限制压缩 */
     margin-bottom: 1rem !important;
-    width: 64px !important;
-    height: 64px !important;
-    border-radius: 1.35rem !important; /* 移动端同步大圆角风格 */
-  }
-
-  .viewer-upload-box .upload-icon-container svg {
-    width: 28px !important;
-    height: 28px !important;
-  }
-
-  .viewer-upload-box .upload-title {
-    font-size: 1.125rem !important;
-    margin-bottom: 0.375rem !important;
-  }
-
-  .viewer-upload-box .upload-tip {
-    font-size: 1.125rem !important;
-    margin-bottom: 0.375rem !important;
-  }
-
-  .viewer-upload-box .upload-sub-tip {
-    font-size: 0.8125rem !important;
-    opacity: 0.6;
   }
 
   /* 2. Elevated Settings Panel (Apple Sheet Layer) */
