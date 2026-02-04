@@ -1100,6 +1100,7 @@ input:checked + .slider:before {
 
 .sidebar-footer {
   padding: 0.875rem;
+  padding-bottom: calc(0.875rem + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--color-glass-border);
   background: var(--color-surface-soft);
   display: flex;
@@ -2929,7 +2930,7 @@ button:active {
   inset: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--color-overlay);
+  background-color: var(--color-background);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   display: flex;
