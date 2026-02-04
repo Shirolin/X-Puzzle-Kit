@@ -10,6 +10,10 @@ export interface ImageNode {
   localGap?: number; // Gap after a single image
   name?: string; // Image name (optional)
   originalIndex?: number; // Initial index identifier
+  source?: {
+    tweetId: string;
+    artistHandle: string;
+  };
 }
 
 export type BackgroundColor = "transparent" | "white" | "black";

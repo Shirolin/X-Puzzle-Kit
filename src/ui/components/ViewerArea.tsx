@@ -210,19 +210,54 @@ export function ViewerArea({
           />
           {/* Metadata Floating Badges */}
           <div className="floating-badge-container">
+            {/* Image Source Badge - Tweaked Logic */}
             {mode === "stitch" &&
-              task.tweetId !== "external" &&
-              task.tweetId !== "none" && (
-                <a
-                  href={`https://x.com/i/status/${task.tweetId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="floating-badge badge-primary source-link"
-                  title={t("openSourcePage") || "Open Source Page"}
-                >
-                  @{task.artistHandle} / x.com/{task.tweetId}
-                </a>
-              )}
+              (() => {
+                const firstImage = images[0];
+                const cleanSource = firstImage?.source;
+
+                // Priority 1: First Image has source metadata
+                if (cleanSource) {
+                  return (
+                    <a
+                      href={`https://x.com/${cleanSource.artistHandle}/status/${cleanSource.tweetId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="floating-badge badge-primary source-link"
+                      title={t("openSourcePage") || "Open Source Page"}
+                      onPointerDown={(e) => e.stopPropagation()}
+                      onMouseDown={(e) => e.stopPropagation()}
+                    >
+                      @{cleanSource.artistHandle}
+                    </a>
+                  );
+                }
+
+                // Priority 2: Task metadata fallback (only if valid)
+                // Filter out "web", "none", "external" which are placeholders
+                if (
+                  task.tweetId &&
+                  task.tweetId !== "web" &&
+                  task.tweetId !== "none" &&
+                  task.tweetId !== "external"
+                ) {
+                  return (
+                    <a
+                      href={`https://x.com/i/status/${task.tweetId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="floating-badge badge-primary source-link"
+                      title={t("openSourcePage") || "Open Source Page"}
+                      onPointerDown={(e) => e.stopPropagation()}
+                      onMouseDown={(e) => e.stopPropagation()}
+                    >
+                      @{task.artistHandle}
+                    </a>
+                  );
+                }
+
+                return null;
+              })()}
             {/* Split Result Badge - Moved here to prevent overlap on narrow screens */}
             {mode === "split" && splitBlobs.length > 0 && (
               <div

@@ -175,10 +175,16 @@ async function handleStitchClick(
   const timeElement = tweet.querySelector("time");
   const tweetLink = timeElement?.parentElement as HTMLAnchorElement;
   if (tweetLink?.href) {
-    const match = tweetLink.href.match(/\/(.+)\/status\/(\d+)/);
-    if (match) {
-      artistHandle = match[1];
-      tweetId = match[2];
+    try {
+      const url = new URL(tweetLink.href);
+      const parts = url.pathname.split("/").filter(Boolean);
+      // Expected: ["username", "status", "id"]
+      if (parts.length >= 3 && parts[1] === "status") {
+        artistHandle = parts[0];
+        tweetId = parts[2];
+      }
+    } catch (e) {
+      console.warn("Failed to parse tweet link:", e);
     }
   }
 
@@ -205,6 +211,10 @@ async function handleStitchClick(
         width: img.naturalWidth || 1000,
         height: img.naturalHeight || 1000,
         visible: true,
+        source: {
+          tweetId,
+          artistHandle,
+        },
       };
     })
     .filter((n) => n !== null) as ImageNode[];

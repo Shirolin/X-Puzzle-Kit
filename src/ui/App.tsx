@@ -677,6 +677,13 @@ export function App({
 
       try {
         // 1. Parse Metadata
+        // Updated: Extract handle and ID for Source Badge
+        const urlObj = new URL(twitterUrl);
+        const pathParts = urlObj.pathname.split("/").filter(Boolean);
+        // /username/status/123456...
+        const artistHandle = pathParts[0];
+        const tweetId = pathParts[2]; // handle / status / id
+
         let images = await parseTwitterMetadata(twitterUrl);
 
         if (images.length === 0) {
@@ -710,14 +717,42 @@ export function App({
 
         setLoadingMessage(t("processingImages") || "⚡ Processing...");
 
-        // 3. Convert to Files
-        const files = blobs.map(
-          (blob, i) =>
-            new File([blob], `twitter_image_${i}.jpg`, { type: blob.type }),
+        // 3. Create ImageNodes directly (to attach source metadata)
+        // We generate unique IDs and defer index handling to useStitchManager
+
+        const newNodes: ImageNode[] = await Promise.all(
+          blobs.map(async (blob, i) => {
+            return new Promise<ImageNode>((resolve) => {
+              const img = new Image();
+              const url = URL.createObjectURL(blob);
+              img.onload = async () => {
+                const bitmap = await createImageBitmap(img);
+                resolve({
+                  id: Math.random().toString(36).substr(2, 9),
+                  name: `twitter_image_${i}.jpg`,
+                  originalUrl: url,
+                  thumbnailUrl: url,
+                  width: img.width,
+                  height: img.height,
+                  visible: true,
+                  // We don't have access to current `images.length` fresh state here easily without ref,
+                  // but `addImages` appends, so `originalIndex` handles itself or isn't critical for initial append order.
+                  // Let's just use a large number or 0, useStitchManager might re-index or it's just for display.
+                  originalIndex: 0,
+                  bitmap,
+                  source: {
+                    tweetId,
+                    artistHandle,
+                  },
+                });
+              };
+              img.src = url;
+            });
+          }),
         );
 
         // 4. Add to Stitcher
-        await handleStitchFilesSelect(files);
+        addImages(newNodes);
       } catch (e: unknown) {
         console.error("Twitter share handling failed:", e);
         const errorMessage = e instanceof Error ? e.message : String(e);
@@ -729,7 +764,7 @@ export function App({
         setLoadingMessage("");
       }
     },
-    [handleStitchFilesSelect],
+    [addImages],
   );
 
   // Handle Share Target (Twitter)

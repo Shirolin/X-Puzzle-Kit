@@ -502,7 +502,7 @@ input:checked + .slider:before {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  z-index: 50;
+  z-index: 20;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -591,7 +591,7 @@ input:checked + .slider:before {
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 30;
+  z-index: 25;
 }
 
 .toolbar-row {
@@ -1225,7 +1225,7 @@ input:checked + .slider:before {
 .loading-overlay {
   position: absolute;
   inset: 0;
-  z-index: 100;
+  z-index: 35;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
