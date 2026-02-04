@@ -2582,8 +2582,12 @@ button:active {
   /* 1.1 Short Screen Optimizations (<= 750px) */
   @media (max-height: 750px) {
     /* 移除阶梯式 min-height 降级，改用稳定值防止高度切换时发生 Sag */
-    .viewer-empty-state::before { min-height: 15px; }
-    .viewer-empty-state::after { min-height: 48px; }
+    .viewer-empty-state::before {
+      min-height: 15px;
+    }
+    .viewer-empty-state::after {
+      min-height: 48px;
+    }
 
     .viewer-upload-box {
       padding: 1.75rem 1.5rem !important;
@@ -2610,8 +2614,12 @@ button:active {
   /* 1.2 Tiny Screen Optimizations (<= 640px) */
   @media (max-height: 640px) {
     /* 只有在极低屏幕下才允许最小值缩减，但增加比例系数 */
-    .viewer-empty-state::before { min-height: 5px; }
-    .viewer-empty-state::after { min-height: 32px; }
+    .viewer-empty-state::before {
+      min-height: 5px;
+    }
+    .viewer-empty-state::after {
+      min-height: 32px;
+    }
 
     .viewer-upload-box {
       padding: 1rem 1.25rem !important;
