@@ -11,6 +11,13 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      react: "preact/compat",
+      "react-dom": "preact/compat",
+      "react/jsx-runtime": "preact/jsx-runtime",
+      "react/jsx-dev-runtime": "preact/jsx-runtime",
+      "preact/jsx-dev-runtime": "preact/jsx-runtime",
+      preact: path.resolve(__dirname, "node_modules/preact"),
+      "preact/hooks": path.resolve(__dirname, "node_modules/preact/hooks"),
     },
   },
   plugins: [

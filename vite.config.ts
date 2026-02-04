@@ -7,6 +7,14 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      react: "preact/compat",
+      "react-dom": "preact/compat",
+      "react/jsx-runtime": "preact/jsx-runtime",
+      "react/jsx-dev-runtime": "preact/jsx-runtime",
+      // Explicitly alias preact/jsx-dev-runtime to avoid resolution issues
+      "preact/jsx-dev-runtime": "preact/jsx-runtime",
+      preact: path.resolve(__dirname, "node_modules/preact"),
+      "preact/hooks": path.resolve(__dirname, "node_modules/preact/hooks"),
       "virtual:pwa-register/react": path.resolve(
         __dirname,
         "./src/mocks/pwa-register.ts",
