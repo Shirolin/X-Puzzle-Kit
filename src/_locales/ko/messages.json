@@ -164,7 +164,7 @@
     "description": "모두 다운로드 버튼 텍스트"
   },
   "emptyImageText": {
-    "message": "이미지가 없습니다. 업로드해주세요.",
+    "message": "이미지가 없습니다. 클릭하여 업로드하세요.",
     "description": "이미지 목록이 비어 있을 때 표시되는 메시지"
   },
   "installTitle": {
@@ -282,6 +282,10 @@
   "extensionUpdatedRefresh": {
     "message": "확장 프로그램이 업데이트되었습니다. 페이지를 새로 고치십시오.",
     "description": "확장 프로그램 컨텍스트가 무효화되었을 때의 메시지"
+  },
+  "confirmRemoveImage": {
+    "message": "이 이미지를 삭제하시겠습니까?",
+    "description": "단일 이미지 삭제 시 확인 메시지"
   },
   "confirmClearAll": {
     "message": "모든 이미지를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",

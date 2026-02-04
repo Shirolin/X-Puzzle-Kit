@@ -140,7 +140,7 @@
     "description": "Texte du bouton pendant le traitement"
   },
   "emptyImageText": {
-    "message": "Aucune image, veuillez en télécharger",
+    "message": "Pas d'images, cliquez pour télécharger",
     "description": "Message affiché lorsque la liste d'images est vide"
   },
   "installTitle": {
@@ -282,6 +282,10 @@
   "extensionUpdatedRefresh": {
     "message": "L'extension a été mise à jour. Veuillez rafraîchir la page.",
     "description": "Message affiché lorsque le contexte de l'extension est invalidé"
+  },
+  "confirmRemoveImage": {
+    "message": "Êtes-vous sûr de vouloir supprimer cette image ?",
+    "description": "Message de confirmation lors de la suppression d'une seule image"
   },
   "confirmClearAll": {
     "message": "Êtes-vous sûr de vouloir effacer toutes les images ? Cette opération est irréversible.",

@@ -172,7 +172,7 @@
     "description": "Consejo para seleccionar imagen"
   },
   "emptyImageText": {
-    "message": "No hay imágenes, por favor sube",
+    "message": "No hay imágenes, haz clic para cargar",
     "description": "Mensaje mostrado cuando la lista de imágenes está vacía"
   },
   "installTitle": {
@@ -282,6 +282,10 @@
   "extensionUpdatedRefresh": {
     "message": "La extensión se ha actualizado. Por favor, actualice la página.",
     "description": "Mensaje mostrado cuando el contexto de la extensión se invalida"
+  },
+  "confirmRemoveImage": {
+    "message": "¿Estás seguro de que quieres eliminar esta imagen?",
+    "description": "Mensaje de confirmación al eliminar una sola imagen"
   },
   "confirmClearAll": {
     "message": "¿Estás seguro de que quieres borrar todas las imágenes? Esta acción no se puede deshacer.",

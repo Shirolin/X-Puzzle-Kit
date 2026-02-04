@@ -168,7 +168,7 @@
     "description": "画像をアップロードボタンのテキスト"
   },
   "emptyImageText": {
-    "message": "画像がありません。アップロードしてください",
+    "message": "画像がありません、クリックしてアップロード",
     "description": "画像リストが空の場合のメッセージ"
   },
   "installTitle": {
@@ -278,6 +278,14 @@
   "extensionUpdatedRefresh": {
     "message": "拡張機能が更新されました。ページを更新してください。",
     "description": "拡張機能のコンテキストが無効になったときのメッセージ"
+  },
+  "slideRefine": {
+    "message": "スライドして微調整",
+    "description": "ジョグダイヤルコントローラーのヒント文"
+  },
+  "confirmRemoveImage": {
+    "message": "この画像を削除してもよろしいですか？",
+    "description": "単一の画像を削除する際の確認メッセージ"
   },
   "confirmClearAll": {
     "message": "すべての画像を消去してもよろしいですか？この操作は取り消せません。",

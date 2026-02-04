@@ -1,8 +1,17 @@
-import { useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { LayoutType, SplitConfig } from "../../core/types";
 import { LayoutButton, IconButton } from "./Common";
-import { LayoutGrid, Layout, Rows, Columns, Plus, Minus } from "lucide-preact";
+import {
+  LayoutGrid,
+  Layout,
+  Rows,
+  Columns,
+  Plus,
+  Minus,
+  RotateCcw,
+} from "lucide-preact";
 import { t } from "../../core/i18n";
+import { SidebarSection, Divider, JogWheel } from "./Sidebar";
 
 interface SplitterControlProps {
   onConfigChange: (config: SplitConfig) => void;
@@ -30,6 +39,7 @@ export function SplitterControl({
   disabled = false,
 }: SplitterControlProps) {
   const { layout, rows, cols, gap } = config;
+  const [isGapOpen, setIsGapOpen] = useState(gap > 0);
 
   const setLayout = (l: LayoutType) =>
     !disabled && onConfigChange({ ...config, layout: l });
@@ -38,13 +48,12 @@ export function SplitterControl({
   const setCols = (c: number) =>
     !disabled && onConfigChange({ ...config, cols: c });
   const setGap = (g: number) =>
-    !disabled && onConfigChange({ ...config, gap: g });
+    !disabled && onConfigChange({ ...config, gap: Math.max(0, g) });
 
   useEffect(() => {
     // Determine the ideal ratio for Twitter if optimized
     let autoCropRatio = undefined;
     if (isTwitterOptimized) {
-      // Updated based on user feedback: Twitter now renders 2x2 grids as 16:9 rectangles, not squares.
       if (layout === "GRID_2x2") autoCropRatio = 16 / 9;
       else if (layout === "T_SHAPE_3") autoCropRatio = 1.75;
       else if (layout === "HORIZONTAL_Nx1" && cols === 2) autoCropRatio = 1.75;
@@ -64,10 +73,9 @@ export function SplitterControl({
     : {};
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+    <>
       {/* Layout Scheme Section */}
-      <section className="section-block" style={containerStyle}>
-        <h3 className="section-header">{t("layoutScheme")}</h3>
+      <SidebarSection title={t("layoutScheme")} style={containerStyle}>
         <div className="layout-grid-container">
           <LayoutButton
             active={layout === "GRID_2x2"}
@@ -94,16 +102,14 @@ export function SplitterControl({
             label={t("layoutVertical")}
           />
         </div>
-      </section>
+      </SidebarSection>
 
-      {/* 自定义行列区块 */}
       {/* Custom Rows/Cols Section */}
       {(layout === "VERTICAL_1xN" || layout === "HORIZONTAL_Nx1") && (
-        <section className="section-block" style={containerStyle}>
-          <div className="section-header-row">
-            <h3 className="section-header" style={{ margin: 0 }}>
-              {layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}
-            </h3>
+        <SidebarSection
+          title={layout === "VERTICAL_1xN" ? t("rowCount") : t("colCount")}
+          style={containerStyle}
+          headerRight={
             <div className="control-group-pill">
               <IconButton
                 onClick={() => {
@@ -151,105 +157,65 @@ export function SplitterControl({
                 }}
               />
             </div>
-          </div>
-        </section>
+          }
+        ></SidebarSection>
       )}
 
-      {/* Gap Removal Section */}
-      <section className="section-block" style={containerStyle}>
-        <div className="section-header-row">
-          <h3 className="section-header" style={{ margin: 0 }}>
-            {t("gapRemoval")}
-          </h3>
-          <div className="control-group-pill">
-            <IconButton
-              onClick={() => setGap(Math.max(0, gap - 1))}
-              icon={<Minus size={10} />}
-              className="global-gap-btn"
-              style={{
-                border: "none",
-                background: "none",
-                padding: "1px",
-                color: "var(--color-text)",
+      {/* Gap Removal Section (Enhanced) */}
+      <SidebarSection
+        title={t("gapRemoval")}
+        className="gap-control-enhanced"
+        style={containerStyle}
+        headerRight={
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={isGapOpen}
+              onChange={(e) => {
+                const checked = e.currentTarget.checked;
+                setIsGapOpen(checked);
+                if (!checked) setGap(0);
               }}
             />
-            <div className="flex-row-center">
-              <input
-                type="number"
-                value={gap}
-                onInput={(e) => {
-                  const val = parseInt(e.currentTarget.value) || 0;
-                  setGap(Math.max(0, Math.min(100, val)));
-                }}
-                className="hide-arrows"
-                style={{
-                  width: "22px",
-                  height: "14px",
-                  fontSize: "11px",
-                  border: "none",
-                  outline: "none",
-                  textAlign: "center",
-                  backgroundColor: "transparent",
-                  fontWeight: 700,
-                  color: "var(--color-primary)",
-                  fontFamily: "'Fira Code', monospace",
-                }}
-              />
-              <span
-                style={{
-                  fontSize: "9px",
-                  color: "var(--color-text-muted)",
-                  fontWeight: 700,
-                  marginLeft: "1px",
-                }}
-              >
-                PX
-              </span>
+            <span className="slider"></span>
+          </label>
+        }
+      >
+        {isGapOpen && (
+          <div className="gap-control-content animate-slide-up">
+            <div className="gap-value-pill-container">
+              <div className="control-group-pill gap-value-pill">
+                <div className="pill-reset-trigger" onClick={() => setGap(0)}>
+                  <RotateCcw size={16} strokeWidth={2.5} />
+                </div>
+                <div className="pill-divider" />
+                <div className="pill-input-group">
+                  <input
+                    type="number"
+                    value={gap}
+                    onInput={(e) => {
+                      const val = parseInt(e.currentTarget.value) || 0;
+                      setGap(Math.max(0, Math.min(1000, val)));
+                    }}
+                    className="hide-arrows pill-input"
+                  />
+                  <span className="pill-unit-text">PX</span>
+                </div>
+              </div>
             </div>
-            <IconButton
-              onClick={() => setGap(Math.min(100, gap + 1))}
-              icon={<Plus size={10} />}
-              className="global-gap-btn"
-              style={{
-                border: "none",
-                background: "none",
-                padding: "1px",
-                color: "var(--color-text)",
-              }}
-            />
+
+            <div className="jog-dial-container">
+              <JogWheel value={gap} onChange={setGap} min={0} max={1000} />
+            </div>
           </div>
-        </div>
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={gap}
-          onInput={(e) => setGap(parseInt(e.currentTarget.value) || 0)}
-          className="vibrant-range range-slider-control"
-        />
-      </section>
+        )}
+      </SidebarSection>
 
       {/* Twitter Options Section */}
-      <section className="section-block" style={containerStyle}>
-        <h3 className="section-header">{t("twitterOptimize")}</h3>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "0.75rem",
-          }}
-        >
-          <span
-            style={{
-              fontSize: "0.6rem",
-              color: "var(--color-text-muted)",
-              lineHeight: 1.3,
-              flex: 1,
-            }}
-          >
-            {t("twitterOptimizeTip")}
-          </span>
+      <SidebarSection
+        title={t("twitterOptimize")}
+        style={containerStyle}
+        headerRight={
           <label className="switch" style={{ flexShrink: 0 }}>
             <input
               type="checkbox"
@@ -263,12 +229,23 @@ export function SplitterControl({
             />
             <span className="slider"></span>
           </label>
-        </div>
-      </section>
+        }
+      >
+        <span
+          style={{
+            fontSize: "0.6rem",
+            color: "var(--color-text-muted)",
+            lineHeight: 1.3,
+            display: "block",
+            paddingRight: "2.5rem",
+          }}
+        >
+          {t("twitterOptimizeTip")}
+        </span>
+      </SidebarSection>
 
       {/* Export Settings Section */}
-      <section className="section-block">
-        <h3 className="section-header">{t("exportSettings")}</h3>
+      <SidebarSection title={t("exportSettings")}>
         <div
           style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
         >
@@ -287,13 +264,7 @@ export function SplitterControl({
             </div>
           </div>
 
-          <div
-            style={{
-              height: "1px",
-              background: "var(--color-border)",
-              opacity: 0.5,
-            }}
-          ></div>
+          <Divider />
 
           <div className="section-row-standard">
             <div
@@ -328,7 +299,7 @@ export function SplitterControl({
             </label>
           </div>
         </div>
-      </section>
-    </div>
+      </SidebarSection>
+    </>
   );
 }

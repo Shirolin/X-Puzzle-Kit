@@ -20,7 +20,7 @@
     "description": "拼圖生成中的載入狀態"
   },
   "emptyImageText": {
-    "message": "暫無圖片，請上傳",
+    "message": "暫無圖片，請點擊上傳",
     "description": "圖片列表為空時的提示"
   },
   "installTitle": {
@@ -282,6 +282,14 @@
   "extensionUpdatedRefresh": {
     "message": "擴充功能已更新，請重新整理頁面",
     "description": "擴充功能上下文失效時的提示"
+  },
+  "slideRefine": {
+    "message": "滑動以微調",
+    "description": "撥輪控制器的引導提示"
+  },
+  "confirmRemoveImage": {
+    "message": "確定要移除這張圖片嗎？",
+    "description": "移除單張圖片時的確認文案"
   },
   "confirmClearAll": {
     "message": "確定要清空所有圖片嗎？此操作不可撤銷。",

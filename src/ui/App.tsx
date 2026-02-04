@@ -375,9 +375,28 @@ export function App({
       fitToScreen();
     };
     runRefit();
+
+    // Window Resize
     window.addEventListener("resize", runRefit);
-    return () => window.removeEventListener("resize", runRefit);
-  }, [canvasSize, mode, splitSourceBitmap]);
+
+    // Container Resize Observer (handles sidebar collapse/expand animations)
+    let resizeObserver: ResizeObserver | null = null;
+    if (containerRef.current) {
+      resizeObserver = new ResizeObserver(() => {
+        // Debounce or just run? Run immediately for responsiveness, fitToScreen is cheap enough?
+        // Actually for animations we might want to run it on every frame or just let CSS handle flow?
+        // But viewerScale/Offset definitely relies on exact dimensions.
+        // Let's run it.
+        requestAnimationFrame(() => fitToScreen());
+      });
+      resizeObserver.observe(containerRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("resize", runRefit);
+      resizeObserver?.disconnect();
+    };
+  }, [canvasSize, mode, splitSourceBitmap, fitToScreen]);
 
   const resetViewer = () => fitToScreen();
 
@@ -930,7 +949,15 @@ export function App({
             handleStitch={handleStitch}
             loading={loading}
             isGenerating={isGenerating}
-            removeImage={removeImage}
+            removeImage={(id) => {
+              showConfirm(
+                t("removeImage") || "Remove Image",
+                t("confirmRemoveImage") ||
+                  "Are you sure you want to remove this image?",
+                () => removeImage(id),
+                true,
+              );
+            }}
             clearAllImages={() => {
               showConfirm(
                 t("clearAll") || "Clear All",

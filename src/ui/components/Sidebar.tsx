@@ -18,7 +18,8 @@ import {
   ChevronDown,
   Coffee,
 } from "lucide-preact";
-import { useRef, useEffect, useLayoutEffect } from "preact/hooks";
+import { ComponentChildren, JSX } from "preact";
+import { useRef, useEffect, useLayoutEffect, useState } from "preact/hooks";
 import Sortable from "sortablejs";
 import JSZip from "jszip";
 import { t } from "../../core/i18n";
@@ -33,7 +34,7 @@ import { LayoutButton, IconButton, CustomSelect } from "./Common";
 import { SplitterControl } from "./SplitterControl";
 
 // 分隔线组件
-const Divider = () => (
+export const Divider = () => (
   <div
     style={{
       height: "1px",
@@ -41,6 +42,33 @@ const Divider = () => (
       opacity: 0.5,
     }}
   />
+);
+
+// 侧边栏卡片包裹组件
+export interface SidebarSectionProps {
+  title: string;
+  headerRight?: ComponentChildren;
+  children?: ComponentChildren;
+  className?: string;
+  style?: JSX.CSSProperties;
+}
+
+export const SidebarSection = ({
+  title,
+  headerRight,
+  children,
+  className,
+  style,
+}: SidebarSectionProps) => (
+  <section className={`section-block ${className || ""}`} style={style}>
+    <div className="section-header-row">
+      <h3 className="section-header" style={{ margin: 0 }}>
+        {title}
+      </h3>
+      {headerRight}
+    </div>
+    {children}
+  </section>
 );
 
 // 检测当前主题是否为暗色
@@ -62,6 +90,85 @@ const downloadBlob = (blob: Blob, filename: string): void => {
   a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
+};
+
+// 无限拨轮组件
+export interface JogWheelProps {
+  value: number;
+  onChange: (v: number) => void;
+  min: number;
+  max: number;
+}
+
+export const JogWheel = ({ value, onChange, min, max }: JogWheelProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const startValue = useRef(0);
+  const lastX = useRef(0);
+  const [offset, setOffset] = useState(0); // 用于背景循环滚动
+
+  const handlePointerDown = (e: PointerEvent) => {
+    isDragging.current = true;
+    startX.current = e.clientX;
+    lastX.current = e.clientX;
+    startValue.current = value;
+    containerRef.current?.setPointerCapture(e.pointerId);
+    containerRef.current?.classList.add("is-dragging");
+  };
+
+  const handlePointerMove = (e: PointerEvent) => {
+    if (!isDragging.current) return;
+
+    const deltaX = e.clientX - lastX.current;
+    const totalDeltaX = e.clientX - startX.current;
+
+    // 智能步长：根据位移速度调整敏感度
+    // 基础权重 0.5px -> 1单。如果 deltaX 很大，增加权重。
+    const speed = Math.abs(deltaX);
+    const sensitivity = speed > 5 ? (speed > 15 ? 1.5 : 0.8) : 0.4;
+
+    // 我们基于 totalDeltaX 结合灵敏度来计算新值
+    // 但为了平滑，最好使用累计位移
+    const newValue = Math.round(startValue.current + totalDeltaX * sensitivity);
+    const clamped = Math.max(min, Math.min(max, newValue));
+
+    if (clamped !== value) {
+      onChange(clamped);
+      // 触觉反馈：数值变化时微震
+      if (window.navigator?.vibrate) window.navigator.vibrate(1);
+    }
+
+    setOffset((prev) => prev + deltaX);
+    lastX.current = e.clientX;
+  };
+
+  const handlePointerUp = (e: PointerEvent) => {
+    isDragging.current = false;
+    containerRef.current?.releasePointerCapture(e.pointerId);
+    containerRef.current?.classList.remove("is-dragging");
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="jog-wheel-track"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+      style={{ touchAction: "none" }}
+    >
+      <div
+        className="jog-wheel-scales"
+        style={{ transform: `translateX(${offset % 40}px)` }}
+      />
+      <div className="jog-wheel-center-mark" />
+      <div className="jog-wheel-hint">
+        {t("slideRefine") || "Slide to refine"}
+      </div>
+    </div>
+  );
 };
 
 interface SidebarProps {
@@ -142,6 +249,9 @@ export function Sidebar({
   onStitchFilesSelect,
   onImportFromUrl,
 }: SidebarProps) {
+  const [isGapOpen, setIsGapOpen] = useState(
+    globalGap !== 0 || images.some((img) => img.localGap && img.localGap !== 0),
+  );
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Custom FLIP Animation for Shadow DOM compatibility
@@ -316,10 +426,112 @@ export function Sidebar({
     prevRects.current = newRects;
   }, [images]); // Dependency on images ensures this runs on reorder
 
+  // Mobile Collapse & Touch Logic
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = useRef<{ y: number; time: number } | null>(null);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    if (window.innerWidth > 768) return;
+    dragStartRef.current = { y: e.touches[0].clientY, time: Date.now() };
+    setIsDragging(true);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!isDragging || !dragStartRef.current || window.innerWidth > 768) return;
+    const currentY = e.touches[0].clientY;
+    const deltaY = currentY - dragStartRef.current.y;
+
+    // Logic:
+    // If expanded (isCollapsed=false): Dragging down (+) collapses.
+    // If collapsed (isCollapsed=true): Dragging up (-) expands.
+
+    // Apply resistance if dragging in wrong direction
+    if ((!isCollapsed && deltaY < 0) || (isCollapsed && deltaY > 0)) {
+      setDragOffset(deltaY * 0.3); // High resistance
+    } else {
+      setDragOffset(deltaY); // 1:1 following
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging || !dragStartRef.current || window.innerWidth > 768) {
+      setIsDragging(false);
+      return;
+    }
+
+    const deltaY = dragOffset;
+    const timeDelta = Date.now() - dragStartRef.current.time;
+    const velocity = Math.abs(deltaY) / timeDelta;
+    const threshold = 80; // px
+
+    let shouldToggle = false;
+
+    // Flick detection (Fast swipe) or Distance threshold
+    if (!isCollapsed) {
+      // Expanded -> Collapsing (Positive Delta)
+      if (deltaY > threshold || (deltaY > 20 && velocity > 0.5)) {
+        shouldToggle = true;
+      }
+    } else {
+      // Collapsed -> Expanding (Negative Delta)
+      if (deltaY < -threshold || (deltaY < -20 && velocity > 0.5)) {
+        shouldToggle = true;
+      }
+    }
+
+    if (shouldToggle) {
+      toggleCollapse();
+    }
+
+    // Reset
+    setDragOffset(0);
+    setIsDragging(false);
+    dragStartRef.current = null;
+  };
+
+  const toggleCollapse = () => {
+    // Only allow toggle on mobile
+    if (window.innerWidth <= 768) {
+      setIsCollapsed((prev) => !prev);
+      // Vibrate for feedback
+      if (window.navigator?.vibrate) window.navigator.vibrate(10);
+    }
+  };
+
   return (
-    <div className="sidebar-panel">
-      <div className="sidebar-header-mobile">
+    <div
+      className={`sidebar-panel ${isCollapsed ? "collapsed" : ""}`}
+      style={{
+        // Apply transform during drag, otherwise let CSS handle it (y=0)
+        // Note: For collapsed state, the CSS uses 'height', but here we might want to hint visual slide
+        // Ideally we drive everything via CSS classes, but the 'drag' needs inline transform.
+        transform: isDragging ? `translateY(${dragOffset}px)` : undefined,
+        transition: isDragging ? "none" : undefined, // Disable CSS transition while dragging
+      }}
+    >
+      <div
+        className="sidebar-header-mobile"
+        onClick={toggleCollapse}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        style={{
+          pointerEvents: "auto",
+          cursor: "pointer",
+          touchAction: "none",
+        }}
+      >
         <div className="sidebar-grab-indicator" />
+        {isCollapsed && (
+          <ChevronUp
+            className="sidebar-expand-hint"
+            size={20}
+            color="#666666" /* Hardcoded Grey to ensure visibility */
+            style={{ position: "absolute" }}
+          />
+        )}
       </div>
       <div className="sidebar-content-root no-scrollbar sidebar-scroll-area">
         {mode === "split" ? (
@@ -339,177 +551,62 @@ export function Sidebar({
           />
         ) : (
           <>
-            {/* Fixed Sections */}
-            <div
-              style={{
-                flexShrink: 0,
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.75rem",
-              }}
-            >
-              <section className="section-block">
-                <h3 className="section-header">{t("layoutScheme")}</h3>
-                <div className="layout-grid-container">
-                  <LayoutButton
-                    active={layout === "GRID_2x2"}
-                    onClick={() => setLayout("GRID_2x2")}
-                    icon={<LayoutGrid size={13} />}
-                    label={t("layoutGrid")}
-                  />
-                  <LayoutButton
-                    active={layout === "T_SHAPE_3"}
-                    onClick={() => setLayout("T_SHAPE_3")}
-                    icon={<Layout size={13} />}
-                    label={t("layoutTShape")}
-                  />
-                  <LayoutButton
-                    active={
-                      layout === "HORIZONTAL_Nx1" || layout === "HORIZONTAL_2x1"
-                    }
-                    onClick={() => setLayout("HORIZONTAL_Nx1")}
-                    icon={<Columns size={13} />}
-                    label={t("layoutHorizontal")}
-                  />
-                  <LayoutButton
-                    active={
-                      layout === "VERTICAL_1xN" || layout === "VERTICAL_1x2"
-                    }
-                    onClick={() => setLayout("VERTICAL_1xN")}
-                    icon={<Rows size={13} />}
-                    label={t("layoutVertical")}
-                  />
-                </div>
-              </section>
-
-              {/* Global Gap */}
-              <section className="section-block">
-                <div className="section-header-row">
-                  <h3 className="section-header" style={{ margin: 0 }}>
-                    {t("globalGap")}
-                  </h3>
-                  <div className="control-group-pill">
-                    <IconButton
-                      onClick={() =>
-                        setGlobalGap(Math.max(-500, globalGap - 1))
-                      }
-                      icon={<Minus size={10} />}
-                      className="global-gap-btn"
-                      style={{
-                        border: "none",
-                        background: "none",
-                        padding: "1px",
-                        color: "var(--color-text)",
-                      }}
-                    />
-                    <div className="flex-row-center">
-                      <input
-                        type="number"
-                        value={globalGap}
-                        onInput={(e) =>
-                          setGlobalGap(
-                            Math.max(
-                              -500,
-                              Math.min(
-                                500,
-                                parseInt(e.currentTarget.value) || 0,
-                              ),
-                            ),
-                          )
-                        }
-                        className="hide-arrows"
-                        style={{
-                          width: "22px",
-                          height: "14px",
-                          fontSize: "11px",
-                          border: "none",
-                          outline: "none",
-                          textAlign: "center",
-                          backgroundColor: "transparent",
-                          fontWeight: 700,
-                          color: "var(--color-primary)",
-                          fontFamily: "'Fira Code', monospace",
-                        }}
-                      />
-                      <span
-                        style={{
-                          fontSize: "9px",
-                          color: "var(--color-text-muted)",
-                          fontWeight: 700,
-                          marginLeft: "1px",
-                        }}
-                      >
-                        PX
-                      </span>
-                    </div>
-                    <IconButton
-                      onClick={() => setGlobalGap(Math.min(500, globalGap + 1))}
-                      icon={<Plus size={10} />}
-                      className="global-gap-btn"
-                      style={{
-                        border: "none",
-                        background: "none",
-                        padding: "1px",
-                        color: "var(--color-text)",
-                      }}
-                    />
-                  </div>
-                </div>
-                <input
-                  type="range"
-                  min="-20"
-                  max="100"
-                  value={globalGap}
-                  onInput={(e) =>
-                    setGlobalGap(parseInt(e.currentTarget.value) || 0)
-                  }
-                  className="vibrant-range range-slider-control"
+            <SidebarSection title={t("layoutScheme")}>
+              <div className="layout-grid-container">
+                <LayoutButton
+                  active={layout === "GRID_2x2"}
+                  onClick={() => setLayout("GRID_2x2")}
+                  icon={<LayoutGrid size={13} />}
+                  label={t("layoutGrid")}
                 />
-              </section>
-            </div>
+                <LayoutButton
+                  active={layout === "T_SHAPE_3"}
+                  onClick={() => setLayout("T_SHAPE_3")}
+                  icon={<Layout size={13} />}
+                  label={t("layoutTShape")}
+                />
+                <LayoutButton
+                  active={
+                    layout === "HORIZONTAL_Nx1" || layout === "HORIZONTAL_2x1"
+                  }
+                  onClick={() => setLayout("HORIZONTAL_Nx1")}
+                  icon={<Columns size={13} />}
+                  label={t("layoutHorizontal")}
+                />
+                <LayoutButton
+                  active={
+                    layout === "VERTICAL_1xN" || layout === "VERTICAL_1x2"
+                  }
+                  onClick={() => setLayout("VERTICAL_1xN")}
+                  icon={<Rows size={13} />}
+                  label={t("layoutVertical")}
+                />
+              </div>
+            </SidebarSection>
 
             {/* Elastic Sorting Area */}
-            <section className="section-block sorting-area">
-              <div className="section-header-row">
-                <h3 className="section-header" style={{ margin: 0 }}>
-                  {t("imageSorting")}
-                </h3>
-                <div className="flex-row-center gap-sm">
+            <SidebarSection
+              title={t("imageSorting")}
+              className="sorting-area"
+              headerRight={
+                <div className="flex-row-center gap-xs sorting-toolbar">
                   <IconButton
-                    icon={<Plus size={11} />}
+                    icon={<Plus size={14} />}
                     onClick={() => fileInputRef.current?.click()}
                     title={t("uploadImages") || "Add Images"}
-                    className="btn-icon-sm image-sort-add-btn"
-                    style={{
-                      padding: "2px",
-                      background: "rgba(var(--color-primary-rgb), 0.1)",
-                      color: "var(--color-primary)",
-                      borderRadius: "6px",
-                    }}
+                    className="sorting-toolbar-btn primary"
                   />
                   <IconButton
-                    icon={<Link size={11} />}
+                    icon={<Link size={14} />}
                     onClick={onImportFromUrl}
                     title={t("importFromUrl") || "Import from URL"}
-                    className="btn-icon-sm image-sort-import-btn"
-                    style={{
-                      padding: "2px",
-                      background: "rgba(var(--color-primary-rgb), 0.1)",
-                      color: "var(--color-primary)",
-                      borderRadius: "6px",
-                    }}
+                    className="sorting-toolbar-btn secondary"
                   />
                   <IconButton
-                    icon={<Trash2 size={11} />}
+                    icon={<Trash2 size={14} />}
                     onClick={clearAllImages}
                     title={t("clearAll") || "Clear All"}
-                    className="btn-icon-sm image-sort-clear-btn"
-                    style={{
-                      padding: "2px",
-                      background: "rgba(var(--color-danger-rgb), 0.1)",
-                      color: "var(--color-danger)",
-                      borderRadius: "6px",
-                    }}
+                    className="sorting-toolbar-btn destructive"
                   />
                   <input
                     type="file"
@@ -523,10 +620,14 @@ export function Sidebar({
                     }}
                   />
                 </div>
-              </div>
+              }
+            >
               <div className="sorting-area-list" ref={listRef}>
                 {images.length === 0 ? (
-                  <div className="empty-state-message">
+                  <div
+                    className="empty-state-message"
+                    onClick={() => fileInputRef.current?.click()}
+                  >
                     {t("emptyImageText")}
                   </div>
                 ) : (
@@ -742,157 +843,221 @@ export function Sidebar({
                   ))
                 )}
               </div>
-            </section>
+            </SidebarSection>
 
-            <div style={{ flexShrink: 0 }}>
-              <section className="section-block">
-                <h3 className="section-header">{t("settings")}</h3>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.75rem",
-                  }}
-                >
-                  {/* Format Selector */}
-                  <div className="section-row-standard">
-                    <h3 className="section-sub-header">{t("formatLabel")}</h3>
-                    <div className="format-selector">
-                      {(["png", "jpg", "webp"] as const).map((fmt) => (
-                        <button
-                          key={fmt}
-                          className={`format-btn ${outputFormat === fmt ? "active" : ""}`}
-                          onClick={() => {
-                            setOutputFormat(fmt);
-                            if (
-                              fmt === "jpg" &&
-                              backgroundColor === "transparent"
-                            ) {
-                              setBackgroundColor("white");
-                            }
-                          }}
-                        >
-                          {fmt.toUpperCase()}
-                        </button>
-                      ))}
+            <SidebarSection
+              title={t("globalGap")}
+              className="gap-control-enhanced"
+              headerRight={
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    checked={isGapOpen}
+                    onChange={(e) => {
+                      const checked = e.currentTarget.checked;
+                      setIsGapOpen(checked);
+                      if (!checked) {
+                        setGlobalGap(0);
+                        images.forEach((_, idx) => updateLocalGap(idx, 0));
+                      }
+                    }}
+                  />
+                  <span className="slider"></span>
+                </label>
+              }
+            >
+              {isGapOpen && (
+                <div className="gap-control-content animate-slide-up">
+                  <div className="gap-value-pill-container">
+                    <div className="control-group-pill gap-value-pill">
+                      <div
+                        className="pill-reset-trigger"
+                        onClick={() => {
+                          setGlobalGap(0);
+                          images.forEach((_, idx) => updateLocalGap(idx, 0));
+                        }}
+                      >
+                        <RotateCcw size={16} strokeWidth={2.5} />
+                      </div>
+                      <div className="pill-divider" />
+                      <div className="pill-input-group">
+                        <input
+                          type="number"
+                          value={globalGap}
+                          onInput={(e) =>
+                            setGlobalGap(
+                              Math.max(
+                                -500,
+                                Math.min(
+                                  1000,
+                                  parseInt(e.currentTarget.value) || 0,
+                                ),
+                              ),
+                            )
+                          }
+                          className="hide-arrows pill-input"
+                        />
+                        <span className="pill-unit-text">PX</span>
+                      </div>
                     </div>
                   </div>
 
-                  <Divider />
-
-                  <div className="section-row-standard">
-                    <h3 className="section-sub-header">
-                      {t("backgroundColor")}
-                    </h3>
-                    <div
-                      className="flex-row-center"
-                      style={{ gap: "8px", paddingRight: "4px" }}
-                    >
-                      <div
-                        className={`color-circle bg-checkerboard-sm ${backgroundColor === "transparent" ? "active" : ""}`}
-                        onClick={() =>
-                          outputFormat !== "jpg" &&
-                          setBackgroundColor("transparent")
-                        }
-                        style={{
-                          opacity: outputFormat === "jpg" ? 0.3 : 1,
-                          cursor:
-                            outputFormat === "jpg" ? "not-allowed" : "pointer",
-                        }}
-                        title={t("transparent")}
-                      />
-                      <div
-                        className={`color-circle ${backgroundColor === "white" ? "active" : ""}`}
-                        style={{ backgroundColor: "white" }}
-                        onClick={() => setBackgroundColor("white")}
-                        title={t("white")}
-                      />
-                      <div
-                        className={`color-circle ${backgroundColor === "black" ? "active" : ""}`}
-                        style={{
-                          backgroundColor: "black",
-                          borderColor: "rgba(255,255,255,0.2)",
-                        }}
-                        onClick={() => setBackgroundColor("black")}
-                        title={t("black")}
-                      />
-                    </div>
-                  </div>
-
-                  <Divider />
-
-                  <div className="section-row-standard">
-                    <h3 className="section-sub-header">{t("language")}</h3>
-                    <CustomSelect
-                      value={lang}
-                      onChange={setLang}
-                      options={[
-                        { value: "auto", label: "Auto" },
-                        { value: "zh_CN", label: "简体中文" },
-                        { value: "zh_TW", label: "繁體中文" },
-                        { value: "en", label: "English" },
-                        { value: "ja", label: "日本語" },
-                        { value: "ko", label: "한국어" },
-                        { value: "es", label: "Español" },
-                        { value: "fr", label: "Français" },
-                      ]}
-                      style={{ width: "90px" }}
-                      direction="top"
+                  <div className="jog-dial-container">
+                    <JogWheel
+                      value={globalGap}
+                      onChange={setGlobalGap}
+                      min={-500}
+                      max={1000}
                     />
                   </div>
+                </div>
+              )}
+            </SidebarSection>
 
-                  <Divider />
-
-                  <div className="section-row-standard">
-                    <h3 className="section-sub-header">{t("support")}</h3>
-                    <div style={{ display: "flex", gap: "6px" }}>
-                      <a
-                        href="https://ifdian.net/a/shirolin"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-icon"
-                        title="爱发电 (Afdian)"
-                        style={{
-                          textDecoration: "none",
-                          color: "var(--color-text)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: "28px",
-                          height: "28px",
-                          borderRadius: "6px",
-                          backgroundColor: "var(--color-surface-soft)",
-                          transition: "all 0.2s",
+            <SidebarSection title={t("settings")} style={{ flexShrink: 0 }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.75rem",
+                }}
+              >
+                {/* Format Selector */}
+                <div className="section-row-standard">
+                  <h3 className="section-sub-header">{t("formatLabel")}</h3>
+                  <div className="format-selector">
+                    {(["png", "jpg", "webp"] as const).map((fmt) => (
+                      <button
+                        key={fmt}
+                        className={`format-btn ${outputFormat === fmt ? "active" : ""}`}
+                        onClick={() => {
+                          setOutputFormat(fmt);
+                          if (
+                            fmt === "jpg" &&
+                            backgroundColor === "transparent"
+                          ) {
+                            setBackgroundColor("white");
+                          }
                         }}
                       >
-                        <Zap size={15} />
-                      </a>
-                      <a
-                        href="https://ko-fi.com/shirolin"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-icon"
-                        title="Ko-fi"
-                        style={{
-                          textDecoration: "none",
-                          color: "var(--color-text)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: "28px",
-                          height: "28px",
-                          borderRadius: "6px",
-                          backgroundColor: "var(--color-surface-soft)",
-                          transition: "all 0.2s",
-                        }}
-                      >
-                        <Coffee size={15} />
-                      </a>
-                    </div>
+                        {fmt.toUpperCase()}
+                      </button>
+                    ))}
                   </div>
                 </div>
-              </section>
-            </div>
+
+                <Divider />
+
+                <div className="section-row-standard">
+                  <h3 className="section-sub-header">{t("backgroundColor")}</h3>
+                  <div
+                    className="flex-row-center"
+                    style={{ gap: "8px", paddingRight: "4px" }}
+                  >
+                    <div
+                      className={`color-circle bg-checkerboard-sm ${backgroundColor === "transparent" ? "active" : ""}`}
+                      onClick={() =>
+                        outputFormat !== "jpg" &&
+                        setBackgroundColor("transparent")
+                      }
+                      style={{
+                        opacity: outputFormat === "jpg" ? 0.3 : 1,
+                        cursor:
+                          outputFormat === "jpg" ? "not-allowed" : "pointer",
+                      }}
+                      title={t("transparent")}
+                    />
+                    <div
+                      className={`color-circle ${backgroundColor === "white" ? "active" : ""}`}
+                      style={{ backgroundColor: "white" }}
+                      onClick={() => setBackgroundColor("white")}
+                      title={t("white")}
+                    />
+                    <div
+                      className={`color-circle ${backgroundColor === "black" ? "active" : ""}`}
+                      style={{
+                        backgroundColor: "black",
+                        borderColor: "rgba(255,255,255,0.2)",
+                      }}
+                      onClick={() => setBackgroundColor("black")}
+                      title={t("black")}
+                    />
+                  </div>
+                </div>
+
+                <Divider />
+
+                <div className="section-row-standard">
+                  <h3 className="section-sub-header">{t("language")}</h3>
+                  <CustomSelect
+                    value={lang}
+                    onChange={setLang}
+                    options={[
+                      { value: "auto", label: "Auto" },
+                      { value: "zh_CN", label: "简体中文" },
+                      { value: "zh_TW", label: "繁體中文" },
+                      { value: "en", label: "English" },
+                      { value: "ja", label: "日本語" },
+                      { value: "ko", label: "한국어" },
+                      { value: "es", label: "Español" },
+                      { value: "fr", label: "Français" },
+                    ]}
+                    style={{ width: "90px" }}
+                    direction="top"
+                  />
+                </div>
+
+                <Divider />
+
+                <div className="section-row-standard">
+                  <h3 className="section-sub-header">{t("support")}</h3>
+                  <div style={{ display: "flex", gap: "6px" }}>
+                    <a
+                      href="https://ifdian.net/a/shirolin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-icon"
+                      title="爱发电 (Afdian)"
+                      style={{
+                        textDecoration: "none",
+                        color: "var(--color-text)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "6px",
+                        backgroundColor: "var(--color-surface-soft)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <Zap size={15} />
+                    </a>
+                    <a
+                      href="https://ko-fi.com/shirolin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-icon"
+                      title="Ko-fi"
+                      style={{
+                        textDecoration: "none",
+                        color: "var(--color-text)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "6px",
+                        backgroundColor: "var(--color-surface-soft)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <Coffee size={15} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </SidebarSection>
           </>
         )}
       </div>

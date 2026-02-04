@@ -267,6 +267,14 @@
     "message": "Extension updated. Please refresh the page.",
     "description": "Message shown when extension context is invalidated"
   },
+  "slideRefine": {
+    "message": "Slide to refine",
+    "description": "Hint for the jog dial controller"
+  },
+  "confirmRemoveImage": {
+    "message": "Are you sure you want to remove this image?",
+    "description": "Confirmation message when removing a single image"
+  },
   "confirmClearAll": {
     "message": "Are you sure you want to clear all images? This cannot be undone.",
     "description": "Confirmation message when clearing all images"
@@ -276,7 +284,7 @@
     "description": "Clear all images button text"
   },
   "emptyImageText": {
-    "message": "No images, please upload",
+    "message": "No images, click to upload",
     "description": "Message shown when image list is empty"
   },
   "installTitle": {

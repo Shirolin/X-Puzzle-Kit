@@ -267,6 +267,14 @@
     "message": "扩展已更新，请刷新页面",
     "description": "扩展上下文失效时的提示"
   },
+  "slideRefine": {
+    "message": "滑动以微调",
+    "description": "拨轮控制器的引导提示"
+  },
+  "confirmRemoveImage": {
+    "message": "确定要移除这张图片吗？",
+    "description": "移除单张图片时的确认文案"
+  },
   "confirmClearAll": {
     "message": "确定要清空所有图片吗？此操作不可撤销。",
     "description": "清空全部图片时的确认文案"
@@ -276,7 +284,7 @@
     "description": "清空全部图片按钮文本"
   },
   "emptyImageText": {
-    "message": "暂无图片，请上传",
+    "message": "暂无图片，请点击上传",
     "description": "图片列表为空时的提示"
   },
   "installTitle": {
