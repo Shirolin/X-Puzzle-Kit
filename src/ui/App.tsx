@@ -667,13 +667,13 @@ export function App({
 
       const twitterUrl = extractTwitterUrl(urlToProcess);
       if (!twitterUrl) {
-        toast.error(t("invalidUrl") || "Invalid Twitter URL");
+        toast.error(t("invalidUrl"));
         return;
       }
 
       console.log("Processing Twitter URL:", twitterUrl);
       setLoading(true);
-      setLoadingMessage(t("analyzingLink") || "🔍 Analyzing Link...");
+      setLoadingMessage(t("analyzingLink"));
 
       try {
         // 1. Parse Metadata
@@ -687,7 +687,7 @@ export function App({
         let images = await parseTwitterMetadata(twitterUrl);
 
         if (images.length === 0) {
-          toast.error(t("noImagesFound") || "No images found in this Tweet");
+          toast.error(t("noImagesFound"));
           setLoading(false);
           setLoadingMessage("");
           return;
@@ -700,7 +700,7 @@ export function App({
         const blobs: Blob[] = [];
         for (let i = 0; i < images.length; i++) {
           setLoadingMessage(
-            `${t("downloadingImages") || "📥 Downloading Images"} (${i + 1}/${images.length})...`,
+            `${t("downloadingImages")} (${i + 1}/${images.length})...`,
           );
           try {
             const blob = await fetchTwitterImageBlob(images[i]);
@@ -715,7 +715,7 @@ export function App({
           throw new Error("Failed to download any images");
         }
 
-        setLoadingMessage(t("processingImages") || "⚡ Processing...");
+        setLoadingMessage(t("processingImages"));
 
         // 3. Create ImageNodes directly (to attach source metadata)
         // We generate unique IDs and defer index handling to useStitchManager
@@ -756,9 +756,7 @@ export function App({
       } catch (e: unknown) {
         console.error("Twitter share handling failed:", e);
         const errorMessage = e instanceof Error ? e.message : String(e);
-        toast.error(
-          (t("parseFailed") || "Failed to parse Tweet") + ": " + errorMessage,
-        );
+        toast.error(t("parseFailed") + ": " + errorMessage);
       } finally {
         setLoading(false);
         setLoadingMessage("");
@@ -823,14 +821,25 @@ export function App({
             />
             <div className="app-brand-stack">
               <span className="appName-text">X-Puzzle-Kit</span>
-              {t("appName").includes(" - ") && (
-                <>
-                  <span className="app-slogan-divider"> - </span>
-                  <span className="app-slogan-text">
-                    {t("appName").split(" - ")[1]}
-                  </span>
-                </>
-              )}
+              {(() => {
+                const appName = t("appName");
+                const separator = appName.includes(":")
+                  ? ":"
+                  : appName.includes(" - ")
+                    ? " - "
+                    : null;
+                if (!separator) return null;
+                const parts = appName.split(separator);
+                if (parts.length < 2) return null;
+                return (
+                  <>
+                    <span className="app-slogan-divider"> {separator} </span>
+                    <span className="app-slogan-text">
+                      {parts.slice(1).join(separator).trim()}
+                    </span>
+                  </>
+                );
+              })()}
             </div>
           </div>
 
@@ -891,7 +900,7 @@ export function App({
                     <Moon size={15} />
                   )
                 }
-                title={`Theme: ${theme.toUpperCase()}`}
+                title={`${t("themeLabel")}: ${theme.toUpperCase()}`}
                 style={{
                   width: "28px",
                   height: "28px",
@@ -991,18 +1000,16 @@ export function App({
             isGenerating={isGenerating}
             removeImage={(id) => {
               showConfirm(
-                t("removeImage") || "Remove Image",
-                t("confirmRemoveImage") ||
-                  "Are you sure you want to remove this image?",
+                t("removeImage"),
+                t("confirmRemoveImage"),
                 () => removeImage(id),
                 true,
               );
             }}
             clearAllImages={() => {
               showConfirm(
-                t("clearAll") || "Clear All",
-                t("confirmClearAll") ||
-                  "Are you sure you want to clear all images?",
+                t("clearAll"),
+                t("confirmClearAll"),
                 clearAllImages,
                 true,
               );
@@ -1054,12 +1061,10 @@ export function App({
       {!__IS_EXTENSION__ && (
         <InputDialog
           isOpen={showUrlInput}
-          title={t("importFromUrl") || "Import from URL"}
+          title={t("importFromUrl")}
           placeholder="https://x.com/..."
           validator={(val) =>
-            !extractTwitterUrl(val)
-              ? t("invalidUrl") || "Invalid Twitter URL"
-              : undefined
+            !extractTwitterUrl(val) ? t("invalidUrl") : undefined
           }
           onConfirm={(val) => {
             handleImportUrl(val);

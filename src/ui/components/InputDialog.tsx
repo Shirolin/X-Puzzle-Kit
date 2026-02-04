@@ -52,7 +52,7 @@ export function InputDialog({
           inputRef.current?.focus();
           return;
         } else if (validationResult === false) {
-          setError(t("invalidFormat") || "Invalid format");
+          setError(t("invalidFormat"));
           return;
         }
       }
@@ -76,7 +76,7 @@ export function InputDialog({
         setError(validationResult);
         return;
       } else if (validationResult === false) {
-        setError(t("invalidFormat") || "Invalid format");
+        setError(t("invalidFormat"));
         return;
       }
     }
@@ -182,9 +182,9 @@ export function InputDialog({
           <button
             className="btn btn-ghost"
             onClick={onCancel}
-            style={{ flex: "1 1 auto", maxWidth: "100px" }}
+            style={{ flex: "0 1 auto" }}
           >
-            {cancelLabel || t("cancel") || "Cancel"}
+            {cancelLabel || t("cancel")}
           </button>
           <button
             className="btn btn-primary"
@@ -192,7 +192,7 @@ export function InputDialog({
             onClick={handleManualConfirm}
             style={{ flex: "1 1 auto" }}
           >
-            {confirmLabel || t("import") || "Import"}
+            {confirmLabel || t("import")}
           </button>
         </div>
       </div>

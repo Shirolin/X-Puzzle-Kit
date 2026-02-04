@@ -88,7 +88,7 @@ export function ConfirmDialog({
           }}
         >
           <button className="btn btn-ghost" onClick={onCancel}>
-            {cancelLabel || t("cancel") || "Cancel"}
+            {cancelLabel || t("cancel")}
           </button>
           <button
             className={`btn ${isDestructive ? "" : "btn-primary"}`}
@@ -99,7 +99,7 @@ export function ConfirmDialog({
             }
             onClick={onConfirm}
           >
-            {confirmLabel || t("confirm") || "Confirm"}
+            {confirmLabel || t("confirm")}
           </button>
         </div>
       </div>

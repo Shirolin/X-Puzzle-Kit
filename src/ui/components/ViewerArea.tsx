@@ -134,13 +134,9 @@ export function ViewerArea({
               <Upload size={32} strokeWidth={2.5} />
             </div>
             <div className="upload-tip">
-              {mode === "split"
-                ? t("selectImageTip")
-                : t("selectImagesTip") || "Select images to stitch"}
+              {mode === "split" ? t("selectImageTip") : t("selectImagesTip")}
             </div>
-            <div className="upload-sub-tip">
-              {t("dragAndDropTip") || "Or drag and drop images here"}
-            </div>
+            <div className="upload-sub-tip">{t("dragAndDropTip")}</div>
             <input
               type="file"
               accept="image/*"
@@ -224,7 +220,7 @@ export function ViewerArea({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="floating-badge badge-primary source-link"
-                      title={t("openSourcePage") || "Open Source Page"}
+                      title={t("openSourcePage")}
                       onPointerDown={(e) => e.stopPropagation()}
                       onMouseDown={(e) => e.stopPropagation()}
                     >
@@ -247,7 +243,7 @@ export function ViewerArea({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="floating-badge badge-primary source-link"
-                      title={t("openSourcePage") || "Open Source Page"}
+                      title={t("openSourcePage")}
                       onPointerDown={(e) => e.stopPropagation()}
                       onMouseDown={(e) => e.stopPropagation()}
                     >
@@ -428,9 +424,7 @@ export function ViewerArea({
                   }}
                 />
                 <div style={{ color: "var(--color-text)", fontWeight: 600 }}>
-                  {isGenerating
-                    ? t("stitching") || "Stitching..."
-                    : t("addMoreImages") || "Add more images"}
+                  {isGenerating ? t("stitching") : t("addMoreImages")}
                 </div>
                 {!isGenerating && (
                   <div
@@ -440,7 +434,7 @@ export function ViewerArea({
                       marginTop: "0.5rem",
                     }}
                   >
-                    {t("dragAndDropTip") || "Or drag and drop here"}
+                    {t("dragAndDropTip")}
                   </div>
                 )}
               </div>
@@ -467,7 +461,7 @@ export function ViewerArea({
                       color: "var(--color-primary)",
                     }}
                   >
-                    {t("stitching") || "Stitching..."}
+                    {t("stitching")}
                   </span>
                 </div>
               </div>

@@ -19,22 +19,48 @@
 
 这是在不同系统（macOS/Windows/Linux）下保持视觉高级感的黄金组合：
 
-| 语种         | 推荐字体堆栈 (优先级由高到低)                                                 | 核心视觉目标                   |
-| :----------- | :---------------------------------------------------------------------------- | :----------------------------- |
-| **简体中文** | `PingFang SC`, `Hiragino Sans GB`, `Microsoft YaHei UI`, `Source Han Sans CN` | 规整、适中的字间距             |
-| **繁体中文** | `PingFang TC`, `Lantinghei TC`, `Microsoft JhengHei UI`, `Source Han Sans TC` | 书法风骨与数字化清晰度         |
-| **日本語**   | `Hiragino Kaku Gothic ProN`, `Hiragino Sans`, `BIZ UDPGothic`, `Meiryo UI`    | 极高的易读性，避免混淆汉字假名 |
-| **한국어**   | `Apple SD Gothic Neo`, `Malgun Gothic`, `Nanum Gothic`                        | 简洁、现代的无衬线视觉         |
+| 语种         | 推荐字体堆栈 (优先级由高到低)                                                             | 核心视觉目标                                |
+| :----------- | :---------------------------------------------------------------------------------------- | :------------------------------------------ |
+| **简体中文** | `PingFang SC`, `Hiragino Sans GB`, `Heiti SC`, `Microsoft YaHei UI`, `Source Han Sans CN` | 规整、等宽感、适中的字间距                  |
+| **繁体中文** | `PingFang TC`, `Lantinghei TC`, `Microsoft JhengHei UI`, `Source Han Sans TC`             | 书法风骨与数字化清晰度                      |
+| **日本語**   | `Hiragino Kaku Gothic ProN`, `Hiragino Sans`, `BIZ UDPGothic`, `Meiryo UI`, `Yu Gothic`   | 极高的易读性，平衡汉字与假名高度            |
+| **한국어**   | `Apple SD Gothic Neo`, `Malgun Gothic`, `Nanum Gothic`, `Dotum`                           | 简洁、现代、重心平稳的无衬线视觉            |
+| **English**  | `SF Pro Text`, `Inter`, `Segoe UI`, `Helvetica Neue`, `Arial`                             | 典型的 Apple 现代主义，极简且专业           |
+| **Français** | `SF Pro Display`, `Inter`, `System-ui`                                                    | 适配法语多变重音符号的行高表现              |
+| **Español**  | `SF Pro Text`, `Inter`, `Roboto`                                                          | 确保特殊字符（如 ñ, ¿）在紧凑布局下的完整性 |
 
 ### 3. CSS 实施模式
 
+针对不同语种，我们不仅设置 `font-family`，还需针对性调整渲染特性：
+
 ```css
-/* 使用强制覆盖避免组件内部样式干扰 */
+/* CJK 语种：强制使用无衬线堆栈，开启抗锯齿 */
 [data-lang="zh_CN"],
 [data-lang="zh_CN"] * {
   font-family:
-    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", sans-serif !important;
-  -webkit-font-smoothing: antialiased; /* 在深色背景下尤为重要 */
+    "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei UI",
+    sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 日文：针对假名特征优化 */
+[data-lang="ja"],
+[data-lang="ja"] * {
+  font-family:
+    "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif !important;
+  text-rendering: optimizeLegibility;
+}
+
+/* 西欧语系：优先使用 SF Pro 或 Inter，优化变体字符渲染 */
+[data-lang="en"],
+[data-lang="fr"],
+[data-lang="es"],
+[data-lang="en"] *,
+[data-lang="fr"] *,
+[data-lang="es"] * {
+  font-family:
+    "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif !important;
+  letter-spacing: -0.01em; /* 提升西文字符的精致感 */
 }
 ```
 

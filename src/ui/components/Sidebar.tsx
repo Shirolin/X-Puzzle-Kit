@@ -164,9 +164,7 @@ export const JogWheel = ({ value, onChange, min, max }: JogWheelProps) => {
         style={{ transform: `translateX(${offset % 40}px)` }}
       />
       <div className="jog-wheel-center-mark" />
-      <div className="jog-wheel-hint">
-        {t("slideRefine") || "Slide to refine"}
-      </div>
+      <div className="jog-wheel-hint">{t("slideRefine")}</div>
     </div>
   );
 };
@@ -594,21 +592,21 @@ export function Sidebar({
                   <IconButton
                     icon={<Plus size={14} />}
                     onClick={() => fileInputRef.current?.click()}
-                    title={t("uploadImages") || "Add Images"}
+                    title={t("uploadImages")}
                     className="sorting-toolbar-btn primary"
                   />
                   {onImportFromUrl && (
                     <IconButton
                       icon={<Link size={14} />}
                       onClick={onImportFromUrl}
-                      title={t("importFromUrl") || "Import from URL"}
+                      title={t("importFromUrl")}
                       className="sorting-toolbar-btn secondary"
                     />
                   )}
                   <IconButton
                     icon={<Trash2 size={14} />}
                     onClick={clearAllImages}
-                    title={t("clearAll") || "Clear All"}
+                    title={t("clearAll")}
                     className="sorting-toolbar-btn destructive"
                   />
                   <input
@@ -674,13 +672,13 @@ export function Sidebar({
                               // Show resolution
                               e.stopPropagation();
                               toast(
-                                `${t("imageResolution") || "Resolution"}: ${img.width} x ${img.height}`,
+                                `${t("imageResolution")}: ${img.width} x ${img.height}`,
                                 {
                                   duration: 2000,
                                 },
                               );
                             }}
-                            title={`${t("clickToShowResolution") || "Click to see resolution"}: ${img.width}×${img.height}`}
+                            title={`${t("clickToShowResolution")}: ${img.width}×${img.height}`}
                           />
                           <div className="item-index-badge">{idx + 1}</div>
                         </div>
@@ -756,7 +754,7 @@ export function Sidebar({
                                         opacity: 0.6,
                                         letterSpacing: "-0.5px",
                                       }}
-                                      title={t("finalGap") || "Final Gap"}
+                                      title={t("finalGap")}
                                     >
                                       ({globalGap + (img.localGap || 0)})
                                     </span>
@@ -996,7 +994,7 @@ export function Sidebar({
                     value={lang}
                     onChange={setLang}
                     options={[
-                      { value: "auto", label: "Auto" },
+                      { value: "auto", label: t("auto") },
                       { value: "zh_CN", label: "简体中文" },
                       { value: "zh_TW", label: "繁體中文" },
                       { value: "en", label: "English" },

@@ -1,11 +1,15 @@
 {
   "appName": {
-    "message": "X-Puzzle-Kit : Assemblage et Découpe",
+    "message": "X-Puzzle-Kit : Assemblage et Découpe pour X",
     "description": "Nom de l'extension"
   },
   "appDesc": {
-    "message": "Assemblez ou découpez vos images Twitter (X) en un clic. Le kit indispensable pour créer et sauvegarder en haute qualité.",
+    "message": "Un kit professionnel pour X (Twitter). Assemblez des images en panoramas ou divisez vos créations en grilles parfaites, le tout optimisé pour le fil X avec une qualité originale préservée.",
     "description": "Description de l'extension"
+  },
+  "longDescription": {
+    "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s'affiche exactement comme prévu sur votre fil X.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d'Images\nFusionnez sans couture des images séparées d'un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d'un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d'origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n'importe quelle image en grilles standardisées (2x2, 3x3 ou personnalisées) optimisées pour l'affichage multi-images de X.\n- Optimisation pour Twitter : Recadre et ajuste automatiquement les images aux ratios spécifiques de X, évitant les coupures inattendues dans l'aperçu du fil.\n- Clic droit et Découpe : Envoyez instantanément n'importe quelle image vers l'outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l'attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l'import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
+    "description": "Description détaillée pour le store"
   },
   "previewTitle": {
     "message": "Aperçu de la fusion",
@@ -32,7 +36,7 @@
     "description": "Libellé pour ID du Tweet"
   },
   "preparingHighRes": {
-    "message": "Préparation des ressources HD...",
+    "message": "Ressources HD...",
     "description": "Texte de chargement pour les images HD"
   },
   "reset": {
@@ -248,7 +252,7 @@
     "description": "Texte du bouton restaurer"
   },
   "twitterOptimize": {
-    "message": "Optimiser pour Twitter (X)",
+    "message": "Optimisation pour X",
     "description": "Libellé du commutateur d'optimisation Twitter"
   },
   "twitterOptimizeTip": {
@@ -282,6 +286,14 @@
   "extensionUpdatedRefresh": {
     "message": "L'extension a été mise à jour. Veuillez rafraîchir la page.",
     "description": "Message affiché lorsque le contexte de l'extension est invalidé"
+  },
+  "importFromUrl": {
+    "message": "Importer via l'URL",
+    "description": "Titre du bouton d'importation"
+  },
+  "slideRefine": {
+    "message": "Glisser pour affiner",
+    "description": "Indice pour le contrôleur de molette"
   },
   "confirmRemoveImage": {
     "message": "Êtes-vous sûr de vouloir supprimer cette image ?",
@@ -330,5 +342,33 @@
   "confirm": {
     "message": "Confirmer",
     "description": "Bouton d'action de confirmation"
+  },
+  "imageResolution": {
+    "message": "Résolution",
+    "description": "Étiquette de résolution d'image"
+  },
+  "clickToShowResolution": {
+    "message": "Cliquer pour voir la résolution",
+    "description": "Indice pour les miniatures"
+  },
+  "finalGap": {
+    "message": "Espacement final",
+    "description": "Espacement total calculé"
+  },
+  "openSourcePage": {
+    "message": "Ouvrir la page d'origine",
+    "description": "Infobulle pour le lien du tweet d'origine"
+  },
+  "invalidFormat": {
+    "message": "Format invalide",
+    "description": "Message d'erreur pour une entrée invalide"
+  },
+  "auto": {
+    "message": "Auto",
+    "description": "Option automatique pour la langue/le thème"
+  },
+  "themeLabel": {
+    "message": "Thème",
+    "description": "Étiquette pour le sélecteur de thème"
   }
 }

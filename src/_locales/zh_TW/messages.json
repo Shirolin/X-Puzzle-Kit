@@ -1,11 +1,15 @@
 {
   "appName": {
-    "message": "X-Puzzle-Kit - Twitter 拼圖/裁切小工具",
+    "message": "X-Puzzle-Kit: 推特 (X) 拼圖與切圖工具",
     "description": "插件名稱"
   },
   "appDesc": {
-    "message": "一鍵還原推特拼圖，支援無縫拼接與創意裁切。保留原圖畫質，輕鬆製作九宮格。",
+    "message": "專為推特 (X) 打造的拼圖與切圖工具。無縫拼接全景長圖，或將圖片拆分為像素級完美的網格——支持推特佈局優化，確保原畫質無損匯出。",
     "description": "插件描述"
+  },
+  "longDescription": {
+    "message": "X-Puzzle-Kit 是一款專為推特 (X) 用戶、數位藝術家及收藏家打造的專業拼圖與切圖工具箱。無論您是想還原多圖推文中的全景長圖，還是準備製作高效的網格展示，X-Puzzle-Kit 都能確保您的內容在推特動態（Timeline）中得到理想呈現。\n\n✨ 核心功能：\n\n🧵 智能無縫拼圖\n將推文中分散的圖片重新拼接回其原始的全景或長圖格式。\n- 佈局方案：全面支持縱向、橫向、田字格（2x2）以及獨特的 T 型佈局。\n- 像素級對齊：精準的座標計算邏輯，有效消除接縫與模糊偽影，呈現清晰畫質。\n- 原生集成：直接在推特頁面上點擊按鈕發起拼接，省略手動下載步驟。\n- 無損匯出：不進行二次壓縮，保留每一顆像素的原始解析度，細節分毫畢現。\n\n✂️ 創意切圖助手 (九宮格製作)\n將任何圖片拆分為標準網格（2x2、3x3 或自定義），完美適配推特的多圖展示機制。\n- 推特佈局優化：自動裁剪並適配推特特有的網格比例，防止推文預覽時出現內容截斷。\n- 右键即刻拆分：在網頁中右鍵點擊圖片，即可直接發送至拆分工具進行處理。\n- 統一視覺效果：為您的網格推文創造一致的展示效果，提升推文吸引力。\n\n🚀 實用特性：\n- 高效操作流：深度集成於瀏覽器，從發現推文到生成圖片僅需數秒。\n- 靈活選項：微調全局或局部間距，支持深色模式，可自定義背景顏色（支持透明）。\n- 多樣化導入：支持文件上傳、剪貼簿貼上以及推特頁面直接導入。\n- 批量匯出：支持高質量 PNG、JPG、WebP 下載，或一鍵打包為 ZIP 壓縮檔。\n\n🔒 隱私保護\n所有圖片處理均在您的本地瀏覽器中完成。圖片絕不會上傳到任何遠端伺服器——無追蹤、无記錄，保護您的創作隱私。\n\n立即使用 X-Puzzle-Kit 提升您的推特配圖效率。",
+    "description": "商店詳細描述"
   },
   "previewTitle": {
     "message": "拼圖預覽",
@@ -52,8 +56,8 @@
     "description": "高清圖片載入時的文字"
   },
   "reset": {
-    "message": "重置",
-    "description": "重置按鈕文字"
+    "message": "重設",
+    "description": "重設按鈕文本"
   },
   "layoutScheme": {
     "message": "佈局方案",
@@ -244,7 +248,7 @@
     "description": "Zip功能說明"
   },
   "restore": {
-    "message": "恢復原圖",
+    "message": "還原原圖",
     "description": "恢復拆分前狀態按鈕"
   },
   "twitterOptimize": {
@@ -283,6 +287,10 @@
     "message": "擴充功能已更新，請重新整理頁面",
     "description": "擴充功能上下文失效時的提示"
   },
+  "importFromUrl": {
+    "message": "從連結匯入",
+    "description": "匯入按鈕標題"
+  },
   "slideRefine": {
     "message": "滑動以微調",
     "description": "撥輪控制器的引導提示"
@@ -292,11 +300,11 @@
     "description": "移除單張圖片時的確認文案"
   },
   "confirmClearAll": {
-    "message": "確定要清空所有圖片嗎？此操作不可撤銷。",
+    "message": "確定要清除所有圖片嗎？此操作不可撤销。",
     "description": "清空全部圖片時的確認文案"
   },
   "clearAll": {
-    "message": "清空全部",
+    "message": "全部清除",
     "description": "清空全部圖片按鈕文本"
   },
   "invalidUrl": {
@@ -330,6 +338,18 @@
   "cancel": {
     "message": "取消",
     "description": "取消操作按鈕"
+  },
+  "invalidFormat": {
+    "message": "格式錯誤",
+    "description": "非法輸入提示"
+  },
+  "auto": {
+    "message": "自動",
+    "description": "語言/主題的自動選項"
+  },
+  "themeLabel": {
+    "message": "主題",
+    "description": "主題選擇器標籤"
   },
   "confirm": {
     "message": "確定",
