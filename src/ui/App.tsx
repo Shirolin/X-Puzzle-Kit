@@ -360,7 +360,8 @@ export function App({
     // 移动端需要额外减去 sidebar 覆盖区域的高度（margin-bottom 向下延伸 + 工具栏提升的距离）
     const isMobile = window.innerWidth <= 768;
     const mobileBottomOffset = isMobile ? 96 : 0; // 约 3rem + radius-2xl
-    const availableHeight = containerRef.current.clientHeight - padding - mobileBottomOffset;
+    const availableHeight =
+      containerRef.current.clientHeight - padding - mobileBottomOffset;
     const scale = Math.min(availableWidth / cw, availableHeight / ch, 1);
 
     setViewerScale(scale);
@@ -581,7 +582,7 @@ export function App({
       metaTheme.setAttribute("content", themeColor);
 
       // iOS Status Bar Style Adaptation
-      let metaStatus = document.querySelector(
+      const metaStatus = document.querySelector(
         'meta[name="apple-mobile-web-app-status-bar-style"]',
       );
       if (metaStatus) {
@@ -639,7 +640,6 @@ export function App({
   const wrapperClass = isPopup ? "app-popup-wrapper" : "app-overlay";
 
   const [showUrlInput, setShowUrlInput] = useState(false);
-  const [urlInputValue, setUrlInputValue] = useState("");
 
   const handleImportUrl = useCallback(
     async (urlToProcess: string) => {
@@ -822,12 +822,7 @@ export function App({
 
             <div className="header-group" style={{ gap: "0.4rem" }}>
               <IconButton
-                onClick={() => {
-                  const themeSequence = ["auto", "light", "dark"] as const;
-                  setTheme(
-                    themeSequence[(themeSequence.indexOf(theme) + 1) % 3],
-                  );
-                }}
+                onClick={toggleTheme}
                 icon={
                   theme === "auto" ? (
                     <Monitor size={15} />

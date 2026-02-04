@@ -82,7 +82,7 @@ export function updateToasterTheme(theme: "light" | "dark" | "system") {
 }
 
 export async function initToaster() {
-  const { toastRoot } = ensureContainer();
+  ensureContainer();
 
   if (!isToasterMounted) {
     // 读取保存的主题设置
