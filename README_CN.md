@@ -17,7 +17,11 @@
       <img src="https://img.shields.io/github/v/release/Shirolin/X-Puzzle-Kit?label=version&style=flat-square&color=blue" alt="Version" />
     </a>
     <img src="https://img.shields.io/badge/license-GPLv3-blue?style=flat-square" alt="License" />
-    <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
+    <img src="https://img.shields.io/badge/platform-Chrome%20%7C%20Web%20%7C%20PWA-important?style=flat-square" alt="Platform" />
+  </p>
+
+  <p>
+    <a href="https://splatoon.com.cn/x-puzzle/"><b>点击访问 Web 版 (PWA) ↗</b></a>
   </p>
 
   <br/>
@@ -40,17 +44,26 @@
     <!-- <img src="docs/demo.gif" width="100%" alt="Demo" /> -->
 </div>
 
-| 功能            | 描述                                                                             |
-| :-------------- | :------------------------------------------------------------------------------- |
-| 🖼️ **智能拼接** | 根据图片数量（1-4+）**自动预测最佳布局**（如 T型、田字格），无需手动频繁切换。   |
-| 🧩 **渲染优化** | 即使图片数不足 4 张，也能在田字格模式下**智能降级**为美观的 T 型布局，拒绝空位。 |
-| 💎 **原图画质** | 告别压缩！始终基于原图 (Original) 进行处理，并实现**物理像素级缝隙对齐**。       |
-| 📏 **消除间隙** | 智能检测并移除 Twitter 网格布局中的视觉间隙，还原图片本真。                      |
-| 🔒 **隐私优先** | 所有处理逻辑完全在本地浏览器运行，无需上传图片至任何服务器。                     |
+| 功能              | 描述                                                                                 |
+| :---------------- | :----------------------------------------------------------------------------------- |
+| 🖼️ **智能拼接**   | 根据图片数量（1-4+）**自动预测最佳布局**（如 T型、田字格），无需手动频繁切换。       |
+| 🧩 **渲染优化**   | 即使图片数不足 4 张，也能在田字格模式下**智能降级**为美观的 T 型布局，拒绝空位。     |
+| 💎 **原图画质**   | 告别压缩！始终基于原图 (Original) 进行处理，并实现**物理像素级缝隙对齐**。           |
+| 📏 **消除间隙**   | 智能检测并移除 Twitter 网格布局中的视觉间隙，还原图片本真。                          |
+| 📱 **移动端适配** | 完美支持 PWA，针对 iOS 和 Android 开发了专用的响应式触控界面，可添加到主屏幕。       |
+| 📤 **共享目标**   | 支持从 Twitter/X 官方 App 直接通过系统菜单“分享”推文到该工具 (仅限 Android/Chrome)。 |
+| 🔒 **隐私优先**   | 所有处理逻辑完全在本地浏览器运行，无需上传图片至任何服务器。                         |
 
 ## 📦 安装指南
 
-### 方法一：下载安装包 (推荐)
+### 方法一：直接使用 Web 版 / PWA (推荐)
+
+无需安装，即点即用！您可以直接访问网页版，并将其“添加到主屏幕”以获得原生 App 般的体验。
+
+- **访问地址**: [https://splatoon.com.cn/x-puzzle/](https://splatoon.com.cn/x-puzzle/)
+- **特色功能**: 支持通过系统“分享”功能从 Twitter/X 官方 App 直接跳转处理。
+
+### 方法二：Chrome 浏览器扩展 (PC 控制台最佳)
 
 1. 前往 **[Releases 页面](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest)** 下载最新的 `.zip` 文件。
 2. 解压下载的文件。
@@ -66,8 +79,9 @@
 git clone https://github.com/Shirolin/X-Puzzle-Kit.git
 cd x-puzzle-kit
 npm install
-npm run build
-# 然后在 Chrome 加载 dist 目录
+npm run build      # 构建 Chrome 扩展 (dist)
+npm run build:web  # 构建 Web/PWA 版本 (dist-web)
+# 扩展版请在 Chrome 加载 dist 目录
 ```
 
 ## 🛠️ 技术栈

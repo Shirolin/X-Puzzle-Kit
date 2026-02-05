@@ -17,7 +17,11 @@
       <img src="https://img.shields.io/github/v/release/Shirolin/X-Puzzle-Kit?label=version&style=flat-square&color=blue" alt="Version" />
     </a>
     <img src="https://img.shields.io/badge/license-GPLv3-blue?style=flat-square" alt="License" />
-    <img src="https://img.shields.io/badge/platform-Chrome-important?style=flat-square" alt="Platform" />
+    <img src="https://img.shields.io/badge/platform-Chrome%20%7C%20Web%20%7C%20PWA-important?style=flat-square" alt="Platform" />
+  </p>
+
+  <p>
+    <a href="https://splatoon.com.cn/x-puzzle/"><b>Try Web App (PWA) ↗</b></a>
   </p>
 
   <br/>
@@ -46,11 +50,20 @@
 | 🧩 **Creative Split**   | Powerful image splitter supporting 3x3 (9-grid), 2x2, and other creative layout modes.         |
 | 💎 **Original Quality** | No compression! Always processes and exports images in original quality for maximum clarity.   |
 | 📏 **Gap Removal**      | Intelligently detects and removes visual gaps from Twitter's grid layout.                      |
+| 📱 **Mobile Optimized** | Full PWA support with a responsive touch-friendly UI for iOS and Android.                      |
+| 📤 **Share Target**     | Share tweets directly from the Twitter/X app to the PWA (on Android/Chrome).                   |
 | 🔒 **Privacy First**    | All processing happens locally in your browser. No images are uploaded to any server.          |
 
 ## 📦 Installation
 
-### Method 1: Install from Release (Recommended)
+### Method 1: Web App / PWA (Easiest)
+
+No installation required! Simply visit the web version and add it to your Home Screen for a native-like experience.
+
+- **URL**: [https://splatoon.com.cn/x-puzzle/](https://splatoon.com.cn/x-puzzle/)
+- **Features**: Supports sharing directly from the Twitter/X app (via System Share menu).
+
+### Method 2: Chrome Extension (Best for Desktop)
 
 1. Go to the **[Releases Page](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest)** and download the latest `.zip` file.
 2. Unzip the downloaded file.
@@ -66,8 +79,9 @@ For developers who want to contribute or build from source:
 git clone https://github.com/Shirolin/X-Puzzle-Kit.git
 cd x-puzzle-kit
 npm install
-npm run build
-# Then load the 'dist' directory in Chrome
+npm run build      # Build Chrome Extension (dist)
+npm run build:web  # Build Web/PWA Version (dist-web)
+# For extension, load the 'dist' directory in Chrome
 ```
 
 ## 🛠️ Tech Stack
