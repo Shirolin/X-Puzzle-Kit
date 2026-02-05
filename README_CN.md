@@ -71,13 +71,13 @@
 4. 开启右上角的 **"开发者模式" (Developer mode)**。
 5. 点击 **"加载已解压的扩展程序" (Load unpacked)**，选择解压后的文件夹。
 
-### 方法二：源码编译安装
+### 方法三：源码编译安装
 
 如果您是开发者，可以从源码构建：
 
 ```bash
 git clone https://github.com/Shirolin/X-Puzzle-Kit.git
-cd x-puzzle-kit
+cd X-Puzzle-Kit
 npm install
 npm run build      # 构建 Chrome 扩展 (dist)
 npm run build:web  # 构建 Web/PWA 版本 (dist-web)

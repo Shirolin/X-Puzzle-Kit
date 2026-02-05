@@ -71,13 +71,13 @@ No installation required! Simply visit the web version and add it to your Home S
 4. Enable **"Developer mode"** in the top right corner.
 5. Click **"Load unpacked"** and select the unzipped folder.
 
-### Method 2: Build from Source
+### Method 3: Build from Source
 
 For developers who want to contribute or build from source:
 
 ```bash
 git clone https://github.com/Shirolin/X-Puzzle-Kit.git
-cd x-puzzle-kit
+cd X-Puzzle-Kit
 npm install
 npm run build      # Build Chrome Extension (dist)
 npm run build:web  # Build Web/PWA Version (dist-web)
