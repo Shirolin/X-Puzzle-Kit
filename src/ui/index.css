@@ -208,12 +208,13 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.25rem;
+  gap: 0.4rem; /* 略微减小间距 */
+  padding: 0.6rem 1rem; /* 减小默认内边距 */
   border-radius: 99px; /* Rounded pill style */
   font-family: inherit; /* MUST inherit to use CJK stack */
   font-weight: 600;
-  font-size: 0.9375rem;
+  /* 应用自动缩放：最小约为 13.6px，最大 15px */
+  font-size: clamp(0.85rem, 2.5vw, 0.9375rem);
   letter-spacing: -0.01em;
   cursor: pointer;
   transition: var(--transition-normal);
@@ -1084,11 +1085,15 @@ input:checked + .slider:before {
 
   .footer-button-group {
     flex-direction: row !important; /* 强制移动端恢复并排 */
+    gap: 6px; /* 移动端更紧凑的间隙 */
   }
 
   .footer-button-group .btn {
     width: auto !important;
     flex: 1;
+    padding: 0.6rem 0.5rem; /* 减小侧边间距以便更多文字展示 */
+    font-size: clamp(0.75rem, 3.2vw, 0.9rem); /* 移动端并排时更激进地缩放 */
+    gap: 4px;
   }
 }
 
@@ -1313,9 +1318,10 @@ input:checked + .slider:before {
 .footer-button-group {
   display: flex;
   flex-direction: column; /* 默认垂直排列 (PC端/侧边栏) */
-  gap: 0.625rem;
+  gap: 0.5rem; /* 紧凑间距 */
   width: 100%;
 }
+
 
 .footer-button-group .btn {
   flex: 1;
