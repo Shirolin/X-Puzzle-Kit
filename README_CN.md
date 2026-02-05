@@ -21,7 +21,7 @@
   </p>
 
   <p>
-    <a href="https://splatoon.com.cn/x-puzzle/"><b>点击访问 Web 版 (PWA) ↗</b></a>
+    <a href="https://Shirolin.github.io/X-Puzzle-Kit/"><b>点击访问 Web 版 (PWA) ↗</b></a>
   </p>
 
   <br/>
@@ -60,7 +60,7 @@
 
 无需安装，即点即用！您可以直接访问网页版，并将其“添加到主屏幕”以获得原生 App 般的体验。
 
-- **访问地址**: [https://splatoon.com.cn/x-puzzle/](https://splatoon.com.cn/x-puzzle/)
+- **访问地址**: [https://Shirolin.github.io/X-Puzzle-Kit/](https://Shirolin.github.io/X-Puzzle-Kit/)
 - **特色功能**: 支持通过系统“分享”功能从 Twitter/X 官方 App 直接跳转处理。
 
 ### 方法二：Chrome 浏览器扩展 (PC 控制台最佳)

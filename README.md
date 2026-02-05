@@ -21,7 +21,7 @@
   </p>
 
   <p>
-    <a href="https://splatoon.com.cn/x-puzzle/"><b>Try Web App (PWA) ↗</b></a>
+    <a href="https://Shirolin.github.io/X-Puzzle-Kit/"><b>Try Web App (PWA) ↗</b></a>
   </p>
 
   <br/>
@@ -60,7 +60,7 @@
 
 No installation required! Simply visit the web version and add it to your Home Screen for a native-like experience.
 
-- **URL**: [https://splatoon.com.cn/x-puzzle/](https://splatoon.com.cn/x-puzzle/)
+- **URL**: [https://Shirolin.github.io/X-Puzzle-Kit/](https://Shirolin.github.io/X-Puzzle-Kit/)
 - **Features**: Supports sharing directly from the Twitter/X app (via System Share menu).
 
 ### Method 2: Chrome Extension (Best for Desktop)
