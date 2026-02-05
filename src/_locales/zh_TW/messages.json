@@ -236,8 +236,12 @@
     "description": "拆分結果標籤"
   },
   "formatLabel": {
-    "message": "導出格式",
+    "message": "匯出格式",
     "description": "導出格式標籤"
+  },
+  "iosWebpWarning": {
+    "message": "iOS 14+ 雖支援 WebP，但在某些 App 中儲存至相簿可能存在相容性問題，建議優先使用 PNG。",
+    "description": "iOS WebP 相容性警告"
   },
   "zipLabel": {
     "message": "打包下載 (Zip)",

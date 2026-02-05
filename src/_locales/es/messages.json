@@ -239,6 +239,10 @@
     "message": "Formato",
     "description": "Etiqueta de formato de exportación"
   },
+  "iosWebpWarning": {
+    "message": "iOS 14+ admite WebP, pero algunas apps pueden tener problemas de compatibilidad al guardar en la app Fotos. Se recomienda PNG.",
+    "description": "Advertencia de compatibilidad con WebP en iOS"
+  },
   "zipLabel": {
     "message": "Descargar como Zip",
     "description": "Etiqueta del interruptor de descarga Zip"

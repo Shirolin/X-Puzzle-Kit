@@ -502,6 +502,25 @@ export function Sidebar({
     }
   };
 
+  const [isIOS, setIsIOS] = useState(false);
+  useEffect(() => {
+    const checkIOS = () => {
+      return (
+        [
+          "iPad Simulator",
+          "iPhone Simulator",
+          "iPod Simulator",
+          "iPad",
+          "iPhone",
+          "iPod",
+        ].includes(navigator.platform) ||
+        // iPad on iOS 13 detection
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+      );
+    };
+    setIsIOS(checkIOS());
+  }, []);
+
   return (
     <div
       className={`sidebar-panel ${isCollapsed ? "collapsed" : ""}`}
@@ -1027,6 +1046,22 @@ export function Sidebar({
                       </button>
                     ))}
                   </div>
+                  {isIOS && outputFormat === "webp" && (
+                    <div
+                      style={{
+                        fontSize: "10px",
+                        lineHeight: "1.4",
+                        color: "#f59e0b",
+                        marginTop: "6px",
+                        padding: "4px 8px",
+                        backgroundColor: "rgba(245, 158, 11, 0.1)",
+                        borderRadius: "6px",
+                        border: "1px solid rgba(245, 158, 11, 0.2)",
+                      }}
+                    >
+                      {t("iosWebpWarning")}
+                    </div>
+                  )}
                 </div>
 
                 <Divider />

@@ -239,6 +239,10 @@
     "message": "出力形式",
     "description": "出力形式ラベル"
   },
+  "iosWebpWarning": {
+    "message": "iOS 14以降はWebPをサポートしていますが、一部のアプリでは写真への保存時に互換性の問題が発生する場合があります。PNGを推奨します。",
+    "description": "iOS WebP 互換性警告"
+  },
   "zipLabel": {
     "message": "ZIPで一括ダウンロード",
     "description": "ZIPダウンロードスイッチのラベル"
