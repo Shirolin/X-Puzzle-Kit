@@ -392,7 +392,27 @@
     "description": "拡張機能バージョン説明"
   },
   "openExtensionStore": {
-    "message": "Chrome ウェブストアへ",
-    "description": "拡張機能ストアを開くボタンのテキスト"
+    "message": "Chrome ウェブストアに移動",
+    "description": "Chromeストアを開くボタン"
+  },
+  "pwaUpdateAvailable": {
+    "message": "新しいバージョンが利用可能です",
+    "description": "新しいバージョンが利用可能であることを通知するメッセージ"
+  },
+  "pwaUpdateReady": {
+    "message": "最新の機能と修正を反映させるために更新してください",
+    "description": "更新を促す説明文"
+  },
+  "pwaRefresh": {
+    "message": "更新",
+    "description": "更新ボタンのテキスト"
+  },
+  "pwaIgnore": {
+    "message": "無視",
+    "description": "無視ボタンのテキスト"
+  },
+  "pwaOfflineReady": {
+    "message": "アプリはオフラインで使用できるようになりました",
+    "description": "オフライン対応が完了したことを通知するメッセージ"
   }
 }

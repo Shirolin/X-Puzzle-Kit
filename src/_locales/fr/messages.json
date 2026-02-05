@@ -394,5 +394,25 @@
   "openExtensionStore": {
     "message": "Aller sur le Chrome Web Store",
     "description": "Texte du bouton pour ouvrir le Web Store"
+  },
+  "pwaUpdateAvailable": {
+    "message": "Nouvelle version disponible",
+    "description": "Notification de mise à jour PWA disponible"
+  },
+  "pwaUpdateReady": {
+    "message": "Mettez à jour pour obtenir les dernières fonctionnalités et corrections",
+    "description": "Description de la mise à jour PWA"
+  },
+  "pwaRefresh": {
+    "message": "Actualiser",
+    "description": "Bouton d'actualisation PWA"
+  },
+  "pwaIgnore": {
+    "message": "Ignorer",
+    "description": "Bouton ignorer PWA"
+  },
+  "pwaOfflineReady": {
+    "message": "L'application est prête à fonctionner hors ligne",
+    "description": "Notification de disponibilité hors ligne PWA"
   }
 }

@@ -394,5 +394,25 @@
   "openExtensionStore": {
     "message": "前往 Chrome 应用商店",
     "description": "打开插件商店按钮文本"
+  },
+  "pwaUpdateAvailable": {
+    "message": "发现新版本可用",
+    "description": "PWA 更新可用提示"
+  },
+  "pwaUpdateReady": {
+    "message": "更新以获得最新功能与修复",
+    "description": "PWA 更新说明"
+  },
+  "pwaRefresh": {
+    "message": "刷新",
+    "description": "PWA 刷新按钮"
+  },
+  "pwaIgnore": {
+    "message": "忽略",
+    "description": "PWA 忽略按钮"
+  },
+  "pwaOfflineReady": {
+    "message": "应用已可以离线使用",
+    "description": "PWA 离线就绪提示"
   }
 }

@@ -783,66 +783,143 @@ export function Sidebar({
                           </div>
                         </div>
 
-                        {/* Actions Group (Auto-hidden) - Sandwich Layout */}
+                        {/* Actions Group (Auto-hidden) - Conditional Layout */}
                         <div className="item-actions-group">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              moveItem(idx, "up");
-                            }}
-                            disabled={idx === 0}
-                            className="sort-arrow-bar-btn"
-                            title={t("moveUp")}
-                          >
-                            <ChevronUp size={10} strokeWidth={3} />
-                          </button>
+                          {window.innerWidth > 768 ? (
+                            <>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  moveItem(idx, "up");
+                                }}
+                                disabled={idx === 0}
+                                className="sort-arrow-bar-btn"
+                                title={t("moveUp")}
+                              >
+                                <ChevronUp size={10} strokeWidth={3} />
+                              </button>
 
-                          <div className="flex-row-center gap-sm px-1 py-0.5">
-                            <IconButton
-                              className="btn-icon"
-                              onClick={() => toggleVisibility(idx)}
-                              icon={
-                                img.visible !== false ? (
-                                  <Eye size={13} />
-                                ) : (
-                                  <EyeOff size={13} />
-                                )
-                              }
-                              style={{
-                                border: "none",
-                                background: "none",
-                                padding: "2px",
-                                color:
+                              <div
+                                className="flex-row-center px-1 py-0.5"
+                                style={{ gap: "2px", justifyContent: "center" }}
+                              >
+                                <IconButton
+                                  className="btn-icon"
+                                  onClick={() => toggleVisibility(idx)}
+                                  title={
+                                    img.visible !== false
+                                      ? t("hideImage")
+                                      : t("showImage")
+                                  }
+                                  icon={
+                                    img.visible !== false ? (
+                                      <Eye size={13} />
+                                    ) : (
+                                      <EyeOff size={13} />
+                                    )
+                                  }
+                                  style={{
+                                    border: "none",
+                                    background: "none",
+                                    padding: "2px",
+                                    color:
+                                      img.visible !== false
+                                        ? "var(--color-icon)"
+                                        : "var(--color-icon-dim)",
+                                  }}
+                                />
+                                <IconButton
+                                  className="btn-icon"
+                                  onClick={() => removeImage(img.id)}
+                                  icon={<Trash2 size={13} />}
+                                  style={{
+                                    border: "none",
+                                    background: "none",
+                                    padding: "2px",
+                                    color: "#ff453a",
+                                  }}
+                                  title={t("removeImage")}
+                                />
+                              </div>
+
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  moveItem(idx, "down");
+                                }}
+                                disabled={idx === images.length - 1}
+                                className="sort-arrow-bar-btn"
+                                title={t("moveDown")}
+                              >
+                                <ChevronDown size={10} strokeWidth={3} />
+                              </button>
+                            </>
+                          ) : (
+                            <div className="flex-row-center gap-sm">
+                              <div className="sort-arrows-col">
+                                <button
+                                  onClick={() => moveItem(idx, "up")}
+                                  disabled={idx === 0}
+                                  className="sort-arrow-btn"
+                                  title={t("moveUp")}
+                                >
+                                  <ChevronUp size={10} strokeWidth={3} />
+                                </button>
+                                <div
+                                  style={{
+                                    height: "1px",
+                                    background: "var(--color-border)",
+                                    opacity: 0.5,
+                                  }}
+                                ></div>
+                                <button
+                                  onClick={() => moveItem(idx, "down")}
+                                  disabled={idx === images.length - 1}
+                                  className="sort-arrow-btn"
+                                  title={t("moveDown")}
+                                >
+                                  <ChevronDown size={10} strokeWidth={3} />
+                                </button>
+                              </div>
+                              <IconButton
+                                className="btn-icon"
+                                onClick={() => toggleVisibility(idx)}
+                                title={
                                   img.visible !== false
-                                    ? "var(--color-icon)"
-                                    : "var(--color-icon-dim)",
-                              }}
-                            />
-                            <IconButton
-                              className="btn-icon"
-                              onClick={() => removeImage(img.id)}
-                              icon={<Trash2 size={13} />}
-                              style={{
-                                border: "none",
-                                background: "none",
-                                padding: "2px",
-                                color: "#ff453a",
-                              }}
-                              title={t("removeImage")}
-                            />
-                          </div>
-
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              moveItem(idx, "down");
-                            }}
-                            disabled={idx === images.length - 1}
-                            className="sort-arrow-bar-btn"
-                            title={t("moveDown")}
-                          >
-                            <ChevronDown size={10} strokeWidth={3} />
-                          </button>
+                                    ? t("hideImage")
+                                    : t("showImage")
+                                }
+                                icon={
+                                  img.visible !== false ? (
+                                    <Eye size={13} />
+                                  ) : (
+                                    <EyeOff size={13} />
+                                  )
+                                }
+                                style={{
+                                  border: "none",
+                                  background: "none",
+                                  padding: "2px",
+                                  color:
+                                    img.visible !== false
+                                      ? "var(--color-icon)"
+                                      : "var(--color-icon-dim)",
+                                }}
+                              />
+                              <IconButton
+                                className="btn-icon"
+                                onClick={() => removeImage(img.id)}
+                                icon={<Trash2 size={13} />}
+                                style={{
+                                  border: "none",
+                                  background: "none",
+                                  padding: "2px",
+                                  color: "#ff453a",
+                                }}
+                                title={t("removeImage")}
+                              />
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>

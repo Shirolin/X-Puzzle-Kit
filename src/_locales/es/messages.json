@@ -378,5 +378,25 @@
   "openExtensionStore": {
     "message": "Ir a Chrome Web Store",
     "description": "Texto del botón para abrir la tienda de extensiones"
+  },
+  "pwaUpdateAvailable": {
+    "message": "Nueva versión disponible",
+    "description": "Consejo de actualización disponible de PWA"
+  },
+  "pwaUpdateReady": {
+    "message": "Actualice para obtener las últimas funciones y correcciones",
+    "description": "Descripción de la actualización de PWA"
+  },
+  "pwaRefresh": {
+    "message": "Actualizar",
+    "description": "Botón de actualización de PWA"
+  },
+  "pwaIgnore": {
+    "message": "Ignorar",
+    "description": "Botón de ignorar PWA"
+  },
+  "pwaOfflineReady": {
+    "message": "La aplicación está lista para funcionar sin conexión",
+    "description": "Aviso de disponibilidad sin conexión de PWA"
   }
 }

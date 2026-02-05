@@ -1,12 +1,18 @@
 import { useRegisterSW } from "virtual:pwa-register/react";
 import { toast } from "sonner";
 import { useEffect } from "preact/hooks";
+import { t } from "../../core/i18n";
 
 export function ReloadPrompt() {
   const {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
   } = useRegisterSW({
+    onOfflineReady() {
+      toast(t("pwaOfflineReady"), {
+        duration: 3000,
+      });
+    },
     onRegistered(r) {
       console.log("SW Registered: " + r);
     },
@@ -17,16 +23,16 @@ export function ReloadPrompt() {
 
   useEffect(() => {
     if (needRefresh) {
-      toast("发现新版本可用", {
-        description: "更新以获得最新功能与修复",
+      toast(t("pwaUpdateAvailable"), {
+        description: t("pwaUpdateReady"),
         action: {
-          label: "刷新",
+          label: t("pwaRefresh"),
           onClick: () => {
             updateServiceWorker(true);
           },
         },
         cancel: {
-          label: "忽略",
+          label: t("pwaIgnore"),
           onClick: () => {
             setNeedRefresh(false);
           },

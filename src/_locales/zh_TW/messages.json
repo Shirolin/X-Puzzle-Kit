@@ -377,6 +377,26 @@
   },
   "openExtensionStore": {
     "message": "前往 Chrome 線上應用程式商店",
-    "description": "打開插件商店按鈕文本"
+    "description": "開啟外掛程式商店按鈕文字"
+  },
+  "pwaUpdateAvailable": {
+    "message": "發現新版本可用",
+    "description": "PWA 更新可用提示"
+  },
+  "pwaUpdateReady": {
+    "message": "更新以獲得最新功能與修復",
+    "description": "PWA 更新說明"
+  },
+  "pwaRefresh": {
+    "message": "重新整理",
+    "description": "PWA 重新整理按鈕"
+  },
+  "pwaIgnore": {
+    "message": "忽略",
+    "description": "PWA 忽略按鈕"
+  },
+  "pwaOfflineReady": {
+    "message": "應用程式已可以離線使用",
+    "description": "PWA 離線就緒提示"
   }
 }

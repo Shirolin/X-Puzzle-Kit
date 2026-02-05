@@ -394,5 +394,25 @@
   "openExtensionStore": {
     "message": "Go to Chrome Web Store",
     "description": "Open extension store button text"
+  },
+  "pwaUpdateAvailable": {
+    "message": "New version available",
+    "description": "PWA update available tip"
+  },
+  "pwaUpdateReady": {
+    "message": "Update for the latest features and fixes",
+    "description": "PWA update description"
+  },
+  "pwaRefresh": {
+    "message": "Refresh",
+    "description": "PWA refresh button"
+  },
+  "pwaIgnore": {
+    "message": "Ignore",
+    "description": "PWA ignore button"
+  },
+  "pwaOfflineReady": {
+    "message": "App is ready to work offline",
+    "description": "PWA offline ready tip"
   }
 }

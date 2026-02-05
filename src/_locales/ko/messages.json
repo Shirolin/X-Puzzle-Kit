@@ -376,7 +376,27 @@
     "description": "확장 프로그램 버전 설명"
   },
   "openExtensionStore": {
-    "message": "Chrome 웹 스토어로 이동",
+    "message": "Chrome 웹 스토어 제공",
     "description": "확장 프로그램 스토어 열기 버튼 텍스트"
+  },
+  "pwaUpdateAvailable": {
+    "message": "새 버전 사용 가능",
+    "description": "PWA 업데이트 가능 알림"
+  },
+  "pwaUpdateReady": {
+    "message": "최신 기능 및 수정을 위해 업데이트하십시오",
+    "description": "PWA 업데이트 설명"
+  },
+  "pwaRefresh": {
+    "message": "새로고침",
+    "description": "PWA 새로고침 버튼"
+  },
+  "pwaIgnore": {
+    "message": "무시",
+    "description": "PWA 무시 버튼"
+  },
+  "pwaOfflineReady": {
+    "message": "앱이 오프라인에서 작동할 준비가 되었습니다",
+    "description": "PWA 오프라인 준비 알림"
   }
 }

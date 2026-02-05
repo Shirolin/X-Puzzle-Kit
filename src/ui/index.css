@@ -1402,7 +1402,7 @@ input:checked + .slider:before {
   box-shadow: var(--shadow-sm);
 }
 
-/* Auto-hide Actions - Sandwich Layout (Arrows top/bottom) */
+/* Auto-hide Actions - Default (Flexible Row Case) */
 .item-actions-group {
   position: absolute;
   right: 8px;
@@ -1413,41 +1413,49 @@ input:checked + .slider:before {
   background: var(--color-glass-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 0;
+  padding: 4px;
   border-radius: var(--radius-sm);
   z-index: 20;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: 0.2rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   border: 1px solid var(--color-border);
-  overflow: hidden;
 }
 
-.sort-arrow-bar-btn {
-  width: 100%;
-  height: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-icon-dim);
-  transition: all 0.1s;
-  opacity: 0.6;
-}
+/* PC-only Sandwich Layout Enhancements (>768px) */
+@media (min-width: 769px) {
+  .item-actions-group {
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    gap: 0;
+  }
 
-.sort-arrow-bar-btn:hover:not(:disabled) {
-  background-color: var(--color-item-hover);
-  color: var(--color-primary);
-  opacity: 1;
-}
+  .sort-arrow-bar-btn {
+    width: 100%;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-icon-dim);
+    transition: all 0.1s;
+    opacity: 0.6;
+  }
 
-.sort-arrow-bar-btn:disabled {
-  opacity: 0.15;
-  cursor: default;
+  .sort-arrow-bar-btn:hover:not(:disabled) {
+    background-color: var(--color-item-hover);
+    color: var(--color-primary);
+    opacity: 1;
+  }
+
+  .sort-arrow-bar-btn:disabled {
+    opacity: 0.15;
+    cursor: default;
+  }
 }
 
 .sortable-item:hover .item-actions-group,
@@ -3297,9 +3305,12 @@ button:active {
     background-color: var(--color-surface-soft);
   }
 
-  /* Make item actions group tighter */
+  /* Make item actions group tighter on mobile */
   .item-actions-group {
+    flex-direction: row !important;
+    padding: 4px !important;
     gap: 0.25rem;
+    overflow: visible !important;
   }
 
   /* 移动端间隙控件放大 */
