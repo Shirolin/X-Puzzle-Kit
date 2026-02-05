@@ -520,7 +520,7 @@
     "description": "Guía de instalación para Android"
   },
   "guideExtensionStitch": {
-    "message": "Verás un botón 'Stitch' directamente debajo de los posts de X (Twitter). Haz clic para importar todas las imágenes de ese post para unirlas.",
+    "message": "Verás un botón ‘Unir’ directamente debajo de los posts de X (Twitter). Haz clic para importar todas las imágenes de ese post para unirlas.",
     "description": "Guía de la función de unión de la extensión"
   },
   "guideExtensionSplit": {
@@ -528,7 +528,7 @@
     "description": "Guía de la función de división de la extensión"
   },
   "guideFlowOptimization": {
-    "message": "Activar la optimización 'X (Twitter) One Image Flow' ajusta los ratios de corte. Al publicar varios cortes, aparecerán sin costuras en el Timeline, pareciendo una sola imagen gigante.",
+    "message": "Activar la optimización ‘Diseño \"Imagen Única\" para X’ ajusta los ratios de corte. Al publicar varios cortes, aparecerán sin costuras en el Timeline, pareciendo una sola imagen gigante.",
     "description": "Guía de la función de optimización"
   },
   "guideExtensionTitle": {

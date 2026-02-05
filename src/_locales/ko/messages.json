@@ -520,7 +520,7 @@
     "description": "Android 설치 안내"
   },
   "guideExtensionStitch": {
-    "message": "X (Twitter) 게시물 하단에 '스티치 (Stitch)' 버튼이 표시됩니다. 클릭하면 해당 게시물의 모든 이미지를 스티칭 도구로 불러옵니다.",
+    "message": "X (Twitter) 게시물 하단에 ‘연결’ 버튼이 표시됩니다. 클릭하면 해당 게시물의 모든 이미지를 연결 도구로 불러옵니다.",
     "description": "확장 프로그램 스티치 기능 안내"
   },
   "guideExtensionSplit": {
@@ -528,7 +528,7 @@
     "description": "확장 프로그램 분할 기능 안내"
   },
   "guideFlowOptimization": {
-    "message": "'X (Twitter) 한 장 흐름' 최적화를 활성화하면 슬라이스 비율이 미세 조정됩니다. 여러 장을 게시할 때 타임라인에서 이음새 없이 연결되어 하나의 커다란 이미지처럼 보입니다.",
+    "message": "‘트위터 '한 장의 그림' 레이아웃 최적화’를 활성화하면 슬라이스 비율이 미세 조정됩니다. 여러 장을 게시할 때 타임라인에서 이음새 없이 연결되어 하나의 커다란 이미지처럼 보입니다.",
     "description": "최적화 기능 안내"
   },
   "guideExtensionTitle": {

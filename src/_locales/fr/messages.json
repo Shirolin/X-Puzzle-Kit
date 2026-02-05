@@ -536,7 +536,7 @@
     "description": "Guide d'installation pour Android"
   },
   "guideExtensionStitch": {
-    "message": "Vous verrez un bouton 'Stitch' directement sous les posts X (Twitter). Cliquez dessus pour importer toutes les images de ce post pour l'assemblage.",
+    "message": "Vous verrez un bouton ‘Fusionner’ directement sous les posts X (Twitter). Cliquez dessus pour importer toutes les images de ce post pour l'assemblage.",
     "description": "Guide de la fonction d'assemblage de l'extension"
   },
   "guideExtensionSplit": {
@@ -544,7 +544,7 @@
     "description": "Guide de la fonction de division de l'extension"
   },
   "guideFlowOptimization": {
-    "message": "L'activation de l'optimisation 'X (Twitter) One Image Flow' ajuste les rapports de découpe. Lors de la publication de plusieurs découpes, elles apparaîtront sans couture dans le fil d'actualité, comme une seule image géante.",
+    "message": "L'activation de l'optimisation ‘Mise en page \"Simple Image\" pour X’ ajuste les rapports de découpe. Lors de la publication de plusieurs découpes, elles apparaîtront sans couture dans le fil d'actualité, comme une seule image géante.",
     "description": "Guide de la fonction d'optimisation"
   },
   "guideExtensionTitle": {
