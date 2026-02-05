@@ -1401,10 +1401,10 @@ input:checked + .slider:before {
   box-shadow: var(--shadow-sm);
 }
 
-/* Auto-hide Actions - Positioned absolutely to avoid layout shift */
+/* Auto-hide Actions - Sandwich Layout (Arrows top/bottom) */
 .item-actions-group {
   position: absolute;
-  right: 6px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%) translateX(5px);
   opacity: 0;
@@ -1412,14 +1412,41 @@ input:checked + .slider:before {
   background: var(--color-glass-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 4px 6px;
+  padding: 0;
   border-radius: var(--radius-sm);
   z-index: 20;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
-  box-shadow: -10px 0 20px var(--color-item-bg);
-  /* Masking gradient */
+  gap: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.sort-arrow-bar-btn {
+  width: 100%;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-icon-dim);
+  transition: all 0.1s;
+  opacity: 0.6;
+}
+
+.sort-arrow-bar-btn:hover:not(:disabled) {
+  background-color: var(--color-item-hover);
+  color: var(--color-primary);
+  opacity: 1;
+}
+
+.sort-arrow-bar-btn:disabled {
+  opacity: 0.15;
+  cursor: default;
 }
 
 .sortable-item:hover .item-actions-group,
@@ -1442,22 +1469,19 @@ input:checked + .slider:before {
   height: 36px;
   border-radius: 8px;
   border: 1px solid var(--color-border);
-  /* overflow: hidden; Removed to allow badge to overlay border cleanly */
 }
 
 .item-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 7px; /* Inner radius (8px - 1px border) */
-  /* Border moved to container */
+  border-radius: 7px;
 }
 
-/* Clean Index Badge (Glassmorphic) */
 .item-index-badge {
   position: absolute;
-  bottom: -1px; /* Overlay the border */
-  right: -1px; /* Overlay the border */
+  bottom: -1px;
+  right: -1px;
   min-width: 16px;
   height: 16px;
   background: rgba(0, 0, 0, 0.6);
@@ -1468,7 +1492,7 @@ input:checked + .slider:before {
   line-height: 1;
   font-weight: 700;
   border-top-left-radius: 6px;
-  border-bottom-right-radius: 8px; /* Match container outer radius */
+  border-bottom-right-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1495,8 +1519,9 @@ input:checked + .slider:before {
   flex-direction: column;
   justify-content: center;
   gap: 2px;
-  /* Safe margin for absolute action buttons */
-  padding-right: 72px;
+  /* Sandwich layout is narrower, 72px is enough buffer */
+  margin-right: 72px;
+  padding-right: 0;
 }
 
 /* Force Font Sizes */
@@ -1528,6 +1553,7 @@ input:checked + .slider:before {
   height: 14px;
   border: 1px solid var(--color-border);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+  flex-shrink: 0; /* Never disappear if space is tight */
 }
 
 .gap-value-text {
