@@ -223,8 +223,12 @@
     "message": "Export Format",
     "description": "Export format label"
   },
+  "iosWebpWarningTitle": {
+    "message": "WebP Compatibility",
+    "description": "Title for iOS WebP warning"
+  },
   "iosWebpWarning": {
-    "message": "iOS 14+ supports WebP, but some apps may have compatibility issues when saving to the Photos app. PNG is recommended.",
+    "message": "Saving WebP images to the Photos app on iOS may have compatibility issues (some apps may not display them correctly). PNG is recommended. Do you still want to switch to WebP?",
     "description": "Warning for iOS WebP compatibility"
   },
   "zipLabel": {

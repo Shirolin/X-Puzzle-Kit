@@ -22,6 +22,7 @@ export const APP_CONFIG = {
     THEME: "x-puzzle-kit-theme",
     SPLIT_OPTIONS: "x-puzzle-kit-split-options",
     IOS_PROMPT_DISMISSED: "xpuzzle_ios_prompt_dismissed",
+    WEBP_WARNING_DISMISSED: "xpuzzle_webp_warning_dismissed",
   },
 
   // Twitter Logic Constants

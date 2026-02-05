@@ -239,8 +239,12 @@
     "message": "匯出格式",
     "description": "導出格式標籤"
   },
+  "iosWebpWarningTitle": {
+    "message": "WebP 相容性提示",
+    "description": "iOS WebP 警告標題"
+  },
   "iosWebpWarning": {
-    "message": "iOS 14+ 雖支援 WebP，但在某些 App 中儲存至相簿可能存在相容性問題，建議優先使用 PNG。",
+    "message": "iOS 系統儲存 WebP 圖片到相簿可能存在相容性問題（部分 App 無法正常顯示或儲存），建議優先使用 PNG。是否仍要切換為 WebP？",
     "description": "iOS WebP 相容性警告"
   },
   "zipLabel": {

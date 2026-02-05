@@ -33,7 +33,7 @@ import {
 } from "../../core/types";
 import { LayoutButton, IconButton, CustomSelect } from "./Common";
 import { SplitterControl } from "./SplitterControl";
-import { isExtension } from "../../core/platform";
+import { isExtension, platformStorage } from "@/core/platform";
 import { APP_CONFIG } from "../../core/config";
 
 // 分隔线组件
@@ -213,6 +213,7 @@ interface SidebarProps {
 
   onStitchFilesSelect: (files: FileList | File[]) => void;
   onImportFromUrl?: () => void;
+  onShowWebpWarning?: (onConfirm: () => void) => void;
 }
 
 export function Sidebar({
@@ -250,6 +251,7 @@ export function Sidebar({
   clearAllImages,
   onStitchFilesSelect,
   onImportFromUrl,
+  onShowWebpWarning,
 }: SidebarProps) {
   const [isGapOpen, setIsGapOpen] = useState(
     globalGap !== 0 || images.some((img) => img.localGap && img.localGap !== 0),
@@ -519,6 +521,17 @@ export function Sidebar({
       );
     };
     setIsIOS(checkIOS());
+  }, []);
+
+  const [webpWarningDismissed, setWebpWarningDismissed] = useState(true);
+  useEffect(() => {
+    platformStorage
+      .get({ [APP_CONFIG.STORAGE.WEBP_WARNING_DISMISSED]: false })
+      .then((res) => {
+        setWebpWarningDismissed(
+          res[APP_CONFIG.STORAGE.WEBP_WARNING_DISMISSED] as boolean,
+        );
+      });
   }, []);
 
   return (
@@ -1033,12 +1046,22 @@ export function Sidebar({
                         key={fmt}
                         className={`format-btn ${outputFormat === fmt ? "active" : ""}`}
                         onClick={() => {
-                          setOutputFormat(fmt);
                           if (
-                            fmt === "jpg" &&
-                            backgroundColor === "transparent"
+                            fmt === "webp" &&
+                            isIOS &&
+                            !webpWarningDismissed &&
+                            onShowWebpWarning
                           ) {
-                            setBackgroundColor("white");
+                            onShowWebpWarning(() => {
+                              setOutputFormat("webp");
+                              setWebpWarningDismissed(true);
+                              platformStorage.set({
+                                [APP_CONFIG.STORAGE.WEBP_WARNING_DISMISSED]:
+                                  true,
+                              });
+                            });
+                          } else {
+                            setOutputFormat(fmt);
                           }
                         }}
                       >
@@ -1046,22 +1069,6 @@ export function Sidebar({
                       </button>
                     ))}
                   </div>
-                  {isIOS && outputFormat === "webp" && (
-                    <div
-                      style={{
-                        fontSize: "10px",
-                        lineHeight: "1.4",
-                        color: "#f59e0b",
-                        marginTop: "6px",
-                        padding: "4px 8px",
-                        backgroundColor: "rgba(245, 158, 11, 0.1)",
-                        borderRadius: "6px",
-                        border: "1px solid rgba(245, 158, 11, 0.2)",
-                      }}
-                    >
-                      {t("iosWebpWarning")}
-                    </div>
-                  )}
                 </div>
 
                 <Divider />

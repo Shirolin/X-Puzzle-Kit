@@ -998,6 +998,13 @@ export function App({
             handleStitch={handleStitch}
             loading={loading}
             isGenerating={isGenerating}
+            onShowWebpWarning={(onConfirm) =>
+              showConfirm(
+                t("iosWebpWarningTitle"),
+                t("iosWebpWarning"),
+                onConfirm,
+              )
+            }
             removeImage={(id) => {
               showConfirm(
                 t("removeImage"),

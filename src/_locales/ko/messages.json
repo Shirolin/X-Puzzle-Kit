@@ -251,8 +251,12 @@
     "message": "내보내기 형식",
     "description": "내보내기 형식 라벨"
   },
+  "iosWebpWarningTitle": {
+    "message": "WebP 호환성 알림",
+    "description": "iOS WebP 경고 제목"
+  },
   "iosWebpWarning": {
-    "message": "iOS 14 이상은 WebP를 지원하지만, 일부 앱에서 사진 앱으로 저장할 때 호환성 문제가 발생할 수 있습니다. PNG 사용을 권장합니다.",
+    "message": "iOS에서 WebP 이미지를 사진 앱에 저장할 때 호환성 문제(일부 앱에서 표시되지 않음 등)가 발생할 수 있습니다. PNG 사용을 권장합니다. 그래도 WebP로 변경하시겠습니까?",
     "description": "iOS WebP 호환성 경고"
   },
   "zipLabel": {
