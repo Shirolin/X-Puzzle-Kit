@@ -422,5 +422,141 @@
   "pwaOfflineReady": {
     "message": "App is ready to work offline",
     "description": "PWA offline ready tip"
+  },
+  "layoutSchemeHelp": {
+    "message": "Select image arrangement: Grid (2x2) is great for social media, T-Shape for photography, Vertical/Horizontal for long panoramas.",
+    "description": "Layout help text"
+  },
+  "backgroundColorHelp": {
+    "message": "Set color behind images. Transparent (PNG/WebP) is most flexible, Black or White helps unify micro-adjustments.",
+    "description": "Background color help"
+  },
+  "globalGapHelp": {
+    "message": "Set gap width between all images. Negative values allow overlapping.",
+    "description": "Global gap help"
+  },
+  "formatHelp": {
+    "message": "PNG: Lossless, best quality; JPG: Good for photos, smaller size; WebP: Balanced, but may have iOS compatibility issues.",
+    "description": "Format help"
+  },
+  "twitterOptimizeHelp": {
+    "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 'One Image' look in users' feeds.",
+    "description": "Twitter optimization help"
+  },
+  "imageResolution": {
+    "message": "Resolution",
+    "description": "Image resolution label"
+  },
+  "clickToShowResolution": {
+    "message": "Click to show resolution",
+    "description": "Resolution tip"
+  },
+  "finalGap": {
+    "message": "Final Gap",
+    "description": "Final gap calculation result"
+  },
+  "openSourcePage": {
+    "message": "Open Original Tweet",
+    "description": "Original tweet link tip"
+  },
+  "userGuideButton": {
+    "message": "User Guide",
+    "description": "User guide button text"
+  },
+  "tutorialImportTitle": {
+    "message": "Import Images",
+    "description": "Tutorial step 1 title"
+  },
+  "tutorialImportDesc": {
+    "message": "Click to upload local files, or use the link icon to import directly from a Twitter/X URL.",
+    "description": "Tutorial step 1 description"
+  },
+  "tutorialLayoutTitle": {
+    "message": "Choose Layout",
+    "description": "Tutorial step 2 title"
+  },
+  "tutorialLayoutDesc": {
+    "message": "Pick a layout for your images. 'Grid' is recommended for Twitter/X posts.",
+    "description": "Tutorial step 2 description"
+  },
+  "tutorialControlTitle": {
+    "message": "Fine-tune",
+    "description": "Tutorial step 3 title"
+  },
+  "tutorialControlDesc": {
+    "message": "Adjust global/local gaps, or drag the list to reorder your images.",
+    "description": "Tutorial step 3 description"
+  },
+  "tutorialExportTitle": {
+    "message": "Export & Download",
+    "description": "Tutorial step 4 title"
+  },
+  "tutorialExportDesc": {
+    "message": "Finally, click the button to generate and save your creation!",
+    "description": "Tutorial step 4 description"
+  },
+  "skipTutorial": {
+    "message": "Skip",
+    "description": "Skip button"
+  },
+  "nextStep": {
+    "message": "Next",
+    "description": "Next button"
+  },
+  "localGapHelp": {
+    "message": "Click the number below the image or use the jog wheel to adjust the gap between this image and the next one individually.",
+    "description": "Local gap help description"
+  },
+  "userGuideTitle": {
+    "message": "User Manual & Guide",
+    "description": "Guide dialog title"
+  },
+  "finishTutorial": {
+    "message": "Finish",
+    "description": "Finish button"
+  },
+  "tabPWA": {
+    "message": "PWA / Mobile",
+    "description": "Manual tab 1"
+  },
+  "tabExtension": {
+    "message": "Extension",
+    "description": "Manual tab 2"
+  },
+  "tabFeatures": {
+    "message": "Pro Tips",
+    "description": "Manual tab 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. Basic Install: Tap 'Share' in Safari and select 'Add to Home Screen' for a native app experience.\n2. Deep Integration: Due to iOS limitations, use the 'Shortcuts' app to enable direct sharing from X (Twitter) to this app.",
+    "description": "iOS installation guide"
+  },
+  "guideAndroidInstall": {
+    "message": "1. Tap 'Install App' or 'Add to Home Screen' in the browser's menu.\n2. Once installed, this app becomes a 'System Share Target'. Tap share in X (Twitter) and select this app's icon to import images directly.",
+    "description": "Android installation guide"
+  },
+  "guideExtensionStitch": {
+    "message": "You will see a 'Stitch' button directly under X (Twitter) posts. Click it to import all images from that post for stitching.",
+    "description": "Extension stitch feature guide"
+  },
+  "guideExtensionSplit": {
+    "message": "Right-click any image on the web and select 'X-Puzzle-Kit: Split Image' to process it directly.",
+    "description": "Extension split feature guide"
+  },
+  "guideFlowOptimization": {
+    "message": "Enabling 'X (Twitter) One Image Flow' optimization fine-tunes slice ratios. When posting multiple slices, they will appear seamless in the Timeline, looking like one giant image.",
+    "description": "Optimization feature guide"
+  },
+  "guideExtensionTitle": {
+    "message": "Use directly on Twitter",
+    "description": "Manual card title 1"
+  },
+  "guideSplitTitle": {
+    "message": "Right-click Quick Split",
+    "description": "Manual card title 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "Why use local gaps?",
+    "description": "Manual card title 3"
   }
 }

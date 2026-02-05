@@ -8,7 +8,7 @@
     "description": "插件描述"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit 是一款专为推特 (X) 用户、数字艺术家及收藏家打造的专业拼图与切图工具箱。无论您是想还原多图推文中的全景长图，还是准备制作高效的网格展示，X-Puzzle-Kit 都能确保您的内容在推特动态（Timeline）中得到理想呈现。\n\n🌐 全平台支持：\n除了此 Chrome 扩展程序，我们还提供功能完整的 Web PWA 版本（https://x-puzzle-kit.pages.dev/），方便您在手机、平板或其他浏览器中随时使用。\n\n✨ 核心功能：\n\n🧵 智能无缝拼图\n将推文中分散的图片重新拼接回其原始的全景或长图格式。\n- 布局方案：全面支持纵向、横向、田字格（2x2）以及独特的 T 型布局。\n- 像素级对齐：精准的坐标计算逻辑，有效消除接缝与模糊伪影，呈现清晰画质。\n- 原生集成：直接在推特页面上点击按钮发起拼接，省略手动下载步骤。\n- 无损导出：不进行二次压缩，保留每一颗像素的原始分辨率，细节分毫毕现。\n\n✂️ 创意切图助手 (九宫格制作)\n将任何图片拆分为标准网格（2x2、3x3 或自定义），完美适配推特的多图展示机制。\n- 推特「一图流」布局优化：自动适配推特预览机制，让多张切图在信息流中完美严丝合缝，拼出一张完整大图。\n- 右键即刻拆分：在网页中右键点击图片，即可直接发送至拆分工具进行处理。\n- 统一视觉效果：为您的网格推文创造一致的展示效果，提升推文吸引力。\n\n🚀 实用特性：\n- 高效操作流：深度集成于浏览器，从发现推文到生成图片仅需数秒。\n- 灵活选项：微调全局或局部间距，支持深色模式，可自定义背景颜色（支持透明）。\n- 多样化导入：支持文件上传、剪贴板粘贴以及推特页面直接导入。\n- 批量导出：支持高质量 PNG、JPG、WebP 下载，或一键打包为 ZIP 压缩包。\n\n🔒 隐私保护\n所有图片处理均在您的本地浏览器中完成。图片不会上传到任何远程服务器——无追踪、无记录，保护您的创作隐私。\n\n立即使用 X-Puzzle-Kit 提升您的推特配图效率。",
+    "message": "X-Puzzle-Kit 是一款专为推特 (X) 用户、数字艺术家及收藏家打造的专业拼图与切图工具箱。无论您是想还原多图推文中的全景长图，还是准备制作高效的网格展示，X-Puzzle-Kit 都能确保您的内容在推特动态（Timeline）得到理想呈现。\n\n🌐 全平台支持：\n除了此 Chrome 扩展程序，我们还提供功能完整的 Web PWA 版本（https://x-puzzle-kit.pages.dev/），方便您在手机、平板或其他浏览器中随时使用。\n\n✨ 核心功能：\n\n🧵 智能无缝拼图\n将推文中分散的图片重新拼接回其原始的全景或长图格式。\n- 布局方案：全面支持纵向、横向、田字格（2x2）以及独特的 T 型布局。\n- 像素级对齐：精准的坐标计算逻辑，有效消除接缝与模糊伪影，呈现清晰画质。\n- 原生集成：直接在推特页面上点击按钮发起拼接，省略手动下载步骤。\n- 无损导出：不进行二次压缩，保留每一颗像素的原始分辨率，细节分毫毕现。\n\n✂️ 创意切图助手 (九宫格制作)\n将任何图片拆分为标准网格（2x2、3x3 或自定义），完美适配推特的多图展示机制。\n- 推特「一图流」布局优化：自动适配推特预览机制，让多张切图在信息流中完美严丝合缝，拼出一张完整大图。\n- 右键即刻拆分：在网页中右键点击图片，即可直接发送至拆分工具进行处理。\n- 统一视觉效果：为您的网格推文创造一致的展示效果，提升推文吸引力。\n\n🚀 实用特性：\n- 高效操作流：深度集成于浏览器，从发现推文到生成图片仅需数秒。\n- 灵活选项：微调全局或局部间距，支持深色模式，可自定义背景颜色（支持透明）。\n- 多样化导入：支持文件上传、剪贴板粘贴以及推特页面直接导入。\n- 批量导出：支持高质量 PNG、JPG、WebP 下载，或一键打包为 ZIP 压缩包。\n\n🔒 隐私保护\n所有图片处理均在您的本地浏览器中完成。图片不会上传到任何远程服务器——无追踪、无记录，保护您的创作隐私。\n\n立即使用 X-Puzzle-Kit 提升您的推特配图效率。",
     "description": "商店详细描述"
   },
   "previewTitle": {
@@ -47,6 +47,10 @@
     "message": "布局方案",
     "description": "布局部分标题"
   },
+  "layoutSchemeHelp": {
+    "message": "选择图片的排列方式：\n田字格(2x2)适合社交媒体展示，\nT型则常用于艺术摄影布局。\n纵向/横向适合拼接长图。",
+    "description": "布局方案帮助说明"
+  },
   "layoutGrid": {
     "message": "田字格",
     "description": "田字格布局标签"
@@ -71,6 +75,10 @@
     "message": "底色",
     "description": "底色标签"
   },
+  "backgroundColorHelp": {
+    "message": "设置图片背后的颜色。透明背景（PNG/WebP）最灵活，黑色或白色背景则能使接缝微调效果更统一。",
+    "description": "底色按钮帮助说明"
+  },
   "transparent": {
     "message": "透明",
     "description": "透明背景选项"
@@ -87,6 +95,10 @@
     "message": "全局间距",
     "description": "全局间距标签"
   },
+  "globalGapHelp": {
+    "message": "统一设置所有图片之间的缝隙宽度。负值可让图片互相重叠。",
+    "description": "全局间距帮助说明"
+  },
   "resetToZero": {
     "message": "重置为0",
     "description": "重置间距的工具提示"
@@ -98,6 +110,10 @@
   "localGap": {
     "message": "局部间距",
     "description": "图片排序副标题"
+  },
+  "localGapHelp": {
+    "message": "点击图片下方的数字或操作拨轮，可以单独调整该图片与其后一张图片之间的缝隙。",
+    "description": "局部间距帮助说明"
   },
   "imageLabel": {
     "message": "图片",
@@ -223,6 +239,10 @@
     "message": "导出格式",
     "description": "导出格式标签"
   },
+  "formatHelp": {
+    "message": "PNG 为无损格式，画质最高；\nJPG 适合照片压缩，体积较小；\nWebP 兼顾两者，但在 iOS 系统中可能存在兼容性问题。",
+    "description": "导出格式帮助说明"
+  },
   "iosWebpWarningTitle": {
     "message": "WebP 兼容性提示",
     "description": "iOS WebP 警告标题"
@@ -250,6 +270,10 @@
   "twitterOptimizeTip": {
     "message": "针对推特预览机制特殊适配，让多张切图在信息流中拼成一张完整的「大图」。",
     "description": "推特布局优化说明"
+  },
+  "twitterOptimizeHelp": {
+    "message": "当您在推特一次发布多张切图时，此选项会微调边框和间距，使它们在用户的信息流滚动预览中无接缝，视觉效果如同一张大图。",
+    "description": "推特布局优化详细说明"
   },
   "settings": {
     "message": "设置",
@@ -397,7 +421,7 @@
   },
   "extensionVersionTip": {
     "message": "在 PC 浏览器中使用？试试我们的浏览器插件，支持在 X (Twitter) 页面直接一键拼图。",
-    "description": "插件版本说明"
+    "description": "插件说明文案"
   },
   "openExtensionStore": {
     "message": "前往 Chrome 应用商店",
@@ -422,5 +446,101 @@
   "pwaOfflineReady": {
     "message": "应用已可以离线使用",
     "description": "PWA 离线就绪提示"
+  },
+  "userGuideTitle": {
+    "message": "使用手册与引导",
+    "description": "引导对话框标题"
+  },
+  "userGuideButton": {
+    "message": "使用手册",
+    "description": "打开引导手册按钮文本"
+  },
+  "tutorialImportTitle": {
+    "message": "导入图片",
+    "description": "教程步骤标题1"
+  },
+  "tutorialImportDesc": {
+    "message": "点击此处上传本地图片，或者点击链接图标从 Twitter ID 直接导入。",
+    "description": "教程步骤描述1"
+  },
+  "tutorialLayoutTitle": {
+    "message": "选择布局",
+    "description": "教程步骤标题2"
+  },
+  "tutorialLayoutDesc": {
+    "message": "根据需要选择拼接布局。如果是推特展示，推荐使用‘田字格’。",
+    "description": "教程步骤描述2"
+  },
+  "tutorialControlTitle": {
+    "message": "微调设置",
+    "description": "教程步骤标题3"
+  },
+  "tutorialControlDesc": {
+    "message": "在此处调整全局或局部间距，也可以拖动右侧列表来改变图片顺序。",
+    "description": "教程步骤描述3"
+  },
+  "tutorialExportTitle": {
+    "message": "导出下载",
+    "description": "教程步骤标题4"
+  },
+  "tutorialExportDesc": {
+    "message": "最后点击底部按钮，即可生成并保存您的拼图作品！",
+    "description": "教程步骤描述4"
+  },
+  "skipTutorial": {
+    "message": "跳过教程",
+    "description": "跳过按钮"
+  },
+  "nextStep": {
+    "message": "下一步",
+    "description": "下一步按钮"
+  },
+  "finishTutorial": {
+    "message": "完成",
+    "description": "完成按钮"
+  },
+  "tabPWA": {
+    "message": "PWA / 移动端",
+    "description": "手册标签1"
+  },
+  "tabExtension": {
+    "message": "浏览器扩展",
+    "description": "手册标签2"
+  },
+  "tabFeatures": {
+    "message": "进阶技巧",
+    "description": "手册标签3"
+  },
+  "guideiOSInstall": {
+    "message": "1. 基础安装：在 Safari 中点击‘分享’，选择‘添加到主屏幕’以获得原生应用体验。\n2. 深度联动：由于 iOS 系统不支持原生分享目标，需配合配套的‘快捷指令’。安装后，您可以在 X (Twitter) 中点击分享并运行指令，将图源直接导入本项目。",
+    "description": "iOS安装说明"
+  },
+  "guideAndroidInstall": {
+    "message": "1. 在浏览器右上角菜单中点击‘安装应用’或‘添加到主屏幕’。\n2. 安装后，本工具将成为‘系统分享目标’。在 X (Twitter) 中直接点击分享并选择本项目图标即可导入图源。",
+    "description": "Android安装说明"
+  },
+  "guideExtensionStitch": {
+    "message": "在 Twitter/X 推文下方，您可以直接看到‘拼接 (Stitch)’按钮。点击即可将该推文的所有图片导入工具进行拼接。",
+    "description": "插件拼接功能说明"
+  },
+  "guideExtensionSplit": {
+    "message": "在网页任意图片上点击右键，选择‘X-Puzzle-Kit: 拆分图片’，可直接对该图进行切切处理。",
+    "description": "插件拆分功能说明"
+  },
+  "guideFlowOptimization": {
+    "message": "开启‘推特一图流’优化后，工具会微调切片比例。在推特发布时，这些切片会在 Timeline 中无缝衔接，拼成一张完整大图。",
+    "description": "一图流优化深度说明"
+  },
+  "guideExtensionTitle": {
+    "message": "直接在推特页面使用",
+    "description": "手册卡片标题1"
+  },
+  "guideSplitTitle": {
+    "message": "右键快捷拆分",
+    "description": "手册卡片标题2"
+  },
+  "guideLocalGapTitle": {
+    "message": "为什么要使用局部间距？",
+    "description": "手册卡片标题3"
   }
 }

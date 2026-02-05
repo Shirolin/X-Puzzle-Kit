@@ -31,6 +31,8 @@ import { toast } from "sonner";
 import { ConfirmDialog } from "./components/ConfirmDialog";
 import { InputDialog } from "./components/InputDialog";
 import { ReloadPrompt } from "./components/ReloadPrompt";
+import { GuideOverlay } from "./components/GuideOverlay";
+import { UserGuideDialog } from "./components/UserGuideDialog";
 
 interface AppProps {
   task: StitchTask;
@@ -143,6 +145,8 @@ export function App({
   );
   const [persistedBG, setPersistedBG] =
     useState<BackgroundColor>("transparent");
+  const [showGuide, setShowGuide] = useState(false);
+  const [showUserManual, setShowUserManual] = useState(false);
 
   // Theme State
   const [theme, setTheme] = useState<"auto" | "light" | "dark">("auto");
@@ -206,7 +210,21 @@ export function App({
           setLoading(false);
         });
       });
-  }, []);
+
+    // Check if tutorial is completed
+    platformStorage
+      .get({ [STORAGE_KEYS.TUTORIAL_COMPLETED]: false })
+      .then((res) => {
+        if (!res[STORAGE_KEYS.TUTORIAL_COMPLETED] && !isPopup) {
+          setShowGuide(true);
+        }
+      });
+  }, [isPopup]);
+
+  const handleFinishGuide = () => {
+    setShowGuide(false);
+    platformStorage.set({ [STORAGE_KEYS.TUTORIAL_COMPLETED]: true });
+  };
 
   // Save Settings
   useEffect(() => {
@@ -1025,6 +1043,7 @@ export function App({
             onImportFromUrl={
               __IS_EXTENSION__ ? undefined : () => setShowUrlInput(true)
             }
+            onShowGuide={() => setShowUserManual(true)}
           />
         </div>
       </div>
@@ -1083,6 +1102,12 @@ export function App({
       )}
 
       <ReloadPrompt />
+      <GuideOverlay isOpen={showGuide} onFinish={handleFinishGuide} />
+      <UserGuideDialog
+        isOpen={showUserManual}
+        onClose={() => setShowUserManual(false)}
+        container={mountNode}
+      />
     </div>
   );
 }

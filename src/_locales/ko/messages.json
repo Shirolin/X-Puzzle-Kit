@@ -406,5 +406,141 @@
   "pwaOfflineReady": {
     "message": "앱이 오프라인에서 작동할 준비가 되었습니다",
     "description": "PWA 오프라인 준비 알림"
+  },
+  "layoutSchemeHelp": {
+    "message": "이미지 배치 방식을 선택하세요: 그리드(2x2)는 소셜 미디어 게시에 적합하며, T자형은 예술적 레이아웃에, 세로/가로형은 긴 파노라마 이미지 결합에 적합합니다.",
+    "description": "레이아웃 도움말 설명"
+  },
+  "backgroundColorHelp": {
+    "message": "이미지 배경색을 설정합니다. 투명(PNG/WebP)이 가장 유연하며, 검은색이나 흰색 배경은 미세 조정 시 통일감을 주는 데 도움이 됩니다.",
+    "description": "배경색 도움말"
+  },
+  "globalGapHelp": {
+    "message": "모든 이미지 사이의 간격을 일괄 설정합니다. 음수 값을 입력하면 이미지를 겹치게 할 수 있습니다.",
+    "description": "전체 간격 도움말"
+  },
+  "formatHelp": {
+    "message": "PNG는 무손실 고화질 방식이며, JPG는 사진 압축에 유리하여 용량이 작습니다. WebP는 두 장점을 모두 갖췄지만 iOS에서 호환성 문제가 발생할 수 있습니다.",
+    "description": "내보내기 형식 도움말"
+  },
+  "twitterOptimizeHelp": {
+    "message": "X (Twitter)에 여러 장의 이미지를 게시할 때, 타임라인에서 이음새 없이 하나의 커다란 이미지처럼 보이도록 테두리와 간격을 미세 조정합니다.",
+    "description": "트위터 레이아웃 최적화 상세 설명"
+  },
+  "imageResolution": {
+    "message": "해상도",
+    "description": "이미지 해상도 라벨"
+  },
+  "clickToShowResolution": {
+    "message": "해상도를 보려면 클릭하세요",
+    "description": "해상도 확인 팁"
+  },
+  "finalGap": {
+    "message": "최종 간격",
+    "description": "전체 및 개별 간격이 적용된 최종 계산 결과"
+  },
+  "openSourcePage": {
+    "message": "원본 게시물 열기",
+    "description": "원본 링크 팁"
+  },
+  "userGuideButton": {
+    "message": "사용 설명서",
+    "description": "가이드 버튼 텍스트"
+  },
+  "tutorialImportTitle": {
+    "message": "이미지 불러오기",
+    "description": "튜토리얼 1단계 제목"
+  },
+  "tutorialImportDesc": {
+    "message": "여기를 클릭하여 로컬 이미지를 업ロード하거나, 링크 아이콘을 클릭하여 Twitter/X URL에서 직접 이미지를 불러오세요.",
+    "description": "튜토리얼 1단계 설명"
+  },
+  "tutorialLayoutTitle": {
+    "message": "레이아웃 선택",
+    "description": "튜토리얼 2단계 제목"
+  },
+  "tutorialLayoutDesc": {
+    "message": "원하는 배치 방식을 선택하세요. Twitter/X 게시용으로는 '그리드'를 추천합니다.",
+    "description": "튜토리얼 2단계 설명"
+  },
+  "tutorialControlTitle": {
+    "message": "미세 조정",
+    "description": "튜토리얼 3단계 제목"
+  },
+  "tutorialControlDesc": {
+    "message": "전체 또는 개별 간격을 조정하거나, 목록을 드래그하여 이미지 순서를 변경할 수 있습니다.",
+    "description": "튜토리얼 3단계 설명"
+  },
+  "tutorialExportTitle": {
+    "message": "내보내기 및 저장",
+    "description": "튜토리얼 4단계 제목"
+  },
+  "tutorialExportDesc": {
+    "message": "마지막으로 하단 버튼을 클릭하여 결과물을 생성하고 저장하세요!",
+    "description": "튜토리얼 4단계 설명"
+  },
+  "skipTutorial": {
+    "message": "건너뛰기",
+    "description": "건너뛰기 버튼"
+  },
+  "nextStep": {
+    "message": "다음",
+    "description": "다음 단계 버튼"
+  },
+  "localGapHelp": {
+    "message": "이미지 하단의 숫자나 조그 휠을 사용하여 해당 이미지와 다음 이미지 사이의 간격을 개별적으로 조정할 수 있습니다.",
+    "description": "개별 간격 도움말 설명"
+  },
+  "userGuideTitle": {
+    "message": "사용 설명서 및 가이드",
+    "description": "가이드 대화상자 제목"
+  },
+  "finishTutorial": {
+    "message": "완료",
+    "description": "완료 버튼"
+  },
+  "tabPWA": {
+    "message": "PWA / 모바일",
+    "description": "매뉴얼 탭 1"
+  },
+  "tabExtension": {
+    "message": "브라우저 확장 프로그램",
+    "description": "매뉴얼 탭 2"
+  },
+  "tabFeatures": {
+    "message": "고급 팁",
+    "description": "매뉴얼 탭 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. 기본 설치: Safari에서 '공유'를 탭하고 '홈 화면에 추가'를 선택하여 네이티브 앱 환경을 경험하세요.\n2. 심화 연동: iOS 시스템 제한으로 인해, X (Twitter)에서 본 앱으로의 직접 공유를 위해서는 '단축어' 앱이 필요합니다. 설치 후 공유 메뉴에서 단축어를 실행하여 이미지를 불러올 수 있습니다.",
+    "description": "iOS 설치 안내"
+  },
+  "guideAndroidInstall": {
+    "message": "1. 브라우저 메뉴에서 '앱 설치' 또는 '홈 화면에 추가'를 탭하세요.\n2. 설치 후, 본 도구는 시스템 '공유 대상'이 됩니다. X (Twitter)에서 공유를 탭하고 본 프로젝트 아이콘을 선택하면 이미지를 직접 불러올 수 있습니다.",
+    "description": "Android 설치 안내"
+  },
+  "guideExtensionStitch": {
+    "message": "X (Twitter) 게시물 하단에 '스티치 (Stitch)' 버튼이 표시됩니다. 클릭하면 해당 게시물의 모든 이미지를 스티칭 도구로 불러옵니다.",
+    "description": "확장 프로그램 스티치 기능 안내"
+  },
+  "guideExtensionSplit": {
+    "message": "웹의 이미지 위에서 마우스 오른쪽 버튼을 클릭하고 'X-Puzzle-Kit: 이미지 분할'을 선택하면 직접 분할 작업을 수행할 수 있습니다.",
+    "description": "확장 프로그램 분할 기능 안내"
+  },
+  "guideFlowOptimization": {
+    "message": "'X (Twitter) 한 장 흐름' 최적화를 활성화하면 슬라이스 비율이 미세 조정됩니다. 여러 장을 게시할 때 타임라인에서 이음새 없이 연결되어 하나의 커다란 이미지처럼 보입니다.",
+    "description": "최적화 기능 안내"
+  },
+  "guideExtensionTitle": {
+    "message": "Twitter 페이지에서 직접 사용",
+    "description": "매뉴얼 카드 제목 1"
+  },
+  "guideSplitTitle": {
+    "message": "우클릭 빠른 분할",
+    "description": "매뉴얼 카드 제목 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "개별 간격을 사용하는 이유는?",
+    "description": "매뉴얼 카드 제목 3"
   }
 }

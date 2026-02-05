@@ -18,6 +18,8 @@ import {
   ChevronDown,
   Coffee,
   Puzzle,
+  HelpCircle,
+  BookOpen,
 } from "lucide-preact";
 import { ComponentChildren, JSX } from "preact";
 import { useRef, useEffect, useLayoutEffect, useState } from "preact/hooks";
@@ -48,8 +50,39 @@ export const Divider = () => (
 );
 
 // 侧边栏卡片包裹组件
+// 帮助提示组件
+const HelpTip = ({ text }: { text: string }) => (
+  <IconButton
+    icon={<HelpCircle size={12} />}
+    onClick={() => {
+      toast(
+        <div style={{ whiteSpace: "pre-wrap", lineHeight: "1.4" }}>{text}</div>,
+        {
+          duration: 4000,
+          icon: (
+            <HelpCircle size={16} style={{ color: "var(--color-primary)" }} />
+          ),
+        },
+      );
+    }}
+    style={{
+      padding: "2px",
+      color: "var(--color-text-muted)",
+      opacity: 0.45,
+      marginLeft: "4px",
+      display: "inline-flex",
+      alignItems: "baseline", // 强制基线对齐
+      justifyContent: "center",
+      transform: "translateY(-1.5px)", // 提升高度，修正视觉中心
+      pointerEvents: "auto",
+    }}
+    title={text}
+  />
+);
+
 export interface SidebarSectionProps {
   title: string;
+  helpText?: string;
   headerRight?: ComponentChildren;
   children?: ComponentChildren;
   className?: string;
@@ -58,6 +91,7 @@ export interface SidebarSectionProps {
 
 export const SidebarSection = ({
   title,
+  helpText,
   headerRight,
   children,
   className,
@@ -65,9 +99,12 @@ export const SidebarSection = ({
 }: SidebarSectionProps) => (
   <section className={`section-block ${className || ""}`} style={style}>
     <div className="section-header-row">
-      <h3 className="section-header" style={{ margin: 0 }}>
-        {title}
-      </h3>
+      <div className="flex-row-center">
+        <h3 className="section-header" style={{ margin: 0 }}>
+          {title}
+        </h3>
+        {helpText && <HelpTip text={helpText} />}
+      </div>
       {headerRight}
     </div>
     {children}
@@ -214,6 +251,7 @@ interface SidebarProps {
   onStitchFilesSelect: (files: FileList | File[]) => void;
   onImportFromUrl?: () => void;
   onShowWebpWarning?: (onConfirm: () => void) => void;
+  onShowGuide?: () => void;
 }
 
 export function Sidebar({
@@ -252,6 +290,7 @@ export function Sidebar({
   onStitchFilesSelect,
   onImportFromUrl,
   onShowWebpWarning,
+  onShowGuide,
 }: SidebarProps) {
   const [isGapOpen, setIsGapOpen] = useState(
     globalGap !== 0 || images.some((img) => img.localGap && img.localGap !== 0),
@@ -582,10 +621,29 @@ export function Sidebar({
             isTwitterOptimized={isTwitterOptimized}
             onIsTwitterOptimizedChange={setIsTwitterOptimized}
             disabled={splitBlobs && splitBlobs.length > 0}
+            onShowGuide={onShowGuide}
           />
         ) : (
           <>
-            <SidebarSection title={t("layoutScheme")}>
+            <SidebarSection
+              title={t("layoutScheme")}
+              helpText={t("layoutSchemeHelp")}
+              data-tour="layout"
+              headerRight={
+                onShowGuide && (
+                  <IconButton
+                    icon={<BookOpen size={14} strokeWidth={2.5} />}
+                    onClick={onShowGuide}
+                    title={t("userGuideTitle")}
+                    style={{
+                      padding: "4px",
+                      background: "var(--color-surface-soft)",
+                      color: "var(--color-text)",
+                    }}
+                  />
+                )
+              }
+            >
               <div className="layout-grid-container">
                 <LayoutButton
                   active={layout === "GRID_2x2"}
@@ -621,7 +679,9 @@ export function Sidebar({
             {/* Elastic Sorting Area */}
             <SidebarSection
               title={t("imageSorting")}
+              helpText={t("localGapHelp")}
               className="sorting-area"
+              data-tour="import"
               headerRight={
                 <div className="flex-row-center gap-xs sorting-toolbar">
                   <IconButton
@@ -962,7 +1022,9 @@ export function Sidebar({
 
             <SidebarSection
               title={t("globalGap")}
+              helpText={t("globalGapHelp")}
               className="gap-control-enhanced"
+              data-tour="control"
               headerRight={
                 <label className="switch">
                   <input
@@ -1029,7 +1091,11 @@ export function Sidebar({
               )}
             </SidebarSection>
 
-            <SidebarSection title={t("settings")} style={{ flexShrink: 0 }}>
+            <SidebarSection
+              title={t("settings")}
+              helpText={t("formatHelp")}
+              style={{ flexShrink: 0 }}
+            >
               <div
                 style={{
                   display: "flex",
@@ -1134,9 +1200,20 @@ export function Sidebar({
 
                 <Divider />
 
-                <div className="section-row-standard">
-                  <h3 className="section-sub-header">{t("support")}</h3>
-                  <div style={{ display: "flex", gap: "6px" }}>
+                <div
+                  className="section-header-row"
+                  style={{ marginTop: "14px", marginBottom: "8px" }}
+                >
+                  <h3 className="section-sub-header" style={{ margin: 0 }}>
+                    {t("support")}
+                  </h3>
+                  <div
+                    style={{
+                      display: "flex",
+                      gap: "6px",
+                      alignItems: "center",
+                    }}
+                  >
                     <a
                       href="https://ifdian.net/a/shirolin"
                       target="_blank"
@@ -1181,7 +1258,6 @@ export function Sidebar({
                     </a>
                   </div>
                 </div>
-
                 {isExtension ? (
                   <>
                     <Divider />
@@ -1379,6 +1455,7 @@ export function Sidebar({
             onClick={handleStitch}
             disabled={images.length === 0 || loading || isGenerating}
             className="btn btn-primary"
+            data-tour="download"
             style={{
               width: "100%",
               height: "3rem",

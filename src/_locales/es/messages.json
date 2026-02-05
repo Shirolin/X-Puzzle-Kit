@@ -406,5 +406,141 @@
   "pwaOfflineReady": {
     "message": "La aplicación está lista para funcionar sin conexión",
     "description": "Aviso de disponibilidad sin conexión de PWA"
+  },
+  "layoutSchemeHelp": {
+    "message": "Selecciona la disposición de las imágenes: Cuadrícula (2x2) es ideal para redes sociales, Forma de T para fotografía, Vertical/Horizontal para panoramas largos.",
+    "description": "Texto de ayuda de diseño"
+  },
+  "backgroundColorHelp": {
+    "message": "Establece el color de fondo de las imágenes. El fondo transparente (PNG/WebP) es el más flexible, el fondo blanco o negro ayuda a unificar los microajustes.",
+    "description": "Ayuda de color de fondo"
+  },
+  "globalGapHelp": {
+    "message": "Establece el ancho del espacio entre todas las imágenes. Los valores negativos permiten el solapamiento.",
+    "description": "Ayuda de espacio global"
+  },
+  "formatHelp": {
+    "message": "PNG: Sin pérdida, mejor calidad; JPG: Bueno para fotos, tamaño más pequeño; WebP: Equilibrado, pero puede tener problemas de compatibilidad con iOS.",
+    "description": "Ayuda de formato"
+  },
+  "twitterOptimizeHelp": {
+    "message": "Al publicar varios cortes en X (Twitter), esto ajusta los bordes para un aspecto de 'Imagen Única' sin costuras en el feed de los usuarios.",
+    "description": "Ayuda de optimización de Twitter"
+  },
+  "imageResolution": {
+    "message": "Resolución",
+    "description": "Etiqueta de resolución de imagen"
+  },
+  "clickToShowResolution": {
+    "message": "Haz clic para ver la resolución",
+    "description": "Sugerencia de resolución"
+  },
+  "finalGap": {
+    "message": "Espacio Final",
+    "description": "Resultado del cálculo de espacio final"
+  },
+  "openSourcePage": {
+    "message": "Abrir Tweet Original",
+    "description": "Sugerencia de enlace de tweet original"
+  },
+  "userGuideButton": {
+    "message": "Guía de Usuario",
+    "description": "Texto del botón de guía de usuario"
+  },
+  "tutorialImportTitle": {
+    "message": "Importar Imágenes",
+    "description": "Título del paso 1 del tutorial"
+  },
+  "tutorialImportDesc": {
+    "message": "Haz clic para subir archivos locales, o usa el icono de enlace para importar directamente desde una URL de Twitter/X.",
+    "description": "Descripción del paso 1 del tutorial"
+  },
+  "tutorialLayoutTitle": {
+    "message": "Elegir Diseño",
+    "description": "Título del paso 2 del tutorial"
+  },
+  "tutorialLayoutDesc": {
+    "message": "Elige un diseño para tus imágenes. Se recomienda 'Cuadrícula' para publicaciones de Twitter/X.",
+    "description": "Descripción del paso 2 del tutorial"
+  },
+  "tutorialControlTitle": {
+    "message": "Ajuste Fino",
+    "description": "Título del paso 3 del tutorial"
+  },
+  "tutorialControlDesc": {
+    "message": "Ajusta los espacios globales/locales, o arrastra la lista para reordenar tus imágenes.",
+    "description": "Descripción del paso 3 del tutorial"
+  },
+  "tutorialExportTitle": {
+    "message": "Exportar y Descargar",
+    "description": "Título del paso 4 del tutorial"
+  },
+  "tutorialExportDesc": {
+    "message": "¡Finalmente, haz clic en el botón para generar y guardar tu creación!",
+    "description": "Descripción del paso 4 del tutorial"
+  },
+  "skipTutorial": {
+    "message": "Omitir",
+    "description": "Botón de omitir"
+  },
+  "nextStep": {
+    "message": "Siguiente",
+    "description": "Botón de siguiente"
+  },
+  "localGapHelp": {
+    "message": "Haz clic en el número debajo de la imagen o usa la rueda para ajustar el espacio entre esta imagen y la siguiente individualmente.",
+    "description": "Descripción de ayuda para espacio local"
+  },
+  "userGuideTitle": {
+    "message": "Manual de Usuario y Guía",
+    "description": "Título del diálogo de guía"
+  },
+  "finishTutorial": {
+    "message": "Finalizar",
+    "description": "Botón de finalizar"
+  },
+  "tabPWA": {
+    "message": "PWA / Móvil",
+    "description": "Pestaña de manual 1"
+  },
+  "tabExtension": {
+    "message": "Extensión",
+    "description": "Pestaña de manual 2"
+  },
+  "tabFeatures": {
+    "message": "Consejos Pro",
+    "description": "Pestaña de manual 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. Instalación básica: Toca 'Compartir' en Safari y selecciona 'Añadir a la pantalla de inicio' para una experiencia de app nativa.\n2. Integración profunda: Debido a limitaciones de iOS, usa la app 'Atajos' para permitir compartir directamente desde X (Twitter) a esta app.",
+    "description": "Guía de instalación para iOS"
+  },
+  "guideAndroidInstall": {
+    "message": "1. Toca 'Instalar aplicación' o 'Añadir a la pantalla de inicio' en el menú del navegador.\n2. Una vez instalada, esta aplicación se convierte en un 'Objetivo de compartir del sistema'. Toca compartir en X (Twitter) y selecciona el icono de esta app para importar imágenes directamente.",
+    "description": "Guía de instalación para Android"
+  },
+  "guideExtensionStitch": {
+    "message": "Verás un botón 'Stitch' directamente debajo de los posts de X (Twitter). Haz clic para importar todas las imágenes de ese post para unirlas.",
+    "description": "Guía de la función de unión de la extensión"
+  },
+  "guideExtensionSplit": {
+    "message": "Haz clic derecho en cualquier imagen de la web y selecciona 'X-Puzzle-Kit: Dividir imagen' para procesarla directamente.",
+    "description": "Guía de la función de división de la extensión"
+  },
+  "guideFlowOptimization": {
+    "message": "Activar la optimización 'X (Twitter) One Image Flow' ajusta los ratios de corte. Al publicar varios cortes, aparecerán sin costuras en el Timeline, pareciendo una sola imagen gigante.",
+    "description": "Guía de la función de optimización"
+  },
+  "guideExtensionTitle": {
+    "message": "Usar directamente en Twitter",
+    "description": "Título de tarjeta de manual 1"
+  },
+  "guideSplitTitle": {
+    "message": "División rápida con clic derecho",
+    "description": "Título de tarjeta de manual 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "¿Por qué usar espacios locales?",
+    "description": "Título de tarjeta de manual 3"
   }
 }

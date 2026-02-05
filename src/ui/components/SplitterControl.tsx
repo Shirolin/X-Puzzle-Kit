@@ -9,6 +9,7 @@ import {
   Plus,
   Minus,
   RotateCcw,
+  BookOpen,
 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { SidebarSection, Divider, JogWheel } from "./Sidebar";
@@ -24,6 +25,7 @@ interface SplitterControlProps {
   onIsTwitterOptimizedChange: (val: boolean) => void;
   config: SplitConfig;
   disabled?: boolean;
+  onShowGuide?: () => void;
 }
 
 export function SplitterControl({
@@ -37,6 +39,7 @@ export function SplitterControl({
   onIsTwitterOptimizedChange,
   config,
   disabled = false,
+  onShowGuide,
 }: SplitterControlProps) {
   const { layout, rows, cols, gap } = config;
   const [isGapOpen, setIsGapOpen] = useState(gap > 0);
@@ -75,7 +78,25 @@ export function SplitterControl({
   return (
     <>
       {/* Layout Scheme Section */}
-      <SidebarSection title={t("layoutScheme")} style={containerStyle}>
+      <SidebarSection
+        title={t("layoutScheme")}
+        helpText={t("layoutSchemeHelp")}
+        style={containerStyle}
+        headerRight={
+          onShowGuide && (
+            <IconButton
+              icon={<BookOpen size={14} strokeWidth={2.5} />}
+              onClick={onShowGuide}
+              title={t("userGuideTitle")}
+              style={{
+                padding: "4px",
+                background: "var(--color-surface-soft)",
+                color: "var(--color-text)",
+              }}
+            />
+          )
+        }
+      >
         <div className="layout-grid-container">
           <LayoutButton
             active={layout === "GRID_2x2"}
@@ -214,6 +235,7 @@ export function SplitterControl({
       {/* Twitter Options Section */}
       <SidebarSection
         title={t("twitterOptimize")}
+        helpText={t("twitterOptimizeHelp")}
         style={containerStyle}
         headerRight={
           <label className="switch" style={{ flexShrink: 0 }}>
@@ -245,7 +267,7 @@ export function SplitterControl({
       </SidebarSection>
 
       {/* Export Settings Section */}
-      <SidebarSection title={t("exportSettings")}>
+      <SidebarSection title={t("exportSettings")} helpText={t("formatHelp")}>
         <div
           style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
         >

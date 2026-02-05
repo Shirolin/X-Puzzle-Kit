@@ -422,5 +422,141 @@
   "pwaOfflineReady": {
     "message": "L'application est prête à fonctionner hors ligne",
     "description": "Notification de disponibilité hors ligne PWA"
+  },
+  "layoutSchemeHelp": {
+    "message": "Sélectionnez la disposition des images : Grille (2x2) idéale pour les réseaux sociaux, Forme en T pour la photographie, Vertical/Horizontal pour les longs panoramas.",
+    "description": "Texte d'aide de la disposition"
+  },
+  "backgroundColorHelp": {
+    "message": "Définissez la couleur derrière les images. Le fond transparent (PNG/WebP) est le plus flexible, le noir ou le blanc aide à unifier les micro-ajustements.",
+    "description": "Aide de la couleur de fond"
+  },
+  "globalGapHelp": {
+    "message": "Définissez la largeur de l'espace entre toutes les images. Les valeurs négatives permettent le chevauchement.",
+    "description": "Aide de l'espace global"
+  },
+  "formatHelp": {
+    "message": "PNG : Sans perte, meilleure qualité ; JPG : Bon pour les photos, taille plus petite ; WebP : Équilibré, mais peut avoir des problèmes de compatibilité avec iOS.",
+    "description": "Aide de format"
+  },
+  "twitterOptimizeHelp": {
+    "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 'Image Unique' sans couture dans le fil des utilisateurs.",
+    "description": "Aide de l'optimisation Twitter"
+  },
+  "imageResolution": {
+    "message": "Résolution",
+    "description": "Étiquette de résolution d'image"
+  },
+  "clickToShowResolution": {
+    "message": "Cliquez pour voir la résolution",
+    "description": "Conseil de résolution"
+  },
+  "finalGap": {
+    "message": "Espace Final",
+    "description": "Résultat du calcul de l'espace final"
+  },
+  "openSourcePage": {
+    "message": "Ouvrir le Tweet Original",
+    "description": "Conseil de lien du tweet original"
+  },
+  "userGuideButton": {
+    "message": "Guide de l'utilisateur",
+    "description": "Texte du bouton du guide de l'utilisateur"
+  },
+  "tutorialImportTitle": {
+    "message": "Importer des Images",
+    "description": "Titre de l'étape 1 du tutoriel"
+  },
+  "tutorialImportDesc": {
+    "message": "Cliquez pour télécharger des fichiers locaux, ou utilisez l'icône de lien pour importer directement depuis une URL Twitter/X.",
+    "description": "Description de l'étape 1 du tutoriel"
+  },
+  "tutorialLayoutTitle": {
+    "message": "Choisir la Disposition",
+    "description": "Titre de l'étape 2 du tutoriel"
+  },
+  "tutorialLayoutDesc": {
+    "message": "Choisissez une disposition pour vos images. 'Grille' est recommandé pour les posts Twitter/X.",
+    "description": "Description de l'étape 2 du tutoriel"
+  },
+  "tutorialControlTitle": {
+    "message": "Ajustement Précis",
+    "description": "Titre de l'étape 3 du tutoriel"
+  },
+  "tutorialControlDesc": {
+    "message": "Ajustez les espaces globaux/locaux, ou faites glisser la liste pour réorganiser vos images.",
+    "description": "Description de l'étape 3 du tutoriel"
+  },
+  "tutorialExportTitle": {
+    "message": "Exporter & Télécharger",
+    "description": "Titre de l'étape 4 du tutoriel"
+  },
+  "tutorialExportDesc": {
+    "message": "Enfin, cliquez sur le bouton pour générer et sauvegarder votre création !",
+    "description": "Description de l'étape 4 du tutoriel"
+  },
+  "skipTutorial": {
+    "message": "Passer",
+    "description": "Bouton pour passer"
+  },
+  "nextStep": {
+    "message": "Suivant",
+    "description": "Bouton suivant"
+  },
+  "localGapHelp": {
+    "message": "Cliquez sur le numéro sous l'image ou utilisez la molette pour ajuster individuellement l'espace entre cette image et la suivante.",
+    "description": "Description d'aide pour l'espace local"
+  },
+  "userGuideTitle": {
+    "message": "Manuel de l'utilisateur & Guide",
+    "description": "Titre du dialogue de guide"
+  },
+  "finishTutorial": {
+    "message": "Terminer",
+    "description": "Bouton de fin"
+  },
+  "tabPWA": {
+    "message": "PWA / Mobile",
+    "description": "Onglet de manuel 1"
+  },
+  "tabExtension": {
+    "message": "Extension",
+    "description": "Onglet de manuel 2"
+  },
+  "tabFeatures": {
+    "message": "Conseils Pro",
+    "description": "Onglet de manuel 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. Installation de base : Appuyez sur 'Partager' dans Safari et sélectionnez 'Sur l'écran d'accueil' pour une expérience d'application native.\n2. Intégration profonde : En raison des limitations d'iOS, utilisez l'application 'Raccourcis' pour permettre le partage direct de X (Twitter) vers cette application.",
+    "description": "Guide d'installation pour iOS"
+  },
+  "guideAndroidInstall": {
+    "message": "1. Appuyez sur 'Installer l'application' ou 'Sur l'écran d'accueil' dans le menu du navigateur.\n2. Une fois installée, cette application devient une 'Cible de partage système'. Appuyez sur partager dans X (Twitter) et sélectionnez l'icône de cette application pour importer les images directement.",
+    "description": "Guide d'installation pour Android"
+  },
+  "guideExtensionStitch": {
+    "message": "Vous verrez un bouton 'Stitch' directement sous les posts X (Twitter). Cliquez dessus pour importer toutes les images de ce post pour l'assemblage.",
+    "description": "Guide de la fonction d'assemblage de l'extension"
+  },
+  "guideExtensionSplit": {
+    "message": "Faites un clic droit sur n'importe quelle image du web et sélectionnez 'X-Puzzle-Kit: Diviser l'image' pour la traiter directement.",
+    "description": "Guide de la fonction de division de l'extension"
+  },
+  "guideFlowOptimization": {
+    "message": "L'activation de l'optimisation 'X (Twitter) One Image Flow' ajuste les rapports de découpe. Lors de la publication de plusieurs découpes, elles apparaîtront sans couture dans le fil d'actualité, comme une seule image géante.",
+    "description": "Guide de la fonction d'optimisation"
+  },
+  "guideExtensionTitle": {
+    "message": "Utiliser directement sur Twitter",
+    "description": "Titre de la carte de manuel 1"
+  },
+  "guideSplitTitle": {
+    "message": "Division rapide par clic droit",
+    "description": "Titre de la carte de manuel 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "Pourquoi utiliser les espaces locaux ?",
+    "description": "Titre de la carte de manuel 3"
   }
 }

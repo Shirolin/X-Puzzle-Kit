@@ -406,5 +406,141 @@
   "pwaOfflineReady": {
     "message": "應用程式已可以離線使用",
     "description": "PWA 離線就緒提示"
+  },
+  "layoutSchemeHelp": {
+    "message": "選擇圖片的排列方式：\n田字格(2x2)適合社交媒體展示，\nT型則常用於藝術攝影佈局。\n縱向/橫向適合拼接長圖。",
+    "description": "佈局方案幫助說明"
+  },
+  "backgroundColorHelp": {
+    "message": "設置圖片背後的顏色。透明背景（PNG/WebP）最靈活，黑色或白色背景則能使接縫微調效果更統一。",
+    "description": "底色按鈕幫助說明"
+  },
+  "globalGapHelp": {
+    "message": "統一設置所有圖片之間的縫隙寬度。負值可讓圖片互相重疊。",
+    "description": "全局間距幫助說明"
+  },
+  "formatHelp": {
+    "message": "PNG 為無損格式，畫質最高；\nJPG 適合照片壓縮，體積較小；\nWebP 兼顧兩者，但在 iOS 系統中可能存在相容性問題。",
+    "description": "導出格式幫助說明"
+  },
+  "twitterOptimizeHelp": {
+    "message": "當您在 Twitter/X 一次發布多張切圖時，此選項會微調邊框和間距，使它們在用戶的信息流滾動預覽中無接縫，視覺效果如同一張大圖。",
+    "description": "推特佈局優化詳細說明"
+  },
+  "imageResolution": {
+    "message": "解析度",
+    "description": "圖片解析度標籤"
+  },
+  "clickToShowResolution": {
+    "message": "點擊查看解析度",
+    "description": "縮略圖提示信息"
+  },
+  "finalGap": {
+    "message": "最終間距",
+    "description": "包含全局和局部間距後的計算結果"
+  },
+  "openSourcePage": {
+    "message": "打開原推文頁面",
+    "description": "原推文連結提示"
+  },
+  "userGuideButton": {
+    "message": "使用手冊",
+    "description": "打開引導手冊按鈕文本"
+  },
+  "tutorialImportTitle": {
+    "message": "匯入圖片",
+    "description": "教程步驟標題1"
+  },
+  "tutorialImportDesc": {
+    "message": "點擊此處上傳本地圖片，或者點擊連結圖示從 Twitter/X URL 直接匯入。",
+    "description": "教程步驟描述1"
+  },
+  "tutorialLayoutTitle": {
+    "message": "選擇佈局",
+    "description": "教程步驟標題2"
+  },
+  "tutorialLayoutDesc": {
+    "message": "根據需要選擇拼接佈局。如果是推特展示，推薦使用「田字格」。",
+    "description": "教程步驟描述2"
+  },
+  "tutorialControlTitle": {
+    "message": "微調設置",
+    "description": "教程步驟標題3"
+  },
+  "tutorialControlDesc": {
+    "message": "在此處調整全局或局部間距，也可以拖動右側列表來改變圖片順序。",
+    "description": "教程步驟描述3"
+  },
+  "tutorialExportTitle": {
+    "message": "導出下載",
+    "description": "教程步驟標題4"
+  },
+  "tutorialExportDesc": {
+    "message": "最後點擊底部按鈕，即可生成並保存您的拼圖作品！",
+    "description": "教程步驟描述4"
+  },
+  "skipTutorial": {
+    "message": "跳過教程",
+    "description": "跳過按鈕"
+  },
+  "nextStep": {
+    "message": "下一步",
+    "description": "下一步按鈕"
+  },
+  "localGapHelp": {
+    "message": "點擊圖片下方的數字或操作撥輪，可以單獨調整該圖片與後一張圖片之間的縫隙。",
+    "description": "局部間距幫助說明"
+  },
+  "userGuideTitle": {
+    "message": "使用手冊與引導",
+    "description": "引導對話框標題"
+  },
+  "finishTutorial": {
+    "message": "完成",
+    "description": "完成按鈕"
+  },
+  "tabPWA": {
+    "message": "PWA / 行動端",
+    "description": "手冊標籤1"
+  },
+  "tabExtension": {
+    "message": "瀏覽器擴充功能",
+    "description": "手冊標籤2"
+  },
+  "tabFeatures": {
+    "message": "進階技巧",
+    "description": "手冊標籤3"
+  },
+  "guideiOSInstall": {
+    "message": "1. 基礎安裝：在 Safari 中點擊‘分享’，選擇‘加入主畫面’以獲得原生應用體驗。\n2. 深度聯動：由於 iOS 系統不支援原生分享目標，需配合配套的‘快捷指令’。安裝後，您可以在 X (Twitter) 中點擊分享並執行指令，將圖源直接導入本項目。",
+    "description": "iOS安裝說明"
+  },
+  "guideAndroidInstall": {
+    "message": "1. 在瀏覽器右上角選單中點擊‘安裝應用程式’或‘加入主畫面’。\n2. 安裝後，本工具將成為‘系統分享目標’。在 X (Twitter) 中直接點擊分享並選擇本項目圖示即可匯入圖源。",
+    "description": "Android安裝說明"
+  },
+  "guideExtensionStitch": {
+    "message": "在 X (Twitter) 推文下方，您可以直接看到‘拼接 (Stitch)’按鈕。點擊即可將該推文的所有圖片匯入工具進行拼接。",
+    "description": "插件拼接功能說明"
+  },
+  "guideExtensionSplit": {
+    "message": "在網頁任意圖片上點擊右鍵，選擇‘X-Puzzle-Kit: 拆分圖片’，可直接對該圖進行切切處理。",
+    "description": "插件拆分功能說明"
+  },
+  "guideFlowOptimization": {
+    "message": "開啟‘推特一圖流’優化後，工具會微調切片比例。在推特發佈時，這些切片會在 Timeline 中無缝銜接，拼成一張完整大圖。",
+    "description": "一圖流優化深度說明"
+  },
+  "guideExtensionTitle": {
+    "message": "直接在 Twitter 頁面使用",
+    "description": "手冊卡片標題1"
+  },
+  "guideSplitTitle": {
+    "message": "右鍵快捷拆分",
+    "description": "手冊卡片標題2"
+  },
+  "guideLocalGapTitle": {
+    "message": "為什麼要使用局部間距？",
+    "description": "手冊卡片標題3"
   }
 }

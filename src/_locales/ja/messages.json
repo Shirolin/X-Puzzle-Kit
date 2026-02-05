@@ -422,5 +422,141 @@
   "pwaOfflineReady": {
     "message": "アプリはオフラインで使用できるようになりました",
     "description": "オフライン対応が完了したことを通知するメッセージ"
+  },
+  "layoutSchemeHelp": {
+    "message": "画像の配置を選択します：グリッド(2x2)はSNS投稿に、T型は写真作品に、縦/横はパノラマや長図の結合に適しています。",
+    "description": "レイアウトのヘルプテキスト"
+  },
+  "backgroundColorHelp": {
+    "message": "画像の背景色を設定します。透明(PNG/WebP)が最も柔軟ですが、微調整を行う場合は黒や白に設定すると統一感を出しやすくなります。",
+    "description": "背景色のヘルプ"
+  },
+  "globalGapHelp": {
+    "message": "すべての画像間の隙間を一括で設定します。マイナスの値を設定すると画像を重ねることができます。",
+    "description": "全局間隔のヘルプ"
+  },
+  "formatHelp": {
+    "message": "PNG：無損失で最高画質。JPG：写真に適しておりファイルサイズが小さい。WebP：両者のバランスが良いですが、iOSで互換性の問題が発生する場合があります。",
+    "description": "形式のヘルプ"
+  },
+  "twitterOptimizeHelp": {
+    "message": "X (Twitter) に複数の画像を投稿する際、タイムライン上で1枚の絵のように繋がって見えるよう、比率や境界線を微調整します。",
+    "description": "Twitter最適化のヘルプ"
+  },
+  "imageResolution": {
+    "message": "解像度",
+    "description": "画像の解像度ラベル"
+  },
+  "clickToShowResolution": {
+    "message": "クリックして解像度を表示",
+    "description": "解像度表示のヒント"
+  },
+  "finalGap": {
+    "message": "最終間隔",
+    "description": "最終的な計算済み間隔"
+  },
+  "openSourcePage": {
+    "message": "元のポストを開く",
+    "description": "元のポストへのリンクヒント"
+  },
+  "userGuideButton": {
+    "message": "ガイド",
+    "description": "ガイドボタンのテキスト"
+  },
+  "tutorialImportTitle": {
+    "message": "画像をインポート",
+    "description": "チュートリアルステップ1タイトル"
+  },
+  "tutorialImportDesc": {
+    "message": "ここをクリックしてローカル画像をアップロードするか、リンクアイコンを使用して Twitter/X の URL から直接インポートします。",
+    "description": "チュートリアルステップ1説明"
+  },
+  "tutorialLayoutTitle": {
+    "message": "レイアウトを選択",
+    "description": "チュートリアルステップ2タイトル"
+  },
+  "tutorialLayoutDesc": {
+    "message": "画像の配置を選択します。Twitter/X への投稿には「グリッド」がおすすめです。",
+    "description": "チュートリアルステップ2説明"
+  },
+  "tutorialControlTitle": {
+    "message": "微調整",
+    "description": "チュートリアルステップ3タイトル"
+  },
+  "tutorialControlDesc": {
+    "message": "全体または個別の間隔を調整したり、リストをドラッグして画像の順序を入れ替えたりできます。",
+    "description": "チュートリアルステップ3説明"
+  },
+  "tutorialExportTitle": {
+    "message": "エクスポートと保存",
+    "description": "チュートリアルステップ4タイトル"
+  },
+  "tutorialExportDesc": {
+    "message": "最後にボタンをクリックして、作成した画像を生成・保存しましょう！",
+    "description": "チュートリアルステップ4説明"
+  },
+  "skipTutorial": {
+    "message": "スキップ",
+    "description": "スキップボタン"
+  },
+  "nextStep": {
+    "message": "次へ",
+    "description": "次へボタン"
+  },
+  "localGapHelp": {
+    "message": "画像の下の数字をクリックするか、ジョグホイールを操作して、その画像と次の画像の間の隙間を個別に調整できます。",
+    "description": "局部間隔のヘルプ説明"
+  },
+  "userGuideTitle": {
+    "message": "ユーザーマニュアルとガイド",
+    "description": "ガイドダイアログのタイトル"
+  },
+  "finishTutorial": {
+    "message": "完了",
+    "description": "完了ボタン"
+  },
+  "tabPWA": {
+    "message": "PWA / モバイル",
+    "description": "マニュアルタブ1"
+  },
+  "tabExtension": {
+    "message": "ブラウザ拡張",
+    "description": "マニュアルタブ2"
+  },
+  "tabFeatures": {
+    "message": "高度なテクニック",
+    "description": "マニュアルタブ3"
+  },
+  "guideiOSInstall": {
+    "message": "1. 基本インストール：Safariで「共有」をタップし、「ホーム画面に追加」を選択してネイティブアプリのような体験を実現します。\n2. 高度な連携：iOSの制限により、X (Twitter) からの直接共有には「ショートカット」アプリが必要です。インストール後、共有メニューからショートカットを実行して画像をインポートできます。",
+    "description": "iOSのインストールガイド"
+  },
+  "guideAndroidInstall": {
+    "message": "1. ブラウザのメニューで「アプリをインストール」または「ホーム画面に追加」をタップします。\n2. インストール後、本ツールは「共有ターゲット」になります。X (Twitter) で共有をタップし、本プロジェクトのアイコンを選択するだけで画像を読み込めます。",
+    "description": "Androidのインストールガイド"
+  },
+  "guideExtensionStitch": {
+    "message": "X (Twitter) の投稿の下に「結合 (Stitch)」ボタンが表示されます。クリックすると、その投稿のすべての画像を結合ツールに読み込みます。",
+    "description": "拡張機能の結合機能ガイド"
+  },
+  "guideExtensionSplit": {
+    "message": "ウェブ上の任意の画像を右クリックし、「X-Puzzle-Kit: 画像を分割」を選択すると、直接分割処理を行えます。",
+    "description": "拡張機能の分割機能ガイド"
+  },
+  "guideFlowOptimization": {
+    "message": "「X (Twitter) 1枚絵風」最適化を有効にすると、切り出し比率が微調整されます。複数枚を投稿した際、タイムライン上でシームレスに繋がり、1枚の大きな画像のように見えます。",
+    "description": "最適化機能のガイド"
+  },
+  "guideExtensionTitle": {
+    "message": "X (Twitter) ページで直接使用",
+    "description": "マニュアルカードタイトル1"
+  },
+  "guideSplitTitle": {
+    "message": "右クリックでクイック分割",
+    "description": "マニュアルカードタイトル2"
+  },
+  "guideLocalGapTitle": {
+    "message": "局部間隔を使用する理由",
+    "description": "マニュアルカードタイトル3"
   }
 }
