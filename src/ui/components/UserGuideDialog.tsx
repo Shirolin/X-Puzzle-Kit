@@ -23,7 +23,7 @@ export function UserGuideDialog({
   container,
 }: UserGuideDialogProps) {
   const [activeTab, setActiveTab] = useState<"pwa" | "extension" | "flow">(
-    "pwa",
+    __IS_EXTENSION__ ? "extension" : "pwa",
   );
 
   useEffect(() => {
