@@ -1092,7 +1092,7 @@ export function Sidebar({
                           title={t("openWebVersion")}
                           style={{
                             textDecoration: "none",
-                            color: "var(--color-primary, #007aff)",
+                            color: "var(--color-text)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -1148,7 +1148,7 @@ export function Sidebar({
                           title={t("openExtensionStore")}
                           style={{
                             textDecoration: "none",
-                            color: "var(--color-primary, #007aff)",
+                            color: "var(--color-text)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
