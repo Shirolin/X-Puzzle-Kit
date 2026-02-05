@@ -370,5 +370,29 @@
   "themeLabel": {
     "message": "Theme",
     "description": "Label for theme selector"
+  },
+  "pwaVersionLabel": {
+    "message": "Standalone Web (PWA)",
+    "description": "PWA version label"
+  },
+  "pwaVersionTip": {
+    "message": "Using on mobile or browser without extension? Try our full-featured Web version.",
+    "description": "PWA version description"
+  },
+  "openWebVersion": {
+    "message": "Open Web Version",
+    "description": "Open PWA button text"
+  },
+  "extensionVersionLabel": {
+    "message": "Chrome Extension",
+    "description": "Extension version label"
+  },
+  "extensionVersionTip": {
+    "message": "Using on a desktop browser? Try our extension for one-click stitching directly on X (Twitter).",
+    "description": "Extension version description"
+  },
+  "openExtensionStore": {
+    "message": "Go to Chrome Web Store",
+    "description": "Open extension store button text"
   }
 }

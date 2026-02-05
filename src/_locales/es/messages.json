@@ -354,5 +354,29 @@
   "confirm": {
     "message": "Confirmar",
     "description": "Botón de acción de confirmación"
+  },
+  "pwaVersionLabel": {
+    "message": "Versión Web (PWA)",
+    "description": "Etiqueta de versión PWA"
+  },
+  "pwaVersionTip": {
+    "message": "¿Lo usas en el móvil o en un navegador sin la extensión? Prueba nuestra versión web completa.",
+    "description": "Descripción de la versión PWA"
+  },
+  "openWebVersion": {
+    "message": "Abrir versión Web",
+    "description": "Texto del botón abrir PWA"
+  },
+  "extensionVersionLabel": {
+    "message": "Extensión de Chrome",
+    "description": "Etiqueta de la extensión"
+  },
+  "extensionVersionTip": {
+    "message": "¿Lo usas en un navegador de escritorio? Prueba nuestra extensión para ensamblar imágenes con un solo clic directamente en X (Twitter).",
+    "description": "Descripción de la extensión"
+  },
+  "openExtensionStore": {
+    "message": "Ir a Chrome Web Store",
+    "description": "Texto del botón para abrir la tienda de extensiones"
   }
 }

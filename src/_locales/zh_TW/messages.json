@@ -354,5 +354,29 @@
   "confirm": {
     "message": "確定",
     "description": "確定操作按鈕"
+  },
+  "pwaVersionLabel": {
+    "message": "Web 獨立版 (PWA)",
+    "description": "PWA 版本標籤"
+  },
+  "pwaVersionTip": {
+    "message": "在行動裝置或未安裝插件的瀏覽器中使用？試試我們功能完整的 Web 版本。",
+    "description": "PWA 版本說明"
+  },
+  "openWebVersion": {
+    "message": "在新視窗開啟 Web 版",
+    "description": "打開 PWA 按鈕文本"
+  },
+  "extensionVersionLabel": {
+    "message": "Chrome 瀏覽器擴充功能",
+    "description": "插件版本標籤"
+  },
+  "extensionVersionTip": {
+    "message": "在 PC 瀏覽器中使用？試試我們的瀏覽器插件，支援在 X (Twitter) 頁面直接一鍵拼圖。",
+    "description": "插件版本說明"
+  },
+  "openExtensionStore": {
+    "message": "前往 Chrome 線上應用程式商店",
+    "description": "打開插件商店按鈕文本"
   }
 }

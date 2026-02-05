@@ -17,6 +17,7 @@ import {
   ChevronUp,
   ChevronDown,
   Coffee,
+  Puzzle,
 } from "lucide-preact";
 import { ComponentChildren, JSX } from "preact";
 import { useRef, useEffect, useLayoutEffect, useState } from "preact/hooks";
@@ -32,6 +33,8 @@ import {
 } from "../../core/types";
 import { LayoutButton, IconButton, CustomSelect } from "./Common";
 import { SplitterControl } from "./SplitterControl";
+import { isExtension } from "../../core/platform";
+import { APP_CONFIG } from "../../core/config";
 
 // 分隔线组件
 export const Divider = () => (
@@ -1059,6 +1062,120 @@ export function Sidebar({
                     </a>
                   </div>
                 </div>
+
+                {isExtension ? (
+                  <>
+                    <Divider />
+                    <div
+                      className="section-row-standard"
+                      style={{
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        gap: "6px",
+                      }}
+                    >
+                      <div
+                        className="flex-row-center"
+                        style={{
+                          width: "100%",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <h3 className="section-sub-header">
+                          {t("pwaVersionLabel")}
+                        </h3>
+                        <a
+                          href={APP_CONFIG.UI.PWA_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-icon"
+                          title={t("openWebVersion")}
+                          style={{
+                            textDecoration: "none",
+                            color: "var(--color-primary, #007aff)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "28px",
+                            height: "28px",
+                            borderRadius: "6px",
+                            backgroundColor: "var(--color-surface-soft)",
+                            transition: "all 0.2s",
+                          }}
+                        >
+                          <Link size={15} />
+                        </a>
+                      </div>
+                      <p
+                        style={{
+                          fontSize: "11px",
+                          color: "var(--color-text-muted)",
+                          margin: 0,
+                          opacity: 0.8,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {t("pwaVersionTip")}
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Divider />
+                    <div
+                      className="section-row-standard"
+                      style={{
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        gap: "6px",
+                      }}
+                    >
+                      <div
+                        className="flex-row-center"
+                        style={{
+                          width: "100%",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <h3 className="section-sub-header">
+                          {t("extensionVersionLabel")}
+                        </h3>
+                        <a
+                          href={APP_CONFIG.UI.EXTENSION_STORE_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-icon"
+                          title={t("openExtensionStore")}
+                          style={{
+                            textDecoration: "none",
+                            color: "var(--color-primary, #007aff)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "28px",
+                            height: "28px",
+                            borderRadius: "6px",
+                            backgroundColor: "var(--color-surface-soft)",
+                            transition: "all 0.2s",
+                          }}
+                        >
+                          <Puzzle size={15} />
+                        </a>
+                      </div>
+                      <p
+                        style={{
+                          fontSize: "11px",
+                          color: "var(--color-text-muted)",
+                          margin: 0,
+                          opacity: 0.8,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {t("extensionVersionTip")}
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </SidebarSection>
           </>

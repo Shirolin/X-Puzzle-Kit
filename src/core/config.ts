@@ -37,5 +37,8 @@ export const APP_CONFIG = {
   UI: {
     IOS_PROMPT_COOLDOWN_DAYS: 7,
     IOS_PROMPT_DELAY_MS: 3000,
+    PWA_URL: "https://x-puzzle-kit.pages.dev/",
+    EXTENSION_STORE_URL:
+      "https://chromewebstore.google.com/detail/x-puzzle-kit-stitch-split/nadlbdmcfmjinifkoedegmiejfibdikk",
   },
 };

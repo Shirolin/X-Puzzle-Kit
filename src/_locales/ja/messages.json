@@ -370,5 +370,29 @@
   "parseFailed": {
     "message": "ツイートの解析に失敗しました",
     "description": "解析失敗のヒント"
+  },
+  "pwaVersionLabel": {
+    "message": "Web 独立版 (PWA)",
+    "description": "PWA バージョンラベル"
+  },
+  "pwaVersionTip": {
+    "message": "モバイル端末や拡張機能のないブラウザで利用しますか？機能が充実したウェブ版をお試しください。",
+    "description": "PWA バージョン説明"
+  },
+  "openWebVersion": {
+    "message": "新しいウィンドウでウェブ版を開く",
+    "description": "PWAを開くボタンのテキスト"
+  },
+  "extensionVersionLabel": {
+    "message": "Chrome 拡張機能",
+    "description": "拡張機能バージョンラベル"
+  },
+  "extensionVersionTip": {
+    "message": "PCブラウザで利用しますか？X (Twitter) ページから直接1クリックで結合できる拡張機能をお試しください。",
+    "description": "拡張機能バージョン説明"
+  },
+  "openExtensionStore": {
+    "message": "Chrome ウェブストアへ",
+    "description": "拡張機能ストアを開くボタンのテキスト"
   }
 }

@@ -370,5 +370,29 @@
   "themeLabel": {
     "message": "Thème",
     "description": "Étiquette pour le sélecteur de thème"
+  },
+  "pwaVersionLabel": {
+    "message": "Version Web (PWA)",
+    "description": "Libellé de la version PWA"
+  },
+  "pwaVersionTip": {
+    "message": "Vous l'utilisez sur mobile ou sur un navigateur sans extension ? Essayez notre version Web complète.",
+    "description": "Description de la version PWA"
+  },
+  "openWebVersion": {
+    "message": "Ouvrir la version Web",
+    "description": "Texte du bouton ouvrir PWA"
+  },
+  "extensionVersionLabel": {
+    "message": "Extension Chrome",
+    "description": "Libellé de l'extension"
+  },
+  "extensionVersionTip": {
+    "message": "Vous l'utilisez sur un navigateur pour ordinateur ? Essayez notre extension pour fusionner vos images en un clic directement sur X (Twitter).",
+    "description": "Description de l'extension"
+  },
+  "openExtensionStore": {
+    "message": "Aller sur le Chrome Web Store",
+    "description": "Texte du bouton pour ouvrir le Web Store"
   }
 }

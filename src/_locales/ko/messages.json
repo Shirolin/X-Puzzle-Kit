@@ -354,5 +354,29 @@
   "confirm": {
     "message": "확인",
     "description": "확인 버튼"
+  },
+  "pwaVersionLabel": {
+    "message": "웹 독립형 (PWA)",
+    "description": "PWA 버전 라벨"
+  },
+  "pwaVersionTip": {
+    "message": "모바일이나 확장 프로그램이 없는 브라우저에서 사용하시나요? 모든 기능을 갖춘 웹 버전을 사용해 보세요.",
+    "description": "PWA 버전 설명"
+  },
+  "openWebVersion": {
+    "message": "새 창에서 웹 버전 열기",
+    "description": "PWA 열기 버튼 텍스트"
+  },
+  "extensionVersionLabel": {
+    "message": "Chrome 브라우저 확장 프로그램",
+    "description": "확장 프로그램 버전 라벨"
+  },
+  "extensionVersionTip": {
+    "message": "PC 브라우저에서 사용하시나요? X (Twitter) 페이지에서 직접 원클릭으로 이미지를 병합할 수 있는 확장 프로그램을 사용해 보세요.",
+    "description": "확장 프로그램 버전 설명"
+  },
+  "openExtensionStore": {
+    "message": "Chrome 웹 스토어로 이동",
+    "description": "확장 프로그램 스토어 열기 버튼 텍스트"
   }
 }
