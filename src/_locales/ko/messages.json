@@ -280,7 +280,7 @@
     "description": "연결 모드 버튼"
   },
   "modeSplit": {
-    "message": "이미지 분할",
+    "message": "분할",
     "description": "분할 모드 버튼"
   },
   "support": {
