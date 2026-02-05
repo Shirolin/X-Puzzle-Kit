@@ -19,7 +19,9 @@
 .x-puzzle-kit-btn {
   display: flex;
   align-items: center;
-  flex: 1;
+  justify-content: center;
+  flex: 1 1 0%;
+  min-width: 0;
 }
 
 .x-stitch-btn-inner {
@@ -59,7 +61,8 @@
 }
 
 .x-stitch-svg {
-  width: 18.75px;
-  height: 18.75px;
+  width: 20px;
+  height: 20px;
   fill: none;
+  display: block;
 }

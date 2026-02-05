@@ -1079,6 +1079,7 @@ export function Sidebar({
                         style={{
                           width: "100%",
                           justifyContent: "space-between",
+                          alignItems: "flex-start",
                         }}
                       >
                         <h3 className="section-sub-header">
@@ -1135,6 +1136,7 @@ export function Sidebar({
                         style={{
                           width: "100%",
                           justifyContent: "space-between",
+                          alignItems: "flex-start",
                         }}
                       >
                         <h3 className="section-sub-header">

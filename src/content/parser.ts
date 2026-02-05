@@ -116,47 +116,52 @@ function createIconWrapper() {
 
 function createStitchIcon() {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 512 512");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
   svg.classList.add("x-stitch-svg");
 
   const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
   g.setAttribute("stroke", "currentColor");
-  g.setAttribute("stroke-width", "32");
+  g.setAttribute("stroke-width", "1.9"); // 微调笔触
   g.setAttribute("stroke-linecap", "round");
   g.setAttribute("stroke-linejoin", "round");
 
   const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-  rect.setAttribute("x", "32");
-  rect.setAttribute("y", "32");
-  rect.setAttribute("width", "448");
-  rect.setAttribute("height", "448");
-  rect.setAttribute("rx", "80");
+  rect.setAttribute("x", "1.5");
+  rect.setAttribute("y", "1.5");
+  rect.setAttribute("width", "21");
+  rect.setAttribute("height", "21");
+  rect.setAttribute("rx", "3");
 
   const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  line1.setAttribute("x1", "256");
-  line1.setAttribute("y1", "32");
-  line1.setAttribute("x2", "256");
-  line1.setAttribute("y2", "480");
+  line1.setAttribute("x1", "12");
+  line1.setAttribute("y1", "1.5");
+  line1.setAttribute("x2", "12");
+  line1.setAttribute("y2", "22.5");
 
   const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  line2.setAttribute("x1", "32");
-  line2.setAttribute("y1", "256");
-  line2.setAttribute("x2", "480");
-  line2.setAttribute("y2", "256");
+  line2.setAttribute("x1", "1.5");
+  line2.setAttribute("y1", "12");
+  line2.setAttribute("x2", "22.5");
+  line2.setAttribute("y2", "12");
 
-  const path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path1.setAttribute("d", "M166 166 L110 110 M166 166 V110 M166 166 H110");
+  const p1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  p1.setAttribute("d", "M7.5 7.5 L4.5 4.5 M7.5 7.5 V4.5 M7.5 7.5 H4.5");
 
-  const path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path2.setAttribute("d", "M346 166 L402 110 M346 166 V110 M346 166 H402");
+  const p2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  p2.setAttribute("d", "M16.5 7.5 L19.5 4.5 M16.5 7.5 V4.5 M16.5 7.5 H19.5");
 
-  const path3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path3.setAttribute("d", "M166 346 L110 402 M166 346 V402 M166 346 H110");
+  const p3 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  p3.setAttribute("d", "M7.5 16.5 L4.5 19.5 M7.5 16.5 V19.5 M7.5 16.5 H4.5");
 
-  const path4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path4.setAttribute("d", "M346 346 L402 402 M346 346 V402 M346 346 H402");
+  const p4 = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  p4.setAttribute(
+    "d",
+    "M16.5 16.5 L19.5 19.5 M16.5 16.5 V19.5 M16.5 16.5 H19.5",
+  );
 
-  g.append(rect, line1, line2, path1, path2, path3, path4);
+  g.append(rect, line1, line2, p1, p2, p3, p4);
   svg.append(g);
   return svg;
 }
