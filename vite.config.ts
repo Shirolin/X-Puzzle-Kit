@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
 import webExtension from "vite-plugin-web-extension";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 import path from "path";
 
 export default defineConfig({
@@ -33,6 +34,14 @@ export default defineConfig({
       manifest: "src/manifest.json",
 
       disableAutoLaunch: true,
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "src/_locales",
+          dest: ".",
+        },
+      ],
     }),
   ],
   define: {
