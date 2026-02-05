@@ -112,7 +112,7 @@
     "description": "图片排序副标题"
   },
   "localGapHelp": {
-    "message": "点击图片下方的数字或操作拨轮，可以单独调整该图片与其后一张图片之间的缝隙。",
+    "message": "点击图片下方的数字或操作拨轮，可以单独调整该图片与其后一张图片之间的间距。",
     "description": "局部间距帮助说明"
   },
   "imageLabel": {
@@ -512,11 +512,11 @@
     "description": "手册标签3"
   },
   "guideiOSInstall": {
-    "message": "1. 基础安装：在 Safari 中点击‘分享’，选择‘添加到主屏幕’以获得原生应用体验。\n2. 深度联动：由于 iOS 系统不支持原生分享目标，需配合配套的‘快捷指令’。安装后，您可以在 X (Twitter) 中点击分享并运行指令，将图源直接导入本项目。",
+    "message": "1. 基础安装：在 Safari 中点击‘分享’，选择‘添加到主屏幕’以获得原生应用体验。\n2. 深度联动：由于 iOS 系统不支持原生分享目标，需配合配套的‘快捷指令’。安装后，您可以在 X (Twitter) 中点击分享并运行指令，将图片直接导入本项目。",
     "description": "iOS安装说明"
   },
   "guideAndroidInstall": {
-    "message": "1. 在浏览器右上角菜单中点击‘安装应用’或‘添加到主屏幕’。\n2. 安装后，本工具将成为‘系统分享目标’。在 X (Twitter) 中直接点击分享并选择本项目图标即可导入图源。",
+    "message": "1. 在浏览器右上角菜单中点击‘安装应用’或‘添加到主屏幕’。\n2. 安装后，本工具将成为‘系统分享目标’。在 X (Twitter) 中直接点击分享并选择本项目图标即可导入图片。",
     "description": "Android安装说明"
   },
   "guideExtensionStitch": {
@@ -524,11 +524,11 @@
     "description": "插件拼接功能说明"
   },
   "guideExtensionSplit": {
-    "message": "在网页任意图片上点击右键，选择‘X-Puzzle-Kit: 拆分图片’，可直接对该图进行切切处理。",
+    "message": "在网页任意图片上点击右键，选择‘X-Puzzle-Kit: 拆分图片’，可直接对该图进行拆分处理。",
     "description": "插件拆分功能说明"
   },
   "guideFlowOptimization": {
-    "message": "开启‘推特一图流’优化后，工具会微调切片比例。在推特发布时，这些切片会在 Timeline 中无缝衔接，拼成一张完整大图。",
+    "message": "开启‘推特「一图流」布局优化’后，工具会微调切片比例。在推特发布时，这些切片会在 Timeline 中无缝衔接，拼成一张完整大图。",
     "description": "一图流优化深度说明"
   },
   "guideExtensionTitle": {

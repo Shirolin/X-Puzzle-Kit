@@ -544,7 +544,7 @@
     "description": "Extension split feature guide"
   },
   "guideFlowOptimization": {
-    "message": "Enabling 'X (Twitter) One Image Flow' optimization fine-tunes slice ratios. When posting multiple slices, they will appear seamless in the Timeline, looking like one giant image.",
+    "message": "Enabling 'Twitter \"Seamless Flow\" Layout' optimization fine-tunes slice ratios. When posting multiple slices, they will appear seamless in the Timeline, looking like one giant image.",
     "description": "Optimization feature guide"
   },
   "guideExtensionTitle": {

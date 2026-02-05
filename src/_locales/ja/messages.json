@@ -132,7 +132,7 @@
     "description": "余白増加のツールチップ"
   },
   "gapLabel": {
-    "message": "隙間",
+    "message": "余白",
     "description": "最終的な隙間のラベル"
   },
   "resetLocalGap": {
@@ -536,7 +536,7 @@
     "description": "Androidのインストールガイド"
   },
   "guideExtensionStitch": {
-    "message": "X (Twitter) の投稿の下に「結合 (Stitch)」ボタンが表示されます。クリックすると、その投稿のすべての画像を結合ツールに読み込みます。",
+    "message": "X (Twitter) の投稿の下に「画像を結合」ボタンが表示されます。クリックすると、その投稿のすべての画像を結合ツールに読み込みます。",
     "description": "拡張機能の結合機能ガイド"
   },
   "guideExtensionSplit": {
@@ -544,7 +544,7 @@
     "description": "拡張機能の分割機能ガイド"
   },
   "guideFlowOptimization": {
-    "message": "「X (Twitter) 1枚絵風」最適化を有効にすると、切り出し比率が微調整されます。複数枚を投稿した際、タイムライン上でシームレスに繋がり、1枚の大きな画像のように見えます。",
+    "message": "「X「1枚絵」レイアウト最適化」を有効にすると、切り出し比率が微調整されます。複数枚を投稿した際、タイムライン上でシームレスに繋がり、1枚の大きな画像のように見えます。",
     "description": "最適化機能のガイド"
   },
   "guideExtensionTitle": {
