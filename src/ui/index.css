@@ -227,6 +227,12 @@ textarea {
   outline: none;
 }
 
+.btn svg {
+  flex-shrink: 0; /* 锁定图标尺寸，防止被文字挤压 */
+  width: 1.15em;
+  height: 1.15em;
+}
+
 @media (hover: hover) {
   .btn:hover {
     filter: brightness(1.05); /* Subtle change */
@@ -1075,6 +1081,14 @@ input:checked + .slider:before {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
+
+  .footer-button-group {
+    flex-direction: row; /* 移动端保持并排显示 */
+  }
+
+  .footer-button-group .btn {
+    width: auto;
+  }
 }
 
 /* Viewer Area */
@@ -1297,14 +1311,15 @@ input:checked + .slider:before {
 /* Horizontal group for side-by-side actions in footer */
 .footer-button-group {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* 默认垂直排列 (PC端/侧边栏) */
   gap: 0.625rem;
   width: 100%;
 }
 
 .footer-button-group .btn {
   flex: 1;
-  min-width: 0; /* Prevent overflow if text is long */
+  min-width: 0;
+  width: 100%; /* PC 端垂直时占满宽度 */
 }
 
 [data-theme="dark"] .sidebar-footer {
