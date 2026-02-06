@@ -468,7 +468,7 @@
     "description": "Tutorial step 1 title"
   },
   "tutorialImportDesc": {
-    "message": "Click to upload local files, or use the link icon to import directly from a Twitter/X URL.",
+    "message": "Click to upload local files, or use the link icon to import directly from an X (Twitter) URL.",
     "description": "Tutorial step 1 description"
   },
   "tutorialLayoutTitle": {
@@ -476,7 +476,7 @@
     "description": "Tutorial step 2 title"
   },
   "tutorialLayoutDesc": {
-    "message": "Pick a layout for your images. 'Grid' is recommended for Twitter/X posts.",
+    "message": "Pick a layout for your images. 'Grid' is recommended for X (Twitter) posts.",
     "description": "Tutorial step 2 description"
   },
   "tutorialControlTitle": {
@@ -528,7 +528,7 @@
     "description": "Manual tab 3"
   },
   "guideiOSInstall": {
-    "message": "1. Upgrade Experience\nSay goodbye to manual copying. Tap the button below to add 'X-Puzzle-Kit' to your Shortcuts library.\n2. Instant Start\nTap this shortcut in the X (Twitter) share menu to auto-extract links and jump seamlessly.",
+    "message": "1. Seamless Integration\nSay goodbye to manual copying. Tap the button below to add 'X-Puzzle-Kit' to your Shortcuts.\n2. Instant Import\nTap this shortcut in the X (Twitter) share menu to auto-extract links and jump to the app.",
     "description": "iOS installation guide"
   },
   "installShortcutBtn": {
@@ -548,7 +548,7 @@
     "description": "Android tutorial button text"
   },
   "guideExtensionStitch": {
-    "message": "Directly below any X (Twitter) tweet, you'll find the [icon] button. Grab all images instantly and enter puzzle mode with one click.",
+    "message": "Directly below any X (Twitter) post, you'll find the [icon] button. Grab all images instantly and enter puzzle mode with one click.",
     "description": "Extension stitch feature guide"
   },
   "guideExtensionSplit": {
@@ -556,11 +556,11 @@
     "description": "Extension split feature guide"
   },
   "guideFlowOptimization": {
-    "message": "When enabled, the tool fine-tunes slice ratios for the X (Twitter) algorithm, ensuring seamless stitching in the Timeline.",
+    "message": "When enabled, the tool fine-tunes slice ratios for the X (Twitter) algorithm, ensuring seamless stitching in the post feed.",
     "description": "Optimization feature guide"
   },
   "guideExtensionTitle": {
-    "message": "Seamless Tweet Image Stitching",
+    "message": "Seamless Post Image Stitching",
     "description": "Manual card title 1"
   },
   "guideSplitTitle": {

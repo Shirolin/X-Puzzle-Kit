@@ -460,24 +460,24 @@
     "description": "元のポストへのリンクヒント"
   },
   "userGuideButton": {
-    "message": "ガイド",
-    "description": "ガイドボタンのテキスト"
+    "message": "ご利用ガイド",
+    "description": "ガイド按钮文本"
   },
   "tutorialImportTitle": {
-    "message": "画像をインポート",
+    "message": "画像の取り込み",
     "description": "チュートリアルステップ1タイトル"
   },
   "tutorialImportDesc": {
-    "message": "ここをクリックしてローカル画像をアップロードするか、リンクアイコンを使用して Twitter/X の URL から直接インポートします。",
+    "message": "ここをクリックしてローカル画像をアップロードするか、リンクアイコンから X (Twitter) の URL を指定して直接取り込みます。",
     "description": "チュートリアルステップ1説明"
   },
   "tutorialLayoutTitle": {
-    "message": "レイアウトを選択",
+    "message": "レイアウトの選択",
     "description": "チュートリアルステップ2タイトル"
   },
   "tutorialLayoutDesc": {
-    "message": "画像の配置を選択します。Twitter/X への投稿には「グリッド」がおすすめです。",
-    "description": "チュートリアルステップ2説明"
+    "message": "画像の配置方法を選択します。X (Twitter) への投稿には「田の字」がおすすめです。",
+    "description": "チュートリアルステップ2说明"
   },
   "tutorialControlTitle": {
     "message": "微調整",
@@ -488,12 +488,12 @@
     "description": "チュートリアルステップ3説明"
   },
   "tutorialExportTitle": {
-    "message": "エクスポートと保存",
+    "message": "書き出しと保存",
     "description": "チュートリアルステップ4タイトル"
   },
   "tutorialExportDesc": {
-    "message": "最後にボタンをクリックして、作成した画像を生成・保存しましょう！",
-    "description": "チュートリアルステップ4説明"
+    "message": "最後にボタンをクリックして、作成した画像を生成・保存しましょう。",
+    "description": "チュートリアルステップ4说明"
   },
   "skipTutorial": {
     "message": "スキップ",
@@ -508,12 +508,12 @@
     "description": "局部間隔のヘルプ説明"
   },
   "userGuideTitle": {
-    "message": "ユーザーマニュアルとガイド",
-    "description": "ガイドダイアログのタイトル"
+    "message": "ご利用ガイド",
+    "description": "ガイド对话框标题"
   },
   "finishTutorial": {
-    "message": "完了",
-    "description": "完了ボタン"
+    "message": "了解",
+    "description": "完成按钮"
   },
   "tabPWA": {
     "message": "ウェブ版 / モバイル",
@@ -524,11 +524,11 @@
     "description": "マニュアルタブ2"
   },
   "tabFeatures": {
-    "message": "高度なテクニック",
-    "description": "マニュアルタブ3"
+    "message": "便利な機能・Tips",
+    "description": "手册标签3"
   },
   "guideiOSInstall": {
-    "message": "1. 体験のアップグレード：手動コピーからの解放。下のボタンをタップして「X-Puzzle-Kit」をショートカットに追加します。\n2. ワンタップインポート：X (Twitter) の共有メニューから「X-Puzzle-Kit」をタップするだけで、自動的にリンクを抽出し、シームレスにジャンプします。",
+    "message": "1. 連携の強化：手動でのコピーは不要です。下のボタンをタップして「X-Puzzle-Kit」をショートカットに追加してください。\n2. かんたん取り込み：X (Twitter) の共有メニューから「X-Puzzle-Kit」をタップするだけで、自動的にリンクを抽出してアプリを開きます。",
     "description": "iOSのインストールガイド"
   },
   "installShortcutBtn": {
@@ -540,7 +540,7 @@
     "description": "iOS快捷指令安装提示"
   },
   "guideAndroidInstall": {
-    "message": "1. アプリとしてインストール\nブラウザメニューの「アプリをインストール」または「ホーム画面に追加」をクリックして、ネイティブApp体験を。\n2. ネイティブ共有\nインストール後、X (Twitter) で共有を押し、アプリリストから「X-Puzzle-Kit」を選択するだけでインポートできます。",
+    "message": "1. アプリとしてインストール：ブラウザメニューの「アプリをインストール」または「ホーム画面に追加」を選択することで、アプリのように利用できます。\n2. 直接共有：インストール後は、X (Twitter) で共有ボタンを押し、アプリ一覧から「X-Puzzle-Kit」を選択するだけで画像を取り込めます。",
     "description": "Androidのインストールガイド"
   },
   "viewAndroidTutorial": {
@@ -548,23 +548,23 @@
     "description": "Androidのチュートリアル按钮文本"
   },
   "guideExtensionStitch": {
-    "message": "X (Twitter) の投稿の下に直接 [icon] ボタンが表示されます。ワンクリックで画像をキャプチャし、パズルモードへ。",
+    "message": "X (Twitter) のポストの下に [icon] ボタンが表示されます。ワンクリックでポスト内の画像をすべて読み込み、結合モードへ移行します。",
     "description": "拡張機能の結合機能ガイド"
   },
   "guideExtensionSplit": {
-    "message": "ウェブ上の任意の画像を右クリックし、「X-Puzzle-Kit: 画像を分割」を選択。ダウンロードなしで即座に分割処理を開始します。",
+    "message": "ウェブ上の任意の画像を右クリックし、「X-Puzzle-Kit: 画像を分割」を選択。その場で分割処理を開始できます。",
     "description": "拡張機能の分割機能ガイド"
   },
   "guideFlowOptimization": {
-    "message": "有効にすると、X (Twitter) のアルゴリズムに合わせてスライス比率を微整。タイムライン上で継ぎ目のない完璧な一枚画を再現します。",
+    "message": "有効にすると、X (Twitter) の表示アルゴリズムに合わせてスライス比率を微調整。タイムライン上で継ぎ目のない完璧な一枚絵を再現します。",
     "description": "最適化機能のガイド"
   },
   "guideExtensionTitle": {
-    "message": "ツイート画像のシームレス結合",
+    "message": "ポスト画像のシームレスな結合",
     "description": "マニュアルカードタイトル1"
   },
   "guideSplitTitle": {
-    "message": "右クリックで高速分割",
+    "message": "右クリックでかんたん分割",
     "description": "マニュアルカードタイトル2"
   },
   "guideLocalGapTitle": {

@@ -512,7 +512,7 @@
     "description": "Pestaña de manual 3"
   },
   "guideiOSInstall": {
-    "message": "1. Mejora tu experiencia\nOlvídate de copiar manualmente. Toca el botón de abajo para añadir 'X-Puzzle-Kit' a tus Atajos.\n2. Inicio instantáneo\nToca este atajo en el menú de compartir de X (Twitter) para extraer enlaces y saltar sin interrupciones.",
+    "message": "1. Integración sin fisuras\nOlvídate de copiar manualmente. Toca el botón de abajo para añadir 'X-Puzzle-Kit' a tus Atajos.\n2. Importación instantánea\nToca este atajo en el menú de compartir de X (Twitter) para extraer enlaces y saltar a la aplicación.",
     "description": "Guía de instalación para iOS"
   },
   "installShortcutBtn": {
@@ -540,7 +540,7 @@
     "description": "Guía de la función de división de la extensión"
   },
   "guideFlowOptimization": {
-    "message": "Al activarse, la herramienta ajusta los ratios para el algoritmo de X (Twitter), asegurando una unión perfecta en el Timeline.",
+    "message": "Al activarse, la herramienta ajusta los ratios para el algoritmo de X (Twitter), asegurando una unión perfecta en el feed de posts.",
     "description": "Guía de la función de optimización"
   },
   "guideExtensionTitle": {

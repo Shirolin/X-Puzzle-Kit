@@ -468,7 +468,7 @@
     "description": "Titre de l'étape 1 du tutoriel"
   },
   "tutorialImportDesc": {
-    "message": "Cliquez pour télécharger des fichiers locaux, ou utilisez l'icône de lien pour importer directement depuis une URL Twitter/X.",
+    "message": "Cliquez pour télécharger des fichiers locaux, ou utilisez l'icône de lien pour importer directement depuis une URL X (Twitter).",
     "description": "Description de l'étape 1 du tutoriel"
   },
   "tutorialLayoutTitle": {
@@ -548,7 +548,7 @@
     "description": "Texte du bouton tutoriel Android"
   },
   "guideExtensionStitch": {
-    "message": "Directment sous n'importe quel post X (Twitter), vous trouverez le bouton [icon]. Capturez toutes les images en un clic et passez en mode puzzle.",
+    "message": "Directement sous n'importe quel post X (Twitter), vous trouverez le bouton [icon]. Capturez toutes les images en un clic et passez en mode puzzle.",
     "description": "Guide de la fonction d'assemblage de l'extension"
   },
   "guideExtensionSplit": {
@@ -560,7 +560,7 @@
     "description": "Guide de la fonction d'optimisation"
   },
   "guideExtensionTitle": {
-    "message": "Assemblage fluide d'images de tweets",
+    "message": "Assemblage fluide d'images de posts",
     "description": "Titre de la carte de manuel 1"
   },
   "guideSplitTitle": {

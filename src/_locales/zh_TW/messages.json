@@ -452,7 +452,7 @@
     "description": "教程步驟標題1"
   },
   "tutorialImportDesc": {
-    "message": "點擊此處上傳本地圖片，或者點擊連結圖示從 Twitter/X URL 直接匯入。",
+    "message": "點擊此處上傳本地圖片，或者點擊連結圖示從 X (Twitter) URL 直接匯入。",
     "description": "教程步驟描述1"
   },
   "tutorialLayoutTitle": {
@@ -460,7 +460,7 @@
     "description": "教程步驟標題2"
   },
   "tutorialLayoutDesc": {
-    "message": "根據需要選擇拼接佈局。如果是推特展示，推薦使用「田字格」。",
+    "message": "根據需要選擇拼接佈局。如果是 X (Twitter) 展示，推薦使用「田字格」。",
     "description": "教程步驟描述2"
   },
   "tutorialControlTitle": {
@@ -540,11 +540,11 @@
     "description": "插件拆分功能說明"
   },
   "guideFlowOptimization": {
-    "message": "開啟後，工具將微調切片比例以適配 X (Twitter) 算法，確保多張圖片在動態中無縫銜接，拼出完美長圖。",
+    "message": "開啟後，工具將微調切片比例以適配 X (Twitter) 算法，確保多張圖片在動態中無缝銜接，拼出完美長圖。",
     "description": "一圖流優化深度說明"
   },
   "guideExtensionTitle": {
-    "message": "推文圖片無縫拼接",
+    "message": "貼文圖片無縫拼接",
     "description": "手冊卡片標題1"
   },
   "guideSplitTitle": {
