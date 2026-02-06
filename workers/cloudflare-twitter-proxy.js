@@ -17,10 +17,14 @@ export default {
 
     // --- 0.1 APP Token Check ---
     const token = request.headers.get("X-App-Token");
-    if (token !== "xpuzzle-v1-open-access" && !url.hostname.includes("localhost") && !url.hostname.includes("127.0.0.1")) {
-      return new Response(JSON.stringify({ error: "Unauthorized" }), { 
-        status: 401, 
-        headers: { ...headers, "Content-Type": "application/json" } 
+    if (
+      token !== "xpuzzle-v1-open-access" &&
+      !url.hostname.includes("localhost") &&
+      !url.hostname.includes("127.0.0.1")
+    ) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...headers, "Content-Type": "application/json" },
       });
     }
 

@@ -17,14 +17,17 @@ export async function onRequest(context) {
   // --- 0. CORS ---
   if (request.method === "OPTIONS") return handleOptions(request);
   const headers = getCorsHeaders(request);
-  
+
   // --- 0.1 APP Token Check ---
   const token = request.headers.get("X-App-Token");
   // 简单校验，允许本地开发环境无需 Token (可选)
-  if (token !== "xpuzzle-v1-open-access" && !url.hostname.includes("localhost")) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), { 
-      status: 401, 
-      headers: { ...headers, "Content-Type": "application/json" } 
+  if (
+    token !== "xpuzzle-v1-open-access" &&
+    !url.hostname.includes("localhost")
+  ) {
+    return new Response(JSON.stringify({ error: "Unauthorized" }), {
+      status: 401,
+      headers: { ...headers, "Content-Type": "application/json" },
     });
   }
 
@@ -100,7 +103,7 @@ async function handleParseWithCache(
   }
   // 暂时注释掉 mode，因为当前只缓存 mode=parse，如果需要区分 mode 可以解开
   // cacheKeyUrl.searchParams.set("mode", "parse");
-  
+
   const cacheKey = new Request(cacheKeyUrl.toString(), request);
 
   // 安全地获取缓存对象
