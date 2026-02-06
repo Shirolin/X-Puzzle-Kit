@@ -109,20 +109,23 @@ export function UserGuideDialog({
         </div>
 
         <div className="guide-tabs">
-          <button
-            className={`guide-tab ${activeTab === "pwa" ? "active" : ""}`}
-            onClick={() => setActiveTab("pwa")}
-          >
-            <Smartphone size={16} />
-            <span>{t("tabPWA")}</span>
-          </button>
-          <button
-            className={`guide-tab ${activeTab === "extension" ? "active" : ""}`}
-            onClick={() => setActiveTab("extension")}
-          >
-            <Puzzle size={16} />
-            <span>{t("tabExtension")}</span>
-          </button>
+          {__IS_EXTENSION__ ? (
+            <button
+              className={`guide-tab ${activeTab === "extension" ? "active" : ""}`}
+              onClick={() => setActiveTab("extension")}
+            >
+              <Puzzle size={16} />
+              <span>{t("tabExtension")}</span>
+            </button>
+          ) : (
+            <button
+              className={`guide-tab ${activeTab === "pwa" ? "active" : ""}`}
+              onClick={() => setActiveTab("pwa")}
+            >
+              <Smartphone size={16} />
+              <span>{t("tabPWA")}</span>
+            </button>
+          )}
           <button
             className={`guide-tab ${activeTab === "flow" ? "active" : ""}`}
             onClick={() => setActiveTab("flow")}
