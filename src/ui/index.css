@@ -2700,7 +2700,7 @@ button:active {
   /* 2. Elevated Settings Panel (Apple Sheet Layer) */
   .sidebar-panel {
     width: 100% !important;
-    height: 58vh;
+    height: 46vh; /* 降低默认高度，为顶部预览留出更多空间 */
     min-height: 40vh;
     border: none !important;
     background-color: var(--color-surface-soft) !important;
