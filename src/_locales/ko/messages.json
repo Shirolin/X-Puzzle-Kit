@@ -512,7 +512,7 @@
     "description": "매뉴얼 탭 3"
   },
   "guideiOSInstall": {
-    "message": "1. 빠른 가져오기: 전용 '단축어'를 설치하면 X (Twitter) 공유 메뉴에서 직접 이미지를 본 웹페이지로 불러올 수 있습니다.\n2. 브라우저 지원: Safari, Chrome 등 주요 iOS 브라우저를 지원합니다. 설치 후 공유 메뉴에서 클릭 한 번으로 실행 가능합니다.",
+    "message": "1. 경험의 업그레이드\n수동 복사는 이제 안녕. 아래 버튼을 눌러 'X-Puzzle-Kit'을 단축어에 추가하세요.\n2. 원클릭 가져오기\nX (Twitter) 공유 메뉴에서 'X-Puzzle-Kit'을 누르기만 하면 자동으로 링크를 추출하고 원활하게 이동합니다.",
     "description": "iOS 설치 안내"
   },
   "installShortcutBtn": {
@@ -524,31 +524,31 @@
     "description": "iOS 단축어 설치 팁"
   },
   "guideAndroidInstall": {
-    "message": "1. 브라우저 메뉴에서 '앱 설치' 또는 '홈 화면에 추가'를 탭하세요.\n2. 설치 후, 본 도구는 시스템 '공유 대상'이 됩니다. X (Twitter)에서 공유를 탭하고 본 프로젝트 아이콘을 선택하면 이미지를 직접 불러올 수 있습니다.",
+    "message": "1. 앱으로 설치\n브라우저 메뉴에서 '앱 설치' 또는 '홈 화면에 추가'를 클릭하여 네이티브 앱 경험을 누리세요.\n2. 네이티브 공유\n설치 후 X (Twitter)에서 공유를 누르고 앱 목록에서 'X-Puzzle-Kit'을 선택하면 바로 가져올 수 있습니다.",
     "description": "Android 설치 안내"
   },
   "guideExtensionStitch": {
-    "message": "X (Twitter) 게시물 하단에 ‘연결’ 버튼이 표시됩니다. 클릭하면 해당 게시물의 모든 이미지를 연결 도구로 불러옵니다.",
+    "message": "X (Twitter) 게시물 하단에 [icon] 버튼이 표시됩니다. 클릭 한 번으로 모든 미디어를 캡처하고 퍼즐 모드로 입장하세요.",
     "description": "확장 프로그램 스티치 기능 안내"
   },
   "guideExtensionSplit": {
-    "message": "웹의 이미지 위에서 마우스 오른쪽 버튼을 클릭하고 'X-Puzzle-Kit: 이미지 분할'을 선택하면 직접 분할 작업을 수행할 수 있습니다.",
+    "message": "웹 어디서든 이미지 우클릭 후 'X-Puzzle-Kit: 이미지 분할'을 선택하면 다운로드 없이 즉시 처리를 시작합니다.",
     "description": "확장 프로그램 분할 기능 안내"
   },
   "guideFlowOptimization": {
-    "message": "‘트위터 '한 장의 그림' 레이아웃 최적화’를 활성화하면 슬라이스 비율이 미세 조정됩니다. 여러 장을 게시할 때 타임라인에서 이음새 없이 연결되어 하나의 커다란 이미지처럼 보입니다.",
+    "message": "활성화 시 X (Twitter) 알고리즘에 맞춰 슬라이스 비율을 미세 조정합니다. 타임라인에서 이음새 없는 완벽한 긴 그림을 완성하세요.",
     "description": "최적화 기능 안내"
   },
   "guideExtensionTitle": {
-    "message": "Twitter 페이지에서 직접 사용",
+    "message": "심리스 트윗 연결 (Stitch)",
     "description": "매뉴얼 카드 제목 1"
   },
   "guideSplitTitle": {
-    "message": "우클릭 빠른 분할",
+    "message": "우클릭 즉시 분할",
     "description": "매뉴얼 카드 제목 2"
   },
   "guideLocalGapTitle": {
-    "message": "개별 간격을 사용하는 이유는?",
+    "message": "슬라이스 간격의 정밀 제어",
     "description": "매뉴얼 카드 제목 3"
   }
 }

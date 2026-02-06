@@ -504,7 +504,7 @@
     "description": "Next button"
   },
   "localGapHelp": {
-    "message": "Click the number below the image or use the jog wheel to adjust the gap between this image and the next one individually.",
+    "message": "Tap numbers or scroll below images to adjust gaps between specific slices. Perfect for segmenting stories or hiding 'Easter eggs'.",
     "description": "Local gap help description"
   },
   "userGuideTitle": {
@@ -528,7 +528,7 @@
     "description": "Manual tab 3"
   },
   "guideiOSInstall": {
-    "message": "1. Quick Import: Install the companion 'Shortcuts' to enable direct importing from X (Twitter) to this web tool via the share menu.\n2. Browser Support: Works with Safari, Chrome, and other iOS browsers. Once installed, simply tap the shortcut from the Share Sheet.",
+    "message": "1. Upgrade Experience\nSay goodbye to manual copying. Tap the button below to add 'X-Puzzle-Kit' to your Shortcuts library.\n2. Instant Start\nTap this shortcut in the X (Twitter) share menu to auto-extract links and jump seamlessly.",
     "description": "iOS installation guide"
   },
   "installShortcutBtn": {
@@ -540,31 +540,31 @@
     "description": "iOS Shortcut installation tip"
   },
   "guideAndroidInstall": {
-    "message": "1. Tap 'Install App' or 'Add to Home Screen' in the browser's menu.\n2. Once installed, this app becomes a 'System Share Target'. Tap share in X (Twitter) and select this app's icon to import images directly.",
+    "message": "1. Install as App\nTap 'Install App' or 'Add to Home Screen' in browser menu for a native experience.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 'X-Puzzle-Kit' to import.",
     "description": "Android installation guide"
   },
   "guideExtensionStitch": {
-    "message": "You will see a 'Stitch' button directly under X (Twitter) posts. Click it to import all images from that post for stitching.",
+    "message": "Directly below any X (Twitter) tweet, you'll find the [icon] button. Grab all media instantly and enter puzzle mode with one click.",
     "description": "Extension stitch feature guide"
   },
   "guideExtensionSplit": {
-    "message": "Right-click any image on the web and select 'X-Puzzle-Kit: Split Image' to process it directly.",
+    "message": "Right-click any image on the web and select 'X-Puzzle-Kit: Split Image' to start processing immediately without downloading.",
     "description": "Extension split feature guide"
   },
   "guideFlowOptimization": {
-    "message": "Enabling 'Twitter \"Seamless Flow\" Layout' optimization fine-tunes slice ratios. When posting multiple slices, they will appear seamless in the Timeline, looking like one giant image.",
+    "message": "When enabled, the tool fine-tunes slice ratios for the X (Twitter) algorithm, ensuring seamless stitching in the Timeline.",
     "description": "Optimization feature guide"
   },
   "guideExtensionTitle": {
-    "message": "Use directly on Twitter",
+    "message": "Seamless Tweet Stitching (Stitch)",
     "description": "Manual card title 1"
   },
   "guideSplitTitle": {
-    "message": "Right-click Quick Split",
+    "message": "Instant Right-click Split",
     "description": "Manual card title 2"
   },
   "guideLocalGapTitle": {
-    "message": "Why use local gaps?",
+    "message": "Precise Slice Gap Control",
     "description": "Manual card title 3"
   }
 }

@@ -1104,7 +1104,7 @@ export function App({
         />
       )}
 
-      <ReloadPrompt />
+      <ReloadPrompt isBusy={images.length > 0 || !!splitSourceBitmap} />
       <GuideOverlay isOpen={showGuide} onFinish={handleFinishGuide} />
       <UserGuideDialog
         isOpen={showUserManual}

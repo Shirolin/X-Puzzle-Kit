@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { useEffect } from "preact/hooks";
 import { t } from "../../core/i18n";
 
-export function ReloadPrompt() {
+export function ReloadPrompt({ isBusy = false }: { isBusy?: boolean }) {
   const {
     needRefresh: [needRefresh, setNeedRefresh],
     updateServiceWorker,
@@ -22,25 +22,36 @@ export function ReloadPrompt() {
   });
 
   useEffect(() => {
+    const isFromShortcut =
+      new URLSearchParams(window.location.search).get("source") === "shortcut";
+
     if (needRefresh) {
-      toast(t("pwaUpdateAvailable"), {
-        description: t("pwaUpdateReady"),
-        action: {
-          label: t("pwaRefresh"),
-          onClick: () => {
-            updateServiceWorker(true);
+      if (isFromShortcut) {
+        // 如果是从快捷指令打开且应用处于空闲状态（无图片数据），自动触发刷新升级
+        if (!isBusy) {
+          console.log("Silent updating SW for shortcut user...");
+          updateServiceWorker(true);
+        }
+      } else {
+        toast(t("pwaUpdateAvailable"), {
+          description: t("pwaUpdateReady"),
+          action: {
+            label: t("pwaRefresh"),
+            onClick: () => {
+              updateServiceWorker(true);
+            },
           },
-        },
-        cancel: {
-          label: t("pwaIgnore"),
-          onClick: () => {
-            setNeedRefresh(false);
+          cancel: {
+            label: t("pwaIgnore"),
+            onClick: () => {
+              setNeedRefresh(false);
+            },
           },
-        },
-        duration: Infinity, // 保持显示直到用户操作
-      });
+          duration: Infinity, // 保持显示直到用户操作
+        });
+      }
     }
-  }, [needRefresh, updateServiceWorker, setNeedRefresh]);
+  }, [needRefresh, updateServiceWorker, setNeedRefresh, isBusy]);
 
   return null;
 }

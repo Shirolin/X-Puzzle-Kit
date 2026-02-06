@@ -112,7 +112,7 @@
     "description": "图片排序副标题"
   },
   "localGapHelp": {
-    "message": "点击图片下方的数字或操作拨轮，可以单独调整该图片与其后一张图片之间的间距。",
+    "message": "点击图片下方的数字或操作拨轮，可以单独调整某两张切片之间的间距。适合用于分隔不同剧情或埋藏“彩蛋”。",
     "description": "局部间距帮助说明"
   },
   "imageLabel": {
@@ -512,7 +512,7 @@
     "description": "手册标签3"
   },
   "guideiOSInstall": {
-    "message": "1. 快捷导入：请安装配套的“快捷指令”，即可在 X (Twitter) 中通过分享菜单直接将图片导入本网页。\n2. 浏览器支持：支持 Safari、Chrome 等 iOS 浏览器，安装后即可在分享菜单中一键发起。",
+    "message": "1. 体验升级\n告别手动复制。点击下方按钮，将「X-Puzzle-Kit」指令添加到系统库。\n2. 极速启动\n在 X (Twitter) 分享菜单中点击本指令，即可自动提取链接并无缝跳转。",
     "description": "iOS安装说明"
   },
   "installShortcutBtn": {
@@ -524,31 +524,31 @@
     "description": "iOS快捷指令安装提示"
   },
   "guideAndroidInstall": {
-    "message": "1. 在浏览器右上角菜单中点击‘安装应用’或‘添加到主屏幕’。\n2. 安装后，本工具将成为‘系统分享目标’。在 X (Twitter) 中直接点击分享并选择本项目图标即可导入图片。",
+    "message": "1. 安装为 App\n在浏览器菜单中点击“安装应用”或“添加到主屏幕”，获得原生 App 体验。\n2. 原生分享\n安装后，直接在 X (Twitter) 点击分享，在应用列表中选择「X-Puzzle-Kit」即可导入。",
     "description": "Android安装说明"
   },
   "guideExtensionStitch": {
-    "message": "在 Twitter/X 推文下方，您可以直接看到‘拼接 (Stitch)’按钮。点击即可将该推文的所有图片导入工具进行拼接。",
+    "message": "在 X (Twitter) 推文下方，您可以直接看到 [icon] 按钮。一键抓取推文所有图片，直接进入拼图模式。",
     "description": "插件拼接功能说明"
   },
   "guideExtensionSplit": {
-    "message": "在网页任意图片上点击右键，选择‘X-Puzzle-Kit: 拆分图片’，可直接对该图进行拆分处理。",
+    "message": "在网页任意图片上点击右键，选择「X-Puzzle-Kit: 拆分图片」，即可立刻发起切片处理，无需下载。",
     "description": "插件拆分功能说明"
   },
   "guideFlowOptimization": {
-    "message": "开启‘推特「一图流」布局优化’后，工具会微调切片比例。在推特发布时，这些切片会在 Timeline 中无缝衔接，拼成一张完整大图。",
+    "message": "开启后，工具将微调切片比例以适配 X (Twitter) 算法，确保多张图片在动态中无缝衔接，拼出完美长图。",
     "description": "一图流优化深度说明"
   },
   "guideExtensionTitle": {
-    "message": "直接在推特页面使用",
+    "message": "推文图片无缝拼接",
     "description": "手册卡片标题1"
   },
   "guideSplitTitle": {
-    "message": "右键快捷拆分",
+    "message": "右键极速拆图",
     "description": "手册卡片标题2"
   },
   "guideLocalGapTitle": {
-    "message": "为什么要使用局部间距？",
+    "message": "精准控制切片间距",
     "description": "手册卡片标题3"
   }
 }

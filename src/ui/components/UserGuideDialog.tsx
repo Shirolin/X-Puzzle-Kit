@@ -19,6 +19,55 @@ interface UserGuideDialogProps {
   container?: HTMLElement | null;
 }
 
+const StitchIcon = () => (
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 512 512"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className="inline-icon"
+    style={{
+      verticalAlign: "text-bottom",
+      margin: "0 4px",
+      border: "1px solid var(--color-border)",
+      borderRadius: "4px",
+      background: "var(--color-surface-hover)",
+      padding: "1px",
+    }}
+  >
+    <g
+      stroke="currentColor"
+      stroke-width="32"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect x="32" y="32" width="448" height="448" rx="80" />
+      <line x1="256" y1="32" x2="256" y2="480" />
+      <line x1="32" y1="256" x2="480" y2="256" />
+      <path d="M166 166 L110 110 M166 166 V110 M166 166 H110" />
+      <path d="M346 166 L402 110 M346 166 V110 M346 166 H402" />
+      <path d="M166 346 L110 402 M166 346 V402 M166 346 H110" />
+      <path d="M346 346 L402 402 M346 346 V402 M346 346 H402" />
+    </g>
+  </svg>
+);
+
+const renderTextWithIcons = (text: string) => {
+  if (!text.includes("[icon]")) return text;
+  const parts = text.split("[icon]");
+  return (
+    <>
+      {parts.map((part, i) => (
+        <span key={i}>
+          {part}
+          {i < parts.length - 1 && <StitchIcon />}
+        </span>
+      ))}
+    </>
+  );
+};
+
 export function UserGuideDialog({
   isOpen,
   onClose,
@@ -90,7 +139,15 @@ export function UserGuideDialog({
                   <Apple size={18} />
                   <span>iOS (iPhone / iPad)</span>
                 </div>
-                <p className="guide-card-text">{t("guideiOSInstall")}</p>
+                <div className="guide-card-content">
+                  {t("guideiOSInstall")
+                    .split("\n")
+                    .map((line, i) => (
+                      <p key={i} className="guide-card-step">
+                        {line}
+                      </p>
+                    ))}
+                </div>
                 <div style={{ marginTop: "12px" }}>
                   <a
                     href={APP_CONFIG.UI.IOS_SHORTCUT_URL}
@@ -110,7 +167,32 @@ export function UserGuideDialog({
                   <Smartphone size={18} />
                   <span>Android</span>
                 </div>
-                <p className="guide-card-text">{t("guideAndroidInstall")}</p>
+                <div className="guide-card-content">
+                  {t("guideAndroidInstall")
+                    .split("\n")
+                    .map((line, i) => (
+                      <p key={i} className="guide-card-step">
+                        {line}
+                      </p>
+                    ))}
+                </div>
+                <div style={{ marginTop: "12px" }}>
+                  <a
+                    href="https://github.com/shirolin/x-puzzle-stitcher/wiki/Android-PWA-Guide"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-ghost flex-row-center gap-xs"
+                    style={{
+                      width: "fit-content",
+                      padding: "6px 14px",
+                      fontSize: "13px",
+                      border: "1px solid var(--color-border)",
+                    }}
+                  >
+                    <BookOpen size={14} />
+                    <span>{t("viewAndroidTutorial") || "📖 查看安卓图文教程"}</span>
+                  </a>
+                </div>
               </div>
             </div>
           )}
@@ -122,14 +204,30 @@ export function UserGuideDialog({
                   <BookOpen size={18} />
                   <span>{t("guideExtensionTitle")}</span>
                 </div>
-                <p className="guide-card-text">{t("guideExtensionStitch")}</p>
+                <p className="guide-card-text">
+                  {t("guideExtensionStitch")
+                    .split("\n")
+                    .map((line, i) => (
+                      <span key={i} style={{ display: "block" }}>
+                        {renderTextWithIcons(line)}
+                      </span>
+                    ))}
+                </p>
               </div>
               <div className="guide-card">
                 <div className="guide-card-header">
                   <Scissors size={18} />
                   <span>{t("guideSplitTitle")}</span>
                 </div>
-                <p className="guide-card-text">{t("guideExtensionSplit")}</p>
+                <p className="guide-card-text">
+                  {t("guideExtensionSplit")
+                    .split("\n")
+                    .map((line, i) => (
+                      <span key={i} style={{ display: "block" }}>
+                        {line}
+                      </span>
+                    ))}
+                </p>
               </div>
             </div>
           )}
@@ -141,14 +239,30 @@ export function UserGuideDialog({
                   <LayoutGrid size={18} />
                   <span>{t("twitterOptimize")}</span>
                 </div>
-                <p className="guide-card-text">{t("guideFlowOptimization")}</p>
+                <p className="guide-card-text">
+                  {t("guideFlowOptimization")
+                    .split("\n")
+                    .map((line, i) => (
+                      <span key={i} style={{ display: "block" }}>
+                        {line}
+                      </span>
+                    ))}
+                </p>
               </div>
               <div className="guide-card">
                 <div className="guide-card-header">
                   <BookOpen size={18} />
                   <span>{t("guideLocalGapTitle")}</span>
                 </div>
-                <p className="guide-card-text">{t("localGapHelp")}</p>
+                <p className="guide-card-text">
+                  {t("localGapHelp")
+                    .split("\n")
+                    .map((line, i) => (
+                      <span key={i} style={{ display: "block" }}>
+                        {line}
+                      </span>
+                    ))}
+                </p>
               </div>
             </div>
           )}

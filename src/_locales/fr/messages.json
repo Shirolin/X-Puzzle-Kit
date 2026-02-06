@@ -528,7 +528,7 @@
     "description": "Onglet de manuel 3"
   },
   "guideiOSInstall": {
-    "message": "1. Importation Rapide : Installez le raccourci dédié pour importer des images directement depuis le menu de partage de X (Twitter).\n2. Support Navigateur : Compatible avec Safari, Chrome et les autres navigateurs iOS. Une fois installé, lancez-le en un clic depuis le menu de partage.",
+    "message": "1. Améliorez votre expérience\nOubliez la copie manuelle. Appuyez sur le bouton ci-dessous pour ajouter 'X-Puzzle-Kit' à vos raccourcis.\n2. Démarrage instantané\nAppuyez sur ce raccourci dans le menu de partage X (Twitter) pour extraire les liens et naviguer de manière fluide.",
     "description": "Guide d'installation pour iOS"
   },
   "installShortcutBtn": {
@@ -540,23 +540,23 @@
     "description": "Conseil d'installation du raccourci iOS"
   },
   "guideAndroidInstall": {
-    "message": "1. Appuyez sur 'Installer l'application' ou 'Sur l'écran d'accueil' dans le menu du navigateur.\n2. Une fois installée, cette application devient une 'Cible de partage système'. Appuyez sur partager dans X (Twitter) et sélectionnez l'icône de cette application pour importer les images directement.",
+    "message": "1. Installer comme App\nAppuyez sur 'Installer l'application' ou 'Sur l'écran d'accueil' pour une expérience native.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 'X-Puzzle-Kit' pour importer.",
     "description": "Guide d'installation pour Android"
   },
   "guideExtensionStitch": {
-    "message": "Vous verrez un bouton ‘Fusionner’ directement sous les posts X (Twitter). Cliquez dessus pour importer toutes les images de ce post pour l'assemblage.",
+    "message": "Directment sous n'importe quel post X (Twitter), vous trouverez le bouton [icon]. Capturez tout en un clic et passez en mode puzzle.",
     "description": "Guide de la fonction d'assemblage de l'extension"
   },
   "guideExtensionSplit": {
-    "message": "Faites un clic droit sur n'importe quelle image du web et sélectionnez 'X-Puzzle-Kit: Diviser l'image' pour la traiter directement.",
+    "message": "Faites un clic droit sur n'importe quelle image et sélectionnez 'X-Puzzle-Kit: Diviser l'image' pour lancer le traitement sans téléchargement.",
     "description": "Guide de la fonction de division de l'extension"
   },
   "guideFlowOptimization": {
-    "message": "L'activation de l'optimisation ‘Mise en page \"Simple Image\" pour X’ ajuste les rapports de découpe. Lors de la publication de plusieurs découpes, elles apparaîtront sans couture dans le fil d'actualité, comme une seule image géante.",
+    "message": "Une fois activé, l'outil ajuste les ratios pour l'algorithme X (Twitter), garantissant un rendu sans couture dans le fil d'actualité.",
     "description": "Guide de la fonction d'optimisation"
   },
   "guideExtensionTitle": {
-    "message": "Utiliser directement sur Twitter",
+    "message": "Assemblage fluide de tweets (Stitch)",
     "description": "Titre de la carte de manuel 1"
   },
   "guideSplitTitle": {
@@ -564,7 +564,7 @@
     "description": "Titre de la carte de manuel 2"
   },
   "guideLocalGapTitle": {
-    "message": "Pourquoi utiliser les espaces locaux ?",
+    "message": "Contrôle précis des espaces entre coupes",
     "description": "Titre de la carte de manuel 3"
   }
 }

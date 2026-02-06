@@ -24,7 +24,11 @@ export function IOSInstallPrompt() {
       window.matchMedia("(display-mode: standalone)").matches ||
       (navigator as unknown as { standalone: boolean }).standalone;
 
-    if (!isIOS || isStandalone) return;
+    // 4. Detect from Shortcut
+    const isFromShortcut =
+      new URLSearchParams(window.location.search).get("source") === "shortcut";
+
+    if (!isIOS || isStandalone || isFromShortcut) return;
 
     // 4. Check dismissal history
     const dismissed = localStorage.getItem(

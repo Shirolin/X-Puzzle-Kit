@@ -43,6 +43,6 @@ export const APP_CONFIG = {
     EXTENSION_STORE_URL:
       "https://chromewebstore.google.com/detail/x-puzzle-kit-stitch-split/nadlbdmcfmjinifkoedegmiejfibdikk",
     IOS_SHORTCUT_URL:
-      "https://www.icloud.com/shortcuts/b932fef77a3842dd89db1eed4488bf42",
+      "https://www.icloud.com/shortcuts/b932fef77a3842dd89db1eed4488bf42?source=shortcut",
   },
 };

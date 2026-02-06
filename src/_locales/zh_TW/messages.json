@@ -512,7 +512,7 @@
     "description": "手冊標籤3"
   },
   "guideiOSInstall": {
-    "message": "1. 快捷匯入：請安裝配套的「快捷指令」，即可在 X (Twitter) 中透過分享選單直接將圖片匯入本網頁。\n2. 瀏覽器支援：支援 Safari、Chrome 等 iOS 瀏覽器，安裝後即可在分享選单中一键發起。",
+    "message": "1. 體驗升級\n告別手動複製。點擊下方按鈕，將「X-Puzzle-Kit」指令添加到系統庫。\n2. 極速啟動\n在 X (Twitter) 分享選單中點擊本指令，即可自動提取鏈接並無縫跳轉。",
     "description": "iOS安裝說明"
   },
   "installShortcutBtn": {
@@ -524,31 +524,31 @@
     "description": "iOS快捷指令安裝提示"
   },
   "guideAndroidInstall": {
-    "message": "1. 在瀏覽器右上角選單中點擊‘安裝應用程式’或‘加入主畫面’。\n2. 安裝後，本工具將成為‘系統分享目標’。在 X (Twitter) 中直接點擊分享並選擇本項目圖示即可匯入圖片。",
+    "message": "1. 安裝為 App\n在瀏覽器選單中點擊「安裝應用」或「添加到主屏幕」，獲得原生 App 體驗。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」即可匯入。",
     "description": "Android安裝說明"
   },
   "guideExtensionStitch": {
-    "message": "在 X (Twitter) 推文下方，您可以直接看到‘拼接 (Stitch)’按鈕。點擊即可將該推文的所有圖片匯入工具進行拼接。",
+    "message": "在 X (Twitter) 推文下方，您可以直接看到 [icon] 按鈕。一鍵抓取推文所有圖片，直接進入拼圖模式。",
     "description": "插件拼接功能說明"
   },
   "guideExtensionSplit": {
-    "message": "在網頁任意圖片上點擊右鍵，選擇‘X-Puzzle-Kit: 拆分圖片’，可直接對該圖進行拆分處理。",
+    "message": "在網頁任意圖片上點擊右鍵，選擇「X-Puzzle-Kit: 拆分圖片」，即可立刻發起切片處理，無需下載。",
     "description": "插件拆分功能說明"
   },
   "guideFlowOptimization": {
-    "message": "開啟‘推特「一圖流」佈局優化’後，工具會微調切片比例。在推特發佈時，這些切片會在 Timeline 中無缝銜接，拼成一張完整大圖。",
+    "message": "開啟後，工具將微調切片比例以適配 X (Twitter) 算法，確保多張圖片在動態中無縫銜接，拼出完美長圖。",
     "description": "一圖流優化深度說明"
   },
   "guideExtensionTitle": {
-    "message": "直接在 Twitter 頁面使用",
+    "message": "推文圖片無縫拼接",
     "description": "手冊卡片標題1"
   },
   "guideSplitTitle": {
-    "message": "右鍵快捷拆分",
+    "message": "右鍵極速拆圖",
     "description": "手冊卡片標題2"
   },
   "guideLocalGapTitle": {
-    "message": "為什麼要使用局部間距？",
+    "message": "精準控制切片間距",
     "description": "手冊卡片標題3"
   }
 }
