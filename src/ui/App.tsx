@@ -679,7 +679,7 @@ export function App({
     : isWebFullscreen
       ? "app-container app-fullscreen"
       : "app-container";
-  const wrapperClass = isPopup ? "app-popup-wrapper" : "app-overlay";
+  const wrapperClass = isPopup ? "app-popup-wrapper" : "app-root-shell";
 
   const [showUrlInput, setShowUrlInput] = useState(false);
 

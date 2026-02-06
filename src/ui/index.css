@@ -3600,25 +3600,37 @@ button:active {
    Shared Modern UI (Unified PC & Mobile)
    ======================================== */
 
+.app-root-shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-background);
+  z-index: 10;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .app-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  /* 移除固定高度，依靠 inset 自动拉伸，防止 iOS 动态工具栏引起的白边 */
   background-color: var(--color-overlay);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   display: flex;
-  flex-direction: column; /* Stack spinner and text vertically */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem; /* Handle spacing here instead of margin */
+  gap: 1.25rem;
   z-index: 9999;
   animation: overlayFadeIn 0.3s ease-out;
-  overscroll-behavior: none; /* 防止 iOS 橡皮筋效果露出底层 */
-  touch-action: none; /* 禁止遮罩層本身的觸摸滾動 */
+  overscroll-behavior: none;
+  touch-action: none;
 }
 
 @keyframes overlayFadeIn {
