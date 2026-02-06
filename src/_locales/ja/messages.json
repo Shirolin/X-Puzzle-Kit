@@ -544,8 +544,8 @@
     "description": "Androidのインストールガイド"
   },
   "viewAndroidTutorial": {
-    "message": "安卓版ガイドを確認",
-    "description": "Androidのチュートリアルボタンテキスト"
+    "message": "インストール図解を確認",
+    "description": "Androidのチュートリアル按钮文本"
   },
   "guideExtensionStitch": {
     "message": "X (Twitter) の投稿の下に直接 [icon] ボタンが表示されます。ワンクリックで画像をキャプチャし、パズルモードへ。",

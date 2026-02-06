@@ -76,6 +76,7 @@ export function UserGuideDialog({
   const [activeTab, setActiveTab] = useState<"pwa" | "extension" | "flow">(
     __IS_EXTENSION__ ? "extension" : "pwa",
   );
+  const [showScreenshot, setShowScreenshot] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -177,10 +178,8 @@ export function UserGuideDialog({
                     ))}
                 </div>
                 <div style={{ marginTop: "12px" }}>
-                  <a
-                    href="https://github.com/shirolin/x-puzzle-stitcher/wiki/Android-PWA-Guide"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => setShowScreenshot(true)}
                     className="btn btn-ghost flex-row-center gap-xs"
                     style={{
                       width: "fit-content",
@@ -190,10 +189,8 @@ export function UserGuideDialog({
                     }}
                   >
                     <BookOpen size={14} />
-                    <span>
-                      {t("viewAndroidTutorial") || "查看安卓图文教程"}
-                    </span>
-                  </a>
+                    <span>{t("viewAndroidTutorial") || "查看安装示意图"}</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -280,6 +277,27 @@ export function UserGuideDialog({
           </button>
         </div>
       </div>
+
+      {showScreenshot && (
+        <div
+          className="screenshot-preview-overlay animate-fade-in"
+          onClick={() => setShowScreenshot(false)}
+        >
+          <div className="screenshot-container" onClick={(e) => e.stopPropagation()}>
+            <img
+              src="assets/xpk-pwa-install.webp"
+              alt="PWA Install Guide"
+              className="screenshot-preview-img"
+            />
+            <button
+              className="screenshot-close-btn"
+              onClick={() => setShowScreenshot(false)}
+            >
+              <X size={24} />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 
