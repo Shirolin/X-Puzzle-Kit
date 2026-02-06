@@ -190,7 +190,9 @@ export function UserGuideDialog({
                     }}
                   >
                     <BookOpen size={14} />
-                    <span>{t("viewAndroidTutorial") || "📖 查看安卓图文教程"}</span>
+                    <span>
+                      {t("viewAndroidTutorial") || "查看安卓图文教程"}
+                    </span>
                   </a>
                 </div>
               </div>

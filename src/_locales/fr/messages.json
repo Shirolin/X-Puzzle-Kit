@@ -543,8 +543,12 @@
     "message": "1. Installer comme App\nAppuyez sur 'Installer l'application' ou 'Sur l'écran d'accueil' pour une expérience native.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 'X-Puzzle-Kit' pour importer.",
     "description": "Guide d'installation pour Android"
   },
+  "viewAndroidTutorial": {
+    "message": "Voir le tutoriel Android",
+    "description": "Texte du bouton tutoriel Android"
+  },
   "guideExtensionStitch": {
-    "message": "Directment sous n'importe quel post X (Twitter), vous trouverez le bouton [icon]. Capturez tout en un clic et passez en mode puzzle.",
+    "message": "Directment sous n'importe quel post X (Twitter), vous trouverez le bouton [icon]. Capturez toutes les images en un clic et passez en mode puzzle.",
     "description": "Guide de la fonction d'assemblage de l'extension"
   },
   "guideExtensionSplit": {
@@ -556,7 +560,7 @@
     "description": "Guide de la fonction d'optimisation"
   },
   "guideExtensionTitle": {
-    "message": "Assemblage fluide de tweets (Stitch)",
+    "message": "Assemblage fluide d'images de tweets",
     "description": "Titre de la carte de manuel 1"
   },
   "guideSplitTitle": {

@@ -543,8 +543,12 @@
     "message": "1. Install as App\nTap 'Install App' or 'Add to Home Screen' in browser menu for a native experience.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 'X-Puzzle-Kit' to import.",
     "description": "Android installation guide"
   },
+  "viewAndroidTutorial": {
+    "message": "View Android Tutorial",
+    "description": "Android tutorial button text"
+  },
   "guideExtensionStitch": {
-    "message": "Directly below any X (Twitter) tweet, you'll find the [icon] button. Grab all media instantly and enter puzzle mode with one click.",
+    "message": "Directly below any X (Twitter) tweet, you'll find the [icon] button. Grab all images instantly and enter puzzle mode with one click.",
     "description": "Extension stitch feature guide"
   },
   "guideExtensionSplit": {
@@ -556,7 +560,7 @@
     "description": "Optimization feature guide"
   },
   "guideExtensionTitle": {
-    "message": "Seamless Tweet Stitching (Stitch)",
+    "message": "Seamless Tweet Image Stitching",
     "description": "Manual card title 1"
   },
   "guideSplitTitle": {

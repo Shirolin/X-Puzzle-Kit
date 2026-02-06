@@ -527,6 +527,10 @@
     "message": "1. 安裝為 App\n在瀏覽器選單中點擊「安裝應用」或「添加到主屏幕」，獲得原生 App 體驗。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」即可匯入。",
     "description": "Android安裝說明"
   },
+  "viewAndroidTutorial": {
+    "message": "查看安卓圖文教程",
+    "description": "Android教程按鈕文字"
+  },
   "guideExtensionStitch": {
     "message": "在 X (Twitter) 推文下方，您可以直接看到 [icon] 按鈕。一鍵抓取推文所有圖片，直接進入拼圖模式。",
     "description": "插件拼接功能說明"

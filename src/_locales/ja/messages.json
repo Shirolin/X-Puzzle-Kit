@@ -543,8 +543,12 @@
     "message": "1. アプリとしてインストール\nブラウザメニューの「アプリをインストール」または「ホーム画面に追加」をクリックして、ネイティブApp体験を。\n2. ネイティブ共有\nインストール後、X (Twitter) で共有を押し、アプリリストから「X-Puzzle-Kit」を選択するだけでインポートできます。",
     "description": "Androidのインストールガイド"
   },
+  "viewAndroidTutorial": {
+    "message": "安卓版ガイドを確認",
+    "description": "Androidのチュートリアルボタンテキスト"
+  },
   "guideExtensionStitch": {
-    "message": "X (Twitter) の投稿の下に直接 [icon] ボタンが表示されます。ワンクリックで素材をキャプチャし、パズルモードへ。",
+    "message": "X (Twitter) の投稿の下に直接 [icon] ボタンが表示されます。ワンクリックで画像をキャプチャし、パズルモードへ。",
     "description": "拡張機能の結合機能ガイド"
   },
   "guideExtensionSplit": {
@@ -556,7 +560,7 @@
     "description": "最適化機能のガイド"
   },
   "guideExtensionTitle": {
-    "message": "ツイートのシームレス結合 (Stitch)",
+    "message": "ツイート画像のシームレス結合",
     "description": "マニュアルカードタイトル1"
   },
   "guideSplitTitle": {
