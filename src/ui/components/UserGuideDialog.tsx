@@ -252,7 +252,10 @@ export function UserGuideDialog({
           className="screenshot-preview-overlay animate-fade-in"
           onClick={() => setShowScreenshot(false)}
         >
-          <div className="screenshot-container" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="screenshot-container"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
               src="assets/xpk-pwa-install.webp"
               alt="PWA Install Guide"
