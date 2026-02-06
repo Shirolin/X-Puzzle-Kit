@@ -222,6 +222,7 @@ async function handleParseWithCache(
 }
 
 async function handleProxy(imageUrl, corsHeadersObj) {
+  try {
     const u = new URL(imageUrl);
     // 修复 SSRF: 必须以 .twimg.com 结尾 (包含点) 或完全等于 twimg.com
     if (u.hostname !== "twimg.com" && !u.hostname.endsWith(".twimg.com")) {
