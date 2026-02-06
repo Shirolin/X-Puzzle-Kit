@@ -130,7 +130,8 @@
 html,
 body {
   height: 100%;
-  height: -webkit-fill-available; /* 强制填满 iOS 视口 */
+  height: 100dvh; /* 优先使用动态视口高度，适配 iOS 工具栏变化 */
+  height: -webkit-fill-available; /* 兼容旧版 iOS */
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -798,6 +799,7 @@ input:checked + .slider:before {
 .app-fullscreen {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   max-width: none;
   max-height: none;
   border-radius: 0;
@@ -3370,7 +3372,7 @@ button:active {
 /* iOS Install Prompt */
 .ios-prompt-container {
   position: fixed;
-  bottom: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   left: 0;
   right: 0;
   z-index: 100000;
@@ -3615,10 +3617,7 @@ button:active {
 
 .app-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0; /* 强制覆盖整屏，配合 viewport-fit=cover 覆盖安全区域 */
   background-color: var(--color-overlay);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -3631,6 +3630,7 @@ button:active {
   animation: overlayFadeIn 0.3s ease-out;
   overscroll-behavior: none;
   touch-action: none;
+  height: 100dvh;
 }
 
 @keyframes overlayFadeIn {
