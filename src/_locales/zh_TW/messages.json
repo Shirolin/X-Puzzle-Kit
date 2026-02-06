@@ -512,8 +512,8 @@
     "description": "手冊標籤3"
   },
   "guideiOSInstall": {
-    "message": "1. 體驗升級\n告別手動複製。點擊下方按鈕，將「X-Puzzle-Kit」指令添加到系統庫。\n2. 極速啟動\n在 X (Twitter) 分享選單中點擊本指令，即可自動提取鏈接並無縫跳轉。",
-    "description": "iOS安裝說明"
+    "message": "1. 體驗升級\n告別手動複製。點擊下方按鈕，將「X-Puzzle-Kit」指令添加到系統庫。\n2. 極速啟動\n在 X (Twitter) 分享選單中點擊本指令，即可自動提取連結並無縫跳轉。",
+    "description": "iOS安装说明"
   },
   "installShortcutBtn": {
     "message": "安裝快捷指令",
@@ -524,8 +524,8 @@
     "description": "iOS快捷指令安裝提示"
   },
   "guideAndroidInstall": {
-    "message": "1. 安裝為 App\n在瀏覽器選單中點擊「安裝應用」或「添加到主屏幕」，獲得原生 App 體驗。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」即可匯入。",
-    "description": "Android安裝說明"
+    "message": "1. 安裝為 App\n在瀏覽器選單中點擊「安裝應用」或「添加到主螢幕」，獲得原生 App 體驗。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」即可匯入。",
+    "description": "Android安装说明"
   },
   "viewAndroidTutorial": {
     "message": "查看安裝示意圖",

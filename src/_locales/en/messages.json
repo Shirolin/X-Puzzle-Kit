@@ -275,6 +275,10 @@
     "message": "X-Puzzle-Kit: Split Image",
     "description": "Context menu item title"
   },
+  "appName": {
+    "message": "X-Puzzle-Kit: 貼文拼圖與切圖工具",
+    "description": "插件名稱"
+  },
   "extensionUpdatedRefresh": {
     "message": "Extension updated. Please refresh the page.",
     "description": "Message shown when extension context is invalidated"
@@ -528,8 +532,8 @@
     "description": "Manual tab 3"
   },
   "guideiOSInstall": {
-    "message": "1. Seamless Integration\nSay goodbye to manual copying. Tap the button below to add 'X-Puzzle-Kit' to your Shortcuts.\n2. Instant Import\nTap this shortcut in the X (Twitter) share menu to auto-extract links and jump to the app.",
-    "description": "iOS installation guide"
+    "message": "1. Enhanced Integration\nForget manual copying. Tap the button below to add 'X-Puzzle-Kit' to your Shortcuts library.\n2. Quick Import\nTap this Shortcut in the X (Twitter) share menu to automatically extract links and jump seamlessly.",
+    "description": "iOS Install Guide"
   },
   "installShortcutBtn": {
     "message": "Install iOS Shortcut",

@@ -144,13 +144,7 @@ export function UserGuideDialog({
                   <span>iOS (iPhone / iPad)</span>
                 </div>
                 <div className="guide-card-content">
-                  {t("guideiOSInstall")
-                    .split("\n")
-                    .map((line, i) => (
-                      <p key={i} className="guide-card-step">
-                        {line}
-                      </p>
-                    ))}
+                  <p className="guide-card-text">{t("guideiOSInstall")}</p>
                 </div>
                 <div style={{ marginTop: "12px" }}>
                   <a
@@ -172,13 +166,7 @@ export function UserGuideDialog({
                   <span>Android</span>
                 </div>
                 <div className="guide-card-content">
-                  {t("guideAndroidInstall")
-                    .split("\n")
-                    .map((line, i) => (
-                      <p key={i} className="guide-card-step">
-                        {line}
-                      </p>
-                    ))}
+                  <p className="guide-card-text">{t("guideAndroidInstall")}</p>
                 </div>
                 <div style={{ marginTop: "12px" }}>
                   <button
@@ -207,13 +195,7 @@ export function UserGuideDialog({
                   <span>{t("guideExtensionTitle")}</span>
                 </div>
                 <p className="guide-card-text">
-                  {t("guideExtensionStitch")
-                    .split("\n")
-                    .map((line, i) => (
-                      <span key={i} style={{ display: "block" }}>
-                        {renderTextWithIcons(line)}
-                      </span>
-                    ))}
+                  {renderTextWithIcons(t("guideExtensionStitch"))}
                 </p>
               </div>
               <div className="guide-card">
@@ -221,15 +203,7 @@ export function UserGuideDialog({
                   <Scissors size={18} />
                   <span>{t("guideSplitTitle")}</span>
                 </div>
-                <p className="guide-card-text">
-                  {t("guideExtensionSplit")
-                    .split("\n")
-                    .map((line, i) => (
-                      <span key={i} style={{ display: "block" }}>
-                        {line}
-                      </span>
-                    ))}
-                </p>
+                <p className="guide-card-text">{t("guideExtensionSplit")}</p>
               </div>
             </div>
           )}
@@ -241,15 +215,7 @@ export function UserGuideDialog({
                   <LayoutGrid size={18} />
                   <span>{t("twitterOptimize")}</span>
                 </div>
-                <p className="guide-card-text">
-                  {t("guideFlowOptimization")
-                    .split("\n")
-                    .map((line, i) => (
-                      <span key={i} style={{ display: "block" }}>
-                        {line}
-                      </span>
-                    ))}
-                </p>
+                <p className="guide-card-text">{t("guideFlowOptimization")}</p>
               </div>
               <div className="guide-card">
                 <div className="guide-card-header">

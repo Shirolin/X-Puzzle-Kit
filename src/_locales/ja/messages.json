@@ -528,8 +528,8 @@
     "description": "手册标签3"
   },
   "guideiOSInstall": {
-    "message": "1. 連携の強化：手動でのコピーは不要です。下のボタンをタップして「X-Puzzle-Kit」をショートカットに追加してください。\n2. かんたん取り込み：X (Twitter) の共有メニューから「X-Puzzle-Kit」をタップするだけで、自動的にリンクを抽出してアプリを開きます。",
-    "description": "iOSのインストールガイド"
+    "message": "1. 連携の強化\n手動でのコピーは不要です。下のボタンをタップして「X-Puzzle-Kit」をショートカットに追加してください。\n2. かんたん取り込み\nX (Twitter) の共有メニューから「X-Puzzle-Kit」をタップするだけで、自動的にリンクを抽出してアプリを開きます。",
+    "description": "iOS安装说明"
   },
   "installShortcutBtn": {
     "message": "ショートカットをインストール",
@@ -540,8 +540,8 @@
     "description": "iOS快捷指令安装提示"
   },
   "guideAndroidInstall": {
-    "message": "1. アプリとしてインストール：ブラウザメニューの「アプリをインストール」または「ホーム画面に追加」を選択することで、アプリのように利用できます。\n2. 直接共有：インストール後は、X (Twitter) で共有ボタンを押し、アプリ一覧から「X-Puzzle-Kit」を選択するだけで画像を取り込めます。",
-    "description": "Androidのインストールガイド"
+    "message": "1. アプリとしてインストール\nブラウザメニューの「アプリをインストール」または「ホーム画面に追加」を選択することで、アプリのように利用できます。\n2. 直接共有\nインストール後は、X (Twitter) で共有ボタンを押し、アプリ一覧から「X-Puzzle-Kit」を選択するだけで画像を取り込めます。",
+    "description": "Android安装说明"
   },
   "viewAndroidTutorial": {
     "message": "インストール図解を確認",
