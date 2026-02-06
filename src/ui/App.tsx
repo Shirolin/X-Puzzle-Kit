@@ -288,8 +288,10 @@ export function App({
     document.documentElement.setAttribute("data-theme", effectiveTheme);
     document.documentElement.setAttribute("data-lang", effectiveLang);
 
-    // 同步 body 背景色，防止 iOS 安全区域（Safe Area）出现色差
-    document.body.style.backgroundColor = isThemeDark ? "#000000" : "#f5f5f7";
+    // 同步 body 和 html 背景色，彻底防止 iOS 弹性滚动露出系统白边
+    const bgColor = isThemeDark ? "#000000" : "#f5f5f7";
+    document.body.style.backgroundColor = bgColor;
+    document.documentElement.style.backgroundColor = bgColor;
 
     if (mountNode && mountNode instanceof Element) {
       mountNode.setAttribute("data-theme", effectiveTheme);

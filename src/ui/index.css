@@ -127,10 +127,21 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-:root,
+html,
+body {
+  height: 100%;
+  height: -webkit-fill-available; /* 强制填满 iOS 视口 */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--color-background); /* 确保系统背景色与 App 同步 */
+}
+
+:host,
 body,
 .x-puzzle-kit-mount-point {
   overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 button,
@@ -3591,7 +3602,11 @@ button:active {
 
 .app-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 移除固定高度，依靠 inset 自动拉伸，防止 iOS 动态工具栏引起的白边 */
   background-color: var(--color-overlay);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
