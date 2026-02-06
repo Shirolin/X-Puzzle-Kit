@@ -15,6 +15,15 @@ export default {
 
     const headers = getCorsHeaders(request);
 
+    // --- 0.1 APP Token Check ---
+    const token = request.headers.get("X-App-Token");
+    if (token !== "xpuzzle-v1-open-access" && !url.hostname.includes("localhost") && !url.hostname.includes("127.0.0.1")) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), { 
+        status: 401, 
+        headers: { ...headers, "Content-Type": "application/json" } 
+      });
+    }
+
     // --- Mock Mode (本地调试救星) ---
     if (isMock) {
       await new Promise((r) => setTimeout(r, 1500)); // 模拟网络延迟
@@ -80,7 +89,15 @@ function handleOptions(request) {
 // --- 核心逻辑 A: 解析 (带缓存) ---
 async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
   const cacheUrl = new URL(request.url);
-  const cacheKey = new Request(cacheUrl.toString(), request);
+  // 优化缓存 Key: 仅保留必要参数
+  const cacheKeyUrl = new URL(cacheUrl.origin + cacheUrl.pathname);
+  if (cacheUrl.searchParams.has("url")) {
+    cacheKeyUrl.searchParams.set("url", cacheUrl.searchParams.get("url"));
+  }
+  // 仅在 parse 模式下缓存
+  // cacheKeyUrl.searchParams.set("mode", "parse");
+
+  const cacheKey = new Request(cacheKeyUrl.toString(), request);
   const cache = caches.default;
 
   // 1. 尝试读取缓存
@@ -214,7 +231,8 @@ async function handleProxy(imageUrl, corsHeadersObj) {
   // 校验目标 URL 是否合法 (防止 SSRF)
   try {
     const u = new URL(imageUrl);
-    if (!u.hostname.endsWith("twimg.com")) {
+    // 修复 SSRF: 严格校验域名后缀
+    if (u.hostname !== "twimg.com" && !u.hostname.endsWith(".twimg.com")) {
       return new Response("Forbidden Host", {
         status: 403,
         headers: corsHeadersObj,

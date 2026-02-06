@@ -12,6 +12,8 @@ export const APP_CONFIG = {
     LOCAL_URL: "http://localhost:8888/api",
     // Current Active URL
     DEFAULT_URL: "/api",
+    // Simple App Token for basic protection
+    APP_TOKEN: "xpuzzle-v1-open-access",
   },
 
   // LocalStorage Keys

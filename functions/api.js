@@ -17,6 +17,16 @@ export async function onRequest(context) {
   // --- 0. CORS ---
   if (request.method === "OPTIONS") return handleOptions(request);
   const headers = getCorsHeaders(request);
+  
+  // --- 0.1 APP Token Check ---
+  const token = request.headers.get("X-App-Token");
+  // 简单校验，允许本地开发环境无需 Token (可选)
+  if (token !== "xpuzzle-v1-open-access" && !url.hostname.includes("localhost")) {
+    return new Response(JSON.stringify({ error: "Unauthorized" }), { 
+      status: 401, 
+      headers: { ...headers, "Content-Type": "application/json" } 
+    });
+  }
 
   // --- Mock Mode ---
   if (isMock) {
@@ -45,7 +55,6 @@ export async function onRequest(context) {
     return new Response(
       JSON.stringify({
         error: e.message,
-        stack: e.stack,
         type: "Internal Server Error",
       }),
       {
@@ -83,8 +92,16 @@ async function handleParseWithCache(
   waitUntil,
   corsHeadersObj,
 ) {
+  // 优化缓存 Key: 仅保留必要参数，防止缓存投毒
   const cacheUrl = new URL(request.url);
-  const cacheKey = new Request(cacheUrl.toString(), request);
+  const cacheKeyUrl = new URL(cacheUrl.origin + cacheUrl.pathname);
+  if (cacheUrl.searchParams.has("url")) {
+    cacheKeyUrl.searchParams.set("url", cacheUrl.searchParams.get("url"));
+  }
+  // 暂时注释掉 mode，因为当前只缓存 mode=parse，如果需要区分 mode 可以解开
+  // cacheKeyUrl.searchParams.set("mode", "parse");
+  
+  const cacheKey = new Request(cacheKeyUrl.toString(), request);
 
   // 安全地获取缓存对象
   let cache;
@@ -205,9 +222,9 @@ async function handleParseWithCache(
 }
 
 async function handleProxy(imageUrl, corsHeadersObj) {
-  try {
     const u = new URL(imageUrl);
-    if (!u.hostname.endsWith("twimg.com")) {
+    // 修复 SSRF: 必须以 .twimg.com 结尾 (包含点) 或完全等于 twimg.com
+    if (u.hostname !== "twimg.com" && !u.hostname.endsWith(".twimg.com")) {
       return new Response("Forbidden Host", {
         status: 403,
         headers: corsHeadersObj,

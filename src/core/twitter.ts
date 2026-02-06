@@ -39,7 +39,12 @@ async function fetchWithRetry(url: string, retries = 2): Promise<Response> {
   let lastError;
   for (let i = 0; i <= retries; i++) {
     try {
-      const res = await fetch(url);
+      const res = await fetch(url, {
+        headers: {
+          "Content-Type": "application/json",
+          "X-App-Token": APP_CONFIG.WORKER.APP_TOKEN,
+        },
+      });
       if (res.ok) return res;
       // 4xx 错误通常不可重试 (除非是 429)
       if (res.status >= 400 && res.status < 500 && res.status !== 429) {
