@@ -8,7 +8,7 @@
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit is a professional image stitcher and grid splitter designed specifically for X (Twitter) users, digital artists, and collectors. Whether you're reconstructing a multi-part panorama or preparing a creative grid reveal, X-Puzzle-Kit ensures your content looks exactly as intended on the X timeline.\n\n🌐 CROSS-PLATFORM SUPPORT:\nIn addition to this Chrome extension, we provide a full-featured Web PWA version (https://x-puzzle-kit.pages.dev/) for seamless use on mobile devices, tablets, and other browsers.\n\n✨ CORE CAPABILITIES:\n\n🧵 Intelligent Image Stitching\nSeamlessly merge separate Tweet images back into their original panorama or long-form format.\n- Smart Layouts: Full support for Vertical, Horizontal, 2x2 Grid, and the signature T-Shape layouts.\n- Pixel-Perfect Alignment: Advanced coordinate calculation eliminates 1px seams and blurry artifacts.\n- Native Integration: Stitch images directly from your X timeline with a single click—no manual saving required.\n- Lossless Export: Preserves every pixel in its original resolution. No compression, no quality loss.\n\n✂️ Creative Grid Splitter (Mosaic Maker)\nBreak down any large image into standardized grids (2x2, 3x3, or custom) optimized for the X multi-image display.\n- Twitter \"Seamless Flow\" Optimization: Optimized for Twitter's preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline by perfectly matching X's preview ratios.\n- Right-click & Split: Instantly send any web image to the splitter directly from your browser's context menu.\n- Unified Storytelling: Create consistent, engaging \"reveal\" effects for your feed.\n\n🚀 POWER FEATURES:\n- Smooth Workflow: Move from timeline to canvas in seconds with deep browser integration.\n- Professional Customization: Fine-tune global/local gaps, toggle Dark Mode, and choose custom background colors (including transparency).\n- Easy Import: Support for file uploads and clipboard pasting alongside native X integration.\n- Batch Export: Save your creations as high-quality PNG, JPG, or WebP files, or a single organized ZIP package.\n\n🔒 COMMITTED TO PRIVACY\nYour images never leave your browser. All processing is done locally on your machine—no remote uploads, no tracking, and total security.\n\nEnhance your X storytelling with X-Puzzle-Kit today.",
+    "message": "X-Puzzle-Kit is a professional image stitcher and grid splitter designed specifically for X (Twitter) users, digital artists, and collectors. Whether you're reconstructing a multi-part panorama or preparing a creative grid reveal, X-Puzzle-Kit ensures your content looks exactly as intended on the X timeline.\n\n🌐 CROSS-PLATFORM SUPPORT:\nIn addition to this Chrome extension, we provide a full-featured Web version (https://x-puzzle-kit.pages.dev/) for seamless use on mobile devices, tablets, and other browsers.\n\n✨ CORE CAPABILITIES:\n\n🧵 Intelligent Image Stitching\nSeamlessly merge separate Tweet images back into their original panorama or long-form format.\n- Smart Layouts: Full support for Vertical, Horizontal, 2x2 Grid, and the signature T-Shape layouts.\n- Pixel-Perfect Alignment: Advanced coordinate calculation eliminates 1px seams and blurry artifacts.\n- Native Integration: Stitch images directly from your X timeline with a single click—no manual saving required.\n- Lossless Export: Preserves every pixel in its original resolution. No compression, no quality loss.\n\n✂️ Creative Grid Splitter (Mosaic Maker)\nBreak down any large image into standardized grids (2x2, 3x3, or custom) optimized for the X multi-image display.\n- Twitter \"Seamless Flow\" Optimization: Optimized for Twitter's preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline by perfectly matching X's preview ratios.\n- Right-click & Split: Instantly send any web image to the splitter directly from your browser's context menu.\n- Unified Storytelling: Create consistent, engaging \"reveal\" effects for your feed.\n\n🚀 POWER FEATURES:\n- Smooth Workflow: Move from timeline to canvas in seconds with deep browser integration.\n- Professional Customization: Fine-tune global/local gaps, toggle Dark Mode, and choose custom background colors (including transparency).\n- Easy Import: Support for file uploads and clipboard pasting alongside native X integration.\n- Batch Export: Save your creations as high-quality PNG, JPG, or WebP files, or a single organized ZIP package.\n\n🔒 COMMITTED TO PRIVACY\nYour images never leave your browser. All processing is done locally on your machine—no remote uploads, no tracking, and total security.\n\nEnhance your X storytelling with X-Puzzle-Kit today.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
@@ -380,7 +380,7 @@
     "description": "Label for theme selector"
   },
   "pwaVersionLabel": {
-    "message": "Standalone Web (PWA)",
+    "message": "Web Version (Mobile/Online)",
     "description": "PWA version label"
   },
   "pwaVersionTip": {
@@ -516,7 +516,7 @@
     "description": "Finish button"
   },
   "tabPWA": {
-    "message": "PWA / Mobile",
+    "message": "Web / Mobile",
     "description": "Manual tab 1"
   },
   "tabExtension": {
@@ -528,8 +528,16 @@
     "description": "Manual tab 3"
   },
   "guideiOSInstall": {
-    "message": "1. Basic Install: Tap 'Share' in Safari and select 'Add to Home Screen' for a native app experience.\n2. Deep Integration: Due to iOS limitations, use the 'Shortcuts' app to enable direct sharing from X (Twitter) to this app.",
+    "message": "1. Quick Import: Install the companion 'Shortcuts' to enable direct importing from X (Twitter) to this web tool via the share menu.\n2. Browser Support: Works with Safari, Chrome, and other iOS browsers. Once installed, simply tap the shortcut from the Share Sheet.",
     "description": "iOS installation guide"
+  },
+  "installShortcutBtn": {
+    "message": "Install iOS Shortcut",
+    "description": "iOS Shortcut installation button"
+  },
+  "installShortcutTip": {
+    "message": "Tap to get the official iOS Shortcut for one-click importing.",
+    "description": "iOS Shortcut installation tip"
   },
   "guideAndroidInstall": {
     "message": "1. Tap 'Install App' or 'Add to Home Screen' in the browser's menu.\n2. Once installed, this app becomes a 'System Share Target'. Tap share in X (Twitter) and select this app's icon to import images directly.",

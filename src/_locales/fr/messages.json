@@ -8,7 +8,7 @@
     "description": "Description de l'extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s'affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web PWA complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d'Images\nFusionnez sans couture des images séparées d'un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d'un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d'origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n'importe quelle image en grilles standardisées (2x2, 3x3 ou personnalisées) optimisées pour l'affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l'aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n'importe quelle image vers l'outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l'attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l'import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
+    "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s'affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d'Images\nFusionnez sans couture des images séparées d'un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d'un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d'origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n'importe quelle image en grilles standardisées (2x2, 3x3 ou personnalisées) optimisées pour l'affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l'aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n'importe quelle image vers l'outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l'attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l'import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
     "description": "Description détaillée pour le store"
   },
   "previewTitle": {
@@ -380,7 +380,7 @@
     "description": "Étiquette pour le sélecteur de thème"
   },
   "pwaVersionLabel": {
-    "message": "Version Web (PWA)",
+    "message": "Version Web en ligne",
     "description": "Libellé de la version PWA"
   },
   "pwaVersionTip": {
@@ -516,7 +516,7 @@
     "description": "Bouton de fin"
   },
   "tabPWA": {
-    "message": "PWA / Mobile",
+    "message": "Version Web / Mobile",
     "description": "Onglet de manuel 1"
   },
   "tabExtension": {
@@ -528,8 +528,16 @@
     "description": "Onglet de manuel 3"
   },
   "guideiOSInstall": {
-    "message": "1. Installation de base : Appuyez sur 'Partager' dans Safari et sélectionnez 'Sur l'écran d'accueil' pour une expérience d'application native.\n2. Intégration profonde : En raison des limitations d'iOS, utilisez l'application 'Raccourcis' pour permettre le partage direct de X (Twitter) vers cette application.",
+    "message": "1. Importation Rapide : Installez le raccourci dédié pour importer des images directement depuis le menu de partage de X (Twitter).\n2. Support Navigateur : Compatible avec Safari, Chrome et les autres navigateurs iOS. Une fois installé, lancez-le en un clic depuis le menu de partage.",
     "description": "Guide d'installation pour iOS"
+  },
+  "installShortcutBtn": {
+    "message": "Installer le raccourci",
+    "description": "Bouton d'installation du raccourci iOS"
+  },
+  "installShortcutTip": {
+    "message": "Obtenez le raccourci iOS officiel pour importer en un clic.",
+    "description": "Conseil d'installation du raccourci iOS"
   },
   "guideAndroidInstall": {
     "message": "1. Appuyez sur 'Installer l'application' ou 'Sur l'écran d'accueil' dans le menu du navigateur.\n2. Une fois installée, cette application devient une 'Cible de partage système'. Appuyez sur partager dans X (Twitter) et sélectionnez l'icône de cette application pour importer les images directement.",

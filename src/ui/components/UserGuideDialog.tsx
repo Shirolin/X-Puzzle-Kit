@@ -8,8 +8,10 @@ import {
   Scissors,
   LayoutGrid,
   BookOpen,
+  Download,
 } from "lucide-preact";
 import { t } from "../../core/i18n";
+import { APP_CONFIG } from "../../core/config";
 
 interface UserGuideDialogProps {
   isOpen: boolean;
@@ -89,6 +91,19 @@ export function UserGuideDialog({
                   <span>iOS (iPhone / iPad)</span>
                 </div>
                 <p className="guide-card-text">{t("guideiOSInstall")}</p>
+                <div style={{ marginTop: "12px" }}>
+                  <a
+                    href={APP_CONFIG.UI.IOS_SHORTCUT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary flex-row-center gap-xs"
+                    title={t("installShortcutTip")}
+                    style={{ width: "fit-content", padding: "8px 16px" }}
+                  >
+                    <Download size={16} />
+                    <span>{t("installShortcutBtn")}</span>
+                  </a>
+                </div>
               </div>
               <div className="guide-card">
                 <div className="guide-card-header">
