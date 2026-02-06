@@ -3592,9 +3592,6 @@ button:active {
 .app-overlay {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  height: 100dvh; /* 强制覆盖全屏 */
   background-color: var(--color-overlay);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -3605,6 +3602,8 @@ button:active {
   gap: 1.25rem; /* Handle spacing here instead of margin */
   z-index: 9999;
   animation: overlayFadeIn 0.3s ease-out;
+  overscroll-behavior: none; /* 防止 iOS 橡皮筋效果露出底层 */
+  touch-action: none; /* 禁止遮罩層本身的觸摸滾動 */
 }
 
 @keyframes overlayFadeIn {
