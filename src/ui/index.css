@@ -4,6 +4,7 @@
   all: initial;
   /* 彻底断开与外部样式的联系 */
   display: block;
+  height: 100%;
 }
 
 :host,
@@ -130,8 +131,7 @@
 html,
 body {
   height: 100%;
-  height: 100dvh; /* 优先使用动态视口高度，适配 iOS 工具栏变化 */
-  height: -webkit-fill-available; /* 兼容旧版 iOS */
+  height: 100dvh;
   margin: 0;
   padding: 0;
   overflow: hidden;
