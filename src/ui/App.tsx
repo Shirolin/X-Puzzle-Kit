@@ -20,6 +20,7 @@ import {
   isExtension,
 } from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
+import { useIOSViewportFix } from "./hooks/useIOSViewportFix";
 import { IOSInstallPrompt } from "./components/IOSInstallPrompt";
 import {
   extractTwitterUrl,
@@ -54,6 +55,9 @@ export function App({
   mountNode,
 }: AppProps) {
   const logoUrl = getAssetUrl("assets/icon-48.png");
+
+  // Fix iOS Viewport Height
+  useIOSViewportFix();
 
   // Confirm Dialog State
   const [confirmDialog, setConfirmDialog] = useState<{
