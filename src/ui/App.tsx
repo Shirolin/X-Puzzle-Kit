@@ -117,27 +117,6 @@ export function App({
     initialBackgroundColor: "transparent",
   });
 
-  // TEMPORARY DEBUG BUTTON
-  const handleDebug = () => {
-    const vh = window.innerHeight;
-    const oh = window.outerHeight;
-    const docHeight = document.documentElement.clientHeight;
-    const computedStyle = getComputedStyle(document.body);
-    const pb = computedStyle.paddingBottom;
-    const appHeight = document.documentElement.style.getPropertyValue("--app-height");
-    const isStandalone = window.matchMedia("(display-mode: standalone)").matches;
-
-    alert(
-      `Viewport: ${vh}px\n` +
-      `OuterHeight: ${oh}px\n` +
-      `DocClient: ${docHeight}px\n` +
-      `--app-height: ${appHeight}\n` +
-      `Body PB: ${pb}\n` +
-      `Standalone: ${isStandalone}\n` +
-      `Screen: ${screen.width}x${screen.height}`
-    );
-  };
-
   const [loading, setLoading] = useState(() => {
     // If we have share target params, start in loading state
     const params = new URLSearchParams(window.location.search);
@@ -857,26 +836,6 @@ export function App({
       data-theme={isThemeDark ? "dark" : "light"}
       data-lang={getResolvedLanguage(lang)}
     >
-      {/* TEMP DEBUG BUTTON */}
-      <button 
-        onClick={handleDebug}
-        style={{
-          position: 'fixed',
-          top: '10px',
-          left: '10px',
-          zIndex: 99999,
-          padding: '8px 12px',
-          background: 'red',
-          color: 'white',
-          borderRadius: '4px',
-          fontWeight: 'bold',
-          fontSize: '12px',
-          opacity: 0.8
-        }}
-      >
-        DEBUG IOS
-      </button>
-
       <div className={containerClass}>
         {/* Header */}
         <div className="app-header">
