@@ -137,12 +137,11 @@
 html,
 body {
   height: 100%;
-  /* iOS 100vh fix fallback */
-  min-height: -webkit-fill-available;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: var(--color-background); /* 确保系统背景色与 App 同步 */
+  /* 初始背景由 index.html 注入脚本控制，此处确保变量生效 */
+  background-color: var(--color-background);
 }
 
 :host,

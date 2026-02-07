@@ -17,16 +17,21 @@ export function useIOSViewportFix() {
 
     const setAppHeight = () => {
       const doc = document.documentElement;
+      const body = document.body;
       const isStandalone = window.matchMedia(
         "(display-mode: standalone)",
       ).matches;
 
       if (isStandalone) {
-        // 关键修复：在 PWA 模式下，innerHeight 往往不包含状态栏(47px)
-        // 使用 outerHeight 强制获取物理屏幕高度
+        // 关键越狱修复：在 PWA 模式下直接强制设置物理高度，绕过系统 797px 的封锁线
         const h =
           window.outerHeight > 0 ? window.outerHeight : window.innerHeight;
-        doc.style.setProperty("--app-height", `${h}px`);
+        const heightStr = `${h}px`;
+
+        doc.style.setProperty("--app-height", heightStr);
+        // 强制同步宿主层级
+        doc.style.height = heightStr;
+        if (body) body.style.height = heightStr;
       } else {
         // In browser mode, window.innerHeight is safer to avoid the dynamic URL bar
         doc.style.setProperty("--app-height", `${window.innerHeight}px`);
