@@ -22,11 +22,10 @@ export function useIOSViewportFix() {
       ).matches;
 
       if (isStandalone) {
-        // In standalone mode, use 100% to fill the fixed container (which covers the full screen)
-        // detailed layout (status bar, safe area) is handled by CSS env() support.
-        doc.style.setProperty("--app-height", "100%");
+        // In standalone mode, 100dvh is the most reliable way to fill the screen
+        doc.style.setProperty("--app-height", "100dvh");
       } else {
-        // In browser mode, avoid the dynamic address bar area
+        // In browser mode, window.innerHeight is safer to avoid the dynamic URL bar
         doc.style.setProperty("--app-height", `${window.innerHeight}px`);
       }
     };
