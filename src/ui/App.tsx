@@ -117,6 +117,26 @@ export function App({
     initialBackgroundColor: "transparent",
   });
 
+  // TEMPORARY DEBUG BUTTON
+  const handleDebug = () => {
+    const vh = window.innerHeight;
+    const docHeight = document.documentElement.clientHeight;
+    // Check computed style for safe area
+    const computedStyle = getComputedStyle(document.body);
+    const pb = computedStyle.paddingBottom;
+    const appHeight = document.documentElement.style.getPropertyValue("--app-height");
+    const isStandalone = window.matchMedia("(display-mode: standalone)").matches;
+
+    alert(
+      `Viewport: ${vh}px\n` +
+      `DocClient: ${docHeight}px\n` +
+      `--app-height: ${appHeight}\n` +
+      `Body PB: ${pb}\n` +
+      `Standalone: ${isStandalone}\n` +
+      `Screen: ${screen.width}x${screen.height}`
+    );
+  };
+
   const [loading, setLoading] = useState(() => {
     // If we have share target params, start in loading state
     const params = new URLSearchParams(window.location.search);
