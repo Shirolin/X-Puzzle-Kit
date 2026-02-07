@@ -120,6 +120,7 @@ export function App({
   // TEMPORARY DEBUG BUTTON
   const handleDebug = () => {
     const vh = window.innerHeight;
+    const oh = window.outerHeight;
     const docHeight = document.documentElement.clientHeight;
     const computedStyle = getComputedStyle(document.body);
     const pb = computedStyle.paddingBottom;
@@ -128,6 +129,7 @@ export function App({
 
     alert(
       `Viewport: ${vh}px\n` +
+      `OuterHeight: ${oh}px\n` +
       `DocClient: ${docHeight}px\n` +
       `--app-height: ${appHeight}\n` +
       `Body PB: ${pb}\n` +

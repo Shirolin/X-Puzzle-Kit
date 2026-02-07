@@ -22,8 +22,11 @@ export function useIOSViewportFix() {
       ).matches;
 
       if (isStandalone) {
-        // In standalone mode, 100dvh is the most reliable way to fill the screen
-        doc.style.setProperty("--app-height", "100dvh");
+        // 关键修复：在 PWA 模式下，innerHeight 往往不包含状态栏(47px)
+        // 使用 outerHeight 强制获取物理屏幕高度
+        const h =
+          window.outerHeight > 0 ? window.outerHeight : window.innerHeight;
+        doc.style.setProperty("--app-height", `${h}px`);
       } else {
         // In browser mode, window.innerHeight is safer to avoid the dynamic URL bar
         doc.style.setProperty("--app-height", `${window.innerHeight}px`);
