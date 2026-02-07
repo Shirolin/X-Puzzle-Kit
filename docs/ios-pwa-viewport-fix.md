@@ -71,3 +71,15 @@ if (isStandalone) {
 
 - `DocClient` 成功恢复至物理屏幕高度（如 844px）。
 - 底部白边彻底消失，应用界面完美填充整个屏幕。
+
+## 6. 关于 Shadow DOM 的特殊性
+
+在 Web 开发界，有一种观点认为 **“Shadow DOM 架构下的 iOS PWA 全屏布局是不可修复的”**。这种误解主要源于 Shadow DOM 带来的两层物理障碍：
+
+1.  **样式屏障 (Style Encapsulation)**：外部 `index.html` 的全局修复样式无法渗透进 Shadow DOM 内部。
+2.  **根节点隔离 (`:host`)**：即便外部容器长高了，内部的 `:host` 往往依然维持原样，形成“外长内短”的视觉断层。
+
+**为什么本方案能成功？**
+本修复方案的核心在于使用了 **`position: fixed`**。在 CSS 的层叠上下文中，`fixed` 定位能够“无视”绝大多数布局层级和 Shadow DOM 的隔离栅栏，直接参考窗口坐标。
+
+通过将 App 根容器“越狱”出 `html/body` 的限制，并配合 JS 强行写入 `outerHeight` 值，我们向业界证明了：**Shadow DOM 并非全屏布局的终点**，只要手段足够底层，即便是在最苛刻的 iOS PWA 环境下，也依然能实现完美的物理全屏。
