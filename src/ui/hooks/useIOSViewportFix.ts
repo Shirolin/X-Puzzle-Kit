@@ -1,5 +1,4 @@
 import { useEffect } from "preact/hooks";
-import { toast } from "sonner";
 
 /**
  * iOS PWA Viewport Fix
@@ -7,6 +6,9 @@ import { toast } from "sonner";
  * This hook dynamically sets a CSS variable `--app-height` to the innerHeight of the window.
  * This is necessary because on iOS, `100vh` includes the address bar and bottom toolbar area,
  * causing content to be cut off or scroll unexpectedly in PWA/fullscreen modes.
+ *
+ * For Standalone (PWA) mode, we use "100%" to utilize the full screen (including status bar area),
+ * relying on the fixed container to size correctly.
  */
 export function useIOSViewportFix() {
   useEffect(() => {
@@ -15,20 +17,18 @@ export function useIOSViewportFix() {
 
     const setAppHeight = () => {
       const doc = document.documentElement;
-      const vh = window.innerHeight;
-      doc.style.setProperty("--app-height", `${vh}px`);
-
-      // Debug: Show generic viewport info
-      // Check if we are in standalone mode
       const isStandalone = window.matchMedia(
         "(display-mode: standalone)",
       ).matches;
 
-      toast.info(`iOS Debug: ${vh}px`, {
-        description: `Outer: ${window.outerHeight}\nStandalone: ${isStandalone}\nUA: ${navigator.userAgent.slice(0, 30)}...`,
-        duration: 4000,
-        position: "top-center", // Ensure visibility
-      });
+      if (isStandalone) {
+        // In standalone mode, use 100% to fill the fixed container (which covers the full screen)
+        // detailed layout (status bar, safe area) is handled by CSS env() support.
+        doc.style.setProperty("--app-height", "100%");
+      } else {
+        // In browser mode, avoid the dynamic address bar area
+        doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+      }
     };
 
     // Set initially

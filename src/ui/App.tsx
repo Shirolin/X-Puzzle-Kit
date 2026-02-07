@@ -121,7 +121,6 @@ export function App({
   const handleDebug = () => {
     const vh = window.innerHeight;
     const docHeight = document.documentElement.clientHeight;
-    // Check computed style for safe area
     const computedStyle = getComputedStyle(document.body);
     const pb = computedStyle.paddingBottom;
     const appHeight = document.documentElement.style.getPropertyValue("--app-height");
@@ -856,6 +855,26 @@ export function App({
       data-theme={isThemeDark ? "dark" : "light"}
       data-lang={getResolvedLanguage(lang)}
     >
+      {/* TEMP DEBUG BUTTON */}
+      <button 
+        onClick={handleDebug}
+        style={{
+          position: 'fixed',
+          top: '10px',
+          left: '10px',
+          zIndex: 99999,
+          padding: '8px 12px',
+          background: 'red',
+          color: 'white',
+          borderRadius: '4px',
+          fontWeight: 'bold',
+          fontSize: '12px',
+          opacity: 0.8
+        }}
+      >
+        DEBUG IOS
+      </button>
+
       <div className={containerClass}>
         {/* Header */}
         <div className="app-header">

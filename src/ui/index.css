@@ -6,8 +6,9 @@
   display: block;
   /* Use dynamic height if available, fallback to 100% */
   height: var(--app-height, 100%);
-  /* Ensure content respects safe area */
-  padding-bottom: env(safe-area-inset-bottom);
+  /* Remove host-level safe-area padding to allow children (sidebar/footer) 
+     to extend their backgrounds to the edge. Safe area is handled by inner components. */
+  padding-bottom: 0; 
   box-sizing: border-box;
 }
 
