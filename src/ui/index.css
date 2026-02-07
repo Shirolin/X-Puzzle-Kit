@@ -796,21 +796,22 @@ input:checked + .slider:before {
 }
 
 /* Web Fullscreen Override */
-.app-fullscreen {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  border-radius: 0;
-  border: none;
-  margin: 0;
-  box-shadow: none;
+.app-container.app-fullscreen {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
 
 /* Note: Mobile App Container overrides moved to consolidated block */
 
 /* Popup specific styling to fill the window */
-.app-popup-wrapper {
+.app-popup-wrapper,
+.app-root-shell {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -818,6 +819,7 @@ input:checked + .slider:before {
   background-color: var(--color-background);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .app-popup-container {

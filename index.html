@@ -34,14 +34,15 @@
         /* 默认背景，防止初次加载闪白 */
         background: #000000;
       }
-      /* 确保 html 高度包含 safe area 延伸并同步背景色 */
       html,
       html[data-theme="dark"] body {
         background: #000000;
+        color-scheme: dark;
       }
       html[data-theme="light"],
       html[data-theme="light"] body {
         background: #f5f5f7;
+        color-scheme: light;
       }
       /* 关键修复：将宿主元素固定为全屏，确保 Shadow DOM 内部定位正常 */
       #app-root, #x-puzzle-kit-root {
@@ -58,7 +59,9 @@
         try {
           const theme = localStorage.getItem('x-puzzle-kit-theme') || 'auto';
           const isDark = theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+          const effectiveTheme = isDark ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', effectiveTheme);
+          document.documentElement.style.colorScheme = effectiveTheme;
         } catch (e) {}
       })();
     </script>
