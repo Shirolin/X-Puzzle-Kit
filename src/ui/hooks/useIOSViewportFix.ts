@@ -1,4 +1,5 @@
 import { useEffect } from "preact/hooks";
+import { toast } from "sonner";
 
 /**
  * iOS PWA Viewport Fix
@@ -14,7 +15,20 @@ export function useIOSViewportFix() {
 
     const setAppHeight = () => {
       const doc = document.documentElement;
-      doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+      const vh = window.innerHeight;
+      doc.style.setProperty("--app-height", `${vh}px`);
+
+      // Debug: Show generic viewport info
+      // Check if we are in standalone mode
+      const isStandalone = window.matchMedia(
+        "(display-mode: standalone)",
+      ).matches;
+
+      toast.info(`iOS Debug: ${vh}px`, {
+        description: `Outer: ${window.outerHeight}\nStandalone: ${isStandalone}\nUA: ${navigator.userAgent.slice(0, 30)}...`,
+        duration: 4000,
+        position: "top-center", // Ensure visibility
+      });
     };
 
     // Set initially
@@ -22,7 +36,6 @@ export function useIOSViewportFix() {
 
     // Reset on resize
     window.addEventListener("resize", setAppHeight);
-    // Orientation change might also need handling, but resize usually covers it
     window.addEventListener("orientationchange", setAppHeight);
 
     return () => {
