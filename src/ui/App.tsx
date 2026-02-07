@@ -293,9 +293,12 @@ export function App({
     document.documentElement.setAttribute("data-lang", effectiveLang);
 
     // 同步 body 和 html 背景色，彻底防止 iOS 弹性滚动露出系统白边
-    const bgColor = isThemeDark ? "#000000" : "#f5f5f7";
-    document.body.style.backgroundColor = bgColor;
-    document.documentElement.style.backgroundColor = bgColor;
+    // 注意：在 Content Script (isExtension && !isPopup) 模式下，严禁修改全局背景色，否则会污染宿主页面
+    if (!isExtension || isPopup) {
+      const bgColor = isThemeDark ? "#000000" : "#f5f5f7";
+      document.body.style.backgroundColor = bgColor;
+      document.documentElement.style.backgroundColor = bgColor;
+    }
 
     if (mountNode && mountNode instanceof Element) {
       mountNode.setAttribute("data-theme", effectiveTheme);

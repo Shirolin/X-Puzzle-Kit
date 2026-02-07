@@ -1,4 +1,5 @@
 import { useEffect } from "preact/hooks";
+import { isExtension } from "../../core/platform";
 
 /**
  * iOS PWA Viewport Fix
@@ -12,8 +13,8 @@ import { useEffect } from "preact/hooks";
  */
 export function useIOSViewportFix() {
   useEffect(() => {
-    // Only run on client
-    if (typeof window === "undefined") return;
+    // Only run on client and NOT in extension (content script / popup doesn't need this hack)
+    if (typeof window === "undefined" || isExtension) return;
 
     const setAppHeight = () => {
       const doc = document.documentElement;

@@ -9,7 +9,7 @@
   height: var(--app-height, 100dvh);
   /* Remove host-level safe-area padding to allow children (sidebar/footer) 
      to extend their backgrounds to the edge. Safe area is handled by inner components. */
-  padding-bottom: 0; 
+  padding-bottom: 0;
   box-sizing: border-box;
 }
 
@@ -817,8 +817,7 @@ input:checked + .slider:before {
 /* Note: Mobile App Container overrides moved to consolidated block */
 
 /* Popup specific styling to fill the window */
-.app-popup-wrapper,
-.app-root-shell {
+.app-popup-wrapper {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -827,6 +826,23 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+
+/* Content Script Overlay (Modal) */
+.app-root-shell {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-overlay);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  overflow: hidden;
+  z-index: 9999;
 }
 
 .app-popup-container {
@@ -3609,19 +3625,6 @@ button:active {
 /* ========================================
    Shared Modern UI (Unified PC & Mobile)
    ======================================== */
-
-.app-root-shell {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--color-background);
-  z-index: 10;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
 
 .app-overlay {
   position: fixed;
