@@ -203,6 +203,26 @@
     "message": "Instala la aplicación en tu pantalla de inicio para una mejor experiencia.",
     "description": "Descripción de instalación PWA nativa"
   },
+  "pwaBenefitTitle": {
+    "message": "¿Por qué instalar la PWA?",
+    "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Experiencia inmersiva: Sin barra de direcciones, enfoque en pantalla completa.\n• Inicio instantáneo: Abre directamente desde la pantalla de inicio sin esperas.\n• Integración del sistema: Se han corregido problemas de visualización en iOS y se ha mejorado el soporte del menú de compartir.",
+    "description": "PWA benefit list content"
+  },
+  "guideNativeInstall": {
+    "message": "Si está disponible, use el botón 'Instalar' a continuación para una experiencia nativa en un clic.",
+    "description": "Native install recommendation"
+  },
+  "guideTechnicalTitle": {
+    "message": "Aislamiento de estilo más seguro",
+    "description": "Technical improvement title"
+  },
+  "guideTechnicalDesc": {
+    "message": "Mejora técnica: La versión de extensión ahora aísla completamente los estilos de tema, asegurando que no haya interferencias con el sitio web que estás visitando.",
+    "description": "Technical improvement description"
+  },
   "uploadImages": {
     "message": "Subir imágenes",
     "description": "Texto del botón para subir múltiples imágenes"

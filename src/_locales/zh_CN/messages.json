@@ -596,5 +596,25 @@
   "guideLocalGapTitle": {
     "message": "精准控制切片间距",
     "description": "手册卡片标题3"
+  },
+  "pwaBenefitTitle": {
+    "message": "为什么安装 PWA？",
+    "description": "PWA 优势部分标题"
+  },
+  "pwaBenefitList": {
+    "message": "• 沉浸式体验：隐藏浏览器地址栏，全屏操作更专注。\n• 极速启动：从桌面图标直达，秒级响应，无需等待浏览器加载。\n• 系统级优化：已修复 iOS 下的各种视口黑边/白边问题，支持原生分享集成。",
+    "description": "PWA 优势列表内容"
+  },
+  "guideNativeInstall": {
+    "message": "推荐点击下方的“立即安装”按钮，一键获得最顺滑的原生 App 体验。",
+    "description": "原生安装建议"
+  },
+  "guideTechnicalTitle": {
+    "message": "更安全的样式隔离",
+    "description": "技术改进标题"
+  },
+  "guideTechnicalDesc": {
+    "message": "底层技术升级：插件版现在能彻底隔离主题样式，绝不干扰您所访问的网页，使用更加安全放心。",
+    "description": "技术改进描述"
   }
 }

@@ -203,6 +203,26 @@
     "message": "より快適に使用するために、アプリをホーム画面にインストールしてください。",
     "description": "ネイティブ PWA インストール説明"
   },
+  "pwaBenefitTitle": {
+    "message": "なぜ PWA をインストールするのですか？",
+    "description": "PWA 优势部分标题"
+  },
+  "pwaBenefitList": {
+    "message": "• 没入型体験：ブラウザのアドレスバーがなく、全画面で操作に集中できます。\n• 高速起動：ホーム画面から直接開き、ロード時間を待たずに起動できます。\n• システムの最適化：iOS の表示の問題（黒いバー/白いバー）を修正し、共有メニューのサポートを向上させました。",
+    "description": "PWA 优势列表内容"
+  },
+  "guideNativeInstall": {
+    "message": "利用可能な場合は、下の「インストール」ボタンをクリックして、ワンクリックなネイティブ体験をお勧めします。",
+    "description": "原生安装建议"
+  },
+  "guideTechnicalTitle": {
+    "message": "より安全なスタイル隔離",
+    "description": "技術改进标题"
+  },
+  "guideTechnicalDesc": {
+    "message": "技術アップデート：拡張機能版はテーマスタイルを完全に隔離し、アクセスしているウェブサイトに干渉しないようにしました。",
+    "description": "技術改进描述"
+  },
   "uploadImages": {
     "message": "画像をアップロード",
     "description": "多画画像のアップロードボタンのテキスト"

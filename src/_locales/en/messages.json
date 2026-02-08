@@ -594,7 +594,27 @@
     "description": "Manual card title 2"
   },
   "guideLocalGapTitle": {
-    "message": "Precise Slice Gap Control",
+    "message": "Precise Gap Control",
     "description": "Manual card title 3"
+  },
+  "pwaBenefitTitle": {
+    "message": "Why Install PWA?",
+    "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Immersive Experience: No browser address bar, full-screen focus.\n• Instant Startup: Open directly from home screen with zero delay.\n• System Integration: Fixed viewport issues (no black/white bars) and better share menu support.",
+    "description": "PWA benefit list content"
+  },
+  "guideNativeInstall": {
+    "message": "Prefer the 'Install' button below for a seamless one-click native experience if available.",
+    "description": "Native install recommendation"
+  },
+  "guideTechnicalTitle": {
+    "message": "Safer Style Isolation",
+    "description": "Technical improvement title"
+  },
+  "guideTechnicalDesc": {
+    "message": "The extension now completely isolates theme styles, ensuring zero interference with the websites you visit.",
+    "description": "Technical improvement description"
   }
 }

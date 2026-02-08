@@ -51,6 +51,26 @@
     "message": "安裝應用程式到主畫面，享受更完整的體驗。",
     "description": "原生 PWA 安裝描述文案"
   },
+  "pwaBenefitTitle": {
+    "message": "為什麼安裝 PWA？",
+    "description": "PWA 優勢部分標題"
+  },
+  "pwaBenefitList": {
+    "message": "• 沉浸式體驗：隱藏瀏覽器網址列，全螢幕操作更專注。\n• 極速啟動：從主畫面圖示直達，秒級回應，無需等待瀏覽器載入。\n• 系統級優化：已修復 iOS 下的各種視口黑邊/白邊問題，支持原生分享集成。",
+    "description": "PWA 優勢列表內容"
+  },
+  "guideNativeInstall": {
+    "message": "推薦點擊下方的「立即安裝」按鈕，一鍵獲得最順滑的原生 App 體驗。",
+    "description": "原生安裝建議"
+  },
+  "guideTechnicalTitle": {
+    "message": "更安全的樣式隔離",
+    "description": "技術改進標題"
+  },
+  "guideTechnicalDesc": {
+    "message": "底層技術升級：插件版現在能徹底隔離主題樣式，絕不干擾您所訪問的網頁，使用更加安全放心。",
+    "description": "技術改進描述"
+  },
   "removeImage": {
     "message": "移除圖片",
     "description": "移除圖片工具提示"
