@@ -335,6 +335,10 @@
     "message": "轻点右上角分享按钮，然后选择‘添加到主屏幕’。",
     "description": "iOS Chrome安装提示说明"
   },
+  "installDescAndroid": {
+    "message": "轻点浏览器菜单（右上角或右下角），然后选择‘安装应用’或‘添加到主屏幕’。",
+    "description": "Android 安装提示说明"
+  },
   "importFromUrl": {
     "message": "从链接导入",
     "description": "导入按钮标题"

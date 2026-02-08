@@ -191,6 +191,10 @@
     "message": "Toca el botón Compartir arriba a la derecha y selecciona 'Añadir a inicio'.",
     "description": "Descripción del aviso de instalación en iOS Chrome"
   },
+  "installDescAndroid": {
+    "message": "Toca el menú del navegador (arriba o abajo a la derecha), luego selecciona 'Instalar aplicación' o 'Añadir a la pantalla de inicio'.",
+    "description": "Android descripción de instalación"
+  },
   "uploadImages": {
     "message": "Subir imágenes",
     "description": "Texto del botón para subir múltiples imágenes"

@@ -311,6 +311,10 @@
     "message": "Tap the Share button top-right, then select 'Add to Home Screen'.",
     "description": "iOS Chrome install prompt description"
   },
+  "installDescAndroid": {
+    "message": "Tap the browser menu (top or bottom right), then select 'Install app' or 'Add to Home Screen'.",
+    "description": "Android install prompt description"
+  },
   "importFromUrl": {
     "message": "Import from URL",
     "description": "Import button title"

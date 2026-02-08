@@ -23,7 +23,7 @@ import {
 } from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
 import { useIOSViewportFix } from "./hooks/useIOSViewportFix";
-import { IOSInstallPrompt } from "./components/IOSInstallPrompt";
+import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import {
   extractTwitterUrl,
   parseTwitterMetadata,
@@ -1265,7 +1265,7 @@ export function App({
         {/* Simple URL Input Modal replaced by InputDialog */}
       </>
 
-      <IOSInstallPrompt />
+      <PWAInstallPrompt />
       {isPopup && <div className="app-popup-spacer" />}
       <ConfirmDialog
         isOpen={confirmDialog.isOpen}

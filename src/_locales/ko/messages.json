@@ -207,6 +207,10 @@
     "message": "우측 상단 공유 버튼을 눌러 '홈 화면에 추가'를 선택하세요.",
     "description": "iOS Chrome 설치 프롬프트 설명"
   },
+  "installDescAndroid": {
+    "message": "브라우저 메뉴(오른쪽 위 또는 아래)를 누른 다음 '앱 설치' 또는 '홈 화면에 추가'를 선택하세요.",
+    "description": "Android 설치 안내"
+  },
   "uploadImage": {
     "message": "이미지 업로드",
     "description": "이미지 업로드 버튼 텍스트"

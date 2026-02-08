@@ -191,6 +191,10 @@
     "message": "右上の共有ボタンから「ホーム画面に追加」を選択。",
     "description": "iOS Chromeインストールプロンプトの説明"
   },
+  "installDescAndroid": {
+    "message": "ブラウザメニュー（右上または右下）から「アプリをインストール」または「ホーム画面に追加」を選択してください。",
+    "description": "Android インストールプロンプトの説明"
+  },
   "uploadImages": {
     "message": "画像をアップロード",
     "description": "多画画像のアップロードボタンのテキスト"

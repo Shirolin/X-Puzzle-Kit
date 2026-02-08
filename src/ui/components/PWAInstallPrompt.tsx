@@ -4,17 +4,23 @@ import { t } from "../../core/i18n";
 import { getAssetUrl, getPlatformEnv } from "../../core/platform";
 import { APP_CONFIG } from "../../core/config";
 
-export function IOSInstallPrompt() {
+export function PWAInstallPrompt() {
   const [isVisible, setIsVisible] = useState(false);
   const [isChrome, setIsChrome] = useState(false);
+  const [platform, setPlatform] = useState<"ios" | "android">("ios");
 
   useEffect(() => {
     const env = getPlatformEnv();
-    setIsChrome(/CriOS/.test(navigator.userAgent));
+    const userAgent = navigator.userAgent;
+    setIsChrome(/CriOS|Chrome/.test(userAgent) && !/Edge|OPR/.test(userAgent));
 
-    if (!env.isIOS || env.isStandalone || env.isShortcut) return;
+    // 允许 iOS 和 Android 弹出提醒
+    if (!(env.isIOS || env.isAndroid) || env.isStandalone || env.isShortcut)
+      return;
 
-    // 4. Check dismissal history
+    setPlatform(env.isIOS ? "ios" : "android");
+
+    // Check dismissal history
     const dismissed = localStorage.getItem(
       APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED,
     );
@@ -25,7 +31,7 @@ export function IOSInstallPrompt() {
       if (daysSince < APP_CONFIG.UI.IOS_PROMPT_COOLDOWN_DAYS) return;
     }
 
-    // 5. Delay show
+    // Delay show
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, APP_CONFIG.UI.IOS_PROMPT_DELAY_MS);
@@ -43,8 +49,15 @@ export function IOSInstallPrompt() {
 
   if (!isVisible) return null;
 
+  const getDesc = () => {
+    if (platform === "android") return t("installDescAndroid");
+    return t(isChrome ? "installDescChrome" : "installDesc");
+  };
+
   return (
-    <div className={`ios-prompt-container ${isChrome ? "is-chrome" : ""}`}>
+    <div
+      className={`ios-prompt-container pwa-prompt-${platform} ${isChrome ? "is-chrome" : ""}`}
+    >
       <div className="ios-prompt-card apple-blur">
         <button className="ios-prompt-close" onClick={handleClose}>
           <X size={16} />
@@ -57,15 +70,15 @@ export function IOSInstallPrompt() {
           />
           <div className="ios-prompt-text">
             <div className="ios-prompt-title">{t("installTitle")}</div>
-            <div className="ios-prompt-desc">
-              {t(isChrome ? "installDescChrome" : "installDesc")}
-            </div>
+            <div className="ios-prompt-desc">{getDesc()}</div>
           </div>
         </div>
-        {/* 指向箭头: Chrome 指向上方，Safari 指向下方 */}
-        <div
-          className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}
-        ></div>
+        {/* 指向箭头: iOS Chrome 指向上方，Safari 指向下方; Android 通常指向菜单(上方或下方) */}
+        {platform === "ios" && (
+          <div
+            className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}
+          ></div>
+        )}
       </div>
     </div>
   );
