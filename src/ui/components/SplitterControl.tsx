@@ -14,6 +14,9 @@ import {
 import { t } from "../../core/i18n";
 import { SidebarSection, Divider, JogWheel } from "./Sidebar";
 
+import { APP_CONFIG } from "../../core/config";
+import { platformStorage } from "@/core/platform";
+
 interface SplitterControlProps {
   onConfigChange: (config: SplitConfig) => void;
   isProcessing: boolean;
@@ -26,6 +29,10 @@ interface SplitterControlProps {
   config: SplitConfig;
   disabled?: boolean;
   onShowGuide?: () => void;
+  isIOS: boolean;
+  webpWarningDismissed: boolean;
+  setWebpWarningDismissed: (v: boolean) => void;
+  onShowWebpWarning?: (onConfirm: () => void) => void;
 }
 
 export function SplitterControl({
@@ -40,6 +47,10 @@ export function SplitterControl({
   config,
   disabled = false,
   onShowGuide,
+  isIOS,
+  webpWarningDismissed,
+  setWebpWarningDismissed,
+  onShowWebpWarning,
 }: SplitterControlProps) {
   const { layout, rows, cols, gap } = config;
   const [isGapOpen, setIsGapOpen] = useState(gap > 0);
@@ -278,7 +289,24 @@ export function SplitterControl({
                 <button
                   key={fmt}
                   className={`format-btn ${exportFormat === fmt ? "active" : ""}`}
-                  onClick={() => onExportFormatChange(fmt)}
+                  onClick={() => {
+                    if (
+                      fmt === "webp" &&
+                      isIOS &&
+                      !webpWarningDismissed &&
+                      onShowWebpWarning
+                    ) {
+                      onShowWebpWarning(() => {
+                        onExportFormatChange("webp");
+                        setWebpWarningDismissed(true);
+                        platformStorage.set({
+                          [APP_CONFIG.STORAGE.WEBP_WARNING_DISMISSED]: true,
+                        });
+                      });
+                    } else {
+                      onExportFormatChange(fmt);
+                    }
+                  }}
                 >
                   {fmt.toUpperCase()}
                 </button>

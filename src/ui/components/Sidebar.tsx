@@ -622,6 +622,10 @@ export function Sidebar({
             onIsTwitterOptimizedChange={setIsTwitterOptimized}
             disabled={splitBlobs && splitBlobs.length > 0}
             onShowGuide={onShowGuide}
+            isIOS={isIOS}
+            webpWarningDismissed={webpWarningDismissed}
+            setWebpWarningDismissed={setWebpWarningDismissed}
+            onShowWebpWarning={onShowWebpWarning}
           />
         ) : (
           <>
