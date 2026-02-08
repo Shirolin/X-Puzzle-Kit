@@ -17,7 +17,9 @@ export const getPlatformEnv = (): PlatformEnv => {
     typeof __IS_EXTENSION__ !== "undefined" ? __IS_EXTENSION__ : false;
   const isIOS =
     typeof navigator !== "undefined" &&
-    /iPad|iPhone|iPod/.test(navigator.userAgent);
+    (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      // 处理现代 iPadOS (请求桌面版网站时会返回 Mac)
+      (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent)));
   const isAndroid =
     typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent);
 
