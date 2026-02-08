@@ -785,10 +785,13 @@ export function App({
                   visible: true,
                   originalIndex: 0,
                   bitmap,
-                  source: (artistHandle && tweetId) ? {
-                    tweetId,
-                    artistHandle,
-                  } : undefined,
+                  source:
+                    artistHandle && tweetId
+                      ? {
+                          tweetId,
+                          artistHandle,
+                        }
+                      : undefined,
                 });
               };
               img.src = url;
