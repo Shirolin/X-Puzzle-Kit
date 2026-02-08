@@ -226,7 +226,11 @@ export function App({
     platformStorage
       .get({ [STORAGE_KEYS.TUTORIAL_COMPLETED]: false })
       .then((res) => {
-        if (!res[STORAGE_KEYS.TUTORIAL_COMPLETED] && !env.isPopup) {
+        if (
+          !res[STORAGE_KEYS.TUTORIAL_COMPLETED] &&
+          !env.isPopup &&
+          !env.isShortcut
+        ) {
           setShowGuide(true);
         }
       });

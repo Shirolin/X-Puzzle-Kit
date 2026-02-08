@@ -35,7 +35,7 @@ import {
 } from "../../core/types";
 import { LayoutButton, IconButton, CustomSelect } from "./Common";
 import { SplitterControl } from "./SplitterControl";
-import { isExtension, platformStorage } from "@/core/platform";
+import { isExtension, platformStorage, getPlatformEnv } from "@/core/platform";
 import { APP_CONFIG } from "../../core/config";
 
 // 分隔线组件
@@ -545,21 +545,7 @@ export function Sidebar({
 
   const [isIOS, setIsIOS] = useState(false);
   useEffect(() => {
-    const checkIOS = () => {
-      return (
-        [
-          "iPad Simulator",
-          "iPhone Simulator",
-          "iPod Simulator",
-          "iPad",
-          "iPhone",
-          "iPod",
-        ].includes(navigator.platform) ||
-        // iPad on iOS 13 detection
-        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
-      );
-    };
-    setIsIOS(checkIOS());
+    setIsIOS(getPlatformEnv().isIOS);
   }, []);
 
   const [webpWarningDismissed, setWebpWarningDismissed] = useState(true);

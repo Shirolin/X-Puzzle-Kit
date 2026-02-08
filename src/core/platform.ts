@@ -18,17 +18,19 @@ export const getPlatformEnv = (): PlatformEnv => {
   const isIOS =
     typeof navigator !== "undefined" &&
     (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
-      // 处理现代 iPadOS (请求桌面版网站时会返回 Mac)
-      (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent)));
+      // 处理现代 iPadOS (请求桌面版网站时会返回 Mac，但具备多点触控)
+      (navigator.maxTouchPoints > 1 &&
+        /Macintosh|Mac Intel/.test(navigator.userAgent)));
   const isAndroid =
     typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent);
 
   // 检测是否来自 iOS 快捷指令分享 (通过 URL 参数)
+  // 注意：在 App.tsx 中会清理 URL 参数，因此此判定通常在初始化时最准确
   const params =
     typeof window !== "undefined"
       ? new URLSearchParams(window.location.search)
       : null;
-  const isShortcut = isIOS && params?.get("source") === "shortcut";
+  const isShortcut = !!(isIOS && params?.get("source") === "shortcut");
 
   // 检测是否为 PWA Standalone 模式
   const isStandalone = !!(

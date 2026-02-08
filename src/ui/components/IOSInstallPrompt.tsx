@@ -1,7 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
 import { X } from "lucide-preact";
 import { t } from "../../core/i18n";
-import { getAssetUrl } from "../../core/platform";
+import { getAssetUrl, getPlatformEnv } from "../../core/platform";
 import { APP_CONFIG } from "../../core/config";
 
 export function IOSInstallPrompt() {
@@ -9,26 +9,10 @@ export function IOSInstallPrompt() {
   const [isChrome, setIsChrome] = useState(false);
 
   useEffect(() => {
-    const userAgent = navigator.userAgent;
-    // 1. Detect iOS
-    const isIOS =
-      /iPad|iPhone|iPod/.test(userAgent) &&
-      !(window as unknown as { MSStream: unknown }).MSStream;
+    const env = getPlatformEnv();
+    setIsChrome(/CriOS/.test(navigator.userAgent));
 
-    // 2. Detect Chrome on iOS
-    const isChromeIOS = /CriOS/.test(userAgent);
-    setIsChrome(isChromeIOS);
-
-    // 3. Detect Standalone (PWA mode)
-    const isStandalone =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      (navigator as unknown as { standalone: boolean }).standalone;
-
-    // 4. Detect from Shortcut
-    const isFromShortcut =
-      new URLSearchParams(window.location.search).get("source") === "shortcut";
-
-    if (!isIOS || isStandalone || isFromShortcut) return;
+    if (!env.isIOS || env.isStandalone || env.isShortcut) return;
 
     // 4. Check dismissal history
     const dismissed = localStorage.getItem(
