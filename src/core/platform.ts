@@ -8,6 +8,7 @@ export interface PlatformEnv {
   isStandalone: boolean;
   isShortcut: boolean;
   isIOS: boolean;
+  isAndroid: boolean;
   isPopup: boolean;
 }
 
@@ -17,6 +18,8 @@ export const getPlatformEnv = (): PlatformEnv => {
   const isIOS =
     typeof navigator !== "undefined" &&
     /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isAndroid =
+    typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent);
 
   // 检测是否来自 iOS 快捷指令分享 (通过 URL 参数)
   const params =
@@ -46,6 +49,7 @@ export const getPlatformEnv = (): PlatformEnv => {
     isStandalone,
     isShortcut,
     isIOS,
+    isAndroid,
     isPopup,
   };
 };

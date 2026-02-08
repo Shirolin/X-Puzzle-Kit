@@ -12,6 +12,7 @@ import {
 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { APP_CONFIG } from "../../core/config";
+import { getPlatformEnv } from "../../core/platform";
 
 interface UserGuideDialogProps {
   isOpen: boolean;
@@ -77,6 +78,7 @@ export function UserGuideDialog({
     __IS_EXTENSION__ ? "extension" : "pwa",
   );
   const [showScreenshot, setShowScreenshot] = useState(false);
+  const { isAndroid } = getPlatformEnv();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -87,6 +89,58 @@ export function UserGuideDialog({
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
+
+  const iOSCard = (
+    <div className="guide-card">
+      <div className="guide-card-header">
+        <Apple size={18} />
+        <span>iOS (iPhone / iPad)</span>
+      </div>
+      <div className="guide-card-content">
+        <p className="guide-card-text">{t("guideiOSInstall")}</p>
+      </div>
+      <div style={{ marginTop: "12px" }}>
+        <a
+          href={APP_CONFIG.UI.IOS_SHORTCUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary flex-row-center gap-xs"
+          title={t("installShortcutTip")}
+          style={{ width: "fit-content", padding: "8px 16px" }}
+        >
+          <Download size={16} />
+          <span>{t("installShortcutBtn")}</span>
+        </a>
+      </div>
+    </div>
+  );
+
+  const androidCard = (
+    <div className="guide-card">
+      <div className="guide-card-header">
+        <Smartphone size={18} />
+        <span>Android</span>
+      </div>
+      <div className="guide-card-content">
+        <p className="guide-card-text">{t("guideAndroidInstall")}</p>
+      </div>
+      <div style={{ marginTop: "12px" }}>
+        <button
+          onClick={() => setShowScreenshot(true)}
+          className="btn btn-ghost flex-row-center gap-xs"
+          style={{
+            width: "fit-content",
+            padding: "6px 14px",
+            fontSize: "13px",
+            border: "1px solid var(--color-border)",
+          }}
+        >
+          <BookOpen size={14} />
+          <span>{t("viewAndroidTutorial") || "查看安装示意图"}</span>
+        </button>
+      </div>
+    </div>
+  );
 
   const content = (
     <div className="app-overlay" style={{ zIndex: 10000 }} onClick={onClose}>
@@ -138,52 +192,17 @@ export function UserGuideDialog({
         <div className="guide-scroll-content">
           {activeTab === "pwa" && (
             <div className="guide-step-list animate-fade-in">
-              <div className="guide-card">
-                <div className="guide-card-header">
-                  <Apple size={18} />
-                  <span>iOS (iPhone / iPad)</span>
-                </div>
-                <div className="guide-card-content">
-                  <p className="guide-card-text">{t("guideiOSInstall")}</p>
-                </div>
-                <div style={{ marginTop: "12px" }}>
-                  <a
-                    href={APP_CONFIG.UI.IOS_SHORTCUT_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary flex-row-center gap-xs"
-                    title={t("installShortcutTip")}
-                    style={{ width: "fit-content", padding: "8px 16px" }}
-                  >
-                    <Download size={16} />
-                    <span>{t("installShortcutBtn")}</span>
-                  </a>
-                </div>
-              </div>
-              <div className="guide-card">
-                <div className="guide-card-header">
-                  <Smartphone size={18} />
-                  <span>Android</span>
-                </div>
-                <div className="guide-card-content">
-                  <p className="guide-card-text">{t("guideAndroidInstall")}</p>
-                </div>
-                <div style={{ marginTop: "12px" }}>
-                  <button
-                    onClick={() => setShowScreenshot(true)}
-                    className="btn btn-ghost flex-row-center gap-xs"
-                    style={{
-                      width: "fit-content",
-                      padding: "6px 14px",
-                      fontSize: "13px",
-                      border: "1px solid var(--color-border)",
-                    }}
-                  >
-                    <BookOpen size={14} />
-                    <span>{t("viewAndroidTutorial") || "查看安装示意图"}</span>
-                  </button>
-                </div>
-              </div>
+              {isAndroid ? (
+                <>
+                  {androidCard}
+                  {iOSCard}
+                </>
+              ) : (
+                <>
+                  {iOSCard}
+                  {androidCard}
+                </>
+              )}
             </div>
           )}
 
