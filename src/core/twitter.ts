@@ -51,8 +51,8 @@ async function fetchWithRetry(url: string, retries = 2): Promise<Response> {
         return res;
       }
       throw new Error(`STATUS_${res.status}`);
-    } catch (e: any) {
-      if (e.message?.startsWith("STATUS_")) {
+    } catch (e: unknown) {
+      if (e instanceof Error && e.message?.startsWith("STATUS_")) {
         lastError = e;
       } else {
         lastError = new Error("NETWORK_ERROR");

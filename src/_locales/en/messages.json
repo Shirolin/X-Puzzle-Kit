@@ -275,10 +275,6 @@
     "message": "X-Puzzle-Kit: Split Image",
     "description": "Context menu item title"
   },
-  "appName": {
-    "message": "X-Puzzle-Kit: 貼文拼圖與切圖工具",
-    "description": "插件名稱"
-  },
   "extensionUpdatedRefresh": {
     "message": "Extension updated. Please refresh the page.",
     "description": "Message shown when extension context is invalidated"
@@ -458,22 +454,6 @@
   "twitterOptimizeHelp": {
     "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 'One Image' look in users' feeds.",
     "description": "Twitter optimization help"
-  },
-  "imageResolution": {
-    "message": "Resolution",
-    "description": "Image resolution label"
-  },
-  "clickToShowResolution": {
-    "message": "Click to show resolution",
-    "description": "Resolution tip"
-  },
-  "finalGap": {
-    "message": "Final Gap",
-    "description": "Final gap calculation result"
-  },
-  "openSourcePage": {
-    "message": "Open Original Tweet",
-    "description": "Original tweet link tip"
   },
   "userGuideButton": {
     "message": "User Guide",

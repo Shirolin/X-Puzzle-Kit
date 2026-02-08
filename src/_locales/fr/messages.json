@@ -455,22 +455,6 @@
     "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 'Image Unique' sans couture dans le fil des utilisateurs.",
     "description": "Aide de l'optimisation Twitter"
   },
-  "imageResolution": {
-    "message": "Résolution",
-    "description": "Étiquette de résolution d'image"
-  },
-  "clickToShowResolution": {
-    "message": "Cliquez pour voir la résolution",
-    "description": "Conseil de résolution"
-  },
-  "finalGap": {
-    "message": "Espace Final",
-    "description": "Résultat du calcul de l'espace final"
-  },
-  "openSourcePage": {
-    "message": "Ouvrir le Tweet Original",
-    "description": "Conseil de lien du tweet original"
-  },
   "userGuideButton": {
     "message": "Guide de l'utilisateur",
     "description": "Texte du bouton du guide de l'utilisateur"

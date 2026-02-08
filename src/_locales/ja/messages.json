@@ -319,22 +319,6 @@
     "message": "確定",
     "description": "確認ボタン"
   },
-  "imageResolution": {
-    "message": "解像度",
-    "description": "画像の解像度ラベル"
-  },
-  "clickToShowResolution": {
-    "message": "クリックして解像度を表示",
-    "description": "サムネイルのヒント"
-  },
-  "finalGap": {
-    "message": "最終的な間隔",
-    "description": "計算された合計間隔"
-  },
-  "openSourcePage": {
-    "message": "元のツイートページを開く",
-    "description": "ソースリンクのツールチップ"
-  },
   "invalidFormat": {
     "message": "無効な形式",
     "description": "無効な入力のメッセージ"

@@ -799,11 +799,17 @@ export function App({
           finalErrorMessage = t("workerInvalidResponse");
         } else if (errorStr.startsWith("STATUS_")) {
           const status = errorStr.split("_")[1];
-          finalErrorMessage = t("workerStatusError").replace("$status$", status);
+          finalErrorMessage = t("workerStatusError").replace(
+            "$status$",
+            status,
+          );
         } else if (errorStr.startsWith("API_ERROR: ")) {
           const rawError = errorStr.replace("API_ERROR: ", "");
           // Map common worker error messages to i18n if they occur
-          if (rawError.includes("no images") || rawError.includes("not found")) {
+          if (
+            rawError.includes("no images") ||
+            rawError.includes("not found")
+          ) {
             finalErrorMessage = t("noImagesFound");
           } else {
             finalErrorMessage = rawError;
