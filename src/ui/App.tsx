@@ -736,7 +736,7 @@ export function App({
           if (pathParts[0] === "i") {
             // /i/status/12345
             tweetId = tweetId || pathParts[2];
-            artistHandle = artistHandle || "Twitter";
+            artistHandle = artistHandle || undefined;
           } else {
             // /username/status/12345
             artistHandle = artistHandle || pathParts[0];
@@ -785,10 +785,10 @@ export function App({
                   visible: true,
                   originalIndex: 0,
                   bitmap,
-                  source: {
-                    tweetId: tweetId || "unknown",
-                    artistHandle: artistHandle || "unknown",
-                  },
+                  source: (artistHandle && tweetId) ? {
+                    tweetId,
+                    artistHandle,
+                  } : undefined,
                 });
               };
               img.src = url;

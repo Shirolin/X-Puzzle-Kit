@@ -139,7 +139,7 @@ async function handleParseWithCache(
   const match = tweetUrl.match(
     /(?:mobile\.)?(?:twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/(\d+)/,
   );
-  const username = match ? match[1] : "Twitter";
+  const username = match ? match[1] : null;
   const tweetId = match ? match[2] : null;
 
   if (!tweetId) {
