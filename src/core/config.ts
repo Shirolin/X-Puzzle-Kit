@@ -32,7 +32,7 @@ export const APP_CONFIG = {
   TWITTER: {
     // Regex to match Twitter/X URLs
     URL_REGEX:
-      /https?:\/\/(twitter\.com|x\.com)\/[a-zA-Z0-9_]+\/status\/[0-9]+/,
+      /https?:\/\/(?:mobile\.)?(?:twitter\.com|x\.com)\/[a-zA-Z0-9_]+\/status\/[0-9]+/,
     // Query parameters to remove for better caching
     TRACKING_PARAMS: ["s", "t", "ref_src"],
   },

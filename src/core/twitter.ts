@@ -5,6 +5,8 @@ export const DEFAULT_WORKER_URL = APP_CONFIG.WORKER.DEFAULT_URL;
 
 export interface ParsedTwitterData {
   images: string[];
+  userHandle?: string;
+  tweetId?: string;
   error?: string;
 }
 
@@ -66,12 +68,12 @@ async function fetchWithRetry(url: string, retries = 2): Promise<Response> {
 }
 
 /**
- * 调用 Worker 解析推文链接获取图片列表
+ * 调用 Worker 解析推文链接获取图片列表及元数据
  */
 export async function parseTwitterMetadata(
   tweetUrl: string,
   workerUrl: string = DEFAULT_WORKER_URL,
-): Promise<string[]> {
+): Promise<ParsedTwitterData> {
   if (__IS_EXTENSION__) {
     throw new Error("Twitter parsing is not supported in extension mode");
   }
@@ -97,7 +99,11 @@ export async function parseTwitterMetadata(
       throw new Error(`API_ERROR: ${data.error}`);
     }
 
-    return data.images || [];
+    return {
+      images: data.images || [],
+      userHandle: data.userHandle,
+      tweetId: data.tweetId,
+    };
   } catch (e) {
     console.error("Failed to parse twitter metadata", e);
     throw e;

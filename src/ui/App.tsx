@@ -714,37 +714,50 @@ export function App({
 
       try {
         // 1. Parse Metadata
-        // Updated: Extract handle and ID for Source Badge
-        const urlObj = new URL(twitterUrl);
-        const pathParts = urlObj.pathname.split("/").filter(Boolean);
-        // /username/status/123456...
-        const artistHandle = pathParts[0];
-        const tweetId = pathParts[2]; // handle / status / id
+        const parsedData = await parseTwitterMetadata(twitterUrl);
+        const imagesToDownload = parsedData.images;
 
-        let images = await parseTwitterMetadata(twitterUrl);
-
-        if (images.length === 0) {
+        if (imagesToDownload.length === 0) {
           toast.error(t("noImagesFound"));
           setLoading(false);
           setLoadingMessage("");
           return;
         }
 
-        // Deduplicate images
-        images = [...new Set(images)];
+        // 2. Determine Metadata (Priority: Worker Data > Local Regex)
+        let artistHandle = parsedData.userHandle;
+        let tweetId = parsedData.tweetId;
 
-        // 2. Download Images
+        if (!artistHandle || !tweetId) {
+          // Local Fallback Regex: Handles standard and i/status/ links
+          const urlObj = new URL(twitterUrl);
+          const pathParts = urlObj.pathname.split("/").filter(Boolean);
+
+          if (pathParts[0] === "i") {
+            // /i/status/12345
+            tweetId = tweetId || pathParts[2];
+            artistHandle = artistHandle || "Twitter";
+          } else {
+            // /username/status/12345
+            artistHandle = artistHandle || pathParts[0];
+            tweetId = tweetId || pathParts[2];
+          }
+        }
+
+        // Deduplicate images
+        const uniqueImages = [...new Set(imagesToDownload)];
+
+        // 3. Download Images
         const blobs: Blob[] = [];
-        for (let i = 0; i < images.length; i++) {
+        for (let i = 0; i < uniqueImages.length; i++) {
           setLoadingMessage(
-            `${t("downloadingImages")} (${i + 1}/${images.length})...`,
+            `${t("downloadingImages")} (${i + 1}/${uniqueImages.length})...`,
           );
           try {
-            const blob = await fetchTwitterImageBlob(images[i]);
+            const blob = await fetchTwitterImageBlob(uniqueImages[i]);
             blobs.push(blob);
           } catch (err) {
             console.error(`Failed to load image ${i}`, err);
-            // Continue loading others
           }
         }
 
@@ -754,9 +767,7 @@ export function App({
 
         setLoadingMessage(t("processingImages"));
 
-        // 3. Create ImageNodes directly (to attach source metadata)
-        // We generate unique IDs and defer index handling to useStitchManager
-
+        // 4. Create ImageNodes
         const newNodes: ImageNode[] = await Promise.all(
           blobs.map(async (blob, i) => {
             return new Promise<ImageNode>((resolve) => {
@@ -772,14 +783,11 @@ export function App({
                   width: img.width,
                   height: img.height,
                   visible: true,
-                  // We don't have access to current `images.length` fresh state here easily without ref,
-                  // but `addImages` appends, so `originalIndex` handles itself or isn't critical for initial append order.
-                  // Let's just use a large number or 0, useStitchManager might re-index or it's just for display.
                   originalIndex: 0,
                   bitmap,
                   source: {
-                    tweetId,
-                    artistHandle,
+                    tweetId: tweetId || "unknown",
+                    artistHandle: artistHandle || "unknown",
                   },
                 });
               };
@@ -788,7 +796,7 @@ export function App({
           }),
         );
 
-        // 4. Add to Stitcher
+        // 5. Add to Stitcher
         addImages(newNodes);
       } catch (e: unknown) {
         console.error("Twitter share handling failed:", e);

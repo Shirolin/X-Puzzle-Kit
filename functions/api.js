@@ -137,10 +137,10 @@ async function handleParseWithCache(
 
   // 2. 执行解析
   const match = tweetUrl.match(
-    /(twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/(\d+)/,
+    /(?:mobile\.)?(?:twitter\.com|x\.com)\/([a-zA-Z0-9_]+)\/status\/(\d+)/,
   );
-  const username = match ? match[2] : "Twitter";
-  const tweetId = match ? match[3] : null;
+  const username = match ? match[1] : "Twitter";
+  const tweetId = match ? match[2] : null;
 
   if (!tweetId) {
     return new Response(JSON.stringify({ error: "Invalid Tweet URL" }), {
@@ -174,15 +174,34 @@ async function handleParseWithCache(
       if (apiResp.ok) {
         const data = await apiResp.json();
         let images = [];
-        if (source.name === "FxTwitter" && data.tweet?.media?.photos) {
-          images = data.tweet.media.photos.map((p) => p.url);
+        let detectedHandle = username;
+        let detectedId = tweetId;
+
+        if (source.name === "FxTwitter" && data.tweet) {
+          if (data.tweet.media?.photos) {
+            images = data.tweet.media.photos.map((p) => p.url);
+          }
+          if (data.tweet.author?.screen_name) {
+            detectedHandle = data.tweet.author.screen_name;
+          }
+          if (data.tweet.id_str) {
+            detectedId = data.tweet.id_str;
+          }
         } else if (data.media_extended) {
           images = data.media_extended
             .filter((m) => m.type === "image")
             .map((m) => m.url);
+          // VxTwitter mapping if available
+          if (data.user_screen_name) detectedHandle = data.user_screen_name;
+          if (data.tweetID) detectedId = data.tweetID;
         }
+
         if (images.length > 0) {
-          finalData = { images };
+          finalData = {
+            images,
+            userHandle: detectedHandle,
+            tweetId: detectedId,
+          };
           break;
         }
       } else {
