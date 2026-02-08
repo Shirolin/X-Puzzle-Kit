@@ -163,6 +163,14 @@
     "message": "Appuyez sur le menu du navigateur (en haut ou en bas à droite), puis sélectionnez 'Installer l'application' ou 'Ajouter à l'écran d'accueil'.",
     "description": "Android description d'installation"
   },
+  "pwaInstallBtn": {
+    "message": "Installer",
+    "description": "Bouton d'installation PWA native"
+  },
+  "pwaInstallDescNative": {
+    "message": "Installez l'application sur votre écran d'accueil pour une meilleure expérience.",
+    "description": "Description d'installation PWA native"
+  },
   "stitchAndDownload": {
     "message": "Fusionner et télécharger",
     "description": "Texte du bouton de téléchargement final"

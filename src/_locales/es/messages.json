@@ -195,6 +195,14 @@
     "message": "Toca el menú del navegador (arriba o abajo a la derecha), luego selecciona 'Instalar aplicación' o 'Añadir a la pantalla de inicio'.",
     "description": "Android descripción de instalación"
   },
+  "pwaInstallBtn": {
+    "message": "Instalar",
+    "description": "Botón de instalación PWA nativa"
+  },
+  "pwaInstallDescNative": {
+    "message": "Instala la aplicación en tu pantalla de inicio para una mejor experiencia.",
+    "description": "Descripción de instalación PWA nativa"
+  },
   "uploadImages": {
     "message": "Subir imágenes",
     "description": "Texto del botón para subir múltiples imágenes"

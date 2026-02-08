@@ -3442,6 +3442,26 @@ button:active {
   }
 }
 
+.pwa-install-button-native {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(29, 155, 240, 0.3);
+}
+
+.pwa-install-button-native:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
 .ios-prompt-card {
   pointer-events: auto;
   background: rgba(30, 30, 35, 0.85); /* Fallback for dark */

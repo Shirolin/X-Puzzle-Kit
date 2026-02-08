@@ -157,6 +157,20 @@ export function App({
     useState<BackgroundColor>("transparent");
   const [showGuide, setShowGuide] = useState(false);
   const [showUserManual, setShowUserManual] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    return () =>
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt,
+      );
+  }, []);
 
   // Theme State
   const [theme, setTheme] = useState<"system" | "light" | "dark">("system");
@@ -1265,7 +1279,10 @@ export function App({
         {/* Simple URL Input Modal replaced by InputDialog */}
       </>
 
-      <PWAInstallPrompt />
+      <PWAInstallPrompt
+        deferredPrompt={deferredPrompt}
+        onInstall={() => setDeferredPrompt(null)}
+      />
       {isPopup && <div className="app-popup-spacer" />}
       <ConfirmDialog
         isOpen={confirmDialog.isOpen}

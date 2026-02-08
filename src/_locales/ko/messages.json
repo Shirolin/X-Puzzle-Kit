@@ -211,6 +211,14 @@
     "message": "브라우저 메뉴(오른쪽 위 또는 아래)를 누른 다음 '앱 설치' 또는 '홈 화면에 추가'를 선택하세요.",
     "description": "Android 설치 안내"
   },
+  "pwaInstallBtn": {
+    "message": "설치",
+    "description": "네이티브 PWA 설치 버튼"
+  },
+  "pwaInstallDescNative": {
+    "message": "더 나은 환경을 위해 앱을 홈 화면에 설치하세요.",
+    "description": "네이티브 PWA 설치 설명"
+  },
   "uploadImage": {
     "message": "이미지 업로드",
     "description": "이미지 업로드 버튼 텍스트"

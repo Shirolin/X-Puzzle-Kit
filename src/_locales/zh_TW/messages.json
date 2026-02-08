@@ -43,6 +43,14 @@
     "message": "輕點瀏覽器選單 (右上方或右下方)，然後選擇「安裝應用程式」或「加入主畫面」。",
     "description": "Android 安裝提示說明"
   },
+  "pwaInstallBtn": {
+    "message": "立即安裝",
+    "description": "原生 PWA 安裝按鈕文案"
+  },
+  "pwaInstallDescNative": {
+    "message": "安裝應用程式到主畫面，享受更完整的體驗。",
+    "description": "原生 PWA 安裝描述文案"
+  },
   "removeImage": {
     "message": "移除圖片",
     "description": "移除圖片工具提示"

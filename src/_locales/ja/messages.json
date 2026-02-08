@@ -193,7 +193,15 @@
   },
   "installDescAndroid": {
     "message": "ブラウザメニュー（右上または右下）から「アプリをインストール」または「ホーム画面に追加」を選択してください。",
-    "description": "Android インストールプロンプトの説明"
+    "description": "Androidインストール案内"
+  },
+  "pwaInstallBtn": {
+    "message": "インストール",
+    "description": "ネイティブ PWA インストールボタン"
+  },
+  "pwaInstallDescNative": {
+    "message": "より快適に使用するために、アプリをホーム画面にインストールしてください。",
+    "description": "ネイティブ PWA インストール説明"
   },
   "uploadImages": {
     "message": "画像をアップロード",

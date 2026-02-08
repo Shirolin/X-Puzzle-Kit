@@ -315,6 +315,14 @@
     "message": "Tap the browser menu (top or bottom right), then select 'Install app' or 'Add to Home Screen'.",
     "description": "Android install prompt description"
   },
+  "pwaInstallBtn": {
+    "message": "Install",
+    "description": "Native PWA install button text"
+  },
+  "pwaInstallDescNative": {
+    "message": "Install the app to your home screen for a better experience.",
+    "description": "Native PWA install description"
+  },
   "importFromUrl": {
     "message": "Import from URL",
     "description": "Import button title"

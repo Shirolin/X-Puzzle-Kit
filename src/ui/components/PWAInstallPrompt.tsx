@@ -4,7 +4,13 @@ import { t } from "../../core/i18n";
 import { getAssetUrl, getPlatformEnv } from "../../core/platform";
 import { APP_CONFIG } from "../../core/config";
 
-export function PWAInstallPrompt() {
+export function PWAInstallPrompt({
+  deferredPrompt,
+  onInstall,
+}: {
+  deferredPrompt?: any;
+  onInstall?: () => void;
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const [isChrome, setIsChrome] = useState(false);
   const [platform, setPlatform] = useState<"ios" | "android">("ios");
@@ -47,16 +53,29 @@ export function PWAInstallPrompt() {
     );
   };
 
+  const handleNativeInstall = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === "accepted") {
+      onInstall?.();
+      handleClose();
+    }
+  };
+
   if (!isVisible) return null;
 
+  const isNativeSupport = platform === "android" && !!deferredPrompt;
+
   const getDesc = () => {
+    if (isNativeSupport) return t("pwaInstallDescNative");
     if (platform === "android") return t("installDescAndroid");
     return t(isChrome ? "installDescChrome" : "installDesc");
   };
 
   return (
     <div
-      className={`ios-prompt-container pwa-prompt-${platform} ${isChrome ? "is-chrome" : ""}`}
+      className={`ios-prompt-container pwa-prompt-${platform} ${isChrome ? "is-chrome" : ""} ${isNativeSupport ? "is-native" : ""}`}
     >
       <div className="ios-prompt-card apple-blur">
         <button className="ios-prompt-close" onClick={handleClose}>
@@ -73,11 +92,21 @@ export function PWAInstallPrompt() {
             <div className="ios-prompt-desc">{getDesc()}</div>
           </div>
         </div>
-        {/* 指向箭头: iOS Chrome 指向上方，Safari 指向下方; Android 通常指向菜单(上方或下方) */}
-        {platform === "ios" && (
-          <div
-            className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}
-          ></div>
+
+        {isNativeSupport ? (
+          <button
+            className="pwa-install-button-native"
+            onClick={handleNativeInstall}
+          >
+            {t("pwaInstallBtn")}
+          </button>
+        ) : (
+          /* 指向箭头: iOS Chrome 指向上方，Safari 指向下方; Android 通常指向菜单(上方或下方) */
+          platform === "ios" && (
+            <div
+              className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}
+            ></div>
+          )
         )}
       </div>
     </div>

@@ -336,8 +336,16 @@
     "description": "iOS Chrome安装提示说明"
   },
   "installDescAndroid": {
-    "message": "轻点浏览器菜单（右上角或右下角），然后选择‘安装应用’或‘添加到主屏幕’。",
+    "message": "轻点浏览器菜单（右上角 or 右下角），然后选择‘安装应用’或‘添加到主屏幕’。",
     "description": "Android 安装提示说明"
+  },
+  "pwaInstallBtn": {
+    "message": "立即安装",
+    "description": "原生 PWA 安装按钮文案"
+  },
+  "pwaInstallDescNative": {
+    "message": "安装应用到主屏幕，享受更完整的体验。",
+    "description": "原生 PWA 安装描述文案"
   },
   "importFromUrl": {
     "message": "从链接导入",
