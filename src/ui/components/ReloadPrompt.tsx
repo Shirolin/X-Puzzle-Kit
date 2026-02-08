@@ -3,6 +3,8 @@ import { toast } from "sonner";
 import { useEffect } from "preact/hooks";
 import { t } from "../../core/i18n";
 
+// PWA Update Signal: 2026-02-08-15-10
+
 export function ReloadPrompt({ isBusy = false }: { isBusy?: boolean }) {
   const {
     needRefresh: [needRefresh, setNeedRefresh],

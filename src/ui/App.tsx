@@ -871,9 +871,10 @@ export function App({
           window.history.replaceState({ path: newUrl }, "", newUrl);
         }
       } else if (!twitterUrl && loading) {
-        // If there is no share content but we are stuck in loading (e.g. malformed share),
-        // we should turn off loading.
-        // Wait for language to load first though (handled in simple useEffect above)
+        // [V1.1.2-Patch] 确保在非法分享或解析失败时强制释放加载状态，
+        // 从而解除浏览器可能因此保留的加载指示器（如 Android 蓝线）。
+        setLoading(false);
+        setLoadingMessage("");
       }
     };
 
