@@ -381,7 +381,13 @@
   },
   "workerStatusError": {
     "message": "解析サービスはこのツイートを一時的に処理できません (エラーコード: $status$)。",
-    "description": "Workerが200以外のステータスコードを返した時のヒント"
+    "description": "Workerが200以外のステータスコードを返した時のヒント",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
   },
   "networkError": {
     "message": "ネットワーク接続に失敗しました。ネットワーク設定を確認してください。",

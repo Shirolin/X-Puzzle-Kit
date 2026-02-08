@@ -345,7 +345,13 @@
   },
   "workerStatusError": {
     "message": "Le service d'analyse est temporairement incapable de traiter ce tweet (Erreur : $status$).",
-    "description": "Message d'erreur de statut du serveur"
+    "description": "Message d'erreur de statut du serveur",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
   },
   "networkError": {
     "message": "La connexion réseau a échoué. Veuillez vérifier vos paramètres internet.",

@@ -369,7 +369,13 @@
   },
   "workerStatusError": {
     "message": "El servicio de análisis no puede procesar este tweet temporalmente (Error: $status$).",
-    "description": "Mensaje de error de estado del servidor"
+    "description": "Mensaje de error de estado del servidor",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
   },
   "networkError": {
     "message": "Error de conexión de red. Por favor, comprueba tu configuración.",

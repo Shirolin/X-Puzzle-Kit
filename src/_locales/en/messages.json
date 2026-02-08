@@ -345,7 +345,13 @@
   },
   "workerStatusError": {
     "message": "The parsing service is temporarily unable to process this tweet (Error: $status$).",
-    "description": "Tooltip for when worker returns non-200 status code"
+    "description": "Tooltip for when worker returns non-200 status code",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
   },
   "networkError": {
     "message": "Network connection failed. Please check your internet settings.",

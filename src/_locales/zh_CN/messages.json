@@ -369,7 +369,13 @@
   },
   "workerStatusError": {
     "message": "解析服务暂时无法处理此推文 (错误代码: $status$)。",
-    "description": "Worker返回非200状态码时的提示"
+    "description": "Worker返回非200状态码时的提示",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
   },
   "networkError": {
     "message": "网络连接失败，请检查您的网络设置。",

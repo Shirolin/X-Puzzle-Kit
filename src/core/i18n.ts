@@ -86,12 +86,36 @@ export function t(
   messageName: string,
   substitutions?: string | string[],
 ): string {
-  if (currentMessages && currentMessages[messageName]) {
-    return currentMessages[messageName].message;
-  }
-  // 如果在插件环境且没有本地翻译，尝试调用原生 API
+  // 如果在插件环境，优先尝试调用原生 API（支持参数替换）
   if (typeof chrome !== "undefined" && chrome.i18n) {
-    return chrome.i18n.getMessage(messageName, substitutions) || messageName;
+    const msg = chrome.i18n.getMessage(messageName, substitutions);
+    if (msg) return msg;
   }
+
+  // 兜底：使用本地加载的 JSON (PWA / Web 环境或插件 API 获取失败)
+  if (currentMessages && currentMessages[messageName]) {
+    let message = currentMessages[messageName].message;
+    if (substitutions) {
+      const args = Array.isArray(substitutions)
+        ? substitutions
+        : [substitutions];
+      // 处理 Chrome 格式的占位符 $1, $2... 和命名占位符 $name$
+      args.forEach((val, idx) => {
+        message = message.replace(`$${idx + 1}`, val);
+      });
+      // 特殊处理命名占位符（例如 $status$），如果 JSON 中定义了命名占位符，
+      // 我们可以尝试基于约定进行替换，或者简化为通配符替换。
+      // 为保持简单且兼容 Chrome 定义，由于我们在 placeholders 中定义了 status 为 $1，
+      // 上面的 $1 替换已经涵盖了核心需求。
+      // 如果手动使用了 $status$ 这种格式，也可以一并兼容：
+      message = message.replace(/\$[a-zA-Z0-9_]+\$/g, (match) => {
+        // 如果是 workerStatusError 特有的 $status$，直接用第一个参数
+        if (match === "$status$" && args.length > 0) return args[0];
+        return match;
+      });
+    }
+    return message;
+  }
+
   return messageName;
 }
