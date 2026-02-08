@@ -387,6 +387,18 @@
     "message": "Auto",
     "description": "Option automatique pour la langue/le thème"
   },
+  "themeSystem": {
+    "message": "Suivre le système",
+    "description": "Option de thème système"
+  },
+  "themeLight": {
+    "message": "Mode clair",
+    "description": "Option de thème clair"
+  },
+  "themeDark": {
+    "message": "Mode sombre",
+    "description": "Option de thème sombre"
+  },
   "themeLabel": {
     "message": "Thème",
     "description": "Étiquette pour le sélecteur de thème"

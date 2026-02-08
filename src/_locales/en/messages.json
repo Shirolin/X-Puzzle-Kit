@@ -387,6 +387,18 @@
     "message": "Auto",
     "description": "Auto option for language/theme"
   },
+  "themeSystem": {
+    "message": "Follow System",
+    "description": "System theme option"
+  },
+  "themeLight": {
+    "message": "Light Mode",
+    "description": "Light theme option"
+  },
+  "themeDark": {
+    "message": "Dark Mode",
+    "description": "Dark theme option"
+  },
   "themeLabel": {
     "message": "Theme",
     "description": "Label for theme selector"

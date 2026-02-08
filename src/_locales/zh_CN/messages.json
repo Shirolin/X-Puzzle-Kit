@@ -411,6 +411,18 @@
     "message": "自动",
     "description": "语言/主题的自动选项"
   },
+  "themeSystem": {
+    "message": "跟随系统",
+    "description": "主题跟随系统选项"
+  },
+  "themeLight": {
+    "message": "明亮模式",
+    "description": "明亮主题选项"
+  },
+  "themeDark": {
+    "message": "黑暗模式",
+    "description": "黑暗主题选项"
+  },
   "themeLabel": {
     "message": "主题",
     "description": "主题选择器标签"

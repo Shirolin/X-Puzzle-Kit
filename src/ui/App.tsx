@@ -158,7 +158,7 @@ export function App({
   const [showUserManual, setShowUserManual] = useState(false);
 
   // Theme State
-  const [theme, setTheme] = useState<"auto" | "light" | "dark">("auto");
+  const [theme, setTheme] = useState<"system" | "light" | "dark">("system");
   const [isThemeDark, setIsThemeDark] = useState(true);
 
   // Load Settings
@@ -168,14 +168,14 @@ export function App({
         [STORAGE_KEYS.LANG]: "auto",
         [STORAGE_KEYS.FORMAT]: "png",
         [STORAGE_KEYS.BG]: "transparent",
-        [STORAGE_KEYS.THEME]: "auto",
+        [STORAGE_KEYS.THEME]: "system",
         [STORAGE_KEYS.SPLIT_OPTIONS]: null,
       })
       .then((res) => {
         setLang(res[STORAGE_KEYS.LANG] as string);
         setOutputFormat(res[STORAGE_KEYS.FORMAT] as "png" | "jpg" | "webp");
         setPersistedBG(res[STORAGE_KEYS.BG] as BackgroundColor);
-        setTheme(res[STORAGE_KEYS.THEME] as "auto" | "light" | "dark");
+        setTheme(res[STORAGE_KEYS.THEME] as "system" | "light" | "dark");
 
         const splitOpts = res[STORAGE_KEYS.SPLIT_OPTIONS] as {
           format?: "png" | "jpg" | "webp";
@@ -274,7 +274,7 @@ export function App({
   // Sync isThemeDark with theme and system preference
   useEffect(() => {
     const checkDark = () => {
-      if (theme === "auto") {
+      if (theme === "system") {
         return window.matchMedia("(prefers-color-scheme: dark)").matches;
       }
       return theme === "dark";
@@ -282,7 +282,7 @@ export function App({
 
     setIsThemeDark(checkDark());
 
-    if (theme === "auto") {
+    if (theme === "system") {
       const media = window.matchMedia("(prefers-color-scheme: dark)");
       const listener = (e: MediaQueryListEvent) => setIsThemeDark(e.matches);
       media.addEventListener("change", listener);
@@ -624,7 +624,7 @@ export function App({
   // Initial Theme Sync & PWA Status Bar Optimization
   useEffect(() => {
     if (theme) {
-      updateToasterTheme(theme as "light" | "dark" | "system");
+      updateToasterTheme(theme);
 
       // Dynamic Meta Theme Color & Notch Adaptation
       const themeColor = theme === "dark" ? "#111111" : "#ffffff";
@@ -649,7 +649,11 @@ export function App({
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
-      const next = prev === "light" ? "dark" : "light";
+      let next: "system" | "light" | "dark";
+      if (prev === "light") next = "dark";
+      else if (prev === "dark") next = "system";
+      else next = "light";
+
       platformStorage.set({ [STORAGE_KEYS.THEME]: next });
       updateToasterTheme(next);
       return next;
@@ -970,7 +974,7 @@ export function App({
               <IconButton
                 onClick={toggleTheme}
                 icon={
-                  theme === "auto" ? (
+                  theme === "system" ? (
                     <Monitor size={15} />
                   ) : theme === "light" ? (
                     <Sun size={15} />
@@ -978,7 +982,13 @@ export function App({
                     <Moon size={15} />
                   )
                 }
-                title={`${t("themeLabel")}: ${theme.toUpperCase()}`}
+                title={`${t("themeLabel")}: ${
+                  theme === "system"
+                    ? t("themeSystem") || "System"
+                    : theme === "light"
+                      ? t("themeLight") || "Light"
+                      : t("themeDark") || "Dark"
+                }`}
                 style={{
                   width: "28px",
                   height: "28px",

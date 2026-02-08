@@ -327,6 +327,18 @@
     "message": "自動",
     "description": "言語/テーマの自動オプション"
   },
+  "themeSystem": {
+    "message": "システムに従う",
+    "description": "テーマのシステム設定オプション"
+  },
+  "themeLight": {
+    "message": "ライトモード",
+    "description": "ライトテーマオプション"
+  },
+  "themeDark": {
+    "message": "ダークモード",
+    "description": "ダークテーマオプション"
+  },
   "themeLabel": {
     "message": "テーマ",
     "description": "テーマセレクターのラベル"

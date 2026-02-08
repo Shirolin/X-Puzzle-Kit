@@ -367,6 +367,18 @@
     "message": "自動",
     "description": "語言/主題的自動選項"
   },
+  "themeSystem": {
+    "message": "跟隨系統",
+    "description": "主題跟隨系統選項"
+  },
+  "themeLight": {
+    "message": "明亮模式",
+    "description": "明亮主題選項"
+  },
+  "themeDark": {
+    "message": "黑暗模式",
+    "description": "黑暗主題選項"
+  },
   "themeLabel": {
     "message": "主題",
     "description": "主題選擇器標籤"

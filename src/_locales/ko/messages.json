@@ -167,6 +167,18 @@
     "message": "자동",
     "description": "언어/테마 자동 옵션"
   },
+  "themeSystem": {
+    "message": "시스템 설정 유지",
+    "description": "시스템 테마 옵션"
+  },
+  "themeLight": {
+    "message": "라이트 모드",
+    "description": "라이트 테마 옵션"
+  },
+  "themeDark": {
+    "message": "다크 모드",
+    "description": "다크 테마 옵션"
+  },
   "themeLabel": {
     "message": "테마",
     "description": "테마 선택기 레이블"

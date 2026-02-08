@@ -319,6 +319,18 @@
     "message": "Auto",
     "description": "Opción automática para idioma/tema"
   },
+  "themeSystem": {
+    "message": "Seguir el sistema",
+    "description": "Opción de tema del sistema"
+  },
+  "themeLight": {
+    "message": "Modo claro",
+    "description": "Opción de tema claro"
+  },
+  "themeDark": {
+    "message": "Modo oscuro",
+    "description": "Opción de tema oscuro"
+  },
   "themeLabel": {
     "message": "Tema",
     "description": "Etiqueta para el selector de tema"
