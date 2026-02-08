@@ -870,7 +870,8 @@ export function App({
       } else if (!twitterUrl && loading) {
         // If there is no share content but we are stuck in loading (e.g. malformed share),
         // we should turn off loading.
-        // Wait for language to load first though (handled in simple useEffect above)
+        setLoading(false);
+        setLoadingMessage("");
       }
     };
 
