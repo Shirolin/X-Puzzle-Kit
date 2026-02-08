@@ -379,6 +379,18 @@
     "message": "ツイートの解析に失敗しました",
     "description": "解析失敗のヒント"
   },
+  "workerInvalidResponse": {
+    "message": "解析サービスが予期しない形式のコンテンツを返しました。ツイートが制限されているか、サービスが一時的に利用できない可能性があります。",
+    "description": "JSON解析失敗または予期しないコンテンツが返された時のヒント"
+  },
+  "workerStatusError": {
+    "message": "解析サービスはこのツイートを一時的に処理できません (エラーコード: $status$)。",
+    "description": "Workerが200以外のステータスコードを返した時のヒント"
+  },
+  "networkError": {
+    "message": "ネットワーク接続に失敗しました。ネットワーク設定を確認してください。",
+    "description": "ネットワークエラーが発生した時のヒント"
+  },
   "pwaVersionLabel": {
     "message": "Web オンライン版",
     "description": "PWA バージョンラベル"

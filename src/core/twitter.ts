@@ -50,9 +50,13 @@ async function fetchWithRetry(url: string, retries = 2): Promise<Response> {
       if (res.status >= 400 && res.status < 500 && res.status !== 429) {
         return res;
       }
-      throw new Error(`Status ${res.status}`);
-    } catch (e) {
-      lastError = e;
+      throw new Error(`STATUS_${res.status}`);
+    } catch (e: any) {
+      if (e.message?.startsWith("STATUS_")) {
+        lastError = e;
+      } else {
+        lastError = new Error("NETWORK_ERROR");
+      }
       if (i < retries) {
         await new Promise((r) => setTimeout(r, 1000 * (i + 1))); // 指数退避
       }
@@ -62,7 +66,7 @@ async function fetchWithRetry(url: string, retries = 2): Promise<Response> {
 }
 
 /**
- * 调用 Worker 解析推特链接获取图片列表
+ * 调用 Worker 解析推文链接获取图片列表
  */
 export async function parseTwitterMetadata(
   tweetUrl: string,
@@ -79,13 +83,18 @@ export async function parseTwitterMetadata(
     const resp = await fetchWithRetry(apiUrl);
 
     if (!resp.ok) {
-      throw new Error(`Worker parse failed: ${resp.status}`);
+      throw new Error(`STATUS_${resp.status}`);
     }
 
-    const data = (await resp.json()) as ParsedTwitterData;
+    let data: ParsedTwitterData;
+    try {
+      data = (await resp.json()) as ParsedTwitterData;
+    } catch {
+      throw new Error("INVALID_RESPONSE");
+    }
 
     if (data.error) {
-      throw new Error(`API Error: ${data.error}`);
+      throw new Error(`API_ERROR: ${data.error}`);
     }
 
     return data.images || [];

@@ -343,6 +343,18 @@
     "message": "Failed to parse Tweet",
     "description": "Parse failed tip"
   },
+  "workerInvalidResponse": {
+    "message": "The parsing service returned an unexpected format. The tweet might be restricted or the service is temporarily unavailable.",
+    "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
+  },
+  "workerStatusError": {
+    "message": "The parsing service is temporarily unable to process this tweet (Error: $status$).",
+    "description": "Tooltip for when worker returns non-200 status code"
+  },
+  "networkError": {
+    "message": "Network connection failed. Please check your internet settings.",
+    "description": "Tooltip for network errors during fetch"
+  },
   "import": {
     "message": "Import",
     "description": "Import action button"

@@ -339,6 +339,18 @@
     "message": "Échec de l'analyse du Tweet",
     "description": "Conseil d'échec de l'analyse"
   },
+  "workerInvalidResponse": {
+    "message": "Le service d'analyse a renvoyé un format inattendu. Le tweet est peut-être restreint ou le service est temporairement indisponible.",
+    "description": "Message de réponse invalide"
+  },
+  "workerStatusError": {
+    "message": "Le service d'analyse est temporairement incapable de traiter ce tweet (Erreur : $status$).",
+    "description": "Message d'erreur de statut du serveur"
+  },
+  "networkError": {
+    "message": "La connexion réseau a échoué. Veuillez vérifier vos paramètres internet.",
+    "description": "Message d'erreur de réseau"
+  },
   "import": {
     "message": "Importer",
     "description": "Bouton d'action d'importation"

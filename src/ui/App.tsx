@@ -7,7 +7,7 @@ import {
 } from "../core/types";
 import { stitchImages } from "../core/stitcher";
 import { t, setLanguage, getResolvedLanguage } from "../core/i18n";
-import { X, Images, Sun, Moon, Monitor, Scissors } from "lucide-preact";
+import { X, Images, Sun, Moon, Monitor, Scissors, Zap } from "lucide-preact";
 import { splitImage } from "../core/splitter";
 import { IconButton } from "./components/Common";
 import { Sidebar } from "./components/Sidebar";
@@ -140,6 +140,10 @@ export function App({
   });
   const [isZip, setIsZip] = useState(false);
   const [isTwitterOptimized, setIsTwitterOptimized] = useState(false);
+  const [mockUrl, setMockUrl] = useState(
+    "https://x.com/ShiroLinHime/status/2016717333507821638",
+  );
+  const [isDebugOpen, setIsDebugOpen] = useState(false);
 
   // Persistence and Language
   const [lang, setLang] = useState("auto");
@@ -785,8 +789,31 @@ export function App({
         addImages(newNodes);
       } catch (e: unknown) {
         console.error("Twitter share handling failed:", e);
-        const errorMessage = e instanceof Error ? e.message : String(e);
-        toast.error(t("parseFailed") + ": " + errorMessage);
+        const errorStr = e instanceof Error ? e.message : String(e);
+
+        let finalErrorMessage = t("parseFailed");
+
+        if (errorStr === "NETWORK_ERROR") {
+          finalErrorMessage = t("networkError");
+        } else if (errorStr === "INVALID_RESPONSE") {
+          finalErrorMessage = t("workerInvalidResponse");
+        } else if (errorStr.startsWith("STATUS_")) {
+          const status = errorStr.split("_")[1];
+          finalErrorMessage = t("workerStatusError").replace("$status$", status);
+        } else if (errorStr.startsWith("API_ERROR: ")) {
+          const rawError = errorStr.replace("API_ERROR: ", "");
+          // Map common worker error messages to i18n if they occur
+          if (rawError.includes("no images") || rawError.includes("not found")) {
+            finalErrorMessage = t("noImagesFound");
+          } else {
+            finalErrorMessage = rawError;
+          }
+        } else {
+          // Fallback
+          finalErrorMessage = `${t("parseFailed")}: ${errorStr}`;
+        }
+
+        toast.error(finalErrorMessage);
       } finally {
         setLoading(false);
         setLoadingMessage("");
@@ -955,6 +982,132 @@ export function App({
 
         {/* Content Area */}
         <div className="app-content">
+          {/* 开发者模拟工具 (悬浮按钮) - 仅开发环境 */}
+          {import.meta.env.DEV && (
+            <div
+              className="dev-debug-floating"
+              style={{
+                position: "absolute",
+                top: "80px",
+                left: "16px",
+                zIndex: 1000,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: "8px",
+              }}
+            >
+              <button
+                onClick={() => setIsDebugOpen(!isDebugOpen)}
+                style={{
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "12px",
+                  background: isDebugOpen
+                    ? "var(--color-primary)"
+                    : "rgba(0,0,0,0.5)",
+                  backdropFilter: "blur(8px)",
+                  color: "white",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+                title="模拟器"
+              >
+                <Zap
+                  size={18}
+                  fill={isDebugOpen ? "white" : "none"}
+                  style={{
+                    transform: isDebugOpen ? "scale(1.1)" : "none",
+                    transition: "transform 0.2s",
+                  }}
+                />
+              </button>
+
+              {isDebugOpen && (
+                <div
+                  style={{
+                    width: "280px",
+                    padding: "16px",
+                    background: "var(--color-surface)",
+                    borderRadius: "16px",
+                    border: "1px solid var(--color-border)",
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+                    backdropFilter: "blur(20px)",
+                    animation: "debug-slide-in 0.3s ease-out",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: "13px",
+                      fontWeight: "bold",
+                      marginBottom: "12px",
+                      color: "var(--color-primary)",
+                      letterSpacing: "0.5px",
+                    }}
+                  >
+                    模拟启动器 (Dev Only)
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="请输入推文 URL"
+                    className="apple-input"
+                    style={{
+                      width: "100%",
+                      fontSize: "12px",
+                      padding: "10px",
+                      marginBottom: "12px",
+                      background: "var(--color-surface-soft)",
+                      border: "1px solid var(--color-border)",
+                    }}
+                    value={mockUrl}
+                    onInput={(e) => setMockUrl(e.currentTarget.value)}
+                  />
+                  <div style={{ display: "flex", gap: "8px" }}>
+                    <button
+                      className="btn btn-primary"
+                      style={{
+                        flex: 1,
+                        height: "2.6rem",
+                        fontSize: "13px",
+                        fontWeight: "600",
+                      }}
+                      onClick={() => {
+                        const url = mockUrl;
+                        if (!url) return;
+                        const params = new URLSearchParams();
+                        params.set("url", url);
+                        params.set("title", "Mock Shortcut Launch");
+                        window.location.href =
+                          window.location.pathname + "?" + params.toString();
+                      }}
+                    >
+                      模拟拉起
+                    </button>
+                    <button
+                      className="btn btn-secondary"
+                      style={{ height: "2.6rem", padding: "0 12px" }}
+                      onClick={() => setIsDebugOpen(false)}
+                    >
+                      <X size={16} />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          <style>{`
+            @keyframes debug-slide-in {
+              from { opacity: 0; transform: translateY(-10px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
+
           <ViewerArea
             mode={mode}
             splitSourceBitmap={splitSourceBitmap}

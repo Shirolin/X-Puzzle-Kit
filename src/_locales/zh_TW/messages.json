@@ -339,6 +339,18 @@
     "message": "解析推文失敗",
     "description": "解析失敗提示"
   },
+  "workerInvalidResponse": {
+    "message": "解析服務返回了非預期格式的內容。推文可能受限或服務暫時不可用。",
+    "description": "JSON解析失敗或返回非預期內容時的提示"
+  },
+  "workerStatusError": {
+    "message": "解析服務暫時無法處理此推文 (錯誤代碼: $status$)。",
+    "description": "Worker返回非200狀態碼時的提示"
+  },
+  "networkError": {
+    "message": "網路連接失敗，請檢查您的網路設置。",
+    "description": "Fetch請求發生網路錯誤時的提示"
+  },
   "import": {
     "message": "匯入",
     "description": "匯入操作按鈕"

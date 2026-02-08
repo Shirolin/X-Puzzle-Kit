@@ -351,6 +351,18 @@
     "message": "트윗 분석에 실패했습니다",
     "description": "분석 실패 팁"
   },
+  "workerInvalidResponse": {
+    "message": "분석 서비스가 예상치 못한 형식의 콘텐츠를 반환했습니다. 트윗이 제한되었거나 서비스가 일시적으로 중단되었을 수 있습니다.",
+    "description": "JSON 분석 실패 또는 예상치 못한 콘텐츠가 반환되었을 때의 팁"
+  },
+  "workerStatusError": {
+    "message": "분석 서비스가 이 트윗을 일시적으로 처리할 수 없습니다 (오류 코드: $status$).",
+    "description": "Worker가 200 이외의 상태 코드를 반환했을 때의 팁"
+  },
+  "networkError": {
+    "message": "네트워크 연결에 실패했습니다. 네트워크 설정을 확인해 주세요.",
+    "description": "네트워크 오류 발생 시의 팁"
+  },
   "import": {
     "message": "가져오기",
     "description": "가져오기 버튼"

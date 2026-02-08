@@ -349,7 +349,19 @@
   },
   "parseFailed": {
     "message": "Error al analizar el Tweet",
-    "description": "Consejo de error de análisis"
+    "description": "Mensaje de error al fallar el análisis"
+  },
+  "workerInvalidResponse": {
+    "message": "El servicio de análisis devolvió un formato inesperado. El tweet puede estar restringido o el servicio no está disponible temporalmente.",
+    "description": "Mensaje de respuesta inválida"
+  },
+  "workerStatusError": {
+    "message": "El servicio de análisis no puede procesar este tweet temporalmente (Error: $status$).",
+    "description": "Mensaje de error de estado del servidor"
+  },
+  "networkError": {
+    "message": "Error de conexión de red. Por favor, comprueba tu configuración.",
+    "description": "Mensaje de error de red"
   },
   "import": {
     "message": "Importar",
