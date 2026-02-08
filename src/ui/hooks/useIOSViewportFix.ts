@@ -1,5 +1,5 @@
 import { useEffect } from "preact/hooks";
-import { isExtension } from "../../core/platform";
+import { isExtension, getPlatformEnv } from "../../core/platform";
 
 /**
  * iOS PWA Viewport Fix
@@ -19,11 +19,14 @@ export function useIOSViewportFix() {
     const setAppHeight = () => {
       const doc = document.documentElement;
       const body = document.body;
-      const isStandalone = window.matchMedia(
-        "(display-mode: standalone)",
-      ).matches;
+      const env = getPlatformEnv();
 
-      if (isStandalone) {
+      // 额外标记来自快捷指令的环境，用于精准样式修复
+      if (env.isShortcut) {
+        doc.setAttribute("data-is-shortcut", "true");
+      }
+
+      if (env.isStandalone) {
         // 关键越狱修复：在 PWA 模式下直接强制设置物理高度，绕过系统 797px 的封锁线
         const h =
           window.outerHeight > 0 ? window.outerHeight : window.innerHeight;

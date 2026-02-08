@@ -13,6 +13,12 @@
   box-sizing: border-box;
 }
 
+/* 针对 iOS 快捷指令分享页面的 1px 底部缝隙补偿 */
+:host([data-is-shortcut="true"]) {
+  position: relative;
+  bottom: -1px;
+}
+
 :host,
 .x-puzzle-kit-mount-point {
   /* Common Tokens */

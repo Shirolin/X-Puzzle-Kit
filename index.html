@@ -69,6 +69,12 @@
         z-index: 1;
       }
 
+      /* 精准修复：iOS 快捷指令分享页面的 1px 底部缝隙补偿 */
+      html[data-is-shortcut="true"] #app-root,
+      html[data-is-shortcut="true"] #x-puzzle-kit-root {
+        bottom: -1px;
+      }
+
       /* 统一物理底色 */
       html,
       body {

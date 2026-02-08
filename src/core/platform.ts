@@ -3,7 +3,55 @@
  * 用于隔离 Chrome 插件 API 与标准 Web API (PWA/Website)
  */
 
-export const isExtension = __IS_EXTENSION__;
+export interface PlatformEnv {
+  isExtension: boolean;
+  isStandalone: boolean;
+  isShortcut: boolean;
+  isIOS: boolean;
+  isPopup: boolean;
+}
+
+export const getPlatformEnv = (): PlatformEnv => {
+  const isExtension =
+    typeof __IS_EXTENSION__ !== "undefined" ? __IS_EXTENSION__ : false;
+  const isIOS =
+    typeof navigator !== "undefined" &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  // 检测是否来自 iOS 快捷指令分享 (通过 URL 参数)
+  const params =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search)
+      : null;
+  const isShortcut = isIOS && params?.get("source") === "shortcut";
+
+  // 检测是否为 PWA Standalone 模式
+  const isStandalone = !!(
+    typeof window !== "undefined" &&
+    (window.matchMedia("(display-mode: standalone)").matches ||
+      (typeof navigator !== "undefined" &&
+        "standalone" in navigator &&
+        (navigator as { standalone?: boolean }).standalone))
+  );
+
+  // 检测是否为插件 Popup (通常可以通过 URL 或特定标记)
+  const isPopup =
+    isExtension &&
+    typeof window !== "undefined" &&
+    (window.location.pathname.includes("popup.html") ||
+      window.name === "x-puzzle-kit-popup");
+
+  return {
+    isExtension,
+    isStandalone,
+    isShortcut,
+    isIOS,
+    isPopup,
+  };
+};
+
+export const isExtension =
+  typeof __IS_EXTENSION__ !== "undefined" ? __IS_EXTENSION__ : false;
 
 /**
  * 抽象存储接口：优先使用 chrome.storage.local，环境不存在时回退到 localStorage

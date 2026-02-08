@@ -18,6 +18,7 @@ import {
   getAssetUrl,
   fetchImageData,
   isExtension,
+  getPlatformEnv,
 } from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
 import { useIOSViewportFix } from "./hooks/useIOSViewportFix";
@@ -220,10 +221,11 @@ export function App({
       });
 
     // Check if tutorial is completed
+    const env = getPlatformEnv();
     platformStorage
       .get({ [STORAGE_KEYS.TUTORIAL_COMPLETED]: false })
       .then((res) => {
-        if (!res[STORAGE_KEYS.TUTORIAL_COMPLETED] && !isPopup) {
+        if (!res[STORAGE_KEYS.TUTORIAL_COMPLETED] && !env.isPopup) {
           setShowGuide(true);
         }
       });
@@ -684,13 +686,14 @@ export function App({
   }, [handlePaste]);
 
   // If running in popup mode, we use different container classes
-  const isWebFullscreen = !isExtension && !isPopup;
-  const containerClass = isPopup
+  const env = getPlatformEnv();
+  const isWebFullscreen = !env.isExtension && !env.isPopup;
+  const containerClass = env.isPopup
     ? "app-popup-container"
     : isWebFullscreen
       ? "app-container app-fullscreen"
       : "app-container";
-  const wrapperClass = isPopup ? "app-popup-wrapper" : "app-root-shell";
+  const wrapperClass = env.isPopup ? "app-popup-wrapper" : "app-root-shell";
 
   const [showUrlInput, setShowUrlInput] = useState(false);
 
