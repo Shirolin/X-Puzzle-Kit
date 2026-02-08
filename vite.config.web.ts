@@ -29,7 +29,7 @@ export default defineConfig({
         name: "X-Puzzle-Kit - 推特拼图/切图助手",
         short_name: "X-Puzzle-Kit",
         description: "专业的推特多图拼接与长图切割工具",
-        theme_color: "#000000",
+        theme_color: "#007aff",
         share_target: {
           action: "/",
           method: "GET",
