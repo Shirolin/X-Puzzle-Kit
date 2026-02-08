@@ -23,6 +23,9 @@ const btnFloatingBuild = document.getElementById(
 const btnThemeToggle = document.getElementById(
   "btn-theme-toggle",
 ) as HTMLButtonElement;
+const checkShortcutMode = document.getElementById(
+  "check-shortcut-mode",
+) as HTMLInputElement;
 
 // Theme Toggle Logic
 function updateTheme(isDark: boolean) {
@@ -122,6 +125,23 @@ btnBuild.addEventListener("click", () => {
   }
 
   const html = generateMockHtml(username, tweetId, tweetUrl, imageUrls);
+
+  // 如果开启了快捷指令模式，模拟带参数启动
+  if (checkShortcutMode.checked) {
+    console.log("[TestEnv] Simulating Shortcut Launch...");
+    const params = new URLSearchParams();
+    params.set("url", tweetUrl);
+    params.set("title", "Mock Tweet from Shortcut");
+    params.set("text", "Check out this tweet!");
+
+    // 使用 history.pushState 模拟 URL 变化，而不触发页面刷新
+    const newPath = window.location.pathname + "?" + params.toString();
+    window.history.pushState({ path: newPath }, "", newPath);
+  } else {
+    // 清理可能存在的参数
+    window.history.pushState({}, "", window.location.pathname);
+  }
+
   renderAndRun(html);
 });
 

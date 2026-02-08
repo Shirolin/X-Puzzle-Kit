@@ -543,6 +543,41 @@
           <button id="btn-build" class="primary">生成并注入</button>
         </div>
 
+        <!-- Panel 2: Debug Tools -->
+        <div
+          id="panel-debug"
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+          "
+        >
+          <label>模拟调试 (Mock Debug)</label>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              cursor: pointer;
+            "
+          >
+            <input
+              type="checkbox"
+              id="check-shortcut-mode"
+              style="width: auto; cursor: pointer"
+            />
+            <span style="font-size: 14px; user-select: none"
+              >模拟快捷指令启动 (Shortcut Mode)</span
+            >
+          </div>
+          <div class="hint">
+            开启后，生成注入时将附带 <b>?url=...</b> 参数，模拟 PWA
+            从快捷指令拉起。
+          </div>
+        </div>
+
         <div
           class="hint"
           style="
