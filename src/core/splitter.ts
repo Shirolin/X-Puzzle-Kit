@@ -1,4 +1,5 @@
 import { SplitConfig } from "./types";
+import { platformCanvas } from "./platform";
 
 /**
  * Split a single image into multiple blobs based on the configuration.
@@ -54,9 +55,11 @@ export async function splitImage(
     }
   }
 
-  // Use an offscreen canvas (or a regular canvas element) for cropping
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
+  // Use the platform-agnostic canvas factory for multi-platform support (Extension Worker vs Web DOM)
+  const canvas = platformCanvas.create(drawW, drawH);
+  const ctx = canvas.getContext("2d") as
+    | CanvasRenderingContext2D
+    | OffscreenCanvasRenderingContext2D;
   if (!ctx) throw new Error("Failed to get canvas context");
 
   // Helper to extract a region as a blob
@@ -80,17 +83,12 @@ export async function splitImage(
     const sw = w;
     const sh = h;
 
-    ctx.drawImage(source, sx, sy, sw, sh, 0, 0, w, h);
+    ctx.drawImage(source as CanvasImageSource, sx, sy, sw, sh, 0, 0, w, h);
 
-    return new Promise((resolve, reject) => {
-      canvas.toBlob(
-        (blob) => {
-          if (blob) resolve(blob);
-          else reject(new Error("Failed to create blob"));
-        },
-        `image/${config.format || "png"}`,
-      );
-    });
+    return platformCanvas.toBlob(
+      canvas,
+      `image/${config.format || "png"}`,
+    ) as Promise<Blob>;
   };
 
   const blobs: Blob[] = [];
@@ -211,6 +209,9 @@ export async function splitImage(
       // Just extract the cropped area in full if no layout matches
       blobs.push(await extractRegion(0, 0, effectiveWidth, effectiveHeight));
   }
+
+  // Explicitly release canvas memory to prevent leaks in memory-constrained environments (like iOS PWA)
+  platformCanvas.dispose(canvas);
 
   return blobs;
 }

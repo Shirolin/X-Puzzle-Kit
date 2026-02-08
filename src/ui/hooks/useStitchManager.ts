@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from "preact/hooks";
 import { ImageNode, LayoutType } from "../../core/types";
 import { stitchImages } from "../../core/stitcher";
+import { platformCanvas } from "../../core/platform";
 
 export interface StitchOptions {
   initialImages?: ImageNode[];
@@ -149,9 +150,7 @@ export function useStitchManager(options: StitchOptions = {}) {
 
         setCanvasSize({ width: canvas.width, height: canvas.height });
 
-        const blob = await new Promise<Blob | null>((resolve) =>
-          canvas.toBlob(resolve, "image/png"),
-        );
+        const blob = await platformCanvas.toBlob(canvas, "image/png");
         if (!active || !blob) return;
 
         const newUrl = URL.createObjectURL(blob);

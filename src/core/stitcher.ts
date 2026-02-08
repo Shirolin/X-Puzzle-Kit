@@ -1,4 +1,5 @@
 import { ImageNode, LayoutType } from "./types";
+import { platformCanvas, safeCloseImageBitmap } from "./platform";
 
 /**
  * Indicates where an image should be placed on the final canvas.
@@ -26,10 +27,11 @@ export async function stitchImages(
   layout: LayoutType,
   globalGap: number = 0,
   backgroundColor: string = "transparent",
-): Promise<HTMLCanvasElement> {
+  shouldDisposeBitmaps: boolean = false,
+): Promise<HTMLCanvasElement | OffscreenCanvas> {
   // 1. Data validation and preparation
   const visibleImages = images.filter((img) => img.visible !== false);
-  if (visibleImages.length === 0) return document.createElement("canvas");
+  if (visibleImages.length === 0) return platformCanvas.create(1, 1);
 
   for (const img of visibleImages) {
     if (!img.bitmap) throw new Error(`Image data not loaded: ${img.id}`);
@@ -39,7 +41,19 @@ export async function stitchImages(
   const scene = calculateLayout(visibleImages, layout, globalGap);
 
   // 3. Execute unified rendering stream (Render Side-effect)
-  return drawScene(scene, backgroundColor);
+  const resultCanvas = drawScene(scene, backgroundColor);
+
+  // 4. Critical: Explicitly release GPU memory (ImageBitmaps) to prevent leaks, especially in PWA/Extension
+  if (shouldDisposeBitmaps) {
+    for (const img of visibleImages) {
+      if (img.bitmap) {
+        safeCloseImageBitmap(img.bitmap);
+        img.bitmap = undefined; // Clear reference
+      }
+    }
+  }
+
+  return resultCanvas;
 }
 
 /**
@@ -200,12 +214,15 @@ function layoutTShape3(images: ImageNode[], globalGap: number): Scene {
 /**
  * Rendering Engine: Draw the calculated position information onto the Canvas.
  */
-function drawScene(scene: Scene, backgroundColor: string): HTMLCanvasElement {
-  const canvas = document.createElement("canvas");
-  canvas.width = scene.width;
-  canvas.height = scene.height;
+function drawScene(
+  scene: Scene,
+  backgroundColor: string,
+): HTMLCanvasElement | OffscreenCanvas {
+  const canvas = platformCanvas.create(scene.width, scene.height);
 
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext("2d") as
+    | CanvasRenderingContext2D
+    | OffscreenCanvasRenderingContext2D;
   if (!ctx) return canvas;
 
   // Key: Disable image smoothing to ensure physical pixel alignment and prevent semi-transparent seams.

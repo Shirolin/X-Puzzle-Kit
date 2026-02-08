@@ -17,8 +17,9 @@ import {
   platformStorage,
   getAssetUrl,
   fetchImageData,
-  isExtension,
   getPlatformEnv,
+  platformCanvas,
+  isExtension,
 } from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
 import { useIOSViewportFix } from "./hooks/useIOSViewportFix";
@@ -515,7 +516,7 @@ export function App({
           : outputFormat === "webp"
             ? "image/webp"
             : "image/png";
-      const url = canvas.toDataURL(mime, 0.9);
+      const url = await platformCanvas.toDataURL(canvas, mime, 0.9);
       const a = document.createElement("a");
       a.download = `${task.pageTitle.replace(/[\\/:*?"<>|]/g, "_")}_${new Date().getTime()}.${outputFormat}`;
       a.href = url;

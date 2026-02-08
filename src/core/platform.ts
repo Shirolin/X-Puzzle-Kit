@@ -141,3 +141,98 @@ export const getAssetUrl = (path: string): string => {
   // Web 版本直接返回相对或绝对路径
   return path.startsWith("/") ? path : `/${path}`;
 };
+
+/**
+ * 跨平台 Canvas 创建工厂
+ * 自动识别环境：Web 环境使用 HTMLCanvasElement，Worker/Extension 环境使用 OffscreenCanvas
+ */
+export const platformCanvas = {
+  create(width: number, height: number): HTMLCanvasElement | OffscreenCanvas {
+    if (typeof OffscreenCanvas !== "undefined") {
+      const canvas = new OffscreenCanvas(width, height);
+      return canvas;
+    }
+    if (typeof document !== "undefined") {
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      return canvas;
+    }
+    throw new Error("Canvas API not supported in this environment");
+  },
+
+  /**
+   * 确保释放 Canvas 资源 (虽然主要靠 GC，但在部分移动端手动清理 content 有助减少内存压力)
+   */
+  dispose(canvas: HTMLCanvasElement | OffscreenCanvas) {
+    if (canvas instanceof HTMLCanvasElement) {
+      canvas.width = 0;
+      canvas.height = 0;
+    }
+    // OffscreenCanvas 通常由 GC 处理，但清理宽高可作为额外保险
+    canvas.width = 0;
+    canvas.height = 0;
+  },
+
+  /**
+   * 将 Canvas 转换为 Blob (支持多端)
+   */
+  async toBlob(
+    canvas: HTMLCanvasElement | OffscreenCanvas,
+    mimeType: string = "image/png",
+    quality: number = 0.92,
+  ): Promise<Blob | null> {
+    if (canvas instanceof HTMLCanvasElement) {
+      return new Promise((resolve) =>
+        canvas.toBlob(resolve, mimeType, quality),
+      );
+    }
+    // OffscreenCanvas
+    return (canvas as OffscreenCanvas).convertToBlob({
+      type: mimeType,
+      quality,
+    });
+  },
+
+  /**
+   * 将 Canvas 转换为 DataURL (支持多端)
+   */
+  async toDataURL(
+    canvas: HTMLCanvasElement | OffscreenCanvas,
+    mimeType: string = "image/png",
+    quality: number = 0.92,
+  ): Promise<string> {
+    if (canvas instanceof HTMLCanvasElement) {
+      return canvas.toDataURL(mimeType, quality);
+    }
+    // OffscreenCanvas 没有 toDataURL，需要先转 Blob 再转 DataURL
+    const blob = await (canvas as OffscreenCanvas).convertToBlob({
+      type: mimeType,
+      quality,
+    });
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  },
+};
+
+/**
+ * 安全销毁 ImageBitmap，防止显存泄漏 (GPU Memory)
+ */
+export const safeCloseImageBitmap = (bitmap: unknown): void => {
+  if (
+    bitmap &&
+    typeof bitmap === "object" &&
+    "close" in bitmap &&
+    typeof bitmap.close === "function"
+  ) {
+    try {
+      (bitmap as ImageBitmap).close();
+    } catch (e) {
+      console.error("Failed to close ImageBitmap:", e);
+    }
+  }
+};

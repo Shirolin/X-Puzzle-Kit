@@ -13,14 +13,39 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       return true;
     }
 
-    fetch(message.url)
-      .then((response) => response.blob())
+    // Use AbortController for timeout management
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+
+    fetch(message.url, {
+      signal: controller.signal,
+      headers: {
+        Accept:
+          "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+      },
+    })
+      .then((response) => {
+        clearTimeout(timeoutId);
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
+        return response.blob();
+      })
       .then((blob) => {
         const reader = new FileReader();
-        reader.onloadend = () => sendResponse({ dataUrl: reader.result });
+        reader.onloadend = () => {
+          sendResponse({ dataUrl: reader.result });
+          // Cleanup reader reference
+          reader.onloadend = null;
+        };
+        reader.onerror = () => sendResponse({ error: "Failed to read blob" });
         reader.readAsDataURL(blob);
       })
-      .catch((error) => sendResponse({ error: error.message }));
+      .catch((error) => {
+        clearTimeout(timeoutId);
+        sendResponse({
+          error: error.name === "AbortError" ? "Fetch timeout" : error.message,
+        });
+      });
     return true;
   }
 });
