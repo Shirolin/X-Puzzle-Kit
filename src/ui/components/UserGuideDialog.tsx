@@ -317,7 +317,10 @@ export function UserGuideDialog({
       {showScreenshot && (
         <div
           className="screenshot-preview-overlay animate-fade-in"
-          onClick={() => setShowScreenshot(false)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowScreenshot(false);
+          }}
         >
           <div
             className="screenshot-container"
@@ -332,7 +335,7 @@ export function UserGuideDialog({
               className="screenshot-close-btn"
               onClick={() => setShowScreenshot(false)}
             >
-              <X size={24} />
+              <X size={20} />
             </button>
           </div>
         </div>

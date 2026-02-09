@@ -4063,14 +4063,19 @@ button:active {
 
 .screenshot-preview-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 11000;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 11000;
-  backdrop-filter: blur(8px);
   padding: 20px;
+  cursor: pointer;
 }
 
 .screenshot-container {
@@ -4079,15 +4084,17 @@ button:active {
   max-height: 90%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: screenshot-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .screenshot-preview-img {
-  width: auto;
-  height: auto;
   max-width: 100%;
-  max-height: 85vh;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  max-height: 80vh;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   object-fit: contain;
 }
 
@@ -4095,22 +4102,37 @@ button:active {
   position: absolute;
   top: -48px;
   right: 0;
-  background: white;
-  color: black;
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  z-index: 10;
 }
 
 .screenshot-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
   transform: scale(1.1);
+}
+
+@keyframes screenshot-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .guide-scroll-content {
