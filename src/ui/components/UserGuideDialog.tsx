@@ -138,7 +138,12 @@ export function UserGuideDialog({
                 {part}
                 {i < arr.length - 1 && (
                   <>
-                    <span style={{ fontWeight: "600", color: "var(--color-primary)" }}>
+                    <span
+                      style={{
+                        fontWeight: "600",
+                        color: "var(--color-primary)",
+                      }}
+                    >
                       PWA
                     </span>
                     <HelpCircle
@@ -210,15 +215,21 @@ export function UserGuideDialog({
       </div>
     </div>
   );
-  
+
   const pwaBenefitCard = (
-    <div className="guide-card" style={{ background: "var(--color-surface-soft)" }}>
+    <div
+      className="guide-card"
+      style={{ background: "var(--color-surface-soft)" }}
+    >
       <div className="guide-card-header">
         <Zap size={18} style={{ color: "var(--color-primary)" }} />
         <span>{t("pwaBenefitTitle")}</span>
       </div>
       <div className="guide-card-content">
-        <p className="guide-card-text" style={{ whiteSpace: "pre-line", fontSize: "12px" }}>
+        <p
+          className="guide-card-text"
+          style={{ whiteSpace: "pre-line", fontSize: "12px" }}
+        >
           {t("pwaBenefitList")
             .split("PWA")
             .map((part, i, arr) => (
@@ -226,7 +237,12 @@ export function UserGuideDialog({
                 {part}
                 {i < arr.length - 1 && (
                   <>
-                    <span style={{ fontWeight: "600", color: "var(--color-primary)" }}>
+                    <span
+                      style={{
+                        fontWeight: "600",
+                        color: "var(--color-primary)",
+                      }}
+                    >
                       PWA
                     </span>
                     <HelpCircle
