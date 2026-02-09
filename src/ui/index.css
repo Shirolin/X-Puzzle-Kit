@@ -4196,9 +4196,42 @@ button:active {
 .guide-card-actions {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap; /* 允许换行，解决长文案溢出 */
   align-items: center;
-  gap: 12px;
-  margin-top: 4px; /* Math adjustment for the content gap */
+  gap: 10px; /* 稍微加大间距，不仅是左右，换行后上下也有感 */
+  margin-top: 12px;
+  width: 100%;
+}
+
+/* 按钮基础响应式优化 */
+.guide-card-actions .btn {
+  flex: 1 1 auto; /* 允许按钮根据内容伸缩并自动填满行 */
+  min-width: 120px; /* 设定最小基准，防止缩成一坨 */
+  max-width: 100%;
+  height: auto;
+  min-height: 34px;
+  padding: 8px 14px;
+  white-space: normal; /* 允许文案折叠，解决“超出按钮边界”问题 */
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 幽灵按钮在多语言下适当减小字号 */
+.tutorial-btn {
+  font-size: 0.8125rem !important; /* 13px */
+  opacity: 0.9;
+}
+
+/* 针对极小屏幕的微调 */
+@media (max-width: 420px) {
+  .guide-card-actions {
+    gap: 8px;
+  }
+  .guide-card-actions .btn {
+    font-size: 0.75rem !important;
+    padding: 6px 10px;
+    min-width: 100px;
+  }
 }
 
 .guide-card-text-group {

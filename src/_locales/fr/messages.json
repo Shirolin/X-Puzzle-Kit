@@ -602,7 +602,7 @@
     "description": "Guide d'installation pour Android"
   },
   "viewAndroidTutorial": {
-    "message": "Voir le schéma d'installation",
+    "message": "Guide d'installation",
     "description": "Texte du bouton tutoriel Android"
   },
   "guideExtensionStitch": {
@@ -670,7 +670,7 @@
     "description": "调试用模拟器文本"
   },
   "viewDemoVideo": {
-    "message": "Vivre l’expérience de partage",
+    "message": "Voir la démo de partage",
     "description": "Button to see the smooth sharing experience demo"
   }
 }

@@ -570,7 +570,7 @@
     "description": "Android installation guide"
   },
   "viewAndroidTutorial": {
-    "message": "View Installation Diagram",
+    "message": "Installation Guide",
     "description": "Android tutorial button text"
   },
   "guideExtensionStitch": {
@@ -670,7 +670,7 @@
     "description": "调试用模拟器文本"
   },
   "viewDemoVideo": {
-    "message": "See the Seamless Sharing",
+    "message": "See Seamless Sharing",
     "description": "Button to see the smooth sharing experience demo"
   }
 }
