@@ -52,3 +52,12 @@ export interface SplitConfig {
   format?: "png" | "jpg" | "webp";
   autoCropRatio?: number; // Ideal composite ratio (W/H) for the whole grid
 }
+
+export interface BeforeInstallPromptEvent extends Event {
+  readonly platforms: string[];
+  readonly userChoice: Promise<{
+    outcome: "accepted" | "dismissed";
+    platform: string;
+  }>;
+  prompt(): Promise<void>;
+}

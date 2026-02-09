@@ -616,5 +616,17 @@
   "guideTechnicalDesc": {
     "message": "底层技术升级：插件版现在能彻底隔离主题样式，绝不干扰您所访问的网页，使用更加安全放心。",
     "description": "技术改进描述"
+  },
+  "statusOfflineAvailable": {
+    "message": "离线模式可用",
+    "description": "断网时显示的提示文案"
+  },
+  "troubleshootingTitle": {
+    "message": "无法安装？",
+    "description": "故障排除标题"
+  },
+  "troubleshootingIncognito": {
+    "message": "无痕/隐私浏览模式会阻止 PWA 安装。请切换到正常浏览模式后重试。",
+    "description": "无痕模式警告"
   }
 }

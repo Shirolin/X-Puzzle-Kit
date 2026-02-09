@@ -4,11 +4,13 @@ import { t } from "../../core/i18n";
 import { getAssetUrl, getPlatformEnv } from "../../core/platform";
 import { APP_CONFIG } from "../../core/config";
 
+import { BeforeInstallPromptEvent } from "../../core/types";
+
 export function PWAInstallPrompt({
   deferredPrompt,
   onInstall,
 }: {
-  deferredPrompt?: any;
+  deferredPrompt?: BeforeInstallPromptEvent;
   onInstall?: () => void;
 }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,7 +44,16 @@ export function PWAInstallPrompt({
       setIsVisible(true);
     }, APP_CONFIG.UI.IOS_PROMPT_DELAY_MS);
 
-    return () => clearTimeout(timer);
+    // Smart Trigger: Listen for user actions
+    const handleSmartTrigger = () => {
+      setIsVisible(true);
+    };
+    window.addEventListener("pwa-smart-trigger", handleSmartTrigger);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("pwa-smart-trigger", handleSmartTrigger);
+    };
   }, []);
 
   const handleClose = () => {
@@ -101,12 +112,10 @@ export function PWAInstallPrompt({
             {t("pwaInstallBtn")}
           </button>
         ) : (
-          /* 指向箭头: iOS Chrome 指向上方，Safari 指向下方; Android 通常指向菜单(上方或下方) */
-          platform === "ios" && (
-            <div
-              className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}
-            ></div>
-          )
+          /* 指向箭头: iOS Chrome 指向上方，Safari 指向下方; Android 指向右上角菜单 */
+          <div
+            className={`ios-prompt-arrow ${platform === "ios" && isChrome ? "is-chrome" : ""}`}
+          ></div>
         )}
       </div>
     </div>

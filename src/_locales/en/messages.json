@@ -616,5 +616,17 @@
   "guideTechnicalDesc": {
     "message": "The extension now completely isolates theme styles, ensuring zero interference with the websites you visit.",
     "description": "Technical improvement description"
+  },
+  "statusOfflineAvailable": {
+    "message": "Offline available",
+    "description": "Status text shown when offline"
+  },
+  "troubleshootingTitle": {
+    "message": "Can't Install?",
+    "description": "Troubleshooting section title"
+  },
+  "troubleshootingIncognito": {
+    "message": "Private/Incognito browsing mode prevents PWA installation. Please use normal browsing mode and try again.",
+    "description": "Warning about incognito mode"
   }
 }

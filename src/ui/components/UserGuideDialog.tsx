@@ -9,6 +9,7 @@ import {
   LayoutGrid,
   BookOpen,
   Download,
+  AlertTriangle,
 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { APP_CONFIG } from "../../core/config";
@@ -90,22 +91,6 @@ export function UserGuideDialog({
 
   if (!isOpen) return null;
 
-  const pwaBenefitCard = (
-    <div className="guide-card" style={{ border: "1px dashed var(--color-primary-soft)", background: "var(--color-primary-transparent)" }}>
-      <div className="guide-card-header" style={{ color: "var(--color-primary)" }}>
-        <Smartphone size={18} />
-        <span>{t("pwaBenefitTitle")}</span>
-      </div>
-      <div className="guide-card-content">
-        <p className="guide-card-text" style={{ fontSize: "13px", lineHeight: "1.6" }}>
-          {t("pwaBenefitList").split("\n").map((line, i) => (
-            <span key={i} style={{ display: "block", marginBottom: "4px" }}>{line}</span>
-          ))}
-        </p>
-      </div>
-    </div>
-  );
-
   const iOSCard = (
     <div className="guide-card">
       <div className="guide-card-header">
@@ -138,8 +123,18 @@ export function UserGuideDialog({
         <span>Android</span>
       </div>
       <div className="guide-card-content">
-        <p className="guide-card-text" style={{ marginBottom: "8px" }}>{t("guideAndroidInstall")}</p>
-        <p className="guide-card-text" style={{ fontSize: "12px", opacity: 0.8, borderLeft: "2px solid var(--color-primary)", paddingLeft: "8px" }}>
+        <p className="guide-card-text" style={{ marginBottom: "8px" }}>
+          {t("guideAndroidInstall")}
+        </p>
+        <p
+          className="guide-card-text"
+          style={{
+            fontSize: "12px",
+            opacity: 0.8,
+            borderLeft: "2px solid var(--color-primary)",
+            paddingLeft: "8px",
+          }}
+        >
           {t("guideNativeInstall")}
         </p>
       </div>
@@ -211,7 +206,6 @@ export function UserGuideDialog({
         <div className="guide-scroll-content">
           {activeTab === "pwa" && (
             <div className="guide-step-list animate-fade-in">
-              {pwaBenefitCard}
               {isAndroid ? (
                 <>
                   {androidCard}
@@ -223,6 +217,30 @@ export function UserGuideDialog({
                   {androidCard}
                 </>
               )}
+              {/* Troubleshooting Card */}
+              <div
+                className="guide-card"
+                style={{
+                  marginTop: "8px",
+                  border: "1px dashed var(--color-text-muted)",
+                }}
+              >
+                <div
+                  className="guide-card-header"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  <AlertTriangle size={16} />
+                  <span>{t("troubleshootingTitle")}</span>
+                </div>
+                <div className="guide-card-content">
+                  <p
+                    className="guide-card-text"
+                    style={{ fontSize: "12px", opacity: 0.8 }}
+                  >
+                    {t("troubleshootingIncognito")}
+                  </p>
+                </div>
+              </div>
             </div>
           )}
 

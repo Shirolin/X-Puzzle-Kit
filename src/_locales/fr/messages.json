@@ -191,6 +191,18 @@
     "message": "Mise à niveau technique : La version extension isole désormais complètement les styles de thème, garantissant aucune interférence avec le site web visité.",
     "description": "Technical improvement description"
   },
+  "statusOfflineAvailable": {
+    "message": "Mode hors ligne disponible",
+    "description": "Texte de statut affiché hors ligne"
+  },
+  "troubleshootingTitle": {
+    "message": "Impossible d'installer ?",
+    "description": "Titre de la section de dépannage"
+  },
+  "troubleshootingIncognito": {
+    "message": "Le mode navigation privée empêche l'installation des PWA. Veuillez passer en mode de navigation normal et réessayer.",
+    "description": "Avertissement concernant le mode incognito"
+  },
   "stitchAndDownload": {
     "message": "Fusionner et télécharger",
     "description": "Texte du bouton de téléchargement final"
