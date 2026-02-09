@@ -75,6 +75,14 @@
     "message": "離線模式可用",
     "description": "斷網時顯示的提示文案"
   },
+  "troubleshootingTitle": {
+    "message": "無法安裝？",
+    "description": "故障排除標題"
+  },
+  "troubleshootingIncognito": {
+    "message": "無痕/隱私瀏覽模式會阻止 PWA 安裝。請切換到正常瀏覽模式後再試。",
+    "description": "無痕模式警告"
+  },
   "removeImage": {
     "message": "移除圖片",
     "description": "移除圖片工具提示"

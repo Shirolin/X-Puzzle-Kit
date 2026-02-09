@@ -3582,6 +3582,15 @@ button:active {
   transform: translateX(-50%) rotate(225deg);
 }
 
+/* Android Arrow: Point to top-right menu (position in upper-right) */
+.pwa-prompt-android .ios-prompt-arrow {
+  bottom: auto;
+  top: -8px;
+  left: auto;
+  right: 16px;
+  transform: rotate(225deg);
+}
+
 /* Sidebar Action Buttons Refactor */
 .action-row {
   display: flex;

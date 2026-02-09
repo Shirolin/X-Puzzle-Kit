@@ -112,12 +112,10 @@ export function PWAInstallPrompt({
             {t("pwaInstallBtn")}
           </button>
         ) : (
-          /* 指向箭头: iOS Chrome 指向上方，Safari 指向下方; Android 通常指向菜单(上方或下方) */
-          platform === "ios" && (
-            <div
-              className={`ios-prompt-arrow ${isChrome ? "is-chrome" : ""}`}
-            ></div>
-          )
+          /* 指向箭头: iOS Chrome 指向上方，Safari 指向下方; Android 指向右上角菜单 */
+          <div
+            className={`ios-prompt-arrow ${platform === "ios" && isChrome ? "is-chrome" : ""}`}
+          ></div>
         )}
       </div>
     </div>

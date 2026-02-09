@@ -227,6 +227,14 @@
     "message": "オフラインモード使用可能",
     "description": "オフライン時に表示されるステータス"
   },
+  "troubleshootingTitle": {
+    "message": "インストールできない？",
+    "description": "トラブルシューティングタイトル"
+  },
+  "troubleshootingIncognito": {
+    "message": "プライベート/シークレットモードではPWAをインストールできません。通常のブラウジングモードで再度お試しください。",
+    "description": "プライベートモードに関する警告"
+  },
   "uploadImages": {
     "message": "画像をアップロード",
     "description": "多画画像のアップロードボタンのテキスト"

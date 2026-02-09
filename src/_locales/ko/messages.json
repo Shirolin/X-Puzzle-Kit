@@ -243,6 +243,14 @@
     "message": "오프라인 모드 사용 가능",
     "description": "오프라인 시 표시되는 상태 텍스트"
   },
+  "troubleshootingTitle": {
+    "message": "설치할 수 없나요?",
+    "description": "문제 해결 섹션 제목"
+  },
+  "troubleshootingIncognito": {
+    "message": "시크릿/인코그니토 모드에서는 PWA를 설치할 수 없습니다. 일반 브라우징 모드에서 다시 시도해 주세요.",
+    "description": "시크릿 모드 경고"
+  },
   "uploadImage": {
     "message": "이미지 업로드",
     "description": "이미지 업로드 버튼 텍스트"

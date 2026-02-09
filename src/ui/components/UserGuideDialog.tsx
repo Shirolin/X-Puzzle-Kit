@@ -9,6 +9,7 @@ import {
   LayoutGrid,
   BookOpen,
   Download,
+  AlertTriangle,
 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { APP_CONFIG } from "../../core/config";
@@ -249,6 +250,30 @@ export function UserGuideDialog({
                   {androidCard}
                 </>
               )}
+              {/* Troubleshooting Card */}
+              <div
+                className="guide-card"
+                style={{
+                  marginTop: "8px",
+                  border: "1px dashed var(--color-text-muted)",
+                }}
+              >
+                <div
+                  className="guide-card-header"
+                  style={{ color: "var(--color-text-muted)" }}
+                >
+                  <AlertTriangle size={16} />
+                  <span>{t("troubleshootingTitle")}</span>
+                </div>
+                <div className="guide-card-content">
+                  <p
+                    className="guide-card-text"
+                    style={{ fontSize: "12px", opacity: 0.8 }}
+                  >
+                    {t("troubleshootingIncognito")}
+                  </p>
+                </div>
+              </div>
             </div>
           )}
 
