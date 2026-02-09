@@ -52,8 +52,9 @@ export const Divider = () => (
 // 侧边栏卡片包裹组件
 // 帮助提示组件
 const HelpTip = ({ text }: { text: string }) => (
-  <IconButton
-    icon={<HelpCircle size={12} />}
+  <HelpCircle
+    size={12}
+    className="help-info-icon"
     onClick={() => {
       toast(
         <div style={{ whiteSpace: "pre-wrap", lineHeight: "1.4" }}>{text}</div>,
@@ -64,17 +65,6 @@ const HelpTip = ({ text }: { text: string }) => (
           ),
         },
       );
-    }}
-    style={{
-      padding: "2px",
-      color: "var(--color-text-muted)",
-      opacity: 0.45,
-      marginLeft: "4px",
-      display: "inline-flex",
-      alignItems: "baseline", // 强制基线对齐
-      justifyContent: "center",
-      transform: "translateY(-1.5px)", // 提升高度，修正视觉中心
-      pointerEvents: "auto",
     }}
     title={text}
   />

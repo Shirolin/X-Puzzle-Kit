@@ -4156,7 +4156,9 @@ button:active {
   flex-direction: column;
   gap: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
 }
 
 .guide-card-header {
@@ -4223,18 +4225,27 @@ button:active {
   color: var(--color-primary);
 }
 
-.pwa-help-icon {
+.help-info-icon {
   margin-left: 4px;
   cursor: pointer;
   opacity: 0.5;
   vertical-align: middle;
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+  color: var(--color-text-muted);
 }
 
-.pwa-help-icon:hover {
+.help-info-icon:hover {
   opacity: 1;
   transform: scale(1.1);
 }
+
+.pwa-help-icon {
+  composes: help-info-icon; /* 保持类名兼容性，但逻辑上建议直接使用全局类 */
+}
+
+/* .pwa-help-icon:hover 已包含在 .help-info-icon 中 */
 
 .benefit-card {
   background: var(--color-surface-soft);

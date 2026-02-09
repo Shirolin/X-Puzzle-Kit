@@ -37,7 +37,7 @@ const StitchIcon = () => (
     style={{
       verticalAlign: "middle",
       position: "relative",
-      top: "-1px", /* 光学中心补偿 */
+      top: "-1px" /* 光学中心补偿 */,
       margin: "0 6px",
       border: "1px solid var(--color-border)",
       borderRadius: "4px",
@@ -143,8 +143,7 @@ export function UserGuideDialog({
                       <span className="pwa-highlight">PWA</span>
                       <HelpCircle
                         size={12}
-                        className="pwa-help-icon"
-                        style={{ verticalAlign: "-2px" }} /* 针对 1.6 行高的精确居中 */
+                        className="help-info-icon"
                         onClick={() =>
                           toast(t("pwaWhatIs"), {
                             duration: 6000,
@@ -209,7 +208,7 @@ export function UserGuideDialog({
                     <span className="pwa-highlight">PWA</span>
                     <HelpCircle
                       size={14}
-                      className="pwa-help-icon"
+                      className="help-info-icon"
                       onClick={() =>
                         toast(t("pwaWhatIs"), {
                           duration: 6000,
