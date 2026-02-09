@@ -69,6 +69,7 @@ export function updateToasterTheme(theme: "light" | "dark" | "system") {
   render(
     <Toaster
       richColors
+      closeButton
       position="top-center"
       theme={theme}
       offset="20px"

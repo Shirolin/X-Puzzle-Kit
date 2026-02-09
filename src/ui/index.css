@@ -4331,3 +4331,104 @@ button:active {
 .x-custom-toast [data-icon] {
   margin-right: 10px !important;
 }
+
+/* 进度条底座 */
+.x-custom-toast {
+  position: relative;
+  overflow: hidden !important;
+}
+
+/* 极细倒计时进度条 (V2: 增强可见性与动态时长) */
+.x-custom-toast::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  /* 即使在深色背景下也极其清晰的渐变 */
+  background: linear-gradient(to right, #007aff, #5ac8fa);
+  width: 100%;
+  transform-origin: left;
+  animation: toast-countdown linear forwards;
+  /* 基础默认时长 4s */
+  animation-duration: 4s;
+  opacity: 0.9;
+  z-index: 10;
+}
+
+/* 动态时长适配：通过内容关键字智能切换动画速度 */
+.x-custom-toast:has([data-content*="PWA"])::after,
+.x-custom-toast:has([data-content*="安"]) ::after,
+.x-custom-toast:has([data-content*="iOS"]) ::after,
+.x-custom-toast:has([data-content*="Android"]) ::after {
+  animation-duration: 6s !important;
+}
+
+@keyframes toast-countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* 关闭按钮 Apple 化适配 (V3: 极简克制) */
+.x-custom-toast [data-close-button] {
+  top: 8px !important;
+  right: 8px !important;
+  left: auto !important;
+  /* 初始状态完全透明，保持界面清爽 */
+  opacity: 0 !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition:
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    background 0.2s !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  z-index: 20 !important;
+  cursor: pointer !important;
+}
+
+.x-custom-toast:hover [data-close-button] {
+  opacity: 1 !important;
+  transform: scale(1);
+}
+
+.x-custom-toast [data-close-button]:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.1);
+}
+
+.x-custom-toast [data-close-button]:active {
+  transform: scale(0.9);
+}
+
+[data-theme="light"] .x-custom-toast [data-close-button] {
+  background: rgba(0, 0, 0, 0.1) !important;
+  color: #000 !important;
+}
+
+.x-custom-toast:hover [data-close-button] {
+  opacity: 1 !important;
+}
+
+.x-custom-toast [data-close-button]:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: scale(1.1);
+}
+
+[data-theme="light"] .x-custom-toast [data-close-button] {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.05) !important;
+}
