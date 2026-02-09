@@ -438,7 +438,12 @@ export function UserGuideDialog({
               src={previewMedia.src}
               alt="Preview"
               className="screenshot-preview-img"
-              style={{ maxHeight: "80vh", objectFit: "contain" }}
+              loading="lazy"
+              style={{
+                maxHeight: "80vh",
+                objectFit: "contain",
+                transform: "translateZ(0)",
+              }}
             />
             <button
               className="screenshot-close-btn"

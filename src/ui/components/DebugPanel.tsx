@@ -71,7 +71,8 @@ export const DebugPanel = () => {
         zIndex: 999999,
         display: "flex",
         flexDirection: "column",
-        backdropFilter: "blur(20px)",
+        backdropFilter: "blur(12px)",
+        transform: "translateZ(0)",
         fontFamily:
           "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
       }}
