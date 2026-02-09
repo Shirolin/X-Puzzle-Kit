@@ -106,19 +106,18 @@ export function UserGuideDialog({
       </div>
       <div className="guide-card-content">
         <p className="guide-card-text">{t("guideiOSInstall")}</p>
-      </div>
-      <div style={{ marginTop: "12px" }}>
-        <a
-          href={APP_CONFIG.UI.IOS_SHORTCUT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-primary flex-row-center gap-xs"
-          title={t("installShortcutTip")}
-          style={{ width: "fit-content", padding: "8px 16px" }}
-        >
-          <Download size={16} />
-          <span>{t("installShortcutBtn")}</span>
-        </a>
+        <div className="guide-card-actions">
+          <a
+            href={APP_CONFIG.UI.IOS_SHORTCUT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary flex-row-center gap-xs"
+            title={t("installShortcutTip")}
+          >
+            <Download size={16} />
+            <span>{t("installShortcutBtn")}</span>
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -130,106 +129,73 @@ export function UserGuideDialog({
         <span>Android</span>
       </div>
       <div className="guide-card-content">
-        <p className="guide-card-text" style={{ marginBottom: "8px" }}>
-          {t("guideAndroidInstall")
-            .split("PWA")
-            .map((part, i, arr) => (
-              <span key={i}>
-                {part}
-                {i < arr.length - 1 && (
-                  <>
-                    <span
-                      style={{
-                        fontWeight: "600",
-                        color: "var(--color-primary)",
-                      }}
-                    >
-                      PWA
-                    </span>
-                    <HelpCircle
-                      size={12}
-                      style={{
-                        marginLeft: "2px",
-                        cursor: "pointer",
-                        opacity: 0.6,
-                        verticalAlign: "middle",
-                      }}
-                      onClick={() =>
-                        toast(t("pwaWhatIs"), {
-                          duration: 6000,
-                          icon: (
-                            <Zap
-                              size={16}
-                              style={{ color: "var(--color-primary)" }}
-                            />
-                          ),
-                        })
-                      }
-                    />
-                  </>
-                )}
-              </span>
-            ))}
-        </p>
-        {canNativeInstall && (
-          <p
-            className="guide-card-text"
-            style={{
-              fontSize: "12px",
-              opacity: 0.8,
-              borderLeft: "2px solid var(--color-primary)",
-              paddingLeft: "8px",
-              marginTop: "8px",
-            }}
-          >
-            {t("guideNativeInstall")}
+        <div className="guide-card-text-group">
+          <p className="guide-card-text">
+            {t("guideAndroidInstall")
+              .split("PWA")
+              .map((part, i, arr) => (
+                <span key={i}>
+                  {part}
+                  {i < arr.length - 1 && (
+                    <>
+                      <span className="pwa-highlight">PWA</span>
+                      <HelpCircle
+                        size={14}
+                        className="pwa-help-icon"
+                        onClick={() =>
+                          toast(t("pwaWhatIs"), {
+                            duration: 6000,
+                            icon: (
+                              <Zap
+                                size={16}
+                                style={{ color: "var(--color-primary)" }}
+                              />
+                            ),
+                          })
+                        }
+                      />
+                    </>
+                  )}
+                </span>
+              ))}
           </p>
-        )}
-        {canNativeInstall && (
-          <div style={{ marginTop: "8px" }}>
+          {canNativeInstall && (
+            <p className="guide-card-text native-recommendation">
+              {t("guideNativeInstall")}
+            </p>
+          )}
+        </div>
+
+        <div className="guide-card-actions">
+          {canNativeInstall && (
             <button
               onClick={onNativeInstall}
               className="btn btn-primary flex-row-center gap-xs"
-              style={{ width: "fit-content", padding: "8px 16px" }}
             >
               <Download size={16} />
               <span>{t("pwaInstallBtn")}</span>
             </button>
-          </div>
-        )}
-      </div>
-      <div style={{ marginTop: "12px" }}>
-        <button
-          onClick={() => setShowScreenshot(true)}
-          className="btn btn-ghost flex-row-center gap-xs"
-          style={{
-            width: "fit-content",
-            padding: "6px 14px",
-            fontSize: "13px",
-            border: "1px solid var(--color-border)",
-          }}
-        >
-          <BookOpen size={14} />
-          <span>{t("viewAndroidTutorial") || "查看安装示意图"}</span>
-        </button>
+          )}
+          <button
+            onClick={() => setShowScreenshot(true)}
+            className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
+          >
+            <BookOpen size={14} />
+            <span>{t("viewAndroidTutorial") || "查看安装示意图"}</span>
+          </button>
+        </div>
       </div>
     </div>
   );
 
   const pwaBenefitCard = (
-    <div
-      className="guide-card"
-      style={{ background: "var(--color-surface-soft)" }}
-    >
+    <div className="guide-card benefit-card">
       <div className="guide-card-header">
-        <Zap size={18} style={{ color: "var(--color-primary)" }} />
+        <Zap size={18} className="pwa-zap-icon" />
         <span>{t("pwaBenefitTitle")}</span>
       </div>
       <div className="guide-card-content">
-        <p
-          className="guide-card-text"
-          style={{ whiteSpace: "pre-line", fontSize: "12px" }}
-        >
+        <p className="guide-card-text benefit-list">
           {t("pwaBenefitList")
             .split("PWA")
             .map((part, i, arr) => (
@@ -237,22 +203,10 @@ export function UserGuideDialog({
                 {part}
                 {i < arr.length - 1 && (
                   <>
-                    <span
-                      style={{
-                        fontWeight: "600",
-                        color: "var(--color-primary)",
-                      }}
-                    >
-                      PWA
-                    </span>
+                    <span className="pwa-highlight">PWA</span>
                     <HelpCircle
-                      size={12}
-                      style={{
-                        marginLeft: "2px",
-                        cursor: "pointer",
-                        opacity: 0.6,
-                        verticalAlign: "middle",
-                      }}
+                      size={14}
+                      className="pwa-help-icon"
                       onClick={() =>
                         toast(t("pwaWhatIs"), {
                           duration: 6000,
@@ -336,25 +290,13 @@ export function UserGuideDialog({
                 </>
               )}
               {pwaBenefitCard}
-              {/* Troubleshooting Card */}
-              <div
-                className="guide-card"
-                style={{
-                  border: "1px dashed var(--color-text-muted)",
-                }}
-              >
-                <div
-                  className="guide-card-header"
-                  style={{ color: "var(--color-text-muted)" }}
-                >
+              <div className="guide-card troubleshooting-card">
+                <div className="guide-card-header">
                   <AlertTriangle size={16} />
                   <span>{t("troubleshootingTitle")}</span>
                 </div>
                 <div className="guide-card-content">
-                  <p
-                    className="guide-card-text"
-                    style={{ fontSize: "12px", opacity: 0.8 }}
-                  >
+                  <p className="guide-card-text secondary-text">
                     {t("troubleshootingIncognito")}
                   </p>
                 </div>
