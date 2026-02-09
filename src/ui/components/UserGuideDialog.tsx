@@ -35,12 +35,14 @@ const StitchIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     className="inline-icon"
     style={{
-      verticalAlign: "text-bottom",
-      margin: "0 4px",
+      verticalAlign: "middle",
+      position: "relative",
+      top: "-1px", /* 光学中心补偿 */
+      margin: "0 6px",
       border: "1px solid var(--color-border)",
       borderRadius: "4px",
       background: "var(--color-surface-hover)",
-      padding: "1px",
+      padding: "2px",
     }}
   >
     <g
@@ -140,8 +142,9 @@ export function UserGuideDialog({
                     <>
                       <span className="pwa-highlight">PWA</span>
                       <HelpCircle
-                        size={14}
+                        size={12}
                         className="pwa-help-icon"
+                        style={{ verticalAlign: "-2px" }} /* 针对 1.6 行高的精确居中 */
                         onClick={() =>
                           toast(t("pwaWhatIs"), {
                             duration: 6000,
@@ -270,8 +273,8 @@ export function UserGuideDialog({
             className={`guide-tab ${activeTab === "flow" ? "active" : ""}`}
             onClick={() => setActiveTab("flow")}
           >
-            <LayoutGrid size={16} />
-            <span>{t("tabFeatures")}</span>
+            <LayoutGrid size={14} />
+            <span style={{ letterSpacing: "-0.01em" }}>{t("tabFeatures")}</span>
           </button>
         </div>
 

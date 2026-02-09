@@ -4162,14 +4162,20 @@ button:active {
 .guide-card-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  font-size: 0.9rem;
+  gap: 10px;
+  font-weight: 600; /* Apple 推荐的 Semi-Bold，而非强硬的 700 */
+  font-size: 0.875rem; /* 14px */
   color: var(--color-text);
+  letter-spacing: -0.015em;
+}
+
+.guide-card-header svg {
+  flex-shrink: 0;
+  opacity: 0.9;
 }
 
 .guide-card-text {
-  font-size: 0.85rem;
+  font-size: 0.8125rem; /* 13px: 苹果系统偏好的精致小字号 */
   line-height: 1.6;
   color: var(--color-text-muted);
   margin: 0;
