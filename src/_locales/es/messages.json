@@ -184,15 +184,15 @@
     "description": "Título del aviso de instalación en iOS"
   },
   "installDesc": {
-    "message": "Toca el botón Compartir abajo y selecciona 'Añadir a inicio'.",
+    "message": "Toca el botón Compartir abajo y selecciona 「Añadir a inicio」.",
     "description": "Descripción del aviso de instalación en iOS"
   },
   "installDescChrome": {
-    "message": "Toca el botón Compartir arriba a la derecha y selecciona 'Añadir a inicio'.",
+    "message": "Toca el botón Compartir arriba a la derecha y selecciona 「Añadir a inicio」.",
     "description": "Descripción del aviso de instalación en iOS Chrome"
   },
   "installDescAndroid": {
-    "message": "Toca el menú del navegador (arriba o abajo a la derecha), luego selecciona 'Instalar aplicación' o 'Añadir a la pantalla de inicio'.",
+    "message": "Toca el menú del navegador (arriba o abajo a la derecha), luego selecciona 「Instalar aplicación」 o 「Añadir a la pantalla de inicio」.",
     "description": "Android descripción de instalación"
   },
   "pwaInstallBtn": {
@@ -212,7 +212,7 @@
     "description": "PWA benefit list content"
   },
   "guideNativeInstall": {
-    "message": "Si está disponible, use el botón 'Instalar' a continuación para una experiencia nativa en un clic.",
+    "message": "Instala la PWA para ver 「X-Puzzle-Kit」 en el menú de compartir de X (Twitter) para importar con un clic.",
     "description": "Native install recommendation"
   },
   "guideTechnicalTitle": {
@@ -308,7 +308,7 @@
     "description": "Etiqueta del interruptor de optimización de Twitter"
   },
   "twitterOptimizeTip": {
-    "message": "Optimizado para la vista previa de X. Asegura que múltiples cortes se unan en una sola \"gran imagen\" en el timeline.",
+    "message": "Optimizado para la vista previa de X. Asegura que múltiples cortes se unan en una sola 「gran imagen」 en el timeline.",
     "description": "Consejo de optimización de Twitter"
   },
   "settings": {
@@ -498,7 +498,7 @@
     "description": "Ayuda de formato"
   },
   "twitterOptimizeHelp": {
-    "message": "Al publicar varios cortes en X (Twitter), esto ajusta los bordes para un aspecto de 'Imagen Única' sin costuras en el feed de los usuarios.",
+    "message": "Al publicar varios cortes en X (Twitter), esto ajusta los bordes para un aspecto de 「Imagen Única」 sin costuras en el feed de los usuarios.",
     "description": "Ayuda de optimización de Twitter"
   },
   "imageResolution": {
@@ -534,7 +534,7 @@
     "description": "Título del paso 2 del tutorial"
   },
   "tutorialLayoutDesc": {
-    "message": "Elige un diseño para tus imágenes. Se recomienda 'Cuadrícula' para publicaciones de Twitter/X.",
+    "message": "Elige un diseño para tus imágenes. Se recomienda 「Cuadrícula」 para publicaciones de Twitter/X.",
     "description": "Descripción del paso 2 del tutorial"
   },
   "tutorialControlTitle": {
@@ -586,7 +586,7 @@
     "description": "Pestaña de manual 3"
   },
   "guideiOSInstall": {
-    "message": "1. Integración sin fisuras\nOlvídate de copiar manualmente. Toca el botón de abajo para añadir 'X-Puzzle-Kit' a tus Atajos.\n2. Importación instantánea\nToca este atajo en el menú de compartir de X (Twitter) para extraer enlaces y saltar a la aplicación.",
+    "message": "1. Integración sin fisuras\nOlvídate de copiar manualmente. Toca el botón de abajo para añadir 「X-Puzzle-Kit」 a tus Atajos.\n2. Importación instantánea\nToca este atajo en el menú de compartir de X (Twitter) para extraer enlaces y saltar a la aplicación.",
     "description": "Guía de instalación para iOS"
   },
   "installShortcutBtn": {
@@ -598,7 +598,7 @@
     "description": "Consejo de instalación de atajo de iOS"
   },
   "guideAndroidInstall": {
-    "message": "1. Instalar PWA (aplicación web progresiva)\nToca 'Instalar aplicación' en el menú del navegador para desbloquear la integración de compartir sin necesidad de tienda.\n2. Compartir nativo\nUna vez instalada, comparte directamente desde X (Twitter) y selecciona 'X-Puzzle-Kit' para importar.",
+    "message": "1. Instalar PWA (aplicación web progresiva)\nToca 「Instalar aplicación」 en el menú del navegador para desbloquear la integración de compartir sin necesidad de tienda.\n2. Compartir nativo\nUna vez instalada, comparte directamente desde X (Twitter) y selecciona 「X-Puzzle-Kit」 para importar.",
     "description": "Guía de instalación para Android"
   },
   "viewAndroidTutorial": {
@@ -610,7 +610,7 @@
     "description": "Guía de la función de unión de la extensión"
   },
   "guideExtensionSplit": {
-    "message": "Haz clic derecho en cualquier imagen y selecciona 'X-Puzzle-Kit: Dividir imagen' para procesarla al instante sin descarga.",
+    "message": "Haz clic derecho en cualquier imagen y selecciona 「X-Puzzle-Kit: Dividir imagen」 para procesarla al instante sin descarga.",
     "description": "Guía de la función de división de la extensión"
   },
   "guideFlowOptimization": {
@@ -629,12 +629,44 @@
     "message": "Control preciso de espacios entre cortes",
     "description": "Título de tarjeta de manual 3"
   },
-  "guideNativeInstall": {
-    "message": "Instala la PWA para ver 'X-Puzzle-Kit' en el menú de compartir de X (Twitter) para importar con un clic.",
-    "description": "Native install recommendation"
-  },
   "pwaWhatIs": {
-    "message": "Una PWA (aplicación web progresiva) no es una aplicación tradicional. No requiere descarga de tienda y consume cero espacio en disco. Es esencialmente una 'página web con superpoderes de aplicación'. Si dudas en instalar aplicaciones pesadas, la PWA es la solución ligera perfecta.",
+    "message": "Una PWA (aplicación web progresiva) no es una aplicación tradicional. No requiere descarga de tienda y consume cero espacio en disco. Es esencialmente una 「página web con superpoderes de aplicación」. Si dudas en instalar aplicaciones pesadas, la PWA es la solución ligera perfecta.",
     "description": "PWA explanation"
+  },
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "语言名称: 简体中文"
+  },
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "语言名称: 繁体中文"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "语言名称: 英语"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "语言名称: 日语"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "语言名称: 韩语"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "语言名称: 西班牙语"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "语言名称: 法语"
+  },
+  "openDebugPanel": {
+    "message": "Abrir panel de depuración",
+    "description": "调试用菜单文本"
+  },
+  "simulator": {
+    "message": "Simulador",
+    "description": "调试用模拟器文本"
   }
 }

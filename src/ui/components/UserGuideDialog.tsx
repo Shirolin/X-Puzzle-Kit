@@ -11,7 +11,7 @@ import {
   Download,
   AlertTriangle,
   HelpCircle,
-  Zap,
+  Sparkles,
 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { toast } from "sonner";
@@ -148,7 +148,7 @@ export function UserGuideDialog({
                           toast(t("pwaWhatIs"), {
                             duration: 6000,
                             icon: (
-                              <Zap
+                              <HelpCircle
                                 size={16}
                                 style={{ color: "var(--color-primary)" }}
                               />
@@ -193,7 +193,7 @@ export function UserGuideDialog({
   const pwaBenefitCard = (
     <div className="guide-card benefit-card">
       <div className="guide-card-header">
-        <Zap size={18} className="pwa-zap-icon" />
+        <Sparkles size={18} />
         <span>{t("pwaBenefitTitle")}</span>
       </div>
       <div className="guide-card-content">
@@ -213,7 +213,7 @@ export function UserGuideDialog({
                         toast(t("pwaWhatIs"), {
                           duration: 6000,
                           icon: (
-                            <Zap
+                            <HelpCircle
                               size={16}
                               style={{ color: "var(--color-primary)" }}
                             />

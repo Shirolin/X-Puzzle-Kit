@@ -8,7 +8,7 @@
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit is a professional image stitcher and grid splitter designed specifically for X (Twitter) users, digital artists, and collectors. Whether you're reconstructing a multi-part panorama or preparing a creative grid reveal, X-Puzzle-Kit ensures your content looks exactly as intended on the X timeline.\n\n🌐 CROSS-PLATFORM SUPPORT:\nIn addition to this Chrome extension, we provide a full-featured Web version (https://x-puzzle-kit.pages.dev/) for seamless use on mobile devices, tablets, and other browsers.\n\n✨ CORE CAPABILITIES:\n\n🧵 Intelligent Image Stitching\nSeamlessly merge separate Tweet images back into their original panorama or long-form format.\n- Smart Layouts: Full support for Vertical, Horizontal, 2x2 Grid, and the signature T-Shape layouts.\n- Pixel-Perfect Alignment: Advanced coordinate calculation eliminates 1px seams and blurry artifacts.\n- Native Integration: Stitch images directly from your X timeline with a single click—no manual saving required.\n- Lossless Export: Preserves every pixel in its original resolution. No compression, no quality loss.\n\n✂️ Creative Grid Splitter (Mosaic Maker)\nBreak down any large image into standardized grids (2x2, 3x3, or custom) optimized for the X multi-image display.\n- Twitter \"Seamless Flow\" Optimization: Optimized for Twitter's preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline by perfectly matching X's preview ratios.\n- Right-click & Split: Instantly send any web image to the splitter directly from your browser's context menu.\n- Unified Storytelling: Create consistent, engaging \"reveal\" effects for your feed.\n\n🚀 POWER FEATURES:\n- Smooth Workflow: Move from timeline to canvas in seconds with deep browser integration.\n- Professional Customization: Fine-tune global/local gaps, toggle Dark Mode, and choose custom background colors (including transparency).\n- Easy Import: Support for file uploads and clipboard pasting alongside native X integration.\n- Batch Export: Save your creations as high-quality PNG, JPG, or WebP files, or a single organized ZIP package.\n\n🔒 COMMITTED TO PRIVACY\nYour images never leave your browser. All processing is done locally on your machine—no remote uploads, no tracking, and total security.\n\nEnhance your X storytelling with X-Puzzle-Kit today.",
+    "message": "X-Puzzle-Kit is a professional image stitcher and grid splitter designed specifically for X (Twitter) users, digital artists, and collectors. Whether you「re reconstructing a multi-part panorama or preparing a creative grid reveal, X-Puzzle-Kit ensures your content looks exactly as intended on the X timeline.\n\n🌐 CROSS-PLATFORM SUPPORT:\nIn addition to this Chrome extension, we provide a full-featured Web version (https://x-puzzle-kit.pages.dev/) for seamless use on mobile devices, tablets, and other browsers.\n\n✨ CORE CAPABILITIES:\n\n🧵 Intelligent Image Stitching\nSeamlessly merge separate Tweet images back into their original panorama or long-form format.\n- Smart Layouts: Full support for Vertical, Horizontal, 2x2 Grid, and the signature T-Shape layouts.\n- Pixel-Perfect Alignment: Advanced coordinate calculation eliminates 1px seams and blurry artifacts.\n- Native Integration: Stitch images directly from your X timeline with a single click—no manual saving required.\n- Lossless Export: Preserves every pixel in its original resolution. No compression, no quality loss.\n\n✂️ Creative Grid Splitter (Mosaic Maker)\nBreak down any large image into standardized grids (2x2, 3x3, or custom) optimized for the X multi-image display.\n- Twitter \"Seamless Flow\" Optimization: Optimized for Twitter」s preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline by perfectly matching X「s preview ratios.\n- Right-click & Split: Instantly send any web image to the splitter directly from your browser」s context menu.\n- Unified Storytelling: Create consistent, engaging \"reveal\" effects for your feed.\n\n🚀 POWER FEATURES:\n- Smooth Workflow: Move from timeline to canvas in seconds with deep browser integration.\n- Professional Customization: Fine-tune global/local gaps, toggle Dark Mode, and choose custom background colors (including transparency).\n- Easy Import: Support for file uploads and clipboard pasting alongside native X integration.\n- Batch Export: Save your creations as high-quality PNG, JPG, or WebP files, or a single organized ZIP package.\n\n🔒 COMMITTED TO PRIVACY\nYour images never leave your browser. All processing is done locally on your machine—no remote uploads, no tracking, and total security.\n\nEnhance your X storytelling with X-Puzzle-Kit today.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
@@ -304,15 +304,15 @@
     "description": "iOS install prompt title"
   },
   "installDesc": {
-    "message": "Tap the Share button below, then select 'Add to Home Screen'.",
+    "message": "Tap the Share button below, then select 「Add to Home Screen」.",
     "description": "iOS install prompt description"
   },
   "installDescChrome": {
-    "message": "Tap the Share button top-right, then select 'Add to Home Screen'.",
+    "message": "Tap the Share button top-right, then select 「Add to Home Screen」.",
     "description": "iOS Chrome install prompt description"
   },
   "installDescAndroid": {
-    "message": "Tap the browser menu (top or bottom right), then select 'Install app' or 'Add to Home Screen'.",
+    "message": "Tap the browser menu (top or bottom right), then select 「Install app」 or 「Add to Home Screen」.",
     "description": "Android install prompt description"
   },
   "pwaInstallBtn": {
@@ -482,7 +482,7 @@
     "description": "Format help"
   },
   "twitterOptimizeHelp": {
-    "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 'One Image' look in users' feeds.",
+    "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 「One Image」 look in users' feeds.",
     "description": "Twitter optimization help"
   },
   "userGuideButton": {
@@ -502,7 +502,7 @@
     "description": "Tutorial step 2 title"
   },
   "tutorialLayoutDesc": {
-    "message": "Pick a layout for your images. 'Grid' is recommended for X (Twitter) posts.",
+    "message": "Pick a layout for your images. 「Grid」 is recommended for X (Twitter) posts.",
     "description": "Tutorial step 2 description"
   },
   "tutorialControlTitle": {
@@ -530,7 +530,7 @@
     "description": "Next button"
   },
   "localGapHelp": {
-    "message": "Tap numbers or scroll below images to adjust gaps between specific slices. Perfect for segmenting stories or hiding 'Easter eggs'.",
+    "message": "Tap numbers or scroll below images to adjust gaps between specific slices. Perfect for segmenting stories or hiding 「Easter eggs」.",
     "description": "Local gap help description"
   },
   "userGuideTitle": {
@@ -554,7 +554,7 @@
     "description": "Manual tab 3"
   },
   "guideiOSInstall": {
-    "message": "1. Enhanced Integration\nForget manual copying. Tap the button below to add 'X-Puzzle-Kit' to your Shortcuts library.\n2. Quick Import\nTap this Shortcut in the X (Twitter) share menu to automatically extract links and jump seamlessly.",
+    "message": "1. Enhanced Integration\nForget manual copying. Tap the button below to add 「X-Puzzle-Kit」 to your Shortcuts library.\n2. Quick Import\nTap this Shortcut in the X (Twitter) share menu to automatically extract links and jump seamlessly.",
     "description": "iOS Install Guide"
   },
   "installShortcutBtn": {
@@ -566,7 +566,7 @@
     "description": "iOS Shortcut installation tip"
   },
   "guideAndroidInstall": {
-    "message": "1. Install PWA (Progressive Web App)\nTap 'Install App' in browser menu. No bulky store download required.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 'X-Puzzle-Kit' to import.",
+    "message": "1. Install PWA (Progressive Web App)\nTap 「Install App」 in browser menu. No bulky store download required.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 「X-Puzzle-Kit」 to import.",
     "description": "Android installation guide"
   },
   "viewAndroidTutorial": {
@@ -578,7 +578,7 @@
     "description": "Extension stitch feature guide"
   },
   "guideExtensionSplit": {
-    "message": "Right-click any image on the web and select 'X-Puzzle-Kit: Split Image' to start processing immediately without downloading.",
+    "message": "Right-click any image on the web and select 「X-Puzzle-Kit: Split Image」 to start processing immediately without downloading.",
     "description": "Extension split feature guide"
   },
   "guideFlowOptimization": {
@@ -606,7 +606,7 @@
     "description": "PWA benefit list content"
   },
   "guideNativeInstall": {
-    "message": "Install the PWA to see 'X-Puzzle-Kit' in your X (Twitter) share menu for one-click importing.",
+    "message": "Install the PWA to see 「X-Puzzle-Kit」 in your X (Twitter) share menu for one-click importing.",
     "description": "Native install recommendation"
   },
   "pwaWhatIs": {
@@ -632,5 +632,41 @@
   "troubleshootingIncognito": {
     "message": "Private/Incognito browsing mode prevents PWA installation. Please use normal browsing mode and try again.",
     "description": "Warning about incognito mode"
+  },
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "语言名称: 简体中文"
+  },
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "语言名称: 繁体中文"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "语言名称: 英语"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "语言名称: 日语"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "语言名称: 韩语"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "语言名称: 西班牙语"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "语言名称: 法语"
+  },
+  "openDebugPanel": {
+    "message": "Open Debug Panel",
+    "description": "调试用菜单文本"
+  },
+  "simulator": {
+    "message": "Simulator",
+    "description": "调试用模拟器文本"
   }
 }

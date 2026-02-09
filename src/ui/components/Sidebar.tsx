@@ -1167,13 +1167,13 @@ export function Sidebar({
                     onChange={setLang}
                     options={[
                       { value: "auto", label: t("auto") },
-                      { value: "zh_CN", label: "简体中文" },
-                      { value: "zh_TW", label: "繁體中文" },
-                      { value: "en", label: "English" },
-                      { value: "ja", label: "日本語" },
-                      { value: "ko", label: "한국어" },
-                      { value: "es", label: "Español" },
-                      { value: "fr", label: "Français" },
+                      { value: "zh_CN", label: t("langZhCN") },
+                      { value: "zh_TW", label: t("langZhTW") },
+                      { value: "en", label: t("langEn") },
+                      { value: "ja", label: t("langJa") },
+                      { value: "ko", label: t("langKo") },
+                      { value: "es", label: t("langEs") },
+                      { value: "fr", label: t("langFr") },
                     ]}
                     style={{ width: "90px" }}
                     direction="top"

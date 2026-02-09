@@ -1,5 +1,6 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
+import { t } from "../../core/i18n";
 import { getPlatformEnv, setMockEnv, PlatformEnv } from "../../core/platform";
 import {
   Settings,
@@ -48,7 +49,7 @@ export const DebugPanel = () => {
           cursor: "pointer",
           backdropFilter: "blur(8px)",
         }}
-        title="打开调试面板"
+        title={t("openDebugPanel")}
       >
         <Settings size={20} />
       </button>
@@ -87,7 +88,7 @@ export const DebugPanel = () => {
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <Settings size={18} color="#007AFF" />
           <span style={{ fontWeight: "600", fontSize: "15px" }}>
-            环境调试工具
+            Debug Tools
           </span>
         </div>
         <button

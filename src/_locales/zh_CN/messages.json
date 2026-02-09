@@ -112,7 +112,7 @@
     "description": "图片排序副标题"
   },
   "localGapHelp": {
-    "message": "点击图片下方的数字或操作拨轮，可以单独调整某两张切片之间的间距。适合用于分隔不同剧情或埋藏“彩蛋”。",
+    "message": "点击图片下方的数字或操作拨轮，可以单独调整某两张切片之间的间距。适合用于分隔不同剧情或埋藏「彩蛋」。",
     "description": "局部间距帮助说明"
   },
   "imageLabel": {
@@ -328,15 +328,15 @@
     "description": "iOS安装提示标题"
   },
   "installDesc": {
-    "message": "轻点下方分享按钮，然后选择‘添加到主屏幕’。",
+    "message": "轻点下方分享按钮，然后选择「添加到主屏幕」。",
     "description": "iOS安装提示说明"
   },
   "installDescChrome": {
-    "message": "轻点右上角分享按钮，然后选择‘添加到主屏幕’。",
+    "message": "轻点右上角分享按钮，然后选择「添加到主屏幕」。",
     "description": "iOS Chrome安装提示说明"
   },
   "installDescAndroid": {
-    "message": "轻点浏览器菜单（右上角 or 右下角），然后选择‘安装应用’或‘添加到主屏幕’。",
+    "message": "轻点浏览器菜单（右上角 or 右下角），然后选择「安装应用」或「添加到主屏幕」。",
     "description": "Android 安装提示说明"
   },
   "pwaInstallBtn": {
@@ -510,7 +510,7 @@
     "description": "教程步骤标题2"
   },
   "tutorialLayoutDesc": {
-    "message": "根据需要选择拼接布局。如果是推特展示，推荐使用‘田字格’。",
+    "message": "根据需要选择拼接布局。如果是推特展示，推荐使用「田字格」。",
     "description": "教程步骤描述2"
   },
   "tutorialControlTitle": {
@@ -566,7 +566,7 @@
     "description": "iOS快捷指令安装提示"
   },
   "guideAndroidInstall": {
-    "message": "1. 安装 PWA (渐进式应用)\n在浏览器菜单中点击“安装应用”或“添加到主屏幕”，无需应用商店即可解锁分享集成。\n2. 原生分享\n安装后，直接在 X (Twitter) 点击分享，在应用列表中选择「X-Puzzle-Kit」一键导入。",
+    "message": "1. 安装 PWA (渐进式应用)\n在浏览器菜单中点击「安装应用」或「添加到主屏幕」，无需应用商店即可解锁分享集成。\n2. 原生分享\n安装后，直接在 X (Twitter) 点击分享，在应用列表中选择「X-Puzzle-Kit」一键导入。",
     "description": "Android安装说明"
   },
   "viewAndroidTutorial": {
@@ -606,11 +606,11 @@
     "description": "PWA 优势列表内容"
   },
   "guideNativeInstall": {
-    "message": "点击下方的“立即安装”按钮完成 PWA 安装，即可在 X (Twitter) 分享菜单中一键导入拼图。",
+    "message": "点击下方的「立即安装」按钮完成 PWA 安装，即可在 X (Twitter) 分享菜单中一键导入拼图。",
     "description": "原生安装建议"
   },
   "pwaWhatIs": {
-    "message": "PWA (Progressive Web App) 并非传统 App。它无需下载、不占空间，本质上是‘带有 App 功能的网页’。如果您不想给手机增加额外负担，PWA 是最轻盈的捷径选择。",
+    "message": "PWA (Progressive Web App) 并非传统 App。它无需下载、不占空间，本质上是「带有 App 功能的网页」。如果您不想给手机增加额外负担，PWA 是最轻盈的捷径选择。",
     "description": "PWA 科普解释文案"
   },
   "guideTechnicalTitle": {
@@ -632,5 +632,41 @@
   "troubleshootingIncognito": {
     "message": "无痕/隐私浏览模式会阻止 PWA 安装。请切换到正常浏览模式后重试。",
     "description": "无痕模式警告"
+  },
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "语言名称: 简体中文"
+  },
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "语言名称: 繁体中文"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "语言名称: 英语"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "语言名称: 日语"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "语言名称: 韩语"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "语言名称: 西班牙语"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "语言名称: 法语"
+  },
+  "openDebugPanel": {
+    "message": "打开调试面板",
+    "description": "调试用菜单文本"
+  },
+  "simulator": {
+    "message": "模拟器",
+    "description": "调试用模拟器文本"
   }
 }

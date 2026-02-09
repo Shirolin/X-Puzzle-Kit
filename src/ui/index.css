@@ -4272,10 +4272,6 @@ button:active {
   font-size: 0.8rem;
 }
 
-.pwa-zap-icon {
-  color: var(--color-primary);
-}
-
 .feature-highlight {
   border-left: 4px solid var(--color-primary);
 }

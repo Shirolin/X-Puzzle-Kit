@@ -632,5 +632,41 @@
   "guideLocalGapTitle": {
     "message": "精準控制切片間距",
     "description": "手冊卡片標題3"
+  },
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "语言名称: 简体中文"
+  },
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "语言名称: 繁体中文"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "语言名称: 英语"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "语言名称: 日语"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "语言名称: 韩语"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "语言名称: 西班牙语"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "语言名称: 法语"
+  },
+  "openDebugPanel": {
+    "message": "打開偵錯面板",
+    "description": "调试用菜单文本"
+  },
+  "simulator": {
+    "message": "模擬器",
+    "description": "调试用模拟器文本"
   }
 }

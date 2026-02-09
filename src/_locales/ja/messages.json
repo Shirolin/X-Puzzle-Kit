@@ -633,12 +633,40 @@
     "message": "スライス間隔を精密にコントロール",
     "description": "マニュアルカードタイトル3"
   },
-  "guideNativeInstall": {
-    "message": "下の「PWAをインストール」ボタンをクリックして完了すると、X (Twitter) の共有メニューに本ツールが表示され、一键インポートが可能になります。",
-    "description": "Native install recommendation"
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "语言名称: 简体中文"
   },
-  "pwaWhatIs": {
-    "message": "PWA (Progressive Web App) は、従来のアプリとは異なります。ストアからのダウンロードが不要で、ディスク容量もほとんど消費しません。本質的には「アプリの機能を持ったウェブページ」であり、スマホの負担を増やしたくない方に最適な、最も軽快な選択肢です。",
-    "description": "PWA explanation"
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "语言名称: 繁体中文"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "语言名称: 英语"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "语言名称: 日语"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "语言名称: 韩语"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "语言名称: 西班牙语"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "语言名称: 法语"
+  },
+  "openDebugPanel": {
+    "message": "デバッグパネルを開く",
+    "description": "调试用菜单文本"
+  },
+  "simulator": {
+    "message": "シミュレーター",
+    "description": "调试用模拟器文本"
   }
 }

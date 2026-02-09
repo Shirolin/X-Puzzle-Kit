@@ -8,7 +8,7 @@
     "description": "Description de l'extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s'affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d'Images\nFusionnez sans couture des images séparées d'un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d'un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d'origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n'importe quelle image en grilles standardisées (2x2, 3x3 ou personnalisées) optimisées pour l'affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l'aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n'importe quelle image vers l'outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l'attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l'import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
+    "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s「affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d」Images\nFusionnez sans couture des images séparées d「un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d」un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d「origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n」importe quelle image en grilles standardisées (2x2, 3x3 ou personnalisées) optimisées pour l「affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l」aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n「importe quelle image vers l」outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l「attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l」import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
     "description": "Description détaillée pour le store"
   },
   "previewTitle": {
@@ -148,19 +148,19 @@
     "description": "Message affiché lorsque la liste d'images est vide"
   },
   "installTitle": {
-    "message": "Sur l'écran d'accueil",
+    "message": "Sur l「écran d」accueil",
     "description": "Titre de l'invite d'installation iOS"
   },
   "installDesc": {
-    "message": "Touchez le bouton Partager en bas, puis 'Sur l'écran d'accueil'.",
+    "message": "Touchez le bouton Partager en bas, puis 「Sur l「écran d」accueil」.",
     "description": "Description de l'invite d'installation iOS"
   },
   "installDescChrome": {
-    "message": "Touchez le bouton Partager en haut à droite, puis 'Sur l'écran d'accueil'.",
+    "message": "Touchez le bouton Partager en haut à droite, puis 「Sur l「écran d」accueil」.",
     "description": "Description de l'invite d'installation iOS Chrome"
   },
   "installDescAndroid": {
-    "message": "Appuyez sur le menu du navigateur (en haut ou en bas à droite), puis sélectionnez 'Installer l'application' ou 'Ajouter à l'écran d'accueil'.",
+    "message": "Appuyez sur le menu du navigateur (en haut ou en bas à droite), puis sélectionnez 「Installer l「application」 ou 「Ajouter à l」écran d'accueil」.",
     "description": "Android description d'installation"
   },
   "pwaInstallBtn": {
@@ -168,7 +168,7 @@
     "description": "Bouton d'installation PWA native"
   },
   "pwaInstallDescNative": {
-    "message": "Installez l'application sur votre écran d'accueil pour une meilleure expérience.",
+    "message": "Installez l「application sur votre écran d」accueil pour une meilleure expérience.",
     "description": "Description d'installation PWA native"
   },
   "pwaBenefitTitle": {
@@ -176,11 +176,11 @@
     "description": "PWA benefit section title"
   },
   "pwaBenefitList": {
-    "message": "• Expérience immersive : Pas de barre d'adresse, focus plein écran.\n• Lancement instantané : Ouvrez directement depuis l'écran d'accueil sans attendre.\n• Intégration système : Correction des problèmes d'affichage sur iOS et meilleur support du menu de partage.",
+    "message": "• Expérience immersive : Pas de barre d「adresse, focus plein écran.\n• Lancement instantané : Ouvrez directement depuis l」écran d「accueil sans attendre.\n• Intégration système : Correction des problèmes d」affichage sur iOS et meilleur support du menu de partage.",
     "description": "PWA benefit list content"
   },
   "guideNativeInstall": {
-    "message": "Utilisez de préférence le bouton 'Installer' ci-dessous pour une expérience native en un clic si disponible.",
+    "message": "Installez la PWA pour voir 「X-Puzzle-Kit」 dans votre menu de partage X (Twitter) pour une importation en un clic.",
     "description": "Native install recommendation"
   },
   "guideTechnicalTitle": {
@@ -288,7 +288,7 @@
     "description": "Titre de l'avertissement WebP sur iOS"
   },
   "iosWebpWarning": {
-    "message": "L'enregistrement d'images WebP dans l'application Photos sur iOS peut poser des problèmes de compatibilité (certaines applications peuvent ne pas les afficher correctement). Le PNG est recommandé. Voulez-vous toujours passer au WebP ?",
+    "message": "L「enregistrement d」images WebP dans l'application Photos sur iOS peut poser des problèmes de compatibilité (certaines applications peuvent ne pas les afficher correctement). Le PNG est recommandé. Voulez-vous toujours passer au WebP ?",
     "description": "Avertissement de compatibilité WebP sur iOS"
   },
   "zipLabel": {
@@ -514,7 +514,7 @@
     "description": "Aide de format"
   },
   "twitterOptimizeHelp": {
-    "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 'Image Unique' sans couture dans le fil des utilisateurs.",
+    "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 「Image Unique」 sans couture dans le fil des utilisateurs.",
     "description": "Aide de l'optimisation Twitter"
   },
   "userGuideButton": {
@@ -534,7 +534,7 @@
     "description": "Titre de l'étape 2 du tutoriel"
   },
   "tutorialLayoutDesc": {
-    "message": "Choisissez une disposition pour vos images. 'Grille' est recommandé pour les posts Twitter/X.",
+    "message": "Choisissez une disposition pour vos images. 「Grille」 est recommandé pour les posts Twitter/X.",
     "description": "Description de l'étape 2 du tutoriel"
   },
   "tutorialControlTitle": {
@@ -562,7 +562,7 @@
     "description": "Bouton suivant"
   },
   "localGapHelp": {
-    "message": "Cliquez sur le numéro sous l'image ou utilisez la molette pour ajuster individuellement l'espace entre cette image et la suivante.",
+    "message": "Cliquez sur le numéro sous l「image ou utilisez la molette pour ajuster individuellement l」espace entre cette image et la suivante.",
     "description": "Description d'aide pour l'espace local"
   },
   "userGuideTitle": {
@@ -586,7 +586,7 @@
     "description": "Onglet de manuel 3"
   },
   "guideiOSInstall": {
-    "message": "1. Améliorez votre expérience\nOubliez la copie manuelle. Appuyez sur le bouton ci-dessous pour ajouter 'X-Puzzle-Kit' à vos raccourcis.\n2. Démarrage instantané\nAppuyez sur ce raccourci dans le menu de partage X (Twitter) pour extraire les liens et naviguer de manière fluide.",
+    "message": "1. Améliorez votre expérience\nOubliez la copie manuelle. Appuyez sur le bouton ci-dessous pour ajouter 「X-Puzzle-Kit」 à vos raccourcis.\n2. Démarrage instantané\nAppuyez sur ce raccourci dans le menu de partage X (Twitter) pour extraire les liens et naviguer de manière fluide.",
     "description": "Guide d'installation pour iOS"
   },
   "installShortcutBtn": {
@@ -598,7 +598,7 @@
     "description": "Conseil d'installation du raccourci iOS"
   },
   "guideAndroidInstall": {
-    "message": "1. Installer la PWA (application web progressive)\nAppuyez sur 'Installer l'application' dans le menu du navigateur pour débloquer l'intégration du partage sans passer par un store.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 'X-Puzzle-Kit' pour importer.",
+    "message": "1. Installer la PWA (application web progressive)\nAppuyez sur 「Installer l」application「 dans le menu du navigateur pour débloquer l」intégration du partage sans passer par un store.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 「X-Puzzle-Kit」 pour importer.",
     "description": "Guide d'installation pour Android"
   },
   "viewAndroidTutorial": {
@@ -610,11 +610,11 @@
     "description": "Guide de la fonction d'assemblage de l'extension"
   },
   "guideExtensionSplit": {
-    "message": "Faites un clic droit sur n'importe quelle image et sélectionnez 'X-Puzzle-Kit: Diviser l'image' pour lancer le traitement sans téléchargement.",
+    "message": "Faites un clic droit sur n「importe quelle image et sélectionnez 」X-Puzzle-Kit: Diviser l「image」 pour lancer le traitement sans téléchargement.",
     "description": "Guide de la fonction de division de l'extension"
   },
   "guideFlowOptimization": {
-    "message": "Une fois activé, l'outil ajuste les ratios pour l'algorithme X (Twitter), garantissant un rendu sans couture dans le fil d'actualité.",
+    "message": "Une fois activé, l「outil ajuste les ratios pour l」algorithme X (Twitter), garantissant un rendu sans couture dans le fil d'actualité.",
     "description": "Guide de la fonction d'optimisation"
   },
   "guideExtensionTitle": {
@@ -629,12 +629,44 @@
     "message": "Contrôle précis des espaces entre coupes",
     "description": "Titre de la carte de manuel 3"
   },
-  "guideNativeInstall": {
-    "message": "Installez la PWA pour voir 'X-Puzzle-Kit' dans votre menu de partage X (Twitter) pour une importation en un clic.",
-    "description": "Native install recommendation"
-  },
   "pwaWhatIs": {
-    "message": "Une PWA (application web progressive) n'est pas une application traditionnelle. Elle ne nécessite aucun téléchargement sur store et consomme zéro espace disque. C'est essentiellement une 'page web avec des superpouvoirs d'application'. Si vous hésitez à installer des applications lourdes, la PWA est la solution légère idéale.",
+    "message": "Une PWA (application web progressive) n「est pas une application traditionnelle. Elle ne nécessite aucun téléchargement sur store et consomme zéro espace disque. C」est essentiellement une 「page web avec des superpouvoirs d'application」. Si vous hésitez à installer des applications lourdes, la PWA est la solution légère idéale.",
     "description": "PWA explanation"
+  },
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "语言名称: 简体中文"
+  },
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "语言名称: 繁体中文"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "语言名称: 英语"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "语言名称: 日语"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "语言名称: 韩语"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "语言名称: 西班牙语"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "语言名称: 法语"
+  },
+  "openDebugPanel": {
+    "message": "Ouvrir le panneau de débogage",
+    "description": "调试用菜单文本"
+  },
+  "simulator": {
+    "message": "Simulateur",
+    "description": "调试用模拟器文本"
   }
 }
