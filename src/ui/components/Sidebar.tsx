@@ -252,6 +252,7 @@ interface SidebarProps {
   onImportFromUrl?: () => void;
   onShowWebpWarning?: (onConfirm: () => void) => void;
   onShowGuide?: () => void;
+  triggerPWAInstall: () => void;
 }
 
 export function Sidebar({
@@ -291,6 +292,7 @@ export function Sidebar({
   onImportFromUrl,
   onShowWebpWarning,
   onShowGuide,
+  triggerPWAInstall,
 }: SidebarProps) {
   const [isGapOpen, setIsGapOpen] = useState(
     globalGap !== 0 || images.some((img) => img.localGap && img.localGap !== 0),
@@ -1424,6 +1426,10 @@ export function Sidebar({
                     );
                   });
                 }
+                // 拆分下载成功后，延迟 5 秒触发 PWA 安装提示
+                setTimeout(() => {
+                  triggerPWAInstall();
+                }, 5000);
               }}
               className="btn btn-primary"
               style={{

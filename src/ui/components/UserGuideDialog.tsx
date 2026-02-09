@@ -19,7 +19,8 @@ interface UserGuideDialogProps {
   isOpen: boolean;
   onClose: () => void;
   container?: HTMLElement | null;
-  canNativeInstall?: boolean; // 新增属性，判断是否显示“立即安装”按钮
+  canNativeInstall?: boolean;
+  onNativeInstall?: () => void;
 }
 
 const StitchIcon = () => (
@@ -76,6 +77,7 @@ export function UserGuideDialog({
   onClose,
   container,
   canNativeInstall = false,
+  onNativeInstall,
 }: UserGuideDialogProps) {
   const [activeTab, setActiveTab] = useState<"pwa" | "extension" | "flow">(
     __IS_EXTENSION__ ? "extension" : "pwa",
@@ -129,6 +131,18 @@ export function UserGuideDialog({
           {t("guideAndroidInstall")}
         </p>
         {canNativeInstall && (
+          <div style={{ marginTop: "12px" }}>
+            <button
+              onClick={onNativeInstall}
+              className="btn btn-primary flex-row-center gap-xs"
+              style={{ width: "fit-content", padding: "8px 16px" }}
+            >
+              <Download size={16} />
+              <span>{t("pwaInstallBtn")}</span>
+            </button>
+          </div>
+        )}
+        {canNativeInstall && (
           <p
             className="guide-card-text"
             style={{
@@ -136,6 +150,7 @@ export function UserGuideDialog({
               opacity: 0.8,
               borderLeft: "2px solid var(--color-primary)",
               paddingLeft: "8px",
+              marginTop: "8px",
             }}
           >
             {t("guideNativeInstall")}

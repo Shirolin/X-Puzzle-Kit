@@ -565,7 +565,10 @@ export function App({
       a.click();
 
       // 触发展开 PWA 安装提示的逻辑：仅在用户成功拼接并下载后触发，提高转化率并减少干扰
-      triggerPWAInstall();
+      // 增加 5 秒延迟，避免在下载后立即弹出导致用户困扰
+      setTimeout(() => {
+        triggerPWAInstall();
+      }, 5000);
     } finally {
       setIsGenerating(false);
     }
@@ -586,6 +589,19 @@ export function App({
     },
     [images.length, triggerGeneration, setImages],
   ); // 仅在长度变化或函数变化时更新
+
+  const handleAppInstall = useCallback(async () => {
+    if (!deferredPrompt) return;
+    try {
+      await deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === "accepted") {
+        setDeferredPrompt(null);
+      }
+    } catch (err) {
+      console.error("PWA install failed:", err);
+    }
+  }, [deferredPrompt]);
 
   const moveItem = (idx: number, dir: "up" | "down") => {
     const newIdx = dir === "up" ? idx - 1 : idx + 1;
@@ -1282,6 +1298,7 @@ export function App({
                 onConfirm,
               )
             }
+            triggerPWAInstall={triggerPWAInstall}
             removeImage={(id) => {
               showConfirm(
                 t("removeImage"),
@@ -1370,6 +1387,7 @@ export function App({
         onClose={() => setShowUserManual(false)}
         container={mountNode}
         canNativeInstall={!!deferredPrompt}
+        onNativeInstall={handleAppInstall}
       />
     </div>
   );
