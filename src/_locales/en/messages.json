@@ -616,5 +616,9 @@
   "guideTechnicalDesc": {
     "message": "The extension now completely isolates theme styles, ensuring zero interference with the websites you visit.",
     "description": "Technical improvement description"
+  },
+  "statusOfflineAvailable": {
+    "message": "Offline available",
+    "description": "Status text shown when offline"
   }
 }

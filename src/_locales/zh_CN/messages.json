@@ -616,5 +616,9 @@
   "guideTechnicalDesc": {
     "message": "底层技术升级：插件版现在能彻底隔离主题样式，绝不干扰您所访问的网页，使用更加安全放心。",
     "description": "技术改进描述"
+  },
+  "statusOfflineAvailable": {
+    "message": "离线模式可用",
+    "description": "断网时显示的提示文案"
   }
 }

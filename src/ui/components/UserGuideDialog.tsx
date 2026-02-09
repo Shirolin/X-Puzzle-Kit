@@ -91,16 +91,32 @@ export function UserGuideDialog({
   if (!isOpen) return null;
 
   const pwaBenefitCard = (
-    <div className="guide-card" style={{ border: "1px dashed var(--color-primary-soft)", background: "var(--color-primary-transparent)" }}>
-      <div className="guide-card-header" style={{ color: "var(--color-primary)" }}>
+    <div
+      className="guide-card"
+      style={{
+        border: "1px dashed var(--color-primary-soft)",
+        background: "var(--color-primary-transparent)",
+      }}
+    >
+      <div
+        className="guide-card-header"
+        style={{ color: "var(--color-primary)" }}
+      >
         <Smartphone size={18} />
         <span>{t("pwaBenefitTitle")}</span>
       </div>
       <div className="guide-card-content">
-        <p className="guide-card-text" style={{ fontSize: "13px", lineHeight: "1.6" }}>
-          {t("pwaBenefitList").split("\n").map((line, i) => (
-            <span key={i} style={{ display: "block", marginBottom: "4px" }}>{line}</span>
-          ))}
+        <p
+          className="guide-card-text"
+          style={{ fontSize: "13px", lineHeight: "1.6" }}
+        >
+          {t("pwaBenefitList")
+            .split("\n")
+            .map((line, i) => (
+              <span key={i} style={{ display: "block", marginBottom: "4px" }}>
+                {line}
+              </span>
+            ))}
         </p>
       </div>
     </div>
@@ -138,8 +154,18 @@ export function UserGuideDialog({
         <span>Android</span>
       </div>
       <div className="guide-card-content">
-        <p className="guide-card-text" style={{ marginBottom: "8px" }}>{t("guideAndroidInstall")}</p>
-        <p className="guide-card-text" style={{ fontSize: "12px", opacity: 0.8, borderLeft: "2px solid var(--color-primary)", paddingLeft: "8px" }}>
+        <p className="guide-card-text" style={{ marginBottom: "8px" }}>
+          {t("guideAndroidInstall")}
+        </p>
+        <p
+          className="guide-card-text"
+          style={{
+            fontSize: "12px",
+            opacity: 0.8,
+            borderLeft: "2px solid var(--color-primary)",
+            paddingLeft: "8px",
+          }}
+        >
           {t("guideNativeInstall")}
         </p>
       </div>

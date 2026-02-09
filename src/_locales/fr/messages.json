@@ -191,6 +191,10 @@
     "message": "Mise à niveau technique : La version extension isole désormais complètement les styles de thème, garantissant aucune interférence avec le site web visité.",
     "description": "Technical improvement description"
   },
+  "statusOfflineAvailable": {
+    "message": "Mode hors ligne disponible",
+    "description": "Texte de statut affiché hors ligne"
+  },
   "stitchAndDownload": {
     "message": "Fusionner et télécharger",
     "description": "Texte du bouton de téléchargement final"

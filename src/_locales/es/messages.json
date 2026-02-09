@@ -223,6 +223,10 @@
     "message": "Mejora técnica: La versión de extensión ahora aísla completamente los estilos de tema, asegurando que no haya interferencias con el sitio web que estás visitando.",
     "description": "Technical improvement description"
   },
+  "statusOfflineAvailable": {
+    "message": "Modo offline disponible",
+    "description": "Texto de estado mostrado cuando está offline"
+  },
   "uploadImages": {
     "message": "Subir imágenes",
     "description": "Texto del botón para subir múltiples imágenes"

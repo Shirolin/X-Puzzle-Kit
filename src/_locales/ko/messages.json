@@ -239,6 +239,10 @@
     "message": "기술 업그레이드: 확장 프로그램 버전은 이제 테마 스타일을 완전히 격리하여 방문 중인 웹사이트에 간섭하지 않으므로 더욱 안전합니다.",
     "description": "기술 개선 설명"
   },
+  "statusOfflineAvailable": {
+    "message": "오프라인 모드 사용 가능",
+    "description": "오프라인 시 표시되는 상태 텍스트"
+  },
   "uploadImage": {
     "message": "이미지 업로드",
     "description": "이미지 업로드 버튼 텍스트"

@@ -4,6 +4,7 @@ import {
   ImageNode,
   StitchTask,
   SplitConfig,
+  BeforeInstallPromptEvent,
 } from "../core/types";
 import { stitchImages } from "../core/stitcher";
 import { t, setLanguage, getResolvedLanguage } from "../core/i18n";
@@ -90,6 +91,7 @@ export function App({
     });
   };
 
+  // The useStitchManager hook provides addImages which takes ImageNode[]
   const {
     images,
     setImages,
@@ -118,6 +120,11 @@ export function App({
     initialGap: task.globalGap || 0,
     initialBackgroundColor: "transparent",
   });
+
+  // Smart Trigger for PWA
+  const triggerPWAInstall = useCallback(() => {
+    window.dispatchEvent(new CustomEvent("pwa-smart-trigger"));
+  }, []);
 
   const [loading, setLoading] = useState(() => {
     // If we have share target params, start in loading state
@@ -157,12 +164,29 @@ export function App({
     useState<BackgroundColor>("transparent");
   const [showGuide, setShowGuide] = useState(false);
   const [showUserManual, setShowUserManual] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [deferredPrompt, setDeferredPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
+  const [isOnline, setIsOnline] = useState(
+    typeof navigator !== "undefined" ? navigator.onLine : true,
+  );
 
   useEffect(() => {
-    const handleBeforeInstallPrompt = (e: Event) => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (
+      e: any /* eslint-disable-line @typescript-eslint/no-explicit-any */,
+    ) => {
       e.preventDefault();
-      setDeferredPrompt(e);
+      setDeferredPrompt(e as BeforeInstallPromptEvent);
     };
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     return () =>
@@ -509,6 +533,7 @@ export function App({
           }),
         );
         addImages(newNodes);
+        triggerPWAInstall();
       } catch (e) {
         console.error(e);
       } finally {
@@ -518,7 +543,8 @@ export function App({
     [images.length, addImages],
   );
 
-  const handleStitch = async () => {
+  const handleStitchAndDownload = async () => {
+    triggerPWAInstall();
     setIsGenerating(true);
     try {
       const visibleImages = images.filter((img) => img.visible !== false);
@@ -824,6 +850,7 @@ export function App({
 
         // 5. Add to Stitcher
         addImages(newNodes);
+        triggerPWAInstall();
       } catch (e: unknown) {
         console.error("Twitter share handling failed:", e);
         const errorStr = e instanceof Error ? e.message : String(e);
@@ -919,6 +946,26 @@ export function App({
             />
             <div className="app-brand-stack">
               <span className="appName-text">X-Puzzle-Kit</span>
+              {!isOnline && (
+                <div
+                  className="offline-badge animate-fade-in"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "4px",
+                    padding: "2px 8px",
+                    background: "rgba(239, 68, 68, 0.1)",
+                    color: "#ef4444",
+                    borderRadius: "100px",
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    marginLeft: "4px",
+                  }}
+                >
+                  <Zap size={10} fill="currentColor" />
+                  <span>{t("statusOfflineAvailable")}</span>
+                </div>
+              )}
               {(() => {
                 const appName = t("appName");
                 const separator = appName.includes(":")
@@ -1225,7 +1272,7 @@ export function App({
               setLang(l);
             }}
             hasSplitSource={!!splitSourceBitmap}
-            handleStitch={handleStitch}
+            handleStitch={handleStitchAndDownload}
             loading={loading}
             isGenerating={isGenerating}
             onShowWebpWarning={(onConfirm) =>
@@ -1280,7 +1327,7 @@ export function App({
       </>
 
       <PWAInstallPrompt
-        deferredPrompt={deferredPrompt}
+        deferredPrompt={deferredPrompt || undefined}
         onInstall={() => setDeferredPrompt(null)}
       />
       {isPopup && <div className="app-popup-spacer" />}

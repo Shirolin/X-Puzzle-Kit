@@ -71,6 +71,10 @@
     "message": "底層技術升級：插件版現在能徹底隔離主題樣式，絕不干擾您所訪問的網頁，使用更加安全放心。",
     "description": "技術改進描述"
   },
+  "statusOfflineAvailable": {
+    "message": "離線模式可用",
+    "description": "斷網時顯示的提示文案"
+  },
   "removeImage": {
     "message": "移除圖片",
     "description": "移除圖片工具提示"

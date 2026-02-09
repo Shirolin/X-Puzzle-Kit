@@ -223,6 +223,10 @@
     "message": "技術アップデート：拡張機能版はテーマスタイルを完全に隔離し、アクセスしているウェブサイトに干渉しないようにしました。",
     "description": "技術改进描述"
   },
+  "statusOfflineAvailable": {
+    "message": "オフラインモード使用可能",
+    "description": "オフライン時に表示されるステータス"
+  },
   "uploadImages": {
     "message": "画像をアップロード",
     "description": "多画画像のアップロードボタンのテキスト"
