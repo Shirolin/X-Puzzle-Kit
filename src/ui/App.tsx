@@ -1369,6 +1369,7 @@ export function App({
         isOpen={showUserManual}
         onClose={() => setShowUserManual(false)}
         container={mountNode}
+        canNativeInstall={!!deferredPrompt}
       />
     </div>
   );
