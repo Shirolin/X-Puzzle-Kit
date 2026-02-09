@@ -533,7 +533,6 @@ export function App({
           }),
         );
         addImages(newNodes);
-        triggerPWAInstall();
       } catch (e) {
         console.error(e);
       } finally {
@@ -544,7 +543,6 @@ export function App({
   );
 
   const handleStitchAndDownload = async () => {
-    triggerPWAInstall();
     setIsGenerating(true);
     try {
       const visibleImages = images.filter((img) => img.visible !== false);
@@ -565,6 +563,9 @@ export function App({
       a.download = `${task.pageTitle.replace(/[\\/:*?"<>|]/g, "_")}_${new Date().getTime()}.${outputFormat}`;
       a.href = url;
       a.click();
+
+      // 触发展开 PWA 安装提示的逻辑：仅在用户成功拼接并下载后触发，提高转化率并减少干扰
+      triggerPWAInstall();
     } finally {
       setIsGenerating(false);
     }
@@ -850,7 +851,6 @@ export function App({
 
         // 5. Add to Stitcher
         addImages(newNodes);
-        triggerPWAInstall();
       } catch (e: unknown) {
         console.error("Twitter share handling failed:", e);
         const errorStr = e instanceof Error ? e.message : String(e);

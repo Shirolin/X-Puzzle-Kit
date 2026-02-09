@@ -28,30 +28,35 @@ export function PWAInstallPrompt({
 
     setPlatform(env.isIOS ? "ios" : "android");
 
-    // Check dismissal history
-    const dismissed = localStorage.getItem(
-      APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED,
-    );
-    if (dismissed) {
-      const dismissedTime = parseInt(dismissed, 10);
-      const now = Date.now();
-      const daysSince = (now - dismissedTime) / (1000 * 60 * 60 * 24);
-      if (daysSince < APP_CONFIG.UI.IOS_PROMPT_COOLDOWN_DAYS) return;
-    }
+    const checkDismissal = () => {
+      const dismissed = localStorage.getItem(
+        APP_CONFIG.STORAGE.IOS_PROMPT_DISMISSED,
+      );
+      if (dismissed) {
+        const dismissedTime = parseInt(dismissed, 10);
+        const now = Date.now();
+        const daysSince = (now - dismissedTime) / (1000 * 60 * 60 * 24);
+        return daysSince < APP_CONFIG.UI.IOS_PROMPT_COOLDOWN_DAYS;
+      }
+      return false;
+    };
 
-    // Delay show
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, APP_CONFIG.UI.IOS_PROMPT_DELAY_MS);
+    // Initial check is not needed anymore if we rely solely on triggers,
+    // but good to keep if we ever add back auto-show.
+    if (checkDismissal()) return;
 
     // Smart Trigger: Listen for user actions
     const handleSmartTrigger = () => {
+      // 核心修复：即使收到触发事件，也要检查冷却时间，防止频繁弹出
+      if (checkDismissal()) {
+        console.log("PWA install prompt suppressed by cooldown");
+        return;
+      }
       setIsVisible(true);
     };
     window.addEventListener("pwa-smart-trigger", handleSmartTrigger);
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener("pwa-smart-trigger", handleSmartTrigger);
     };
   }, []);
