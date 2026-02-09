@@ -71,9 +71,14 @@ export function updateToasterTheme(theme: "light" | "dark" | "system") {
       richColors
       position="top-center"
       theme={theme}
+      offset="20px"
+      gap={12}
       toastOptions={{
-        className: "x-custom-toast", // 标记类名以便进一步通过CSS选择器控制
-        style: { margin: "8px" },
+        className: "x-custom-toast",
+        style: {
+          margin: "0",
+          maxWidth: "360px",
+        },
       }}
     />,
     toastRoot,
