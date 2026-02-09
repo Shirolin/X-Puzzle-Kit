@@ -668,5 +668,9 @@
   "simulator": {
     "message": "模拟器",
     "description": "调试用模拟器文本"
+  },
+  "viewDemoVideo": {
+    "message": "感受极致分享体验",
+    "description": "Button to see the smooth sharing experience demo"
   }
 }

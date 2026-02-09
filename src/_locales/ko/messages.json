@@ -668,5 +668,9 @@
   "simulator": {
     "message": "시뮬레이터",
     "description": "调试用模拟器文本"
+  },
+  "viewDemoVideo": {
+    "message": "환상적인 공유 체험하기",
+    "description": "Button to see the smooth sharing experience demo"
   }
 }

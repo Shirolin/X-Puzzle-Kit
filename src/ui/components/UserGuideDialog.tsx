@@ -12,6 +12,7 @@ import {
   AlertTriangle,
   HelpCircle,
   Sparkles,
+  Play,
 } from "lucide-preact";
 import { t } from "../../core/i18n";
 import { toast } from "sonner";
@@ -87,7 +88,10 @@ export function UserGuideDialog({
   const [activeTab, setActiveTab] = useState<"pwa" | "extension" | "flow">(
     __IS_EXTENSION__ ? "extension" : "pwa",
   );
-  const [showScreenshot, setShowScreenshot] = useState(false);
+  const [previewMedia, setPreviewMedia] = useState<{
+    src: string;
+    type: "image" | "video";
+  } | null>(null);
   const { isAndroid } = getPlatformEnv();
 
   useEffect(() => {
@@ -119,6 +123,15 @@ export function UserGuideDialog({
             <Download size={16} />
             <span>{t("installShortcutBtn")}</span>
           </a>
+          <button
+            onClick={() =>
+              setPreviewMedia({ src: "assets/ios.gif", type: "video" })
+            }
+            className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
+          >
+            <Play size={14} />
+            <span>{t("viewDemoVideo")}</span>
+          </button>
         </div>
       </div>
     </div>
@@ -161,12 +174,13 @@ export function UserGuideDialog({
                 </span>
               ))}
           </p>
-          {canNativeInstall && (
-            <p className="guide-card-text native-recommendation">
-              {t("guideNativeInstall")}
-            </p>
-          )}
         </div>
+
+        {canNativeInstall && (
+          <p className="guide-card-text native-recommendation">
+            {t("guideNativeInstall")}
+          </p>
+        )}
 
         <div className="guide-card-actions">
           {canNativeInstall && (
@@ -179,11 +193,25 @@ export function UserGuideDialog({
             </button>
           )}
           <button
-            onClick={() => setShowScreenshot(true)}
+            onClick={() =>
+              setPreviewMedia({
+                src: "assets/xpk-pwa-install.webp",
+                type: "image",
+              })
+            }
             className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
           >
             <BookOpen size={14} />
             <span>{t("viewAndroidTutorial") || "查看安装示意图"}</span>
+          </button>
+          <button
+            onClick={() =>
+              setPreviewMedia({ src: "assets/android.gif", type: "video" })
+            }
+            className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
+          >
+            <Play size={14} />
+            <span>{t("viewDemoVideo")}</span>
           </button>
         </div>
       </div>
@@ -313,9 +341,26 @@ export function UserGuideDialog({
                   <BookOpen size={18} />
                   <span>{t("guideExtensionTitle")}</span>
                 </div>
-                <p className="guide-card-text">
-                  {renderTextWithIcons(t("guideExtensionStitch"))}
-                </p>
+                <div className="guide-card-content">
+                  <p className="guide-card-text">
+                    {renderTextWithIcons(t("guideExtensionStitch"))}
+                  </p>
+                  <div className="guide-card-actions">
+                    <button
+                      onClick={() =>
+                        setPreviewMedia({
+                          src: "assets/chrome-ext.gif",
+                          type: "video",
+                        })
+                      }
+                      className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
+                      style={{ marginTop: "12px" }}
+                    >
+                      <Play size={14} />
+                      <span>{t("viewDemoVideo")}</span>
+                    </button>
+                  </div>
+                </div>
               </div>
               <div className="guide-card">
                 <div className="guide-card-header">
@@ -373,26 +418,31 @@ export function UserGuideDialog({
         </div>
       </div>
 
-      {showScreenshot && (
+      {previewMedia && (
         <div
           className="screenshot-preview-overlay animate-fade-in"
           onClick={(e) => {
             e.stopPropagation();
-            setShowScreenshot(false);
+            setPreviewMedia(null);
           }}
         >
           <div
             className="screenshot-container"
             onClick={(e) => e.stopPropagation()}
+            style={{
+              maxWidth:
+                previewMedia.type === "video" ? "800px" : "min(90%, 400px)",
+            }}
           >
             <img
-              src="assets/xpk-pwa-install.webp"
-              alt="PWA Install Guide"
+              src={previewMedia.src}
+              alt="Preview"
               className="screenshot-preview-img"
+              style={{ maxHeight: "80vh", objectFit: "contain" }}
             />
             <button
               className="screenshot-close-btn"
-              onClick={() => setShowScreenshot(false)}
+              onClick={() => setPreviewMedia(null)}
             >
               <X size={20} />
             </button>
