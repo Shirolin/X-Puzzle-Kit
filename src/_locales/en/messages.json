@@ -566,7 +566,7 @@
     "description": "iOS Shortcut installation tip"
   },
   "guideAndroidInstall": {
-    "message": "1. Install as App\nTap 'Install App' or 'Add to Home Screen' in browser menu for a native experience.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 'X-Puzzle-Kit' to import.",
+    "message": "1. Install PWA (Progressive Web App)\nTap 'Install App' in browser menu. No bulky store download required.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 'X-Puzzle-Kit' to import.",
     "description": "Android installation guide"
   },
   "viewAndroidTutorial": {
@@ -602,12 +602,16 @@
     "description": "PWA benefit section title"
   },
   "pwaBenefitList": {
-    "message": "• Immersive Experience: No browser address bar, full-screen focus.\n• Instant Startup: Open directly from home screen with zero delay.\n• System Integration: Fixed viewport issues (no black/white bars) and better share menu support.",
+    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
     "description": "PWA benefit list content"
   },
   "guideNativeInstall": {
-    "message": "Prefer the 'Install' button below for a seamless one-click native experience if available.",
+    "message": "Install the PWA to see 'X-Puzzle-Kit' in your X (Twitter) share menu for one-click importing.",
     "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "PWA (Progressive Web App) is not a traditional app. It requires no store download and consumes zero disk space. If you're hesitant to install bulky apps, PWA is the perfect lightweight solution.",
+    "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
     "message": "Safer Style Isolation",

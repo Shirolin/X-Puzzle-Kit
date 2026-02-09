@@ -10,8 +10,11 @@ import {
   BookOpen,
   Download,
   AlertTriangle,
+  HelpCircle,
+  Zap,
 } from "lucide-preact";
 import { t } from "../../core/i18n";
+import { toast } from "sonner";
 import { APP_CONFIG } from "../../core/config";
 import { getPlatformEnv } from "../../core/platform";
 
@@ -128,20 +131,41 @@ export function UserGuideDialog({
       </div>
       <div className="guide-card-content">
         <p className="guide-card-text" style={{ marginBottom: "8px" }}>
-          {t("guideAndroidInstall")}
+          {t("guideAndroidInstall")
+            .split("PWA")
+            .map((part, i, arr) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <>
+                    <span style={{ fontWeight: "600", color: "var(--color-primary)" }}>
+                      PWA
+                    </span>
+                    <HelpCircle
+                      size={12}
+                      style={{
+                        marginLeft: "2px",
+                        cursor: "pointer",
+                        opacity: 0.6,
+                        verticalAlign: "middle",
+                      }}
+                      onClick={() =>
+                        toast(t("pwaWhatIs"), {
+                          duration: 6000,
+                          icon: (
+                            <Zap
+                              size={16}
+                              style={{ color: "var(--color-primary)" }}
+                            />
+                          ),
+                        })
+                      }
+                    />
+                  </>
+                )}
+              </span>
+            ))}
         </p>
-        {canNativeInstall && (
-          <div style={{ marginTop: "12px" }}>
-            <button
-              onClick={onNativeInstall}
-              className="btn btn-primary flex-row-center gap-xs"
-              style={{ width: "fit-content", padding: "8px 16px" }}
-            >
-              <Download size={16} />
-              <span>{t("pwaInstallBtn")}</span>
-            </button>
-          </div>
-        )}
         {canNativeInstall && (
           <p
             className="guide-card-text"
@@ -155,6 +179,18 @@ export function UserGuideDialog({
           >
             {t("guideNativeInstall")}
           </p>
+        )}
+        {canNativeInstall && (
+          <div style={{ marginTop: "8px" }}>
+            <button
+              onClick={onNativeInstall}
+              className="btn btn-primary flex-row-center gap-xs"
+              style={{ width: "fit-content", padding: "8px 16px" }}
+            >
+              <Download size={16} />
+              <span>{t("pwaInstallBtn")}</span>
+            </button>
+          </div>
         )}
       </div>
       <div style={{ marginTop: "12px" }}>
@@ -171,6 +207,53 @@ export function UserGuideDialog({
           <BookOpen size={14} />
           <span>{t("viewAndroidTutorial") || "查看安装示意图"}</span>
         </button>
+      </div>
+    </div>
+  );
+  
+  const pwaBenefitCard = (
+    <div className="guide-card" style={{ background: "var(--color-surface-soft)" }}>
+      <div className="guide-card-header">
+        <Zap size={18} style={{ color: "var(--color-primary)" }} />
+        <span>{t("pwaBenefitTitle")}</span>
+      </div>
+      <div className="guide-card-content">
+        <p className="guide-card-text" style={{ whiteSpace: "pre-line", fontSize: "12px" }}>
+          {t("pwaBenefitList")
+            .split("PWA")
+            .map((part, i, arr) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <>
+                    <span style={{ fontWeight: "600", color: "var(--color-primary)" }}>
+                      PWA
+                    </span>
+                    <HelpCircle
+                      size={12}
+                      style={{
+                        marginLeft: "2px",
+                        cursor: "pointer",
+                        opacity: 0.6,
+                        verticalAlign: "middle",
+                      }}
+                      onClick={() =>
+                        toast(t("pwaWhatIs"), {
+                          duration: 6000,
+                          icon: (
+                            <Zap
+                              size={16}
+                              style={{ color: "var(--color-primary)" }}
+                            />
+                          ),
+                        })
+                      }
+                    />
+                  </>
+                )}
+              </span>
+            ))}
+        </p>
       </div>
     </div>
   );
@@ -236,6 +319,7 @@ export function UserGuideDialog({
                   {androidCard}
                 </>
               )}
+              {pwaBenefitCard}
               {/* Troubleshooting Card */}
               <div
                 className="guide-card"

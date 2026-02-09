@@ -566,7 +566,7 @@
     "description": "iOS快捷指令安装提示"
   },
   "guideAndroidInstall": {
-    "message": "1. 安装为 App\n在浏览器菜单中点击“安装应用”或“添加到主屏幕”，获得原生 App 体验。\n2. 原生分享\n安装后，直接在 X (Twitter) 点击分享，在应用列表中选择「X-Puzzle-Kit」即可导入。",
+    "message": "1. 安装 PWA (渐进式应用)\n在浏览器菜单中点击“安装应用”或“添加到主屏幕”，无需应用商店即可解锁分享集成。\n2. 原生分享\n安装后，直接在 X (Twitter) 点击分享，在应用列表中选择「X-Puzzle-Kit」一键导入。",
     "description": "Android安装说明"
   },
   "viewAndroidTutorial": {
@@ -602,12 +602,16 @@
     "description": "PWA 优势部分标题"
   },
   "pwaBenefitList": {
-    "message": "• 沉浸式体验：隐藏浏览器地址栏，全屏操作更专注。\n• 极速启动：从桌面图标直达，秒级响应，无需等待浏览器加载。\n• 系统级优化：已修复 iOS 下的各种视口黑边/白边问题，支持原生分享集成。",
+    "message": "• 无缝集成：Android 端支持被系统分享菜单调用，从 X 导入图片快人一步。\n• 全屏视野：隐藏浏览器搜索栏，在大屏幕上更精准地调整切片间距。\n• 视口修复：针对 iOS PWA 环境深度优化，彻底解决底部白边和比例偏移问题。",
     "description": "PWA 优势列表内容"
   },
   "guideNativeInstall": {
-    "message": "推荐点击下方的“立即安装”按钮，一键获得最顺滑的原生 App 体验。",
+    "message": "点击下方的“立即安装”按钮完成 PWA 安装，即可在 X (Twitter) 分享菜单中一键导入拼图。",
     "description": "原生安装建议"
+  },
+  "pwaWhatIs": {
+    "message": "PWA (Progressive Web App) 并非传统 App。它无需下载、不占空间，本质上是‘带有 App 功能的网页’。如果您不想给手机增加额外负担，PWA 是最轻盈的捷径选择。",
+    "description": "PWA 科普解释文案"
   },
   "guideTechnicalTitle": {
     "message": "更安全的样式隔离",

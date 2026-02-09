@@ -598,7 +598,7 @@
     "description": "Consejo de instalación de atajo de iOS"
   },
   "guideAndroidInstall": {
-    "message": "1. Instalar como App\nToca 'Instalar aplicación' o 'Pantalla de inicio' para una experiencia nativa.\n2. Compartir nativo\nUna vez instalada, comparte desde X (Twitter) y selecciona 'X-Puzzle-Kit' para importar directamente.",
+    "message": "1. Instalar PWA (aplicación web progresiva)\nToca 'Instalar aplicación' en el menú del navegador para desbloquear la integración de compartir sin necesidad de tienda.\n2. Compartir nativo\nUna vez instalada, comparte directamente desde X (Twitter) y selecciona 'X-Puzzle-Kit' para importar.",
     "description": "Guía de instalación para Android"
   },
   "viewAndroidTutorial": {
@@ -628,5 +628,13 @@
   "guideLocalGapTitle": {
     "message": "Control preciso de espacios entre cortes",
     "description": "Título de tarjeta de manual 3"
+  },
+  "guideNativeInstall": {
+    "message": "Instala la PWA para ver 'X-Puzzle-Kit' en el menú de compartir de X (Twitter) para importar con un clic.",
+    "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "Una PWA (aplicación web progresiva) no es una aplicación tradicional. No requiere descarga de tienda y consume cero espacio en disco. Es esencialmente una 'página web con superpoderes de aplicación'. Si dudas en instalar aplicaciones pesadas, la PWA es la solución ligera perfecta.",
+    "description": "PWA explanation"
   }
 }

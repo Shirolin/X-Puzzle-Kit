@@ -212,8 +212,12 @@
     "description": "PWA 优势列表内容"
   },
   "guideNativeInstall": {
-    "message": "利用可能な場合は、下の「インストール」ボタンをクリックして、ワンクリックなネイティブ体験をお勧めします。",
-    "description": "原生安装建议"
+    "message": "下の「PWAをインストール」ボタンをクリックして完了すると、X (Twitter) の共有メニューに本ツールが表示され、一键インポートが可能になります。",
+    "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "PWA (Progressive Web App) は、従来のアプリとは異なります。ストアからのダウンロードが不要で、ディスク容量もほとんど消費しません。本質的には「アプリの機能を持ったウェブページ」であり、スマホの負担を増やしたくない方に最適な、最も軽快な選択肢です。",
+    "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
     "message": "より安全なスタイル隔離",
@@ -598,7 +602,7 @@
     "description": "iOS快捷指令安装提示"
   },
   "guideAndroidInstall": {
-    "message": "1. アプリとしてインストール\nブラウザメニューの「アプリをインストール」または「ホーム画面に追加」を選択することで、アプリのように利用できます。\n2. 直接共有\nインストール後は、X (Twitter) で共有ボタンを押し、アプリ一覧から「X-Puzzle-Kit」を選択するだけで画像を取り込めます。",
+    "message": "1. PWA (プログレッシブ ウェブ アプリ) をインストール\nブラウザメニューの「アプリをインストール」または「ホーム画面に追加」を選択することで、アプリストアを介さずにシェア機能を強化できます。\n2. ネイティブ共有\nインストール後は、X (Twitter) で共有ボタンを押し、アプリ一覧から「X-Puzzle-Kit」を選択するだけで一键インポートできます。",
     "description": "Android安装说明"
   },
   "viewAndroidTutorial": {
@@ -628,5 +632,13 @@
   "guideLocalGapTitle": {
     "message": "スライス間隔を精密にコントロール",
     "description": "マニュアルカードタイトル3"
+  },
+  "guideNativeInstall": {
+    "message": "下の「PWAをインストール」ボタンをクリックして完了すると、X (Twitter) の共有メニューに本ツールが表示され、一键インポートが可能になります。",
+    "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "PWA (Progressive Web App) は、従来のアプリとは異なります。ストアからのダウンロードが不要で、ディスク容量もほとんど消費しません。本質的には「アプリの機能を持ったウェブページ」であり、スマホの負担を増やしたくない方に最適な、最も軽快な選択肢です。",
+    "description": "PWA explanation"
   }
 }

@@ -60,8 +60,12 @@
     "description": "PWA 優勢列表內容"
   },
   "guideNativeInstall": {
-    "message": "推薦點擊下方的「立即安裝」按鈕，一鍵獲得最順滑的原生 App 體驗。",
-    "description": "原生安裝建議"
+    "message": "點擊下方的「立即安裝」按鈕完成 PWA 安裝，即可在 X (Twitter) 分享選單中一鍵匯入拼圖。",
+    "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "PWA (Progressive Web App) 並非傳統 App。它無需下載、不佔空間，本質上是『帶有 App 功能的網頁』。如果您不想給手機增加額外負擔，PWA 是最輕盈的捷徑選擇。",
+    "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
     "message": "更安全的樣式隔離",
@@ -598,7 +602,7 @@
     "description": "iOS快捷指令安裝提示"
   },
   "guideAndroidInstall": {
-    "message": "1. 安裝為 App\n在瀏覽器選單中點擊「安裝應用」或「添加到主螢幕」，獲得原生 App 體驗。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」即可匯入。",
+    "message": "1. 安裝 PWA (漸進式應用)\n在瀏覽器選單中點擊「安裝應用」或「添加到主螢幕」，無需應用商店即可解鎖分享集成。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」一鍵匯入。",
     "description": "Android安装说明"
   },
   "viewAndroidTutorial": {

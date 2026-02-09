@@ -598,7 +598,7 @@
     "description": "Conseil d'installation du raccourci iOS"
   },
   "guideAndroidInstall": {
-    "message": "1. Installer comme App\nAppuyez sur 'Installer l'application' ou 'Sur l'écran d'accueil' pour une expérience native.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 'X-Puzzle-Kit' pour importer.",
+    "message": "1. Installer la PWA (application web progressive)\nAppuyez sur 'Installer l'application' dans le menu du navigateur pour débloquer l'intégration du partage sans passer par un store.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 'X-Puzzle-Kit' pour importer.",
     "description": "Guide d'installation pour Android"
   },
   "viewAndroidTutorial": {
@@ -628,5 +628,13 @@
   "guideLocalGapTitle": {
     "message": "Contrôle précis des espaces entre coupes",
     "description": "Titre de la carte de manuel 3"
+  },
+  "guideNativeInstall": {
+    "message": "Installez la PWA pour voir 'X-Puzzle-Kit' dans votre menu de partage X (Twitter) pour une importation en un clic.",
+    "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "Une PWA (application web progressive) n'est pas une application traditionnelle. Elle ne nécessite aucun téléchargement sur store et consomme zéro espace disque. C'est essentiellement une 'page web avec des superpouvoirs d'application'. Si vous hésitez à installer des applications lourdes, la PWA est la solution légère idéale.",
+    "description": "PWA explanation"
   }
 }
