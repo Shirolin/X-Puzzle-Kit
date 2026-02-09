@@ -37,6 +37,7 @@ import { InputDialog } from "./components/InputDialog";
 import { ReloadPrompt } from "./components/ReloadPrompt";
 import { GuideOverlay } from "./components/GuideOverlay";
 import { UserGuideDialog } from "./components/UserGuideDialog";
+import { DebugPanel } from "./components/DebugPanel";
 
 interface AppProps {
   task: StitchTask;
@@ -1389,6 +1390,7 @@ export function App({
         canNativeInstall={!!deferredPrompt}
         onNativeInstall={handleAppInstall}
       />
+      {import.meta.env.DEV && <DebugPanel />}
     </div>
   );
 }

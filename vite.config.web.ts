@@ -101,6 +101,13 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, "index.html"),
       },
+      output: {
+        manualChunks: {
+          vendor: ["preact", "preact/hooks", "preact/compat"],
+          utils: ["jszip", "sortablejs"],
+          icons: ["lucide-preact"],
+        },
+      },
     },
   },
 });

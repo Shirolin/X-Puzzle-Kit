@@ -47,4 +47,7 @@ export default defineConfig({
   define: {
     __IS_EXTENSION__: true,
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+  },
 });

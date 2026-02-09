@@ -12,27 +12,26 @@ export interface PlatformEnv {
   isPopup: boolean;
 }
 
+export const MOCK_ENV_KEY = "x-puzzle-kit-mock-env";
+
 export const getPlatformEnv = (): PlatformEnv => {
+  // 基础环境检测
   const isExtension =
     typeof __IS_EXTENSION__ !== "undefined" ? __IS_EXTENSION__ : false;
+  const userAgent = typeof navigator !== "undefined" ? navigator.userAgent : "";
   const isIOS =
-    typeof navigator !== "undefined" &&
-    (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
-      // 处理现代 iPadOS (请求桌面版网站时会返回 Mac，但具备多点触控)
-      (navigator.maxTouchPoints > 1 &&
-        /Macintosh|Mac Intel/.test(navigator.userAgent)));
-  const isAndroid =
-    typeof navigator !== "undefined" && /Android/i.test(navigator.userAgent);
+    /iPad|iPhone|iPod/.test(userAgent) ||
+    (typeof navigator !== "undefined" &&
+      navigator.maxTouchPoints > 1 &&
+      /Macintosh|Mac Intel/.test(userAgent));
+  const isAndroid = /Android/i.test(userAgent);
 
-  // 检测是否来自 iOS 快捷指令分享 (通过 URL 参数)
-  // 注意：在 App.tsx 中会清理 URL 参数，因此此判定通常在初始化时最准确
   const params =
     typeof window !== "undefined"
       ? new URLSearchParams(window.location.search)
       : null;
   const isShortcut = !!(isIOS && params?.get("source") === "shortcut");
 
-  // 检测是否为 PWA Standalone 模式
   const isStandalone = !!(
     typeof window !== "undefined" &&
     (window.matchMedia("(display-mode: standalone)").matches ||
@@ -41,14 +40,13 @@ export const getPlatformEnv = (): PlatformEnv => {
         (navigator as { standalone?: boolean }).standalone))
   );
 
-  // 检测是否为插件 Popup (通常可以通过 URL 或特定标记)
   const isPopup =
     isExtension &&
     typeof window !== "undefined" &&
     (window.location.pathname.includes("popup.html") ||
       window.name === "x-puzzle-kit-popup");
 
-  return {
+  const baseEnv: PlatformEnv = {
     isExtension,
     isStandalone,
     isShortcut,
@@ -56,6 +54,34 @@ export const getPlatformEnv = (): PlatformEnv => {
     isAndroid,
     isPopup,
   };
+
+  // 开发环境下注入 Mock 逻辑
+  if (import.meta.env.DEV && typeof sessionStorage !== "undefined") {
+    const mockStr = sessionStorage.getItem(MOCK_ENV_KEY);
+    if (mockStr) {
+      try {
+        const mockEnv = JSON.parse(mockStr);
+        return { ...baseEnv, ...mockEnv };
+      } catch (e) {
+        console.error("Failed to parse mock env", e);
+      }
+    }
+  }
+
+  return baseEnv;
+};
+
+/**
+ * 设置开发环境 Mock
+ */
+export const setMockEnv = (env: Partial<PlatformEnv> | null) => {
+  if (!import.meta.env.DEV) return;
+  if (env === null) {
+    sessionStorage.removeItem(MOCK_ENV_KEY);
+  } else {
+    sessionStorage.setItem(MOCK_ENV_KEY, JSON.stringify(env));
+  }
+  window.location.reload();
 };
 
 export const isExtension =
