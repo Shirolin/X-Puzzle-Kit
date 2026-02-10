@@ -21,6 +21,26 @@ export default {
     const secretToken = env.X_APP_TOKEN || "xpuzzle-v1-open-access";
 
     if (
+      token !== secretToken ||
+      (token === secretToken &&
+        !url.hostname.includes("localhost") &&
+        !url.hostname.includes("127.0.0.1"))
+    ) {
+      // 强化 Origin 校验
+      const origin = request.headers.get("Origin");
+      if (
+        origin &&
+        origin !== PRODUCTION_ORIGIN &&
+        !/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
+      ) {
+        return new Response(JSON.stringify({ error: "Forbidden Origin" }), {
+          status: 403,
+          headers: { ...headers, "Content-Type": "application/json" },
+        });
+      }
+    }
+
+    if (
       token !== secretToken &&
       !url.hostname.includes("localhost") &&
       !url.hostname.includes("127.0.0.1")

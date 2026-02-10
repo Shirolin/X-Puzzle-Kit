@@ -23,6 +23,24 @@ export async function onRequest(context) {
   // 优先从环境变量读取 Secret
   const secretToken = context.env.X_APP_TOKEN || "xpuzzle-v1-open-access";
 
+  if (
+    token !== secretToken ||
+    (token === secretToken && !url.hostname.includes("localhost"))
+  ) {
+    // 强化 Origin 校验：不仅校验 Token，还强制检查来源（防跨站调用）
+    const origin = request.headers.get("Origin");
+    if (
+      origin &&
+      origin !== PRODUCTION_ORIGIN &&
+      !/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
+    ) {
+      return new Response(JSON.stringify({ error: "Forbidden Origin" }), {
+        status: 403,
+        headers: { ...headers, "Content-Type": "application/json" },
+      });
+    }
+  }
+
   if (token !== secretToken && !url.hostname.includes("localhost")) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
       status: 401,
