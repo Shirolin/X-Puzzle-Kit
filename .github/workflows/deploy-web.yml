@@ -13,6 +13,7 @@ on:
 # 【必须配置 - Secrets】
 #   CLOUDFLARE_API_TOKEN  : Cloudflare API 访问令牌
 #   CLOUDFLARE_ACCOUNT_ID : Cloudflare 账户 ID
+#   VITE_APP_TOKEN        : 应用鉴权 Token (必须配置)
 #
 # ===========================================
 
@@ -38,6 +39,8 @@ jobs:
 
       - name: Build Web
         run: npm run build:web
+        env:
+          VITE_APP_TOKEN: ${{ secrets.VITE_APP_TOKEN }}
 
       - name: Create Pages Project (if not exists)
         uses: cloudflare/wrangler-action@v3
