@@ -18,6 +18,20 @@ export async function onRequest(context) {
   if (request.method === "OPTIONS") return handleOptions(request);
   const headers = getCorsHeaders(request);
 
+  // --- 0.0 Rate Limiting (Cache API) ---
+  if (
+    !url.hostname.includes("localhost") &&
+    !url.hostname.includes("127.0.0.1")
+  ) {
+    const isRateLimited = await checkRateLimit(request, waitUntil);
+    if (isRateLimited) {
+      return new Response(JSON.stringify({ error: "Too Many Requests" }), {
+        status: 429,
+        headers: { ...headers, "Content-Type": "application/json" },
+      });
+    }
+  }
+
   // --- 0.1 APP Token Check ---
   const token = request.headers.get("X-App-Token");
   // 优先从环境变量读取 Secret
@@ -314,4 +328,46 @@ async function handleProxy(imageUrl, corsHeadersObj) {
     status: imageResp.status,
     headers: newHeaders,
   });
+}
+
+// --- Rate Limit (Based on Cache API) ---
+async function checkRateLimit(request, waitUntil) {
+  try {
+    const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+    let cache;
+    try {
+      cache = caches.default;
+    } catch {
+      return false; // 本地/不支持环境直接放行
+    }
+
+    if (!cache) return false;
+
+    const cacheUrl = new URL(request.url);
+    cacheUrl.pathname = `/rate-limit/${ip}`;
+    const cacheKey = new Request(cacheUrl.toString(), request);
+
+    let response = await cache.match(cacheKey);
+    let count = 0;
+
+    if (response) {
+      count = parseInt((await response.text()) || "0");
+    }
+
+    if (count >= 60) return true;
+
+    const newResponse = new Response((count + 1).toString(), {
+      headers: {
+        "Content-Type": "text/plain",
+        "Cache-Control": "public, max-age=60",
+      },
+    });
+
+    if (waitUntil) {
+      waitUntil(cache.put(cacheKey, newResponse));
+    }
+  } catch (e) {
+    console.error("RateLimit Error:", e);
+  }
+  return false;
 }
