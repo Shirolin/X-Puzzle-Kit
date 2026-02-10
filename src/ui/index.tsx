@@ -72,6 +72,7 @@ export function updateToasterTheme(theme: "light" | "dark" | "system") {
       closeButton
       position="top-center"
       theme={theme}
+      visibleToasts={5}
       offset="20px"
       gap={12}
       toastOptions={{

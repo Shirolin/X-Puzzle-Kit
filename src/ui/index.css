@@ -3760,15 +3760,15 @@ button:active {
 
 [data-sonner-toaster] {
   position: fixed !important;
-  top: max(64px, env(safe-area-inset-top)) !important;
+  top: max(24px, env(safe-area-inset-top)) !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   z-index: 10000 !important;
   pointer-events: none !important;
+  /* Restore vertical list layout to ensure all toasts are visible */
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  justify-content: flex-start !important;
   width: 100vw !important;
   max-width: 100vw !important;
   height: auto !important;
@@ -3776,9 +3776,9 @@ button:active {
 
 [data-sonner-toast] {
   pointer-events: auto !important;
-  width: auto !important;
   min-width: 240px !important;
   max-width: min(92vw, 420px) !important;
+  /* Force list spacing */
   margin: 0 auto 10px auto !important;
 
   /* Premium Crystalline Base */
@@ -3801,12 +3801,43 @@ button:active {
   align-items: center !important;
   gap: 12px !important;
   padding: 8px 22px !important;
-  min-height: 40px !important;
+  min-height: 48px !important;
 
   box-sizing: border-box !important;
   transition:
     transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28),
     opacity 0.3s ease !important;
+}
+
+/* Fix icon alignment for top-aligned toasts */
+[data-sonner-toast] [data-icon] {
+  margin-top: 0 !important;
+}
+
+/* FORCE LIMIT: Hide toasts that are not marked as visible by Sonner */
+[data-sonner-toast]:not([data-visible="true"]) {
+  opacity: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  overflow: hidden !important;
+  min-height: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Ensure visible toasts are fully opaque and correctly positioned */
+[data-sonner-toast][data-visible="true"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Force content visibility for all stacked toasts */
+[data-sonner-toast] [data-content],
+[data-sonner-toast] [data-icon],
+[data-sonner-toast] [data-button] {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Success State - Refined Contrast */
@@ -4429,7 +4460,7 @@ button:active {
 }
 
 .x-custom-toast [data-icon] {
-  margin-right: 10px !important;
+  margin-right: 0 !important;
 }
 
 /* 进度条底座 */
