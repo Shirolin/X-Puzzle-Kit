@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
 import path from "path";
+import { execSync } from "child_process";
 
 import { VitePWA } from "vite-plugin-pwa";
 
@@ -94,7 +95,17 @@ export default defineConfig({
     __IS_EXTENSION__: false,
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version || "1.1.2"),
     __BUILD_ID__: JSON.stringify(
-      (process.env.CF_PAGES_COMMIT_SHA || "dev").substring(0, 8).toUpperCase(),
+      (() => {
+        try {
+          return execSync("git rev-parse --short HEAD").toString().trim();
+        } catch (e) {
+          return (
+            process.env.CF_PAGES_COMMIT_SHA ||
+            process.env.GITHUB_SHA ||
+            "dev"
+          ).substring(0, 8);
+        }
+      })().toUpperCase(),
     ),
   },
 
