@@ -11,7 +11,7 @@
     "dev:web": "vite dev -c vite.config.web.ts",
     "dev:test": "vite serve -c vite.test.config.ts",
     "build": "vite build",
-    "build:web": "echo \"Build Debug: VITE_APP_TOKEN is [${VITE_APP_TOKEN:0:5}...]\" && vite build -c vite.config.web.ts",
+    "build:web": "echo \"Build Debug: VITE_APP_TOKEN is [set]\" && vite build -c vite.config.web.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
     "type-check": "tsc --noEmit",

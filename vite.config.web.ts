@@ -103,7 +103,7 @@ export default defineConfig(({ mode }) => {
         (() => {
           try {
             return execSync("git rev-parse --short HEAD").toString().trim();
-          } catch (e) {
+          } catch {
             return (
               process.env.CF_PAGES_COMMIT_SHA ||
               process.env.GITHUB_SHA ||
