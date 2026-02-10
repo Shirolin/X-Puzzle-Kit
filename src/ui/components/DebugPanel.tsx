@@ -1,5 +1,5 @@
-import { JSX } from "preact";
 import { useState } from "preact/hooks";
+import { toast } from "sonner";
 import { t } from "../../core/i18n";
 import { getPlatformEnv, setMockEnv, PlatformEnv } from "../../core/platform";
 import {
@@ -136,6 +136,91 @@ export const DebugPanel = () => {
           value={env.isStandalone}
           onChange={(v) => updateMock("isStandalone", v)}
         />
+      </div>
+
+      <div
+        style={{
+          padding: "8px",
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
+      >
+        <button
+          onClick={() => {
+            // 模拟触发 PWA 更新提示 (与 ReloadPrompt 中一致的 UI)
+            toast.custom(
+              (tId) => (
+                <div className="pwa-toast-container">
+                  <div className="pwa-toast-content">
+                    <div className="pwa-toast-title">发现新版本可用 (Test)</div>
+                    <div className="pwa-toast-desc">
+                      更新以获得最新功能与修复
+                    </div>
+                  </div>
+                  <div className="pwa-toast-actions">
+                    <button
+                      className="pwa-btn-ignore"
+                      onClick={() => toast.dismiss(tId)}
+                    >
+                      忽略
+                    </button>
+                    <button
+                      className="pwa-btn-refresh"
+                      onClick={() => {
+                        toast.dismiss(tId);
+                        alert("触发了 Update Service Worker");
+                      }}
+                    >
+                      刷新
+                    </button>
+                  </div>
+                </div>
+              ),
+              {
+                duration: Infinity,
+                id: "pwa-update-toast-debug",
+                className: "pwa-toast-wrapper-hack",
+              },
+            );
+          }}
+          style={{
+            width: "100%",
+            padding: "8px",
+            marginBottom: "8px",
+            borderRadius: "8px",
+            backgroundColor: "rgba(52, 199, 89, 0.2)",
+            border: "1px solid rgba(52, 199, 89, 0.3)",
+            color: "#34C759",
+            fontSize: "13px",
+            cursor: "pointer",
+            textAlign: "center",
+          }}
+        >
+          触发 PWA 更新提示
+        </button>
+
+        <button
+          onClick={() => {
+            // 触发 PWA 安装逻辑 (Smart Trigger)
+            // 需要 App.tsx 中监听 'pwa-smart-trigger' 事件
+            window.dispatchEvent(new CustomEvent("pwa-smart-trigger"));
+            alert(
+              "已发送 pwa-smart-trigger 事件，请检查安装提示是否弹出（需满足安装条件）",
+            );
+          }}
+          style={{
+            width: "100%",
+            padding: "8px",
+            borderRadius: "8px",
+            backgroundColor: "rgba(10, 132, 255, 0.2)",
+            border: "1px solid rgba(10, 132, 255, 0.3)",
+            color: "#0A84FF",
+            fontSize: "13px",
+            cursor: "pointer",
+            textAlign: "center",
+          }}
+        >
+          触发 PWA 安装提示
+        </button>
       </div>
 
       <div

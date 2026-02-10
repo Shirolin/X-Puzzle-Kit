@@ -35,22 +35,38 @@ export function ReloadPrompt({ isBusy = false }: { isBusy?: boolean }) {
           updateServiceWorker(true);
         }
       } else {
-        toast(t("pwaUpdateAvailable"), {
-          description: t("pwaUpdateReady"),
-          action: {
-            label: t("pwaRefresh"),
-            onClick: () => {
-              updateServiceWorker(true);
-            },
+        toast.custom(
+          (tId) => (
+            <div className="pwa-toast-container">
+              <div className="pwa-toast-content">
+                <div className="pwa-toast-title">{t("pwaUpdateAvailable")}</div>
+                <div className="pwa-toast-desc">{t("pwaUpdateReady")}</div>
+              </div>
+              <div className="pwa-toast-actions">
+                <button
+                  className="pwa-btn-ignore"
+                  onClick={() => {
+                    toast.dismiss(tId);
+                    setNeedRefresh(false);
+                  }}
+                >
+                  {t("pwaIgnore")}
+                </button>
+                <button
+                  className="pwa-btn-refresh"
+                  onClick={() => updateServiceWorker(true)}
+                >
+                  {t("pwaRefresh")}
+                </button>
+              </div>
+            </div>
+          ),
+          {
+            duration: Infinity,
+            id: "pwa-update-toast", // Ensure only one exists
+            className: "pwa-toast-wrapper-hack", // Sonner might wrap it, but we want our own style
           },
-          cancel: {
-            label: t("pwaIgnore"),
-            onClick: () => {
-              setNeedRefresh(false);
-            },
-          },
-          duration: Infinity, // 保持显示直到用户操作
-        });
+        );
       }
     }
   }, [needRefresh, updateServiceWorker, setNeedRefresh, isBusy]);

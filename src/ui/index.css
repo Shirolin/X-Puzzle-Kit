@@ -4589,8 +4589,109 @@ button:active {
   }
 
   /* 强化单行标题的纵向对齐 */
-  .section-header-row {
-    min-height: 24px !important;
-    margin-bottom: 0.625rem !important;
-  }
+}
+
+/* --- PWA Update Toast Custom Customization --- */
+/* Wrapper override to remove default padding/bg if needed, 
+   but Sonner's .x-custom-toast style might conflict if we are not careful.
+   Here we use a completely custom rendering so we want to reset some things if they leak,
+   OR we just style our inner container to look good.
+*/
+
+[data-sonner-toast]:has(.pwa-toast-container) {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.pwa-toast-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-surface); /* Adaptive background */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  min-width: 320px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+[data-theme="dark"] .pwa-toast-container {
+  background: rgba(30, 30, 35, 0.85);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Make it look like a glass card in light mode too if desired, 
+   but solid/translucent surface is safer for text contrast. 
+*/
+[data-theme="light"] .pwa-toast-container {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.pwa-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pwa-toast-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.pwa-toast-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.pwa-toast-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.pwa-btn-ignore {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pwa-btn-ignore:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.pwa-btn-refresh {
+  background: var(--color-primary); /* Uses app primary color */
+  color: white;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.pwa-btn-refresh:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.pwa-btn-refresh:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
 }
