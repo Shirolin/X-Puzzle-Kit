@@ -4456,7 +4456,17 @@ button:active {
   font-size: 14px !important;
   font-weight: 500 !important;
   line-height: 1.5 !important;
+  line-height: 1.5 !important;
   letter-spacing: -0.01em !important;
+}
+
+/* 修复：Error/Success 类型的文字颜色应该继承自容器 (即变红/变绿)，而不是强制跟随正文颜色 */
+[data-sonner-toast][data-type="error"] [data-content] {
+  color: var(--color-error-text) !important;
+}
+
+[data-sonner-toast][data-type="success"] [data-content] {
+  color: var(--color-success-text) !important;
 }
 
 .x-custom-toast [data-icon] {

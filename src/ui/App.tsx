@@ -353,6 +353,14 @@ export function App({
     if (mountNode && mountNode instanceof Element) {
       mountNode.setAttribute("data-theme", effectiveTheme);
       mountNode.setAttribute("data-lang", effectiveLang);
+
+      // 如果挂载点在 Shadow Root 中，同步设置宿主（Host）的 data-theme
+      // 这样 :host([data-theme="light"]) 等选择器才能生效，确保 Toast 等 Web Component 样式正确
+      const root = mountNode.getRootNode();
+      if (root instanceof ShadowRoot && root.host) {
+        root.host.setAttribute("data-theme", effectiveTheme);
+        root.host.setAttribute("data-lang", effectiveLang);
+      }
     }
   }, [isThemeDark, lang, mountNode]);
 
