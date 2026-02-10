@@ -1,3 +1,4 @@
+import { JSX } from "preact";
 import { useState } from "preact/hooks";
 import { toast } from "sonner";
 import { t } from "../../core/i18n";
