@@ -684,5 +684,13 @@
   "viewDemoVideo": {
     "message": "感受极致分享体验",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "privacyNotice": {
+    "message": "隐私提示：Web 独立版通过安全代理解解推文，不留存记录。图片处理始终在本地进行。详见",
+    "description": "Web 版侧边栏下方的隐私提示"
+  },
+  "privacyPolicy": {
+    "message": "隐私政策",
+    "description": "隐私政策链接文本"
   }
 }

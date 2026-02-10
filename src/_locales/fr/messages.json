@@ -680,5 +680,13 @@
   "viewDemoVideo": {
     "message": "Voir la démo de partage",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "privacyNotice": {
+    "message": "Confidentialité : La version web utilise un proxy sécurisé pour l'analyse (aucun log). Le traitement final est local. Voir",
+    "description": "Privacy notice at the bottom of web version sidebar"
+  },
+  "privacyPolicy": {
+    "message": "Politique de Confidentialité",
+    "description": "Privacy policy link text"
   }
 }

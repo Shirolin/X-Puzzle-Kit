@@ -1340,6 +1340,25 @@ export function Sidebar({
                     </a>
                   </div>
                 </div>
+
+                {!isExtension && (
+                  <div
+                    style={{
+                      marginTop: "16px",
+                      padding: "10px",
+                      borderRadius: "10px",
+                      backgroundColor: "var(--color-surface-soft)",
+                      fontSize: "10.5px",
+                      color: "var(--color-text-muted)",
+                      lineHeight: "1.5",
+                      border: "1px dashed var(--color-border)",
+                    }}
+                  >
+                    <RichText
+                      text={`${t("privacyNotice")} [icon:Link] [${t("privacyPolicy")}](doc/privacy.md)`}
+                    />
+                  </div>
+                )}
                 {isExtension ? (
                   <>
                     <Divider />

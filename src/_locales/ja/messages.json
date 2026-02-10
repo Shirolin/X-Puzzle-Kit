@@ -680,5 +680,13 @@
   "viewDemoVideo": {
     "message": "極上の共有体験を見る",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "privacyNotice": {
+    "message": "プライバシーについて：Web版は安全なプロキシを介してツイートを解析しますが、記録は保存されません。画像処理は常にローカルで行われます。詳細は",
+    "description": "Privacy notice at the bottom of web version sidebar"
+  },
+  "privacyPolicy": {
+    "message": "プライバシーポリシー",
+    "description": "Privacy policy link text"
   }
 }

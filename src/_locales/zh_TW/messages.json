@@ -674,7 +674,15 @@
     "description": "调试用模拟器文本"
   },
   "viewDemoVideo": {
-    "message": "感受极致分享體驗",
+    "message": "感受極致分享體驗",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "privacyNotice": {
+    "message": "隱私提示：Web 獨立版通過安全代理解析推文，不留存記錄。圖片處理始終在本地進行。詳見",
+    "description": "Web 版側邊欄下方的隱私提示"
+  },
+  "privacyPolicy": {
+    "message": "隱私政策",
+    "description": "隱私政策連結文本"
   }
 }

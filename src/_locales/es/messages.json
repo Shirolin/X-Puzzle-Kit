@@ -680,5 +680,13 @@
   "viewDemoVideo": {
     "message": "Ver demo de compartir",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "privacyNotice": {
+    "message": "Privacidad: La versión web utiliza un proxy seguro para analizar tuits (sin registros). El procesamiento final es local. Ver",
+    "description": "Privacy notice at the bottom of web version sidebar"
+  },
+  "privacyPolicy": {
+    "message": "Política de Privacidad",
+    "description": "Privacy policy link text"
   }
 }
