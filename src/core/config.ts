@@ -13,7 +13,8 @@ export const APP_CONFIG = {
     // Current Active URL
     DEFAULT_URL: "/api",
     // Simple App Token for basic protection
-    APP_TOKEN: "xpuzzle-v1-open-access",
+    APP_TOKEN:
+      (import.meta.env.VITE_APP_TOKEN as string) || "xpuzzle-v1-open-access",
   },
 
   // LocalStorage Keys

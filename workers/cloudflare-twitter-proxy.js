@@ -17,8 +17,11 @@ export default {
 
     // --- 0.1 APP Token Check ---
     const token = request.headers.get("X-App-Token");
+    // 优先从环境变量读取 Secret，如果没有则 fallback 到旧的公开令牌（平滑迁移）
+    const secretToken = env.X_APP_TOKEN || "xpuzzle-v1-open-access";
+
     if (
-      token !== "xpuzzle-v1-open-access" &&
+      token !== secretToken &&
       !url.hostname.includes("localhost") &&
       !url.hostname.includes("127.0.0.1")
     ) {
@@ -58,7 +61,20 @@ export default {
 
       return new Response("Invalid mode", { status: 400, headers });
     } catch (e) {
-      return new Response(`Error: ${e.message}`, { status: 500, headers });
+      // 生产环境隐藏详细错误，防止指纹泄露
+      console.error("Worker Error:", e);
+      const isLocal =
+        url.hostname.includes("localhost") ||
+        url.hostname.includes("127.0.0.1");
+      return new Response(
+        JSON.stringify({
+          error: isLocal ? e.message : "Internal Server Error",
+        }),
+        {
+          status: 500,
+          headers: { ...headers, "Content-Type": "application/json" },
+        },
+      );
     }
   },
 };
@@ -173,17 +189,20 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
 
         // 统一数据格式 (VxTwitter 和 FxTwitter 结构略有不同，需适配)
         let images = [];
-        if (source.name === "FxTwitter") {
-          if (data.tweet?.media?.photos)
-            images = data.tweet.media.photos.map((p) => p.url);
-        } else if (source.name === "VxTwitter") {
-          if (data.media_extended)
-            images = data.media_extended
-              .filter((m) => m.type === "image")
-              .map((m) => m.url);
+        if (source.name === "FxTwitter" && data.tweet) {
+          if (data.tweet.media?.photos) {
+            images = data.tweet.media.photos
+              .map((p) => p.url)
+              .filter((u) => u && typeof u === "string");
+          }
+        } else if (source.name === "VxTwitter" && data.media_extended) {
+          images = data.media_extended
+            .filter((m) => m.type === "image" && m.url)
+            .map((m) => m.url);
         }
 
-        if (images.length > 0) {
+        // 安全校验：确保图片 URL 合法且为字符串数组
+        if (Array.isArray(images) && images.length > 0) {
           finalData = { images };
           break; // 成功拿到数据，跳出循环
         } else {
@@ -195,7 +214,6 @@ async function handleParseWithCache(tweetUrl, request, ctx, corsHeadersObj) {
     } catch (e) {
       console.error(`Source ${source.name} failed:`, e);
       errors.push(`${source.name}: ${e.message}`);
-      lastError = e;
     }
   }
 
@@ -235,8 +253,12 @@ async function handleProxy(imageUrl, corsHeadersObj) {
   // 校验目标 URL 是否合法 (防止 SSRF)
   try {
     const u = new URL(imageUrl);
-    // 修复 SSRF: 严格校验域名后缀
-    if (u.hostname !== "twimg.com" && !u.hostname.endsWith(".twimg.com")) {
+    // 强化 SSRF 防御：不仅校验后缀，还严格限制域名和协议
+    const isAllowedHost =
+      u.hostname === "pbs.twimg.com" || u.hostname === "video.twimg.com";
+    const isAllowedProtocol = u.protocol === "https:";
+
+    if (!isAllowedHost || !isAllowedProtocol) {
       return new Response("Forbidden Host", {
         status: 403,
         headers: corsHeadersObj,

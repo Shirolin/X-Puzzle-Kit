@@ -20,11 +20,10 @@ export async function onRequest(context) {
 
   // --- 0.1 APP Token Check ---
   const token = request.headers.get("X-App-Token");
-  // 简单校验，允许本地开发环境无需 Token (可选)
-  if (
-    token !== "xpuzzle-v1-open-access" &&
-    !url.hostname.includes("localhost")
-  ) {
+  // 优先从环境变量读取 Secret，如果没有则 fallback 到旧的公开令牌（平滑迁移）
+  const secretToken = context.env.X_APP_TOKEN || "xpuzzle-v1-open-access";
+
+  if (token !== secretToken && !url.hostname.includes("localhost")) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
       status: 401,
       headers: { ...headers, "Content-Type": "application/json" },
@@ -54,11 +53,13 @@ export async function onRequest(context) {
     }
     return new Response("Invalid mode", { status: 400, headers });
   } catch (e) {
-    // 返回详细错误以便调试
+    // 生产环境隐藏详细错误，防止指纹泄露
+    console.error("API Error:", e);
+    const isLocal = url.hostname.includes("localhost");
     return new Response(
       JSON.stringify({
-        error: e.message,
-        type: "Internal Server Error",
+        error: isLocal ? e.message : "Internal Server Error",
+        type: isLocal ? "Debug info" : "Internal Error",
       }),
       {
         status: 500,
@@ -179,7 +180,9 @@ async function handleParseWithCache(
 
         if (source.name === "FxTwitter" && data.tweet) {
           if (data.tweet.media?.photos) {
-            images = data.tweet.media.photos.map((p) => p.url);
+            images = data.tweet.media.photos
+              .map((p) => p.url)
+              .filter((u) => u && typeof u === "string");
           }
           if (data.tweet.author?.screen_name) {
             detectedHandle = data.tweet.author.screen_name;
@@ -189,18 +192,19 @@ async function handleParseWithCache(
           }
         } else if (data.media_extended) {
           images = data.media_extended
-            .filter((m) => m.type === "image")
+            .filter((m) => m.type === "image" && m.url)
             .map((m) => m.url);
           // VxTwitter mapping if available
           if (data.user_screen_name) detectedHandle = data.user_screen_name;
           if (data.tweetID) detectedId = data.tweetID;
         }
 
-        if (images.length > 0) {
+        // 安全校验：确保图片 URL 合法且为字符串数组
+        if (Array.isArray(images) && images.length > 0) {
           finalData = {
             images,
-            userHandle: detectedHandle,
-            tweetId: detectedId,
+            userHandle: String(detectedHandle),
+            tweetId: String(detectedId),
           };
           break;
         }
@@ -246,8 +250,12 @@ async function handleParseWithCache(
 async function handleProxy(imageUrl, corsHeadersObj) {
   try {
     const u = new URL(imageUrl);
-    // 修复 SSRF: 必须以 .twimg.com 结尾 (包含点) 或完全等于 twimg.com
-    if (u.hostname !== "twimg.com" && !u.hostname.endsWith(".twimg.com")) {
+    // 强化 SSRF 防御：不仅校验后缀，还严格限制域名和协议
+    const isAllowedHost =
+      u.hostname === "pbs.twimg.com" || u.hostname === "video.twimg.com";
+    const isAllowedProtocol = u.protocol === "https:";
+
+    if (!isAllowedHost || !isAllowedProtocol) {
       return new Response("Forbidden Host", {
         status: 403,
         headers: corsHeadersObj,
