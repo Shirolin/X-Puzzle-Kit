@@ -292,7 +292,7 @@
     "description": "개별 간격 도움말 설명"
   },
   "imageSortingHelp": {
-    "message": "이미지 관리: 드래그하여 순서 변경, 표시 여부 전환 또는 개별 간격을 미세 조정할 수 있습니다.",
+    "message": "[icon:GripVertical] 드래그 또는 [icon:ChevronUp][icon:ChevronDown] 클릭으로 순서 변경\n[icon:Eye] 클릭으로 표시 여부 전환\n숫자 클릭으로 간격 미세 조정",
     "description": "이미지 정렬 섹션 종합 도움말"
   },
   "rowCount": {
@@ -490,7 +490,7 @@
     "description": "PWA 오프라인 준비 알림"
   },
   "layoutSchemeHelp": {
-    "message": "이미지 배치 방식을 선택하세요: 그리드(2x2)는 소셜 미디어 게시에 적합하며, T자형은 예술적 레이아웃에, 세로/가로형은 긴 파노라마 이미지 결합에 적합합니다.",
+    "message": "[icon:LayoutGrid] 격자: 소셜 미디어 게시에 적합\n[icon:Layout] T형: 예술적 사진 레이아웃\n[icon:Rows] 세로/가로: 긴 파노라마 이미지 결합",
     "description": "레이아웃 도움말 설명"
   },
   "backgroundColorHelp": {
@@ -502,11 +502,11 @@
     "description": "전체 간격 도움말"
   },
   "formatHelp": {
-    "message": "PNG는 최고 화질의 무손실 형식이며, JPG는 압축 효율이 좋고, WebP는 두 장점을 모두 갖추었으나 iOS에서 호환성 제한이 있을 수 있습니다.",
+    "message": "「PNG」최고 화질, 투명 지원, 용량 큼\n「JPG」고압축, 투명 불가, 용량 작음\n「WEBP」고화질, 투명 지원, iOS 호환성 주의",
     "description": "내보내기 형식 도움말 설명"
   },
   "exportSettingsHelp": {
-    "message": "내보내기 설정: 파일 형식 선택, 배경색 설정 또는 표시 언어를 변경합니다.",
+    "message": "개인화 내보내기:\n「PNG」최고 화질, 투명 지원, 용량 큼\n「JPG」고압축, 투명 불가, 용량 작음\n「WEBP」고화질, 투명 지원, iOS 호환성 주의",
     "description": "내보내기 설정 섹션 종합 도움말"
   },
   "twitterOptimizeHelp": {

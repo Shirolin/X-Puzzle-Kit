@@ -100,7 +100,7 @@
     "description": "画像順序のサブタイトル"
   },
   "imageSortingHelp": {
-    "message": "画像の管理：ドラッグで並べ替え、表示/非表示の切り替え、または個別余白の微調整が可能です。",
+    "message": "[icon:GripVertical]をドラッグ、または [icon:ChevronUp][icon:ChevronDown] をクリックして並べ替え\n[icon:Eye] をクリックして表示/非表示を切り替え\n数字をクリックして余白を微調整",
     "description": "画像順序セクションの総合ヘルプ"
   },
   "imageLabel": {
@@ -490,7 +490,7 @@
     "description": "オフライン対応が完了したことを通知するメッセージ"
   },
   "layoutSchemeHelp": {
-    "message": "画像の配置を選択します：グリッド(2x2)はSNS投稿に、T型は写真作品に、縦/横はパノラマや長図の結合に適しています。",
+    "message": "[icon:LayoutGrid] 田の字：SNS投稿に最適\n[icon:Layout] T型：写真作品のような配置\n[icon:Rows] 縦/横：パノラマや長図の結合",
     "description": "レイアウトのヘルプテキスト"
   },
   "backgroundColorHelp": {
@@ -502,11 +502,11 @@
     "description": "全局間隔のヘルプ"
   },
   "formatHelp": {
-    "message": "PNGは最高画質の無劣化形式、JPGは圧縮効率に優れ、WebPは両者のバランス型です（iOSでは制限あり）。",
+    "message": "「PNG」最高画質、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
     "description": "形式設定のヘルプ説明"
   },
   "exportSettingsHelp": {
-    "message": "エクスポート設定：ファイル形式の選択、背景色の設定、または表示言語の切り替えを行います。",
+    "message": "カスタマイズ書き出し：\n「PNG」最高画질、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
     "description": "書き出し設定セクションの総合ヘルプ"
   },
   "twitterOptimizeHelp": {

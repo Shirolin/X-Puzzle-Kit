@@ -466,7 +466,7 @@
     "description": "PWA offline ready tip"
   },
   "layoutSchemeHelp": {
-    "message": "Select image arrangement: Grid (2x2) is great for social media, T-Shape for photography, Vertical/Horizontal for long panoramas.",
+    "message": "[icon:LayoutGrid] Grid: For social media\n[icon:Layout] T-Shape: For artistic photography\n[icon:Rows] Vertical/Horizontal: For long panoramas",
     "description": "Layout help text"
   },
   "backgroundColorHelp": {
@@ -478,11 +478,11 @@
     "description": "Global gap help"
   },
   "formatHelp": {
-    "message": "PNG is lossless (highest quality); JPG is for efficient compression; WebP balances both but may have compatibility issues on iOS.",
+    "message": "「PNG」Original quality, transparency, larger\n「JPG」High compression, no transparency, smaller\n「WEBP」High quality, transparency, poor iOS compatibility",
     "description": "Help explanation for format selection"
   },
   "exportSettingsHelp": {
-    "message": "Customize your output: Selection export format, set background color, or switch language.",
+    "message": "Personalized Export:\n「PNG」Original quality, transparency, larger\n「JPG」High compression, no transparency, smaller\n「WEBP」High quality, transparency, poor iOS compatibility",
     "description": "Comprehensive help for export settings section"
   },
   "twitterOptimizeHelp": {
@@ -538,7 +538,7 @@
     "description": "Help explanation for local gap"
   },
   "imageSortingHelp": {
-    "message": "Manage your gallery: Drag to reorder, toggle visibility, or fine-tune gaps between specific images.",
+    "message": "Drag [icon:GripVertical] or Click [icon:ChevronUp][icon:ChevronDown] to reorder\nClick [icon:Eye] to toggle visibility\nClick numbers to fine-tune gaps",
     "description": "Comprehensive help for image sorting section"
   },
   "userGuideTitle": {

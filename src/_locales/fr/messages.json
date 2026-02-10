@@ -264,7 +264,7 @@
     "description": "Explication de l'aide pour l'espace local"
   },
   "imageSortingHelp": {
-    "message": "Gérer les images : glisser pour réorganiser, masquer/afficher ou ajuster les espaces locaux.",
+    "message": "Glisser [icon:GripVertical] ou clic [icon:ChevronUp][icon:ChevronDown] pour réorganiser\nClic [icon:Eye] pour masquer/afficher\nClic sur les nombres pour ajuster les espaces",
     "description": "Aide complète pour la section Galerie"
   },
   "gapRemovalTip": {
@@ -506,7 +506,7 @@
     "description": "Notification de disponibilité hors ligne PWA"
   },
   "layoutSchemeHelp": {
-    "message": "Sélectionnez la disposition des images : Grille (2x2) idéale pour les réseaux sociaux, Forme en T pour la photographie, Vertical/Horizontal pour les longs panoramas.",
+    "message": "[icon:LayoutGrid] Grille : Pour les réseaux sociaux\n[icon:Layout] Forme en T : Pour la photographie artistique\n[icon:Rows] Vertical/Horizontal : Pour les panoramas",
     "description": "Texte d'aide de la disposition"
   },
   "backgroundColorHelp": {
@@ -518,8 +518,12 @@
     "description": "Aide de l'espace global"
   },
   "formatHelp": {
-    "message": "PNG : Sans perte, meilleure qualité ; JPG : Bon pour les photos, taille plus petite ; WebP : Équilibré, mais peut avoir des problèmes de compatibilité avec iOS.",
+    "message": "「PNG」Qualité originale, transparence, plus lourd\n「JPG」Haute compression, sans transparence, plus léger\n「WEBP」Haute qualité, transparence, limité sur iOS",
     "description": "Aide de format"
+  },
+  "exportSettingsHelp": {
+    "message": "Export Personnalisé :\n「PNG」Qualité originale, transparence, plus lourd\n「JPG」Haute compression, sans transparence, plus léger\n「WEBP」Haute qualité, transparence, limité sur iOS",
+    "description": "Aide complète pour la section paramètres d'exportation"
   },
   "twitterOptimizeHelp": {
     "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 「Image Unique」 sans couture dans le fil des utilisateurs.",

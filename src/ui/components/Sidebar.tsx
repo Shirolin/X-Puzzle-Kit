@@ -20,6 +20,7 @@ import {
   Puzzle,
   HelpCircle,
   BookOpen,
+  LucideIcon,
 } from "lucide-preact";
 import { ComponentChildren, JSX } from "preact";
 import { useRef, useEffect, useLayoutEffect, useState } from "preact/hooks";
@@ -50,22 +51,82 @@ export const Divider = () => (
 );
 
 // 侧边栏卡片包裹组件
+// 映射占位符到图标组件
+const iconMap: Record<string, LucideIcon> = {
+  Download,
+  LayoutGrid,
+  Rows,
+  Columns,
+  Layout,
+  Eye,
+  EyeOff,
+  GripVertical,
+  Minus,
+  Plus,
+  Trash2,
+  Zap,
+  Link,
+  RotateCcw,
+  Scissors,
+  ChevronUp,
+  ChevronDown,
+  Coffee,
+  Puzzle,
+  HelpCircle,
+  BookOpen,
+};
+
+// 支持图标占位符的富文本渲染组件
+const RichText = ({ text }: { text: string }) => {
+  // 正则匹配 [icon:Name]
+  const parts = text.split(/(\[icon:[a-zA-Z]+\])/g);
+
+  return (
+    <>
+      {parts.map((part) => {
+        const match = part.match(/\[icon:([a-zA-Z]+)\]/);
+        if (match) {
+          const IconComponent = iconMap[match[1]];
+          if (IconComponent) {
+            return (
+              <IconComponent
+                size={14}
+                style={{
+                  display: "inline-block",
+                  verticalAlign: "middle",
+                  marginTop: "-2px", // 向上微调以抵消基线偏移
+                  marginRight: "2px",
+                  marginLeft: "2px",
+                  color: "var(--color-primary)",
+                }}
+              />
+            );
+          }
+        }
+        return part;
+      })}
+    </>
+  );
+};
+
 // 帮助提示组件
 const HelpTip = ({ text }: { text: string }) => (
   <span
     className="help-info-icon-wrapper"
     onClick={() => {
       toast(
-        <div style={{ whiteSpace: "pre-wrap", lineHeight: "1.4" }}>{text}</div>,
+        <div style={{ whiteSpace: "pre-wrap", lineHeight: "1.6" }}>
+          <RichText text={text} />
+        </div>,
         {
-          duration: 4000,
+          duration: 5000,
           icon: (
             <HelpCircle size={16} style={{ color: "var(--color-primary)" }} />
           ),
         },
       );
     }}
-    title={text}
+    title={text.replace(/\[icon:[a-zA-Z]+\]/g, "")} // 简单移除占位符作为原生 title
   >
     <HelpCircle size={13} className="help-info-icon" />
   </span>

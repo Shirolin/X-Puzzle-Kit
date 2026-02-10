@@ -100,7 +100,7 @@
     "description": "Explicación de ayuda para el espacio local"
   },
   "imageSortingHelp": {
-    "message": "Gestionar imágenes: arrastrar para reordenar, alternar visibilidad o ajustar espacios locales.",
+    "message": "Arrastra [icon:GripVertical] o clic [icon:ChevronUp][icon:ChevronDown] para reordenar\nClic [icon:Eye] para mostrar/ocultar\nClic en números para ajustar espacios",
     "description": "Ayuda integral para la sección de orden de imágenes"
   },
   "localGap": {
@@ -490,7 +490,7 @@
     "description": "Aviso de disponibilidad sin conexión de PWA"
   },
   "layoutSchemeHelp": {
-    "message": "Selecciona la disposición de las imágenes: Cuadrícula (2x2) es ideal para redes sociales, Forma de T para fotografía, Vertical/Horizontal para panoramas largos.",
+    "message": "[icon:LayoutGrid] Cuadrícula: Para redes sociales\n[icon:Layout] Forma de T: Para fotografía artística\n[icon:Rows] Vertical/Horizontal: Para panoramas",
     "description": "Texto de ayuda de diseño"
   },
   "backgroundColorHelp": {
@@ -502,11 +502,11 @@
     "description": "Ayuda de espacio global"
   },
   "formatHelp": {
-    "message": "PNG sin pérdida; JPG para compresión; WebP compatible con ambos (posibles problemas en iOS).",
+    "message": "「PNG」Calidad original, transparencia, mayor tamaño\n「JPG」Alta compresión, sin transparencia, menor tamaño\n「WEBP」Alta calidad, transparencia, limitada en iOS",
     "description": "Explicación de ayuda para la selección de formato"
   },
   "exportSettingsHelp": {
-    "message": "Personalizar exportación: seleccionar formato, color de fondo o cambiar idioma.",
+    "message": "Exportación Personalizada:\n「PNG」Calidad original, transparencia, mayor tamaño\n「JPG」Alta compresión, sin transparencia, menor tamaño\n「WEBP」Alta calidad, transparencia, limitada en iOS",
     "description": "Ayuda integral para la sección de ajustes de exportación"
   },
   "twitterOptimizeHelp": {

@@ -482,7 +482,7 @@
     "description": "PWA 離線就緒提示"
   },
   "layoutSchemeHelp": {
-    "message": "選擇圖片的排列方式：\n田字格(2x2)適合社交媒體展示，\nT型則常用於藝術攝影佈局。\n縱向/橫向適合拼接長圖。",
+    "message": "[icon:LayoutGrid] 田字格：社交展示\n[icon:Layout] T型佈局：藝術攝影\n[icon:Rows] 縱/橫向：拼接長圖",
     "description": "佈局方案幫助說明"
   },
   "backgroundColorHelp": {
@@ -494,11 +494,11 @@
     "description": "全局間距幫助說明"
   },
   "formatHelp": {
-    "message": "PNG 為無損格式，畫質最高；\nJPG 適合照片壓縮，體積較小；\nWebP 兼顧兩者，但在 iOS 系統中可能存在相容性問題。",
+    "message": "「PNG」原畫質、支持透明、較大\n「JPG」高壓縮、不支持透明、較小\n「WEBP」高品質、支持透明，iOS 相容性差",
     "description": "導出格式幫助說明"
   },
   "exportSettingsHelp": {
-    "message": "個性化導出：選擇檔案格式（PNG/JPG/WebP）、設置畫布底色，或切換介面語言。",
+    "message": "個性化匯出：\n「PNG」原畫質、支持透明、較大\n「JPG」高壓縮、不支持透明、較小\n「WEBP」高品質、支持透明，iOS 相容性差",
     "description": "導出設置區域綜合說明"
   },
   "twitterOptimizeHelp": {
@@ -570,7 +570,7 @@
     "description": "局部間距幫助說明"
   },
   "imageSortingHelp": {
-    "message": "管理圖片列表：拖拽手柄可改變排序；點擊眼睛圖示切換顯示/隱藏；點擊下方數字可微調局部間隙。",
+    "message": "拖拽 [icon:GripVertical] 或點擊 [icon:ChevronUp][icon:ChevronDown] 改變排序\n點擊 [icon:Eye] 切換顯隱\n點擊數字微調間距",
     "description": "圖片排序區域綜合說明"
   },
   "userGuideTitle": {
