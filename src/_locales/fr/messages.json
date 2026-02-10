@@ -184,11 +184,11 @@
     "description": "Native install recommendation"
   },
   "guideTechnicalTitle": {
-    "message": "Isolation de style plus sûre",
+    "message": "Supprimer les marges d'origine",
     "description": "Technical improvement title"
   },
   "guideTechnicalDesc": {
-    "message": "Mise à niveau technique : La version extension isole désormais complètement les styles de thème, garantissant aucune interférence avec le site web visité.",
+    "message": "Si votre image d'origine comporte des bordures ou des gouttières (comme les mangas), activez ceci pour recadrer ces pixels lors de la division.",
     "description": "Technical improvement description"
   },
   "statusOfflineAvailable": {

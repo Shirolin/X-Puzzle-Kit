@@ -224,11 +224,11 @@
     "description": "Native install recommendation"
   },
   "guideTechnicalTitle": {
-    "message": "Aislamiento de estilo más seguro",
+    "message": "Recortar espacios originales",
     "description": "Technical improvement title"
   },
   "guideTechnicalDesc": {
-    "message": "Mejora técnica: La versión de extensión ahora aísla completamente los estilos de tema, asegurando que no haya interferencias con el sitio web que estás visitando.",
+    "message": "Si su imagen original tiene bordes o espacios integrados (como manga), active esto para recortar esos píxeles durante la división.",
     "description": "Technical improvement description"
   },
   "statusOfflineAvailable": {

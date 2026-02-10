@@ -224,11 +224,11 @@
     "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
-    "message": "より安全なスタイル隔離",
+    "message": "元の隙間を削除",
     "description": "技術改进标题"
   },
   "guideTechnicalDesc": {
-    "message": "技術アップデート：拡張機能版はテーマスタイルを完全に隔離し、アクセスしているウェブサイトに干渉しないようにしました。",
+    "message": "画像に境界線や隙間（漫画など）がある場合、この機能を使えば分割中に不要なピクセルを自動的に切り取り、分割結果をきれいに保てます。",
     "description": "技術改进描述"
   },
   "statusOfflineAvailable": {

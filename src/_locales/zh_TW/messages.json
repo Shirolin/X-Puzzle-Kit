@@ -68,11 +68,11 @@
     "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
-    "message": "更安全的樣式隔離",
+    "message": "消除原圖自帶間隙",
     "description": "技術改進標題"
   },
   "guideTechnicalDesc": {
-    "message": "底層技術升級：插件版現在能徹底隔離主題樣式，絕不干擾您所訪問的網頁，使用更加安全放心。",
+    "message": "當原圖自帶白邊或漫畫間距時，開啟此功能可精準剔除指定像素，讓生成的切片保持純淨。",
     "description": "技術改進描述"
   },
   "statusOfflineAvailable": {

@@ -622,11 +622,11 @@
     "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
-    "message": "Safer Style Isolation",
+    "message": "Trim Original Gaps",
     "description": "Technical improvement title"
   },
   "guideTechnicalDesc": {
-    "message": "The extension now completely isolates theme styles, ensuring zero interference with the websites you visit.",
+    "message": "If your original image has built-in borders or gaps (like manga), enable this to crop out those pixels for a cleaner result.",
     "description": "Technical improvement description"
   },
   "statusOfflineAvailable": {

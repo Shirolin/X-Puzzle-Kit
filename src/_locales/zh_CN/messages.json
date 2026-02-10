@@ -622,11 +622,11 @@
     "description": "PWA 科普解释文案"
   },
   "guideTechnicalTitle": {
-    "message": "更安全的样式隔离",
+    "message": "消除原图自带间隙",
     "description": "技术改进标题"
   },
   "guideTechnicalDesc": {
-    "message": "底层技术升级：插件版现在能彻底隔离主题样式，绝不干扰您所访问的网页，使用更加安全放心。",
+    "message": "当原图自带白边或漫画间距时，开启此功能可精准剔除指定像素，让生成的切片保持纯净。",
     "description": "技术改进描述"
   },
   "guideTwitterOptimizeTitle": {
