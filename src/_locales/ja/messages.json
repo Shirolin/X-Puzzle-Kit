@@ -682,7 +682,7 @@
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "プライバシーについて：Web版は安全なプロキシを介してツイートを解析しますが、記録は保存されません。画像処理は常にローカルで行われます。詳細は",
+    "message": "プライバシー：Web版は安全なプロキシで解析（ログなし）。処理は常にローカルで実行されます。",
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {

@@ -682,7 +682,7 @@
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "Privacidad: La versión web utiliza un proxy seguro para analizar tuits (sin registros). El procesamiento final es local. Ver",
+    "message": "Privacidad: Proxy seguro para análisis (sin registros). Procesamiento siempre local.",
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {

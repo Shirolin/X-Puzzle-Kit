@@ -682,7 +682,7 @@
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "Confidentialité : La version web utilise un proxy sécurisé pour l'analyse (aucun log). Le traitement final est local. Voir",
+    "message": "Confidentialité : Proxy sécurisé (aucun log). Traitement toujours local.",
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {

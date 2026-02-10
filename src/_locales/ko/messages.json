@@ -682,7 +682,7 @@
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "개인정보 보호: 웹 버전은 안전한 프록시를 통해 트윗을 분석하며 기록을 저장하지 않습니다. 이미지 처리는 항상 로컬에서 이루어집니다. 자세히 보기:",
+    "message": "개인정보: 웹 버전은 안전한 프록시로 분석(로그 없음). 처리는 항상 로컬에서 수행됩니다.",
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {

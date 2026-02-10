@@ -686,7 +686,7 @@
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "隐私提示：Web 独立版通过安全代理解解推文，不留存记录。图片处理始终在本地进行。详见",
+    "message": "隐私提示：Web 版通过安全代理解析推文（无日志），处理过程始终在本地完成。",
     "description": "Web 版侧边栏下方的隐私提示"
   },
   "privacyPolicy": {

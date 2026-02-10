@@ -1341,24 +1341,6 @@ export function Sidebar({
                   </div>
                 </div>
 
-                {!isExtension && (
-                  <div
-                    style={{
-                      marginTop: "16px",
-                      padding: "10px",
-                      borderRadius: "10px",
-                      backgroundColor: "var(--color-surface-soft)",
-                      fontSize: "10.5px",
-                      color: "var(--color-text-muted)",
-                      lineHeight: "1.5",
-                      border: "1px dashed var(--color-border)",
-                    }}
-                  >
-                    <RichText
-                      text={`${t("privacyNotice")} [icon:Link] [${t("privacyPolicy")}](doc/privacy.md)`}
-                    />
-                  </div>
-                )}
                 {isExtension ? (
                   <>
                     <Divider />
@@ -1476,6 +1458,36 @@ export function Sidebar({
                 )}
               </div>
             </SidebarSection>
+
+            {!isExtension && (
+              <p
+                style={{
+                  fontSize: "10px",
+                  color: "var(--color-text-muted)",
+                  opacity: 0.5,
+                  lineHeight: 1.6,
+                  margin: "0 0 16px",
+                  padding: "0 12px",
+                  textAlign: "center",
+                }}
+              >
+                {t("privacyNotice")}
+                <a
+                  href="doc/privacy.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "var(--color-text-muted)",
+                    opacity: 0.8,
+                    textDecoration: "underline",
+                    textUnderlineOffset: "2px",
+                    textDecorationColor: "var(--color-border)",
+                  }}
+                >
+                  {t("privacyPolicy")}
+                </a>
+              </p>
+            )}
           </>
         )}
       </div>

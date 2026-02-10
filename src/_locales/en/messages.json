@@ -682,7 +682,7 @@
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "Privacy: Web version uses a secure proxy for parsing (no logs). Final processing stays local. See",
+    "message": "Privacy: Web version uses a secure proxy for parsing (no logs). Processing stays local.",
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {
