@@ -1486,6 +1486,17 @@ export function Sidebar({
                 >
                   {t("privacyPolicy")}
                 </a>
+                <span
+                  style={{
+                    display: "block",
+                    marginTop: "4px",
+                    fontSize: "9px",
+                    letterSpacing: "0.2px",
+                    opacity: 0.6,
+                  }}
+                >
+                  v{__APP_VERSION__} (Build: {__BUILD_ID__})
+                </span>
               </p>
             )}
           </>

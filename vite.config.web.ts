@@ -92,6 +92,10 @@ export default defineConfig({
   ],
   define: {
     __IS_EXTENSION__: false,
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version || "1.1.2"),
+    __BUILD_ID__: JSON.stringify(
+      (process.env.CF_PAGES_COMMIT_SHA || "dev").substring(0, 8).toUpperCase(),
+    ),
   },
 
   build: {

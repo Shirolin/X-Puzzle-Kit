@@ -2,3 +2,5 @@
 /// <reference types="vite-plugin-pwa/react" />
 
 declare const __IS_EXTENSION__: boolean;
+declare const __APP_VERSION__: string;
+declare const __BUILD_ID__: string;
