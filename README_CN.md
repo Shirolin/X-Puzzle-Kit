@@ -3,7 +3,7 @@
 
   <h1>X-Puzzle-Kit</h1>
   <p>
-    <b>Twitter (X) 创意拼图/拆分工具箱</b>
+    <b>X (Twitter) 创意拼图/拆分工具箱</b>
   </p>
   <p>
     <a href="./README.md">English</a> | <b>简体中文</b>
@@ -20,13 +20,16 @@
     <img src="https://img.shields.io/badge/platform-Chrome%20%7C%20Web%20%7C%20PWA-important?style=flat-square" alt="Platform" />
   </p>
 
-  <p>
-    <a href="https://x-puzzle-kit.pages.dev"><b>点击访问 Web 版 (PWA) ↗</b></a>
-  </p>
+  <a href="https://x-puzzle-kit.pages.dev">
+    <img src="marketing/screenshots/拼图-截图.png" width="100%" alt="Hero Image" />
+  </a>
 
   <br/>
-  
+
   <p>
+    <a href="https://x-puzzle-kit.pages.dev">
+      <img src="https://img.shields.io/badge/点击访问_Web_版_(PWA)-Try_Web_App-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="Try Web App" />
+    </a>
     <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
       <img src="https://img.shields.io/badge/下载最新离线包-Download-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
     </a>
@@ -35,24 +38,51 @@
 
 <br/>
 
-> **X-Puzzle-Kit** 是一款专为 Twitter (X) 设计的现代浏览器扩展。它不仅支持将多张图片无缝拼接为高清长图，还能将大图创意拆分为九宫格，让您的推文展示更具吸引力。
-
 ## ✨ 核心亮点
 
 <div align="center">
-    <!-- 这里可以放置演示 GIF 或截图 -->
-    <!-- <img src="docs/demo.gif" width="100%" alt="Demo" /> -->
+  <table>
+    <tr>
+      <td align="center" width="33%"><b>Chrome 扩展 (PC)</b></td>
+      <td align="center" width="33%"><b>Android (PWA)</b></td>
+      <td align="center" width="33%"><b>iOS (Shortcut)</b></td>
+    </tr>
+    <tr>
+      <td><img src="public/assets/chrome-ext.gif" width="100%" /></td>
+      <td><img src="public/assets/android.gif" width="100%" /></td>
+      <td><img src="public/assets/ios.gif" width="100%" /></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">✨ <b>信息流按钮嵌入</b><br/>右键快捷拆切</td>
+      <td align="center" valign="top">🚀 <b>系统分享直达</b><br/>添加到主屏幕</td>
+      <td align="center" valign="top">📲 <b>快捷指令联动</b><br/>官方菜单一键直连</td>
+    </tr>
+  </table>
+  <p><i>从 PC 扩展到移动端 PWA，全平台无缝体验</i></p>
 </div>
 
-| 功能              | 描述                                                                                 |
-| :---------------- | :----------------------------------------------------------------------------------- |
-| 🖼️ **智能拼接**   | 根据图片数量（1-4+）**自动预测最佳布局**（如 T型、田字格），无需手动频繁切换。       |
-| 🧩 **渲染优化**   | 即使图片数不足 4 张，也能在田字格模式下**智能降级**为美观的 T 型布局，拒绝空位。     |
-| 💎 **原图画质**   | 告别压缩！始终基于原图 (Original) 进行处理，并实现**物理像素级缝隙对齐**。           |
-| 📏 **消除间隙**   | 智能检测并移除 Twitter 网格布局中的视觉间隙，还原图片本真。                          |
-| 📱 **移动端适配** | 完美支持 PWA，针对 iOS 和 Android 开发了专用的响应式触控界面，可添加到主屏幕。       |
-| 📤 **共享目标**   | 支持从 Twitter/X 官方 App 直接通过系统菜单“分享”推文到该工具 (仅限 Android/Chrome)。 |
-| 🔒 **隐私优先**   | 所有处理逻辑完全在本地浏览器运行，无需上传图片至任何服务器。                         |
+### 🖼️ 拼图 (Stitcher)
+
+- **智能拼接**: 根据图片数量 (1-4+) **自动预测最佳布局** (如 T型、田字格)，实现物理像素级缝隙对齐。
+- **画质优先**: 始终基于原图 (Original) 进行处理，智能移除 X (Twitter) 预览网格中产生的视觉间隙。
+- **原生集成 (仅限插件)**: 在 PC 浏览器中直接在 X (Twitter) 信息流推文下方注入“🧩 拼图”按钮，点击即可一键唤出处理窗口。
+
+### 🧩 拆分 (Splitter)
+
+- **创意九宫格**: 支持将大图拆分为 3x3、2x2、横/纵长条等模式，专为 X (Twitter) 排版优化，支持 ZIP 打包下载。
+- **实时交互**: 拖拽式裁剪区域调整，所见即所得的 X (Twitter) 预览模拟。
+
+### 📱 跨端 (Platform)
+
+- **深度适配**: 完善的 PWA 支持，针对 iOS/Android 优化的触控界面。
+- **即时更新**: 依托 Web 技术栈，前端逻辑支持静默热更新（特别是通过 iOS 快捷指令唤起时），无需等待插件商店审核。
+- **系统集成 (仅限移动端)**: 支持从移动端 App 或网页版通过系统“分享”菜单将推文直传工具。Android 端通过 **Web Share Target** 实现，iOS 端通过**快捷指令**实现。
+
+### 🔒 通用 (Core)
+
+- **隐私声明**:
+  - **插件版**: 极简设计，**100% 纯本地运行**，不与任何外部服务器通信。
+  - **Web/PWA 版**: 推文 URL 解析通过安全代理解理（Cloudflare Worker），**过程不存盘、不记录**，核心图片拼/拆处理依然在本地 Canvas 完成。
 
 ## 📦 安装指南
 
@@ -61,15 +91,17 @@
 无需安装，即点即用！您可以直接访问网页版，并将其“添加到主屏幕”以获得原生 App 般的体验。
 
 - **访问地址**: [https://x-puzzle-kit.pages.dev](https://x-puzzle-kit.pages.dev)
-- **特色功能**: 支持通过系统“分享”功能从 Twitter/X 官方 App 直接跳转处理。
+- **特色功能**: 支持在**移动端**通过系统“分享”功能将推文（App 或网页版）直接导入处理。
 
 ### 方法二：Chrome 浏览器扩展 (PC 控制台最佳)
 
-1. 前往 **[Releases 页面](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest)** 下载最新的 `.zip` 文件。
-2. 解压下载的文件。
-3. 打开 Chrome 浏览器，访问 `chrome://extensions/`。
-4. 开启右上角的 **"开发者模式" (Developer mode)**。
-5. 点击 **"加载已解压的扩展程序" (Load unpacked)**，选择解压后的文件夹。
+这是 PC 用户的最佳体验方式。
+
+1. **前往应用店 (推荐)**: [Chrome 网上应用店 ↗](https://chromewebstore.google.com/detail/x-puzzle-kit-stitch-split/nadlbdmcfmjinifkoedegmiejfibdikk) 点击“添加至 Chrome”。
+2. **手动加载 (开发者/备选)**:
+   - 前往 [Releases 页面](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest) 下载最新的 `.zip` 文件并解压。
+   - 打开 Chrome，访问 `chrome://extensions/` 开启“开发者模式”。
+   - 点击“加载已解压的扩展程序”，选择解压后的文件夹。
 
 ### 方法三：源码编译安装
 
@@ -91,8 +123,8 @@ npm run build:web  # 构建 Web/PWA 版本 (dist-web)
 - **Framework**: [React](https://react.dev/) + [Preact](https://preactjs.com/) (Lite weight)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
-- **Extension**: Chrome Extension Manifest V3
-- **Styling**: TailwindCSS-like Utility Classes / SCSS
+- **Components**: [Lucide Icons](https://lucide.dev/), [Sonner](https://sonner.stevenly.me/) (Toasts), [SortableJS](https://sortablejs.com/)
+- **Styling**: Vanilla CSS (Apple Design Style) / Scss-like Utilities
 
 ## 🔖 版本发布与构建
 

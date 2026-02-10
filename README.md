@@ -3,7 +3,7 @@
 
   <h1>X-Puzzle-Kit</h1>
   <p>
-    <b>Creative Puzzle & Stitching Toolkit for Twitter (X)</b>
+    <b>Creative Puzzle & Stitching Toolkit for X (Twitter)</b>
   </p>
   <p>
     <b>English</b> | <a href="./README_CN.md">简体中文</a>
@@ -20,39 +20,69 @@
     <img src="https://img.shields.io/badge/platform-Chrome%20%7C%20Web%20%7C%20PWA-important?style=flat-square" alt="Platform" />
   </p>
 
-  <p>
-    <a href="https://x-puzzle-kit.pages.dev"><b>Try Web App (PWA) ↗</b></a>
-  </p>
+  <a href="https://x-puzzle-kit.pages.dev">
+    <img src="marketing/screenshots/拼图-截图.png" width="100%" alt="Hero Image" />
+  </a>
 
   <br/>
-  
+
   <p>
+    <a href="https://x-puzzle-kit.pages.dev">
+      <img src="https://img.shields.io/badge/Try_Web_App_(PWA)-Try_Web_App-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="Try Web App" />
+    </a>
     <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
-      <img src="https://img.shields.io/badge/Download_Latest_Release-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
+      <img src="https://img.shields.io/badge/Download_Extension-Download-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
     </a>
   </p>
 </div>
 
 <br/>
 
-> **X-Puzzle-Kit** is a modern browser extension designed specifically for Twitter (X). It allows you to seamlessly stitch multiple images into a high-quality long image or split a large image into a creative 9-grid layout, making your tweets stand out.
-
 ## ✨ Highlights
 
 <div align="center">
-    <!-- Demo GIF or Screenshot placeholder -->
-    <!-- <img src="docs/demo.gif" width="100%" alt="Demo" /> -->
+  <table>
+    <tr>
+      <td align="center" width="33%"><b>Chrome Extension (PC)</b></td>
+      <td align="center" width="33%"><b>Android (PWA)</b></td>
+      <td align="center" width="33%"><b>iOS (Shortcut)</b></td>
+    </tr>
+    <tr>
+      <td><img src="public/assets/chrome-ext.gif" width="100%" /></td>
+      <td><img src="public/assets/android.gif" width="100%" /></td>
+      <td><img src="public/assets/ios.gif" width="100%" /></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top">✨ <b>Timeline Injection</b><br/>Right-click to split</td>
+      <td align="center" valign="top">🚀 <b>System Share Target</b><br/>Add to Home Screen</td>
+      <td align="center" valign="top">📲 <b>Shortcut Integration</b><br/>One-click from App</td>
+    </tr>
+  </table>
+  <p><i>Seamless experience from Desktop Extension to Mobile PWA</i></p>
 </div>
 
-| Feature                 | Description                                                                                    |
-| :---------------------- | :--------------------------------------------------------------------------------------------- |
-| 🖼️ **Smart Stitching**  | Seamlessly combine multiple images from a tweet into one long image with customizable margins. |
-| 🧩 **Creative Split**   | Powerful image splitter supporting 3x3 (9-grid), 2x2, and other creative layout modes.         |
-| 💎 **Original Quality** | No compression! Always processes and exports images in original quality for maximum clarity.   |
-| 📏 **Gap Removal**      | Intelligently detects and removes visual gaps from Twitter's grid layout.                      |
-| 📱 **Mobile Optimized** | Full PWA support with a responsive touch-friendly UI for iOS and Android.                      |
-| 📤 **Share Target**     | Share tweets directly from the Twitter/X app to the PWA (on Android/Chrome).                   |
-| 🔒 **Privacy First**    | All processing happens locally in your browser. No images are uploaded to any server.          |
+### 🖼️ Stitcher
+
+- **Smart Stitching**: **Predicts optimal layout** (T-shape, Grid) based on image count (1-4+).
+- **Quality First**: Pro-grade stitching with **pixel-perfect gap removal** using original images.
+- **Native Integration (Ext only)**: Injects a "🧩 Stitch" button directly into the X (Twitter) timeline on desktop for one-click processing.
+
+### 🧩 Splitter
+
+- **Creative 9-Grid**: Splits large images into 3x3, 2x2, or custom banners. Optimized for X (Twitter).
+- **Live Preview**: Interactive drag-and-drop cropping with real-time X (Twitter) layout simulation.
+
+### 📱 Platform
+
+- **PWA & Mobile**: Full PWA support with a premium touch UI for iOS/Android.
+- **Silent Updates**: Frontend logic updates instantly (especially when launched via iOS Shortcuts), bypassing extension store review delays.
+- **Mobile Integration**: Import tweets directly via the system "Share" menu from the **Mobile App or Mobile Web**. Supported via **Web Share Target** (Android) and **Shortcuts** (iOS).
+
+### 🔒 Core
+
+- **Privacy Policy**:
+  - **Extension**: **100% Local processing**, zero communication with external servers.
+  - **Web/PWA**: Uses a secure proxy (Cloudflare Worker) for tweet URL parsing (no data stored). Final image processing always stays local in your browser.
 
 ## 📦 Installation
 
@@ -61,15 +91,17 @@
 No installation required! Simply visit the web version and add it to your Home Screen for a native-like experience.
 
 - **URL**: [https://x-puzzle-kit.pages.dev](https://x-puzzle-kit.pages.dev)
-- **Features**: Supports sharing directly from the Twitter/X app (via System Share menu).
+- **Features**: Supports sharing directly from the **Mobile App or Web version** (via System Share menu).
 
 ### Method 2: Chrome Extension (Best for Desktop)
 
-1. Go to the **[Releases Page](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest)** and download the latest `.zip` file.
-2. Unzip the downloaded file.
-3. Open Chrome and navigate to `chrome://extensions/`.
-4. Enable **"Developer mode"** in the top right corner.
-5. Click **"Load unpacked"** and select the unzipped folder.
+The most efficient way for desktop users.
+
+1. **Web Store (Recommended)**: [Chrome Web Store ↗](https://chromewebstore.google.com/detail/x-puzzle-kit-stitch-split/nadlbdmcfmjinifkoedegmiejfibdikk) Click "Add to Chrome".
+2. **Manual Install (Alternative)**:
+   - Download the latest `.zip` from the [Releases Page](https://github.com/Shirolin/X-Puzzle-Kit/releases/latest) and unzip it.
+   - Go to `chrome://extensions/` in Chrome and enable "Developer mode".
+   - Click "Load unpacked" and select the unzipped folder.
 
 ### Method 3: Build from Source
 
@@ -91,8 +123,8 @@ Built with modern web technologies for performance and experience:
 - **Framework**: [React](https://react.dev/) + [Preact](https://preactjs.com/) (Lite weight)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
-- **Extension**: Chrome Extension Manifest V3
-- **Styling**: TailwindCSS-like Utility Classes / SCSS
+- **Components**: [Lucide](https://lucide.dev/), [Sonner](https://sonner.stevenly.me/), [SortableJS](https://sortablejs.com/)
+- **Styling**: Vanilla CSS (Apple Design Style) / Scss-like Utilities
 
 ## 🔖 Release & Build
 

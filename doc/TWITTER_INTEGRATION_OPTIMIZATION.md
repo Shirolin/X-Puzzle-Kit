@@ -1,6 +1,6 @@
-# 推特多图拼接功能 - 深度优化与完善指南 (Refinement Roadmap)
+# X (Twitter) 多图拼接功能 - 深度优化与完善指南 (Refinement Roadmap)
 
-本文档旨在从用户体验、性能、健壮性及工程化四个维度，对当前的“推特多图拼接”功能提出深度完善建议。
+本文档旨在从用户体验、性能、健壮性及工程化四个维度，对当前的“X (Twitter) 多图拼接”功能提出深度完善建议。
 
 ## 1. 当前架构回顾 (Current Architecture)
 
@@ -19,7 +19,7 @@
     - **现状**: 仅支持通过系统分享菜单跳转。
     - **问题**: iOS 上 PWA 的 Share Target 支持不稳定；部分用户习惯“复制链接”后打开 App。
     - **方案**: 在 Sidebar 增加一个 "🔗 导入网络图片" 按钮，点击弹出输入框，支持粘贴 URL。
-    - **进阶**: App 获得焦点 (`window.onfocus`) 时，自动读取剪贴板，如果是推特链接，弹出 Toast 询问是否导入（需权限）。
+    - **进阶**: App 获得焦点 (`window.onfocus`) 时，自动读取剪贴板，如果是 X (Twitter) 链接，弹出 Toast 询问是否导入（需权限）。
 
 2.  **国际化错误提示 (i18n Errors)**
     - **现状**: 错误提示主要依靠 `alert` 和硬编码的英文/简单翻译。
@@ -30,7 +30,7 @@
 
 3.  **iOS 快捷指令支持 (Shortcuts Support)**
     - **现状**: iOS 无法像 Android 一样完美支持 PWA Share Target。
-    - **方案**: 提供一个 iOS 快捷指令 (`.shortcut`) 文件下载。用户在推特点击分享 -> 快捷指令 -> 自动唤起 PWA 并传入参数。
+    - **方案**: 提供一个 iOS 快捷指令 (`.shortcut`) 文件下载。用户在 X (Twitter) 点击分享 -> 快捷指令 -> 自动唤起 PWA 并传入参数。
     - **URL Scheme**: 注册 Custom URL Scheme (如 `xpuzzle://stitch?url=...`)，但这需要打包为原生 App；Web 版只能靠 `https://.../?url=...`。
 
 ### B. 性能与流量 (Performance & Bandwidth)
@@ -61,7 +61,7 @@
       - **简单 Token**: 前端请求带一个混淆的 Header，Worker 验证该 Header。虽然源码可见，但能防小白。
 
 3.  **异常监控 (Error Monitoring)**
-    - **方案**: 接入 Sentry 或简单的日志上报。当解析失败时，将失败的 URL 上报给开发者，分析是否是推特 API 变动导致的。
+    - **方案**: 接入 Sentry 或简单的日志上报。当解析失败时，将失败的 URL 上报给开发者，分析是否是 X (Twitter) API 变动导致的。
 
 ### D. 代码工程化 (Engineering)
 
