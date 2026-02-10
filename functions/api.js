@@ -20,7 +20,7 @@ export async function onRequest(context) {
 
   // --- 0.1 APP Token Check ---
   const token = request.headers.get("X-App-Token");
-  // 优先从环境变量读取 Secret，如果没有则 fallback 到旧的公开令牌（平滑迁移）
+  // 优先从环境变量读取 Secret
   const secretToken = context.env.X_APP_TOKEN || "xpuzzle-v1-open-access";
 
   if (token !== secretToken && !url.hostname.includes("localhost")) {
