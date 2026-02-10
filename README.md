@@ -67,11 +67,11 @@
 - **Custom Rows/Cols**: Support for custom N rows or N columns splitting, perfect for banners or ultra-long threads. ZIP export supported.
 - **Interactive UI**: Drag-and-drop cropping, what you see is what you get.
 
-### 🖼️ Stitch & Restore (Stitcher)
+### 🖼️ Stitch & Collect (Stitcher)
 
-- **Save & Restore**: Found a 4-panel split or a long manga spread? One-click to grab and **restore** it into a seamless, high-res long image with pixel-perfect alignment.
+- **Creative Assembly**: Love the clever 4-panel splits or manga spreads designed by your favorite artists? One-click to grab these brilliant ideas and **assemble them into a high-res masterpiece** for your personal collection.
 - **Smart Prediction**: Auto-detects the best layout (T-shape, Grid) based on image count.
-- **Native Integration (Ext only)**: Injects a "🧩 Stitch" button directly into the timeline for a seamless workflow.
+- **Native Integration (Ext only)**: Injects a "🧩 Stitch" button directly into the timeline. From "Admiring" to "Cherishing" in one click.
 
 ### 📱 Platform
 
