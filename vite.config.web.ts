@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
 import path from "path";
 import { execSync } from "child_process";
@@ -6,9 +6,7 @@ import { execSync } from "child_process";
 import { VitePWA } from "vite-plugin-pwa";
 
 // Web 版专用构建配置
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), "");
-
+export default defineConfig(() => {
   return {
     root: "./",
     base: "./",
@@ -111,9 +109,6 @@ export default defineConfig(({ mode }) => {
             ).substring(0, 8);
           }
         })().toUpperCase(),
-      ),
-      "import.meta.env.VITE_APP_TOKEN": JSON.stringify(
-        env.VITE_APP_TOKEN || process.env.VITE_APP_TOKEN || "",
       ),
     },
 
