@@ -92,7 +92,7 @@
     "description": "余白リセットのツールチップ"
   },
   "imageSorting": {
-    "message": "画像の順序",
+    "message": "並べ替え",
     "description": "画像順序セクションのヘッダー"
   },
   "localGap": {
@@ -332,7 +332,7 @@
     "description": "サポートセクションのタイトル"
   },
   "buyMeCoffee": {
-    "message": "コーヒーを奢る",
+    "message": "開発者を支援",
     "description": "スポンサーボタンのテキスト"
   },
   "contextMenuTitle": {

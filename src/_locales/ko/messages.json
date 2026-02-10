@@ -144,7 +144,7 @@
     "description": "처리 중인 버튼 텍스트"
   },
   "stitchAndDownload": {
-    "message": "연결 및 다운로드",
+    "message": "병합 및 저장",
     "description": "최종 다운로드 버튼 텍스트"
   },
   "stitchBtnTitle": {
@@ -352,7 +352,7 @@
     "description": "후원 섹션 제목"
   },
   "buyMeCoffee": {
-    "message": "커피 사주기",
+    "message": "개발 지원하기",
     "description": "후원 버튼 텍스트"
   },
   "contextMenuTitle": {

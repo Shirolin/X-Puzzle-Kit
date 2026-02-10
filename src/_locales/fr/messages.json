@@ -64,7 +64,7 @@
     "description": "Libellé de mise en page verticale"
   },
   "exportSettings": {
-    "message": "Paramètres d'exportation",
+    "message": "Export",
     "description": "En-tête de la section paramètres d'exportation"
   },
   "backgroundColor": {
@@ -92,11 +92,11 @@
     "description": "Info-bulle pour réinitialiser l'espacement"
   },
   "imageSorting": {
-    "message": "Ordre des images",
+    "message": "Galerie",
     "description": "En-tête de la section ordre des images"
   },
   "localGap": {
-    "message": "Ajuster l'espace local",
+    "message": "Espace local",
     "description": "Sous-titre pour l'ordre des images"
   },
   "imageLabel": {

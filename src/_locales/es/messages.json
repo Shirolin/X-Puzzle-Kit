@@ -96,7 +96,7 @@
     "description": "Encabezado de la sección de orden de imágenes"
   },
   "localGap": {
-    "message": "Ajustar espacio local",
+    "message": "Ajuste local",
     "description": "Subtítulo para orden de imágenes"
   },
   "imageLabel": {
@@ -328,7 +328,7 @@
     "description": "Título de la sección de apoyo"
   },
   "buyMeCoffee": {
-    "message": "Invítame a un café",
+    "message": "Apoyar proyecto",
     "description": "Texto del botón de patrocinio"
   },
   "contextMenuTitle": {
