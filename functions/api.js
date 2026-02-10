@@ -204,7 +204,8 @@ async function handleParseWithCache(
     try {
       const apiResp = await fetch(source.path(username, tweetId), {
         headers: {
-          "User-Agent": "Mozilla/5.0",
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
           Accept: "application/json",
         },
       });
@@ -306,7 +307,8 @@ async function handleProxy(imageUrl, corsHeadersObj) {
 
   const imageResp = await fetch(imageUrl, {
     headers: {
-      "User-Agent": "Mozilla/5.0",
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
       Referer: "https://x.com/",
     },
   });
@@ -349,7 +351,7 @@ async function checkRateLimit(request, waitUntil) {
 
     const cacheUrl = new URL(request.url);
     cacheUrl.pathname = `/rate-limit/${ip}`;
-    const cacheKey = new Request(cacheUrl.toString(), request);
+    const cacheKey = new Request(cacheUrl.toString());
 
     let response = await cache.match(cacheKey);
     let count = 0;
