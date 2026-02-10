@@ -271,7 +271,7 @@ async function handleProxy(imageUrl, corsHeadersObj) {
   const imageResp = await fetch(imageUrl, {
     headers: {
       "User-Agent": "Mozilla/5.0",
-      Referer: "https://twitter.com/",
+      Referer: "https://x.com/",
     },
   });
 
