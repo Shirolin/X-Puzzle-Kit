@@ -1473,7 +1473,7 @@ export function Sidebar({
               >
                 {t("privacyNotice")}
                 <a
-                  href="doc/privacy.md"
+                  href="https://github.com/Shirolin/X-Puzzle-Kit/blob/main/doc/privacy.md"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
