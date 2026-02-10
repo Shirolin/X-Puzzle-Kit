@@ -7,6 +7,10 @@ const PRODUCTION_ORIGIN = "https://x-puzzle-kit.pages.dev";
 // 缓存配置
 const CACHE_TTL = 3600;
 
+// 限流配置
+const RATE_LIMIT_COUNT = 20; // 每分钟允许的请求数 (20次足够正常用户使用)
+const RATE_LIMIT_WINDOW = 60; // 窗口大小 (秒)
+
 export async function onRequest(context) {
   const { request, waitUntil } = context;
   const url = new URL(request.url);
@@ -354,12 +358,12 @@ async function checkRateLimit(request, waitUntil) {
       count = parseInt((await response.text()) || "0");
     }
 
-    if (count >= 60) return true;
+    if (count >= RATE_LIMIT_COUNT) return true;
 
     const newResponse = new Response((count + 1).toString(), {
       headers: {
         "Content-Type": "text/plain",
-        "Cache-Control": "public, max-age=60",
+        "Cache-Control": `public, max-age=${RATE_LIMIT_WINDOW}`,
       },
     });
 
