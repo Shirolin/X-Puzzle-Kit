@@ -254,10 +254,29 @@ async function handleParseWithCache(
   }
 
   if (!finalData) {
+    // 智能错误码判断
+    let status = 502;
+    let errorMsg = "All providers failed";
+
+    const errorStr = errors.join("; ");
+    if (errorStr.includes("HTTP 404")) {
+      status = 404;
+      errorMsg = "Tweet not found";
+    } else if (errorStr.includes("HTTP 401") || errorStr.includes("HTTP 403")) {
+      status = 403;
+      errorMsg = "Tweet is protected or private";
+    } else if (errorStr.includes("No images found")) {
+      status = 400;
+      errorMsg = "No images found in this tweet";
+    }
+
     return new Response(
-      JSON.stringify({ error: "All providers failed", details: errors }),
+      JSON.stringify({
+        error: errorMsg,
+        details: errors, // 保留详细错误信息以便排查
+      }),
       {
-        status: 502,
+        status: status,
         headers: { ...corsHeadersObj, "Content-Type": "application/json" },
       },
     );
