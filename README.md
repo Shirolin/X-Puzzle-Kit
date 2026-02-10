@@ -61,16 +61,17 @@
   <p><i>Seamless experience from Desktop Extension to Mobile PWA</i></p>
 </div>
 
-### 🖼️ Stitcher
+### 🧩 Split & Layout (Splitter)
 
-- **Smart Stitching**: **Predicts optimal layout** (T-shape, Grid) based on image count (1-4+).
-- **Quality First**: Pro-grade stitching with **pixel-perfect gap removal** using original images.
-- **Native Integration (Ext only)**: Injects a "🧩 Stitch" button directly into the X (Twitter) timeline on desktop for one-click processing.
+- **4-Panel & Vertical Stacks**: Optimized for the **"Vertical Image Stacking"** trend on X (Twitter). Split long images into 4 perfectly sized panels (T-shape or 2x2 grid) for that "Tap to Reveal" full-body effect.
+- **Custom Rows/Cols**: Support for custom N rows or N columns splitting, perfect for banners or ultra-long threads. ZIP export supported.
+- **Interactive UI**: Drag-and-drop cropping, what you see is what you get.
 
-### 🧩 Splitter
+### 🖼️ Stitch & Restore (Stitcher)
 
-- **Creative 9-Grid**: Splits large images into 3x3, 2x2, or custom banners. Optimized for X (Twitter).
-- **Live Preview**: Interactive drag-and-drop cropping with real-time X (Twitter) layout simulation.
+- **Save & Restore**: Found a 4-panel split or a long manga spread? One-click to grab and **restore** it into a seamless, high-res long image with pixel-perfect alignment.
+- **Smart Prediction**: Auto-detects the best layout (T-shape, Grid) based on image count.
+- **Native Integration (Ext only)**: Injects a "🧩 Stitch" button directly into the timeline for a seamless workflow.
 
 ### 📱 Platform
 
