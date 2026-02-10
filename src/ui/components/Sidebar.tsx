@@ -52,9 +52,8 @@ export const Divider = () => (
 // 侧边栏卡片包裹组件
 // 帮助提示组件
 const HelpTip = ({ text }: { text: string }) => (
-  <HelpCircle
-    size={12}
-    className="help-info-icon"
+  <span
+    className="help-info-icon-wrapper"
     onClick={() => {
       toast(
         <div style={{ whiteSpace: "pre-wrap", lineHeight: "1.4" }}>{text}</div>,
@@ -67,7 +66,9 @@ const HelpTip = ({ text }: { text: string }) => (
       );
     }}
     title={text}
-  />
+  >
+    <HelpCircle size={13} className="help-info-icon" />
+  </span>
 );
 
 export interface SidebarSectionProps {
@@ -89,13 +90,13 @@ export const SidebarSection = ({
 }: SidebarSectionProps) => (
   <section className={`section-block ${className || ""}`} style={style}>
     <div className="section-header-row">
-      <div className="flex-row-center">
-        <h3 className="section-header" style={{ margin: 0 }}>
-          {title}
-        </h3>
+      <h3 className="section-header">
+        <span className="section-header-text">{title}</span>
+      </h3>
+      <div className="section-header-actions-wrapper">
         {helpText && <HelpTip text={helpText} />}
+        {headerRight}
       </div>
-      {headerRight}
     </div>
     {children}
   </section>
