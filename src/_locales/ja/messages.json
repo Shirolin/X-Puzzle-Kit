@@ -99,6 +99,10 @@
     "message": "個別余白の調整",
     "description": "画像順序のサブタイトル"
   },
+  "imageSortingHelp": {
+    "message": "画像の管理：ドラッグで並べ替え、表示/非表示の切り替え、または個別余白の微調整が可能です。",
+    "description": "画像順序セクションの総合ヘルプ"
+  },
   "imageLabel": {
     "message": "画像",
     "description": "画像のラベル"
@@ -498,8 +502,12 @@
     "description": "全局間隔のヘルプ"
   },
   "formatHelp": {
-    "message": "PNG：無損失で最高画質。JPG：写真に適しておりファイルサイズが小さい。WebP：両者のバランスが良いですが、iOSで互換性の問題が発生する場合があります。",
-    "description": "形式のヘルプ"
+    "message": "PNGは最高画質の無劣化形式、JPGは圧縮効率に優れ、WebPは両者のバランス型です（iOSでは制限あり）。",
+    "description": "形式設定のヘルプ説明"
+  },
+  "exportSettingsHelp": {
+    "message": "エクスポート設定：ファイル形式の選択、背景色の設定、または表示言語の切り替えを行います。",
+    "description": "書き出し設定セクションの総合ヘルプ"
   },
   "twitterOptimizeHelp": {
     "message": "X (Twitter) に複数の画像を投稿する際、タイムライン上で1枚の絵のように繋がって見えるよう、比率や境界線を微調整します。",
@@ -522,8 +530,8 @@
     "description": "元のポストへのリンクヒント"
   },
   "userGuideButton": {
-    "message": "ご利用ガイド",
-    "description": "ガイド按钮文本"
+    "message": "使い方ガイド",
+    "description": "ガイドを開くボタンのテキスト"
   },
   "tutorialImportTitle": {
     "message": "画像の取り込み",

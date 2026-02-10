@@ -259,6 +259,14 @@
     "message": "Suppression d'espace",
     "description": "Libellé de suppression d'espace"
   },
+  "localGapHelp": {
+    "message": "Ajuster l'espacement entre des images spécifiques.",
+    "description": "Explication de l'aide pour l'espace local"
+  },
+  "imageSortingHelp": {
+    "message": "Gérer les images : glisser pour réorganiser, masquer/afficher ou ajuster les espaces locaux.",
+    "description": "Aide complète pour la section Galerie"
+  },
   "gapRemovalTip": {
     "message": "Pixels à vérifier et supprimer entre les images divisées.",
     "description": "Description de la suppression d'espace"
@@ -560,10 +568,6 @@
   "nextStep": {
     "message": "Suivant",
     "description": "Bouton suivant"
-  },
-  "localGapHelp": {
-    "message": "Cliquez sur le numéro sous l「image ou utilisez la molette pour ajuster individuellement l」espace entre cette image et la suivante.",
-    "description": "Description d'aide pour l'espace local"
   },
   "userGuideTitle": {
     "message": "Manuel de l'utilisateur & Guide",

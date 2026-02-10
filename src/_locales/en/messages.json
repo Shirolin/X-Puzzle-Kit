@@ -478,8 +478,12 @@
     "description": "Global gap help"
   },
   "formatHelp": {
-    "message": "PNG: Lossless, best quality; JPG: Good for photos, smaller size; WebP: Balanced, but may have iOS compatibility issues.",
-    "description": "Format help"
+    "message": "PNG is lossless (highest quality); JPG is for efficient compression; WebP balances both but may have compatibility issues on iOS.",
+    "description": "Help explanation for format selection"
+  },
+  "exportSettingsHelp": {
+    "message": "Customize your output: Selection export format, set background color, or switch language.",
+    "description": "Comprehensive help for export settings section"
   },
   "twitterOptimizeHelp": {
     "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 「One Image」 look in users' feeds.",
@@ -530,8 +534,12 @@
     "description": "Next button"
   },
   "localGapHelp": {
-    "message": "Tap numbers or scroll below images to adjust gaps between specific slices. Perfect for segmenting stories or hiding 「Easter eggs」.",
-    "description": "Local gap help description"
+    "message": "Adjust the gap between specific images. Perfect for separating chapters or hiding 'easter eggs'.",
+    "description": "Help explanation for local gap"
+  },
+  "imageSortingHelp": {
+    "message": "Manage your gallery: Drag to reorder, toggle visibility, or fine-tune gaps between specific images.",
+    "description": "Comprehensive help for image sorting section"
   },
   "userGuideTitle": {
     "message": "User Manual & Guide",

@@ -159,10 +159,6 @@
     "message": "圖片排序",
     "description": "圖片排序部分標題"
   },
-  "localGap": {
-    "message": "局部間距",
-    "description": "圖片排序副標題"
-  },
   "imageLabel": {
     "message": "圖片",
     "description": "圖片標籤"
@@ -501,6 +497,10 @@
     "message": "PNG 為無損格式，畫質最高；\nJPG 適合照片壓縮，體積較小；\nWebP 兼顧兩者，但在 iOS 系統中可能存在相容性問題。",
     "description": "導出格式幫助說明"
   },
+  "exportSettingsHelp": {
+    "message": "個性化導出：選擇檔案格式（PNG/JPG/WebP）、設置畫布底色，或切換介面語言。",
+    "description": "導出設置區域綜合說明"
+  },
   "twitterOptimizeHelp": {
     "message": "當您在 Twitter/X 一次發布多張切圖時，此選項會微調邊框和間距，使它們在用戶的信息流滾動預覽中無接縫，視覺效果如同一張大圖。",
     "description": "推特佈局優化詳細說明"
@@ -566,8 +566,12 @@
     "description": "下一步按鈕"
   },
   "localGapHelp": {
-    "message": "點擊圖片下方的數字或操作撥輪，可以單獨調整該圖片與後一張圖片之間的間距。",
+    "message": "點擊圖片下方的數字或操作撥輪，可以單獨調整某兩張切片之間的間距。適合用於分隔不同劇情或埋藏「彩蛋」。",
     "description": "局部間距幫助說明"
+  },
+  "imageSortingHelp": {
+    "message": "管理圖片列表：拖拽手柄可改變排序；點擊眼睛圖示切換顯示/隱藏；點擊下方數字可微調局部間隙。",
+    "description": "圖片排序區域綜合說明"
   },
   "userGuideTitle": {
     "message": "使用手冊與引導",

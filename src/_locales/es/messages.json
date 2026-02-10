@@ -95,6 +95,14 @@
     "message": "Galería",
     "description": "Encabezado de la sección de orden de imágenes"
   },
+  "localGapHelp": {
+    "message": "Ajustar el espacio entre imágenes específicas.",
+    "description": "Explicación de ayuda para el espacio local"
+  },
+  "imageSortingHelp": {
+    "message": "Gestionar imágenes: arrastrar para reordenar, alternar visibilidad o ajustar espacios locales.",
+    "description": "Ayuda integral para la sección de orden de imágenes"
+  },
   "localGap": {
     "message": "Ajuste local",
     "description": "Subtítulo para orden de imágenes"
@@ -494,8 +502,12 @@
     "description": "Ayuda de espacio global"
   },
   "formatHelp": {
-    "message": "PNG: Sin pérdida, mejor calidad; JPG: Bueno para fotos, tamaño más pequeño; WebP: Equilibrado, pero puede tener problemas de compatibilidad con iOS.",
-    "description": "Ayuda de formato"
+    "message": "PNG sin pérdida; JPG para compresión; WebP compatible con ambos (posibles problemas en iOS).",
+    "description": "Explicación de ayuda para la selección de formato"
+  },
+  "exportSettingsHelp": {
+    "message": "Personalizar exportación: seleccionar formato, color de fondo o cambiar idioma.",
+    "description": "Ayuda integral para la sección de ajustes de exportación"
   },
   "twitterOptimizeHelp": {
     "message": "Al publicar varios cortes en X (Twitter), esto ajusta los bordes para un aspecto de 「Imagen Única」 sin costuras en el feed de los usuarios.",
@@ -560,10 +572,6 @@
   "nextStep": {
     "message": "Siguiente",
     "description": "Botón de siguiente"
-  },
-  "localGapHelp": {
-    "message": "Haz clic en el número debajo de la imagen o usa la rueda para ajustar el espacio entre esta imagen y la siguiente individualmente.",
-    "description": "Descripción de ayuda para espacio local"
   },
   "userGuideTitle": {
     "message": "Manual de Usuario y Guía",

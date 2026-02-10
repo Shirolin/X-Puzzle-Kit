@@ -662,7 +662,7 @@ export function Sidebar({
             {/* Elastic Sorting Area */}
             <SidebarSection
               title={t("imageSorting")}
-              helpText={t("localGapHelp")}
+              helpText={t("imageSortingHelp")}
               className="sorting-area"
               data-tour="import"
               headerRight={
@@ -1076,7 +1076,7 @@ export function Sidebar({
 
             <SidebarSection
               title={t("settings")}
-              helpText={t("formatHelp")}
+              helpText={t("exportSettingsHelp")}
               style={{ flexShrink: 0 }}
             >
               <div

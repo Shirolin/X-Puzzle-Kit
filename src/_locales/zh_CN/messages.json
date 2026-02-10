@@ -115,6 +115,10 @@
     "message": "点击图片下方的数字或操作拨轮，可以单独调整某两张切片之间的间距。适合用于分隔不同剧情或埋藏「彩蛋」。",
     "description": "局部间距帮助说明"
   },
+  "imageSortingHelp": {
+    "message": "管理图片列表：拖拽手柄可改变排序；点击眼睛图标切换显示/隐藏；点击下方数字可微调局部间隙。",
+    "description": "图片排序区域综合说明"
+  },
   "imageLabel": {
     "message": "图片",
     "description": "图片标签"
@@ -242,6 +246,10 @@
   "formatHelp": {
     "message": "PNG 为无损格式，画质最高；\nJPG 适合照片压缩，体积较小；\nWebP 兼顾两者，但在 iOS 系统中可能存在兼容性问题。",
     "description": "导出格式帮助说明"
+  },
+  "exportSettingsHelp": {
+    "message": "个性化导出：选择文件格式（PNG/JPG/WebP）、设置画布底色，或切换界面语言。",
+    "description": "导出设置区域综合说明"
   },
   "iosWebpWarningTitle": {
     "message": "WebP 兼容性提示",
@@ -620,6 +628,10 @@
   "guideTechnicalDesc": {
     "message": "底层技术升级：插件版现在能彻底隔离主题样式，绝不干扰您所访问的网页，使用更加安全放心。",
     "description": "技术改进描述"
+  },
+  "guideTwitterOptimizeTitle": {
+    "message": "完美适配 X (Twitter) 信息流",
+    "description": "手册新增卡片标题"
   },
   "statusOfflineAvailable": {
     "message": "离线模式可用",
