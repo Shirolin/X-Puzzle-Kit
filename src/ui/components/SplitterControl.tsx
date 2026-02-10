@@ -196,6 +196,7 @@ export function SplitterControl({
       {/* Gap Removal Section (Enhanced) */}
       <SidebarSection
         title={t("gapRemoval")}
+        helpText={t("gapRemovalTip")}
         className="gap-control-enhanced"
         style={containerStyle}
         headerRight={

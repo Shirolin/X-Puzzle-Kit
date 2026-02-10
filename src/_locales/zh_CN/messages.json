@@ -216,11 +216,11 @@
     "description": "更换图片按钮文本"
   },
   "gapRemoval": {
-    "message": "消除间隙",
+    "message": "消除原图间隙",
     "description": "消除间隙标签"
   },
   "gapRemovalTip": {
-    "message": "将自动移除切片之间的间隙",
+    "message": "当您的图片自带边框或间距（如漫画、拼接图）时，开启此功能可以自动裁掉指定像素的“废像素”，使生成的切片更纯净。",
     "description": "消除间隙说明"
   },
   "rowCount": {

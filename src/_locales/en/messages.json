@@ -196,11 +196,11 @@
     "description": "Change image button text"
   },
   "gapRemoval": {
-    "message": "Gap Removal",
+    "message": "Trim Original Gaps",
     "description": "Gap removal label"
   },
   "gapRemovalTip": {
-    "message": "Pixels to verify and remove between split images.",
+    "message": "If your original image has built-in borders or gutters (like manga or comics), enable this to automatically crop out those redundant pixels during splitting.",
     "description": "Gap removal description"
   },
   "rowCount": {

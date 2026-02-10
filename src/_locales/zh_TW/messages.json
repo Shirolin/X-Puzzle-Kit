@@ -256,11 +256,11 @@
     "description": "更換圖片按鈕文本"
   },
   "gapRemoval": {
-    "message": "消除間隙",
+    "message": "消除原圖間隙",
     "description": "消除間隙標籤"
   },
   "gapRemovalTip": {
-    "message": "將自動移除切片之間的間隙",
+    "message": "當您的圖片自帶邊距或間距（如漫畫、拼接圖）時，開啟此功能可以自動裁掉指定像素的『廢像素』，使生成的切片更純淨。",
     "description": "消除間隙說明"
   },
   "rowCount": {

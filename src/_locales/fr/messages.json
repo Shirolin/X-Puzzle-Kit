@@ -256,7 +256,7 @@
     "description": "Texte du bouton changer image"
   },
   "gapRemoval": {
-    "message": "Suppression d'espace",
+    "message": "Supprimer les marges d'origine",
     "description": "Libellé de suppression d'espace"
   },
   "localGapHelp": {
@@ -268,7 +268,7 @@
     "description": "Aide complète pour la section Galerie"
   },
   "gapRemovalTip": {
-    "message": "Pixels à vérifier et supprimer entre les images divisées.",
+    "message": "Si votre image d'origine comporte des bordures ou des gouttières intégrées (comme les mangas), activez cette option pour recadrer automatiquement ces pixels redondants lors de la division.",
     "description": "Description de la suppression d'espace"
   },
   "rowCount": {

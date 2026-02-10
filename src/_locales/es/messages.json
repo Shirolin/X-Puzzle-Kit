@@ -264,11 +264,11 @@
     "description": "Texto del botón cambiar imagen"
   },
   "gapRemoval": {
-    "message": "Eliminación de espacios",
+    "message": "Recortar espacios originales",
     "description": "Etiqueta de eliminación de espacios"
   },
   "gapRemovalTip": {
-    "message": "Píxeles para verificar y eliminar entre imágenes divididas.",
+    "message": "Si su imagen original tiene bordes o espacios integrados (como manga o cómics), actívelo para recortar automáticamente esos píxeles redundantes durante la división.",
     "description": "Descripción de eliminación de espacios"
   },
   "rowCount": {

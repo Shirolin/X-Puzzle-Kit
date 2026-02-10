@@ -280,11 +280,11 @@
     "description": "이미지 변경 버튼 텍스트"
   },
   "gapRemoval": {
-    "message": "간격 제거",
+    "message": "원본 간격 제거",
     "description": "간격 제거 라벨"
   },
   "gapRemovalTip": {
-    "message": "분할된 이미지 사이의 간격을 확인하고 제거합니다.",
+    "message": "이미지에 테두리나 간격(만화 등)이 있는 경우, 이를 활성화하면 분할 중에 해당 픽셀을 자동으로 잘라냅니다.",
     "description": "간격 제거 설명"
   },
   "localGapHelp": {

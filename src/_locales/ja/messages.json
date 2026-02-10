@@ -264,11 +264,11 @@
     "description": "画像変更ボタンのテキスト"
   },
   "gapRemoval": {
-    "message": "隙間削除",
+    "message": "元の隙間を削除",
     "description": "隙間削除ラベル"
   },
   "gapRemovalTip": {
-    "message": "分割画像の間の隙間を自動的に削除します",
+    "message": "画像に境界線や隙間（漫画など）がある場合、これを有効にすると、分割中にそれらの不要なピクセルを自動的に切り取ります。",
     "description": "隙間削除の説明"
   },
   "rowCount": {
