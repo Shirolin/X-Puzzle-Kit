@@ -1459,48 +1459,50 @@ export function Sidebar({
               </div>
             </SidebarSection>
 
-            {!isExtension && (
-              <p
+            <p
+              style={{
+                fontSize: "10px",
+                color: "var(--color-text-muted)",
+                opacity: 0.5,
+                lineHeight: 1.6,
+                margin: isExtension ? "12px 0 8px" : "0 0 8px",
+                padding: "0 12px",
+                textAlign: "center",
+              }}
+            >
+              {!isExtension && (
+                <>
+                  {t("privacyNotice")}
+                  <a
+                    href="https://github.com/Shirolin/X-Puzzle-Kit/blob/main/doc/privacy.md"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "block",
+                      marginTop: "4px",
+                      color: "var(--color-text-muted)",
+                      opacity: 0.8,
+                      textDecoration: "underline",
+                      textUnderlineOffset: "2px",
+                      textDecorationColor: "var(--color-border)",
+                    }}
+                  >
+                    {t("privacyPolicy")}
+                  </a>
+                </>
+              )}
+              <span
                 style={{
-                  fontSize: "10px",
-                  color: "var(--color-text-muted)",
-                  opacity: 0.5,
-                  lineHeight: 1.6,
-                  margin: "0 0 8px",
-                  padding: "0 12px",
-                  textAlign: "center",
+                  display: "block",
+                  marginTop: isExtension ? "0" : "4px",
+                  fontSize: "9px",
+                  letterSpacing: "0.2px",
+                  opacity: 0.6,
                 }}
               >
-                {t("privacyNotice")}
-                <a
-                  href="https://github.com/Shirolin/X-Puzzle-Kit/blob/main/doc/privacy.md"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "block",
-                    marginTop: "4px",
-                    color: "var(--color-text-muted)",
-                    opacity: 0.8,
-                    textDecoration: "underline",
-                    textUnderlineOffset: "2px",
-                    textDecorationColor: "var(--color-border)",
-                  }}
-                >
-                  {t("privacyPolicy")}
-                </a>
-                <span
-                  style={{
-                    display: "block",
-                    marginTop: "4px",
-                    fontSize: "9px",
-                    letterSpacing: "0.2px",
-                    opacity: 0.6,
-                  }}
-                >
-                  v{__APP_VERSION__} (Build: {__BUILD_ID__})
-                </span>
-              </p>
-            )}
+                v{__APP_VERSION__} (Build: {__BUILD_ID__})
+              </span>
+            </p>
           </>
         )}
       </div>
