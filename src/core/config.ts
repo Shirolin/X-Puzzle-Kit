@@ -45,7 +45,9 @@ export const APP_CONFIG = {
     PWA_URL: "https://x-puzzle-kit.pages.dev/",
     EXTENSION_STORE_URL:
       "https://chromewebstore.google.com/detail/x-puzzle-kit-stitch-split/nadlbdmcfmjinifkoedegmiejfibdikk",
+    IOS_SHORTCUT_VER: "1.0.0",
     IOS_SHORTCUT_URL:
       "https://www.icloud.com/shortcuts/b932fef77a3842dd89db1eed4488bf42?source=shortcut",
+    IOS_SHORTCUT_NOTE: "初始版本：支持 X-Puzzle 图片拼接与更新检查。",
   },
 };
