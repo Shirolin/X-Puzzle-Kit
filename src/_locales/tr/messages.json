@@ -1,34 +1,34 @@
 {
   "appName": {
-    "message": "X-Puzzle-Kit: Stitch & Split Images for X",
+    "message": "X-Puzzle-Kit: X için Resim Birleştirme & Bölme",
     "description": "The name of the extension"
   },
   "appDesc": {
-    "message": "Stitch panoramas or split grids for X (Twitter). Pixel-perfect, timeline-optimized & lossless quality.",
+    "message": "X (Twitter) için panoramaları birleştirin veya ızgaralara bölün. Piksel mükemmelliğinde, zaman akışı (timeline) optimize ve kayıpsız kalite.",
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit is a professional image stitcher and grid splitter designed specifically for X (Twitter) users, digital artists, and collectors. Whether you「re reconstructing a multi-part panorama or preparing a creative grid reveal, X-Puzzle-Kit ensures your content looks exactly as intended on the X timeline.\n\n🌐 CROSS-PLATFORM SUPPORT:\nIn addition to this Chrome extension, we provide a full-featured Web version (https://x-puzzle-kit.pages.dev/) for seamless use on mobile devices, tablets, and other browsers.\n\n✨ CORE CAPABILITIES:\n\n🧵 Intelligent Image Stitching\nSeamlessly merge separate Tweet images back into their original panorama or long-form format.\n- Smart Layouts: Full support for Vertical, Horizontal, 2x2 Grid, and the signature T-Shape layouts.\n- Pixel-Perfect Alignment: Advanced coordinate calculation eliminates 1px seams and blurry artifacts.\n- Native Integration: Stitch images directly from your X timeline with a single click—no manual saving required.\n- Lossless Export: Preserves every pixel in its original resolution. No compression, no quality loss.\n\n✂️ Creative Grid Splitter (Mosaic Maker)\nBreak down any large image into standardized grids (2x2, 3x3, or custom) optimized for the X multi-image display.\n- Twitter \"Seamless Flow\" Optimization: Optimized for Twitter」s preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline by perfectly matching X「s preview ratios.\n- Right-click & Split: Instantly send any web image to the splitter directly from your browser」s context menu.\n- Unified Storytelling: Create consistent, engaging \"reveal\" effects for your feed.\n\n🚀 POWER FEATURES:\n- Smooth Workflow: Move from timeline to canvas in seconds with deep browser integration.\n- Professional Customization: Fine-tune global/local gaps, toggle Dark Mode, and choose custom background colors (including transparency).\n- Easy Import: Support for file uploads and clipboard pasting alongside native X integration.\n- Batch Export: Save your creations as high-quality PNG, JPG, or WebP files, or a single organized ZIP package.\n\n🔒 COMMITTED TO PRIVACY\nYour images never leave your browser. All processing is done locally on your machine—no remote uploads, no tracking, and total security.\n\nEnhance your X storytelling with X-Puzzle-Kit today.",
+    "message": "X-Puzzle-Kit, X (Twitter) kullanıcıları, dijital sanatçılar ve koleksiyoncular için özel olarak tasarlanmış profesyonel bir resim birleştirme ve ızgara bölme aracıdır. İster çok parçalı bir panoramayı yeniden birleştiriyor olun, ister yaratıcı bir ızgara \"reveal\" (açığa çıkarma) efekti hazırlıyor olun, X-Puzzle-Kit içeriğinizin X zaman akışında tam olarak amaçlandığı gibi görünmesini sağlar.\n\n🌐 PLATFORMLAR ARASI DESTEK:\nBu Chrome uzantısına ek olarak, mobil cihazlar, tabletler ve diğer tarayıcılarda sorunsuz kullanım için tam özellikli bir Web sürümü (https://x-puzzle-kit.pages.dev/) sunuyoruz.\n\n✨ TEMEL GÜÇLER:\n\n🧵 Akıllı Resim Birleştirme (Stitching)\nAyrı Tweet resimlerini orijinal panorama veya uzun formata sorunsuz bir şekilde geri birleştirin.\n- Akıllı Düzenler: Dikey, Yatay, 2x2 Izgara ve imza niteliğindeki T-Şekli düzenleri için tam destek.\n- Piksel Mükemmelliğinde Hizalama: Gelişmiş koordinat hesaplaması, 1 piksellik dikiş izlerini ve bulanık eserleri ortadan kaldırır.\n- Yerel Entegrasyon: Resimleri doğrudan X zaman akışınızdan tek tıklamayla birleştirin — manuel kaydetmeye gerek yok.\n- Kayıpsız Dışa Aktarma: Her pikseli orijinal çözünürlüğünde korur. Sıkıştırma yok, kalite kaybı yok.\n\n✂️ Yaratıcı Izgara Bölücü (Mosaic Maker)\nHerhangi bir büyük resmi, X'in çoklu resim gösterimi için optimize edilmiş standart ızgaralara (2x2, 3x3 veya özel) bölün.\n- Twitter \"Kusursuz Akış\" Optimizasyonu: Twitter'ın önizleme mekanizması için optimize edilmiştir. Zaman akışında görsel olarak tek bir \"kesintisiz resim\" gibi birleşmesini sağlar.\n- Sağ Tık & Böl: Herhangi bir web resmini doğrudan tarayıcınızın içerik menüsünden bölücüye gönderin.\n- Birleşik Hikaye Anlatımı: Akışınız için tutarlı, ilgi çekici \"ortaya çıkarma\" efektleri oluşturun.\n\n🚀 GÜÇLÜ ÖZELLİKLER:\n- Akıcı İş Akışı: Derin tarayıcı entegrasyonu ile saniyeler içinde zaman akışından düzenlemeye geçin.\n- Profesyonel Özelleştirme: Global/yerel boşlukların ince ayarı, Karanlık Mod ve özel arka plan renkleri (şeffaflık dahil).\n- Kolay İçe Aktarma: Yerel X entegrasyonunun yanı sıra dosya yükleme ve panodan yapıştırma desteği.\n- Toplu Dışa Aktarma: Tasarımlarınızı yüksek kaliteli PNG, JPG veya WebP dosyaları olarak ya da tek bir düzenli ZIP paketi olarak kaydedin.\n\n🔒 GİZLİLİK ÖNCELİĞİMİZ\nResimleriniz asla tarayıcınızdan çıkmaz. Tüm işlemler yerel olarak cihazınızda yapılır — uzaktan yükleme yok, izleme yok ve tam güvenlik.\n\nX hikaye anlatımınızı X-Puzzle-Kit ile bugün geliştirin.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
-    "message": "Stitch Preview",
+    "message": "Önizleme & Birleştirme",
     "description": "Title of the preview window"
   },
   "splitterTitle": {
-    "message": "Splitter",
+    "message": "Bölücü (Splitter)",
     "description": "Title of the splitter window"
   },
   "stitching": {
-    "message": "Stitching...",
+    "message": "İşleniyor...",
     "description": "Loading status during stitch generation"
   },
   "removeImage": {
-    "message": "Remove Image",
+    "message": "Resmi Kaldır",
     "description": "Tooltip for remove image"
   },
   "fromArtist": {
-    "message": "From",
+    "message": "Kimden",
     "description": "Author prefix"
   },
   "tweetId": {
@@ -36,327 +36,327 @@
     "description": "Label for Tweet ID"
   },
   "preparingHighRes": {
-    "message": "Preparing high-res resources...",
+    "message": "Yüksek çözünürlük hazırlanıyor...",
     "description": "Loading text for high-res images"
   },
   "reset": {
-    "message": "Reset",
+    "message": "Sıfırla",
     "description": "Reset button text"
   },
   "layoutScheme": {
-    "message": "Layout Scheme",
+    "message": "Düzen Şeması",
     "description": "Section header for layout"
   },
   "layoutGrid": {
-    "message": "2x2 Grid",
+    "message": "2x2 Izgara",
     "description": "2x2 layout label"
   },
   "layoutTShape": {
-    "message": "T-Shape",
+    "message": "T-Şekli",
     "description": "T-Shape layout label"
   },
   "layoutHorizontal": {
-    "message": "Horizontal",
+    "message": "Yatay",
     "description": "Horizontal layout label"
   },
   "layoutVertical": {
-    "message": "Vertical",
+    "message": "Dikey",
     "description": "Vertical layout label"
   },
   "exportSettings": {
-    "message": "Export Settings",
+    "message": "Dışa Aktarma Ayarları",
     "description": "Section header for export settings"
   },
   "backgroundColor": {
-    "message": "BG Color",
+    "message": "Arka Plan",
     "description": "Label for background color"
   },
   "transparent": {
-    "message": "Trans",
+    "message": "Şeffaf",
     "description": "Transparent background option"
   },
   "white": {
-    "message": "White",
+    "message": "Beyaz",
     "description": "White background option"
   },
   "black": {
-    "message": "Black",
+    "message": "Siyah",
     "description": "Black background option"
   },
   "globalGap": {
-    "message": "Global Gap",
+    "message": "Global Boşluk",
     "description": "Label for global gap"
   },
   "resetToZero": {
-    "message": "Reset to 0",
+    "message": "0'a Sıfırla",
     "description": "Tooltip for reset gap"
   },
   "imageSorting": {
-    "message": "Image Sorting",
+    "message": "Resim Sıralaması",
     "description": "Section header for image sorting"
   },
   "localGap": {
-    "message": "Adjust local gap",
+    "message": "Yerel boşluğu ayarla",
     "description": "Subtitle for image sorting"
   },
   "imageLabel": {
-    "message": "Image",
+    "message": "Resim",
     "description": "Label for image"
   },
   "moveUp": {
-    "message": "Move Up",
+    "message": "Yukarı Taşı",
     "description": "Tooltip for move up"
   },
   "moveDown": {
-    "message": "Move Down",
+    "message": "Aşağı Taşı",
     "description": "Tooltip for move down"
   },
   "hideImage": {
-    "message": "Hide Image",
+    "message": "Resmi Gizle",
     "description": "Tooltip for hide image"
   },
   "showImage": {
-    "message": "Show Image",
+    "message": "Resmi Göster",
     "description": "Tooltip for show image"
   },
   "afterGap": {
-    "message": "Gap after",
+    "message": "Sonraki boşluk",
     "description": "Label for local gap after image"
   },
   "decreaseGap": {
-    "message": "Decrease gap",
+    "message": "Azalt",
     "description": "Tooltip for decrease gap"
   },
   "increaseGap": {
-    "message": "Increase gap",
+    "message": "Artır",
     "description": "Tooltip for increase gap"
   },
   "gapLabel": {
-    "message": "Gap",
+    "message": "Boşluk",
     "description": "Label for the resulting gap"
   },
   "resetLocalGap": {
-    "message": "Reset local gap",
+    "message": "Yerel boşluğu sıfırla",
     "description": "Tooltip for reset local gap"
   },
   "processing": {
-    "message": "Processing...",
+    "message": "İşleniyor...",
     "description": "Button text while processing"
   },
   "stitchAndDownload": {
-    "message": "Stitch & Download",
+    "message": "Birleştir & İndir",
     "description": "Final download button text"
   },
   "stitchBtnTitle": {
-    "message": "Stitch Images",
+    "message": "Resimleri Birleştir",
     "description": "Tooltip for the stitch button embedded in Twitter"
   },
   "language": {
-    "message": "Language",
+    "message": "Dil (Language)",
     "description": "Language selector label"
   },
   "sourcedFrom": {
-    "message": "from",
+    "message": "kaynak",
     "description": "Used in the source badge"
   },
   "splitImage": {
-    "message": "Split Image",
+    "message": "Resmi Böl",
     "description": "Split button text"
   },
   "downloadAll": {
-    "message": "Download All",
+    "message": "Hepsini İndir",
     "description": "Download all button text"
   },
   "uploadImage": {
-    "message": "Upload Image",
+    "message": "Resim Yükle",
     "description": "Upload image button text"
   },
   "selectImageTip": {
-    "message": "Select an image to split",
+    "message": "Bölmek için bir resim seçin",
     "description": "Select image tip"
   },
   "uploadImages": {
-    "message": "Upload Images",
+    "message": "Resim Yükle",
     "description": "Button text for uploading multiple images"
   },
   "selectImagesTip": {
-    "message": "Please select images to stitch",
+    "message": "Lütfen birleştirilecek resimleri seçin",
     "description": "Tip for selecting multiple images"
   },
   "addMoreImages": {
-    "message": "Add more images",
+    "message": "Daha fazla resim ekle",
     "description": "Button text to add more images when preview is empty"
   },
   "dragAndDropTip": {
-    "message": "Or drag and drop here",
+    "message": "Veya buraya sürükleyip bırakın",
     "description": "Drag and drop instruction"
   },
   "changeImage": {
-    "message": "Change",
+    "message": "Değiştir",
     "description": "Change image button text"
   },
   "gapRemoval": {
-    "message": "Trim Original Gaps",
+    "message": "Orijinal Boşlukları Kırp",
     "description": "Gap removal label"
   },
   "gapRemovalTip": {
-    "message": "If your original image has built-in borders or gutters (like manga or comics), enable this to automatically crop out those redundant pixels during splitting.",
+    "message": "Orijinal resminizde yerleşik kenarlıklar veya boşluklar varsa (manga vb.), bunları bölmeden önce otomatik olarak kırpmak için bunu etkinleştirin.",
     "description": "Gap removal description"
   },
   "rowCount": {
-    "message": "Row Count (N)",
+    "message": "Satır (N)",
     "description": "Row count label"
   },
   "colCount": {
-    "message": "Col Count (N)",
+    "message": "Sütun (N)",
     "description": "Column count label"
   },
   "sourceImage": {
-    "message": "Source",
+    "message": "Kaynak",
     "description": "Source image label"
   },
   "splitResult": {
-    "message": "Split Result",
+    "message": "Sonuç",
     "description": "Split result label"
   },
   "formatLabel": {
-    "message": "Export Format",
+    "message": "Dışa Aktarma Formatı",
     "description": "Export format label"
   },
   "iosWebpWarningTitle": {
-    "message": "WebP Compatibility",
+    "message": "WebP Uyumluluğu",
     "description": "Title for iOS WebP warning"
   },
   "iosWebpWarning": {
-    "message": "Saving WebP images to the Photos app on iOS may have compatibility issues (some apps may not display them correctly). PNG is recommended. Do you still want to switch to WebP?",
+    "message": "iOS Fotoğraflar uygulamasına WebP kaydetmek uyumluluk sorunlarına yol açabilir (bazı uygulamalar göstermeyebilir). PNG önerilir. Yine de WebP'ye geçmek istiyor musunuz?",
     "description": "Warning for iOS WebP compatibility"
   },
   "zipLabel": {
-    "message": "Download as Zip",
+    "message": "ZIP olarak indir",
     "description": "Zip download toggle label"
   },
   "zipTip": {
-    "message": "Package all images into a single zip file",
+    "message": "Tüm resimleri tek bir ZIP dosyasında paketle",
     "description": "Zip feature description"
   },
   "restore": {
-    "message": "Restore",
+    "message": "Geri Yükle",
     "description": "Restore button text"
   },
   "twitterOptimize": {
-    "message": "Twitter \"Seamless Flow\" Layout",
+    "message": "\"Kusursuz Akış\" (X/Twitter)",
     "description": "Twitter optimization toggle label"
   },
   "twitterOptimizeTip": {
-    "message": "Optimized for Twitter's preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline.",
+    "message": "Twitter'ın önizleme mekanizması için optimize edilmiştir. Birden fazla parçanın zaman akışında görsel olarak \"Tek Bir Resim\" gibi görünmesini sağlar.",
     "description": "Twitter optimization tip"
   },
   "settings": {
-    "message": "Settings",
+    "message": "Ayarlar",
     "description": "General settings section title"
   },
   "modeStitch": {
-    "message": "Stitch",
+    "message": "Birleştir",
     "description": "Stitch mode button"
   },
   "modeSplit": {
-    "message": "Split",
+    "message": "Böl (Split)",
     "description": "Split mode button"
   },
   "support": {
-    "message": "Support",
+    "message": "Destek",
     "description": "Support section title"
   },
   "buyMeCoffee": {
-    "message": "Buy me a coffee",
+    "message": "Bana bir kahve ısmarla",
     "description": "Sponsorship button text"
   },
   "contextMenuTitle": {
-    "message": "X-Puzzle-Kit: Split Image",
+    "message": "X-Puzzle-Kit: Resmi Böl",
     "description": "Context menu item title"
   },
   "extensionUpdatedRefresh": {
-    "message": "Extension updated. Please refresh the page.",
+    "message": "Eklenti güncellendi. Lütfen sayfayı yenileyin.",
     "description": "Message shown when extension context is invalidated"
   },
   "slideRefine": {
-    "message": "Slide to refine",
+    "message": "Hassas ayar için kaydır",
     "description": "Hint for the jog dial controller"
   },
   "confirmRemoveImage": {
-    "message": "Are you sure you want to remove this image?",
+    "message": "Bu resmi kaldırmak istediğinize emin misiniz?",
     "description": "Confirmation message when removing a single image"
   },
   "confirmClearAll": {
-    "message": "Are you sure you want to clear all images? This cannot be undone.",
+    "message": "Hepsini temizlemek istediğinize emin misiniz? Bu işlem geri alınamaz.",
     "description": "Confirmation message when clearing all images"
   },
   "clearAll": {
-    "message": "Clear All",
+    "message": "Hepsini Sil",
     "description": "Clear all images button text"
   },
   "emptyImageText": {
-    "message": "No images, click to upload",
+    "message": "Resim yok, yüklemek için tıklayın",
     "description": "Message shown when image list is empty"
   },
   "installTitle": {
-    "message": "Add to Home Screen",
+    "message": "Ana Ekrana Ekle",
     "description": "iOS install prompt title"
   },
   "installDesc": {
-    "message": "Tap the Share button below, then select 「Add to Home Screen」.",
+    "message": "Aşağıdaki Paylaş butonuna ve ardından \"Ana Ekrana Ekle\"ye dokunun.",
     "description": "iOS install prompt description"
   },
   "installDescChrome": {
-    "message": "Tap the Share button top-right, then select 「Add to Home Screen」.",
+    "message": "Sağ üstteki Paylaş butonuna ve ardından \"Ana Ekrana Ekle\"ye dokunun.",
     "description": "iOS Chrome install prompt description"
   },
   "installDescAndroid": {
-    "message": "Tap the browser menu (top or bottom right), then select 「Install app」 or 「Add to Home Screen」.",
+    "message": "Tarayıcı menüsünü açın ve \"Uygulamayı yükle\" veya \"Ana ekrana ekle\" seçeneğini seçin.",
     "description": "Android install prompt description"
   },
   "pwaInstallBtn": {
-    "message": "Install",
+    "message": "Yükle",
     "description": "Native PWA install button text"
   },
   "pwaInstallDescNative": {
-    "message": "Install the app to your home screen for a better experience.",
+    "message": "Daha iyi bir deneyim için uygulamayı ana ekranınıza yükleyin.",
     "description": "Native PWA install description"
   },
   "importFromUrl": {
-    "message": "Import from URL",
+    "message": "URL'den İçe Aktar",
     "description": "Import button title"
   },
   "invalidUrl": {
-    "message": "Invalid URL, please provide a valid Tweet (X) link",
+    "message": "Geçersiz URL. Lütfen geçerli bir X (Twitter) bağlantısı girin",
     "description": "Invalid URL tip"
   },
   "analyzingLink": {
-    "message": "Analyzing link...",
+    "message": "Bağlantı analiz ediliyor...",
     "description": "Analyzing link state"
   },
   "noImagesFound": {
-    "message": "No importable images found in this Tweet",
+    "message": "Bu Tweet'te içe aktarılabilir resim bulunamadı",
     "description": "No images found tip"
   },
   "downloadingImages": {
-    "message": "Downloading images",
+    "message": "Resimler indiriliyor",
     "description": "Downloading images state"
   },
   "processingImages": {
-    "message": "Processing images...",
+    "message": "Resimler işleniyor...",
     "description": "Processing images state"
   },
   "parseFailed": {
-    "message": "Failed to parse Tweet",
+    "message": "Tweet ayrıştırılamadı",
     "description": "Parse failed tip"
   },
   "workerInvalidResponse": {
-    "message": "The parsing service returned an unexpected format. The tweet might be restricted or the service is temporarily unavailable.",
+    "message": "Ayrıştırma hizmeti beklenmeyen bir format döndürdü. Tweet kısıtlanmış olabilir veya hizmet geçici olarak kullanılamıyor.",
     "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
   },
   "workerStatusError": {
-    "message": "The parsing service is temporarily unable to process this tweet (Error: $status$).",
+    "message": "Ayrıştırma hizmeti geçici olarak bu tweet'i işleyemiyor (Hata: $status$).",
     "description": "Tooltip for when worker returns non-200 status code",
     "placeholders": {
       "status": {
@@ -366,291 +366,291 @@
     }
   },
   "networkError": {
-    "message": "Network connection failed. Please check your internet settings.",
+    "message": "Ağ bağlantısı başarısız. Lütfen internet ayarlarınızı kontrol edin.",
     "description": "Tooltip for network errors during fetch"
   },
   "import": {
-    "message": "Import",
+    "message": "İçe Aktar",
     "description": "Import action button"
   },
   "cancel": {
-    "message": "Cancel",
+    "message": "İptal",
     "description": "Cancel action button"
   },
   "confirm": {
-    "message": "Confirm",
+    "message": "Onayla",
     "description": "Confirm action button"
   },
   "imageResolution": {
-    "message": "Resolution",
+    "message": "Çözünürlük",
     "description": "Label for image resolution"
   },
   "clickToShowResolution": {
-    "message": "Click to see resolution",
+    "message": "Çözünürlük için tıkla",
     "description": "Tooltip hint for thumbnails"
   },
   "finalGap": {
-    "message": "Final Gap",
+    "message": "Toplam Boşluk",
     "description": "Calculated total gap including global and local"
   },
   "openSourcePage": {
-    "message": "Open Source Page",
+    "message": "Kaynak Sayfayı Aç",
     "description": "Tooltip for the source tweet link"
   },
   "invalidFormat": {
-    "message": "Invalid format",
+    "message": "Geçersiz format",
     "description": "Error message for invalid input"
   },
   "auto": {
-    "message": "Auto",
+    "message": "Otomatik",
     "description": "Auto option for language/theme"
   },
   "themeSystem": {
-    "message": "Follow System",
+    "message": "Sistem",
     "description": "System theme option"
   },
   "themeLight": {
-    "message": "Light Mode",
+    "message": "Açık",
     "description": "Light theme option"
   },
   "themeDark": {
-    "message": "Dark Mode",
+    "message": "Koyu",
     "description": "Dark theme option"
   },
   "themeLabel": {
-    "message": "Theme",
+    "message": "Tema",
     "description": "Label for theme selector"
   },
   "pwaVersionLabel": {
-    "message": "Web Version (Mobile/Online)",
+    "message": "Web Sürümü (Mobil/Online)",
     "description": "PWA version label"
   },
   "pwaVersionTip": {
-    "message": "Using on mobile or browser without extension? Try our full-featured Web version.",
+    "message": "Mobil cihazda veya farklı bir tarayıcıda mı kullanıyorsunuz? Tam özellikli Web sürümümüzü deneyin.",
     "description": "PWA version description"
   },
   "openWebVersion": {
-    "message": "Open Web Version",
+    "message": "Web Sürümünü Aç",
     "description": "Open PWA button text"
   },
   "extensionVersionLabel": {
-    "message": "Chrome Extension",
+    "message": "Chrome Eklentisi",
     "description": "Extension version label"
   },
   "extensionVersionTip": {
-    "message": "Using on a desktop browser? Try our extension for one-click stitching directly on X (Twitter).",
+    "message": "Masaüstünde misiniz? Doğrudan X (Twitter) üzerinde tek tıkla birleştirme için eklentimizi deneyin.",
     "description": "Extension version description"
   },
   "openExtensionStore": {
-    "message": "Go to Chrome Web Store",
+    "message": "Chrome Web Mağazası",
     "description": "Open extension store button text"
   },
   "pwaUpdateAvailable": {
-    "message": "New version available",
+    "message": "Yeni sürüm mevcut",
     "description": "PWA update available tip"
   },
   "pwaUpdateReady": {
-    "message": "Update for the latest features and fixes",
+    "message": "En son özellikler ve düzeltmeler için güncelleyin",
     "description": "PWA update description"
   },
   "pwaRefresh": {
-    "message": "Refresh",
+    "message": "Yenile",
     "description": "PWA refresh button"
   },
   "pwaIgnore": {
-    "message": "Ignore",
+    "message": "Yoksay",
     "description": "PWA ignore button"
   },
   "pwaOfflineReady": {
-    "message": "App is ready to work offline",
+    "message": "Uygulama çevrimdışı kullanıma hazır",
     "description": "PWA offline ready tip"
   },
   "layoutSchemeHelp": {
-    "message": "[icon:LayoutGrid] Grid: For social media\n[icon:Layout] T-Shape: For artistic photography\n[icon:Rows] Vertical/Horizontal: For long panoramas",
+    "message": "[icon:LayoutGrid] Izgara: Sosyal medya için\n[icon:Layout] T-Şekli: Sanatsal fotoğrafçılık için\n[icon:Rows] Dikey/Yatay: Uzun panoramalar için",
     "description": "Layout help text"
   },
   "backgroundColorHelp": {
-    "message": "Set color behind images. Transparent (PNG/WebP) is most flexible, Black or White helps unify micro-adjustments.",
+    "message": "Arka plan rengi. Şeffaf (PNG/WebP) en esneğidir, Siyah veya Beyaz görsel bütünlük sağlar.",
     "description": "Background color help"
   },
   "globalGapHelp": {
-    "message": "Set gap width between all images. Negative values allow overlapping.",
+    "message": "Tüm resimler arasındaki boşluk genişliği. Negatif değerler bindirme sağlar.",
     "description": "Global gap help"
   },
   "formatHelp": {
-    "message": "「PNG」Original quality, transparency, larger\n「JPG」High compression, no transparency, smaller\n「WEBP」High quality, transparency, poor iOS compatibility",
+    "message": "「PNG」Orijinal kalite, şeffaflık, büyük boyut\n「JPG」Yüksek sıkıştırma, şeffaflık yok, küçük boyut\n「WEBP」Yüksek kalite, şeffaflık, sınırlı iOS uyumluluğu",
     "description": "Help explanation for format selection"
   },
   "exportSettingsHelp": {
-    "message": "Personalized Export:\n「PNG」Original quality, transparency, larger\n「JPG」High compression, no transparency, smaller\n「WEBP」High quality, transparency, poor iOS compatibility",
+    "message": "Kişiselleştirilmiş Dışa Aktarım:\n「PNG」Orijinal kalite, şeffaflık, büyük boyut\n「JPG」Yüksek sıkıştırma, şeffaflık yok, küçük boyut\n「WEBP」Yüksek kalite, şeffaflık, sınırlı iOS uyumluluğu",
     "description": "Comprehensive help for export settings section"
   },
   "twitterOptimizeHelp": {
-    "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 「One Image」 look in users' feeds.",
+    "message": "X'te (Twitter) birden fazla parça paylaştığınızda, zaman akışında kusursuz bir \"Tek Resim\" gibi görünmesi için kenarları ayarlar.",
     "description": "Twitter optimization help"
   },
   "userGuideButton": {
-    "message": "User Guide",
+    "message": "Kullanım Kılavuzu",
     "description": "User guide button text"
   },
   "tutorialImportTitle": {
-    "message": "Import Images",
+    "message": "Resim İçe Aktar",
     "description": "Tutorial step 1 title"
   },
   "tutorialImportDesc": {
-    "message": "Click to upload local files, or use the link icon to import directly from an X (Twitter) URL.",
+    "message": "Yerel dosyaları yüklemek için tıklayın veya bir X (Twitter) URL'sinden doğrudan içe aktarmak için link simgesini kullanın.",
     "description": "Tutorial step 1 description"
   },
   "tutorialLayoutTitle": {
-    "message": "Choose Layout",
+    "message": "Düzen Seçin",
     "description": "Tutorial step 2 title"
   },
   "tutorialLayoutDesc": {
-    "message": "Pick a layout for your images. 「Grid」 is recommended for X (Twitter) posts.",
+    "message": "Resimleriniz için bir düzen seçin. X (Twitter) gönderileri için 「Izgara」 önerilir.",
     "description": "Tutorial step 2 description"
   },
   "tutorialControlTitle": {
-    "message": "Fine-tune",
+    "message": "İnce Ayar",
     "description": "Tutorial step 3 title"
   },
   "tutorialControlDesc": {
-    "message": "Adjust global/local gaps, or drag the list to reorder your images.",
+    "message": "Global/yerel boşlukları ayarlayın veya resimlerinizi yeniden sıralamak için listeyi sürükleyin.",
     "description": "Tutorial step 3 description"
   },
   "tutorialExportTitle": {
-    "message": "Export & Download",
+    "message": "Dışa Aktar & İndir",
     "description": "Tutorial step 4 title"
   },
   "tutorialExportDesc": {
-    "message": "Finally, click the button to generate and save your creation!",
+    "message": "Son olarak, eserinizi oluşturmak ve kaydetmek için butona tıklayın!",
     "description": "Tutorial step 4 description"
   },
   "skipTutorial": {
-    "message": "Skip",
+    "message": "Atla",
     "description": "Skip button"
   },
   "nextStep": {
-    "message": "Next",
+    "message": "İleri",
     "description": "Next button"
   },
   "localGapHelp": {
-    "message": "Adjust the gap between specific images. Perfect for separating chapters or hiding 'easter eggs'.",
+    "message": "Belirli resimler arasındaki boşluğu ayarlayın. Bölümleri ayırmak veya detay eklemek için mükemmeldir.",
     "description": "Help explanation for local gap"
   },
   "imageSortingHelp": {
-    "message": "Drag [icon:GripVertical] or Click [icon:ChevronUp][icon:ChevronDown] to reorder\nClick [icon:Eye] to toggle visibility\nClick numbers to fine-tune gaps",
+    "message": "Sıralamak için sürükleyin [icon:GripVertical] veya Tıklayın [icon:ChevronUp][icon:ChevronDown]\nGörünürlük için Tıklayın [icon:Eye]\nBoşluk ayarı için sayılara tıklayın",
     "description": "Comprehensive help for image sorting section"
   },
   "userGuideTitle": {
-    "message": "User Manual & Guide",
+    "message": "Kullanım Kılavuzu & Rehber",
     "description": "Guide dialog title"
   },
   "finishTutorial": {
-    "message": "Finish",
+    "message": "Bitir",
     "description": "Finish button"
   },
   "tabPWA": {
-    "message": "Web / Mobile",
+    "message": "Web / Mobil",
     "description": "Manual tab 1"
   },
   "tabExtension": {
-    "message": "Extension",
+    "message": "Eklenti (Extension)",
     "description": "Manual tab 2"
   },
   "tabFeatures": {
-    "message": "Usage Tips",
+    "message": "İpuçları",
     "description": "Manual tab 3"
   },
   "guideiOSInstall": {
-    "message": "1. Enhanced Integration\nForget manual copying. Tap the button below to add 「X-Puzzle-Kit」 to your Shortcuts library.\n2. Quick Import\nTap this Shortcut in the X (Twitter) share menu to automatically extract links and jump seamlessly.",
+    "message": "1. Gelişmiş Entegrasyon\nManuel kopyalamayı unutun. 「X-Puzzle-Kit」i Kestirmeler kitaplığınıza eklemek için aşağıdaki butona dokunun.\n2. Hızlı İçe Aktarma\nLinkleri otomatik olarak çıkarmak ve sorunsuz geçiş yapmak için X (Twitter) paylaş menüsünde bu Kestirmeyi kullanın.",
     "description": "iOS Install Guide"
   },
   "installShortcutBtn": {
-    "message": "Install iOS Shortcut",
+    "message": "iOS Kestirmesini Yükle",
     "description": "iOS Shortcut installation button"
   },
   "installShortcutTip": {
-    "message": "Tap to get the official iOS Shortcut for one-click importing.",
+    "message": "Tek tıkla içe aktarma sağlayan resmi iOS Kestirmesini almak için dokunun.",
     "description": "iOS Shortcut installation tip"
   },
   "guideAndroidInstall": {
-    "message": "1. Install PWA (Progressive Web App)\nTap 「Install App」 in browser menu. No bulky store download required.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 「X-Puzzle-Kit」 to import.",
+    "message": "1. PWA'yı Yükleyin (Uygulama)\nTarayıcı menüsünde 「Uygulamayı yükle」ye dokunun.\n2. Yerel Paylaşım\nYüklendikten sonra, doğrudan X'ten (Twitter) paylaşın ve içe aktarmak için 「X-Puzzle-Kit」i seçin.",
     "description": "Android installation guide"
   },
   "viewAndroidTutorial": {
-    "message": "Installation Guide",
+    "message": "Kurulum Rehberi",
     "description": "Android tutorial button text"
   },
   "guideExtensionStitch": {
-    "message": "Directly below any X (Twitter) post, you'll find the [icon] button. Grab all images instantly and enter puzzle mode with one click.",
+    "message": "Herhangi bir X (Twitter) gönderisinin hemen altında [icon] butonunu bulacaksınız. Tek tıkla tüm resimleri alıp birleştirme moduna geçin.",
     "description": "Extension stitch feature guide"
   },
   "guideExtensionSplit": {
-    "message": "Right-click any image on the web and select 「X-Puzzle-Kit: Split Image」 to start processing immediately without downloading.",
+    "message": "Web'deki herhangi bir resme sağ tıklayın ve indirmeden işlemeye başlamak için 「X-Puzzle-Kit: Resmi Böl」ü seçin.",
     "description": "Extension split feature guide"
   },
   "guideFlowOptimization": {
-    "message": "When enabled, the tool fine-tunes slice ratios for the X (Twitter) algorithm, ensuring seamless stitching in the post feed.",
+    "message": "Etkinleştiğinde araç, X (Twitter) algoritması için dilim oranlarını ince ayarlar, böylece akışta kesintisiz bir görünüm sağlar.",
     "description": "Optimization feature guide"
   },
   "guideExtensionTitle": {
-    "message": "Seamless Post Image Stitching",
+    "message": "Kusursuz Gönderi Birleştirme",
     "description": "Manual card title 1"
   },
   "guideSplitTitle": {
-    "message": "Instant Right-click Split",
+    "message": "Sağ Tık ile Anında Bölme",
     "description": "Manual card title 2"
   },
   "guideLocalGapTitle": {
-    "message": "Precise Gap Control",
+    "message": "Hassas Boşluk Kontrolü",
     "description": "Manual card title 3"
   },
   "pwaBenefitTitle": {
-    "message": "Why Install PWA?",
+    "message": "Neden PWA Yüklemelisiniz?",
     "description": "PWA benefit section title"
   },
   "pwaBenefitList": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "message": "• Sorunsuz Entegrasyon: Daha hızlı içe aktarma için Android sistem paylaşım menüsünü destekler.\n• Tam Ekran Odak: Daha geniş çalışma alanı için tarayıcı adres çubuğunu gizler.\n• Platform Entegrasyonu: iOS'ta beyaz çubukları ve en boy oranı sorunlarını önlemek için özel optimize edilmiştir.",
     "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.",
+    "message": "• Sorunsuz Entegrasyon: Daha hızlı içe aktarma için Android sistem paylaşım menüsünü destekler.",
     "description": "PWA benefit: Android integration"
   },
   "pwaBenefitFullscreen": {
-    "message": "• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.",
+    "message": "• Tam Ekran Odak: Daha geniş çalışma alanı için tarayıcı adres çubuğunu gizler.",
     "description": "PWA benefit: Full-screen focus"
   },
   "pwaBenefitIOSFix": {
-    "message": "• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "message": "• Platform Entegrasyonu: iOS'ta beyaz çubukları ve en boy oranı sorunlarını önlemek için özel optimize edilmiştir.",
     "description": "PWA benefit: iOS PWA optimization"
   },
   "guideNativeInstall": {
-    "message": "Install the PWA to see 「X-Puzzle-Kit」 in your X (Twitter) share menu for one-click importing.",
+    "message": "X (Twitter) paylaşım menüsünde 「X-Puzzle-Kit」i görmek için PWA'yı yükleyin.",
     "description": "Native install recommendation"
   },
   "pwaWhatIs": {
-    "message": "PWA is a modern app format that requires no store download. Essentially a 「web with app powers,」 it uses almost no storage—the perfect lightweight choice for your device.",
+    "message": "PWA, mağaza indirmesi gerektirmeyen modern bir uygulama formatıdır. Cihazınız için mükemmel, hafif ve güçlü bir seçenektir.",
     "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
-    "message": "Trim Original Gaps",
+    "message": "Orijinal Boşlukları Kırp",
     "description": "Technical improvement title"
   },
   "guideTechnicalDesc": {
-    "message": "If your original image has built-in borders or gaps (like manga), enable this to crop out those pixels for a cleaner result.",
+    "message": "Orijinal resminizde kenarlıklar varsa (örn. manga), daha temiz bir sonuç için bunları otomatik olarak kırpabilirsiniz.",
     "description": "Technical improvement description"
   },
   "statusOfflineAvailable": {
-    "message": "Offline available",
+    "message": "Çevrimdışı kullanılabilir",
     "description": "Status text shown when offline"
   },
   "troubleshootingTitle": {
-    "message": "Can't Install?",
+    "message": "Yükleyemiyor musunuz?",
     "description": "Troubleshooting section title"
   },
   "troubleshootingIncognito": {
-    "message": "Private/Incognito browsing mode prevents PWA installation. Please use normal browsing mode and try again.",
+    "message": "Gizli/Inconito mod PWA kurulumunu engeller. Lütfen normal tarama moduna geçip tekrar deneyin.",
     "description": "Warning about incognito mode"
   },
   "langZhCN": {
@@ -694,23 +694,23 @@
     "description": "语言名称: 土耳其语"
   },
   "openDebugPanel": {
-    "message": "Open Debug Panel",
+    "message": "Hata Ayıklama Panelini Aç",
     "description": "调试用菜单文本"
   },
   "simulator": {
-    "message": "Simulator",
+    "message": "Simülatör",
     "description": "调试用模拟器文本"
   },
   "viewDemoVideo": {
-    "message": "See Seamless Sharing",
+    "message": "Demoyu İzle",
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "Privacy: Web version uses a secure proxy for parsing (no logs). Processing stays local.",
+    "message": "Gizlilik: Web sürümü sadece ayrıştırma için güvenli bir proxy kullanır (log tutulmaz). İşleme yereldir.",
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {
-    "message": "Privacy Policy",
+    "message": "Gizlilik Politikası",
     "description": "Privacy policy link text"
   }
 }

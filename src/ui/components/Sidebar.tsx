@@ -1253,6 +1253,9 @@ export function Sidebar({
                       { value: "ko", label: t("langKo") },
                       { value: "es", label: t("langEs") },
                       { value: "fr", label: t("langFr") },
+                      { value: "de", label: t("langDe") },
+                      { value: "pt", label: t("langPt") },
+                      { value: "tr", label: t("langTr") },
                     ]}
                     style={{ width: "90px" }}
                     direction="top"
