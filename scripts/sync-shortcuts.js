@@ -38,14 +38,21 @@ function syncShortcuts() {
               msgContent.shortcutUpdateNote.message
             ) {
               const message = msgContent.shortcutUpdateNote.message;
-              notes[`notes_${locale}`] = message;
+              const iosLocale = locale.replace("_", "-"); // zh_CN -> zh-CN
 
-              // 增加基础语言代码别名 (例如 zh_CN -> zh)，方便快捷指令动态匹配
-              if (locale.includes("_")) {
-                const baseLang = locale.split("_")[0];
-                if (!notes[`notes_${baseLang}`]) {
+              // 1. 存入标准 iOS 键名 (zh-CN, zh-TW, ja, en)
+              notes[`notes_${iosLocale}`] = message;
+
+              // 2. 存入基础代码 (en, ja, zh) 作为兜底别名
+              // 如果是复合代码 (zh-CN), 提取基础代码 (zh)
+              if (iosLocale.includes("-")) {
+                const baseLang = iosLocale.split("-")[0];
+                // 只有当 notes_zh 不存在，或者当前是 zh-CN 时，才更新 notes_zh (默认用简体兜底)
+                if (!notes[`notes_${baseLang}`] || iosLocale === "zh-CN") {
                   notes[`notes_${baseLang}`] = message;
                 }
+              } else {
+                notes[`notes_${iosLocale}`] = message;
               }
             }
           } catch (e) {
