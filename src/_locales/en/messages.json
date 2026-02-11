@@ -613,6 +613,18 @@
     "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
     "description": "PWA benefit list content"
   },
+  "pwaBenefitIntegrated": {
+    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.",
+    "description": "PWA benefit: Android integration"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.",
+    "description": "PWA benefit: Full-screen focus"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "description": "PWA benefit: iOS PWA optimization"
+  },
   "guideNativeInstall": {
     "message": "Install the PWA to see 「X-Puzzle-Kit」 in your X (Twitter) share menu for one-click importing.",
     "description": "Native install recommendation"

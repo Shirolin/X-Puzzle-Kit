@@ -211,10 +211,18 @@
     "message": "なぜ PWA をインストールするのですか？",
     "description": "PWA 优势部分标题"
   },
-  "pwaBenefitList": {
-    "message": "• 没入型体験：ブラウザのアドレスバーがなく、全画面で操作に集中できます。\n• 高速起動：ホーム画面から直接開き、ロード時間を待たずに起動できます。\n• システムの最適化：iOS の表示の問題（黒いバー/白いバー）を修正し、共有メニューのサポートを向上させました。",
-    "description": "PWA 优势列表内容"
-  },
+    "pwaBenefitIntegrated": {
+      "message": "• シームレスな統合：Android のシステム共有メニューに対応。X からのインポートが劇的に速くなります。",
+      "description": "PWA 优势: Android 集成"
+    },
+    "pwaBenefitFullscreen": {
+      "message": "• 没入型フルスクリーン：アドレスバーを隠し、大画面でも精細な編集が可能になります。",
+      "description": "PWA 优势: 全屏视野"
+    },
+    "pwaBenefitIOSFix": {
+      "message": "• 表示の最適化：iOS PWA 環境特有の表示崩れや、上下の余白問題を完全に解決しました。",
+      "description": "PWA 优势: iOS 视口修复"
+    },
   "guideNativeInstall": {
     "message": "下の「PWAをインストール」ボタンをクリックして完了すると、X (Twitter) の共有メニューに本ツールが表示され、一键インポートが可能になります。",
     "description": "Native install recommendation"

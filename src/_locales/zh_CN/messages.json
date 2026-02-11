@@ -613,6 +613,18 @@
     "message": "• 无缝集成：Android 端支持被系统分享菜单调用，从 X 导入图片快人一步。\n• 全屏视野：隐藏浏览器搜索栏，在大屏幕上更精准地调整切片间距。\n• 视口修复：针对 iOS PWA 环境深度优化，彻底解决底部白边和比例偏移问题。",
     "description": "PWA 优势列表内容"
   },
+  "pwaBenefitIntegrated": {
+    "message": "• 无缝集成：Android 端支持被系统分享菜单调用，从 X 导入图片快人一步。",
+    "description": "PWA 优势: Android 集成"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• 全屏视野：隐藏浏览器搜索栏，在大屏幕上更精准地调整切片间距。",
+    "description": "PWA 优势: 全屏视野"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• 视口修复：针对 iOS PWA 环境深度优化，彻底解决底部白边和比例偏移问题。",
+    "description": "PWA 优势: iOS 视口修复"
+  },
   "guideNativeInstall": {
     "message": "点击下方的「立即安装」按钮完成 PWA 安装，即可在 X (Twitter) 分享菜单中一键导入拼图。",
     "description": "原生安装建议"

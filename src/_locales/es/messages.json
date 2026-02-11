@@ -215,10 +215,18 @@
     "message": "¿Por qué instalar la PWA?",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• Experiencia inmersiva: Sin barra de direcciones, enfoque en pantalla completa.\n• Inicio instantáneo: Abre directamente desde la pantalla de inicio sin esperas.\n• Integración del sistema: Se han corregido problemas de visualización en iOS y se ha mejorado el soporte del menú de compartir.",
-    "description": "PWA benefit list content"
-  },
+    "pwaBenefitIntegrated": {
+      "message": "• Integración fluida: Soporta el menú compartir de Android para importar imágenes de X más rápido.",
+      "description": "PWA benefit: Android integration"
+    },
+    "pwaBenefitFullscreen": {
+      "message": "• Pantalla completa: Oculta la barra de direcciones para ajustes precisos en pantallas grandes.",
+      "description": "PWA benefit: Full-screen focus"
+    },
+    "pwaBenefitIOSFix": {
+      "message": "• Optimización de visualización: Soluciona problemas de márgenes y visualización específicos de iOS PWA.",
+      "description": "PWA benefit: iOS PWA optimization"
+    },
   "guideNativeInstall": {
     "message": "Instala la PWA para ver 「X-Puzzle-Kit」 en el menú de compartir de X (Twitter) para importar con un clic.",
     "description": "Native install recommendation"

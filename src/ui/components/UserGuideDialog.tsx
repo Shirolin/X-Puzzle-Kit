@@ -237,43 +237,69 @@ export function UserGuideDialog({
     </div>
   );
 
+  const renderPWAHighlight = (text: string, isTitle: boolean = false) => {
+    if (!text.includes("PWA")) return text;
+    const parts = text.split("PWA");
+    return (
+      <>
+        {parts.map((part, i) => (
+          <span key={i}>
+            {part}
+            {i < parts.length - 1 && (
+              <>
+                <span className={isTitle ? "" : "pwa-highlight"}>PWA</span>
+                <span
+                  className="help-info-icon-wrapper"
+                  style={isTitle ? { opacity: 0.6 } : {}}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toast(t("pwaWhatIs"), {
+                      duration: 6000,
+                      icon: (
+                        <HelpCircle
+                          size={16}
+                          style={{ color: "var(--color-primary)" }}
+                        />
+                      ),
+                    });
+                  }}
+                >
+                  <HelpCircle
+                    size={isTitle ? 12 : 14}
+                    className="help-info-icon"
+                  />
+                </span>
+              </>
+            )}
+          </span>
+        ))}
+      </>
+    );
+  };
+
+  const pwaBenefits = [];
+  if (isAndroid || (!isAndroid && !isIOS))
+    pwaBenefits.push(t("pwaBenefitIntegrated"));
+  pwaBenefits.push(t("pwaBenefitFullscreen"));
+  if (isIOS || (!isAndroid && !isIOS)) pwaBenefits.push(t("pwaBenefitIOSFix"));
+
   const pwaBenefitCard = (
     <div className="guide-card benefit-card">
       <div className="guide-card-header">
         <Sparkles size={18} />
-        <span>{t("pwaBenefitTitle")}</span>
+        <span>{renderPWAHighlight(t("pwaBenefitTitle"), true)}</span>
       </div>
       <div className="guide-card-content">
-        <p className="guide-card-text benefit-list">
-          {t("pwaBenefitList")
-            .split("PWA")
-            .map((part, i, arr) => (
-              <span key={i}>
-                {part}
-                {i < arr.length - 1 && (
-                  <>
-                    <span className="pwa-highlight">PWA</span>
-                    <span
-                      className="help-info-icon-wrapper"
-                      onClick={() =>
-                        toast(t("pwaWhatIs"), {
-                          duration: 6000,
-                          icon: (
-                            <HelpCircle
-                              size={16}
-                              style={{ color: "var(--color-primary)" }}
-                            />
-                          ),
-                        })
-                      }
-                    >
-                      <HelpCircle size={14} className="help-info-icon" />
-                    </span>
-                  </>
-                )}
-              </span>
-            ))}
-        </p>
+        <div className="guide-card-text benefit-list">
+          {pwaBenefits.map((benefit, idx) => (
+            <div
+              key={idx}
+              style={{ marginBottom: idx < pwaBenefits.length - 1 ? "4px" : 0 }}
+            >
+              {renderPWAHighlight(benefit)}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

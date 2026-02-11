@@ -55,10 +55,18 @@
     "message": "為什麼安裝 PWA？",
     "description": "PWA 優勢部分標題"
   },
-  "pwaBenefitList": {
-    "message": "• 沉浸式體驗：隱藏瀏覽器網址列，全螢幕操作更專注。\n• 極速啟動：從主畫面圖示直達，秒級回應，無需等待瀏覽器載入。\n• 系統級優化：已修復 iOS 下的各種視口黑邊/白邊問題，支持原生分享集成。",
-    "description": "PWA 優勢列表內容"
-  },
+    "pwaBenefitIntegrated": {
+      "message": "• 無縫集成：Android 端支持被系統分享菜單調用，從 X 匯入圖片快人一步。",
+      "description": "PWA 优势: Android 集成"
+    },
+    "pwaBenefitFullscreen": {
+      "message": "• 全屏視野：隱藏瀏覽器網址列，在大螢幕上更精準地調整切片間距。",
+      "description": "PWA 优势: 全屏视野"
+    },
+    "pwaBenefitIOSFix": {
+      "message": "• 視口修復：針對 iOS PWA 環境深度優化，徹底解決底部白邊和比例偏移問題。",
+      "description": "PWA 优势: iOS 视口修复"
+    },
   "guideNativeInstall": {
     "message": "點擊下方的「立即安裝」按鈕完成 PWA 安裝，即可在 X (Twitter) 分享選單中一鍵匯入拼圖。",
     "description": "Native install recommendation"
