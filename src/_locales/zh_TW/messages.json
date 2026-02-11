@@ -710,7 +710,11 @@
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {
-    "message": "隱私政策",
+    "message": "隱私權政策",
     "description": "Privacy policy link text"
+  },
+  "shortcutUpdateNote": {
+    "message": "發現新版本！建議立即更新以獲得最佳體驗。",
+    "description": "Note shown in iOS Shortcuts when an update is available"
   }
 }

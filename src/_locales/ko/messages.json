@@ -712,5 +712,9 @@
   "privacyPolicy": {
     "message": "개인정보 처리방침",
     "description": "Privacy policy link text"
+  },
+  "shortcutUpdateNote": {
+    "message": "사용 가능한 새 버전이 있습니다! 업데이트를 확인하세요.",
+    "description": "Note shown in iOS Shortcuts when an update is available"
   }
 }

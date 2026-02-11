@@ -48,6 +48,6 @@ export const APP_CONFIG = {
     IOS_SHORTCUT_VER: "1.0.0",
     IOS_SHORTCUT_URL:
       "https://www.icloud.com/shortcuts/b932fef77a3842dd89db1eed4488bf42?source=shortcut",
-    IOS_SHORTCUT_NOTE: "初始版本：支持 X-Puzzle 图片拼接与更新检查。",
+    IOS_SHORTCUT_NOTE_KEY: "shortcutUpdateNote",
   },
 };
