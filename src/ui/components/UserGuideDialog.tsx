@@ -94,7 +94,7 @@ export function UserGuideDialog({
   } | null>(null);
   const [isMediaLoading, setIsMediaLoading] = useState(true);
   const mediaRef = useRef<HTMLImageElement>(null);
-  const { isAndroid } = getPlatformEnv();
+  const { isAndroid, isIOS } = getPlatformEnv();
 
   useEffect(() => {
     if (previewMedia) {
@@ -329,10 +329,9 @@ export function UserGuideDialog({
           {activeTab === "pwa" && (
             <div className="guide-step-list animate-fade-in">
               {isAndroid ? (
-                <>
-                  {androidCard}
-                  {iOSCard}
-                </>
+                androidCard
+              ) : isIOS ? (
+                iOSCard
               ) : (
                 <>
                   {iOSCard}
