@@ -655,51 +655,51 @@
   },
   "langZhCN": {
     "message": "简体中文",
-    "description": "语言名称: 简体中文"
+    "description": "Language name: Simplified Chinese"
   },
   "langZhTW": {
     "message": "繁體中文",
-    "description": "语言名称: 繁体中文"
+    "description": "Language name: Traditional Chinese"
   },
   "langEn": {
     "message": "English",
-    "description": "语言名称: 英语"
+    "description": "Language name: English"
   },
   "langJa": {
     "message": "日本語",
-    "description": "语言名称: 日语"
+    "description": "Language name: Japanese"
   },
   "langKo": {
     "message": "한국어",
-    "description": "语言名称: 韩语"
+    "description": "Language name: Korean"
   },
   "langEs": {
     "message": "Español",
-    "description": "语言名称: 西班牙语"
+    "description": "Language name: Spanish"
   },
   "langFr": {
     "message": "Français",
-    "description": "语言名称: 法语"
+    "description": "Language name: French"
   },
   "langDe": {
     "message": "Deutsch",
-    "description": "语言名称: 德语"
+    "description": "Language name: German"
   },
   "langPt": {
     "message": "Português",
-    "description": "语言名称: 葡萄牙语"
+    "description": "Language name: Portuguese"
   },
   "langTr": {
     "message": "Türkçe",
-    "description": "语言名称: 土耳其语"
+    "description": "Language name: Turkish"
   },
   "openDebugPanel": {
     "message": "Hata Ayıklama Panelini Aç",
-    "description": "调试用菜单文本"
+    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "Simülatör",
-    "description": "调试用模拟器文本"
+    "description": "Text for the simulator feature"
   },
   "viewDemoVideo": {
     "message": "Demoyu İzle",

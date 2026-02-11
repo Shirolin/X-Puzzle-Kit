@@ -1,435 +1,363 @@
 {
   "appName": {
     "message": "X-Puzzle-Kit: X를 위한 이미지 병합 및 분할 도구",
-    "description": "확장 프로그램 이름"
+    "description": "The name of the extension"
   },
   "appDesc": {
     "message": "X (트위터) 전용 전문 툴킷. 이미지를 파노라마로 매끄럽게 병합하거나 이미지를 픽셀 단위로 완벽한 그리드로 분할하세요. X 타임라인에 최적화되며 원본 화질을 그대로 보존합니다。",
-    "description": "확장 프로그램 설명"
+    "description": "The description of the extension"
   },
   "longDescription": {
     "message": "X-Puzzle-Kit은 X (트위터) 사용자, 디지털 아티스트 및 수집가를 위해 설계된 전문가용 미디어 툴킷입니다. 여러 트윗 이미지를 원래의 파노라마로 복원하거나 창의적인 그리드 전시를 준비할 때, X-Puzzle-Kit은 콘텐츠가 X 타임라인에서 의도한 대로 완벽하게 보이도록 도와줍니다.\n\n🌐 멀티 플랫폼 지원:\n이 Chrome 확장 프로그램 외에도 모바일, 태블릿 및 기타 브라우저에서 원활하게 사용할 수 있도록 모든 기능을 갖춘 웹 온라인 버전(https://x-puzzle-kit.pages.dev/)을 제공합니다.\n\n✨ 핵심 기능:\n\n🧵 지능형 이미지 병합\n분산된 트윗 이미지를 원래의 파노라마 또는 긴 형식으로 매끄럽게 병합합니다.\n- 스마트 레이아웃: 세로, 가로, 2x2 격자 및 시그니처 T자형 레이아웃을 완벽하게 지원합니다.\n- 픽셀 단위 정렬: 정교한 알고리즘으로 1px의 오차나 흐릿함을 제거하여 선명하고 전문적인 화질을 제공합니다.\n- 네이티브 통합: X 페이지에서 버튼을 클릭하여 즉시 병합을 시작할 수 있어 번거로운 수동 다운로드가 필요 없습니다.\n- 무손실 내보내기: 원본 해상도를 그대로 유지하며 품질 저하 없이 최고의 결과물을 보장합니다.\n\n✂️ 창의적 그리드 분할 (모자이크 제작)\n어떤 이미지든 표준 그리드(2x2, 3x3 또는 사용자 정의)로 분할하여 X의 다중 이미지 표시에 최적화된 결과물을 만듭니다.\n- 트위터 「한 장의 그림」 레이아웃 최적화: 트위터 미리보기 메커니즘에 최적화되었습니다. 타임라인에서 여러 장의 이미지가 끊김 없이 연결되어 하나의 큰 이미지로 보이도록 합니다.\n- 우클릭 즉시 분할: 웹에서 이미지를 우클릭하여 분할 도구로 직접 보내 빠르게 편집할 수 있습니다.\n- 통일된 시각 효과: 일관성 있는 레이아웃으로 트윗의 주목도를 높이고 메시지를 효과적으로 전달합니다.\n\n🚀 강력한 기능:\n- 워크플로우 효율화: 브라우저와 깊이 통합되어 트윗 발견부터 이미지 생성까지 단 몇 초 만에 완료됩니다.\n- 프로 설정: 전체 및 개별 간격 미세 조정, 다크 모드 지원, 배경색 및 투명도 사용자 정의가 가능합니다.\n- 간편한 가져오기: 파일 업로드, 클립보드 복사-붙여넣기 및 X 페이지 직접 연동을 지원합니다.\n- 일괄 저장: 고화질 PNG, JPG, WebP 다운로드 또는 ZIP 파일로 한 번에 보관할 수 있습니다.\n\n🔒 철저한 개인정보 보호\n모든 이미지 처리는 사용자 기기의 로컬 브라우저 내에서만 이루어집니다. 이미지가 서버로 전송되지 않으며, 어떠한 추적이나 기록도 남지 않아 안심하고 창작에만 집중할 수 있습니다.\n\n지금 바로 X-Puzzle-Kit로 X에서의 미디어 경험을 한 단계 업그레이드해보세요。",
-    "description": "스토어 상세 설명"
+    "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
     "message": "연결 미리보기",
-    "description": "미리보기 창 제목"
+    "description": "Title of the preview window"
   },
   "splitterTitle": {
     "message": "이미지 분할",
-    "description": "분할 창 제목"
+    "description": "Title of the splitter window"
   },
   "stitching": {
     "message": "연결 중...",
-    "description": "미리보기 생성 중 로딩 텍스트"
+    "description": "Loading status during stitch generation"
   },
   "removeImage": {
     "message": "이미지 제거",
-    "description": "이미지 제거 툴팁"
+    "description": "Tooltip for remove image"
   },
   "fromArtist": {
     "message": "출처",
-    "description": "작성자 접두사"
+    "description": "Author prefix"
   },
   "tweetId": {
     "message": "트윗 ID",
-    "description": "트윗 ID 라벨"
+    "description": "Label for Tweet ID"
   },
   "preparingHighRes": {
     "message": "고해상도 리소스 준비 중...",
-    "description": "고해상도 이미지 로딩 텍스트"
+    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "초기화",
-    "description": "초기화 버튼 텍스트"
+    "description": "Reset button text"
   },
   "layoutScheme": {
     "message": "레이아웃",
-    "description": "레이아웃 섹션 헤더"
+    "description": "Section header for layout"
   },
   "layoutGrid": {
     "message": "격자 (2x2)",
-    "description": "격자 레이아웃 라벨"
+    "description": "2x2 layout label"
   },
   "layoutTShape": {
     "message": "T형 (왼쪽)",
-    "description": "T형 레이아웃 라벨"
+    "description": "T-Shape layout label"
   },
   "layoutHorizontal": {
     "message": "가로",
-    "description": "가로 레이아웃 라벨"
+    "description": "Horizontal layout label"
   },
   "layoutVertical": {
     "message": "세로",
-    "description": "세로 레이아웃 라벨"
+    "description": "Vertical layout label"
   },
   "exportSettings": {
     "message": "내보내기 설정",
-    "description": "내보내기 설정 섹션 헤더"
+    "description": "Section header for export settings"
   },
   "backgroundColor": {
     "message": "배경색",
-    "description": "배경색 라벨"
+    "description": "Label for background color"
   },
   "transparent": {
     "message": "투명",
-    "description": "투명 배경 옵션"
+    "description": "Transparent background option"
   },
   "white": {
     "message": "흰색",
-    "description": "흰색 배경 옵션"
+    "description": "White background option"
   },
   "black": {
     "message": "검은색",
-    "description": "검은색 배경 옵션"
+    "description": "Black background option"
   },
   "globalGap": {
     "message": "전체 간격",
-    "description": "전체 간격 라벨"
+    "description": "Label for global gap"
   },
   "resetToZero": {
     "message": "0으로 초기화",
-    "description": "간격 초기화 툴팁"
+    "description": "Tooltip for reset gap"
   },
   "imageSorting": {
     "message": "이미지 정렬",
-    "description": "이미지 정렬 섹션 헤더"
+    "description": "Section header for image sorting"
   },
   "localGap": {
     "message": "개별 간격 조정",
-    "description": "이미지 정렬 부제"
+    "description": "Subtitle for image sorting"
   },
   "imageLabel": {
     "message": "이미지",
-    "description": "이미지 라벨"
+    "description": "Label for image"
   },
   "moveUp": {
     "message": "위로 이동",
-    "description": "위로 이동 툴팁"
+    "description": "Tooltip for move up"
   },
   "moveDown": {
     "message": "아래로 이동",
-    "description": "아래로 이동 툴팁"
+    "description": "Tooltip for move down"
   },
   "hideImage": {
     "message": "이미지 숨기기",
-    "description": "이미지 숨기기 툴팁"
+    "description": "Tooltip for hide image"
   },
   "showImage": {
     "message": "이미지 표시",
-    "description": "이미지 표시 툴팁"
+    "description": "Tooltip for show image"
   },
   "afterGap": {
     "message": "뒤쪽 간격",
-    "description": "이미지 뒤쪽 개별 간격 라벨"
+    "description": "Label for local gap after image"
   },
   "decreaseGap": {
     "message": "간격 줄이기",
-    "description": "간격 줄이기 툴팁"
+    "description": "Tooltip for decrease gap"
   },
   "increaseGap": {
     "message": "간격 늘리기",
-    "description": "간격 늘리기 툴팁"
+    "description": "Tooltip for increase gap"
   },
   "gapLabel": {
     "message": "간격",
-    "description": "최종 간격 라벨"
+    "description": "Label for the resulting gap"
   },
   "resetLocalGap": {
     "message": "개별 간격 초기화",
-    "description": "개별 간격 초기화 툴팁"
+    "description": "Tooltip for reset local gap"
   },
   "processing": {
     "message": "처리 중...",
-    "description": "처리 중인 버튼 텍스트"
+    "description": "Button text while processing"
   },
   "stitchAndDownload": {
     "message": "병합 및 저장",
-    "description": "최종 다운로드 버튼 텍스트"
+    "description": "Final download button text"
   },
   "stitchBtnTitle": {
     "message": "이미지 연결",
-    "description": "트위터에 삽입된 연결 버튼 툴팁"
+    "description": "Tooltip for the stitch button embedded in Twitter"
   },
   "language": {
     "message": "언어",
-    "description": "언어 선택기 라벨"
+    "description": "Language selector label"
   },
   "sourcedFrom": {
     "message": "출처",
-    "description": "출처 라벨에 사용"
-  },
-  "invalidFormat": {
-    "message": "잘못된 형식",
-    "description": "잘못된 입력 메시지"
-  },
-  "auto": {
-    "message": "자동",
-    "description": "언어/테마 자동 옵션"
-  },
-  "themeSystem": {
-    "message": "시스템 설정 유지",
-    "description": "시스템 테마 옵션"
-  },
-  "themeLight": {
-    "message": "라이트 모드",
-    "description": "라이트 테마 옵션"
-  },
-  "themeDark": {
-    "message": "다크 모드",
-    "description": "다크 테마 옵션"
-  },
-  "themeLabel": {
-    "message": "테마",
-    "description": "테마 선택기 레이블"
+    "description": "Used in the source badge"
   },
   "splitImage": {
     "message": "이미지 분할",
-    "description": "분할 버튼 텍스트"
+    "description": "Split button text"
   },
   "downloadAll": {
     "message": "모두 다운로드",
-    "description": "모두 다운로드 버튼 텍스트"
-  },
-  "emptyImageText": {
-    "message": "이미지가 없습니다. 클릭하여 업로드하세요.",
-    "description": "이미지 목록이 비어 있을 때 표시되는 메시지"
-  },
-  "installTitle": {
-    "message": "홈 화면에 추가",
-    "description": "iOS 설치 프롬프트 제목"
-  },
-  "installDesc": {
-    "message": "하단 공유 버튼을 눌러 「홈 화면에 추가」를 선택하세요.",
-    "description": "iOS 설치 프롬프트 설명"
-  },
-  "installDescChrome": {
-    "message": "우측 상단 공유 버튼을 눌러 「홈 화면에 추가」를 선택하세요.",
-    "description": "iOS Chrome 설치 프롬프트 설명"
-  },
-  "installDescAndroid": {
-    "message": "브라우저 메뉴(오른쪽 위 또는 아래)를 누른 다음 「앱 설치」 또는 「홈 화면에 추가」를 선택하세요.",
-    "description": "Android 설치 안내"
-  },
-  "pwaInstallBtn": {
-    "message": "설치",
-    "description": "네이티브 PWA 설치 버튼"
-  },
-  "pwaInstallDescNative": {
-    "message": "더 나은 환경을 위해 앱을 홈 화면에 설치하세요.",
-    "description": "네이티브 PWA 설치 설명"
-  },
-  "pwaBenefitTitle": {
-    "message": "왜 PWA를 설치해야 하나요?",
-    "description": "PWA 优势部分标题"
-  },
-  "pwaBenefitIntegrated": {
-    "message": "• 원활한 통합: Android 시스템 공유 메뉴를 지원하여 X에서 이미지를 더 빠르게 가져올 수 있습니다.",
-    "description": "PWA 优势: Android 集成"
-  },
-  "pwaBenefitFullscreen": {
-    "message": "• 몰입형 환경: 브라우저 주소창 없이 전체 화면으로 작업에 집중할 수 있습니다.",
-    "description": "PWA 优势: 全屏视野"
-  },
-  "pwaBenefitIOSFix": {
-    "message": "• 뷰포트 최적화: iOS PWA 환경에 맞춰 하단 여백 및 화면 왜곡 문제를 완전히 해결했습니다.",
-    "description": "PWA 优势: iOS 视口修复"
-  },
-  "guideNativeInstall": {
-    "message": "아래 「PWA 설치」 버튼을 눌러 완료하면 X (Twitter) 공유 메뉴에서 본 도구를 즉시 확인하고 원클릭으로 이미지를 가져올 수 있습니다。",
-    "description": "Native install recommendation"
-  },
-  "guideTechnicalTitle": {
-    "message": "원본 간격 제거",
-    "description": "기술 개선 제목"
-  },
-  "guideTechnicalDesc": {
-    "message": "이미지에 테두리나 간격(만화 등)이 있는 경우, 이 기능을 활성화하면 분할 중에 해당 픽셀을 자동으로 잘라내어 깔끔한 결과물을 얻을 수 있습니다.",
-    "description": "기술 개선 설명"
-  },
-  "statusOfflineAvailable": {
-    "message": "오프라인 모드 사용 가능",
-    "description": "오프라인 시 표시되는 상태 텍스트"
-  },
-  "troubleshootingTitle": {
-    "message": "설치할 수 없나요?",
-    "description": "문제 해결 섹션 제목"
-  },
-  "troubleshootingIncognito": {
-    "message": "시크릿/인코그니토 모드에서는 PWA를 설치할 수 없습니다. 일반 브라우징 모드에서 다시 시도해 주세요.",
-    "description": "시크릿 모드 경고"
+    "description": "Download all button text"
   },
   "uploadImage": {
     "message": "이미지 업로드",
-    "description": "이미지 업로드 버튼 텍스트"
+    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "분할할 이미지를 선택하세요",
-    "description": "이미지 선택 팁"
+    "description": "Select image tip"
   },
   "uploadImages": {
     "message": "이미지 업로드",
-    "description": "여러 이미지 업로드 버튼 텍스트"
+    "description": "Button text for uploading multiple images"
   },
   "selectImagesTip": {
     "message": "병합할 이미지를 선택해 주세요",
-    "description": "이미지 선택 팁"
+    "description": "Tip for selecting multiple images"
   },
   "addMoreImages": {
     "message": "이미지 추가하기",
-    "description": "미리보기가 비어있을 때 이미지 추가 버튼 텍스트"
+    "description": "Button text to add more images when preview is empty"
   },
   "dragAndDropTip": {
     "message": "또는 여기에 이미지를 드래그 앤 드롭 하세요",
-    "description": "드래그 앤 드롭 이미지 가이드 텍스트"
+    "description": "Drag and drop instruction"
   },
   "changeImage": {
     "message": "변경",
-    "description": "이미지 변경 버튼 텍스트"
+    "description": "Change image button text"
   },
   "gapRemoval": {
     "message": "원본 간격 제거",
-    "description": "간격 제거 라벨"
+    "description": "Gap removal label"
   },
   "gapRemovalTip": {
     "message": "이미지에 테두리나 간격(만화 등)이 있는 경우, 이를 활성화하면 분할 중에 해당 픽셀을 자동으로 잘라냅니다.",
-    "description": "간격 제거 설명"
-  },
-  "localGapHelp": {
-    "message": "특정 이미지 사이의 간격을 개별적으로 조정합니다.",
-    "description": "개별 간격 도움말 설명"
-  },
-  "imageSortingHelp": {
-    "message": "[icon:GripVertical] 드래그 또는 [icon:ChevronUp][icon:ChevronDown] 클릭으로 순서 변경\n[icon:Eye] 클릭으로 표시 여부 전환\n숫자 클릭으로 간격 미세 조정",
-    "description": "이미지 정렬 섹션 종합 도움말"
+    "description": "Gap removal description"
   },
   "rowCount": {
     "message": "행 수 (N)",
-    "description": "행 수 라벨"
+    "description": "Row count label"
   },
   "colCount": {
     "message": "열 수 (N)",
-    "description": "열 수 라벨"
+    "description": "Column count label"
   },
   "sourceImage": {
     "message": "원본",
-    "description": "원본 이미지 라벨"
+    "description": "Source image label"
   },
   "splitResult": {
     "message": "분할 결과",
-    "description": "분할 결과 라벨"
+    "description": "Split result label"
   },
   "formatLabel": {
     "message": "내보내기 형식",
-    "description": "내보내기 형식 라벨"
+    "description": "Export format label"
   },
   "iosWebpWarningTitle": {
     "message": "WebP 호환성 알림",
-    "description": "iOS WebP 경고 제목"
+    "description": "Title for iOS WebP warning"
   },
   "iosWebpWarning": {
     "message": "iOS에서 WebP 이미지를 사진 앱에 저장할 때 호환성 문제(일부 앱에서 표시되지 않음 등)가 발생할 수 있습니다. PNG 사용을 권장합니다. 그래도 WebP로 변경하시겠습니까?",
-    "description": "iOS WebP 호환성 경고"
+    "description": "Warning for iOS WebP compatibility"
   },
   "zipLabel": {
     "message": "Zip으로 다운로드",
-    "description": "Zip 다운로드 토글 라벨"
+    "description": "Zip download toggle label"
   },
   "zipTip": {
     "message": "모든 이미지를 하나의 Zip 파일로 압축합니다",
-    "description": "Zip 기능 설명"
+    "description": "Zip feature description"
   },
   "restore": {
     "message": "복원",
-    "description": "복원 버튼 텍스트"
+    "description": "Restore button text"
   },
   "twitterOptimize": {
     "message": "트위터 「한 장의 그림」 레이아웃 최적화",
-    "description": "트위터 최적화 토글 라벨"
+    "description": "Twitter optimization toggle label"
   },
   "twitterOptimizeTip": {
     "message": "트위터 미리보기 메커니즘에 최적화되었습니다. 타임라인에서 여러 장의 이미지가 끊김 없이 연결되어 하나의 큰 이미지로 보이도록 합니다.",
-    "description": "트위터 최적화 팁"
+    "description": "Twitter optimization tip"
   },
   "settings": {
     "message": "설정",
-    "description": "일반 설정 섹션 제목"
+    "description": "General settings section title"
   },
   "modeStitch": {
     "message": "연결",
-    "description": "연결 모드 버튼"
+    "description": "Stitch mode button"
   },
   "modeSplit": {
     "message": "분할",
-    "description": "분할 모드 버튼"
+    "description": "Split mode button"
   },
   "support": {
     "message": "후원",
-    "description": "후원 섹션 제목"
+    "description": "Support section title"
   },
   "buyMeCoffee": {
     "message": "개발 지원하기",
-    "description": "후원 버튼 텍스트"
+    "description": "Sponsorship button text"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: 이미지 나누기",
-    "description": "컨텍스트 메뉴 제목"
+    "description": "Context menu item title"
   },
   "extensionUpdatedRefresh": {
     "message": "확장 프로그램이 업데이트되었습니다. 페이지를 새로 고치십시오.",
-    "description": "확장 프로그램 컨텍스트가 무효화되었을 때의 메시지"
-  },
-  "importFromUrl": {
-    "message": "URL에서 가져오기",
-    "description": "가져오기 버튼 제목"
+    "description": "Message shown when extension context is invalidated"
   },
   "slideRefine": {
     "message": "슬라이드하여 미세 조정",
-    "description": "조그 다이얼 컨트롤러 힌트"
+    "description": "Hint for the jog dial controller"
   },
   "confirmRemoveImage": {
     "message": "이 이미지를 삭제하시겠습니까?",
-    "description": "단일 이미지 삭제 시 확인 메시지"
+    "description": "Confirmation message when removing a single image"
   },
   "confirmClearAll": {
     "message": "모든 이미지를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
-    "description": "모든 이미지 삭제 시 확인 메시지"
+    "description": "Confirmation message when clearing all images"
   },
   "clearAll": {
     "message": "모두 삭제",
-    "description": "모든 이미지 삭제 버튼 텍스트"
+    "description": "Clear all images button text"
+  },
+  "emptyImageText": {
+    "message": "이미지가 없습니다. 클릭하여 업로드하세요.",
+    "description": "Message shown when image list is empty"
+  },
+  "installTitle": {
+    "message": "홈 화면에 추가",
+    "description": "iOS install prompt title"
+  },
+  "installDesc": {
+    "message": "하단 공유 버튼을 눌러 「홈 화면에 추가」를 선택하세요.",
+    "description": "iOS install prompt description"
+  },
+  "installDescChrome": {
+    "message": "우측 상단 공유 버튼을 눌러 「홈 화면에 추가」를 선택하세요.",
+    "description": "iOS Chrome install prompt description"
+  },
+  "installDescAndroid": {
+    "message": "브라우저 메뉴(오른쪽 위 또는 아래)를 누른 다음 「앱 설치」 또는 「홈 화면에 추가」를 선택하세요.",
+    "description": "Android install prompt description"
+  },
+  "pwaInstallBtn": {
+    "message": "설치",
+    "description": "Native PWA install button text"
+  },
+  "pwaInstallDescNative": {
+    "message": "더 나은 환경을 위해 앱을 홈 화면에 설치하세요.",
+    "description": "Native PWA install description"
+  },
+  "importFromUrl": {
+    "message": "URL에서 가져오기",
+    "description": "Import button title"
   },
   "invalidUrl": {
     "message": "유효하지 않은 링크입니다. 올바른 트윗 (X) 링크를 제공해 주세요",
-    "description": "유효하지 않은 링크 팁"
+    "description": "Invalid URL tip"
   },
   "analyzingLink": {
     "message": "링크 분석 중...",
-    "description": "링크 분석 상태"
+    "description": "Analyzing link state"
   },
   "noImagesFound": {
     "message": "이 트윗에서 가져올 수 있는 이미지를 찾을 수 없습니다",
-    "description": "이미지 찾을 수 없음 팁"
+    "description": "No images found tip"
   },
   "downloadingImages": {
     "message": "이미지 다운로드 중",
-    "description": "이미지 다운로드 상태"
+    "description": "Downloading images state"
   },
   "processingImages": {
     "message": "이미지 처리 중...",
-    "description": "이미지 처리 상태"
+    "description": "Processing images state"
   },
   "parseFailed": {
     "message": "트윗 분석에 실패했습니다",
-    "description": "분석 실패 팁"
+    "description": "Parse failed tip"
   },
   "workerInvalidResponse": {
     "message": "분석 서비스가 예상치 못한 형식의 콘텐츠를 반환했습니다. 트윗이 제한되었거나 서비스가 일시적으로 중단되었을 수 있습니다.",
-    "description": "JSON 분석 실패 또는 예상치 못한 콘텐츠가 반환되었을 때의 팁"
+    "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
   },
   "workerStatusError": {
     "message": "분석 서비스가 이 트윗을 일시적으로 처리할 수 없습니다 (오류 코드: $status$).",
-    "description": "Worker가 200 이외의 상태 코드를 반환했을 때의 팁",
+    "description": "Tooltip for when worker returns non-200 status code",
     "placeholders": {
       "status": {
         "content": "$1",
@@ -439,251 +367,339 @@
   },
   "networkError": {
     "message": "네트워크 연결에 실패했습니다. 네트워크 설정을 확인해 주세요.",
-    "description": "네트워크 오류 발생 시의 팁"
+    "description": "Tooltip for network errors during fetch"
   },
   "import": {
     "message": "가져오기",
-    "description": "가져오기 버튼"
+    "description": "Import action button"
   },
   "cancel": {
     "message": "취소",
-    "description": "취소 버튼"
+    "description": "Cancel action button"
   },
   "confirm": {
     "message": "확인",
-    "description": "확인 버튼"
-  },
-  "pwaVersionLabel": {
-    "message": "웹 온라인 버전",
-    "description": "PWA 버전 라벨"
-  },
-  "pwaVersionTip": {
-    "message": "모바일이나 확장 프로그램이 없는 브라우저에서 사용하시나요? 모든 기능을 갖춘 웹 버전을 사용해 보세요.",
-    "description": "PWA 버전 설명"
-  },
-  "openWebVersion": {
-    "message": "새 창에서 웹 버전 열기",
-    "description": "PWA 열기 버튼 텍스트"
-  },
-  "extensionVersionLabel": {
-    "message": "Chrome 브라우저 확장 프로그램",
-    "description": "확장 프로그램 버전 라벨"
-  },
-  "extensionVersionTip": {
-    "message": "PC 브라우저에서 사용하시나요? X (Twitter) 페이지에서 직접 원클릭으로 이미지를 병합할 수 있는 확장 프로그램을 사용해 보세요.",
-    "description": "확장 프로그램 버전 설명"
-  },
-  "openExtensionStore": {
-    "message": "Chrome 웹 스토어 제공",
-    "description": "확장 프로그램 스토어 열기 버튼 텍스트"
-  },
-  "pwaUpdateAvailable": {
-    "message": "새 버전 사용 가능",
-    "description": "PWA 업데이트 가능 알림"
-  },
-  "pwaUpdateReady": {
-    "message": "최신 기능 및 수정을 위해 업데이트하십시오",
-    "description": "PWA 업데이트 설명"
-  },
-  "pwaRefresh": {
-    "message": "새로고침",
-    "description": "PWA 새로고침 버튼"
-  },
-  "pwaIgnore": {
-    "message": "무시",
-    "description": "PWA 무시 버튼"
-  },
-  "pwaOfflineReady": {
-    "message": "앱이 오프라인에서 작동할 준비가 되었습니다",
-    "description": "PWA 오프라인 준비 알림"
-  },
-  "layoutSchemeHelp": {
-    "message": "[icon:LayoutGrid] 격자: 소셜 미디어 게시에 적합\n[icon:Layout] T형: 예술적 사진 레이아웃\n[icon:Rows] 세로/가로: 긴 파노라마 이미지 결합",
-    "description": "레이아웃 도움말 설명"
-  },
-  "backgroundColorHelp": {
-    "message": "이미지 배경색을 설정합니다. 투명(PNG/WebP)이 가장 유연하며, 검은색이나 흰색 배경은 미세 조정 시 통일감을 주는 데 도움이 됩니다.",
-    "description": "배경색 도움말"
-  },
-  "globalGapHelp": {
-    "message": "모든 이미지 사이의 간격을 일괄 설정합니다. 음수 값을 입력하면 이미지를 겹치게 할 수 있습니다.",
-    "description": "전체 간격 도움말"
-  },
-  "formatHelp": {
-    "message": "「PNG」최고 화질, 투명 지원, 용량 큼\n「JPG」고압축, 투명 불가, 용량 작음\n「WEBP」고화질, 투명 지원, iOS 호환성 주의",
-    "description": "내보내기 형식 도움말 설명"
-  },
-  "exportSettingsHelp": {
-    "message": "개인화 내보내기:\n「PNG」최고 화질, 투명 지원, 용량 큼\n「JPG」고압축, 투명 불가, 용량 작음\n「WEBP」고화질, 투명 지원, iOS 호환성 주의",
-    "description": "내보내기 설정 섹션 종합 도움말"
-  },
-  "twitterOptimizeHelp": {
-    "message": "X (Twitter)에 여러 장의 이미지를 게시할 때, 타임라인에서 이음새 없이 하나의 커다란 이미지처럼 보이도록 테두리와 간격을 미세 조정합니다.",
-    "description": "트위터 레이아웃 최적화 상세 설명"
+    "description": "Confirm action button"
   },
   "imageResolution": {
     "message": "해상도",
-    "description": "이미지 해상도 라벨"
+    "description": "Label for image resolution"
   },
   "clickToShowResolution": {
     "message": "해상도를 보려면 클릭하세요",
-    "description": "해상도 확인 팁"
+    "description": "Tooltip hint for thumbnails"
   },
   "finalGap": {
     "message": "최종 간격",
-    "description": "전체 및 개별 간격이 적용된 최종 계산 결과"
+    "description": "Calculated total gap including global and local"
   },
   "openSourcePage": {
     "message": "원본 게시물 열기",
-    "description": "원본 링크 팁"
+    "description": "Tooltip for the source tweet link"
+  },
+  "invalidFormat": {
+    "message": "잘못된 형식",
+    "description": "Error message for invalid input"
+  },
+  "auto": {
+    "message": "자동",
+    "description": "Auto option for language/theme"
+  },
+  "themeSystem": {
+    "message": "시스템 설정 유지",
+    "description": "System theme option"
+  },
+  "themeLight": {
+    "message": "라이트 모드",
+    "description": "Light theme option"
+  },
+  "themeDark": {
+    "message": "다크 모드",
+    "description": "Dark theme option"
+  },
+  "themeLabel": {
+    "message": "테마",
+    "description": "Label for theme selector"
+  },
+  "pwaVersionLabel": {
+    "message": "웹 온라인 버전",
+    "description": "PWA version label"
+  },
+  "pwaVersionTip": {
+    "message": "모바일이나 확장 프로그램이 없는 브라우저에서 사용하시나요? 모든 기능을 갖춘 웹 버전을 사용해 보세요.",
+    "description": "PWA version description"
+  },
+  "openWebVersion": {
+    "message": "새 창에서 웹 버전 열기",
+    "description": "Open PWA button text"
+  },
+  "extensionVersionLabel": {
+    "message": "Chrome 브라우저 확장 프로그램",
+    "description": "Extension version label"
+  },
+  "extensionVersionTip": {
+    "message": "PC 브라우저에서 사용하시나요? X (Twitter) 페이지에서 직접 원클릭으로 이미지를 병합할 수 있는 확장 프로그램을 사용해 보세요.",
+    "description": "Extension version description"
+  },
+  "openExtensionStore": {
+    "message": "Chrome 웹 스토어 제공",
+    "description": "Open extension store button text"
+  },
+  "pwaUpdateAvailable": {
+    "message": "새 버전 사용 가능",
+    "description": "PWA update available tip"
+  },
+  "pwaUpdateReady": {
+    "message": "최신 기능 및 수정을 위해 업데이트하십시오",
+    "description": "PWA update description"
+  },
+  "pwaRefresh": {
+    "message": "새로고침",
+    "description": "PWA refresh button"
+  },
+  "pwaIgnore": {
+    "message": "무시",
+    "description": "PWA ignore button"
+  },
+  "pwaOfflineReady": {
+    "message": "앱이 오프라인에서 작동할 준비가 되었습니다",
+    "description": "PWA offline ready tip"
+  },
+  "layoutSchemeHelp": {
+    "message": "[icon:LayoutGrid] 격자: 소셜 미디어 게시에 적합\n[icon:Layout] T형: 예술적 사진 레이아웃\n[icon:Rows] 세로/가로: 긴 파노라마 이미지 결합",
+    "description": "Layout help text"
+  },
+  "backgroundColorHelp": {
+    "message": "이미지 배경색을 설정합니다. 투명(PNG/WebP)이 가장 유연하며, 검은색이나 흰색 배경은 미세 조정 시 통일감을 주는 데 도움이 됩니다.",
+    "description": "Background color help"
+  },
+  "globalGapHelp": {
+    "message": "모든 이미지 사이의 간격을 일괄 설정합니다. 음수 값을 입력하면 이미지를 겹치게 할 수 있습니다.",
+    "description": "Global gap help"
+  },
+  "formatHelp": {
+    "message": "「PNG」최고 화질, 투명 지원, 용량 큼\n「JPG」고압축, 투명 불가, 용량 작음\n「WEBP」고화질, 투명 지원, iOS 호환성 주의",
+    "description": "Help explanation for format selection"
+  },
+  "exportSettingsHelp": {
+    "message": "개인화 내보내기:\n「PNG」최고 화질, 투명 지원, 용량 큼\n「JPG」고압축, 투명 불가, 용량 작음\n「WEBP」고화질, 투명 지원, iOS 호환성 주의",
+    "description": "Comprehensive help for export settings section"
+  },
+  "twitterOptimizeHelp": {
+    "message": "X (Twitter)에 여러 장의 이미지를 게시할 때, 타임라인에서 이음새 없이 하나의 커다란 이미지처럼 보이도록 테두리와 간격을 미세 조정합니다.",
+    "description": "Twitter optimization help"
   },
   "userGuideButton": {
     "message": "사용 가이드",
-    "description": "가이드 버튼 텍스트"
+    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "이미지 불러오기",
-    "description": "튜토리얼 1단계 제목"
+    "description": "Tutorial step 1 title"
   },
   "tutorialImportDesc": {
     "message": "여기를 클릭하여 로컬 이미지를 업로드하거나, 링크 아이콘을 클릭하여 X (Twitter) URL에서 직접 이미지를 불러오세요.",
-    "description": "튜토리얼 1단계 설명"
+    "description": "Tutorial step 1 description"
   },
   "tutorialLayoutTitle": {
     "message": "레이아웃 선택",
-    "description": "튜토리얼 2단계 제목"
+    "description": "Tutorial step 2 title"
   },
   "tutorialLayoutDesc": {
     "message": "원하는 배치 방식을 선택하세요. X (Twitter) 게시용으로는 「그리드」를 추천합니다.",
-    "description": "튜토리얼 2단계 설명"
+    "description": "Tutorial step 2 description"
   },
   "tutorialControlTitle": {
     "message": "미세 조정",
-    "description": "튜토리얼 3단계 제목"
+    "description": "Tutorial step 3 title"
   },
   "tutorialControlDesc": {
     "message": "전체 또는 개별 간격을 조정하거나, 목록을 드래그하여 이미지 순서를 변경할 수 있습니다.",
-    "description": "튜토리얼 3단계 설명"
+    "description": "Tutorial step 3 description"
   },
   "tutorialExportTitle": {
     "message": "내보내기 및 저장",
-    "description": "튜토리얼 4단계 제목"
+    "description": "Tutorial step 4 title"
   },
   "tutorialExportDesc": {
     "message": "마지막으로 하단 버튼을 클릭하여 결과물을 생성하고 저장하세요!",
-    "description": "튜토리얼 4단계 설명"
+    "description": "Tutorial step 4 description"
   },
   "skipTutorial": {
     "message": "건너뛰기",
-    "description": "건너뛰기 버튼"
+    "description": "Skip button"
   },
   "nextStep": {
     "message": "다음",
-    "description": "다음 단계 버튼"
+    "description": "Next button"
+  },
+  "localGapHelp": {
+    "message": "특정 이미지 사이의 간격을 개별적으로 조정합니다.",
+    "description": "Help explanation for local gap"
+  },
+  "imageSortingHelp": {
+    "message": "[icon:GripVertical] 드래그 또는 [icon:ChevronUp][icon:ChevronDown] 클릭으로 순서 변경\n[icon:Eye] 클릭으로 표시 여부 전환\n숫자 클릭으로 간격 미세 조정",
+    "description": "Comprehensive help for image sorting section"
   },
   "userGuideTitle": {
     "message": "사용 가이드",
-    "description": "가이드 대화상자 제목"
+    "description": "Guide dialog title"
   },
   "finishTutorial": {
     "message": "완료",
-    "description": "완료 버튼"
+    "description": "Finish button"
   },
   "tabPWA": {
     "message": "웹 버전 / 모바일",
-    "description": "매뉴얼 탭 1"
+    "description": "Manual tab 1"
   },
   "tabExtension": {
     "message": "브라우저 확장 프로그램",
-    "description": "매뉴얼 탭 2"
+    "description": "Manual tab 2"
   },
   "tabFeatures": {
     "message": "사용 팁",
-    "description": "매뉴얼 탭 3"
+    "description": "Manual tab 3"
   },
   "guideiOSInstall": {
     "message": "1. 경험의 업그레이드\n수동 복사는 이제 안녕. 아래 버튼을 눌러 「X-Puzzle-Kit」을 단축어에 추가하세요.\n2. 원클릭 가져오기\nX (Twitter) 공유 메뉴에서 「X-Puzzle-Kit」을 누르기만 하면 자동으로 링크를 추출하고 원활하게 이동합니다.",
-    "description": "iOS 설치 안내"
+    "description": "iOS Install Guide"
   },
   "installShortcutBtn": {
     "message": "단축어 설치",
-    "description": "iOS 단축어 설치 버튼"
+    "description": "iOS Shortcut installation button"
   },
   "installShortcutTip": {
     "message": "공식 iOS 단축어를 설치하여 클릭 한 번으로 이미지를 가져오세요.",
-    "description": "iOS 단축어 설치 팁"
+    "description": "iOS Shortcut installation tip"
   },
   "guideAndroidInstall": {
     "message": "1. 앱으로 설치\n브라우저 메뉴에서 「앱 설치」 또는 「홈 화면에 추가」를 클릭하여 네이티브 앱 경험을 누리세요.\n2. 네이티브 공유\n설치 후 X (Twitter)에서 공유를 누르고 앱 목록에서 「X-Puzzle-Kit」을 선택하면 바로 가져올 수 있습니다.",
-    "description": "Android 설치 안내"
+    "description": "Android installation guide"
   },
   "viewAndroidTutorial": {
     "message": "설치 가이드 보기",
-    "description": "Android 튜토리얼 버튼 텍스트"
+    "description": "Android tutorial button text"
   },
   "guideExtensionStitch": {
     "message": "X (Twitter) 게시물 하단에 [icon] 버튼이 표시됩니다. 클릭 한 번으로 모든 이미지를 캡처하고 퍼즐 모드로 입장하세요.",
-    "description": "확장 프로그램 스티치 기능 안내"
+    "description": "Extension stitch feature guide"
   },
   "guideExtensionSplit": {
     "message": "웹 어디서든 이미지 우클릭 후 「X-Puzzle-Kit: 이미지 분할」을 선택하면 다운로드 없이 즉시 처리를 시작합니다.",
-    "description": "확장 프로그램 분할 기능 안내"
+    "description": "Extension split feature guide"
   },
   "guideFlowOptimization": {
     "message": "활성화 시 X (Twitter) 알고리즘에 맞춰 슬라이스 비율을 미세 조정합니다. 타임라인에서 이음새 없는 완벽한 한 장의 그림을 완성하세요.",
-    "description": "최적화 기능 안내"
+    "description": "Optimization feature guide"
   },
   "guideExtensionTitle": {
     "message": "심리스 포스트 이미지 연결",
-    "description": "매뉴얼 카드 제목 1"
+    "description": "Manual card title 1"
   },
   "guideSplitTitle": {
     "message": "우클릭 즉시 분할",
-    "description": "매뉴얼 카드 제목 2"
+    "description": "Manual card title 2"
   },
   "guideLocalGapTitle": {
     "message": "슬라이스 간격의 정밀 제어",
-    "description": "매뉴얼 카드 제목 3"
+    "description": "Manual card title 3"
+  },
+  "pwaBenefitTitle": {
+    "message": "왜 PWA를 설치해야 하나요?",
+    "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "description": "PWA benefit list content"
+  },
+  "pwaBenefitIntegrated": {
+    "message": "• 원활한 통합: Android 시스템 공유 메뉴를 지원하여 X에서 이미지를 더 빠르게 가져올 수 있습니다.",
+    "description": "PWA benefit: Android integration"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• 몰입형 환경: 브라우저 주소창 없이 전체 화면으로 작업에 집중할 수 있습니다.",
+    "description": "PWA benefit: Full-screen focus"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• 뷰포트 최적화: iOS PWA 환경에 맞춰 하단 여백 및 화면 왜곡 문제를 완전히 해결했습니다.",
+    "description": "PWA benefit: iOS PWA optimization"
+  },
+  "guideNativeInstall": {
+    "message": "아래 「PWA 설치」 버튼을 눌러 완료하면 X (Twitter) 공유 메뉴에서 본 도구를 즉시 확인하고 원클릭으로 이미지를 가져올 수 있습니다。",
+    "description": "Native install recommendation"
   },
   "pwaWhatIs": {
     "message": "PWA는 스토어 다운로드 없이 바로 사용하는 새로운 앱 형식입니다. 본질은 「앱의 기능을 갖춘 웹」으로, 저장 공간 부담 없이 가볍게 즐길 수 있는 최고의 선택입니다.",
     "description": "PWA explanation"
   },
+  "guideTechnicalTitle": {
+    "message": "원본 간격 제거",
+    "description": "Technical improvement title"
+  },
+  "guideTechnicalDesc": {
+    "message": "이미지에 테두리나 간격(만화 등)이 있는 경우, 이 기능을 활성화하면 분할 중에 해당 픽셀을 자동으로 잘라내어 깔끔한 결과물을 얻을 수 있습니다.",
+    "description": "Technical improvement description"
+  },
+  "statusOfflineAvailable": {
+    "message": "오프라인 모드 사용 가능",
+    "description": "Status text shown when offline"
+  },
+  "troubleshootingTitle": {
+    "message": "설치할 수 없나요?",
+    "description": "Troubleshooting section title"
+  },
+  "troubleshootingIncognito": {
+    "message": "시크릿/인코그니토 모드에서는 PWA를 설치할 수 없습니다. 일반 브라우징 모드에서 다시 시도해 주세요.",
+    "description": "Warning about incognito mode"
+  },
   "langZhCN": {
     "message": "简体中文",
-    "description": "语言名称: 简体中文"
+    "description": "Language name: Simplified Chinese"
   },
   "langZhTW": {
     "message": "繁體中文",
-    "description": "语言名称: 繁体中文"
+    "description": "Language name: Traditional Chinese"
   },
   "langEn": {
     "message": "English",
-    "description": "语言名称: 英语"
+    "description": "Language name: English"
   },
   "langJa": {
     "message": "日本語",
-    "description": "语言名称: 日语"
+    "description": "Language name: Japanese"
   },
   "langKo": {
     "message": "한국어",
-    "description": "语言名称: 韩语"
+    "description": "Language name: Korean"
   },
   "langEs": {
     "message": "Español",
-    "description": "语言名称: 西班牙语"
+    "description": "Language name: Spanish"
   },
   "langFr": {
     "message": "Français",
-    "description": "语言名称: 法语"
+    "description": "Language name: French"
+  },
+  "langDe": {
+    "message": "Deutsch",
+    "description": "Language name: German"
+  },
+  "langPt": {
+    "message": "Português",
+    "description": "Language name: Portuguese"
+  },
+  "langTr": {
+    "message": "Türkçe",
+    "description": "Language name: Turkish"
   },
   "openDebugPanel": {
     "message": "디버그 패널 열기",
-    "description": "调试用菜单文本"
+    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "시뮬레이터",
-    "description": "调试用模拟器文本"
+    "description": "Text for the simulator feature"
   },
   "viewDemoVideo": {
     "message": "환상적인 공유 체험하기",

@@ -1,179 +1,617 @@
 {
   "appName": {
     "message": "X-Puzzle-Kit : Assemblage et Découpe pour X",
-    "description": "Nom de l'extension"
+    "description": "The name of the extension"
   },
   "appDesc": {
     "message": "Assemblez des panoramas ou créez des grilles pour X (Twitter). Qualité originale, optimisé pour le fil et alignement parfait.",
-    "description": "Description de l'extension"
+    "description": "The description of the extension"
   },
   "longDescription": {
     "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s「affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d」Images\nFusionnez sans couture des images séparées d「un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d」un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d「origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n」importe quelle image en grilles standardisées (2x2, 3x3 ou personnalisées) optimisées pour l「affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l」aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n「importe quelle image vers l」outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l「attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l」import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
-    "description": "Description détaillée pour le store"
+    "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
     "message": "Aperçu de la fusion",
-    "description": "Titre de la fenêtre d'aperçu"
+    "description": "Title of the preview window"
   },
   "splitterTitle": {
     "message": "Diviseur",
-    "description": "Titre de la fenêtre de division"
+    "description": "Title of the splitter window"
   },
   "stitching": {
     "message": "Fusion en cours...",
-    "description": "Texte de chargement pendant la génération de l'aperçu"
+    "description": "Loading status during stitch generation"
   },
   "removeImage": {
     "message": "Supprimer l'image",
-    "description": "Info-bulle pour supprimer l'image"
+    "description": "Tooltip for remove image"
   },
   "fromArtist": {
     "message": "De",
-    "description": "Préfixe de l'auteur"
+    "description": "Author prefix"
   },
   "tweetId": {
     "message": "ID Tweet",
-    "description": "Libellé pour ID du Tweet"
+    "description": "Label for Tweet ID"
   },
   "preparingHighRes": {
     "message": "Ressources HD...",
-    "description": "Texte de chargement pour les images HD"
+    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "Réinitialiser",
-    "description": "Texte du bouton réinitialiser"
+    "description": "Reset button text"
   },
   "layoutScheme": {
     "message": "Mise en page",
-    "description": "En-tête de la section mise en page"
+    "description": "Section header for layout"
   },
   "layoutGrid": {
     "message": "Grille 2x2",
-    "description": "Libellé de mise en page grille 2x2"
+    "description": "2x2 layout label"
   },
   "layoutTShape": {
     "message": "Forme en T",
-    "description": "Libellé de mise en page en forme de T"
+    "description": "T-Shape layout label"
   },
   "layoutHorizontal": {
     "message": "Horizontal",
-    "description": "Libellé de mise en page horizontale"
+    "description": "Horizontal layout label"
   },
   "layoutVertical": {
     "message": "Vertical",
-    "description": "Libellé de mise en page verticale"
+    "description": "Vertical layout label"
   },
   "exportSettings": {
     "message": "Export",
-    "description": "En-tête de la section paramètres d'exportation"
+    "description": "Section header for export settings"
   },
   "backgroundColor": {
     "message": "Couleur de fond",
-    "description": "Libellé pour couleur de fond"
+    "description": "Label for background color"
   },
   "transparent": {
     "message": "Transp.",
-    "description": "Option de fond transparent"
+    "description": "Transparent background option"
   },
   "white": {
     "message": "Blanc",
-    "description": "Option de fond blanc"
+    "description": "White background option"
   },
   "black": {
     "message": "Noir",
-    "description": "Option de fond noir"
+    "description": "Black background option"
   },
   "globalGap": {
     "message": "Espacement global",
-    "description": "Libellé pour espacement global"
+    "description": "Label for global gap"
   },
   "resetToZero": {
     "message": "RAZ à 0",
-    "description": "Info-bulle pour réinitialiser l'espacement"
+    "description": "Tooltip for reset gap"
   },
   "imageSorting": {
     "message": "Galerie",
-    "description": "En-tête de la section ordre des images"
+    "description": "Section header for image sorting"
   },
   "localGap": {
     "message": "Espace local",
-    "description": "Sous-titre pour l'ordre des images"
+    "description": "Subtitle for image sorting"
   },
   "imageLabel": {
     "message": "Image",
-    "description": "Libellé pour image"
+    "description": "Label for image"
   },
   "moveUp": {
     "message": "Monter",
-    "description": "Info-bulle pour monter"
+    "description": "Tooltip for move up"
   },
   "moveDown": {
     "message": "Descendre",
-    "description": "Info-bulle pour descendre"
+    "description": "Tooltip for move down"
   },
   "hideImage": {
     "message": "Masquer l'image",
-    "description": "Info-bulle pour masquer l'image"
+    "description": "Tooltip for hide image"
   },
   "showImage": {
     "message": "Afficher l'image",
-    "description": "Info-bulle pour afficher l'image"
+    "description": "Tooltip for show image"
   },
   "afterGap": {
     "message": "Espace après",
-    "description": "Libellé pour l'espace local après l'image"
+    "description": "Label for local gap after image"
   },
   "decreaseGap": {
     "message": "Réduire l'espace",
-    "description": "Info-bulle pour réduire l'espace"
+    "description": "Tooltip for decrease gap"
   },
   "increaseGap": {
     "message": "Augmenter l'espace",
-    "description": "Info-bulle pour augmenter l'espace"
+    "description": "Tooltip for increase gap"
   },
   "gapLabel": {
     "message": "Espace",
-    "description": "Libellé pour l'espace résultant"
+    "description": "Label for the resulting gap"
   },
   "resetLocalGap": {
     "message": "RAZ espace local",
-    "description": "Info-bulle pour réinitialiser l'espace local"
+    "description": "Tooltip for reset local gap"
   },
   "processing": {
     "message": "Traitement...",
-    "description": "Texte du bouton pendant le traitement"
+    "description": "Button text while processing"
+  },
+  "stitchAndDownload": {
+    "message": "Fusionner et télécharger",
+    "description": "Final download button text"
+  },
+  "stitchBtnTitle": {
+    "message": "Fusionner les images",
+    "description": "Tooltip for the stitch button embedded in Twitter"
+  },
+  "language": {
+    "message": "Langue",
+    "description": "Language selector label"
+  },
+  "sourcedFrom": {
+    "message": "de",
+    "description": "Used in the source badge"
+  },
+  "splitImage": {
+    "message": "Diviser l'image",
+    "description": "Split button text"
+  },
+  "downloadAll": {
+    "message": "Tout télécharger",
+    "description": "Download all button text"
+  },
+  "uploadImage": {
+    "message": "Uploader une image",
+    "description": "Upload image button text"
+  },
+  "selectImageTip": {
+    "message": "Sélectionnez une image à diviser",
+    "description": "Select image tip"
+  },
+  "uploadImages": {
+    "message": "Uploader des images",
+    "description": "Button text for uploading multiple images"
+  },
+  "selectImagesTip": {
+    "message": "Veuillez sélectionner les images à fusionner",
+    "description": "Tip for selecting multiple images"
+  },
+  "addMoreImages": {
+    "message": "Ajouter plus d'images",
+    "description": "Button text to add more images when preview is empty"
+  },
+  "dragAndDropTip": {
+    "message": "Ou glisser-déposer ici",
+    "description": "Drag and drop instruction"
+  },
+  "changeImage": {
+    "message": "Changer",
+    "description": "Change image button text"
+  },
+  "gapRemoval": {
+    "message": "Supprimer les marges d'origine",
+    "description": "Gap removal label"
+  },
+  "gapRemovalTip": {
+    "message": "Si votre image d'origine comporte des bordures ou des gouttières intégrées (comme les mangas), activez cette option pour recadrer automatiquement ces pixels redondants lors de la division.",
+    "description": "Gap removal description"
+  },
+  "rowCount": {
+    "message": "Lignes (N)",
+    "description": "Row count label"
+  },
+  "colCount": {
+    "message": "Colonnes (N)",
+    "description": "Column count label"
+  },
+  "sourceImage": {
+    "message": "Source",
+    "description": "Source image label"
+  },
+  "splitResult": {
+    "message": "Résultat",
+    "description": "Split result label"
+  },
+  "formatLabel": {
+    "message": "Format",
+    "description": "Export format label"
+  },
+  "iosWebpWarningTitle": {
+    "message": "Compatibilité WebP",
+    "description": "Title for iOS WebP warning"
+  },
+  "iosWebpWarning": {
+    "message": "L「enregistrement d」images WebP dans l'application Photos sur iOS peut poser des problèmes de compatibilité (certaines applications peuvent ne pas les afficher correctement). Le PNG est recommandé. Voulez-vous toujours passer au WebP ?",
+    "description": "Warning for iOS WebP compatibility"
+  },
+  "zipLabel": {
+    "message": "Télécharger en Zip",
+    "description": "Zip download toggle label"
+  },
+  "zipTip": {
+    "message": "Regrouper toutes les images dans un seul fichier zip",
+    "description": "Zip feature description"
+  },
+  "restore": {
+    "message": "Restaurer",
+    "description": "Restore button text"
+  },
+  "twitterOptimize": {
+    "message": "Mise en page \"Simple Image\" pour X",
+    "description": "Twitter optimization toggle label"
+  },
+  "twitterOptimizeTip": {
+    "message": "Optimisé pour l'aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.",
+    "description": "Twitter optimization tip"
+  },
+  "settings": {
+    "message": "Paramètres",
+    "description": "General settings section title"
+  },
+  "modeStitch": {
+    "message": "Fusionner",
+    "description": "Stitch mode button"
+  },
+  "modeSplit": {
+    "message": "Diviser",
+    "description": "Split mode button"
+  },
+  "support": {
+    "message": "Soutien",
+    "description": "Support section title"
+  },
+  "buyMeCoffee": {
+    "message": "Offrez-moi un café",
+    "description": "Sponsorship button text"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: Diviser l'image",
+    "description": "Context menu item title"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "L'extension a été mise à jour. Veuillez rafraîchir la page.",
+    "description": "Message shown when extension context is invalidated"
+  },
+  "slideRefine": {
+    "message": "Glisser pour affiner",
+    "description": "Hint for the jog dial controller"
+  },
+  "confirmRemoveImage": {
+    "message": "Êtes-vous sûr de vouloir supprimer cette image ?",
+    "description": "Confirmation message when removing a single image"
+  },
+  "confirmClearAll": {
+    "message": "Êtes-vous sûr de vouloir effacer toutes les images ? Cette opération est irréversible.",
+    "description": "Confirmation message when clearing all images"
+  },
+  "clearAll": {
+    "message": "Tout effacer",
+    "description": "Clear all images button text"
   },
   "emptyImageText": {
     "message": "Pas d'images, cliquez pour télécharger",
-    "description": "Message affiché lorsque la liste d'images est vide"
+    "description": "Message shown when image list is empty"
   },
   "installTitle": {
     "message": "Sur l「écran d」accueil",
-    "description": "Titre de l'invite d'installation iOS"
+    "description": "iOS install prompt title"
   },
   "installDesc": {
     "message": "Touchez le bouton Partager en bas, puis 「Sur l「écran d」accueil」.",
-    "description": "Description de l'invite d'installation iOS"
+    "description": "iOS install prompt description"
   },
   "installDescChrome": {
     "message": "Touchez le bouton Partager en haut à droite, puis 「Sur l「écran d」accueil」.",
-    "description": "Description de l'invite d'installation iOS Chrome"
+    "description": "iOS Chrome install prompt description"
   },
   "installDescAndroid": {
     "message": "Appuyez sur le menu du navigateur (en haut ou en bas à droite), puis sélectionnez 「Installer l「application」 ou 「Ajouter à l」écran d'accueil」.",
-    "description": "Android description d'installation"
+    "description": "Android install prompt description"
   },
   "pwaInstallBtn": {
     "message": "Installer",
-    "description": "Bouton d'installation PWA native"
+    "description": "Native PWA install button text"
   },
   "pwaInstallDescNative": {
     "message": "Installez l「application sur votre écran d」accueil pour une meilleure expérience.",
-    "description": "Description d'installation PWA native"
+    "description": "Native PWA install description"
+  },
+  "importFromUrl": {
+    "message": "Importer via l'URL",
+    "description": "Import button title"
+  },
+  "invalidUrl": {
+    "message": "Lien invalide, veuillez fournir un lien Tweet (X) valide",
+    "description": "Invalid URL tip"
+  },
+  "analyzingLink": {
+    "message": "Analyse du lien...",
+    "description": "Analyzing link state"
+  },
+  "noImagesFound": {
+    "message": "Aucune image importable trouvée dans ce Tweet",
+    "description": "No images found tip"
+  },
+  "downloadingImages": {
+    "message": "Téléchargement des images",
+    "description": "Downloading images state"
+  },
+  "processingImages": {
+    "message": "Traitement des images...",
+    "description": "Processing images state"
+  },
+  "parseFailed": {
+    "message": "Échec de l'analyse du Tweet",
+    "description": "Parse failed tip"
+  },
+  "workerInvalidResponse": {
+    "message": "Le service d'analyse a renvoyé un format inattendu. Le tweet est peut-être restreint ou le service est temporairement indisponible.",
+    "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
+  },
+  "workerStatusError": {
+    "message": "Le service d'analyse est temporairement incapable de traiter ce tweet (Erreur : $status$).",
+    "description": "Tooltip for when worker returns non-200 status code",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
+  },
+  "networkError": {
+    "message": "La connexion réseau a échoué. Veuillez vérifier vos paramètres internet.",
+    "description": "Tooltip for network errors during fetch"
+  },
+  "import": {
+    "message": "Importer",
+    "description": "Import action button"
+  },
+  "cancel": {
+    "message": "Annuler",
+    "description": "Cancel action button"
+  },
+  "confirm": {
+    "message": "Confirmer",
+    "description": "Confirm action button"
+  },
+  "imageResolution": {
+    "message": "Résolution",
+    "description": "Label for image resolution"
+  },
+  "clickToShowResolution": {
+    "message": "Cliquer pour voir la résolution",
+    "description": "Tooltip hint for thumbnails"
+  },
+  "finalGap": {
+    "message": "Espacement final",
+    "description": "Calculated total gap including global and local"
+  },
+  "openSourcePage": {
+    "message": "Ouvrir la page d'origine",
+    "description": "Tooltip for the source tweet link"
+  },
+  "invalidFormat": {
+    "message": "Format invalide",
+    "description": "Error message for invalid input"
+  },
+  "auto": {
+    "message": "Auto",
+    "description": "Auto option for language/theme"
+  },
+  "themeSystem": {
+    "message": "Suivre le système",
+    "description": "System theme option"
+  },
+  "themeLight": {
+    "message": "Mode clair",
+    "description": "Light theme option"
+  },
+  "themeDark": {
+    "message": "Mode sombre",
+    "description": "Dark theme option"
+  },
+  "themeLabel": {
+    "message": "Thème",
+    "description": "Label for theme selector"
+  },
+  "pwaVersionLabel": {
+    "message": "Version Web en ligne",
+    "description": "PWA version label"
+  },
+  "pwaVersionTip": {
+    "message": "Vous l'utilisez sur mobile ou sur un navigateur sans extension ? Essayez notre version Web complète.",
+    "description": "PWA version description"
+  },
+  "openWebVersion": {
+    "message": "Ouvrir la version Web",
+    "description": "Open PWA button text"
+  },
+  "extensionVersionLabel": {
+    "message": "Extension Chrome",
+    "description": "Extension version label"
+  },
+  "extensionVersionTip": {
+    "message": "Vous l'utilisez sur un navigateur pour ordinateur ? Essayez notre extension pour fusionner vos images en un clic directement sur X (Twitter).",
+    "description": "Extension version description"
+  },
+  "openExtensionStore": {
+    "message": "Aller sur le Chrome Web Store",
+    "description": "Open extension store button text"
+  },
+  "pwaUpdateAvailable": {
+    "message": "Nouvelle version disponible",
+    "description": "PWA update available tip"
+  },
+  "pwaUpdateReady": {
+    "message": "Mettez à jour pour obtenir les dernières fonctionnalités et corrections",
+    "description": "PWA update description"
+  },
+  "pwaRefresh": {
+    "message": "Actualiser",
+    "description": "PWA refresh button"
+  },
+  "pwaIgnore": {
+    "message": "Ignorer",
+    "description": "PWA ignore button"
+  },
+  "pwaOfflineReady": {
+    "message": "L'application est prête à fonctionner hors ligne",
+    "description": "PWA offline ready tip"
+  },
+  "layoutSchemeHelp": {
+    "message": "[icon:LayoutGrid] Grille : Pour les réseaux sociaux\n[icon:Layout] Forme en T : Pour la photographie artistique\n[icon:Rows] Vertical/Horizontal : Pour les panoramas",
+    "description": "Layout help text"
+  },
+  "backgroundColorHelp": {
+    "message": "Définissez la couleur derrière les images. Le fond transparent (PNG/WebP) est le plus flexible, le noir ou le blanc aide à unifier les micro-ajustements.",
+    "description": "Background color help"
+  },
+  "globalGapHelp": {
+    "message": "Définissez la largeur de l'espace entre toutes les images. Les valeurs négatives permettent le chevauchement.",
+    "description": "Global gap help"
+  },
+  "formatHelp": {
+    "message": "「PNG」Qualité originale, transparence, plus lourd\n「JPG」Haute compression, sans transparence, plus léger\n「WEBP」Haute qualité, transparence, limité sur iOS",
+    "description": "Help explanation for format selection"
+  },
+  "exportSettingsHelp": {
+    "message": "Export Personnalisé :\n「PNG」Qualité originale, transparence, plus lourd\n「JPG」Haute compression, sans transparence, plus léger\n「WEBP」Haute qualité, transparence, limité sur iOS",
+    "description": "Comprehensive help for export settings section"
+  },
+  "twitterOptimizeHelp": {
+    "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 「Image Unique」 sans couture dans le fil des utilisateurs.",
+    "description": "Twitter optimization help"
+  },
+  "userGuideButton": {
+    "message": "Guide de l'utilisateur",
+    "description": "User guide button text"
+  },
+  "tutorialImportTitle": {
+    "message": "Importer des Images",
+    "description": "Tutorial step 1 title"
+  },
+  "tutorialImportDesc": {
+    "message": "Cliquez pour télécharger des fichiers locaux, ou utilisez l'icône de lien pour importer directement depuis une URL X (Twitter).",
+    "description": "Tutorial step 1 description"
+  },
+  "tutorialLayoutTitle": {
+    "message": "Choisir la Disposition",
+    "description": "Tutorial step 2 title"
+  },
+  "tutorialLayoutDesc": {
+    "message": "Choisissez une disposition pour vos images. 「Grille」 est recommandé pour les posts Twitter/X.",
+    "description": "Tutorial step 2 description"
+  },
+  "tutorialControlTitle": {
+    "message": "Ajustement Précis",
+    "description": "Tutorial step 3 title"
+  },
+  "tutorialControlDesc": {
+    "message": "Ajustez les espaces globaux/locaux, ou faites glisser la liste pour réorganiser vos images.",
+    "description": "Tutorial step 3 description"
+  },
+  "tutorialExportTitle": {
+    "message": "Exporter & Télécharger",
+    "description": "Tutorial step 4 title"
+  },
+  "tutorialExportDesc": {
+    "message": "Enfin, cliquez sur le bouton pour générer et sauvegarder votre création !",
+    "description": "Tutorial step 4 description"
+  },
+  "skipTutorial": {
+    "message": "Passer",
+    "description": "Skip button"
+  },
+  "nextStep": {
+    "message": "Suivant",
+    "description": "Next button"
+  },
+  "localGapHelp": {
+    "message": "Ajuster l'espacement entre des images spécifiques.",
+    "description": "Help explanation for local gap"
+  },
+  "imageSortingHelp": {
+    "message": "Glisser [icon:GripVertical] ou clic [icon:ChevronUp][icon:ChevronDown] pour réorganiser\nClic [icon:Eye] pour masquer/afficher\nClic sur les nombres pour ajuster les espaces",
+    "description": "Comprehensive help for image sorting section"
+  },
+  "userGuideTitle": {
+    "message": "Manuel de l'utilisateur & Guide",
+    "description": "Guide dialog title"
+  },
+  "finishTutorial": {
+    "message": "Terminer",
+    "description": "Finish button"
+  },
+  "tabPWA": {
+    "message": "Version Web / Mobile",
+    "description": "Manual tab 1"
+  },
+  "tabExtension": {
+    "message": "Extension",
+    "description": "Manual tab 2"
+  },
+  "tabFeatures": {
+    "message": "Conseils d'utilisation",
+    "description": "Manual tab 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. Améliorez votre expérience\nOubliez la copie manuelle. Appuyez sur le bouton ci-dessous pour ajouter 「X-Puzzle-Kit」 à vos raccourcis.\n2. Démarrage instantané\nAppuyez sur ce raccourci dans le menu de partage X (Twitter) pour extraire les liens et naviguer de manière fluide.",
+    "description": "iOS Install Guide"
+  },
+  "installShortcutBtn": {
+    "message": "Installer le raccourci",
+    "description": "iOS Shortcut installation button"
+  },
+  "installShortcutTip": {
+    "message": "Obtenez le raccourci iOS officiel pour importer en un clic.",
+    "description": "iOS Shortcut installation tip"
+  },
+  "guideAndroidInstall": {
+    "message": "1. Installer la PWA (application web progressive)\nAppuyez sur 「Installer l」application「 dans le menu du navigateur pour débloquer l」intégration du partage sans passer par un store.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 「X-Puzzle-Kit」 pour importer.",
+    "description": "Android installation guide"
+  },
+  "viewAndroidTutorial": {
+    "message": "Guide d'installation",
+    "description": "Android tutorial button text"
+  },
+  "guideExtensionStitch": {
+    "message": "Directement sous n'importe quel post X (Twitter), vous trouverez le bouton [icon]. Capturez toutes les images en un clic et passez en mode puzzle.",
+    "description": "Extension stitch feature guide"
+  },
+  "guideExtensionSplit": {
+    "message": "Faites un clic droit sur n「importe quelle image et sélectionnez 」X-Puzzle-Kit: Diviser l「image」 pour lancer le traitement sans téléchargement.",
+    "description": "Extension split feature guide"
+  },
+  "guideFlowOptimization": {
+    "message": "Une fois activé, l「outil ajuste les ratios pour l」algorithme X (Twitter), garantissant un rendu sans couture dans le fil d'actualité.",
+    "description": "Optimization feature guide"
+  },
+  "guideExtensionTitle": {
+    "message": "Assemblage fluide d'images de posts",
+    "description": "Manual card title 1"
+  },
+  "guideSplitTitle": {
+    "message": "Division rapide par clic droit",
+    "description": "Manual card title 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "Contrôle précis des espaces entre coupes",
+    "description": "Manual card title 3"
   },
   "pwaBenefitTitle": {
     "message": "Pourquoi installer la PWA ?",
     "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {
     "message": "• Intégration fluide : Supporte le menu de partage Android pour importer des images de X plus rapidement.",
@@ -191,6 +629,10 @@
     "message": "Installez la PWA pour voir 「X-Puzzle-Kit」 dans votre menu de partage X (Twitter) pour une importation en un clic.",
     "description": "Native install recommendation"
   },
+  "pwaWhatIs": {
+    "message": "La PWA est un format d'application moderne sans téléchargement via store. C'est un 「web aux pouvoirs d'app」, occupant peu d'espace et offrant l'expérience la plus légère possible.",
+    "description": "PWA explanation"
+  },
   "guideTechnicalTitle": {
     "message": "Supprimer les marges d'origine",
     "description": "Technical improvement title"
@@ -201,489 +643,63 @@
   },
   "statusOfflineAvailable": {
     "message": "Mode hors ligne disponible",
-    "description": "Texte de statut affiché hors ligne"
+    "description": "Status text shown when offline"
   },
   "troubleshootingTitle": {
     "message": "Impossible d'installer ?",
-    "description": "Titre de la section de dépannage"
+    "description": "Troubleshooting section title"
   },
   "troubleshootingIncognito": {
     "message": "Le mode navigation privée empêche l'installation des PWA. Veuillez passer en mode de navigation normal et réessayer.",
-    "description": "Avertissement concernant le mode incognito"
-  },
-  "stitchAndDownload": {
-    "message": "Fusionner et télécharger",
-    "description": "Texte du bouton de téléchargement final"
-  },
-  "stitchBtnTitle": {
-    "message": "Fusionner les images",
-    "description": "Info-bulle pour le bouton de fusion intégré à Twitter"
-  },
-  "language": {
-    "message": "Langue",
-    "description": "Libellé du sélecteur de langue"
-  },
-  "sourcedFrom": {
-    "message": "de",
-    "description": "Utilisé dans le badge source"
-  },
-  "splitImage": {
-    "message": "Diviser l'image",
-    "description": "Texte du bouton diviser"
-  },
-  "downloadAll": {
-    "message": "Tout télécharger",
-    "description": "Texte du bouton tout télécharger"
-  },
-  "uploadImage": {
-    "message": "Uploader une image",
-    "description": "Texte du bouton uploader image"
-  },
-  "selectImageTip": {
-    "message": "Sélectionnez une image à diviser",
-    "description": "Conseil pour sélectionner une image"
-  },
-  "uploadImages": {
-    "message": "Uploader des images",
-    "description": "Texte du bouton pour uploader plusieurs images"
-  },
-  "selectImagesTip": {
-    "message": "Veuillez sélectionner les images à fusionner",
-    "description": "Conseil pour sélectionner plusieurs images"
-  },
-  "addMoreImages": {
-    "message": "Ajouter plus d'images",
-    "description": "Texte pour ajouter plus d'images quand le canevas est vide"
-  },
-  "dragAndDropTip": {
-    "message": "Ou glisser-déposer ici",
-    "description": "Instruction de glisser-déposer"
-  },
-  "changeImage": {
-    "message": "Changer",
-    "description": "Texte du bouton changer image"
-  },
-  "gapRemoval": {
-    "message": "Supprimer les marges d'origine",
-    "description": "Libellé de suppression d'espace"
-  },
-  "localGapHelp": {
-    "message": "Ajuster l'espacement entre des images spécifiques.",
-    "description": "Explication de l'aide pour l'espace local"
-  },
-  "imageSortingHelp": {
-    "message": "Glisser [icon:GripVertical] ou clic [icon:ChevronUp][icon:ChevronDown] pour réorganiser\nClic [icon:Eye] pour masquer/afficher\nClic sur les nombres pour ajuster les espaces",
-    "description": "Aide complète pour la section Galerie"
-  },
-  "gapRemovalTip": {
-    "message": "Si votre image d'origine comporte des bordures ou des gouttières intégrées (comme les mangas), activez cette option pour recadrer automatiquement ces pixels redondants lors de la division.",
-    "description": "Description de la suppression d'espace"
-  },
-  "rowCount": {
-    "message": "Lignes (N)",
-    "description": "Libellé du nombre de lignes"
-  },
-  "colCount": {
-    "message": "Colonnes (N)",
-    "description": "Libellé du nombre de colonnes"
-  },
-  "sourceImage": {
-    "message": "Source",
-    "description": "Libellé de l'image source"
-  },
-  "splitResult": {
-    "message": "Résultat",
-    "description": "Libellé du résultat de division"
-  },
-  "formatLabel": {
-    "message": "Format",
-    "description": "Libellé du format d'exportation"
-  },
-  "iosWebpWarningTitle": {
-    "message": "Compatibilité WebP",
-    "description": "Titre de l'avertissement WebP sur iOS"
-  },
-  "iosWebpWarning": {
-    "message": "L「enregistrement d」images WebP dans l'application Photos sur iOS peut poser des problèmes de compatibilité (certaines applications peuvent ne pas les afficher correctement). Le PNG est recommandé. Voulez-vous toujours passer au WebP ?",
-    "description": "Avertissement de compatibilité WebP sur iOS"
-  },
-  "zipLabel": {
-    "message": "Télécharger en Zip",
-    "description": "Libellé du commutateur de téléchargement Zip"
-  },
-  "zipTip": {
-    "message": "Regrouper toutes les images dans un seul fichier zip",
-    "description": "Description de la fonction Zip"
-  },
-  "restore": {
-    "message": "Restaurer",
-    "description": "Texte du bouton restaurer"
-  },
-  "twitterOptimize": {
-    "message": "Mise en page \"Simple Image\" pour X",
-    "description": "Libellé du commutateur d'optimisation Twitter"
-  },
-  "twitterOptimizeTip": {
-    "message": "Optimisé pour l'aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.",
-    "description": "Conseil d'optimisation Twitter"
-  },
-  "settings": {
-    "message": "Paramètres",
-    "description": "Titre de la section paramètres généraux"
-  },
-  "modeStitch": {
-    "message": "Fusionner",
-    "description": "Bouton mode fusionner"
-  },
-  "modeSplit": {
-    "message": "Diviser",
-    "description": "Bouton mode diviser"
-  },
-  "support": {
-    "message": "Soutien",
-    "description": "Titre de la section de soutien"
-  },
-  "buyMeCoffee": {
-    "message": "Offrez-moi un café",
-    "description": "Texte du bouton de parrainage"
-  },
-  "contextMenuTitle": {
-    "message": "X-Puzzle-Kit: Diviser l'image",
-    "description": "Titre du menu contextuel"
-  },
-  "extensionUpdatedRefresh": {
-    "message": "L'extension a été mise à jour. Veuillez rafraîchir la page.",
-    "description": "Message affiché lorsque le contexte de l'extension est invalidé"
-  },
-  "importFromUrl": {
-    "message": "Importer via l'URL",
-    "description": "Titre du bouton d'importation"
-  },
-  "slideRefine": {
-    "message": "Glisser pour affiner",
-    "description": "Indice pour le contrôleur de molette"
-  },
-  "confirmRemoveImage": {
-    "message": "Êtes-vous sûr de vouloir supprimer cette image ?",
-    "description": "Message de confirmation lors de la suppression d'une seule image"
-  },
-  "confirmClearAll": {
-    "message": "Êtes-vous sûr de vouloir effacer toutes les images ? Cette opération est irréversible.",
-    "description": "Message de confirmation lors de l'effacement de toutes les images"
-  },
-  "clearAll": {
-    "message": "Tout effacer",
-    "description": "Texte du bouton pour tout effacer"
-  },
-  "invalidUrl": {
-    "message": "Lien invalide, veuillez fournir un lien Tweet (X) valide",
-    "description": "Conseil de lien invalide"
-  },
-  "analyzingLink": {
-    "message": "Analyse du lien...",
-    "description": "État de l'analyse du lien"
-  },
-  "noImagesFound": {
-    "message": "Aucune image importable trouvée dans ce Tweet",
-    "description": "Conseil d'images non trouvées"
-  },
-  "downloadingImages": {
-    "message": "Téléchargement des images",
-    "description": "État du téléchargement des images"
-  },
-  "processingImages": {
-    "message": "Traitement des images...",
-    "description": "État du traitement des images"
-  },
-  "parseFailed": {
-    "message": "Échec de l'analyse du Tweet",
-    "description": "Conseil d'échec de l'analyse"
-  },
-  "workerInvalidResponse": {
-    "message": "Le service d'analyse a renvoyé un format inattendu. Le tweet est peut-être restreint ou le service est temporairement indisponible.",
-    "description": "Message de réponse invalide"
-  },
-  "workerStatusError": {
-    "message": "Le service d'analyse est temporairement incapable de traiter ce tweet (Erreur : $status$).",
-    "description": "Message d'erreur de statut du serveur",
-    "placeholders": {
-      "status": {
-        "content": "$1",
-        "example": "403"
-      }
-    }
-  },
-  "networkError": {
-    "message": "La connexion réseau a échoué. Veuillez vérifier vos paramètres internet.",
-    "description": "Message d'erreur de réseau"
-  },
-  "import": {
-    "message": "Importer",
-    "description": "Bouton d'action d'importation"
-  },
-  "cancel": {
-    "message": "Annuler",
-    "description": "Bouton d'action d'annulation"
-  },
-  "confirm": {
-    "message": "Confirmer",
-    "description": "Bouton d'action de confirmation"
-  },
-  "imageResolution": {
-    "message": "Résolution",
-    "description": "Étiquette de résolution d'image"
-  },
-  "clickToShowResolution": {
-    "message": "Cliquer pour voir la résolution",
-    "description": "Indice pour les miniatures"
-  },
-  "finalGap": {
-    "message": "Espacement final",
-    "description": "Espacement total calculé"
-  },
-  "openSourcePage": {
-    "message": "Ouvrir la page d'origine",
-    "description": "Infobulle pour le lien du tweet d'origine"
-  },
-  "invalidFormat": {
-    "message": "Format invalide",
-    "description": "Message d'erreur pour une entrée invalide"
-  },
-  "auto": {
-    "message": "Auto",
-    "description": "Option automatique pour la langue/le thème"
-  },
-  "themeSystem": {
-    "message": "Suivre le système",
-    "description": "Option de thème système"
-  },
-  "themeLight": {
-    "message": "Mode clair",
-    "description": "Option de thème clair"
-  },
-  "themeDark": {
-    "message": "Mode sombre",
-    "description": "Option de thème sombre"
-  },
-  "themeLabel": {
-    "message": "Thème",
-    "description": "Étiquette pour le sélecteur de thème"
-  },
-  "pwaVersionLabel": {
-    "message": "Version Web en ligne",
-    "description": "Libellé de la version PWA"
-  },
-  "pwaVersionTip": {
-    "message": "Vous l'utilisez sur mobile ou sur un navigateur sans extension ? Essayez notre version Web complète.",
-    "description": "Description de la version PWA"
-  },
-  "openWebVersion": {
-    "message": "Ouvrir la version Web",
-    "description": "Texte du bouton ouvrir PWA"
-  },
-  "extensionVersionLabel": {
-    "message": "Extension Chrome",
-    "description": "Libellé de l'extension"
-  },
-  "extensionVersionTip": {
-    "message": "Vous l'utilisez sur un navigateur pour ordinateur ? Essayez notre extension pour fusionner vos images en un clic directement sur X (Twitter).",
-    "description": "Description de l'extension"
-  },
-  "openExtensionStore": {
-    "message": "Aller sur le Chrome Web Store",
-    "description": "Texte du bouton pour ouvrir le Web Store"
-  },
-  "pwaUpdateAvailable": {
-    "message": "Nouvelle version disponible",
-    "description": "Notification de mise à jour PWA disponible"
-  },
-  "pwaUpdateReady": {
-    "message": "Mettez à jour pour obtenir les dernières fonctionnalités et corrections",
-    "description": "Description de la mise à jour PWA"
-  },
-  "pwaRefresh": {
-    "message": "Actualiser",
-    "description": "Bouton d'actualisation PWA"
-  },
-  "pwaIgnore": {
-    "message": "Ignorer",
-    "description": "Bouton ignorer PWA"
-  },
-  "pwaOfflineReady": {
-    "message": "L'application est prête à fonctionner hors ligne",
-    "description": "Notification de disponibilité hors ligne PWA"
-  },
-  "layoutSchemeHelp": {
-    "message": "[icon:LayoutGrid] Grille : Pour les réseaux sociaux\n[icon:Layout] Forme en T : Pour la photographie artistique\n[icon:Rows] Vertical/Horizontal : Pour les panoramas",
-    "description": "Texte d'aide de la disposition"
-  },
-  "backgroundColorHelp": {
-    "message": "Définissez la couleur derrière les images. Le fond transparent (PNG/WebP) est le plus flexible, le noir ou le blanc aide à unifier les micro-ajustements.",
-    "description": "Aide de la couleur de fond"
-  },
-  "globalGapHelp": {
-    "message": "Définissez la largeur de l'espace entre toutes les images. Les valeurs négatives permettent le chevauchement.",
-    "description": "Aide de l'espace global"
-  },
-  "formatHelp": {
-    "message": "「PNG」Qualité originale, transparence, plus lourd\n「JPG」Haute compression, sans transparence, plus léger\n「WEBP」Haute qualité, transparence, limité sur iOS",
-    "description": "Aide de format"
-  },
-  "exportSettingsHelp": {
-    "message": "Export Personnalisé :\n「PNG」Qualité originale, transparence, plus lourd\n「JPG」Haute compression, sans transparence, plus léger\n「WEBP」Haute qualité, transparence, limité sur iOS",
-    "description": "Aide complète pour la section paramètres d'exportation"
-  },
-  "twitterOptimizeHelp": {
-    "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 「Image Unique」 sans couture dans le fil des utilisateurs.",
-    "description": "Aide de l'optimisation Twitter"
-  },
-  "userGuideButton": {
-    "message": "Guide de l'utilisateur",
-    "description": "Texte du bouton du guide de l'utilisateur"
-  },
-  "tutorialImportTitle": {
-    "message": "Importer des Images",
-    "description": "Titre de l'étape 1 du tutoriel"
-  },
-  "tutorialImportDesc": {
-    "message": "Cliquez pour télécharger des fichiers locaux, ou utilisez l'icône de lien pour importer directement depuis une URL X (Twitter).",
-    "description": "Description de l'étape 1 du tutoriel"
-  },
-  "tutorialLayoutTitle": {
-    "message": "Choisir la Disposition",
-    "description": "Titre de l'étape 2 du tutoriel"
-  },
-  "tutorialLayoutDesc": {
-    "message": "Choisissez une disposition pour vos images. 「Grille」 est recommandé pour les posts Twitter/X.",
-    "description": "Description de l'étape 2 du tutoriel"
-  },
-  "tutorialControlTitle": {
-    "message": "Ajustement Précis",
-    "description": "Titre de l'étape 3 du tutoriel"
-  },
-  "tutorialControlDesc": {
-    "message": "Ajustez les espaces globaux/locaux, ou faites glisser la liste pour réorganiser vos images.",
-    "description": "Description de l'étape 3 du tutoriel"
-  },
-  "tutorialExportTitle": {
-    "message": "Exporter & Télécharger",
-    "description": "Titre de l'étape 4 du tutoriel"
-  },
-  "tutorialExportDesc": {
-    "message": "Enfin, cliquez sur le bouton pour générer et sauvegarder votre création !",
-    "description": "Description de l'étape 4 du tutoriel"
-  },
-  "skipTutorial": {
-    "message": "Passer",
-    "description": "Bouton pour passer"
-  },
-  "nextStep": {
-    "message": "Suivant",
-    "description": "Bouton suivant"
-  },
-  "userGuideTitle": {
-    "message": "Manuel de l'utilisateur & Guide",
-    "description": "Titre du dialogue de guide"
-  },
-  "finishTutorial": {
-    "message": "Terminer",
-    "description": "Bouton de fin"
-  },
-  "tabPWA": {
-    "message": "Version Web / Mobile",
-    "description": "Onglet de manuel 1"
-  },
-  "tabExtension": {
-    "message": "Extension",
-    "description": "Onglet de manuel 2"
-  },
-  "tabFeatures": {
-    "message": "Conseils d'utilisation",
-    "description": "Onglet de manuel 3"
-  },
-  "guideiOSInstall": {
-    "message": "1. Améliorez votre expérience\nOubliez la copie manuelle. Appuyez sur le bouton ci-dessous pour ajouter 「X-Puzzle-Kit」 à vos raccourcis.\n2. Démarrage instantané\nAppuyez sur ce raccourci dans le menu de partage X (Twitter) pour extraire les liens et naviguer de manière fluide.",
-    "description": "Guide d'installation pour iOS"
-  },
-  "installShortcutBtn": {
-    "message": "Installer le raccourci",
-    "description": "Bouton d'installation du raccourci iOS"
-  },
-  "installShortcutTip": {
-    "message": "Obtenez le raccourci iOS officiel pour importer en un clic.",
-    "description": "Conseil d'installation du raccourci iOS"
-  },
-  "guideAndroidInstall": {
-    "message": "1. Installer la PWA (application web progressive)\nAppuyez sur 「Installer l」application「 dans le menu du navigateur pour débloquer l」intégration du partage sans passer par un store.\n2. Partage natif\nUne fois installée, partagez directement depuis X (Twitter) et sélectionnez 「X-Puzzle-Kit」 pour importer.",
-    "description": "Guide d'installation pour Android"
-  },
-  "viewAndroidTutorial": {
-    "message": "Guide d'installation",
-    "description": "Texte du bouton tutoriel Android"
-  },
-  "guideExtensionStitch": {
-    "message": "Directement sous n'importe quel post X (Twitter), vous trouverez le bouton [icon]. Capturez toutes les images en un clic et passez en mode puzzle.",
-    "description": "Guide de la fonction d'assemblage de l'extension"
-  },
-  "guideExtensionSplit": {
-    "message": "Faites un clic droit sur n「importe quelle image et sélectionnez 」X-Puzzle-Kit: Diviser l「image」 pour lancer le traitement sans téléchargement.",
-    "description": "Guide de la fonction de division de l'extension"
-  },
-  "guideFlowOptimization": {
-    "message": "Une fois activé, l「outil ajuste les ratios pour l」algorithme X (Twitter), garantissant un rendu sans couture dans le fil d'actualité.",
-    "description": "Guide de la fonction d'optimisation"
-  },
-  "guideExtensionTitle": {
-    "message": "Assemblage fluide d'images de posts",
-    "description": "Titre de la carte de manuel 1"
-  },
-  "guideSplitTitle": {
-    "message": "Division rapide par clic droit",
-    "description": "Titre de la carte de manuel 2"
-  },
-  "guideLocalGapTitle": {
-    "message": "Contrôle précis des espaces entre coupes",
-    "description": "Titre de la carte de manuel 3"
-  },
-  "pwaWhatIs": {
-    "message": "La PWA est un format d'application moderne sans téléchargement via store. C'est un 「web aux pouvoirs d'app」, occupant peu d'espace et offrant l'expérience la plus légère possible.",
-    "description": "PWA explanation"
+    "description": "Warning about incognito mode"
   },
   "langZhCN": {
     "message": "简体中文",
-    "description": "语言名称: 简体中文"
+    "description": "Language name: Simplified Chinese"
   },
   "langZhTW": {
     "message": "繁體中文",
-    "description": "语言名称: 繁体中文"
+    "description": "Language name: Traditional Chinese"
   },
   "langEn": {
     "message": "English",
-    "description": "语言名称: 英语"
+    "description": "Language name: English"
   },
   "langJa": {
     "message": "日本語",
-    "description": "语言名称: 日语"
+    "description": "Language name: Japanese"
   },
   "langKo": {
     "message": "한국어",
-    "description": "语言名称: 韩语"
+    "description": "Language name: Korean"
   },
   "langEs": {
     "message": "Español",
-    "description": "语言名称: 西班牙语"
+    "description": "Language name: Spanish"
   },
   "langFr": {
     "message": "Français",
-    "description": "语言名称: 法语"
+    "description": "Language name: French"
+  },
+  "langDe": {
+    "message": "Deutsch",
+    "description": "Language name: German"
+  },
+  "langPt": {
+    "message": "Português",
+    "description": "Language name: Portuguese"
+  },
+  "langTr": {
+    "message": "Türkçe",
+    "description": "Language name: Turkish"
   },
   "openDebugPanel": {
     "message": "Ouvrir le panneau de débogage",
-    "description": "调试用菜单文本"
+    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "Simulateur",
-    "description": "调试用模拟器文本"
+    "description": "Text for the simulator feature"
   },
   "viewDemoVideo": {
     "message": "Voir la démo de partage",

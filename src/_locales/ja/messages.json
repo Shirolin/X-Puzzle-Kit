@@ -1,227 +1,629 @@
 {
   "appName": {
     "message": "X-Puzzle-Kit: X画像結合・分割ツール",
-    "description": "アプリ名"
+    "description": "The name of the extension"
   },
   "appDesc": {
     "message": "X (Twitter) 向けプロフェッショナルツール。画像をシームレスにパノラマ結合したり、アートをピクセルパーフェクトなグリッドに分割。Xのタイムラインに最適化され、オリジナル画質のまま保存できます。",
-    "description": "アプリの説明"
+    "description": "The description of the extension"
   },
   "longDescription": {
     "message": "X-Puzzle-Kit は、X (Twitter) ユーザー、デジタルアーティスト、コレクターのために設計されたプロフェッショナルな画像編集ツールボックスです。複数枚のツイート画像からオリジナルのパノラマを復元する場合でも、クリエイティブなタイル表示を作成する場合でも、X-Puzzle-Kit を使用すればコンテンツを X のタイムライン上で理想的な形で表示できます。\n\n🌐 マルチプラットフォーム対応：\nこの Chrome 拡張機能に加えて、モバイル、タブレット、その他のブラウザでもシームレスに利用できる、機能フル装備の Web オンライン版（https://x-puzzle-kit.pages.dev/）を提供しています。\n\n✨ 主な機能：\n\n🧵 高精度な画像結合\nバラバラになったツイート画像を、元のパノラマや長尺形式にシームレスに結合します。\n・ 多彩なレイアウト：垂直、水平、2x2、および独自の T 型レイアウトを完全にサポート。\n・ ピクセルパーフェクトな整列：精密な座標計算により、継ぎ目やぼやけを排除し、鮮明な画質を実現します。\n・ ネイティブ統合：X のページ上から直接ボタンをクリックして結合を開始でき、手間を大幅に削減します。\n・ 画質劣化なしの出力：二次圧縮を行わず、各ピクセルの元の解像度を維持し、ディテールを完璧に再現します。\n\n✂️ クリエイティブ分割ツール (グリッド・タイル作成)\nあらゆる画像を標準的なグリッド（2x2、3x3、またはカスタム）に分割し、X のマルチ画像表示に完璧に適合させます。\n・ X「1枚絵」レイアウト最適化：Xのプレビュー表示に最適化。タイムライン上で複数の分割画像が繋がって、1枚の大きな画像に見えるように調整します。\n・ 右クリックで即分割：ウェブ上で画像を右クリックして、そのまま分割ツールに送って処理できます。\n・ 統一された視覚効果：グリッド投稿に一貫性をもたせ、タイムラインでの注目度を高めます。\n\n🚀 便利な機能：\n・ 高効率なワークフロー：ブラウザに深く統合されており、ツイートの発見から画像生成までわずか数秒で完了します。\n・ 柔軟なカスタマイズ：全体の余白や個別の余白を微調整。ダークモード対応、背景色の自由な設定（透明対応）も可能です。\n・ 多様なインポート：ファイルアップロード、クリップボード貼り付け、および X ページからの直接インポートに対応。\n・ 一括書き出し：高品質な PNG、JPG、WebP でのダウンロード、または ZIP 形式での一括保存が可能です。\n\n🔒 プライバシー保護\nすべての画像処理はローカルブラウザ内で行われます。画像がリモートサーバーにアップロードされることはありません。トラッキングなし、記録なしで、あなたの創作プライバシーを守ります。\n\n今すぐ X-Puzzle-Kit を使って、X での画像投稿をよりプロフェッショナルにしましょう。",
-    "description": "ストアの詳細説明"
+    "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
     "message": "結合プレビュー",
-    "description": "プレビューウィンドウのタイトル"
+    "description": "Title of the preview window"
   },
   "splitterTitle": {
     "message": "画像分割",
-    "description": "分割ウィンドウのタイトル"
+    "description": "Title of the splitter window"
   },
   "stitching": {
     "message": "画像を結合しています...",
-    "description": "プレビュー生成中のテキスト"
+    "description": "Loading status during stitch generation"
   },
   "removeImage": {
     "message": "画像を削除",
-    "description": "画像削除のツールチップ"
+    "description": "Tooltip for remove image"
   },
   "fromArtist": {
     "message": "Artist",
-    "description": "作者プレフィックス"
+    "description": "Author prefix"
   },
   "tweetId": {
     "message": "ツイート ID",
-    "description": "ツイート ID ラベル"
+    "description": "Label for Tweet ID"
   },
   "preparingHighRes": {
     "message": "高画質リソースを準備中...",
-    "description": "高画質画像読み込み中のテキスト"
+    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "リセット",
-    "description": "リセットボタンのテキスト"
+    "description": "Reset button text"
   },
   "layoutScheme": {
     "message": "レイアウト構成",
-    "description": "レイアウトセクションのヘッダー"
+    "description": "Section header for layout"
   },
   "layoutGrid": {
     "message": "田の字",
-    "description": "2x2レイアウトラベル"
+    "description": "2x2 layout label"
   },
   "layoutTShape": {
     "message": "T型(左)",
-    "description": "T型レイアウトラベル"
+    "description": "T-Shape layout label"
   },
   "layoutHorizontal": {
     "message": "横方向",
-    "description": "横方向レイアウトラベル"
+    "description": "Horizontal layout label"
   },
   "layoutVertical": {
     "message": "縦方向",
-    "description": "縦方向レイアウトラベル"
+    "description": "Vertical layout label"
   },
   "exportSettings": {
     "message": "書き出し設定",
-    "description": "書き出し設定セクションのヘッダー"
+    "description": "Section header for export settings"
   },
   "backgroundColor": {
     "message": "背景色",
-    "description": "背景色のラベル"
+    "description": "Label for background color"
   },
   "transparent": {
     "message": "透明",
-    "description": "透明背景オプション"
+    "description": "Transparent background option"
   },
   "white": {
     "message": "白",
-    "description": "白い背景オプション"
+    "description": "White background option"
   },
   "black": {
     "message": "黒",
-    "description": "黒い背景オプション"
+    "description": "Black background option"
   },
   "globalGap": {
     "message": "全体の余白",
-    "description": "全体の余白ラベル"
+    "description": "Label for global gap"
   },
   "resetToZero": {
     "message": "0にリセット",
-    "description": "余白リセットのツールチップ"
+    "description": "Tooltip for reset gap"
   },
   "imageSorting": {
     "message": "並べ替え",
-    "description": "画像順序セクションのヘッダー"
+    "description": "Section header for image sorting"
   },
   "localGap": {
     "message": "個別余白の調整",
-    "description": "画像順序のサブタイトル"
-  },
-  "imageSortingHelp": {
-    "message": "[icon:GripVertical]をドラッグ、または [icon:ChevronUp][icon:ChevronDown] をクリックして並べ替え\n[icon:Eye] をクリックして表示/非表示を切り替え\n数字をクリックして余白を微調整",
-    "description": "画像順序セクションの総合ヘルプ"
+    "description": "Subtitle for image sorting"
   },
   "imageLabel": {
     "message": "画像",
-    "description": "画像のラベル"
+    "description": "Label for image"
   },
   "moveUp": {
     "message": "上へ",
-    "description": "上へ移動のツールチップ"
+    "description": "Tooltip for move up"
   },
   "moveDown": {
     "message": "下へ",
-    "description": "下へ移動のツールチップ"
+    "description": "Tooltip for move down"
   },
   "hideImage": {
     "message": "画像を非表示",
-    "description": "画像非表示のツールチップ"
+    "description": "Tooltip for hide image"
   },
   "showImage": {
     "message": "画像を表示",
-    "description": "画像表示のツールチップ"
+    "description": "Tooltip for show image"
   },
   "afterGap": {
     "message": "後ろの余白",
-    "description": "画像の後ろの個別余白ラベル"
+    "description": "Label for local gap after image"
   },
   "decreaseGap": {
     "message": "余白を減らす",
-    "description": "余白減少のツールチップ"
+    "description": "Tooltip for decrease gap"
   },
   "increaseGap": {
     "message": "余白を増やす",
-    "description": "余白増加のツールチップ"
+    "description": "Tooltip for increase gap"
   },
   "gapLabel": {
     "message": "余白",
-    "description": "最終的な隙間のラベル"
+    "description": "Label for the resulting gap"
   },
   "resetLocalGap": {
     "message": "個別の余白をリセット",
-    "description": "個別余白リセットのツールチップ"
+    "description": "Tooltip for reset local gap"
   },
   "processing": {
     "message": "処理中...",
-    "description": "処理中のボタンテキスト"
+    "description": "Button text while processing"
   },
   "stitchAndDownload": {
     "message": "結合してダウンロード",
-    "description": "最終ダウンロードボタンのテキスト"
+    "description": "Final download button text"
   },
   "stitchBtnTitle": {
     "message": "画像を結合",
-    "description": "Twitterに埋め込まれる結合ボタンのツールチップ"
+    "description": "Tooltip for the stitch button embedded in Twitter"
   },
   "language": {
     "message": "言語",
-    "description": "言語設定ラベル"
+    "description": "Language selector label"
   },
   "sourcedFrom": {
     "message": "作成者",
-    "description": "ソースラベルに使用"
+    "description": "Used in the source badge"
   },
   "splitImage": {
     "message": "画像を分割",
-    "description": "分割ボタンのテキスト"
+    "description": "Split button text"
   },
   "downloadAll": {
     "message": "すべてダウンロード",
-    "description": "すべてダウンロードボタンのテキスト"
+    "description": "Download all button text"
   },
   "uploadImage": {
     "message": "画像をアップロード",
-    "description": "画像をアップロードボタンのテキスト"
+    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "分割する画像を選択してください",
-    "description": "画像選択のヒント"
+    "description": "Select image tip"
+  },
+  "uploadImages": {
+    "message": "画像をアップロード",
+    "description": "Button text for uploading multiple images"
+  },
+  "selectImagesTip": {
+    "message": "結合する画像を選択してください",
+    "description": "Tip for selecting multiple images"
+  },
+  "addMoreImages": {
+    "message": "さらに画像を追加",
+    "description": "Button text to add more images when preview is empty"
+  },
+  "dragAndDropTip": {
+    "message": "またはここに画像をドラッグ＆ドロップ",
+    "description": "Drag and drop instruction"
+  },
+  "changeImage": {
+    "message": "変更",
+    "description": "Change image button text"
+  },
+  "gapRemoval": {
+    "message": "元の隙間を削除",
+    "description": "Gap removal label"
+  },
+  "gapRemovalTip": {
+    "message": "画像に境界線や隙間（漫画など）がある場合、これを有効にすると、分割中にそれらの不要なピクセルを自動的に切り取ります。",
+    "description": "Gap removal description"
+  },
+  "rowCount": {
+    "message": "行 (N)",
+    "description": "Row count label"
+  },
+  "colCount": {
+    "message": "列 (N)",
+    "description": "Column count label"
+  },
+  "sourceImage": {
+    "message": "元画像",
+    "description": "Source image label"
+  },
+  "splitResult": {
+    "message": "分割結果",
+    "description": "Split result label"
+  },
+  "formatLabel": {
+    "message": "出力形式",
+    "description": "Export format label"
+  },
+  "iosWebpWarningTitle": {
+    "message": "WebP互換性の警告",
+    "description": "Title for iOS WebP warning"
+  },
+  "iosWebpWarning": {
+    "message": "iOSでWebP画像を写真アプリに保存すると、互換性の問題（一部のアプリで正しく表示されないなど）が発生する場合があります。PNGが推奨されます。WebPに切り替えますか？",
+    "description": "Warning for iOS WebP compatibility"
+  },
+  "zipLabel": {
+    "message": "ZIPで一括ダウンロード",
+    "description": "Zip download toggle label"
+  },
+  "zipTip": {
+    "message": "すべての画像を1つのZIPファイルにまとめてダウンロードします",
+    "description": "Zip feature description"
+  },
+  "restore": {
+    "message": "元に戻す",
+    "description": "Restore button text"
+  },
+  "twitterOptimize": {
+    "message": "X「1枚絵」レイアウト最適化",
+    "description": "Twitter optimization toggle label"
+  },
+  "twitterOptimizeTip": {
+    "message": "Xのプレビュー表示に最適化。タイムライン上で複数の分割画像が繋がって、1枚の大きな画像に見えるように調整します。",
+    "description": "Twitter optimization tip"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "General settings section title"
+  },
+  "modeStitch": {
+    "message": "結合",
+    "description": "Stitch mode button"
+  },
+  "modeSplit": {
+    "message": "分割",
+    "description": "Split mode button"
+  },
+  "support": {
+    "message": "サポート",
+    "description": "Support section title"
+  },
+  "buyMeCoffee": {
+    "message": "開発者を支援",
+    "description": "Sponsorship button text"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: 画像を分割",
+    "description": "Context menu item title"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "拡張機能が更新されました。ページを更新してください。",
+    "description": "Message shown when extension context is invalidated"
+  },
+  "slideRefine": {
+    "message": "スライドして微調整",
+    "description": "Hint for the jog dial controller"
+  },
+  "confirmRemoveImage": {
+    "message": "この画像を削除してもよろしいですか？",
+    "description": "Confirmation message when removing a single image"
+  },
+  "confirmClearAll": {
+    "message": "すべての画像を消去してもよろしいですか？この操作は取り消せません。",
+    "description": "Confirmation message when clearing all images"
+  },
+  "clearAll": {
+    "message": "すべて消去",
+    "description": "Clear all images button text"
   },
   "emptyImageText": {
     "message": "画像がありません、クリックしてアップロード",
-    "description": "画像リストが空の場合のメッセージ"
+    "description": "Message shown when image list is empty"
   },
   "installTitle": {
     "message": "ホーム画面に追加",
-    "description": "iOSインストールプロンプトのタイトル"
+    "description": "iOS install prompt title"
   },
   "installDesc": {
     "message": "画面下部の共有ボタンから「ホーム画面に追加」を選択。",
-    "description": "iOSインストールプロンプトの説明"
+    "description": "iOS install prompt description"
   },
   "installDescChrome": {
     "message": "右上の共有ボタンから「ホーム画面に追加」を選択。",
-    "description": "iOS Chromeインストールプロンプトの説明"
+    "description": "iOS Chrome install prompt description"
   },
   "installDescAndroid": {
     "message": "ブラウザメニュー（右上または右下）から「アプリをインストール」または「ホーム画面に追加」を選択してください。",
-    "description": "Androidインストール案内"
+    "description": "Android install prompt description"
   },
   "pwaInstallBtn": {
     "message": "インストール",
-    "description": "ネイティブ PWA インストールボタン"
+    "description": "Native PWA install button text"
   },
   "pwaInstallDescNative": {
     "message": "より快適に使用するために、アプリをホーム画面にインストールしてください。",
-    "description": "ネイティブ PWA インストール説明"
+    "description": "Native PWA install description"
+  },
+  "importFromUrl": {
+    "message": "URLからインポート",
+    "description": "Import button title"
+  },
+  "invalidUrl": {
+    "message": "無効なリンクです。正しいツイート (X) リンクを入力してください",
+    "description": "Invalid URL tip"
+  },
+  "analyzingLink": {
+    "message": "リンクを解析中...",
+    "description": "Analyzing link state"
+  },
+  "noImagesFound": {
+    "message": "このツイートからインポート可能な画像が見つかりませんでした",
+    "description": "No images found tip"
+  },
+  "downloadingImages": {
+    "message": "画像をダウンロード中",
+    "description": "Downloading images state"
+  },
+  "processingImages": {
+    "message": "画像を処理中...",
+    "description": "Processing images state"
+  },
+  "parseFailed": {
+    "message": "ツイートの解析に失敗しました",
+    "description": "Parse failed tip"
+  },
+  "workerInvalidResponse": {
+    "message": "解析サービスが予期しない形式のコンテンツを返しました。ツイートが制限されているか、サービスが一時的に利用できない可能性があります。",
+    "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
+  },
+  "workerStatusError": {
+    "message": "解析サービスはこのツイートを一時的に処理できません (エラーコード: $status$)。",
+    "description": "Tooltip for when worker returns non-200 status code",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
+  },
+  "networkError": {
+    "message": "ネットワーク接続に失敗しました。ネットワーク設定を確認してください。",
+    "description": "Tooltip for network errors during fetch"
+  },
+  "import": {
+    "message": "インポート",
+    "description": "Import action button"
+  },
+  "cancel": {
+    "message": "キャンセル",
+    "description": "Cancel action button"
+  },
+  "confirm": {
+    "message": "確定",
+    "description": "Confirm action button"
+  },
+  "imageResolution": {
+    "message": "解像度",
+    "description": "Label for image resolution"
+  },
+  "clickToShowResolution": {
+    "message": "クリックして解像度を表示",
+    "description": "Tooltip hint for thumbnails"
+  },
+  "finalGap": {
+    "message": "最終間隔",
+    "description": "Calculated total gap including global and local"
+  },
+  "openSourcePage": {
+    "message": "元のポストを開く",
+    "description": "Tooltip for the source tweet link"
+  },
+  "invalidFormat": {
+    "message": "無効な形式",
+    "description": "Error message for invalid input"
+  },
+  "auto": {
+    "message": "自動",
+    "description": "Auto option for language/theme"
+  },
+  "themeSystem": {
+    "message": "システムに従う",
+    "description": "System theme option"
+  },
+  "themeLight": {
+    "message": "ライトモード",
+    "description": "Light theme option"
+  },
+  "themeDark": {
+    "message": "ダークモード",
+    "description": "Dark theme option"
+  },
+  "themeLabel": {
+    "message": "テーマ",
+    "description": "Label for theme selector"
+  },
+  "pwaVersionLabel": {
+    "message": "Web オンライン版",
+    "description": "PWA version label"
+  },
+  "pwaVersionTip": {
+    "message": "モバイル端末や拡張機能のないブラウザで利用しますか？機能が充実したウェブ版をお試しください。",
+    "description": "PWA version description"
+  },
+  "openWebVersion": {
+    "message": "新しいウィンドウでウェブ版を開く",
+    "description": "Open PWA button text"
+  },
+  "extensionVersionLabel": {
+    "message": "Chrome 拡張機能",
+    "description": "Extension version label"
+  },
+  "extensionVersionTip": {
+    "message": "PCブラウザで利用しますか？X (Twitter) ページから直接1クリックで結合できる拡張機能をお試しください。",
+    "description": "Extension version description"
+  },
+  "openExtensionStore": {
+    "message": "Chrome ウェブストアに移動",
+    "description": "Open extension store button text"
+  },
+  "pwaUpdateAvailable": {
+    "message": "新しいバージョンが利用可能です",
+    "description": "PWA update available tip"
+  },
+  "pwaUpdateReady": {
+    "message": "最新の機能と修正を反映させるために更新してください",
+    "description": "PWA update description"
+  },
+  "pwaRefresh": {
+    "message": "更新",
+    "description": "PWA refresh button"
+  },
+  "pwaIgnore": {
+    "message": "無視",
+    "description": "PWA ignore button"
+  },
+  "pwaOfflineReady": {
+    "message": "アプリはオフラインで使用できるようになりました",
+    "description": "PWA offline ready tip"
+  },
+  "layoutSchemeHelp": {
+    "message": "[icon:LayoutGrid] 田の字：SNS投稿に最適\n[icon:Layout] T型：写真作品のような配置\n[icon:Rows] 縦/横：パノラマや長図の結合",
+    "description": "Layout help text"
+  },
+  "backgroundColorHelp": {
+    "message": "画像の背景色を設定します。透明(PNG/WebP)が最も柔軟ですが、微調整を行う場合は黒や白に設定すると統一感を出しやすくなります。",
+    "description": "Background color help"
+  },
+  "globalGapHelp": {
+    "message": "すべての画像間の隙間を一括で設定します。マイナスの値を設定すると画像を重ねることができます。",
+    "description": "Global gap help"
+  },
+  "formatHelp": {
+    "message": "「PNG」最高画質、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
+    "description": "Help explanation for format selection"
+  },
+  "exportSettingsHelp": {
+    "message": "カスタマイズ書き出し：\n「PNG」最高画질、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
+    "description": "Comprehensive help for export settings section"
+  },
+  "twitterOptimizeHelp": {
+    "message": "X (Twitter) に複数の画像を投稿する際、タイムライン上で1枚の絵のように繋がって見えるよう、比率や境界線を微調整します。",
+    "description": "Twitter optimization help"
+  },
+  "userGuideButton": {
+    "message": "使い方ガイド",
+    "description": "User guide button text"
+  },
+  "tutorialImportTitle": {
+    "message": "画像の取り込み",
+    "description": "Tutorial step 1 title"
+  },
+  "tutorialImportDesc": {
+    "message": "ここをクリックしてローカル画像をアップロードするか、リンクアイコンから X (Twitter) の URL を指定して直接取り込みます。",
+    "description": "Tutorial step 1 description"
+  },
+  "tutorialLayoutTitle": {
+    "message": "レイアウトの選択",
+    "description": "Tutorial step 2 title"
+  },
+  "tutorialLayoutDesc": {
+    "message": "画像の配置方法を選択します。X (Twitter) への投稿には「田の字」がおすすめです。",
+    "description": "Tutorial step 2 description"
+  },
+  "tutorialControlTitle": {
+    "message": "微調整",
+    "description": "Tutorial step 3 title"
+  },
+  "tutorialControlDesc": {
+    "message": "全体または個別の間隔を調整したり、リストをドラッグして画像の順序を入れ替えたりできます。",
+    "description": "Tutorial step 3 description"
+  },
+  "tutorialExportTitle": {
+    "message": "書き出しと保存",
+    "description": "Tutorial step 4 title"
+  },
+  "tutorialExportDesc": {
+    "message": "最後にボタンをクリックして、作成した画像を生成・保存しましょう。",
+    "description": "Tutorial step 4 description"
+  },
+  "skipTutorial": {
+    "message": "スキップ",
+    "description": "Skip button"
+  },
+  "nextStep": {
+    "message": "次へ",
+    "description": "Next button"
+  },
+  "localGapHelp": {
+    "message": "画像の下の数字をタップするか操作ダイヤルを使って、特定のスライス間の間隔を個別に調整できます。ストーリーの区切りや「隠し要素」の埋め込みに最適です。",
+    "description": "Help explanation for local gap"
+  },
+  "imageSortingHelp": {
+    "message": "[icon:GripVertical]をドラッグ、または [icon:ChevronUp][icon:ChevronDown] をクリックして並べ替え\n[icon:Eye] をクリックして表示/非表示を切り替え\n数字をクリックして余白を微調整",
+    "description": "Comprehensive help for image sorting section"
+  },
+  "userGuideTitle": {
+    "message": "ご利用ガイド",
+    "description": "Guide dialog title"
+  },
+  "finishTutorial": {
+    "message": "了解",
+    "description": "Finish button"
+  },
+  "tabPWA": {
+    "message": "ウェブ版 / モバイル",
+    "description": "Manual tab 1"
+  },
+  "tabExtension": {
+    "message": "ブラウザ拡張",
+    "description": "Manual tab 2"
+  },
+  "tabFeatures": {
+    "message": "使い方とヒント",
+    "description": "Manual tab 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. 連携の強化\n手動でのコピーは不要です。下のボタンをタップして「X-Puzzle-Kit」をショートカットに追加してください。\n2. かんたん取り込み\nX (Twitter) の共有メニューから「X-Puzzle-Kit」をタップするだけで、自動的にリンクを抽出してアプリを開きます。",
+    "description": "iOS Install Guide"
+  },
+  "installShortcutBtn": {
+    "message": "ショートカットをインストール",
+    "description": "iOS Shortcut installation button"
+  },
+  "installShortcutTip": {
+    "message": "公式の iOS ショートカットを取得して、ワンタップでインポート。",
+    "description": "iOS Shortcut installation tip"
+  },
+  "guideAndroidInstall": {
+    "message": "1. PWA (プログレッシブ ウェブ アプリ) をインストール\nブラウザメニューの「アプリをインストール」または「ホーム画面に追加」を選択することで、アプリストアを介さずにシェア機能を強化できます。\n2. ネイティブ共有\nインストール後は、X (Twitter) で共有ボタンを押し、アプリ一覧から「X-Puzzle-Kit」を選択するだけで一键インポートできます。",
+    "description": "Android installation guide"
+  },
+  "viewAndroidTutorial": {
+    "message": "インストール図解を確認",
+    "description": "Android tutorial button text"
+  },
+  "guideExtensionStitch": {
+    "message": "X (Twitter) のポストの下に [icon] ボタンが表示されます。ワンクリックでポスト内の画像をすべて読み込み、結合モードへ移行します。",
+    "description": "Extension stitch feature guide"
+  },
+  "guideExtensionSplit": {
+    "message": "ウェブ上の任意の画像を右クリックし、「X-Puzzle-Kit: 画像を分割」を選択。その場で分割処理を開始できます。",
+    "description": "Extension split feature guide"
+  },
+  "guideFlowOptimization": {
+    "message": "有効にすると、X (Twitter) の表示アルゴリズムに合わせてスライス比率を微調整。タイムライン上で継ぎ目のない完璧な一枚絵を再現します。",
+    "description": "Optimization feature guide"
+  },
+  "guideExtensionTitle": {
+    "message": "ポスト画像のシームレスな結合",
+    "description": "Manual card title 1"
+  },
+  "guideSplitTitle": {
+    "message": "右クリックでかんたん分割",
+    "description": "Manual card title 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "スライス間隔を精密にコントロール",
+    "description": "Manual card title 3"
   },
   "pwaBenefitTitle": {
     "message": "なぜ PWA をインストールするのですか？",
-    "description": "PWA 优势部分标题"
+    "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {
     "message": "• シームレスな統合：Android のシステム共有メニューに対応。X からのインポートが劇的に速くなります。",
-    "description": "PWA 优势: Android 集成"
+    "description": "PWA benefit: Android integration"
   },
   "pwaBenefitFullscreen": {
     "message": "• 没入型フルスクリーン：アドレスバーを隠し、大画面でも精細な編集が可能になります。",
-    "description": "PWA 优势: 全屏视野"
+    "description": "PWA benefit: Full-screen focus"
   },
   "pwaBenefitIOSFix": {
     "message": "• 表示の最適化：iOS PWA 環境特有の表示崩れや、上下の余白問題を完全に解決しました。",
-    "description": "PWA 优势: iOS 视口修复"
+    "description": "PWA benefit: iOS PWA optimization"
   },
   "guideNativeInstall": {
     "message": "下の「PWAをインストール」ボタンをクリックして完了すると、X (Twitter) の共有メニューに本ツールが表示され、一键インポートが可能になります。",
@@ -233,457 +635,71 @@
   },
   "guideTechnicalTitle": {
     "message": "元の隙間を削除",
-    "description": "技術改进标题"
+    "description": "Technical improvement title"
   },
   "guideTechnicalDesc": {
     "message": "画像に境界線や隙間（漫画など）がある場合、この機能を使えば分割中に不要なピクセルを自動的に切り取り、分割結果をきれいに保てます。",
-    "description": "技術改进描述"
+    "description": "Technical improvement description"
   },
   "statusOfflineAvailable": {
     "message": "オフラインモード使用可能",
-    "description": "オフライン時に表示されるステータス"
+    "description": "Status text shown when offline"
   },
   "troubleshootingTitle": {
     "message": "インストールできない？",
-    "description": "トラブルシューティングタイトル"
+    "description": "Troubleshooting section title"
   },
   "troubleshootingIncognito": {
     "message": "プライベート/シークレットモードではPWAをインストールできません。通常のブラウジングモードで再度お試しください。",
-    "description": "プライベートモードに関する警告"
-  },
-  "uploadImages": {
-    "message": "画像をアップロード",
-    "description": "多画画像のアップロードボタンのテキスト"
-  },
-  "selectImagesTip": {
-    "message": "結合する画像を選択してください",
-    "description": "画像選択のヒント"
-  },
-  "addMoreImages": {
-    "message": "さらに画像を追加",
-    "description": "プレビューが空のときの引導メッセージ"
-  },
-  "dragAndDropTip": {
-    "message": "またはここに画像をドラッグ＆ドロップ",
-    "description": "ドラッグ＆ドロップの説明文"
-  },
-  "changeImage": {
-    "message": "変更",
-    "description": "画像変更ボタンのテキスト"
-  },
-  "gapRemoval": {
-    "message": "元の隙間を削除",
-    "description": "隙間削除ラベル"
-  },
-  "gapRemovalTip": {
-    "message": "画像に境界線や隙間（漫画など）がある場合、これを有効にすると、分割中にそれらの不要なピクセルを自動的に切り取ります。",
-    "description": "隙間削除の説明"
-  },
-  "rowCount": {
-    "message": "行 (N)",
-    "description": "行数ラベル"
-  },
-  "colCount": {
-    "message": "列 (N)",
-    "description": "列数ラベル"
-  },
-  "sourceImage": {
-    "message": "元画像",
-    "description": "元画像ラベル"
-  },
-  "splitResult": {
-    "message": "分割結果",
-    "description": "分割結果ラベル"
-  },
-  "formatLabel": {
-    "message": "出力形式",
-    "description": "出力形式ラベル"
-  },
-  "iosWebpWarningTitle": {
-    "message": "WebP互換性の警告",
-    "description": "iOS WebP 警告のタイトル"
-  },
-  "iosWebpWarning": {
-    "message": "iOSでWebP画像を写真アプリに保存すると、互換性の問題（一部のアプリで正しく表示されないなど）が発生する場合があります。PNGが推奨されます。WebPに切り替えますか？",
-    "description": "iOS WebP 互換性警告"
-  },
-  "zipLabel": {
-    "message": "ZIPで一括ダウンロード",
-    "description": "ZIPダウンロードスイッチのラベル"
-  },
-  "zipTip": {
-    "message": "すべての画像を1つのZIPファイルにまとめてダウンロードします",
-    "description": "ZIP機能の説明"
-  },
-  "restore": {
-    "message": "元に戻す",
-    "description": "分割前の状態に戻すボタン"
-  },
-  "twitterOptimize": {
-    "message": "X「1枚絵」レイアウト最適化",
-    "description": "Twitter最適化スイッチのラベル"
-  },
-  "twitterOptimizeTip": {
-    "message": "Xのプレビュー表示に最適化。タイムライン上で複数の分割画像が繋がって、1枚の大きな画像に見えるように調整します。",
-    "description": "Twitter最適化の説明"
-  },
-  "settings": {
-    "message": "設定",
-    "description": "一般設定セクションのヘッダー"
-  },
-  "modeStitch": {
-    "message": "結合",
-    "description": "結合モードボタン"
-  },
-  "modeSplit": {
-    "message": "分割",
-    "description": "分割モードボタン"
-  },
-  "support": {
-    "message": "サポート",
-    "description": "サポートセクションのタイトル"
-  },
-  "buyMeCoffee": {
-    "message": "開発者を支援",
-    "description": "スポンサーボタンのテキスト"
-  },
-  "contextMenuTitle": {
-    "message": "X-Puzzle-Kit: 画像を分割",
-    "description": "右クリックメニューのタイトル"
-  },
-  "extensionUpdatedRefresh": {
-    "message": "拡張機能が更新されました。ページを更新してください。",
-    "description": "拡張機能のコンテキストが無効になったときのメッセージ"
-  },
-  "importFromUrl": {
-    "message": "URLからインポート",
-    "description": "インポートボタンのタイトル"
-  },
-  "slideRefine": {
-    "message": "スライドして微調整",
-    "description": "ジョグダイヤルコントローラーのヒント文"
-  },
-  "confirmRemoveImage": {
-    "message": "この画像を削除してもよろしいですか？",
-    "description": "単一の画像を削除する際の確認メッセージ"
-  },
-  "confirmClearAll": {
-    "message": "すべての画像を消去してもよろしいですか？この操作は取り消せません。",
-    "description": "画像をすべて消去するときの確認メッセージ"
-  },
-  "clearAll": {
-    "message": "すべて消去",
-    "description": "全画像消去ボタンのテキスト"
-  },
-  "confirm": {
-    "message": "確定",
-    "description": "確認ボタン"
-  },
-  "invalidFormat": {
-    "message": "無効な形式",
-    "description": "無効な入力のメッセージ"
-  },
-  "auto": {
-    "message": "自動",
-    "description": "言語/テーマの自動オプション"
-  },
-  "themeSystem": {
-    "message": "システムに従う",
-    "description": "テーマのシステム設定オプション"
-  },
-  "themeLight": {
-    "message": "ライトモード",
-    "description": "ライトテーマオプション"
-  },
-  "themeDark": {
-    "message": "ダークモード",
-    "description": "ダークテーマオプション"
-  },
-  "themeLabel": {
-    "message": "テーマ",
-    "description": "テーマセレクターのラベル"
-  },
-  "cancel": {
-    "message": "キャンセル",
-    "description": "キャンセルボタン"
-  },
-  "import": {
-    "message": "インポート",
-    "description": "インポートボタン"
-  },
-  "invalidUrl": {
-    "message": "無効なリンクです。正しいツイート (X) リンクを入力してください",
-    "description": "無効なリンクのヒント"
-  },
-  "analyzingLink": {
-    "message": "リンクを解析中...",
-    "description": "リンク解析状態"
-  },
-  "noImagesFound": {
-    "message": "このツイートからインポート可能な画像が見つかりませんでした",
-    "description": "画像未発見のヒント"
-  },
-  "downloadingImages": {
-    "message": "画像をダウンロード中",
-    "description": "画像ダウンロード状態"
-  },
-  "processingImages": {
-    "message": "画像を処理中...",
-    "description": "画像処理状態"
-  },
-  "parseFailed": {
-    "message": "ツイートの解析に失敗しました",
-    "description": "解析失敗のヒント"
-  },
-  "workerInvalidResponse": {
-    "message": "解析サービスが予期しない形式のコンテンツを返しました。ツイートが制限されているか、サービスが一時的に利用できない可能性があります。",
-    "description": "JSON解析失敗または予期しないコンテンツが返された時のヒント"
-  },
-  "workerStatusError": {
-    "message": "解析サービスはこのツイートを一時的に処理できません (エラーコード: $status$)。",
-    "description": "Workerが200以外のステータスコードを返した時のヒント",
-    "placeholders": {
-      "status": {
-        "content": "$1",
-        "example": "403"
-      }
-    }
-  },
-  "networkError": {
-    "message": "ネットワーク接続に失敗しました。ネットワーク設定を確認してください。",
-    "description": "ネットワークエラーが発生した時のヒント"
-  },
-  "pwaVersionLabel": {
-    "message": "Web オンライン版",
-    "description": "PWA バージョンラベル"
-  },
-  "pwaVersionTip": {
-    "message": "モバイル端末や拡張機能のないブラウザで利用しますか？機能が充実したウェブ版をお試しください。",
-    "description": "PWA バージョン説明"
-  },
-  "openWebVersion": {
-    "message": "新しいウィンドウでウェブ版を開く",
-    "description": "PWAを開くボタンのテキスト"
-  },
-  "extensionVersionLabel": {
-    "message": "Chrome 拡張機能",
-    "description": "拡張機能バージョンラベル"
-  },
-  "extensionVersionTip": {
-    "message": "PCブラウザで利用しますか？X (Twitter) ページから直接1クリックで結合できる拡張機能をお試しください。",
-    "description": "拡張機能バージョン説明"
-  },
-  "openExtensionStore": {
-    "message": "Chrome ウェブストアに移動",
-    "description": "Chromeストアを開くボタン"
-  },
-  "pwaUpdateAvailable": {
-    "message": "新しいバージョンが利用可能です",
-    "description": "新しいバージョンが利用可能であることを通知するメッセージ"
-  },
-  "pwaUpdateReady": {
-    "message": "最新の機能と修正を反映させるために更新してください",
-    "description": "更新を促す説明文"
-  },
-  "pwaRefresh": {
-    "message": "更新",
-    "description": "更新ボタンのテキスト"
-  },
-  "pwaIgnore": {
-    "message": "無視",
-    "description": "無視ボタンのテキスト"
-  },
-  "pwaOfflineReady": {
-    "message": "アプリはオフラインで使用できるようになりました",
-    "description": "オフライン対応が完了したことを通知するメッセージ"
-  },
-  "layoutSchemeHelp": {
-    "message": "[icon:LayoutGrid] 田の字：SNS投稿に最適\n[icon:Layout] T型：写真作品のような配置\n[icon:Rows] 縦/横：パノラマや長図の結合",
-    "description": "レイアウトのヘルプテキスト"
-  },
-  "backgroundColorHelp": {
-    "message": "画像の背景色を設定します。透明(PNG/WebP)が最も柔軟ですが、微調整を行う場合は黒や白に設定すると統一感を出しやすくなります。",
-    "description": "背景色のヘルプ"
-  },
-  "globalGapHelp": {
-    "message": "すべての画像間の隙間を一括で設定します。マイナスの値を設定すると画像を重ねることができます。",
-    "description": "全局間隔のヘルプ"
-  },
-  "formatHelp": {
-    "message": "「PNG」最高画質、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
-    "description": "形式設定のヘルプ説明"
-  },
-  "exportSettingsHelp": {
-    "message": "カスタマイズ書き出し：\n「PNG」最高画질、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
-    "description": "書き出し設定セクションの総合ヘルプ"
-  },
-  "twitterOptimizeHelp": {
-    "message": "X (Twitter) に複数の画像を投稿する際、タイムライン上で1枚の絵のように繋がって見えるよう、比率や境界線を微調整します。",
-    "description": "Twitter最適化のヘルプ"
-  },
-  "imageResolution": {
-    "message": "解像度",
-    "description": "画像の解像度ラベル"
-  },
-  "clickToShowResolution": {
-    "message": "クリックして解像度を表示",
-    "description": "解像度表示のヒント"
-  },
-  "finalGap": {
-    "message": "最終間隔",
-    "description": "最終的な計算済み間隔"
-  },
-  "openSourcePage": {
-    "message": "元のポストを開く",
-    "description": "元のポストへのリンクヒント"
-  },
-  "userGuideButton": {
-    "message": "使い方ガイド",
-    "description": "ガイドを開くボタンのテキスト"
-  },
-  "tutorialImportTitle": {
-    "message": "画像の取り込み",
-    "description": "チュートリアルステップ1タイトル"
-  },
-  "tutorialImportDesc": {
-    "message": "ここをクリックしてローカル画像をアップロードするか、リンクアイコンから X (Twitter) の URL を指定して直接取り込みます。",
-    "description": "チュートリアルステップ1説明"
-  },
-  "tutorialLayoutTitle": {
-    "message": "レイアウトの選択",
-    "description": "チュートリアルステップ2タイトル"
-  },
-  "tutorialLayoutDesc": {
-    "message": "画像の配置方法を選択します。X (Twitter) への投稿には「田の字」がおすすめです。",
-    "description": "チュートリアルステップ2说明"
-  },
-  "tutorialControlTitle": {
-    "message": "微調整",
-    "description": "チュートリアルステップ3タイトル"
-  },
-  "tutorialControlDesc": {
-    "message": "全体または個別の間隔を調整したり、リストをドラッグして画像の順序を入れ替えたりできます。",
-    "description": "チュートリアルステップ3説明"
-  },
-  "tutorialExportTitle": {
-    "message": "書き出しと保存",
-    "description": "チュートリアルステップ4タイトル"
-  },
-  "tutorialExportDesc": {
-    "message": "最後にボタンをクリックして、作成した画像を生成・保存しましょう。",
-    "description": "チュートリアルステップ4说明"
-  },
-  "skipTutorial": {
-    "message": "スキップ",
-    "description": "スキップボタン"
-  },
-  "nextStep": {
-    "message": "次へ",
-    "description": "次へボタン"
-  },
-  "localGapHelp": {
-    "message": "画像の下の数字をタップするか操作ダイヤルを使って、特定のスライス間の間隔を個別に調整できます。ストーリーの区切りや「隠し要素」の埋め込みに最適です。",
-    "description": "局部間隔のヘルプ説明"
-  },
-  "userGuideTitle": {
-    "message": "ご利用ガイド",
-    "description": "ガイド对话框标题"
-  },
-  "finishTutorial": {
-    "message": "了解",
-    "description": "完成按钮"
-  },
-  "tabPWA": {
-    "message": "ウェブ版 / モバイル",
-    "description": "マニュアルタブ1"
-  },
-  "tabExtension": {
-    "message": "ブラウザ拡張",
-    "description": "マニュアルタブ2"
-  },
-  "tabFeatures": {
-    "message": "使い方とヒント",
-    "description": "手册标签3"
-  },
-  "guideiOSInstall": {
-    "message": "1. 連携の強化\n手動でのコピーは不要です。下のボタンをタップして「X-Puzzle-Kit」をショートカットに追加してください。\n2. かんたん取り込み\nX (Twitter) の共有メニューから「X-Puzzle-Kit」をタップするだけで、自動的にリンクを抽出してアプリを開きます。",
-    "description": "iOS安装说明"
-  },
-  "installShortcutBtn": {
-    "message": "ショートカットをインストール",
-    "description": "iOS快捷指令安装按钮"
-  },
-  "installShortcutTip": {
-    "message": "公式の iOS ショートカットを取得して、ワンタップでインポート。",
-    "description": "iOS快捷指令安装提示"
-  },
-  "guideAndroidInstall": {
-    "message": "1. PWA (プログレッシブ ウェブ アプリ) をインストール\nブラウザメニューの「アプリをインストール」または「ホーム画面に追加」を選択することで、アプリストアを介さずにシェア機能を強化できます。\n2. ネイティブ共有\nインストール後は、X (Twitter) で共有ボタンを押し、アプリ一覧から「X-Puzzle-Kit」を選択するだけで一键インポートできます。",
-    "description": "Android安装说明"
-  },
-  "viewAndroidTutorial": {
-    "message": "インストール図解を確認",
-    "description": "Androidのチュートリアル按钮文本"
-  },
-  "guideExtensionStitch": {
-    "message": "X (Twitter) のポストの下に [icon] ボタンが表示されます。ワンクリックでポスト内の画像をすべて読み込み、結合モードへ移行します。",
-    "description": "拡張機能の結合機能ガイド"
-  },
-  "guideExtensionSplit": {
-    "message": "ウェブ上の任意の画像を右クリックし、「X-Puzzle-Kit: 画像を分割」を選択。その場で分割処理を開始できます。",
-    "description": "拡張機能の分割機能ガイド"
-  },
-  "guideFlowOptimization": {
-    "message": "有効にすると、X (Twitter) の表示アルゴリズムに合わせてスライス比率を微調整。タイムライン上で継ぎ目のない完璧な一枚絵を再現します。",
-    "description": "最適化機能のガイド"
-  },
-  "guideExtensionTitle": {
-    "message": "ポスト画像のシームレスな結合",
-    "description": "マニュアルカードタイトル1"
-  },
-  "guideSplitTitle": {
-    "message": "右クリックでかんたん分割",
-    "description": "マニュアルカードタイトル2"
-  },
-  "guideLocalGapTitle": {
-    "message": "スライス間隔を精密にコントロール",
-    "description": "マニュアルカードタイトル3"
+    "description": "Warning about incognito mode"
   },
   "langZhCN": {
     "message": "简体中文",
-    "description": "语言名称: 简体中文"
+    "description": "Language name: Simplified Chinese"
   },
   "langZhTW": {
     "message": "繁體中文",
-    "description": "语言名称: 繁体中文"
+    "description": "Language name: Traditional Chinese"
   },
   "langEn": {
     "message": "English",
-    "description": "语言名称: 英语"
+    "description": "Language name: English"
   },
   "langJa": {
     "message": "日本語",
-    "description": "语言名称: 日语"
+    "description": "Language name: Japanese"
   },
   "langKo": {
     "message": "한국어",
-    "description": "语言名称: 韩语"
+    "description": "Language name: Korean"
   },
   "langEs": {
     "message": "Español",
-    "description": "语言名称: 西班牙语"
+    "description": "Language name: Spanish"
   },
   "langFr": {
     "message": "Français",
-    "description": "语言名称: 法语"
+    "description": "Language name: French"
+  },
+  "langDe": {
+    "message": "Deutsch",
+    "description": "Language name: German"
+  },
+  "langPt": {
+    "message": "Português",
+    "description": "Language name: Portuguese"
+  },
+  "langTr": {
+    "message": "Türkçe",
+    "description": "Language name: Turkish"
   },
   "openDebugPanel": {
     "message": "デバッグパネルを開く",
-    "description": "调试用菜单文本"
+    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "シミュレーター",
-    "description": "调试用模拟器文本"
+    "description": "Text for the simulator feature"
   },
   "viewDemoVideo": {
     "message": "極上の共有体験を見る",

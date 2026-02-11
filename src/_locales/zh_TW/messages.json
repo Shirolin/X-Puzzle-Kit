@@ -1,71 +1,629 @@
 {
   "appName": {
     "message": "X-Puzzle-Kit: 推特 (X) 拼圖與切圖工具",
-    "description": "插件名稱"
+    "description": "The name of the extension"
   },
   "appDesc": {
     "message": "專為推特 (X) 打造的拼圖與切圖工具。無縫拼接全景長圖，或將圖片拆分為像素級完美的網格——支持推特佈局優化，確保原畫質無損匯出。",
-    "description": "插件描述"
+    "description": "The description of the extension"
   },
   "longDescription": {
     "message": "X-Puzzle-Kit 是一款專為推特 (X) 用戶、數位藝術家及收藏家打造的專業拼圖與切圖工具箱。無論您是想還原多圖推文中的全景長圖，還是準備製作高效的網格展示，X-Puzzle-Kit 都能確保您的內容在推特動態（Timeline）中得到理想呈現。\n\n🌐 全平台支持：\n除了此 Chrome 擴充功能，我們還提供功能完整的 Web 在線版（https://x-puzzle-kit.pages.dev/），方便您在手機、平板或其他瀏覽器中隨時使用。\n\n✨ 核心功能：\n\n🧵 智能無縫拼圖\n將推文中分散的圖片重新拼接回其原始的全景或長圖格式。\n- 佈局方案：全面支持縱向、橫向、田字格（2x2）以及獨特的 T 型佈局。\n- 像素級對齊：精準的座標計算邏輯，有效消除接縫與模糊偽影，呈現清晰畫質。\n- 原生集成：直接在推特頁面上點擊按鈕發起拼接，省略手動下載步驟。\n- 無損匯出：不進行二次壓縮，保留每一顆像素的原始解析度，細節分毫畢現。\n\n✂️ 創意切圖助手 (九宮格製作)\n將任何圖片拆分為標準網格（2x2、3x3 或自定義），完美適配推特的多圖展示機制。\n- 推特「一圖流」佈局優化：針對推特預覽機制特殊適配，讓多張切圖在動態時報中拼成一張完整的「大圖」。\n- 右键即刻拆分：在網頁中右鍵點擊圖片，即可直接發送至拆分工具進行處理。\n- 統一視覺效果：為您的網格推文創造一致的展示效果，提升推文吸引力。\n\n🚀 實用特性：\n- 高效操作流：深度集成於瀏覽器，從發現推文到生成圖片僅需数秒。\n- 靈活選項：微調全局或局部間距，支持深色模式，可自定義背景顏色（支持透明）。\n- 多樣化導入：支持文件上傳、剪貼簿貼上以及推特頁面直接導入。\n- 批量匯出：支持高質量 PNG、JPG、WebP 下載，或一鍵打包為 ZIP 壓縮檔。\n\n🔒 隱私保護\n所有圖片處理均在您的本地瀏覽器中完成。圖片絕不會上傳到任何遠端伺服器——無追蹤、无記錄，保護您的創作隱私。\n\n立即使用 X-Puzzle-Kit 提升您的推特配圖效率。",
-    "description": "商店詳細描述"
+    "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
     "message": "拼圖預覽",
-    "description": "預覽視窗標題"
+    "description": "Title of the preview window"
   },
   "splitterTitle": {
     "message": "圖片拆分",
-    "description": "拆分視窗標題"
+    "description": "Title of the splitter window"
   },
   "stitching": {
     "message": "正在拼接...",
-    "description": "拼圖生成中的載入狀態"
+    "description": "Loading status during stitch generation"
+  },
+  "removeImage": {
+    "message": "移除圖片",
+    "description": "Tooltip for remove image"
+  },
+  "fromArtist": {
+    "message": "來自",
+    "description": "Author prefix"
+  },
+  "tweetId": {
+    "message": "推文 ID",
+    "description": "Label for Tweet ID"
+  },
+  "preparingHighRes": {
+    "message": "高清資源準備中...",
+    "description": "Loading text for high-res images"
+  },
+  "reset": {
+    "message": "重設",
+    "description": "Reset button text"
+  },
+  "layoutScheme": {
+    "message": "佈局方案",
+    "description": "Section header for layout"
+  },
+  "layoutGrid": {
+    "message": "田字格",
+    "description": "2x2 layout label"
+  },
+  "layoutTShape": {
+    "message": "T型(左)",
+    "description": "T-Shape layout label"
+  },
+  "layoutHorizontal": {
+    "message": "橫向",
+    "description": "Horizontal layout label"
+  },
+  "layoutVertical": {
+    "message": "縱向",
+    "description": "Vertical layout label"
+  },
+  "exportSettings": {
+    "message": "匯出設定",
+    "description": "Section header for export settings"
+  },
+  "backgroundColor": {
+    "message": "底色",
+    "description": "Label for background color"
+  },
+  "transparent": {
+    "message": "透明",
+    "description": "Transparent background option"
+  },
+  "white": {
+    "message": "白色",
+    "description": "White background option"
+  },
+  "black": {
+    "message": "黑色",
+    "description": "Black background option"
+  },
+  "globalGap": {
+    "message": "全局間距",
+    "description": "Label for global gap"
+  },
+  "resetToZero": {
+    "message": "重置為0",
+    "description": "Tooltip for reset gap"
+  },
+  "imageSorting": {
+    "message": "圖片排序",
+    "description": "Section header for image sorting"
+  },
+  "localGap": {
+    "message": "Adjust local gap",
+    "description": "Subtitle for image sorting"
+  },
+  "imageLabel": {
+    "message": "圖片",
+    "description": "Label for image"
+  },
+  "moveUp": {
+    "message": "上移",
+    "description": "Tooltip for move up"
+  },
+  "moveDown": {
+    "message": "下移",
+    "description": "Tooltip for move down"
+  },
+  "hideImage": {
+    "message": "隱藏圖片",
+    "description": "Tooltip for hide image"
+  },
+  "showImage": {
+    "message": "顯示圖片",
+    "description": "Tooltip for show image"
+  },
+  "afterGap": {
+    "message": "後間距",
+    "description": "Label for local gap after image"
+  },
+  "decreaseGap": {
+    "message": "減小間距",
+    "description": "Tooltip for decrease gap"
+  },
+  "increaseGap": {
+    "message": "增大間距",
+    "description": "Tooltip for increase gap"
+  },
+  "gapLabel": {
+    "message": "間距",
+    "description": "Label for the resulting gap"
+  },
+  "resetLocalGap": {
+    "message": "重置局部間距",
+    "description": "Tooltip for reset local gap"
+  },
+  "processing": {
+    "message": "處理中...",
+    "description": "Button text while processing"
+  },
+  "stitchAndDownload": {
+    "message": "立即拼接並下載",
+    "description": "Final download button text"
+  },
+  "stitchBtnTitle": {
+    "message": "拼接圖片",
+    "description": "Tooltip for the stitch button embedded in Twitter"
+  },
+  "language": {
+    "message": "語言",
+    "description": "Language selector label"
+  },
+  "sourcedFrom": {
+    "message": "來源於",
+    "description": "Used in the source badge"
+  },
+  "splitImage": {
+    "message": "拆分圖片",
+    "description": "Split button text"
+  },
+  "downloadAll": {
+    "message": "全部下載",
+    "description": "Download all button text"
+  },
+  "uploadImage": {
+    "message": "上傳圖片",
+    "description": "Upload image button text"
+  },
+  "selectImageTip": {
+    "message": "請選擇一張圖片進行拆分",
+    "description": "Select image tip"
+  },
+  "uploadImages": {
+    "message": "上傳圖片",
+    "description": "Button text for uploading multiple images"
+  },
+  "selectImagesTip": {
+    "message": "請選擇要拼接的多張圖片",
+    "description": "Tip for selecting multiple images"
+  },
+  "addMoreImages": {
+    "message": "繼續添加圖片",
+    "description": "Button text to add more images when preview is empty"
+  },
+  "dragAndDropTip": {
+    "message": "或直接拖放圖片到此處",
+    "description": "Drag and drop instruction"
+  },
+  "changeImage": {
+    "message": "更換",
+    "description": "Change image button text"
+  },
+  "gapRemoval": {
+    "message": "消除原圖間隙",
+    "description": "Gap removal label"
+  },
+  "gapRemovalTip": {
+    "message": "當您的圖片自帶邊距或間距（如漫畫、拼接圖）時，開啟此功能可以自動裁掉指定像素的『廢像素』，使生成的切片更純淨。",
+    "description": "Gap removal description"
+  },
+  "rowCount": {
+    "message": "行數 (N)",
+    "description": "Row count label"
+  },
+  "colCount": {
+    "message": "列數 (N)",
+    "description": "Column count label"
+  },
+  "sourceImage": {
+    "message": "原圖",
+    "description": "Source image label"
+  },
+  "splitResult": {
+    "message": "拆分結果",
+    "description": "Split result label"
+  },
+  "formatLabel": {
+    "message": "匯出格式",
+    "description": "Export format label"
+  },
+  "iosWebpWarningTitle": {
+    "message": "WebP 相容性提示",
+    "description": "Title for iOS WebP warning"
+  },
+  "iosWebpWarning": {
+    "message": "iOS 系統儲存 WebP 圖片到相簿可能存在相容性問題（部分 App 無法正常顯示或儲存），建議優先使用 PNG。是否仍要切換為 WebP？",
+    "description": "Warning for iOS WebP compatibility"
+  },
+  "zipLabel": {
+    "message": "打包下載 (Zip)",
+    "description": "Zip download toggle label"
+  },
+  "zipTip": {
+    "message": "將所有圖片打包為一個壓縮文件下載",
+    "description": "Zip feature description"
+  },
+  "restore": {
+    "message": "還原原圖",
+    "description": "Restore button text"
+  },
+  "twitterOptimize": {
+    "message": "推特「一圖流」佈局優化",
+    "description": "Twitter optimization toggle label"
+  },
+  "twitterOptimizeTip": {
+    "message": "針對推特預覽機制特殊適配，讓多張切圖在動態時報中拼成一張完整的「大圖」。",
+    "description": "Twitter optimization tip"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "General settings section title"
+  },
+  "modeStitch": {
+    "message": "拼接",
+    "description": "Stitch mode button"
+  },
+  "modeSplit": {
+    "message": "拆分",
+    "description": "Split mode button"
+  },
+  "support": {
+    "message": "支持專案",
+    "description": "Support section title"
+  },
+  "buyMeCoffee": {
+    "message": "請喝咖啡",
+    "description": "Sponsorship button text"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: 拆分圖片",
+    "description": "Context menu item title"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "擴充功能已更新，請重新整理頁面",
+    "description": "Message shown when extension context is invalidated"
+  },
+  "slideRefine": {
+    "message": "滑動以微調",
+    "description": "Hint for the jog dial controller"
+  },
+  "confirmRemoveImage": {
+    "message": "確定要移除這張圖片嗎？",
+    "description": "Confirmation message when removing a single image"
+  },
+  "confirmClearAll": {
+    "message": "確定要清除所有圖片嗎？此操作不可撤销。",
+    "description": "Confirmation message when clearing all images"
+  },
+  "clearAll": {
+    "message": "全部清除",
+    "description": "Clear all images button text"
   },
   "emptyImageText": {
     "message": "暫無圖片，請點擊上傳",
-    "description": "圖片列表為空時的提示"
+    "description": "Message shown when image list is empty"
   },
   "installTitle": {
     "message": "加入主畫面",
-    "description": "iOS安裝提示標題"
+    "description": "iOS install prompt title"
   },
   "installDesc": {
     "message": "點擊下方分享按鈕，然後選擇「加入主畫面」。",
-    "description": "iOS安裝提示說明"
+    "description": "iOS install prompt description"
   },
   "installDescChrome": {
     "message": "點擊右上角分享按鈕，然後選擇「加入主畫面」。",
-    "description": "iOS Chrome安裝提示說明"
+    "description": "iOS Chrome install prompt description"
   },
   "installDescAndroid": {
     "message": "輕點瀏覽器選單 (右上方或右下方)，然後選擇「安裝應用程式」或「加入主畫面」。",
-    "description": "Android 安裝提示說明"
+    "description": "Android install prompt description"
   },
   "pwaInstallBtn": {
     "message": "立即安裝",
-    "description": "原生 PWA 安裝按鈕文案"
+    "description": "Native PWA install button text"
   },
   "pwaInstallDescNative": {
     "message": "安裝應用程式到主畫面，享受更完整的體驗。",
-    "description": "原生 PWA 安裝描述文案"
+    "description": "Native PWA install description"
+  },
+  "importFromUrl": {
+    "message": "從連結匯入",
+    "description": "Import button title"
+  },
+  "invalidUrl": {
+    "message": "連結無效，請提供正確的推文 (X) 連結",
+    "description": "Invalid URL tip"
+  },
+  "analyzingLink": {
+    "message": "正在解析連結...",
+    "description": "Analyzing link state"
+  },
+  "noImagesFound": {
+    "message": "推文中未發現可匯入的圖片",
+    "description": "No images found tip"
+  },
+  "downloadingImages": {
+    "message": "正在下載圖片",
+    "description": "Downloading images state"
+  },
+  "processingImages": {
+    "message": "正在處理圖片...",
+    "description": "Processing images state"
+  },
+  "parseFailed": {
+    "message": "解析推文失敗",
+    "description": "Parse failed tip"
+  },
+  "workerInvalidResponse": {
+    "message": "解析服務返回了非預期格式的內容。推文可能受限或服務暫時不可用。",
+    "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
+  },
+  "workerStatusError": {
+    "message": "解析服務暫時無法處理此推文 (錯誤代碼: $status$)。",
+    "description": "Tooltip for when worker returns non-200 status code",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
+  },
+  "networkError": {
+    "message": "網路連接失敗，請檢查您的網路設置。",
+    "description": "Tooltip for network errors during fetch"
+  },
+  "import": {
+    "message": "匯入",
+    "description": "Import action button"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "Cancel action button"
+  },
+  "confirm": {
+    "message": "確定",
+    "description": "Confirm action button"
+  },
+  "imageResolution": {
+    "message": "解析度",
+    "description": "Label for image resolution"
+  },
+  "clickToShowResolution": {
+    "message": "點擊查看解析度",
+    "description": "Tooltip hint for thumbnails"
+  },
+  "finalGap": {
+    "message": "最終間距",
+    "description": "Calculated total gap including global and local"
+  },
+  "openSourcePage": {
+    "message": "打開原推文頁面",
+    "description": "Tooltip for the source tweet link"
+  },
+  "invalidFormat": {
+    "message": "格式錯誤",
+    "description": "Error message for invalid input"
+  },
+  "auto": {
+    "message": "自動",
+    "description": "Auto option for language/theme"
+  },
+  "themeSystem": {
+    "message": "跟隨系統",
+    "description": "System theme option"
+  },
+  "themeLight": {
+    "message": "明亮模式",
+    "description": "Light theme option"
+  },
+  "themeDark": {
+    "message": "黑暗模式",
+    "description": "Dark theme option"
+  },
+  "themeLabel": {
+    "message": "主題",
+    "description": "Label for theme selector"
+  },
+  "pwaVersionLabel": {
+    "message": "Web 在線版",
+    "description": "PWA version label"
+  },
+  "pwaVersionTip": {
+    "message": "在行動裝置或未安裝插件的瀏覽器中使用？試試我們功能完整的 Web 版本。",
+    "description": "PWA version description"
+  },
+  "openWebVersion": {
+    "message": "在新視窗開啟 Web 版",
+    "description": "Open PWA button text"
+  },
+  "extensionVersionLabel": {
+    "message": "Chrome 瀏覽器擴充功能",
+    "description": "Extension version label"
+  },
+  "extensionVersionTip": {
+    "message": "在 PC 瀏覽器中使用？試試我們的瀏覽器插件，支援在 X (Twitter) 頁面直接一鍵拼圖。",
+    "description": "Extension version description"
+  },
+  "openExtensionStore": {
+    "message": "前往 Chrome 線上應用程式商店",
+    "description": "Open extension store button text"
+  },
+  "pwaUpdateAvailable": {
+    "message": "發現新版本可用",
+    "description": "PWA update available tip"
+  },
+  "pwaUpdateReady": {
+    "message": "更新以獲得最新功能與修復",
+    "description": "PWA update description"
+  },
+  "pwaRefresh": {
+    "message": "重新整理",
+    "description": "PWA refresh button"
+  },
+  "pwaIgnore": {
+    "message": "忽略",
+    "description": "PWA ignore button"
+  },
+  "pwaOfflineReady": {
+    "message": "應用程式已可以離線使用",
+    "description": "PWA offline ready tip"
+  },
+  "layoutSchemeHelp": {
+    "message": "[icon:LayoutGrid] 田字格：社交展示\n[icon:Layout] T型佈局：藝術攝影\n[icon:Rows] 縱/橫向：拼接長圖",
+    "description": "Layout help text"
+  },
+  "backgroundColorHelp": {
+    "message": "設置圖片背後的顏色。透明背景（PNG/WebP）最靈活，黑色或白色背景則能使接縫微調效果更統一。",
+    "description": "Background color help"
+  },
+  "globalGapHelp": {
+    "message": "統一設置所有圖片之間的縫隙寬度。負值可讓圖片互相重疊。",
+    "description": "Global gap help"
+  },
+  "formatHelp": {
+    "message": "「PNG」原畫質、支持透明、較大\n「JPG」高壓縮、不支持透明、較小\n「WEBP」高品質、支持透明，iOS 相容性差",
+    "description": "Help explanation for format selection"
+  },
+  "exportSettingsHelp": {
+    "message": "個性化匯出：\n「PNG」原畫質、支持透明、較大\n「JPG」高壓縮、不支持透明、較小\n「WEBP」高品質、支持透明，iOS 相容性差",
+    "description": "Comprehensive help for export settings section"
+  },
+  "twitterOptimizeHelp": {
+    "message": "當您在 Twitter/X 一次發布多張切圖時，此選項會微調邊框和間距，使它們在用戶的信息流滾動預覽中無接縫，視覺效果如同一張大圖。",
+    "description": "Twitter optimization help"
+  },
+  "userGuideButton": {
+    "message": "使用手冊",
+    "description": "User guide button text"
+  },
+  "tutorialImportTitle": {
+    "message": "匯入圖片",
+    "description": "Tutorial step 1 title"
+  },
+  "tutorialImportDesc": {
+    "message": "點擊此處上傳本地圖片，或者點擊連結圖示從 X (Twitter) URL 直接匯入。",
+    "description": "Tutorial step 1 description"
+  },
+  "tutorialLayoutTitle": {
+    "message": "選擇佈局",
+    "description": "Tutorial step 2 title"
+  },
+  "tutorialLayoutDesc": {
+    "message": "根據需要選擇拼接佈局。如果是 X (Twitter) 展示，推薦使用「田字格」。",
+    "description": "Tutorial step 2 description"
+  },
+  "tutorialControlTitle": {
+    "message": "微調設置",
+    "description": "Tutorial step 3 title"
+  },
+  "tutorialControlDesc": {
+    "message": "在此處調整全局或局部間距，也可以拖動右側列表來改變圖片順序。",
+    "description": "Tutorial step 3 description"
+  },
+  "tutorialExportTitle": {
+    "message": "導出下載",
+    "description": "Tutorial step 4 title"
+  },
+  "tutorialExportDesc": {
+    "message": "最後點擊底部按鈕，即可生成並保存您的拼圖作品！",
+    "description": "Tutorial step 4 description"
+  },
+  "skipTutorial": {
+    "message": "跳過教程",
+    "description": "Skip button"
+  },
+  "nextStep": {
+    "message": "下一步",
+    "description": "Next button"
+  },
+  "localGapHelp": {
+    "message": "點擊圖片下方的數字或操作撥輪，可以單獨調整某兩張切片之間的間距。適合用於分隔不同劇情或埋藏「彩蛋」。",
+    "description": "Help explanation for local gap"
+  },
+  "imageSortingHelp": {
+    "message": "拖拽 [icon:GripVertical] 或點擊 [icon:ChevronUp][icon:ChevronDown] 改變排序\n點擊 [icon:Eye] 切換顯隱\n點擊數字微調間距",
+    "description": "Comprehensive help for image sorting section"
+  },
+  "userGuideTitle": {
+    "message": "使用手冊與引導",
+    "description": "Guide dialog title"
+  },
+  "finishTutorial": {
+    "message": "完成",
+    "description": "Finish button"
+  },
+  "tabPWA": {
+    "message": "網頁版 / 行動端",
+    "description": "Manual tab 1"
+  },
+  "tabExtension": {
+    "message": "瀏覽器擴充功能",
+    "description": "Manual tab 2"
+  },
+  "tabFeatures": {
+    "message": "使用技巧",
+    "description": "Manual tab 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. 體驗升級\n告別手動複製。點擊下方按鈕，將「X-Puzzle-Kit」指令添加到系統庫。\n2. 極速啟動\n在 X (Twitter) 分享選單中點擊本指令，即可自動提取連結並無縫跳轉。",
+    "description": "iOS Install Guide"
+  },
+  "installShortcutBtn": {
+    "message": "安裝快捷指令",
+    "description": "iOS Shortcut installation button"
+  },
+  "installShortcutTip": {
+    "message": "點擊獲取官方 iOS 快捷指令，實現一键匯入圖片。",
+    "description": "iOS Shortcut installation tip"
+  },
+  "guideAndroidInstall": {
+    "message": "1. 安裝 PWA (漸進式應用)\n在瀏覽器選單中點擊「安裝應用」或「添加到主螢幕」，無需應用商店即可解鎖分享集成。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」一鍵匯入。",
+    "description": "Android installation guide"
+  },
+  "viewAndroidTutorial": {
+    "message": "查看安裝示意圖",
+    "description": "Android tutorial button text"
+  },
+  "guideExtensionStitch": {
+    "message": "在 X (Twitter) 推文下方，您可以直接看到 [icon] 按鈕。一鍵抓取推文所有圖片，直接進入拼圖模式。",
+    "description": "Extension stitch feature guide"
+  },
+  "guideExtensionSplit": {
+    "message": "在網頁任意圖片上點擊右鍵，選擇「X-Puzzle-Kit: 拆分圖片」，即可立刻發起切片處理，無需下載。",
+    "description": "Extension split feature guide"
+  },
+  "guideFlowOptimization": {
+    "message": "開啟後，工具將微調切片比例以適配 X (Twitter) 算法，確保多張圖片在動態中無缝銜接，拼出完美長圖。",
+    "description": "Optimization feature guide"
+  },
+  "guideExtensionTitle": {
+    "message": "貼文圖片無縫拼接",
+    "description": "Manual card title 1"
+  },
+  "guideSplitTitle": {
+    "message": "右鍵極速拆圖",
+    "description": "Manual card title 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "精準控制切片間距",
+    "description": "Manual card title 3"
   },
   "pwaBenefitTitle": {
     "message": "為什麼安裝 PWA？",
-    "description": "PWA 優勢部分標題"
+    "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {
     "message": "• 無縫集成：Android 端支持被系統分享菜單調用，從 X 匯入圖片快人一步。",
-    "description": "PWA 优势: Android 集成"
+    "description": "PWA benefit: Android integration"
   },
   "pwaBenefitFullscreen": {
     "message": "• 全屏視野：隱藏瀏覽器網址列，在大螢幕上更精準地調整切片間距。",
-    "description": "PWA 优势: 全屏视野"
+    "description": "PWA benefit: Full-screen focus"
   },
   "pwaBenefitIOSFix": {
     "message": "• 視口修復：針對 iOS PWA 環境深度優化，徹底解決底部白邊和比例偏移問題。",
-    "description": "PWA 优势: iOS 视口修复"
+    "description": "PWA benefit: iOS PWA optimization"
   },
   "guideNativeInstall": {
     "message": "點擊下方的「立即安裝」按鈕完成 PWA 安裝，即可在 X (Twitter) 分享選單中一鍵匯入拼圖。",
@@ -77,609 +635,71 @@
   },
   "guideTechnicalTitle": {
     "message": "消除原圖自帶間隙",
-    "description": "技術改進標題"
+    "description": "Technical improvement title"
   },
   "guideTechnicalDesc": {
     "message": "當原圖自帶白邊或漫畫間距時，開啟此功能可精準剔除指定像素，讓生成的切片保持純淨。",
-    "description": "技術改進描述"
+    "description": "Technical improvement description"
   },
   "statusOfflineAvailable": {
     "message": "離線模式可用",
-    "description": "斷網時顯示的提示文案"
+    "description": "Status text shown when offline"
   },
   "troubleshootingTitle": {
     "message": "無法安裝？",
-    "description": "故障排除標題"
+    "description": "Troubleshooting section title"
   },
   "troubleshootingIncognito": {
     "message": "無痕/隱私瀏覽模式會阻止 PWA 安裝。請切換到正常瀏覽模式後再試。",
-    "description": "無痕模式警告"
-  },
-  "removeImage": {
-    "message": "移除圖片",
-    "description": "移除圖片工具提示"
-  },
-  "fromArtist": {
-    "message": "來自",
-    "description": "作者前綴"
-  },
-  "tweetId": {
-    "message": "推文 ID",
-    "description": "推文 ID 標籤"
-  },
-  "preparingHighRes": {
-    "message": "高清資源準備中...",
-    "description": "高清圖片載入時的文字"
-  },
-  "reset": {
-    "message": "重設",
-    "description": "重設按鈕文本"
-  },
-  "layoutScheme": {
-    "message": "佈局方案",
-    "description": "佈局部分標題"
-  },
-  "layoutGrid": {
-    "message": "田字格",
-    "description": "田字格佈局標籤"
-  },
-  "layoutTShape": {
-    "message": "T型(左)",
-    "description": "T型佈局標籤"
-  },
-  "layoutHorizontal": {
-    "message": "橫向",
-    "description": "橫向佈局標籤"
-  },
-  "layoutVertical": {
-    "message": "縱向",
-    "description": "縱向佈局標籤"
-  },
-  "exportSettings": {
-    "message": "匯出設定",
-    "description": "匯出設定部分標題"
-  },
-  "backgroundColor": {
-    "message": "底色",
-    "description": "底色標籤"
-  },
-  "transparent": {
-    "message": "透明",
-    "description": "透明背景選項"
-  },
-  "white": {
-    "message": "白色",
-    "description": "白色背景選項"
-  },
-  "black": {
-    "message": "黑色",
-    "description": "黑色背景選項"
-  },
-  "globalGap": {
-    "message": "全局間距",
-    "description": "全局間距標籤"
-  },
-  "resetToZero": {
-    "message": "重置為0",
-    "description": "重置間距的工具提示"
-  },
-  "imageSorting": {
-    "message": "圖片排序",
-    "description": "圖片排序部分標題"
-  },
-  "imageLabel": {
-    "message": "圖片",
-    "description": "圖片標籤"
-  },
-  "moveUp": {
-    "message": "上移",
-    "description": "上移工具提示"
-  },
-  "moveDown": {
-    "message": "下移",
-    "description": "下移工具提示"
-  },
-  "hideImage": {
-    "message": "隱藏圖片",
-    "description": "隱藏圖片工具提示"
-  },
-  "showImage": {
-    "message": "顯示圖片",
-    "description": "顯示圖片工具提示"
-  },
-  "afterGap": {
-    "message": "後間距",
-    "description": "圖片後方的局部間距標籤"
-  },
-  "decreaseGap": {
-    "message": "減小間距",
-    "description": "減小間距工具提示"
-  },
-  "increaseGap": {
-    "message": "增大間距",
-    "description": "增大間距工具提示"
-  },
-  "gapLabel": {
-    "message": "間距",
-    "description": "最終縫隙標籤"
-  },
-  "resetLocalGap": {
-    "message": "重置局部間距",
-    "description": "重置局部間距工具提示"
-  },
-  "processing": {
-    "message": "處理中...",
-    "description": "處理時的按鈕文字"
-  },
-  "stitchAndDownload": {
-    "message": "立即拼接並下載",
-    "description": "最終下載按鈕文字"
-  },
-  "stitchBtnTitle": {
-    "message": "拼接圖片",
-    "description": "注入推特的拼接按鈕工具提示"
-  },
-  "language": {
-    "message": "語言",
-    "description": "語言選擇器標籤"
-  },
-  "sourcedFrom": {
-    "message": "來源於",
-    "description": "用於來源標籤"
-  },
-  "splitImage": {
-    "message": "拆分圖片",
-    "description": "拆分按鈕文本"
-  },
-  "downloadAll": {
-    "message": "全部下載",
-    "description": "全部下載按鈕文本"
-  },
-  "uploadImage": {
-    "message": "上傳圖片",
-    "description": "上傳圖片按鈕文本"
-  },
-  "selectImageTip": {
-    "message": "請選擇一張圖片進行拆分",
-    "description": "選擇圖片提示"
-  },
-  "uploadImages": {
-    "message": "上傳圖片",
-    "description": "上傳多張圖片按鈕文本"
-  },
-  "selectImagesTip": {
-    "message": "請選擇要拼接的多張圖片",
-    "description": "選擇多張圖片提示"
-  },
-  "addMoreImages": {
-    "message": "繼續添加圖片",
-    "description": "畫布空內容時的引導文案"
-  },
-  "dragAndDropTip": {
-    "message": "或直接拖放圖片到此處",
-    "description": "拖曳提示文案"
-  },
-  "changeImage": {
-    "message": "更換",
-    "description": "更換圖片按鈕文本"
-  },
-  "gapRemoval": {
-    "message": "消除原圖間隙",
-    "description": "消除間隙標籤"
-  },
-  "gapRemovalTip": {
-    "message": "當您的圖片自帶邊距或間距（如漫畫、拼接圖）時，開啟此功能可以自動裁掉指定像素的『廢像素』，使生成的切片更純淨。",
-    "description": "消除間隙說明"
-  },
-  "rowCount": {
-    "message": "行數 (N)",
-    "description": "行數標籤"
-  },
-  "colCount": {
-    "message": "列數 (N)",
-    "description": "列數標籤"
-  },
-  "sourceImage": {
-    "message": "原圖",
-    "description": "原圖標籤"
-  },
-  "splitResult": {
-    "message": "拆分結果",
-    "description": "拆分結果標籤"
-  },
-  "formatLabel": {
-    "message": "匯出格式",
-    "description": "導出格式標籤"
-  },
-  "iosWebpWarningTitle": {
-    "message": "WebP 相容性提示",
-    "description": "iOS WebP 警告標題"
-  },
-  "iosWebpWarning": {
-    "message": "iOS 系統儲存 WebP 圖片到相簿可能存在相容性問題（部分 App 無法正常顯示或儲存），建議優先使用 PNG。是否仍要切換為 WebP？",
-    "description": "iOS WebP 相容性警告"
-  },
-  "zipLabel": {
-    "message": "打包下載 (Zip)",
-    "description": "Zip下載開關標籤"
-  },
-  "zipTip": {
-    "message": "將所有圖片打包為一個壓縮文件下載",
-    "description": "Zip功能說明"
-  },
-  "restore": {
-    "message": "還原原圖",
-    "description": "恢復拆分前狀態按鈕"
-  },
-  "twitterOptimize": {
-    "message": "推特「一圖流」佈局優化",
-    "description": "推特布局優化開關標籤"
-  },
-  "twitterOptimizeTip": {
-    "message": "針對推特預覽機制特殊適配，讓多張切圖在動態時報中拼成一張完整的「大圖」。",
-    "description": "推特布局優化說明"
-  },
-  "settings": {
-    "message": "設定",
-    "description": "通用設定部分標題"
-  },
-  "modeStitch": {
-    "message": "拼接",
-    "description": "拼接模式按鈕"
-  },
-  "modeSplit": {
-    "message": "拆分",
-    "description": "拆分模式按鈕"
-  },
-  "support": {
-    "message": "支持專案",
-    "description": "支持項目部分標題"
-  },
-  "buyMeCoffee": {
-    "message": "請喝咖啡",
-    "description": "贊助按鈕文本"
-  },
-  "contextMenuTitle": {
-    "message": "X-Puzzle-Kit: 拆分圖片",
-    "description": "右鍵菜單標題"
-  },
-  "extensionUpdatedRefresh": {
-    "message": "擴充功能已更新，請重新整理頁面",
-    "description": "擴充功能上下文失效時的提示"
-  },
-  "importFromUrl": {
-    "message": "從連結匯入",
-    "description": "匯入按鈕標題"
-  },
-  "slideRefine": {
-    "message": "滑動以微調",
-    "description": "撥輪控制器的引導提示"
-  },
-  "confirmRemoveImage": {
-    "message": "確定要移除這張圖片嗎？",
-    "description": "移除單張圖片時的確認文案"
-  },
-  "confirmClearAll": {
-    "message": "確定要清除所有圖片嗎？此操作不可撤销。",
-    "description": "清空全部圖片時的確認文案"
-  },
-  "clearAll": {
-    "message": "全部清除",
-    "description": "清空全部圖片按鈕文本"
-  },
-  "invalidUrl": {
-    "message": "連結無效，請提供正確的推文 (X) 連結",
-    "description": "無效連結提示"
-  },
-  "analyzingLink": {
-    "message": "正在解析連結...",
-    "description": "解析連結中的狀態"
-  },
-  "noImagesFound": {
-    "message": "推文中未發現可匯入的圖片",
-    "description": "未發現圖片提示"
-  },
-  "downloadingImages": {
-    "message": "正在下載圖片",
-    "description": "下載圖片狀態"
-  },
-  "processingImages": {
-    "message": "正在處理圖片...",
-    "description": "處理圖片狀態"
-  },
-  "parseFailed": {
-    "message": "解析推文失敗",
-    "description": "解析失敗提示"
-  },
-  "workerInvalidResponse": {
-    "message": "解析服務返回了非預期格式的內容。推文可能受限或服務暫時不可用。",
-    "description": "JSON解析失敗或返回非預期內容時的提示"
-  },
-  "workerStatusError": {
-    "message": "解析服務暫時無法處理此推文 (錯誤代碼: $status$)。",
-    "description": "Worker返回非200狀態碼時的提示",
-    "placeholders": {
-      "status": {
-        "content": "$1",
-        "example": "403"
-      }
-    }
-  },
-  "networkError": {
-    "message": "網路連接失敗，請檢查您的網路設置。",
-    "description": "Fetch請求發生網路錯誤時的提示"
-  },
-  "import": {
-    "message": "匯入",
-    "description": "匯入操作按鈕"
-  },
-  "cancel": {
-    "message": "取消",
-    "description": "取消操作按鈕"
-  },
-  "invalidFormat": {
-    "message": "格式錯誤",
-    "description": "非法輸入提示"
-  },
-  "auto": {
-    "message": "自動",
-    "description": "語言/主題的自動選項"
-  },
-  "themeSystem": {
-    "message": "跟隨系統",
-    "description": "主題跟隨系統選項"
-  },
-  "themeLight": {
-    "message": "明亮模式",
-    "description": "明亮主題選項"
-  },
-  "themeDark": {
-    "message": "黑暗模式",
-    "description": "黑暗主題選項"
-  },
-  "themeLabel": {
-    "message": "主題",
-    "description": "主題選擇器標籤"
-  },
-  "confirm": {
-    "message": "確定",
-    "description": "確定操作按鈕"
-  },
-  "pwaVersionLabel": {
-    "message": "Web 在線版",
-    "description": "PWA 版本標籤"
-  },
-  "pwaVersionTip": {
-    "message": "在行動裝置或未安裝插件的瀏覽器中使用？試試我們功能完整的 Web 版本。",
-    "description": "PWA 版本說明"
-  },
-  "openWebVersion": {
-    "message": "在新視窗開啟 Web 版",
-    "description": "打開 PWA 按鈕文本"
-  },
-  "extensionVersionLabel": {
-    "message": "Chrome 瀏覽器擴充功能",
-    "description": "插件版本標籤"
-  },
-  "extensionVersionTip": {
-    "message": "在 PC 瀏覽器中使用？試試我們的瀏覽器插件，支援在 X (Twitter) 頁面直接一鍵拼圖。",
-    "description": "插件版本說明"
-  },
-  "openExtensionStore": {
-    "message": "前往 Chrome 線上應用程式商店",
-    "description": "開啟外掛程式商店按鈕文字"
-  },
-  "pwaUpdateAvailable": {
-    "message": "發現新版本可用",
-    "description": "PWA 更新可用提示"
-  },
-  "pwaUpdateReady": {
-    "message": "更新以獲得最新功能與修復",
-    "description": "PWA 更新說明"
-  },
-  "pwaRefresh": {
-    "message": "重新整理",
-    "description": "PWA 重新整理按鈕"
-  },
-  "pwaIgnore": {
-    "message": "忽略",
-    "description": "PWA 忽略按鈕"
-  },
-  "pwaOfflineReady": {
-    "message": "應用程式已可以離線使用",
-    "description": "PWA 離線就緒提示"
-  },
-  "layoutSchemeHelp": {
-    "message": "[icon:LayoutGrid] 田字格：社交展示\n[icon:Layout] T型佈局：藝術攝影\n[icon:Rows] 縱/橫向：拼接長圖",
-    "description": "佈局方案幫助說明"
-  },
-  "backgroundColorHelp": {
-    "message": "設置圖片背後的顏色。透明背景（PNG/WebP）最靈活，黑色或白色背景則能使接縫微調效果更統一。",
-    "description": "底色按鈕幫助說明"
-  },
-  "globalGapHelp": {
-    "message": "統一設置所有圖片之間的縫隙寬度。負值可讓圖片互相重疊。",
-    "description": "全局間距幫助說明"
-  },
-  "formatHelp": {
-    "message": "「PNG」原畫質、支持透明、較大\n「JPG」高壓縮、不支持透明、較小\n「WEBP」高品質、支持透明，iOS 相容性差",
-    "description": "導出格式幫助說明"
-  },
-  "exportSettingsHelp": {
-    "message": "個性化匯出：\n「PNG」原畫質、支持透明、較大\n「JPG」高壓縮、不支持透明、較小\n「WEBP」高品質、支持透明，iOS 相容性差",
-    "description": "導出設置區域綜合說明"
-  },
-  "twitterOptimizeHelp": {
-    "message": "當您在 Twitter/X 一次發布多張切圖時，此選項會微調邊框和間距，使它們在用戶的信息流滾動預覽中無接縫，視覺效果如同一張大圖。",
-    "description": "推特佈局優化詳細說明"
-  },
-  "imageResolution": {
-    "message": "解析度",
-    "description": "圖片解析度標籤"
-  },
-  "clickToShowResolution": {
-    "message": "點擊查看解析度",
-    "description": "縮略圖提示信息"
-  },
-  "finalGap": {
-    "message": "最終間距",
-    "description": "包含全局和局部間距後的計算結果"
-  },
-  "openSourcePage": {
-    "message": "打開原推文頁面",
-    "description": "原推文連結提示"
-  },
-  "userGuideButton": {
-    "message": "使用手冊",
-    "description": "打開引導手冊按鈕文本"
-  },
-  "tutorialImportTitle": {
-    "message": "匯入圖片",
-    "description": "教程步驟標題1"
-  },
-  "tutorialImportDesc": {
-    "message": "點擊此處上傳本地圖片，或者點擊連結圖示從 X (Twitter) URL 直接匯入。",
-    "description": "教程步驟描述1"
-  },
-  "tutorialLayoutTitle": {
-    "message": "選擇佈局",
-    "description": "教程步驟標題2"
-  },
-  "tutorialLayoutDesc": {
-    "message": "根據需要選擇拼接佈局。如果是 X (Twitter) 展示，推薦使用「田字格」。",
-    "description": "教程步驟描述2"
-  },
-  "tutorialControlTitle": {
-    "message": "微調設置",
-    "description": "教程步驟標題3"
-  },
-  "tutorialControlDesc": {
-    "message": "在此處調整全局或局部間距，也可以拖動右側列表來改變圖片順序。",
-    "description": "教程步驟描述3"
-  },
-  "tutorialExportTitle": {
-    "message": "導出下載",
-    "description": "教程步驟標題4"
-  },
-  "tutorialExportDesc": {
-    "message": "最後點擊底部按鈕，即可生成並保存您的拼圖作品！",
-    "description": "教程步驟描述4"
-  },
-  "skipTutorial": {
-    "message": "跳過教程",
-    "description": "跳過按鈕"
-  },
-  "nextStep": {
-    "message": "下一步",
-    "description": "下一步按鈕"
-  },
-  "localGapHelp": {
-    "message": "點擊圖片下方的數字或操作撥輪，可以單獨調整某兩張切片之間的間距。適合用於分隔不同劇情或埋藏「彩蛋」。",
-    "description": "局部間距幫助說明"
-  },
-  "imageSortingHelp": {
-    "message": "拖拽 [icon:GripVertical] 或點擊 [icon:ChevronUp][icon:ChevronDown] 改變排序\n點擊 [icon:Eye] 切換顯隱\n點擊數字微調間距",
-    "description": "圖片排序區域綜合說明"
-  },
-  "userGuideTitle": {
-    "message": "使用手冊與引導",
-    "description": "引導對話框標題"
-  },
-  "finishTutorial": {
-    "message": "完成",
-    "description": "完成按鈕"
-  },
-  "tabPWA": {
-    "message": "網頁版 / 行動端",
-    "description": "手冊標籤1"
-  },
-  "tabExtension": {
-    "message": "瀏覽器擴充功能",
-    "description": "手冊標籤2"
-  },
-  "tabFeatures": {
-    "message": "使用技巧",
-    "description": "手冊標籤3"
-  },
-  "guideiOSInstall": {
-    "message": "1. 體驗升級\n告別手動複製。點擊下方按鈕，將「X-Puzzle-Kit」指令添加到系統庫。\n2. 極速啟動\n在 X (Twitter) 分享選單中點擊本指令，即可自動提取連結並無縫跳轉。",
-    "description": "iOS安装说明"
-  },
-  "installShortcutBtn": {
-    "message": "安裝快捷指令",
-    "description": "iOS快捷指令安裝按鈕"
-  },
-  "installShortcutTip": {
-    "message": "點擊獲取官方 iOS 快捷指令，實現一键匯入圖片。",
-    "description": "iOS快捷指令安裝提示"
-  },
-  "guideAndroidInstall": {
-    "message": "1. 安裝 PWA (漸進式應用)\n在瀏覽器選單中點擊「安裝應用」或「添加到主螢幕」，無需應用商店即可解鎖分享集成。\n2. 原生分享\n安裝後，直接在 X (Twitter) 點擊分享，在應用列表中選擇「X-Puzzle-Kit」一鍵匯入。",
-    "description": "Android安装说明"
-  },
-  "viewAndroidTutorial": {
-    "message": "查看安裝示意圖",
-    "description": "Android教程按鈕文字"
-  },
-  "guideExtensionStitch": {
-    "message": "在 X (Twitter) 推文下方，您可以直接看到 [icon] 按鈕。一鍵抓取推文所有圖片，直接進入拼圖模式。",
-    "description": "插件拼接功能說明"
-  },
-  "guideExtensionSplit": {
-    "message": "在網頁任意圖片上點擊右鍵，選擇「X-Puzzle-Kit: 拆分圖片」，即可立刻發起切片處理，無需下載。",
-    "description": "插件拆分功能說明"
-  },
-  "guideFlowOptimization": {
-    "message": "開啟後，工具將微調切片比例以適配 X (Twitter) 算法，確保多張圖片在動態中無缝銜接，拼出完美長圖。",
-    "description": "一圖流優化深度說明"
-  },
-  "guideExtensionTitle": {
-    "message": "貼文圖片無縫拼接",
-    "description": "手冊卡片標題1"
-  },
-  "guideSplitTitle": {
-    "message": "右鍵極速拆圖",
-    "description": "手冊卡片標題2"
-  },
-  "guideLocalGapTitle": {
-    "message": "精準控制切片間距",
-    "description": "手冊卡片標題3"
+    "description": "Warning about incognito mode"
   },
   "langZhCN": {
     "message": "简体中文",
-    "description": "语言名称: 简体中文"
+    "description": "Language name: Simplified Chinese"
   },
   "langZhTW": {
     "message": "繁體中文",
-    "description": "语言名称: 繁体中文"
+    "description": "Language name: Traditional Chinese"
   },
   "langEn": {
     "message": "English",
-    "description": "语言名称: 英语"
+    "description": "Language name: English"
   },
   "langJa": {
     "message": "日本語",
-    "description": "语言名称: 日语"
+    "description": "Language name: Japanese"
   },
   "langKo": {
     "message": "한국어",
-    "description": "语言名称: 韩语"
+    "description": "Language name: Korean"
   },
   "langEs": {
     "message": "Español",
-    "description": "语言名称: 西班牙语"
+    "description": "Language name: Spanish"
   },
   "langFr": {
     "message": "Français",
-    "description": "语言名称: 法语"
+    "description": "Language name: French"
+  },
+  "langDe": {
+    "message": "Deutsch",
+    "description": "Language name: German"
+  },
+  "langPt": {
+    "message": "Português",
+    "description": "Language name: Portuguese"
+  },
+  "langTr": {
+    "message": "Türkçe",
+    "description": "Language name: Turkish"
   },
   "openDebugPanel": {
     "message": "打開偵錯面板",
-    "description": "调试用菜单文本"
+    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "模擬器",
-    "description": "调试用模拟器文本"
+    "description": "Text for the simulator feature"
   },
   "viewDemoVideo": {
     "message": "感受極致分享體驗",
@@ -687,10 +707,10 @@
   },
   "privacyNotice": {
     "message": "隱私提示：Web 版透過安全代理解析推文（無日誌），處理過程始終在本地完成。",
-    "description": "Web 版側邊欄下方的隱私提示"
+    "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {
     "message": "隱私政策",
-    "description": "隱私政策連結文本"
+    "description": "Privacy policy link text"
   }
 }
