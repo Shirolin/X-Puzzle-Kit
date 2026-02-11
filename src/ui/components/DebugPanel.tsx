@@ -118,7 +118,9 @@ export const DebugPanel = () => {
             </button>
           </div>
 
-          <div style={{ padding: "8px", overflowY: "auto", maxHeight: "400px" }}>
+          <div
+            style={{ padding: "8px", overflowY: "auto", maxHeight: "400px" }}
+          >
             <DebugItem
               icon={<AppWindow size={16} />}
               label="浏览器扩展 (Extension)"
