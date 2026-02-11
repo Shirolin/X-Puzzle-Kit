@@ -4590,32 +4590,158 @@ button:active {
   /* 强化单行标题的纵向对齐 */
 }
 
-/* --- PWA Update Toast Custom Customization --- */
-/* Wrapper override to remove default padding/bg if needed, 
-   but Sonner's .x-custom-toast style might conflict if we are not careful.
-   Here we use a completely custom rendering so we want to reset some things if they leak,
-   OR we just style our inner container to look good.
-*/
+/* --- PWA Reload Prompt (Standalone Component) --- */
+.pwa-reload-prompt-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  /* Reset potentially conflicting positions */
+  top: auto !important;
+  left: auto !important;
+  z-index: 10000;
 
-[data-sonner-toast]:has(.pwa-toast-container) {
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.pwa-toast-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  background: var(--color-surface); /* Adaptive background */
+
+  min-width: 320px;
+  max-width: 400px;
+
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  min-width: 320px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  animation: pwa-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pwa-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+[data-theme="dark"] .pwa-reload-prompt-container {
+  background: rgba(30, 30, 35, 0.85);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .pwa-reload-prompt-container {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.pwa-reload-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pwa-reload-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.pwa-reload-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.pwa-reload-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.pwa-btn-ignore {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pwa-btn-ignore:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.pwa-btn-refresh {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.pwa-btn-refresh:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.pwa-btn-refresh:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+/* Mobile Adaptation */
+@media (max-width: 768px) {
+  .pwa-reload-prompt-container {
+    right: 0 !important;
+    left: 0 !important;
+    top: auto !important;
+
+    /* Adapt to safe area + bottom bar height (approx 60-80px) */
+    bottom: max(100px, env(safe-area-inset-bottom) + 16px) !important;
+
+    margin: 0 auto !important;
+    width: calc(100% - 32px) !important;
+    max-width: 400px !important;
+
+    /* Center text content */
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* Mobile: Use Grid for equal width buttons */
+  .pwa-reload-prompt-container .pwa-reload-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-top: 16px !important;
+    justify-content: stretch !important;
+  }
+
+  .pwa-reload-prompt-container .pwa-btn-ignore,
+  .pwa-reload-prompt-container .pwa-btn-refresh {
+    width: 100% !important;
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 0 !important;
+    font-size: 0.95rem !important;
+  }
 }
 
 [data-theme="dark"] .pwa-toast-container {

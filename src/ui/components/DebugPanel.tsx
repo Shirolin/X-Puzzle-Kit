@@ -1,7 +1,5 @@
 import { JSX } from "preact";
 import { useState } from "preact/hooks";
-import { toast } from "sonner";
-import { t } from "../../core/i18n";
 import { getPlatformEnv, setMockEnv, PlatformEnv } from "../../core/platform";
 import {
   Settings,
@@ -12,12 +10,13 @@ import {
   AppWindow,
   X,
 } from "lucide-preact";
+import { ReloadPromptUI } from "./ReloadPromptUI";
 
 export const DebugPanel = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [env, setEnv] = useState<PlatformEnv>(getPlatformEnv());
+  const [showTestReload, setShowTestReload] = useState(false);
 
-  // 同步当前 Mock 状态
   const updateMock = (key: keyof PlatformEnv, value: boolean) => {
     const newEnv = { ...env, [key]: value };
     setEnv(newEnv);
@@ -26,234 +25,181 @@ export const DebugPanel = () => {
 
   const resetAll = () => {
     setMockEnv(null);
+    setEnv(getPlatformEnv());
+    window.location.reload();
   };
 
-  if (!isOpen) {
-    return (
-      <button
-        onClick={() => setIsOpen(true)}
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          width: "44px",
-          height: "44px",
-          borderRadius: "22px",
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
-          color: "white",
-          border: "1px solid rgba(255, 255, 255, 0.2)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-          zIndex: 999999,
-          cursor: "pointer",
-          backdropFilter: "blur(8px)",
-        }}
-        title={t("openDebugPanel")}
-      >
-        <Settings size={20} />
-      </button>
-    );
-  }
-
   return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: "20px",
-        right: "20px",
-        width: "280px",
-        backgroundColor: "rgba(28, 28, 30, 0.95)",
-        color: "white",
-        borderRadius: "16px",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-        zIndex: 999999,
-        display: "flex",
-        flexDirection: "column",
-        backdropFilter: "blur(12px)",
-        transform: "translateZ(0)",
-        fontFamily:
-          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-      }}
-    >
-      <div
-        style={{
-          padding: "16px",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+    <>
+      <ReloadPromptUI
+        isOpen={showTestReload}
+        onConfirm={() => {
+          setShowTestReload(false);
+          alert("触发了 Update Action (Mock)");
         }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <Settings size={18} color="#007AFF" />
-          <span style={{ fontWeight: "600", fontSize: "15px" }}>
-            Debug Tools
-          </span>
-        </div>
-        <button
-          onClick={() => setIsOpen(false)}
-          style={{
-            background: "none",
-            border: "none",
-            color: "#8E8E93",
-            cursor: "pointer",
-          }}
-        >
-          <X size={18} />
-        </button>
-      </div>
+        onCancel={() => setShowTestReload(false)}
+        title="发现新版本可用 (Test UI)"
+        desc="这是通过 DebugPanel 触发的真实组件渲染测试"
+        confirmLabel="刷新"
+        cancelLabel="忽略"
+      />
 
-      <div style={{ padding: "8px" }}>
-        <DebugItem
-          icon={<AppWindow size={16} />}
-          label="浏览器扩展 (Extension)"
-          value={env.isExtension}
-          onChange={(v) => updateMock("isExtension", v)}
-        />
-        <DebugItem
-          icon={<Smartphone size={16} />}
-          label="iOS 移动端"
-          value={env.isIOS}
-          onChange={(v) => updateMock("isIOS", v)}
-        />
-        <DebugItem
-          icon={<Smartphone size={16} />}
-          label="Android 移动端"
-          value={env.isAndroid}
-          onChange={(v) => updateMock("isAndroid", v)}
-        />
-        <DebugItem
-          icon={<Zap size={16} />}
-          label="iOS 快捷指令 (Shortcut)"
-          value={env.isShortcut}
-          onChange={(v) => updateMock("isShortcut", v)}
-        />
-        <DebugItem
-          icon={<Laptop size={16} />}
-          label="PWA 独立模式 (Standalone)"
-          value={env.isStandalone}
-          onChange={(v) => updateMock("isStandalone", v)}
-        />
-      </div>
-
-      <div
-        style={{
-          padding: "8px",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-        }}
-      >
+      {!isOpen ? (
         <button
-          onClick={() => {
-            // 模拟触发 PWA 更新提示 (与 ReloadPrompt 中一致的 UI)
-            toast.custom(
-              (tId) => (
-                <div className="pwa-toast-container">
-                  <div className="pwa-toast-content">
-                    <div className="pwa-toast-title">发现新版本可用 (Test)</div>
-                    <div className="pwa-toast-desc">
-                      更新以获得最新功能与修复
-                    </div>
-                  </div>
-                  <div className="pwa-toast-actions">
-                    <button
-                      className="pwa-btn-ignore"
-                      onClick={() => toast.dismiss(tId)}
-                    >
-                      忽略
-                    </button>
-                    <button
-                      className="pwa-btn-refresh"
-                      onClick={() => {
-                        toast.dismiss(tId);
-                        alert("触发了 Update Service Worker");
-                      }}
-                    >
-                      刷新
-                    </button>
-                  </div>
-                </div>
-              ),
-              {
-                duration: Infinity,
-                id: "pwa-update-toast-debug",
-                className: "pwa-toast-wrapper-hack",
-              },
-            );
-          }}
+          onClick={() => setIsOpen(true)}
           style={{
-            width: "100%",
-            padding: "8px",
-            marginBottom: "8px",
-            borderRadius: "8px",
-            backgroundColor: "rgba(52, 199, 89, 0.2)",
-            border: "1px solid rgba(52, 199, 89, 0.3)",
-            color: "#34C759",
-            fontSize: "13px",
-            cursor: "pointer",
-            textAlign: "center",
-          }}
-        >
-          触发 PWA 更新提示
-        </button>
-
-        <button
-          onClick={() => {
-            // 触发 PWA 安装逻辑 (Smart Trigger)
-            // 需要 App.tsx 中监听 'pwa-smart-trigger' 事件
-            window.dispatchEvent(new CustomEvent("pwa-smart-trigger"));
-            alert(
-              "已发送 pwa-smart-trigger 事件，请检查安装提示是否弹出（需满足安装条件）",
-            );
-          }}
-          style={{
-            width: "100%",
-            padding: "8px",
-            borderRadius: "8px",
-            backgroundColor: "rgba(10, 132, 255, 0.2)",
-            border: "1px solid rgba(10, 132, 255, 0.3)",
-            color: "#0A84FF",
-            fontSize: "13px",
-            cursor: "pointer",
-            textAlign: "center",
-          }}
-        >
-          触发 PWA 安装提示
-        </button>
-      </div>
-
-      <div
-        style={{
-          padding: "12px",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          display: "flex",
-          gap: "8px",
-        }}
-      >
-        <button
-          onClick={resetAll}
-          style={{
-            flex: 1,
-            padding: "8px",
-            borderRadius: "8px",
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-            border: "none",
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            width: "44px",
+            height: "44px",
+            borderRadius: "22px",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
             color: "white",
-            fontSize: "13px",
+            border: "1px solid rgba(255, 255, 255, 0.2)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "6px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+            zIndex: 999999,
             cursor: "pointer",
+            backdropFilter: "blur(8px)",
+          }}
+          title="Open Debug Panel"
+        >
+          <Settings size={20} />
+        </button>
+      ) : (
+        <div
+          style={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            width: "280px",
+            backgroundColor: "rgba(28, 28, 30, 0.95)",
+            color: "white",
+            borderRadius: "16px",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+            zIndex: 999999,
+            display: "flex",
+            flexDirection: "column",
+            backdropFilter: "blur(12px)",
+            transform: "translateZ(0)",
+            fontFamily:
+              "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
           }}
         >
-          <RefreshCcw size={14} />
-          还原真实环境
-        </button>
-      </div>
-    </div>
+          <div
+            style={{
+              padding: "16px",
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Settings size={18} color="#007AFF" />
+              <span style={{ fontWeight: "600", fontSize: "15px" }}>
+                Debug Tools
+              </span>
+            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#8E8E93",
+                cursor: "pointer",
+              }}
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          <div style={{ padding: "8px", overflowY: "auto", maxHeight: "400px" }}>
+            <DebugItem
+              icon={<AppWindow size={16} />}
+              label="浏览器扩展 (Extension)"
+              value={env.isExtension}
+              onChange={(v) => updateMock("isExtension", v)}
+            />
+            <DebugItem
+              icon={<Smartphone size={16} />}
+              label="iOS 移动端"
+              value={env.isIOS}
+              onChange={(v) => updateMock("isIOS", v)}
+            />
+            <DebugItem
+              icon={<Smartphone size={16} />}
+              label="Android 移动端"
+              value={env.isAndroid}
+              onChange={(v) => updateMock("isAndroid", v)}
+            />
+            <DebugItem
+              icon={<Zap size={16} />}
+              label="iOS 快捷指令 (Shortcut)"
+              value={env.isShortcut}
+              onChange={(v) => updateMock("isShortcut", v)}
+            />
+            <DebugItem
+              icon={<Laptop size={16} />}
+              label="PWA 独立模式 (Standalone)"
+              value={env.isStandalone}
+              onChange={(v) => updateMock("isStandalone", v)}
+            />
+
+            <div
+              style={{
+                height: "1px",
+                backgroundColor: "rgba(255,255,255,0.1)",
+                margin: "8px 0",
+              }}
+            />
+
+            <button
+              onClick={resetAll}
+              style={{
+                width: "100%",
+                padding: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "6px",
+                backgroundColor: "rgba(255, 59, 48, 0.15)",
+                border: "1px solid rgba(255, 59, 48, 0.3)",
+                color: "#FF3B30",
+                borderRadius: "8px",
+                fontSize: "13px",
+                cursor: "pointer",
+                marginBottom: "8px",
+              }}
+            >
+              <RefreshCcw size={14} />
+              Reset All
+            </button>
+
+            <button
+              onClick={() => setShowTestReload(true)}
+              style={{
+                width: "100%",
+                padding: "8px",
+                borderRadius: "8px",
+                backgroundColor: "rgba(52, 199, 89, 0.2)",
+                border: "1px solid rgba(52, 199, 89, 0.3)",
+                color: "#34C759",
+                fontSize: "13px",
+                cursor: "pointer",
+                textAlign: "center",
+              }}
+            >
+              触发 PWA 更新提示 (真实UI)
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

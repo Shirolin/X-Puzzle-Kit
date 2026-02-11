@@ -2,8 +2,9 @@ import { useRegisterSW } from "virtual:pwa-register/react";
 import { toast } from "sonner";
 import { useEffect } from "preact/hooks";
 import { t } from "../../core/i18n";
+import { ReloadPromptUI } from "./ReloadPromptUI";
 
-// PWA Update Signal: 2026-02-10-20-35
+// PWA Update Signal: 2026-02-11-09-50
 
 export function ReloadPrompt({ isBusy = false }: { isBusy?: boolean }) {
   const {
@@ -11,7 +12,7 @@ export function ReloadPrompt({ isBusy = false }: { isBusy?: boolean }) {
     updateServiceWorker,
   } = useRegisterSW({
     onOfflineReady() {
-      toast(t("pwaOfflineReady"), {
+      toast.success(t("pwaOfflineReady"), {
         duration: 3000,
       });
     },
@@ -27,49 +28,26 @@ export function ReloadPrompt({ isBusy = false }: { isBusy?: boolean }) {
     const isFromShortcut =
       new URLSearchParams(window.location.search).get("source") === "shortcut";
 
-    if (needRefresh) {
-      if (isFromShortcut) {
-        // 如果是从快捷指令打开且应用处于空闲状态（无图片数据），自动触发刷新升级
-        if (!isBusy) {
-          console.log("Silent updating SW for shortcut user...");
-          updateServiceWorker(true);
-        }
-      } else {
-        toast.custom(
-          (tId) => (
-            <div className="pwa-toast-container">
-              <div className="pwa-toast-content">
-                <div className="pwa-toast-title">{t("pwaUpdateAvailable")}</div>
-                <div className="pwa-toast-desc">{t("pwaUpdateReady")}</div>
-              </div>
-              <div className="pwa-toast-actions">
-                <button
-                  className="pwa-btn-ignore"
-                  onClick={() => {
-                    toast.dismiss(tId);
-                    setNeedRefresh(false);
-                  }}
-                >
-                  {t("pwaIgnore")}
-                </button>
-                <button
-                  className="pwa-btn-refresh"
-                  onClick={() => updateServiceWorker(true)}
-                >
-                  {t("pwaRefresh")}
-                </button>
-              </div>
-            </div>
-          ),
-          {
-            duration: Infinity,
-            id: "pwa-update-toast", // Ensure only one exists
-            className: "pwa-toast-wrapper-hack", // Sonner might wrap it, but we want our own style
-          },
-        );
-      }
+    if (needRefresh && isFromShortcut && !isBusy) {
+      console.log("Silent updating SW for shortcut user...");
+      updateServiceWorker(true);
     }
-  }, [needRefresh, updateServiceWorker, setNeedRefresh, isBusy]);
+  }, [needRefresh, updateServiceWorker, isBusy]);
 
-  return null;
+  // Don't show prompts for Shortcut users (silent update handled above)
+  const isFromShortcut =
+    new URLSearchParams(window.location.search).get("source") === "shortcut";
+  if (isFromShortcut) return null;
+
+  return (
+    <ReloadPromptUI
+      isOpen={needRefresh}
+      onConfirm={() => updateServiceWorker(true)}
+      onCancel={() => setNeedRefresh(false)}
+      title={t("pwaUpdateAvailable")}
+      desc={t("pwaUpdateReady")}
+      confirmLabel={t("pwaRefresh")}
+      cancelLabel={t("pwaIgnore")}
+    />
+  );
 }
