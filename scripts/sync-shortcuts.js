@@ -23,6 +23,8 @@ function syncShortcuts() {
 
     const shortcutData = {
       version: verMatch[1],
+      // 将 1.0.0 转换为 100, 1.2.3 -> 123
+      versionCode: parseInt(verMatch[1].replace(/\./g, "")),
       url: urlMatch[1],
       notes: noteMatch[1].replace(/\\n/g, "\n"), // 处理换行符
     };
