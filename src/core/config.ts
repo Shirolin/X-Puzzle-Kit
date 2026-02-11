@@ -49,6 +49,5 @@ export const APP_CONFIG = {
     IOS_SHORTCUT_URL:
       "https://www.icloud.com/shortcuts/b932fef77a3842dd89db1eed4488bf42?source=shortcut",
     IOS_SHORTCUT_NOTE_KEY: "shortcutUpdateNote",
-    IOS_SHORTCUT_API: "/api/shortcuts-update",
   },
 };
