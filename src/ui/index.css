@@ -2965,8 +2965,7 @@ button:active {
   .item-actions-group .btn-icon,
   .image-sort-add-btn,
   .image-sort-clear-btn,
-  .image-sort-import-btn,
-  .sorting-toolbar-btn {
+  .image-sort-import-btn {
     width: 44px !important;
     height: 44px !important;
     border-radius: 12px !important;
