@@ -37,8 +37,16 @@ function syncShortcuts() {
               msgContent.shortcutUpdateNote &&
               msgContent.shortcutUpdateNote.message
             ) {
-              const noteKey = `notes_${locale}`; // notes_en, notes_zh_CN
-              notes[noteKey] = msgContent.shortcutUpdateNote.message;
+              const message = msgContent.shortcutUpdateNote.message;
+              notes[`notes_${locale}`] = message;
+
+              // 增加基础语言代码别名 (例如 zh_CN -> zh)，方便快捷指令动态匹配
+              if (locale.includes("_")) {
+                const baseLang = locale.split("_")[0];
+                if (!notes[`notes_${baseLang}`]) {
+                  notes[`notes_${baseLang}`] = message;
+                }
+              }
             }
           } catch (e) {
             console.warn(`⚠️ [Sync] 无法解析语言文件: ${locale}`);
