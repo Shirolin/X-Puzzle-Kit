@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import { createPortal } from "preact/compat";
 import {
   X,
@@ -17,7 +17,7 @@ import {
 import { t } from "../../core/i18n";
 import { toast } from "sonner";
 import { APP_CONFIG } from "../../core/config";
-import { getPlatformEnv } from "../../core/platform";
+import { getAssetUrl, getPlatformEnv } from "../../core/platform";
 
 interface UserGuideDialogProps {
   isOpen: boolean;
@@ -92,7 +92,19 @@ export function UserGuideDialog({
     src: string;
     type: "image" | "video";
   } | null>(null);
+  const [isMediaLoading, setIsMediaLoading] = useState(true);
+  const mediaRef = useRef<HTMLImageElement>(null);
   const { isAndroid } = getPlatformEnv();
+
+  useEffect(() => {
+    if (previewMedia) {
+      setIsMediaLoading(true);
+      // 关键修复：如果图片已经在缓存中加载完成，手动关闭加载动画
+      if (mediaRef.current?.complete) {
+        setIsMediaLoading(false);
+      }
+    }
+  }, [previewMedia]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -125,7 +137,10 @@ export function UserGuideDialog({
           </a>
           <button
             onClick={() =>
-              setPreviewMedia({ src: "assets/ios.gif", type: "video" })
+              setPreviewMedia({
+                src: getAssetUrl("assets/ios.gif"),
+                type: "video",
+              })
             }
             className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
           >
@@ -154,9 +169,8 @@ export function UserGuideDialog({
                   {i < arr.length - 1 && (
                     <>
                       <span className="pwa-highlight">PWA</span>
-                      <HelpCircle
-                        size={12}
-                        className="help-info-icon"
+                      <span
+                        className="help-info-icon-wrapper"
                         onClick={() =>
                           toast(t("pwaWhatIs"), {
                             duration: 6000,
@@ -168,7 +182,9 @@ export function UserGuideDialog({
                             ),
                           })
                         }
-                      />
+                      >
+                        <HelpCircle size={12} className="help-info-icon" />
+                      </span>
                     </>
                   )}
                 </span>
@@ -195,7 +211,7 @@ export function UserGuideDialog({
           <button
             onClick={() =>
               setPreviewMedia({
-                src: "assets/xpk-pwa-install.webp",
+                src: getAssetUrl("assets/xpk-pwa-install.webp"),
                 type: "image",
               })
             }
@@ -206,7 +222,10 @@ export function UserGuideDialog({
           </button>
           <button
             onClick={() =>
-              setPreviewMedia({ src: "assets/android.gif", type: "video" })
+              setPreviewMedia({
+                src: getAssetUrl("assets/android.gif"),
+                type: "video",
+              })
             }
             className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
           >
@@ -234,9 +253,8 @@ export function UserGuideDialog({
                 {i < arr.length - 1 && (
                   <>
                     <span className="pwa-highlight">PWA</span>
-                    <HelpCircle
-                      size={14}
-                      className="help-info-icon"
+                    <span
+                      className="help-info-icon-wrapper"
                       onClick={() =>
                         toast(t("pwaWhatIs"), {
                           duration: 6000,
@@ -248,7 +266,9 @@ export function UserGuideDialog({
                           ),
                         })
                       }
-                    />
+                    >
+                      <HelpCircle size={14} className="help-info-icon" />
+                    </span>
                   </>
                 )}
               </span>
@@ -349,7 +369,7 @@ export function UserGuideDialog({
                     <button
                       onClick={() =>
                         setPreviewMedia({
-                          src: "assets/chrome-ext.gif",
+                          src: getAssetUrl("assets/chrome-ext.gif"),
                           type: "video",
                         })
                       }
@@ -432,17 +452,36 @@ export function UserGuideDialog({
             style={{
               maxWidth:
                 previewMedia.type === "video" ? "800px" : "min(90%, 400px)",
+              position: "relative",
+              minHeight: "200px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
+            {isMediaLoading && (
+              <div className="media-loading-indicator">
+                <div
+                  className="spinner"
+                  style={{ width: "32px", height: "32px" }}
+                />
+              </div>
+            )}
             <img
+              key={previewMedia.src}
+              ref={mediaRef}
               src={previewMedia.src}
               alt="Preview"
-              className="screenshot-preview-img"
+              className={`screenshot-preview-img ${isMediaLoading ? "loading" : "loaded"}`}
               loading="lazy"
+              onLoad={() => setIsMediaLoading(false)}
+              onError={() => setIsMediaLoading(false)}
               style={{
                 maxHeight: "80vh",
                 objectFit: "contain",
                 transform: "translateZ(0)",
+                opacity: isMediaLoading ? 0 : 1,
+                transition: "opacity 0.3s ease",
               }}
             />
             <button

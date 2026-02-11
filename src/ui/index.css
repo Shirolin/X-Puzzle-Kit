@@ -462,15 +462,17 @@ textarea {
 .help-info-icon-wrapper {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   color: var(--color-text-muted);
-  opacity: 0.6;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all var(--transition-fast);
+  line-height: 0;
+  margin-left: 2px;
 }
 
 .help-info-icon-wrapper:hover {
-  opacity: 1;
+  transform: scale(1.1);
   color: var(--color-primary);
 }
 
@@ -4344,25 +4346,10 @@ button:active {
   color: var(--color-primary);
 }
 
-.help-info-icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0; /* 绝对不允许图标缩放 */
-  margin-left: 2px;
-  line-height: 0;
-  cursor: pointer;
-  transition: transform var(--transition-fast);
-}
-
-.help-info-icon-wrapper:hover {
-  transform: scale(1.1);
-}
-
 .help-info-icon {
   opacity: 0.5;
   transition: opacity var(--transition-fast);
-  color: var(--color-text-muted);
+  color: inherit; /* 继承包装类的颜色 */
   /* 针对全大写标题的光学对齐微调 */
   transform: translateY(-0.2px);
 }
@@ -4819,4 +4806,22 @@ button:active {
 .pwa-btn-refresh:active {
   transform: translateY(0);
   filter: brightness(0.95);
+}
+
+/* --- Media Loading Styles --- */
+.media-loading-indicator {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.screenshot-preview-img.loading {
+  opacity: 0;
+}
+
+.screenshot-preview-img.loaded {
+  opacity: 1;
 }
