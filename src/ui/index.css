@@ -2852,7 +2852,7 @@ button:active {
 
   .sidebar-scroll-area {
     padding: 0.4rem 0.625rem !important; /* Reduced top padding for a more compact start */
-    padding-bottom: 3rem !important;
+    padding-bottom: 1.5rem !important;
     scroll-padding-top: 24px; /* Match new header height */
     flex: 1;
     overflow-y: auto;
@@ -4541,23 +4541,21 @@ button:active {
   transform: scale(0.9);
 }
 
+:host([data-theme="light"]) .x-custom-toast [data-close-button],
 [data-theme="light"] .x-custom-toast [data-close-button] {
   background: rgba(0, 0, 0, 0.1) !important;
-  color: #000 !important;
-}
-
-.x-custom-toast:hover [data-close-button] {
-  opacity: 1 !important;
+  color: rgba(0, 0, 0, 0.65) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
 .x-custom-toast [data-close-button]:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.25) !important;
 }
 
-[data-theme="light"] .x-custom-toast [data-close-button] {
-  background: rgba(0, 0, 0, 0.05) !important;
-  border-color: rgba(0, 0, 0, 0.05) !important;
+:host([data-theme="light"]) .x-custom-toast [data-close-button]:hover,
+[data-theme="light"] .x-custom-toast [data-close-button]:hover {
+  background: rgba(0, 0, 0, 0.15) !important;
+  color: #000 !important;
 }
 
 /* --- Desktop Specific Refinements (V4 Performance) --- */

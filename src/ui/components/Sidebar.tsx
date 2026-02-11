@@ -1262,7 +1262,7 @@ export function Sidebar({
                 <Divider />
 
                 <div
-                  className="section-header-row"
+                  className="section-row-standard"
                   style={{ marginTop: "14px", marginBottom: "8px" }}
                 >
                   <h3 className="section-sub-header" style={{ margin: 0 }}>
@@ -1272,7 +1272,7 @@ export function Sidebar({
                     style={{
                       display: "flex",
                       gap: "6px",
-                      alignItems: "center",
+                      alignItems: "flex-start",
                     }}
                   >
                     <a
@@ -1466,7 +1466,7 @@ export function Sidebar({
                   color: "var(--color-text-muted)",
                   opacity: 0.5,
                   lineHeight: 1.6,
-                  margin: "0 0 16px",
+                  margin: "0 0 8px",
                   padding: "0 12px",
                   textAlign: "center",
                 }}
@@ -1477,6 +1477,8 @@ export function Sidebar({
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
+                    display: "block",
+                    marginTop: "4px",
                     color: "var(--color-text-muted)",
                     opacity: 0.8,
                     textDecoration: "underline",
