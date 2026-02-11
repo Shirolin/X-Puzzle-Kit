@@ -712,5 +712,9 @@
   "privacyPolicy": {
     "message": "Gizlilik Politikası",
     "description": "Privacy policy link text"
+  },
+  "shortcutUpdateNote": {
+    "message": "Yeni sürüm mevcut! En iyi deneyim için güncellemeniz önerilir.",
+    "description": "Note shown in iOS Shortcuts when an update is available"
   }
 }

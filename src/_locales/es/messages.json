@@ -712,5 +712,9 @@
   "privacyPolicy": {
     "message": "Política de Privacidad",
     "description": "Privacy policy link text"
+  },
+  "shortcutUpdateNote": {
+    "message": "¡Nueva versión disponible! Te recomendamos actualizar para obtener la mejor experiencia.",
+    "description": "Note shown in iOS Shortcuts when an update is available"
   }
 }
