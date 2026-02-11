@@ -630,7 +630,7 @@
     "description": "Native install recommendation"
   },
   "pwaWhatIs": {
-    "message": "PWA (Progressive Web App) is not a traditional app. It requires no store download and consumes zero disk space. If you're hesitant to install bulky apps, PWA is the perfect lightweight solution.",
+    "message": "PWA is a modern app format that requires no store download. Essentially a 「web with app powers,」 it uses almost no storage—the perfect lightweight choice for your device.",
     "description": "PWA explanation"
   },
   "guideTechnicalTitle": {

@@ -215,18 +215,18 @@
     "message": "¿Por qué instalar la PWA?",
     "description": "PWA benefit section title"
   },
-    "pwaBenefitIntegrated": {
-      "message": "• Integración fluida: Soporta el menú compartir de Android para importar imágenes de X más rápido.",
-      "description": "PWA benefit: Android integration"
-    },
-    "pwaBenefitFullscreen": {
-      "message": "• Pantalla completa: Oculta la barra de direcciones para ajustes precisos en pantallas grandes.",
-      "description": "PWA benefit: Full-screen focus"
-    },
-    "pwaBenefitIOSFix": {
-      "message": "• Optimización de visualización: Soluciona problemas de márgenes y visualización específicos de iOS PWA.",
-      "description": "PWA benefit: iOS PWA optimization"
-    },
+  "pwaBenefitIntegrated": {
+    "message": "• Integración fluida: Soporta el menú compartir de Android para importar imágenes de X más rápido.",
+    "description": "PWA benefit: Android integration"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• Pantalla completa: Oculta la barra de direcciones para ajustes precisos en pantallas grandes.",
+    "description": "PWA benefit: Full-screen focus"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• Optimización de visualización: Soluciona problemas de márgenes y visualización específicos de iOS PWA.",
+    "description": "PWA benefit: iOS PWA optimization"
+  },
   "guideNativeInstall": {
     "message": "Instala la PWA para ver 「X-Puzzle-Kit」 en el menú de compartir de X (Twitter) para importar con un clic.",
     "description": "Native install recommendation"
@@ -646,7 +646,7 @@
     "description": "Título de tarjeta de manual 3"
   },
   "pwaWhatIs": {
-    "message": "Una PWA (aplicación web progresiva) no es una aplicación tradicional. No requiere descarga de tienda y consume cero espacio en disco. Es esencialmente una 「página web con superpoderes de aplicación」. Si dudas en instalar aplicaciones pesadas, la PWA es la solución ligera perfecta.",
+    "message": "PWA es un formato de aplicación moderno que no requiere descarga. Esencialmente una 「web con poderes de app」, casi no ocupa espacio y es la opción más ligera para tu dispositivo.",
     "description": "PWA explanation"
   },
   "langZhCN": {

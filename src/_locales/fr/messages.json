@@ -175,18 +175,18 @@
     "message": "Pourquoi installer la PWA ?",
     "description": "PWA benefit section title"
   },
-    "pwaBenefitIntegrated": {
-      "message": "• Intégration fluide : Supporte le menu de partage Android pour importer des images de X plus rapidement.",
-      "description": "PWA benefit: Android integration"
-    },
-    "pwaBenefitFullscreen": {
-      "message": "• Plein écran immersif : Cache la barre d'adresse pour un focus total sur vos créations.",
-      "description": "PWA benefit: Full-screen focus"
-    },
-    "pwaBenefitIOSFix": {
-      "message": "• Optimisation iOS : Corrige les problèmes d'affichage et de marges spécifiques à l'environnement PWA iOS.",
-      "description": "PWA benefit: iOS PWA optimization"
-    },
+  "pwaBenefitIntegrated": {
+    "message": "• Intégration fluide : Supporte le menu de partage Android pour importer des images de X plus rapidement.",
+    "description": "PWA benefit: Android integration"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• Plein écran immersif : Cache la barre d'adresse pour un focus total sur vos créations.",
+    "description": "PWA benefit: Full-screen focus"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• Optimisation iOS : Corrige les problèmes d'affichage et de marges spécifiques à l'environnement PWA iOS.",
+    "description": "PWA benefit: iOS PWA optimization"
+  },
   "guideNativeInstall": {
     "message": "Installez la PWA pour voir 「X-Puzzle-Kit」 dans votre menu de partage X (Twitter) pour une importation en un clic.",
     "description": "Native install recommendation"
@@ -646,7 +646,7 @@
     "description": "Titre de la carte de manuel 3"
   },
   "pwaWhatIs": {
-    "message": "Une PWA (application web progressive) n「est pas une application traditionnelle. Elle ne nécessite aucun téléchargement sur store et consomme zéro espace disque. C」est essentiellement une 「page web avec des superpouvoirs d'application」. Si vous hésitez à installer des applications lourdes, la PWA est la solution légère idéale.",
+    "message": "La PWA est un format d'application moderne sans téléchargement via store. C'est un 「web aux pouvoirs d'app」, occupant peu d'espace et offrant l'expérience la plus légère possible.",
     "description": "PWA explanation"
   },
   "langZhCN": {

@@ -223,18 +223,18 @@
     "message": "왜 PWA를 설치해야 하나요?",
     "description": "PWA 优势部分标题"
   },
-    "pwaBenefitIntegrated": {
-      "message": "• 원활한 통합: Android 시스템 공유 메뉴를 지원하여 X에서 이미지를 더 빠르게 가져올 수 있습니다.",
-      "description": "PWA 优势: Android 集成"
-    },
-    "pwaBenefitFullscreen": {
-      "message": "• 몰입형 환경: 브라우저 주소창 없이 전체 화면으로 작업에 집중할 수 있습니다.",
-      "description": "PWA 优势: 全屏视野"
-    },
-    "pwaBenefitIOSFix": {
-      "message": "• 뷰포트 최적화: iOS PWA 환경에 맞춰 하단 여백 및 화면 왜곡 문제를 완전히 해결했습니다.",
-      "description": "PWA 优势: iOS 视口修复"
-    },
+  "pwaBenefitIntegrated": {
+    "message": "• 원활한 통합: Android 시스템 공유 메뉴를 지원하여 X에서 이미지를 더 빠르게 가져올 수 있습니다.",
+    "description": "PWA 优势: Android 集成"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• 몰입형 환경: 브라우저 주소창 없이 전체 화면으로 작업에 집중할 수 있습니다.",
+    "description": "PWA 优势: 全屏视野"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• 뷰포트 최적화: iOS PWA 환경에 맞춰 하단 여백 및 화면 왜곡 문제를 완전히 해결했습니다.",
+    "description": "PWA 优势: iOS 视口修复"
+  },
   "guideNativeInstall": {
     "message": "아래 「PWA 설치」 버튼을 눌러 완료하면 X (Twitter) 공유 메뉴에서 본 도구를 즉시 확인하고 원클릭으로 이미지를 가져올 수 있습니다。",
     "description": "Native install recommendation"
@@ -646,7 +646,7 @@
     "description": "매뉴얼 카드 제목 3"
   },
   "pwaWhatIs": {
-    "message": "PWA (Progressive Web App)는 기존의 무거운 앱이 아닙니다. 별도의 스토어 다운로드가 필요 없고 용량을 거의 차지하지 않는 「앱의 기능을 가진 웹페이지」입니다. 기기에 부담을 주지 않으면서도 강력한 연동 기능을 사용하고 싶은 분들에게 완벽한 해결책입니다。",
+    "message": "PWA는 스토어 다운로드 없이 바로 사용하는 새로운 앱 형식입니다. 본질은 「앱의 기능을 갖춘 웹」으로, 저장 공간 부담 없이 가볍게 즐길 수 있는 최고의 선택입니다.",
     "description": "PWA explanation"
   },
   "langZhCN": {

@@ -630,8 +630,8 @@
     "description": "原生安装建议"
   },
   "pwaWhatIs": {
-    "message": "PWA (Progressive Web App) 并非传统 App。它无需下载、不占空间，本质上是「带有 App 功能的网页」。如果您不想给手机增加额外负担，PWA 是最轻盈的捷径选择。",
-    "description": "PWA 科普解释文案"
+    "message": "PWA 是一种无需通过商店下载的现代应用形式。它本质上是「具备应用能力的网页」，几乎不占用存储空间，是追求轻盈体验的最佳选择。",
+    "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
     "message": "消除原图自带间隙",

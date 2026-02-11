@@ -211,24 +211,24 @@
     "message": "なぜ PWA をインストールするのですか？",
     "description": "PWA 优势部分标题"
   },
-    "pwaBenefitIntegrated": {
-      "message": "• シームレスな統合：Android のシステム共有メニューに対応。X からのインポートが劇的に速くなります。",
-      "description": "PWA 优势: Android 集成"
-    },
-    "pwaBenefitFullscreen": {
-      "message": "• 没入型フルスクリーン：アドレスバーを隠し、大画面でも精細な編集が可能になります。",
-      "description": "PWA 优势: 全屏视野"
-    },
-    "pwaBenefitIOSFix": {
-      "message": "• 表示の最適化：iOS PWA 環境特有の表示崩れや、上下の余白問題を完全に解決しました。",
-      "description": "PWA 优势: iOS 视口修复"
-    },
+  "pwaBenefitIntegrated": {
+    "message": "• シームレスな統合：Android のシステム共有メニューに対応。X からのインポートが劇的に速くなります。",
+    "description": "PWA 优势: Android 集成"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• 没入型フルスクリーン：アドレスバーを隠し、大画面でも精細な編集が可能になります。",
+    "description": "PWA 优势: 全屏视野"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• 表示の最適化：iOS PWA 環境特有の表示崩れや、上下の余白問題を完全に解決しました。",
+    "description": "PWA 优势: iOS 视口修复"
+  },
   "guideNativeInstall": {
     "message": "下の「PWAをインストール」ボタンをクリックして完了すると、X (Twitter) の共有メニューに本ツールが表示され、一键インポートが可能になります。",
     "description": "Native install recommendation"
   },
   "pwaWhatIs": {
-    "message": "PWA (Progressive Web App) は、従来のアプリとは異なります。ストアからのダウンロードが不要で、ディスク容量もほとんど消費しません。本質的には「アプリの機能を持ったウェブページ」であり、スマホの負担を増やしたくない方に最適な、最も軽快な選択肢です。",
+    "message": "PWAは、ストア不要で利用できる新しいアプリ形式です。本質は「アプリの機能を持つウェブ」であり、容量を気にせず軽快に使える、最もスマートな選択肢です。",
     "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
