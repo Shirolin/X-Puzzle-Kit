@@ -3,6 +3,7 @@ import preact from "@preact/preset-vite";
 import webExtension from "vite-plugin-web-extension";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import path from "path";
+import { execSync } from "child_process";
 
 export default defineConfig({
   resolve: {
@@ -46,6 +47,16 @@ export default defineConfig({
   ],
   define: {
     __IS_EXTENSION__: true,
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version || "1.1.2"),
+    __BUILD_ID__: JSON.stringify(
+      (() => {
+        try {
+          return execSync("git rev-parse --short HEAD").toString().trim();
+        } catch {
+          return "dev";
+        }
+      })().toUpperCase(),
+    ),
   },
   build: {
     chunkSizeWarningLimit: 1000,
