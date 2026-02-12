@@ -20,6 +20,7 @@ const locales: Record<string, Record<string, { message: string }>> = {
   fr: langFr,
   de: langDe,
   pt_BR: langPt,
+  pt: langPt, // 保持 pt 引用，确保插件内部逻辑与旧配置兼容
   tr: langTr,
 };
 
@@ -50,6 +51,9 @@ function resolveAutoLanguage(): string {
   for (const [prefix, locale] of Object.entries(prefixMap)) {
     if (lang.startsWith(prefix)) return locale;
   }
+  // 特殊处理葡萄牙语家族
+  if (lang.startsWith("pt")) return "pt_BR";
+
   return "en";
 }
 
