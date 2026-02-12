@@ -6,7 +6,7 @@ import langKo from "../_locales/ko/messages.json";
 import langEs from "../_locales/es/messages.json";
 import langFr from "../_locales/fr/messages.json";
 import langDe from "../_locales/de/messages.json";
-import langPt from "../_locales/pt/messages.json";
+import langPt from "../_locales/pt_BR/messages.json";
 import langTr from "../_locales/tr/messages.json";
 import { platformStorage } from "./platform";
 
@@ -19,7 +19,7 @@ const locales: Record<string, Record<string, { message: string }>> = {
   es: langEs,
   fr: langFr,
   de: langDe,
-  pt: langPt,
+  pt_BR: langPt,
   tr: langTr,
 };
 
@@ -43,7 +43,7 @@ function resolveAutoLanguage(): string {
     es: "es",
     fr: "fr",
     de: "de",
-    pt: "pt",
+    pt: "pt_BR",
     tr: "tr",
   };
 
