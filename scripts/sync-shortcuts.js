@@ -51,6 +51,11 @@ function syncShortcuts() {
                 if (!notes[`notes_${baseLang}`] || iosLocale === "zh-CN") {
                   notes[`notes_${baseLang}`] = message;
                 }
+
+                // 特殊处理：如果发现 pt-BR，同步给 pt-PT 确保全覆盖
+                if (baseLang === "pt") {
+                  notes[`notes_pt-PT`] = message;
+                }
               } else {
                 notes[`notes_${iosLocale}`] = message;
               }
