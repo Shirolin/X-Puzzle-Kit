@@ -4440,6 +4440,7 @@ button:active {
   transform: translateZ(0);
 }
 
+:host([data-theme="light"]) .x-custom-toast,
 [data-theme="light"] .x-custom-toast {
   background: rgba(255, 255, 255, 0.7) !important;
   border: 1px solid rgba(0, 0, 0, 0.05) !important;

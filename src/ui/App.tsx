@@ -409,6 +409,15 @@ export function App({
         root.host.setAttribute("data-lang", effectiveLang);
       }
     }
+
+    // Ensure the dynamically generated Toaster root (used for sonner toast popovers)
+    // also receives the correct theme attributes. In popup mode, this container
+    // is outside of the #root mountNode.
+    const extraHost = document.getElementById("x-puzzle-kit-root");
+    if (extraHost) {
+      extraHost.setAttribute("data-theme", effectiveTheme);
+      extraHost.setAttribute("data-lang", effectiveLang);
+    }
   }, [isThemeDark, lang, mountNode]);
 
   const lastLoadedUrlRef = useRef<string | null>(null);
@@ -826,13 +835,16 @@ export function App({
 
   // If running in popup mode, we use different container classes
   const env = getPlatformEnv();
-  const isWebFullscreen = !env.isExtension && !env.isPopup;
-  const containerClass = env.isPopup
+  const effectiveIsPopup = isPopup || env.isPopup;
+  const isWebFullscreen = !env.isExtension && !effectiveIsPopup;
+  const containerClass = effectiveIsPopup
     ? "app-popup-container"
     : isWebFullscreen
       ? "app-container app-fullscreen"
       : "app-container";
-  const wrapperClass = env.isPopup ? "app-popup-wrapper" : "app-root-shell";
+  const wrapperClass = effectiveIsPopup
+    ? "app-popup-wrapper"
+    : "app-root-shell";
 
   const [showUrlInput, setShowUrlInput] = useState(false);
 

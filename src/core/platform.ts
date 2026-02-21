@@ -43,7 +43,8 @@ export const getPlatformEnv = (): PlatformEnv => {
   const isPopup =
     isExtension &&
     typeof window !== "undefined" &&
-    (window.location.pathname.includes("popup.html") ||
+    (window.location.pathname.includes("/popup/") ||
+      window.location.pathname.includes("popup.html") ||
       window.name === "x-puzzle-kit-popup");
 
   const baseEnv: PlatformEnv = {
