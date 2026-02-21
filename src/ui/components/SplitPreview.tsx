@@ -2,12 +2,15 @@ import { useEffect, useState } from "preact/hooks";
 import { JSX } from "preact";
 
 import { SplitConfig } from "../../core/types";
+import { calculateEffectiveArea } from "../../core/splitLayout";
 
 interface SplitPreviewProps {
   source: ImageBitmap | null;
   blobs: Blob[];
   config: SplitConfig;
   aspectRatio?: number;
+  backgroundColor: import("../../core/types").BackgroundColor;
+  viewerScale: number;
 }
 
 export function SplitPreview({
@@ -15,26 +18,42 @@ export function SplitPreview({
   blobs,
   config,
   aspectRatio: _aspectRatio,
+  backgroundColor,
+  viewerScale,
 }: SplitPreviewProps) {
+  const { drawW, drawH } = source
+    ? calculateEffectiveArea(source.width, source.height, config.autoCropRatio)
+    : { drawW: 0, drawH: 0 };
+
   const [urls, setUrls] = useState<string[]>([]);
   const [sourceUrl, setSourceUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    if (source) {
-      const blob = new Promise<Blob>((resolve) => {
-        const canvas = document.createElement("canvas");
-        canvas.width = source.width;
-        canvas.height = source.height;
-        canvas.getContext("2d")?.drawImage(source, 0, 0);
-        canvas.toBlob((b) => resolve(b!));
-      });
-      blob.then((b) => {
-        const url = URL.createObjectURL(b);
-        setSourceUrl(url);
-      });
+    if (!source) {
+      setSourceUrl(null);
+      return;
     }
+
+    let active = true;
+    let url: string | null = null;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = source.width;
+    canvas.height = source.height;
+    canvas.getContext("2d")?.drawImage(source, 0, 0);
+
+    canvas.toBlob((b) => {
+      if (active && b) {
+        url = URL.createObjectURL(b);
+        setSourceUrl(url);
+      }
+    });
+
     return () => {
-      if (sourceUrl) URL.revokeObjectURL(sourceUrl);
+      active = false;
+      if (url) {
+        URL.revokeObjectURL(url);
+      }
     };
   }, [source]);
 
@@ -58,8 +77,7 @@ export function SplitPreview({
           height: source.height,
           borderRadius: "var(--radius-md)",
           overflow: "hidden",
-          boxShadow: "0 32px 80px rgba(0,0,0,0.9)",
-          background: "var(--color-card-bg)",
+          boxShadow: "var(--shadow-image)",
         }}
       >
         <img
@@ -80,98 +98,151 @@ export function SplitPreview({
     <div
       style={{
         display: "grid",
-        gap: "8px",
-        width: source ? source.width : "100%",
-        // aspectRatio: aspectRatio ? `${aspectRatio}` : "auto", // Remove aspect ratio constraint, let content drive it or fixed width drive it
+        gap: `${config.gap}px`,
+        position: "relative",
+        width: `${drawW}px`,
+        height: `${drawH}px`,
+        borderRadius: `${12 / viewerScale}px`,
+        overflow: "hidden",
+        boxShadow: `0 ${4 / viewerScale}px ${20 / viewerScale}px rgba(0, 0, 0, 0.1)`,
         margin: "0 auto",
+        backgroundColor:
+          config.fillBackground && backgroundColor !== "transparent"
+            ? backgroundColor === "white"
+              ? "#ffffff"
+              : "#000000"
+            : "transparent",
         ...getGridStyle(config),
       }}
+      className=""
     >
-      {urls.map((url, idx) => (
-        <div
-          key={idx}
-          className="group"
-          style={{
-            position: "relative",
-            border: "1px solid var(--color-item-border)",
-            borderRadius: "var(--radius-md)",
-            overflow: "hidden",
-            backgroundColor: "var(--color-card-bg)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            // T-Shape specific positioning
-            ...(config.layout === "T_SHAPE_3" ? getTShapeItemStyle(idx) : {}),
-          }}
-        >
-          <img
-            src={url}
-            alt={`Split ${idx + 1}`}
-            draggable={false}
-            onLoad={(e) => {
-              const img = e.currentTarget;
-              const resText = `${img.naturalWidth} x ${img.naturalHeight}`;
-              const badge = img.parentNode?.querySelector(".res-badge");
-              if (badge) badge.textContent = resText;
-            }}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              display: "block",
-            }}
-          />
+      {urls.map((url, idx) => {
+        const uiScale = 1 / viewerScale;
+        const strokeWidth = Math.max(1, uiScale);
+        const inactiveColor = "rgba(255, 255, 255, 0.4)";
+
+        // 计算与外围容器适配的贴合圆角
+        const isTopRow = idx < config.cols;
+        const isBottomRow = idx >= (config.rows - 1) * config.cols;
+        const isLeftCol = idx % config.cols === 0;
+        const isRightCol = idx % config.cols === config.cols - 1;
+
+        const innerRadius =
+          config.gap === 0
+            ? "0px"
+            : `${Math.min(4 * uiScale, config.gap / 2)}px`;
+        const outerRadius = `${12 * uiScale}px`; // 与外部容器的圆角算法完全保持一致
+
+        const tl = isTopRow && isLeftCol ? outerRadius : innerRadius;
+        const tr = isTopRow && isRightCol ? outerRadius : innerRadius;
+        const br = isBottomRow && isRightCol ? outerRadius : innerRadius;
+        const bl = isBottomRow && isLeftCol ? outerRadius : innerRadius;
+        const adaptiveRadius = `${tl} ${tr} ${br} ${bl}`;
+
+        // 智能边框 UI 逻辑
+        const smartBorderStyle: JSX.CSSProperties =
+          config.gap > 0
+            ? { border: `${strokeWidth}px solid rgba(255,255,255,0.2)` }
+            : {
+                borderRight: `${strokeWidth}px solid ${inactiveColor}`,
+                borderBottom: `${strokeWidth}px solid ${inactiveColor}`,
+                borderLeft: "none",
+                borderTop: "none",
+              };
+
+        return (
           <div
-            className="overlay"
+            key={idx}
+            className="group"
             style={{
-              position: "absolute",
-              inset: 0,
-              backgroundColor: "var(--color-overlay)",
+              position: "relative",
+              ...smartBorderStyle,
+              borderRadius: adaptiveRadius,
+              overflow: "hidden",
+              backgroundColor:
+                config.fillBackground && backgroundColor !== "transparent"
+                  ? backgroundColor === "white"
+                    ? "#ffffff"
+                    : "#000000"
+                  : "transparent",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              opacity: 0,
-              transition: "opacity 0.2s",
-              pointerEvents: "none",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              // T-Shape specific positioning
+              ...(config.layout === "T_SHAPE_3" ? getTShapeItemStyle(idx) : {}),
             }}
           >
-            <span
+            <img
+              src={url}
+              alt={`Split ${idx + 1}`}
+              draggable={false}
+              onLoad={(e) => {
+                const img = e.currentTarget;
+                const resText = `${img.naturalWidth} x ${img.naturalHeight}`;
+                const badge = img.parentNode?.querySelector(".res-badge");
+                if (badge) badge.textContent = resText;
+              }}
               style={{
-                color: "white",
-                fontWeight: "bold",
-                fontSize: "1.125rem",
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                display: "block",
+              }}
+            />
+            <div
+              className="overlay"
+              style={{
+                position: "absolute",
+                inset: 0,
+                backgroundColor: "var(--color-overlay)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                opacity: 0,
+                transition: "opacity 0.2s",
+                pointerEvents: "none",
               }}
             >
-              #{idx + 1}
-            </span>
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              backgroundColor: "rgba(0,0,0,0.6)",
-              color: "white",
-              fontSize: "0.75rem",
-              padding: "2px 4px",
-              textAlign: "center",
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
-            <span className="res-badge">...</span> •{" "}
-            {blobs[idx].type.split("/")[1]?.toUpperCase() || "IMG"}
-          </div>
+              <span
+                style={{
+                  color: "white",
+                  fontWeight: "bold",
+                  fontSize: `${24 / viewerScale}px`,
+                }}
+              >
+                #{idx + 1}
+              </span>
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                backgroundColor: "rgba(0,0,0,0.6)",
+                color: "white",
+                fontSize: `${12 / viewerScale}px`,
+                padding: `${4 / viewerScale}px ${8 / viewerScale}px`,
+                textAlign: "center",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                backdropFilter: "blur(4px)",
+              }}
+            >
+              <span className="res-badge">...</span> •{" "}
+              {blobs[idx]?.type?.split("/")[1]?.toUpperCase() || "IMG"}
+            </div>
 
-          <style>{`
+            <style>{`
                .group:hover .overlay {
                    opacity: 1 !important;
                }
             `}</style>
-        </div>
-      ))}
+          </div>
+        );
+      })}
     </div>
   );
 }

@@ -8,7 +8,7 @@
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "O X-Puzzle-Kit é uma ferramenta profissional de união (stitching) e divisão de imagens desenvolvida especificamente para usuários do X (Twitter), artistas digitais e colecionadores. Seja para reconstruir um panorama em várias partes ou criar um \"reveal\" criativo em grade, o X-Puzzle-Kit garante que seu conteúdo apareça exatamente como planejado na timeline do X.\n\n🌐 SUPORTE MULTIPLATAFORMA:\nAlém desta extensão para Chrome, oferecemos uma versão Web completa (https://x-puzzle-kit.pages.dev/) para uso perfeito em celulares, tablets e outros navegadores.\n\n✨ RECURSOS PRINCIPAIS:\n\n🧵 União Inteligente (Stitching)\nJunte imagens de Tweets separados de volta ao seu formato original panorâmico ou longo.\n- Layouts Inteligentes: Suporte total para layouts Vertical, Horizontal, Grade 2x2 e o exclusivo formato \"T-Shape\".\n- Alinhamento Pixel-Perfect: Cálculo avançado de coordenadas elimina emendas de 1px e artefatos borrados.\n- Integração Nativa: Una imagens diretamente da sua timeline do X com um clique — sem necessidade de salvar manualmente.\n- Exportação Sem Perdas: Preserva cada pixel na resolução original. Sem compressão, sem perda de qualidade.\n\n✂️ Divisor de Grade Criativo (Mosaic Maker)\nDivida qualquer imagem grande em grades padronizadas (2x2, 3x3 ou personalizadas) otimizadas para a exibição de múltiplas imagens do X.\n- Otimização \"Seamless Flow\": Otimizado para o mecanismo de prévia do Twitter. Garante que várias partes se unam visualmente em uma única \"imagem contínua\" na timeline.\n- Clique Direito e Dividir: Envie instantaneamente qualquer imagem da web para o divisor direto do menu de contexto do navegador.\n- Storytelling Unificado: Crie efeitos de revelação consistentes e envolventes para o seu feed.\n\n🚀 RECURSOS AVANÇADOS:\n- Fluxo Fluido: Vá da timeline para a edição em segundos com integração profunda no navegador.\n- Personalização Profissional: Ajuste fino de espaçamentos globais/locais, Modo Escuro e cores de fundo personalizadas (incluindo transparência).\n- Importação Fácil: Suporte para upload de arquivos e colar da área de transferência, além da integração nativa com o X.\n- Exportação em Lote: Salve suas criações como arquivos PNG, JPG ou WebP de alta qualidade, ou como um pacote ZIP organizado.\n\n🔒 PRIVACIDADE EM PRIMEIRO LUGAR\nSuas imagens nunca saem do seu navegador. Todo o processamento é feito localmente no seu dispositivo — sem uploads remotos, sem rastreamento e com total segurança.\n\nMelhore seu storytelling no X hoje com o X-Puzzle-Kit.",
+    "message": "O X-Puzzle-Kit é uma ferramenta profissional de união (stitching) e divisão de imagens desenvolvida especificamente para usuários do X (Twitter), artistas digitais e colecionadores. Seja para reconstruir um panorama em várias partes ou criar um \"reveal\" criativo em grade, o X-Puzzle-Kit garante que seu conteúdo apareça exatamente como planejado na timeline do X.\n\n🌐 SUPORTE MULTIPLATAFORMA:\nAlém desta extensão para Chrome, oferecemos uma versão Web completa (https://x-puzzle-kit.pages.dev/) para uso perfeito em celulares, tablets e outros navegadores.\n\n✨ RECURSOS PRINCIPAIS:\n\n🧵 União Inteligente (Stitching)\nJunte imagens de Tweets separados de volta ao seu formato original panorâmico ou longo.\n- Layouts Inteligentes: Suporte total para layouts Vertical, Horizontal, Grade 2x2 e o exclusivo formato \"T-Shape\".\n- Alinhamento Pixel-Perfect: Cálculo avançado de coordenadas elimina emendas de 1px e artefatos borrados.\n- Integração Nativa: Una imagens diretamente da sua timeline do X com um clique — sem necessidade de salvar manualmente.\n- Exportação Sem Perdas: Preserva cada pixel na resolução original. Sem compressão, sem perda de qualidade.\n\n✂️ Divisor de Grade Criativo (Mosaic Maker)\nDivida qualquer imagem grande em grades padronizadas (2x2 ou personalizadas) otimizadas para a exibição de múltiplas imagens do X.\n- Otimização \"Seamless Flow\": Otimizado para o mecanismo de prévia do Twitter. Garante que várias partes se unam visualmente em uma única \"imagem contínua\" na timeline.\n- Clique Direito e Dividir: Envie instantaneamente qualquer imagem da web para o divisor direto do menu de contexto do navegador.\n- Storytelling Unificado: Crie efeitos de revelação consistentes e envolventes para o seu feed.\n\n🚀 RECURSOS AVANÇADOS:\n- Fluxo Fluido: Vá da timeline para a edição em segundos com integração profunda no navegador.\n- Personalização Profissional: Ajuste fino de espaçamentos globais/locais, Modo Escuro e cores de fundo personalizadas (incluindo transparência).\n- Importação Fácil: Suporte para upload de arquivos e colar da área de transferência, além da integração nativa com o X.\n- Exportação em Lote: Salve suas criações como arquivos PNG, JPG ou WebP de alta qualidade, ou como um pacote ZIP organizado.\n\n🔒 PRIVACIDADE EM PRIMEIRO LUGAR\nSuas imagens nunca saem do seu navegador. Todo o processamento é feito localmente no seu dispositivo — sem uploads remotos, sem rastreamento e com total segurança.\n\nMelhore seu storytelling no X hoje com o X-Puzzle-Kit.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
@@ -716,5 +716,37 @@
   "shortcutUpdateNote": {
     "message": "Nova versão disponível! Recomenda-se atualizar para a melhor experiência.",
     "description": "Note shown in iOS Shortcuts when an update is available"
+  },
+  "dragMode": {
+    "message": "Modo de arrastar",
+    "description": "Label for drag mode control"
+  },
+  "dragModeUnified": {
+    "message": "Unificado",
+    "description": "Unified drag mode option"
+  },
+  "dragModeIndividual": {
+    "message": "Individual",
+    "description": "Individual drag mode option"
+  },
+  "contentScale": {
+    "message": "Escala de conteúdo",
+    "description": "Label for content scale slider"
+  },
+  "resetPosition": {
+    "message": "Redefinir Posição",
+    "description": "Button text to reset image position"
+  },
+  "splitReplaceImage": {
+    "message": "Substituir Imagem",
+    "description": "Tooltip for replace image button"
+  },
+  "splitRestoreImage": {
+    "message": "Restaurar Original",
+    "description": "Tooltip for restore original image button"
+  },
+  "splitBackgroundTip": {
+    "message": "Quando ativado, preenche as bordas expostas ao mover imagens com a cor de fundo.",
+    "description": "Tooltip for split background fill option"
   }
 }

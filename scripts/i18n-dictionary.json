@@ -1,0 +1,72 @@
+{
+  "dragMode": {
+    "zh_TW": "拖拽模式",
+    "ja": "ドラッグモード",
+    "ko": "드래그 모드",
+    "es": "Modo de arrastre",
+    "fr": "Mode de glissement",
+    "de": "Ziehmodus",
+    "pt_BR": "Modo de arrastar",
+    "tr": "Sürükleme Modu"
+  },
+  "dragModeUnified": {
+    "zh_TW": "整體",
+    "ja": "ユニファイド",
+    "ko": "통합",
+    "es": "Unificado",
+    "fr": "Unifié",
+    "de": "Vereinheitlicht",
+    "pt_BR": "Unificado",
+    "tr": "Birleşik"
+  },
+  "dragModeIndividual": {
+    "zh_TW": "分別",
+    "ja": "個別",
+    "ko": "개별",
+    "es": "Individual",
+    "fr": "Individuel",
+    "de": "Individuell",
+    "pt_BR": "Individual",
+    "tr": "Bireysel"
+  },
+  "contentScale": {
+    "zh_TW": "內容縮放",
+    "ja": "コンテンツスケール",
+    "ko": "콘텐츠 배율",
+    "es": "Escala de contenido",
+    "fr": "Échelle du contenu",
+    "de": "Inhaltsskalierung",
+    "pt_BR": "Escala de conteúdo",
+    "tr": "İçerik Ölçeği"
+  },
+  "resetPosition": {
+    "zh_TW": "重置位置",
+    "ja": "位置をリセット",
+    "ko": "위치 초기화",
+    "es": "Restablecer posición",
+    "fr": "Réinitialiser la position",
+    "de": "Position zurücksetzen",
+    "pt_BR": "Redefinir Posição",
+    "tr": "Konumu Sıfırla"
+  },
+  "splitReplaceImage": {
+    "zh_TW": "替換圖片",
+    "ja": "画像を置き換える",
+    "ko": "이미지 교체",
+    "es": "Reemplazar imagen",
+    "fr": "Remplacer l'image",
+    "de": "Bild ersetzen",
+    "pt_BR": "Substituir Imagem",
+    "tr": "Resmi Değiştir"
+  },
+  "splitRestoreImage": {
+    "zh_TW": "還原原圖",
+    "ja": "オリジナルを復元",
+    "ko": "원본 복원",
+    "es": "Restaurar original",
+    "fr": "Restaurer l'original",
+    "de": "Original wiederherstellen",
+    "pt_BR": "Restaurar Original",
+    "tr": "Orijinali Geri Yükle"
+  }
+}

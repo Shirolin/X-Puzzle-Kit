@@ -8,7 +8,7 @@
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit, X (Twitter) kullanıcıları, dijital sanatçılar ve koleksiyoncular için özel olarak tasarlanmış profesyonel bir resim birleştirme ve ızgara bölme aracıdır. İster çok parçalı bir panoramayı yeniden birleştiriyor olun, ister yaratıcı bir ızgara \"reveal\" (açığa çıkarma) efekti hazırlıyor olun, X-Puzzle-Kit içeriğinizin X zaman akışında tam olarak amaçlandığı gibi görünmesini sağlar.\n\n🌐 PLATFORMLAR ARASI DESTEK:\nBu Chrome uzantısına ek olarak, mobil cihazlar, tabletler ve diğer tarayıcılarda sorunsuz kullanım için tam özellikli bir Web sürümü (https://x-puzzle-kit.pages.dev/) sunuyoruz.\n\n✨ TEMEL GÜÇLER:\n\n🧵 Akıllı Resim Birleştirme (Stitching)\nAyrı Tweet resimlerini orijinal panorama veya uzun formata sorunsuz bir şekilde geri birleştirin.\n- Akıllı Düzenler: Dikey, Yatay, 2x2 Izgara ve imza niteliğindeki T-Şekli düzenleri için tam destek.\n- Piksel Mükemmelliğinde Hizalama: Gelişmiş koordinat hesaplaması, 1 piksellik dikiş izlerini ve bulanık eserleri ortadan kaldırır.\n- Yerel Entegrasyon: Resimleri doğrudan X zaman akışınızdan tek tıklamayla birleştirin — manuel kaydetmeye gerek yok.\n- Kayıpsız Dışa Aktarma: Her pikseli orijinal çözünürlüğünde korur. Sıkıştırma yok, kalite kaybı yok.\n\n✂️ Yaratıcı Izgara Bölücü (Mosaic Maker)\nHerhangi bir büyük resmi, X'in çoklu resim gösterimi için optimize edilmiş standart ızgaralara (2x2, 3x3 veya özel) bölün.\n- Twitter \"Kusursuz Akış\" Optimizasyonu: Twitter'ın önizleme mekanizması için optimize edilmiştir. Zaman akışında görsel olarak tek bir \"kesintisiz resim\" gibi birleşmesini sağlar.\n- Sağ Tık & Böl: Herhangi bir web resmini doğrudan tarayıcınızın içerik menüsünden bölücüye gönderin.\n- Birleşik Hikaye Anlatımı: Akışınız için tutarlı, ilgi çekici \"ortaya çıkarma\" efektleri oluşturun.\n\n🚀 GÜÇLÜ ÖZELLİKLER:\n- Akıcı İş Akışı: Derin tarayıcı entegrasyonu ile saniyeler içinde zaman akışından düzenlemeye geçin.\n- Profesyonel Özelleştirme: Global/yerel boşlukların ince ayarı, Karanlık Mod ve özel arka plan renkleri (şeffaflık dahil).\n- Kolay İçe Aktarma: Yerel X entegrasyonunun yanı sıra dosya yükleme ve panodan yapıştırma desteği.\n- Toplu Dışa Aktarma: Tasarımlarınızı yüksek kaliteli PNG, JPG veya WebP dosyaları olarak ya da tek bir düzenli ZIP paketi olarak kaydedin.\n\n🔒 GİZLİLİK ÖNCELİĞİMİZ\nResimleriniz asla tarayıcınızdan çıkmaz. Tüm işlemler yerel olarak cihazınızda yapılır — uzaktan yükleme yok, izleme yok ve tam güvenlik.\n\nX hikaye anlatımınızı X-Puzzle-Kit ile bugün geliştirin.",
+    "message": "X-Puzzle-Kit, X (Twitter) kullanıcıları, dijital sanatçılar ve koleksiyoncular için özel olarak tasarlanmış profesyonel bir resim birleştirme ve ızgara bölme aracıdır. İster çok parçalı bir panoramayı yeniden birleştiriyor olun, ister yaratıcı bir ızgara \"reveal\" (açığa çıkarma) efekti hazırlıyor olun, X-Puzzle-Kit içeriğinizin X zaman akışında tam olarak amaçlandığı gibi görünmesini sağlar.\n\n🌐 PLATFORMLAR ARASI DESTEK:\nBu Chrome uzantısına ek olarak, mobil cihazlar, tabletler ve diğer tarayıcılarda sorunsuz kullanım için tam özellikli bir Web sürümü (https://x-puzzle-kit.pages.dev/) sunuyoruz.\n\n✨ TEMEL GÜÇLER:\n\n🧵 Akıllı Resim Birleştirme (Stitching)\nAyrı Tweet resimlerini orijinal panorama veya uzun formata sorunsuz bir şekilde geri birleştirin.\n- Akıllı Düzenler: Dikey, Yatay, 2x2 Izgara ve imza niteliğindeki T-Şekli düzenleri için tam destek.\n- Piksel Mükemmelliğinde Hizalama: Gelişmiş koordinat hesaplaması, 1 piksellik dikiş izlerini ve bulanık eserleri ortadan kaldırır.\n- Yerel Entegrasyon: Resimleri doğrudan X zaman akışınızdan tek tıklamayla birleştirin — manuel kaydetmeye gerek yok.\n- Kayıpsız Dışa Aktarma: Her pikseli orijinal çözünürlüğünde korur. Sıkıştırma yok, kalite kaybı yok.\n\n✂️ Yaratıcı Izgara Bölücü (Mosaic Maker)\nHerhangi bir büyük resmi, X'in çoklu resim gösterimi için optimize edilmiş standart ızgaralara (2x2 veya özel) bölün.\n- Twitter \"Kusursuz Akış\" Optimizasyonu: Twitter'ın önizleme mekanizması için optimize edilmiştir. Zaman akışında görsel olarak tek bir \"kesintisiz resim\" gibi birleşmesini sağlar.\n- Sağ Tık & Böl: Herhangi bir web resmini doğrudan tarayıcınızın içerik menüsünden bölücüye gönderin.\n- Birleşik Hikaye Anlatımı: Akışınız için tutarlı, ilgi çekici \"ortaya çıkarma\" efektleri oluşturun.\n\n🚀 GÜÇLÜ ÖZELLİKLER:\n- Akıcı İş Akışı: Derin tarayıcı entegrasyonu ile saniyeler içinde zaman akışından düzenlemeye geçin.\n- Profesyonel Özelleştirme: Global/yerel boşlukların ince ayarı, Karanlık Mod ve özel arka plan renkleri (şeffaflık dahil).\n- Kolay İçe Aktarma: Yerel X entegrasyonunun yanı sıra dosya yükleme ve panodan yapıştırma desteği.\n- Toplu Dışa Aktarma: Tasarımlarınızı yüksek kaliteli PNG, JPG veya WebP dosyaları olarak ya da tek bir düzenli ZIP paketi olarak kaydedin.\n\n🔒 GİZLİLİK ÖNCELİĞİMİZ\nResimleriniz asla tarayıcınızdan çıkmaz. Tüm işlemler yerel olarak cihazınızda yapılır — uzaktan yükleme yok, izleme yok ve tam güvenlik.\n\nX hikaye anlatımınızı X-Puzzle-Kit ile bugün geliştirin.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
@@ -716,5 +716,37 @@
   "shortcutUpdateNote": {
     "message": "Yeni sürüm mevcut! En iyi deneyim için güncellemeniz önerilir.",
     "description": "Note shown in iOS Shortcuts when an update is available"
+  },
+  "dragMode": {
+    "message": "Sürükleme Modu",
+    "description": "Label for drag mode control"
+  },
+  "dragModeUnified": {
+    "message": "Birleşik",
+    "description": "Unified drag mode option"
+  },
+  "dragModeIndividual": {
+    "message": "Bireysel",
+    "description": "Individual drag mode option"
+  },
+  "contentScale": {
+    "message": "İçerik Ölçeği",
+    "description": "Label for content scale slider"
+  },
+  "resetPosition": {
+    "message": "Konumu Sıfırla",
+    "description": "Button text to reset image position"
+  },
+  "splitReplaceImage": {
+    "message": "Resmi Değiştir",
+    "description": "Tooltip for replace image button"
+  },
+  "splitRestoreImage": {
+    "message": "Orijinali Geri Yükle",
+    "description": "Tooltip for restore original image button"
+  },
+  "splitBackgroundTip": {
+    "message": "Etkinleştirildiğinde, resimleri taşıma sonucu ortaya çıkan boşlukları arka plan rengiyle doldurur.",
+    "description": "Tooltip for split background fill option"
   }
 }

@@ -8,7 +8,7 @@
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit es un kit de herramientas multimedia profesional diseñado específicamente para usuarios de X (Twitter), artistas digitales y coleccionistas. Ya sea que estés reconstruyendo una panorámica a partir de varios tweets o preparando una galería creativa, X-Puzzle-Kit garantiza que tu contenido se vea exactamente como deseas en el timeline de X.\n\n🌐 SOPORTE MULTIPLATAFORMA:\nAdemás de esta extensión de Chrome, ofrecemos una versión Web en línea completa (https://x-puzzle-kit.pages.dev/) para un uso fluido en dispositivos móviles, tablets y otros navegadores.\n\n✨ CAPACIDADES PRINCIPALES:\n\n🧵 Ensamblado Inteligente de Imágenes\nUne sin costuras imágenes separadas de un Tweet en su formato original panorámico o de formato largo.\n- Diseños Inteligentes: Soporte completo para disposiciones Verticales, Horizontales, Cuadrículas 2x2 y el exclusivo diseño en forma de T.\n- Alineación de Píxel Perfecto: El cálculo avanzado de coordenadas elimina las uniones de 1px y los artefactos borrosos para un acabado profesional.\n- Integración Nativa: Ensambla imágenes directamente desde tu timeline de X con un solo clic, sin descargas manuales.\n- Exportación sin Pérdidas: Conserva cada píxel en su resolución original. Sin compresión ni pérdida de calidad.\n\n✂️ Divisor de Grillas Creativo (Creador de Mosaicos)\nDivide sus imágenes en grillas estandarizadas (2x2, 3x3 o personalizadas) optimizadas para la visualización de múltiples imágenes de X.\n- Optimización de Diseño \"Imagen Única\" para Twitter: Optimizado para la vista previa de X. Asegura que múltiples cortes se unan en una sola \"gran imagen\" en el timeline.\n- Clic Derecho y Dividir: Envía instantáneamente cualquier imagen web al divisor directamente desde el menú contextual del navegador.\n- Estética Unificada: Crea efectos visuales consistentes que capturan la atención en el feed.\n\n🚀 CARACTERÍSTICAS POTENTES:\n- Flujo de Trabajo Eficiente: Pasa del timeline al lienzo en segundos con una integración profunda.\n- Personalización Pro: Ajusta espacios globales/locales, activa el Modo Oscuro y elige colores de fondo personalizados (incluyendo transparencia).\n- Importación Fácil: Soporte para subida de archivos, portapapeles e integración nativa con la página de X.\n- Exportación por Lotes: Guarda tus creaciones como archivos PNG, JPG o WebP de alta calidad, o en un paquete ZIP.\n\n🔒 COMPROMETIDO CON LA PRIVACIDAD\nTus imágenes nunca salen de tu navegador. Todo el procesamiento se realiza localmente en tu equipo: sin subidas, sin rastreo y con total seguridad.\n\nMejora tu contenido visual en X con X-Puzzle-Kit hoy mismo.",
+    "message": "X-Puzzle-Kit es un kit de herramientas multimedia profesional diseñado específicamente para usuarios de X (Twitter), artistas digitales y coleccionistas. Ya sea que estés reconstruyendo una panorámica a partir de varios tweets o preparando una galería creativa, X-Puzzle-Kit garantiza que tu contenido se vea exactamente como deseas en el timeline de X.\n\n🌐 SOPORTE MULTIPLATAFORMA:\nAdemás de esta extensión de Chrome, ofrecemos una versión Web en línea completa (https://x-puzzle-kit.pages.dev/) para un uso fluido en dispositivos móviles, tablets y otros navegadores.\n\n✨ CAPACIDADES PRINCIPALES:\n\n🧵 Ensamblado Inteligente de Imágenes\nUne sin costuras imágenes separadas de un Tweet en su formato original panorámico o de formato largo.\n- Diseños Inteligentes: Soporte completo para disposiciones Verticales, Horizontales, Cuadrículas 2x2 y el exclusivo diseño en forma de T.\n- Alineación de Píxel Perfecto: El cálculo avanzado de coordenadas elimina las uniones de 1px y los artefactos borrosos para un acabado profesional.\n- Integración Nativa: Ensambla imágenes directamente desde tu timeline de X con un solo clic, sin descargas manuales.\n- Exportación sin Pérdidas: Conserva cada píxel en su resolución original. Sin compresión ni pérdida de calidad.\n\n✂️ Divisor de Grillas Creativo (Creador de Mosaicos)\nDivide sus imágenes en grillas estandarizadas (2x2 o personalizadas) optimizadas para la visualización de múltiples imágenes de X.\n- Optimización de Diseño \"Imagen Única\" para Twitter: Optimizado para la vista previa de X. Asegura que múltiples cortes se unan en una sola \"gran imagen\" en el timeline.\n- Clic Derecho y Dividir: Envía instantáneamente cualquier imagen web al divisor directamente desde el menú contextual del navegador.\n- Estética Unificada: Crea efectos visuales consistentes que capturan la atención en el feed.\n\n🚀 CARACTERÍSTICAS POTENTES:\n- Flujo de Trabajo Eficiente: Pasa del timeline al lienzo en segundos con una integración profunda.\n- Personalización Pro: Ajusta espacios globales/locales, activa el Modo Oscuro y elige colores de fondo personalizados (incluyendo transparencia).\n- Importación Fácil: Soporte para subida de archivos, portapapeles e integración nativa con la página de X.\n- Exportación por Lotes: Guarda tus creaciones como archivos PNG, JPG o WebP de alta calidad, o en un paquete ZIP.\n\n🔒 COMPROMETIDO CON LA PRIVACIDAD\nTus imágenes nunca salen de tu navegador. Todo el procesamiento se realiza localmente en tu equipo: sin subidas, sin rastreo y con total seguridad.\n\nMejora tu contenido visual en X con X-Puzzle-Kit hoy mismo.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
@@ -716,5 +716,37 @@
   "shortcutUpdateNote": {
     "message": "¡Nueva versión disponible! Te recomendamos actualizar para obtener la mejor experiencia.",
     "description": "Note shown in iOS Shortcuts when an update is available"
+  },
+  "dragMode": {
+    "message": "Modo de arrastre",
+    "description": "Label for drag mode control"
+  },
+  "dragModeUnified": {
+    "message": "Unificado",
+    "description": "Unified drag mode option"
+  },
+  "dragModeIndividual": {
+    "message": "Individual",
+    "description": "Individual drag mode option"
+  },
+  "contentScale": {
+    "message": "Escala de contenido",
+    "description": "Label for content scale slider"
+  },
+  "resetPosition": {
+    "message": "Restablecer posición",
+    "description": "Button text to reset image position"
+  },
+  "splitReplaceImage": {
+    "message": "Reemplazar imagen",
+    "description": "Tooltip for replace image button"
+  },
+  "splitRestoreImage": {
+    "message": "Restaurar original",
+    "description": "Tooltip for restore original image button"
+  },
+  "splitBackgroundTip": {
+    "message": "Cuando está activado, rellena los bordes expuestos al mover imágenes con color de fondo.",
+    "description": "Tooltip for split background fill option"
   }
 }

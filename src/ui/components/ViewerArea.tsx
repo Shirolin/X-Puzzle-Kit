@@ -2,9 +2,15 @@ import { RefObject } from "preact";
 import { useState, useRef } from "preact/hooks";
 import { Plus, Minus, RotateCcw, Upload, Trash2 } from "lucide-preact";
 import { t } from "../../core/i18n";
-import { StitchTask, SplitConfig, ImageNode } from "../../core/types";
+import {
+  StitchTask,
+  SplitConfig,
+  SplitEditState,
+  ImageNode,
+} from "../../core/types";
 import { IconButton } from "./Common";
 import { SplitPreview } from "./SplitPreview";
+import { SplitEditor } from "./SplitEditor";
 
 interface ViewerAreaProps {
   mode: "stitch" | "split";
@@ -33,9 +39,12 @@ interface ViewerAreaProps {
   previewUrl: string;
   splitBlobs: Blob[];
   splitConfig: SplitConfig;
+  splitEditState: SplitEditState;
+  onSplitEditStateChange: (state: SplitEditState) => void;
   onSplitFileSelect: (file: File) => void;
   onStitchFilesSelect: (files: FileList | File[]) => void;
   onClearSplit?: () => void;
+  backgroundColor: import("../../core/types").BackgroundColor;
 }
 
 export function ViewerArea({
@@ -65,9 +74,12 @@ export function ViewerArea({
   previewUrl,
   splitBlobs,
   splitConfig,
+  splitEditState,
+  onSplitEditStateChange,
   onSplitFileSelect,
   onStitchFilesSelect,
   onClearSplit,
+  backgroundColor,
 }: ViewerAreaProps) {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -380,17 +392,30 @@ export function ViewerArea({
             }}
           >
             {mode === "split" ? (
-              <SplitPreview
-                source={splitSourceBitmap}
-                blobs={splitBlobs}
-                config={splitConfig}
-                aspectRatio={
-                  splitConfig.autoCropRatio ||
-                  (splitSourceBitmap
-                    ? splitSourceBitmap.width / splitSourceBitmap.height
-                    : undefined)
-                }
-              />
+              splitBlobs.length > 0 ? (
+                <SplitPreview
+                  source={splitSourceBitmap}
+                  blobs={splitBlobs}
+                  config={splitConfig}
+                  backgroundColor={backgroundColor}
+                  viewerScale={viewerScale}
+                  aspectRatio={
+                    splitConfig.autoCropRatio ||
+                    (splitSourceBitmap
+                      ? splitSourceBitmap.width / splitSourceBitmap.height
+                      : undefined)
+                  }
+                />
+              ) : (
+                <SplitEditor
+                  source={splitSourceBitmap}
+                  config={splitConfig}
+                  editState={splitEditState}
+                  onEditStateChange={onSplitEditStateChange}
+                  viewerScale={viewerScale}
+                  backgroundColor={backgroundColor}
+                />
+              )
             ) : previewUrl ? (
               <img
                 src={previewUrl}
@@ -399,7 +424,8 @@ export function ViewerArea({
                 style={{
                   width: `${canvasSize.width}px`,
                   height: `${canvasSize.height}px`,
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                  borderRadius: `${12 / viewerScale}px`,
+                  boxShadow: `0 ${4 / viewerScale}px ${20 / viewerScale}px rgba(0, 0, 0, 0.1)`,
                 }}
               />
             ) : mode === "stitch" ? (

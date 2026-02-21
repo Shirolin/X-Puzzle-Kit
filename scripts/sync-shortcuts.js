@@ -75,7 +75,7 @@ function syncShortcuts() {
       ...notes, // 展开从 i18n 读取的 notes
     };
 
-    fs.writeFileSync(OUTPUT_PATH, JSON.stringify(shortcutData, null, 2));
+    fs.writeFileSync(OUTPUT_PATH, JSON.stringify(shortcutData, null, 2) + "\n");
 
     console.log(
       "✅ [Sync] 快捷指令配置已成功同步到 public/shortcuts-update.json",

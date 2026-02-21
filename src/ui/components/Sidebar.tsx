@@ -34,6 +34,7 @@ import {
   LayoutType,
   BackgroundColor,
   SplitConfig,
+  SplitEditState,
 } from "../../core/types";
 import { LayoutButton, IconButton, CustomSelect } from "./Common";
 import { SplitterControl } from "./SplitterControl";
@@ -322,6 +323,9 @@ interface SidebarProps {
   onShowWebpWarning?: (onConfirm: () => void) => void;
   onShowGuide?: () => void;
   triggerPWAInstall: () => void;
+  splitEditState: SplitEditState;
+  onSplitEditStateChange: (state: SplitEditState) => void;
+  splitSourceBitmap: ImageBitmap | null;
 }
 
 export function Sidebar({
@@ -362,6 +366,9 @@ export function Sidebar({
   onShowWebpWarning,
   onShowGuide,
   triggerPWAInstall,
+  splitEditState,
+  onSplitEditStateChange,
+  splitSourceBitmap,
 }: SidebarProps) {
   const [isGapOpen, setIsGapOpen] = useState(
     globalGap !== 0 || images.some((img) => img.localGap && img.localGap !== 0),
@@ -683,6 +690,12 @@ export function Sidebar({
             webpWarningDismissed={webpWarningDismissed}
             setWebpWarningDismissed={setWebpWarningDismissed}
             onShowWebpWarning={onShowWebpWarning}
+            splitEditState={splitEditState}
+            onSplitEditStateChange={onSplitEditStateChange}
+            hasSplitSource={hasSplitSource}
+            splitSourceBitmap={splitSourceBitmap}
+            backgroundColor={backgroundColor}
+            onBackgroundColorChange={setBackgroundColor}
           />
         ) : (
           <>

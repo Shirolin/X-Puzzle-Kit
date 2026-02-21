@@ -58,7 +58,7 @@
   --color-icon-dim: rgba(255, 255, 255, 0.4);
   --color-item-bg: rgba(255, 255, 255, 0.03);
   --color-item-hover: rgba(255, 255, 255, 0.08);
-  --color-item-border: rgba(255, 255, 255, 0.06);
+  --color-item-border: rgba(255, 255, 255, 0.12);
   --color-handle: rgba(255, 255, 255, 0.3);
   --color-badge-text: white;
   --shadow-card: none;
@@ -66,8 +66,14 @@
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.5);
-  /* Default Dark Mode Image Shadow */
-  --shadow-image: 0 32px 80px rgba(0, 0, 0, 0.5);
+  /* Default Dark Mode Image Shadow - More layered and realistic */
+  --shadow-image:
+    0 4px 12px rgba(0, 0, 0, 0.4), 0 16px 40px rgba(0, 0, 0, 0.6),
+    0 32px 80px rgba(0, 0, 0, 0.8);
+
+  /* Checkerboard Colors (Dark) */
+  --check-1: #1a1a1c;
+  --check-2: #242426;
 
   --scrollbar-thumb: rgba(255, 255, 255, 0.2);
 
@@ -117,7 +123,7 @@
   --color-icon-dim: #86868b;
   --color-item-bg: #f2f2f7;
   --color-item-hover: #e5e5ea;
-  --color-item-border: rgba(0, 0, 0, 0.04);
+  --color-item-border: rgba(0, 0, 0, 0.08);
   --color-handle: #aeaeb2;
   --color-badge-text: white;
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -125,8 +131,10 @@
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-glass: 0 20px 48px rgba(0, 0, 0, 0.08);
-  /* Light Mode Image Shadow - Softer */
-  --shadow-image: 0 24px 60px rgba(0, 0, 0, 0.12);
+  /* Light Mode Image Shadow - Softer and more diffused */
+  --shadow-image:
+    0 4px 12px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.12),
+    0 24px 60px rgba(0, 0, 0, 0.15);
 
   --scrollbar-thumb: rgba(0, 0, 0, 0.15);
 
@@ -996,6 +1004,7 @@ input:checked + .slider:before {
 .mode-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 4px 12px;
   font-size: 11px;
@@ -2237,20 +2246,20 @@ input:checked + .slider:before {
   border-color: var(--color-primary);
 }
 
-/* Mini Checkerboard for Transparent Option */
+/* Mini Checkerboard (Unified size to 20px) */
 .bg-checkerboard-sm {
-  background-color: #e5e5e5;
+  background-color: var(--check-1);
   background-image:
-    linear-gradient(45deg, #bbb 25%, transparent 25%),
-    linear-gradient(-45deg, #bbb 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #bbb 75%),
-    linear-gradient(-45deg, transparent 75%, #bbb 75%);
-  background-size: 6px 6px;
+    linear-gradient(45deg, var(--check-2) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--check-2) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--check-2) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--check-2) 75%);
+  background-size: 20px 20px;
   background-position:
     0 0,
-    0 3px,
-    3px -3px,
-    -3px 0px;
+    0 10px,
+    10px -10px,
+    -10px 0px;
 }
 
 /* --- Polished Visuals (Checkerboard, Shadows, Animations) --- */

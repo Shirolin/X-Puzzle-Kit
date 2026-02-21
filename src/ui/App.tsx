@@ -4,12 +4,17 @@ import {
   ImageNode,
   StitchTask,
   SplitConfig,
+  SplitEditState,
   BeforeInstallPromptEvent,
 } from "../core/types";
+import {
+  exportWithEditState,
+  calculateEffectiveArea,
+} from "../core/splitLayout";
 import { stitchImages } from "../core/stitcher";
 import { t, setLanguage, getResolvedLanguage } from "../core/i18n";
 import { X, Images, Sun, Moon, Monitor, Scissors, Zap } from "lucide-preact";
-import { splitImage } from "../core/splitter";
+
 import { IconButton } from "./components/Common";
 import { Sidebar } from "./components/Sidebar";
 import { updateToasterTheme } from "./index";
@@ -148,6 +153,18 @@ export function App({
     gap: 0,
     format: "png",
   });
+
+  // 交互式编辑状态
+  const defaultEditState: SplitEditState = {
+    dragMode: "unified",
+    globalOffsetX: 0,
+    globalOffsetY: 0,
+    globalScale: 1,
+    cells: [],
+    activeCellIndex: null,
+  };
+  const [splitEditState, setSplitEditState] =
+    useState<SplitEditState>(defaultEditState);
   const [isZip, setIsZip] = useState(false);
   const [isTwitterOptimized, setIsTwitterOptimized] = useState(false);
   const [mockUrl, setMockUrl] = useState(
@@ -315,6 +332,36 @@ export function App({
     if (persistedBG) updateBackgroundColor(persistedBG);
   }, [persistedBG, updateBackgroundColor]);
 
+  useEffect(() => {
+    if (!splitSourceBitmap) return;
+
+    const { drawX, drawY } = calculateEffectiveArea(
+      splitSourceBitmap.width,
+      splitSourceBitmap.height,
+      splitConfig.autoCropRatio,
+    );
+
+    setSplitEditState((prev) => {
+      // 如果当前是 initial state (没有修改过偏移和缩放)，则只是应用默认。
+      // 如果正在操作中，布局变化更倾向于重置为一个基础状态。
+      // 为确保边界稳定，此处安全地将状态重设为完整居中。
+      return {
+        ...prev,
+        globalOffsetX: -drawX,
+        globalOffsetY: -drawY,
+        globalScale: 1,
+        cells: [], // 清空所有的独立单元格覆盖图和配置
+        activeCellIndex: null,
+      };
+    });
+  }, [
+    splitSourceBitmap,
+    splitConfig.layout,
+    splitConfig.rows,
+    splitConfig.cols,
+    splitConfig.autoCropRatio,
+  ]);
+
   // Sync isThemeDark with theme and system preference
   useEffect(() => {
     const checkDark = () => {
@@ -440,8 +487,18 @@ export function App({
     )
       return;
 
-    const cw = mode === "split" ? splitSourceBitmap!.width : canvasSize.width;
-    const ch = mode === "split" ? splitSourceBitmap!.height : canvasSize.height;
+    let cw = canvasSize.width;
+    let ch = canvasSize.height;
+
+    if (mode === "split" && splitSourceBitmap) {
+      const effective = calculateEffectiveArea(
+        splitSourceBitmap.width,
+        splitSourceBitmap.height,
+        splitConfig.autoCropRatio,
+      );
+      cw = effective.drawW;
+      ch = effective.drawH;
+    }
 
     const padding = 48;
     const availableWidth = containerRef.current.clientWidth - padding;
@@ -456,7 +513,7 @@ export function App({
     // 移动端需要向上偏移，让图片在有效可视区域内居中
     setViewerOffset({ x: 0, y: isMobile ? -mobileBottomOffset / 2 : 0 });
     setViewerRotation(0);
-  }, [mode, canvasSize, splitSourceBitmap]);
+  }, [mode, canvasSize, splitSourceBitmap, splitConfig]);
 
   useEffect(() => {
     const runRefit = () => {
@@ -494,7 +551,14 @@ export function App({
     setIsSplitting(true);
     try {
       await new Promise((r) => setTimeout(r, 50));
-      const blobs = await splitImage(splitSourceBitmap, config);
+      // 使用交互式编辑状态导出
+      const blobs = await exportWithEditState(
+        splitSourceBitmap,
+        config,
+        splitEditState,
+        config.format || "png",
+        persistedBG,
+      );
       setSplitBlobs(blobs);
     } catch (e) {
       console.error(e);
@@ -1254,13 +1318,17 @@ export function App({
             previewUrl={previewUrl}
             splitBlobs={splitBlobs}
             splitConfig={splitConfig}
+            splitEditState={splitEditState}
+            onSplitEditStateChange={setSplitEditState}
             onSplitFileSelect={handleSplitFileSelect}
             onStitchFilesSelect={handleStitchFilesSelect}
             onClearSplit={() => {
               setSplitSource(null);
               setSplitBlobs([]);
               setSplitSourceBitmap(null);
+              setSplitEditState(defaultEditState);
             }}
+            backgroundColor={persistedBG}
           />
 
           <Sidebar
@@ -1308,6 +1376,8 @@ export function App({
               )
             }
             triggerPWAInstall={triggerPWAInstall}
+            splitEditState={splitEditState}
+            onSplitEditStateChange={setSplitEditState}
             removeImage={(id) => {
               showConfirm(
                 t("removeImage"),
@@ -1329,6 +1399,7 @@ export function App({
               __IS_EXTENSION__ ? undefined : () => setShowUrlInput(true)
             }
             onShowGuide={() => setShowUserManual(true)}
+            splitSourceBitmap={splitSourceBitmap}
           />
         </div>
       </div>

@@ -8,7 +8,7 @@
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s「affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d」Images\nFusionnez sans couture des images séparées d「un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d」un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d「origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n」importe quelle image en grilles standardisées (2x2, 3x3 ou personnalisées) optimisées pour l「affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l」aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n「importe quelle image vers l」outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l「attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l」import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
+    "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s「affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d」Images\nFusionnez sans couture des images séparées d「un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d」un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d「origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n」importe quelle image en grilles standardisées (2x2 ou personnalisées) optimisées pour l「affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l」aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n「importe quelle image vers l」outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l「attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l」import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
@@ -716,5 +716,37 @@
   "shortcutUpdateNote": {
     "message": "Nouvelle version disponible ! Il est recommandé de mettre à jour pour une meilleure expérience.",
     "description": "Note shown in iOS Shortcuts when an update is available"
+  },
+  "dragMode": {
+    "message": "Mode de glissement",
+    "description": "Label for drag mode control"
+  },
+  "dragModeUnified": {
+    "message": "Unifié",
+    "description": "Unified drag mode option"
+  },
+  "dragModeIndividual": {
+    "message": "Individuel",
+    "description": "Individual drag mode option"
+  },
+  "contentScale": {
+    "message": "Échelle du contenu",
+    "description": "Label for content scale slider"
+  },
+  "resetPosition": {
+    "message": "Réinitialiser la position",
+    "description": "Button text to reset image position"
+  },
+  "splitReplaceImage": {
+    "message": "Remplacer l'image",
+    "description": "Tooltip for replace image button"
+  },
+  "splitRestoreImage": {
+    "message": "Restaurer l'original",
+    "description": "Tooltip for restore original image button"
+  },
+  "splitBackgroundTip": {
+    "message": "Lorsqu'il est activé, remplit les bords exposés par le déplacement des images avec la couleur d'arrière-plan.",
+    "description": "Tooltip for split background fill option"
   }
 }
