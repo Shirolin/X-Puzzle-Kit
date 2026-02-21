@@ -40,7 +40,9 @@ interface SplitterControlProps {
   setWebpWarningDismissed: (v: boolean) => void;
   onShowWebpWarning?: (onConfirm: () => void) => void;
   splitEditState: SplitEditState;
-  onSplitEditStateChange: (state: SplitEditState) => void;
+  onSplitEditStateChange: (
+    state: SplitEditState | ((prev: SplitEditState) => SplitEditState),
+  ) => void;
   hasSplitSource: boolean;
   splitSourceBitmap: ImageBitmap | null;
   backgroundColor: import("../../core/types").BackgroundColor;

@@ -13,7 +13,9 @@ interface SplitEditorProps {
   source: ImageBitmap | null;
   config: SplitConfig;
   editState: SplitEditState;
-  onEditStateChange: (state: SplitEditState) => void;
+  onEditStateChange: (
+    state: SplitEditState | ((prev: SplitEditState) => SplitEditState),
+  ) => void;
   viewerScale: number;
   backgroundColor: import("../../core/types").BackgroundColor;
 }
@@ -73,46 +75,46 @@ export function SplitEditor({
     index: number,
     newState: Partial<SplitCellState>,
   ) => {
-    const newCells = [...editState.cells];
-    while (newCells.length <= index) {
-      newCells.push({
-        offsetX: 0,
-        offsetY: 0,
-        scale: 1,
-        replacementSource: null,
-        replacementFile: null,
-      });
-    }
-    const oldCell = newCells[index];
-    newCells[index] = { ...oldCell, ...newState };
+    onEditStateChange((prev) => {
+      const newCells = [...prev.cells];
+      while (newCells.length <= index) {
+        newCells.push({
+          offsetX: 0,
+          offsetY: 0,
+          scale: 1,
+          replacementSource: null,
+          replacementFile: null,
+        });
+      }
+      const oldCell = newCells[index];
+      newCells[index] = { ...oldCell, ...newState };
 
-    // 如果处于统一模式且要进行替换，自动转为分别模式并继承现有状态
-    if (editState.dragMode === "unified" && newState.replacementSource) {
-      const inheritedCells = regions.map((_, i) => ({
-        offsetX:
-          i === index ? (newState.offsetX ?? 0) : editState.globalOffsetX,
-        offsetY:
-          i === index ? (newState.offsetY ?? 0) : editState.globalOffsetY,
-        scale: i === index ? (newState.scale ?? 1) : editState.globalScale,
-        replacementSource:
-          i === index ? (newState.replacementSource ?? null) : null,
-        replacementFile:
-          i === index ? (newState.replacementFile ?? null) : null,
-      }));
+      // 如果处于统一模式且要进行替换，自动转为分别模式并继承现有状态
+      if (prev.dragMode === "unified" && newState.replacementSource) {
+        const inheritedCells = regions.map((_, i) => ({
+          offsetX: i === index ? (newState.offsetX ?? 0) : prev.globalOffsetX,
+          offsetY: i === index ? (newState.offsetY ?? 0) : prev.globalOffsetY,
+          scale: i === index ? (newState.scale ?? 1) : prev.globalScale,
+          replacementSource:
+            i === index ? (newState.replacementSource ?? null) : null,
+          replacementFile:
+            i === index ? (newState.replacementFile ?? null) : null,
+        }));
 
-      onEditStateChange({
-        ...editState,
-        dragMode: "individual",
-        cells: inheritedCells,
-        activeCellIndex: index,
-      });
-    } else {
-      onEditStateChange({
-        ...editState,
+        return {
+          ...prev,
+          dragMode: "individual",
+          cells: inheritedCells,
+          activeCellIndex: index,
+        };
+      }
+
+      return {
+        ...prev,
         cells: newCells,
         activeCellIndex: index,
-      });
-    }
+      };
+    });
   };
   if (!source || !sourceUrl || drawW === 0 || drawH === 0) return null;
 
@@ -173,7 +175,9 @@ interface SplitEditorCellProps {
   sourceHeight: number;
   autoCropRatio?: number;
   editState: SplitEditState;
-  onEditStateChange: (state: SplitEditState) => void;
+  onEditStateChange: (
+    state: SplitEditState | ((prev: SplitEditState) => SplitEditState),
+  ) => void;
   onUpdateCellState: (
     index: number,
     state: Partial<import("../../core/types").SplitCellState>,
@@ -330,7 +334,6 @@ const SplitEditorCell = memo(
       }
     };
 
-    // 双击重置
     const handleDoubleClick = (e: MouseEvent) => {
       e.preventDefault();
       e.stopPropagation();
@@ -341,36 +344,38 @@ const SplitEditorCell = memo(
         autoCropRatio,
       );
 
-      if (editState.dragMode === "unified") {
-        onEditStateChange({
-          ...editState,
-          globalOffsetX: -drawX,
-          globalOffsetY: -drawY,
-          globalScale: 1,
-        });
-      } else {
-        const newCells = [...editState.cells];
-        while (newCells.length <= index) {
-          newCells.push({
-            offsetX: 0,
-            offsetY: 0,
+      onEditStateChange((prev) => {
+        if (prev.dragMode === "unified") {
+          return {
+            ...prev,
+            globalOffsetX: -drawX,
+            globalOffsetY: -drawY,
+            globalScale: 1,
+          };
+        } else {
+          const newCells = [...prev.cells];
+          while (newCells.length <= index) {
+            newCells.push({
+              offsetX: 0,
+              offsetY: 0,
+              scale: 1,
+              replacementSource: null,
+              replacementFile: null,
+            });
+          }
+          newCells[index] = {
+            ...newCells[index],
+            offsetX: -drawX,
+            offsetY: -drawY,
             scale: 1,
-            replacementSource: null,
-            replacementFile: null,
-          });
+          };
+          return {
+            ...prev,
+            cells: newCells,
+            activeCellIndex: index,
+          };
         }
-        newCells[index] = {
-          ...newCells[index],
-          offsetX: -drawX,
-          offsetY: -drawY,
-          scale: 1,
-        };
-        onEditStateChange({
-          ...editState,
-          cells: newCells,
-          activeCellIndex: index,
-        });
-      }
+      });
     };
 
     const imgUrlToUse = cellState?.replacementSource
@@ -555,6 +560,14 @@ const SplitEditorCell = memo(
       return false;
     if (prev.backgroundColor !== next.backgroundColor) return false;
     if (prev.gap !== next.gap) return false;
+    if (prev.cols !== next.cols || prev.rows !== next.rows) return false;
+    if (
+      prev.region.x !== next.region.x ||
+      prev.region.y !== next.region.y ||
+      prev.region.width !== next.region.width ||
+      prev.region.height !== next.region.height
+    )
+      return false;
 
     // 判断影响它的 EditState 部分
     const prevCell = prev.editState.cells[prev.index];

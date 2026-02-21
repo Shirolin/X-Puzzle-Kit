@@ -324,7 +324,9 @@ interface SidebarProps {
   onShowGuide?: () => void;
   triggerPWAInstall: () => void;
   splitEditState: SplitEditState;
-  onSplitEditStateChange: (state: SplitEditState) => void;
+  onSplitEditStateChange: (
+    state: SplitEditState | ((prev: SplitEditState) => SplitEditState),
+  ) => void;
   splitSourceBitmap: ImageBitmap | null;
 }
 

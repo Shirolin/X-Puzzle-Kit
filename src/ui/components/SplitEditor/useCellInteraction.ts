@@ -5,7 +5,9 @@ interface UseCellInteractionProps {
   index: number;
   region: CellRegion;
   editState: SplitEditState;
-  onEditStateChange: (state: SplitEditState) => void;
+  onEditStateChange: (
+    state: SplitEditState | ((prev: SplitEditState) => SplitEditState),
+  ) => void;
   viewerScale: number;
   drawW: number;
   drawH: number;
@@ -49,28 +51,30 @@ export function useCellInteraction({
       );
 
       if (dragMode === "unified" && !cellState?.replacementSource) {
-        onEditStateChange({
-          ...editState,
+        onEditStateChange((prev) => ({
+          ...prev,
           globalOffsetX: clampedX,
           globalOffsetY: clampedY,
-        });
+        }));
       } else {
-        const newCells = [...editState.cells];
-        while (newCells.length <= index) {
-          newCells.push({
-            offsetX: 0,
-            offsetY: 0,
-            scale: 1,
-            replacementSource: null,
-            replacementFile: null,
-          });
-        }
-        newCells[index] = {
-          ...newCells[index],
-          offsetX: newOffsetX,
-          offsetY: newOffsetY,
-        };
-        onEditStateChange({ ...editState, cells: newCells });
+        onEditStateChange((prev) => {
+          const newCells = [...prev.cells];
+          while (newCells.length <= index) {
+            newCells.push({
+              offsetX: 0,
+              offsetY: 0,
+              scale: 1,
+              replacementSource: null,
+              replacementFile: null,
+            });
+          }
+          newCells[index] = {
+            ...newCells[index],
+            offsetX: newOffsetX,
+            offsetY: newOffsetY,
+          };
+          return { ...prev, cells: newCells };
+        });
       }
     },
     [
@@ -94,30 +98,32 @@ export function useCellInteraction({
       );
 
       if (dragMode === "unified" && !cellState?.replacementSource) {
-        onEditStateChange({
-          ...editState,
+        onEditStateChange((prev) => ({
+          ...prev,
           globalScale: clampedScale,
           globalOffsetX: clampedX,
           globalOffsetY: clampedY,
-        });
+        }));
       } else {
-        const newCells = [...editState.cells];
-        while (newCells.length <= index) {
-          newCells.push({
-            offsetX: 0,
-            offsetY: 0,
-            scale: 1,
-            replacementSource: null,
-            replacementFile: null,
-          });
-        }
-        newCells[index] = {
-          ...newCells[index],
-          scale: clampedScale,
-          offsetX: clampedX,
-          offsetY: clampedY,
-        };
-        onEditStateChange({ ...editState, cells: newCells });
+        onEditStateChange((prev) => {
+          const newCells = [...prev.cells];
+          while (newCells.length <= index) {
+            newCells.push({
+              offsetX: 0,
+              offsetY: 0,
+              scale: 1,
+              replacementSource: null,
+              replacementFile: null,
+            });
+          }
+          newCells[index] = {
+            ...newCells[index],
+            scale: clampedScale,
+            offsetX: clampedX,
+            offsetY: clampedY,
+          };
+          return { ...prev, cells: newCells };
+        });
       }
     },
     [
@@ -162,7 +168,7 @@ export function useCellInteraction({
       startOffset.current = { x: offsetX, y: offsetY };
 
       if (dragMode === "individual") {
-        onEditStateChange({ ...editState, activeCellIndex: index });
+        onEditStateChange((prev) => ({ ...prev, activeCellIndex: index }));
       }
 
       if (handleMouseMoveRef.current && handleMouseUpRef.current) {
@@ -219,12 +225,12 @@ export function useCellInteraction({
             newScale,
           );
 
-          onEditStateChange({
-            ...editState,
+          onEditStateChange((prev) => ({
+            ...prev,
             globalScale: newScale,
             globalOffsetX: clampedX,
             globalOffsetY: clampedY,
-          });
+          }));
         } else {
           const cell = editState.cells[index];
           if (cell?.replacementSource) {
@@ -241,23 +247,25 @@ export function useCellInteraction({
               newScale,
             );
 
-            const newCells = [...editState.cells];
-            while (newCells.length <= index) {
-              newCells.push({
-                offsetX: 0,
-                offsetY: 0,
-                scale: 1,
-                replacementSource: null,
-                replacementFile: null,
-              });
-            }
-            newCells[index] = {
-              ...newCells[index],
-              scale: newScale,
-              offsetX: clampedX,
-              offsetY: clampedY,
-            };
-            onEditStateChange({ ...editState, cells: newCells });
+            onEditStateChange((prev) => {
+              const newCells = [...prev.cells];
+              while (newCells.length <= index) {
+                newCells.push({
+                  offsetX: 0,
+                  offsetY: 0,
+                  scale: 1,
+                  replacementSource: null,
+                  replacementFile: null,
+                });
+              }
+              newCells[index] = {
+                ...newCells[index],
+                scale: newScale,
+                offsetX: clampedX,
+                offsetY: clampedY,
+              };
+              return { ...prev, cells: newCells };
+            });
           } else {
             const pX = (mouseGridX - offsetX) / scale;
             const pY = (mouseGridY - offsetY) / scale;
@@ -270,23 +278,25 @@ export function useCellInteraction({
               newScale,
             );
 
-            const newCells = [...editState.cells];
-            while (newCells.length <= index) {
-              newCells.push({
-                offsetX: 0,
-                offsetY: 0,
-                scale: 1,
-                replacementSource: null,
-                replacementFile: null,
-              });
-            }
-            newCells[index] = {
-              ...newCells[index],
-              scale: newScale,
-              offsetX: clampedX,
-              offsetY: clampedY,
-            };
-            onEditStateChange({ ...editState, cells: newCells });
+            onEditStateChange((prev) => {
+              const newCells = [...prev.cells];
+              while (newCells.length <= index) {
+                newCells.push({
+                  offsetX: 0,
+                  offsetY: 0,
+                  scale: 1,
+                  replacementSource: null,
+                  replacementFile: null,
+                });
+              }
+              newCells[index] = {
+                ...newCells[index],
+                scale: newScale,
+                offsetX: clampedX,
+                offsetY: clampedY,
+              };
+              return { ...prev, cells: newCells };
+            });
           }
         }
       }
@@ -347,7 +357,7 @@ export function useCellInteraction({
       e.stopPropagation();
 
       if (dragMode === "individual") {
-        onEditStateChange({ ...editState, activeCellIndex: index });
+        onEditStateChange((prev) => ({ ...prev, activeCellIndex: index }));
       }
 
       if (e.touches.length === 1) {

@@ -40,7 +40,9 @@ interface ViewerAreaProps {
   splitBlobs: Blob[];
   splitConfig: SplitConfig;
   splitEditState: SplitEditState;
-  onSplitEditStateChange: (state: SplitEditState) => void;
+  onSplitEditStateChange: (
+    state: SplitEditState | ((prev: SplitEditState) => SplitEditState),
+  ) => void;
   onSplitFileSelect: (file: File) => void;
   onStitchFilesSelect: (files: FileList | File[]) => void;
   onClearSplit?: () => void;
