@@ -39,6 +39,14 @@ export function useCellInteraction({
   const touchStartDist = useRef<number | null>(null);
   const touchStartScale = useRef(1);
 
+  // --- rAF state cache ---
+  const pendingUpdate = useRef<{
+    offsetX?: number;
+    offsetY?: number;
+    scale?: number;
+  } | null>(null);
+  const rafId = useRef<number | null>(null);
+
   const { dragMode } = editState;
   const cellState = editState.cells[index];
 
@@ -70,19 +78,18 @@ export function useCellInteraction({
           }
           newCells[index] = {
             ...newCells[index],
-            offsetX: newOffsetX,
-            offsetY: newOffsetY,
+            offsetX: clampedX,
+            offsetY: clampedY,
           };
           return { ...prev, cells: newCells };
         });
       }
     },
     [
-      editState,
       onEditStateChange,
       index,
       dragMode,
-      cellState,
+      cellState?.replacementSource,
       clampOffset,
       scale,
     ],
@@ -127,16 +134,46 @@ export function useCellInteraction({
       }
     },
     [
-      editState,
       onEditStateChange,
       index,
       dragMode,
-      cellState,
+      cellState?.replacementSource,
       clampOffset,
       offsetX,
       offsetY,
     ],
   );
+
+  const scheduleUpdate = useCallback(() => {
+    if (rafId.current !== null) return;
+    rafId.current = requestAnimationFrame(() => {
+      rafId.current = null;
+      if (!pendingUpdate.current) return;
+
+      const {
+        offsetX: newX,
+        offsetY: newY,
+        scale: newS,
+      } = pendingUpdate.current;
+      pendingUpdate.current = null;
+
+      // Ensure we call updates exactly when we have cached items
+      if (newS !== undefined) {
+        updateScale(newS);
+      } else if (newX !== undefined && newY !== undefined) {
+        updateOffset(newX, newY);
+      }
+    });
+  }, [updateOffset, updateScale]);
+
+  // Cleanup rAF on unmount
+  useEffect(() => {
+    return () => {
+      if (rafId.current !== null) {
+        cancelAnimationFrame(rafId.current);
+      }
+    };
+  }, []);
 
   // 保持事件引用稳定，避免提升错误和闭包陷阱
   const handleMouseMoveRef = useRef<(e: MouseEvent) => void>();
@@ -148,11 +185,33 @@ export function useCellInteraction({
     e.stopPropagation();
     const dx = (e.clientX - dragStart.current.x) / viewerScale;
     const dy = (e.clientY - dragStart.current.y) / viewerScale;
-    updateOffset(startOffset.current.x + dx, startOffset.current.y + dy);
+
+    pendingUpdate.current = {
+      offsetX: startOffset.current.x + dx,
+      offsetY: startOffset.current.y + dy,
+    };
+    scheduleUpdate();
   };
 
   handleMouseUpRef.current = () => {
     isDragging.current = false;
+    if (rafId.current !== null) {
+      cancelAnimationFrame(rafId.current);
+      rafId.current = null;
+    }
+    // Flush any pending updates immediately on mouse up
+    if (pendingUpdate.current) {
+      const {
+        offsetX: newX,
+        offsetY: newY,
+        scale: newS,
+      } = pendingUpdate.current;
+      pendingUpdate.current = null;
+      if (newS !== undefined) updateScale(newS);
+      else if (newX !== undefined && newY !== undefined)
+        updateOffset(newX, newY);
+    }
+
     if (handleMouseMoveRef.current && handleMouseUpRef.current) {
       window.removeEventListener("mousemove", handleMouseMoveRef.current);
       window.removeEventListener("mouseup", handleMouseUpRef.current);
@@ -176,7 +235,7 @@ export function useCellInteraction({
         window.addEventListener("mouseup", handleMouseUpRef.current);
       }
     },
-    [dragMode, editState, index, offsetX, offsetY, onEditStateChange],
+    [dragMode, index, offsetX, offsetY, onEditStateChange],
   );
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
@@ -232,8 +291,7 @@ export function useCellInteraction({
             globalOffsetY: clampedY,
           }));
         } else {
-          const cell = editState.cells[index];
-          if (cell?.replacementSource) {
+          if (cellState?.replacementSource) {
             const boxCX = region.x + region.width / 2;
             const boxCY = region.y + region.height / 2;
             const pX = (mouseGridX - boxCX - offsetX) / scale;
@@ -304,7 +362,9 @@ export function useCellInteraction({
     [
       clampOffset,
       dragMode,
-      editState,
+      editState.globalOffsetX,
+      editState.globalOffsetY,
+      editState.globalScale,
       index,
       offsetX,
       offsetY,
@@ -328,7 +388,12 @@ export function useCellInteraction({
       e.stopPropagation();
       const dx = (e.touches[0].clientX - dragStart.current.x) / viewerScale;
       const dy = (e.touches[0].clientY - dragStart.current.y) / viewerScale;
-      updateOffset(startOffset.current.x + dx, startOffset.current.y + dy);
+
+      pendingUpdate.current = {
+        offsetX: startOffset.current.x + dx,
+        offsetY: startOffset.current.y + dy,
+      };
+      scheduleUpdate();
     } else if (e.touches.length === 2 && touchStartDist.current !== null) {
       e.preventDefault();
       e.stopPropagation();
@@ -338,7 +403,11 @@ export function useCellInteraction({
       );
       const newScale =
         (dist / touchStartDist.current) * touchStartScale.current;
-      updateScale(newScale);
+
+      pendingUpdate.current = {
+        scale: newScale,
+      };
+      scheduleUpdate();
     }
   };
 
@@ -346,6 +415,24 @@ export function useCellInteraction({
     e.stopPropagation();
     isDragging.current = false;
     touchStartDist.current = null;
+
+    if (rafId.current !== null) {
+      cancelAnimationFrame(rafId.current);
+      rafId.current = null;
+    }
+    // Flush any pending updates immediately on touch end
+    if (pendingUpdate.current) {
+      const {
+        offsetX: newX,
+        offsetY: newY,
+        scale: newS,
+      } = pendingUpdate.current;
+      pendingUpdate.current = null;
+      if (newS !== undefined) updateScale(newS);
+      else if (newX !== undefined && newY !== undefined)
+        updateOffset(newX, newY);
+    }
+
     if (handleTouchMoveRef.current && handleTouchEndRef.current) {
       window.removeEventListener("touchmove", handleTouchMoveRef.current);
       window.removeEventListener("touchend", handleTouchEndRef.current);
@@ -385,7 +472,7 @@ export function useCellInteraction({
         window.addEventListener("touchend", handleTouchEndRef.current);
       }
     },
-    [dragMode, editState, index, offsetX, offsetY, onEditStateChange, scale],
+    [dragMode, index, offsetX, offsetY, onEditStateChange, scale],
   );
 
   const handleTouchMove = useCallback((e: TouchEvent) => {

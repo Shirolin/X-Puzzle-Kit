@@ -305,9 +305,29 @@ export function UserGuideDialog({
   );
 
   const content = (
-    <div className="app-overlay" style={{ zIndex: 10000 }} onClick={onClose}>
+    <div
+      className="user-guide-portal-root"
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 10000,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        pointerEvents: "none", // Let clicks pass to overlay background
+      }}
+    >
+      {/* 独立的高斯模糊背景层，切断与子级滑动动画的 GPU 合成 */}
+      <div
+        className="app-overlay"
+        style={{ position: "absolute", zIndex: -1, pointerEvents: "auto" }}
+        onClick={onClose}
+      />
+
+      {/* 本体，恢复可点击 */}
       <div
         className="glass-panel user-guide-dialog no-scrollbar"
+        style={{ pointerEvents: "auto" }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="guide-dialog-header">
@@ -465,12 +485,25 @@ export function UserGuideDialog({
 
       {previewMedia && (
         <div
-          className="screenshot-preview-overlay animate-fade-in"
-          onClick={(e) => {
-            e.stopPropagation();
-            setPreviewMedia(null);
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 11000,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            pointerEvents: "none",
           }}
         >
+          {/* 同样的隔离原则应用于二级遮罩 */}
+          <div
+            className="screenshot-preview-overlay animate-fade-in"
+            style={{ position: "absolute", zIndex: -1, pointerEvents: "auto" }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setPreviewMedia(null);
+            }}
+          />
           <div
             className="screenshot-container"
             onClick={(e) => e.stopPropagation()}
@@ -482,6 +515,7 @@ export function UserGuideDialog({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              pointerEvents: "auto",
             }}
           >
             {isMediaLoading && (

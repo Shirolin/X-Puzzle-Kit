@@ -3734,10 +3734,10 @@ button:active {
 
 .app-overlay {
   position: fixed;
-  inset: 0; /* 强制覆盖整屏，配合 viewport-fit=cover 覆盖安全区域 */
+  inset: 0;
   background-color: var(--color-overlay);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(160%); /* 适度降低以大幅减少多图背景的高频模糊消耗 */
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3748,6 +3748,8 @@ button:active {
   overscroll-behavior: none;
   touch-action: none;
   height: 100dvh;
+  will-change: opacity;
+  transform: translateZ(0); /* 强制开启 GPU 硬件加速层 */
 }
 
 @keyframes overlayFadeIn {
@@ -4091,8 +4093,11 @@ button:active {
   flex-direction: column;
   border-radius: var(--radius-2xl);
   overflow: hidden;
-  animation: slideUpFade 0.3s cubic-bezier(0.2, 0, 0, 1);
+  animation: slideUpFade 0.3s cubic-bezier(0.2, 0, 0, 1) forwards;
   z-index: 10001;
+  will-change: transform, opacity;
+  transform: translateZ(0); /* 创建独立的渲染层 */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* 提前烘焙阴影性能更好 */
 }
 
 .guide-dialog-header {
@@ -4177,6 +4182,8 @@ button:active {
   justify-content: center;
   padding: 20px;
   cursor: pointer;
+  will-change: opacity;
+  transform: translateZ(0); /* 防止背景模糊动画掉帧 */
 }
 
 .screenshot-container {

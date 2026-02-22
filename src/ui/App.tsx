@@ -696,6 +696,54 @@ export function App({
   };
 
   // Viewer Handlers
+  const pendingViewerUpdate = useRef<{
+    offsetX?: number;
+    offsetY?: number;
+    scale?: number;
+  } | null>(null);
+  const viewerRafId = useRef<number | null>(null);
+
+  const scheduleViewerUpdate = useCallback(() => {
+    if (viewerRafId.current !== null) return;
+    viewerRafId.current = requestAnimationFrame(() => {
+      viewerRafId.current = null;
+      if (!pendingViewerUpdate.current) return;
+
+      const { offsetX, offsetY, scale } = pendingViewerUpdate.current;
+      pendingViewerUpdate.current = null;
+
+      if (scale !== undefined) {
+        setViewerScale(Math.min(10, Math.max(0.1, scale)));
+      } else if (offsetX !== undefined && offsetY !== undefined) {
+        setViewerOffset({ x: offsetX, y: offsetY });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (viewerRafId.current !== null) {
+        cancelAnimationFrame(viewerRafId.current);
+      }
+    };
+  }, []);
+
+  const flushViewerUpdates = useCallback(() => {
+    if (viewerRafId.current !== null) {
+      cancelAnimationFrame(viewerRafId.current);
+      viewerRafId.current = null;
+    }
+    if (pendingViewerUpdate.current) {
+      const { offsetX, offsetY, scale } = pendingViewerUpdate.current;
+      pendingViewerUpdate.current = null;
+      if (scale !== undefined) {
+        setViewerScale(Math.min(10, Math.max(0.1, scale)));
+      } else if (offsetX !== undefined && offsetY !== undefined) {
+        setViewerOffset({ x: offsetX, y: offsetY });
+      }
+    }
+  }, []);
+
   const handleWheel = (e: WheelEvent) => {
     if (e.ctrlKey || e.metaKey) {
       e.preventDefault();
@@ -716,11 +764,20 @@ export function App({
   };
 
   const handleMouseMove = (e: MouseEvent) => {
-    if (isPanning)
-      setViewerOffset({ x: e.clientX - panStart.x, y: e.clientY - panStart.y });
+    if (isPanning) {
+      pendingViewerUpdate.current = {
+        offsetX: e.clientX - panStart.x,
+        offsetY: e.clientY - panStart.y,
+      };
+      scheduleViewerUpdate();
+    }
   };
 
-  const handleMouseUp = () => setIsPanning(false);
+  const handleMouseUp = () => {
+    setIsPanning(false);
+    flushViewerUpdates();
+  };
+
   const handleDoubleClick = () =>
     viewerScale < 1 ? setViewerScale(1) : fitToScreen();
 
@@ -746,23 +803,26 @@ export function App({
 
   const handleTouchMove = (e: TouchEvent) => {
     if (e.touches.length === 1 && isPanning) {
-      setViewerOffset({
-        x: e.touches[0].clientX - panStart.x,
-        y: e.touches[0].clientY - panStart.y,
-      });
+      pendingViewerUpdate.current = {
+        offsetX: e.touches[0].clientX - panStart.x,
+        offsetY: e.touches[0].clientY - panStart.y,
+      };
+      scheduleViewerUpdate();
     } else if (e.touches.length === 2 && touchStartDist !== null) {
       const dist = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
         e.touches[0].clientY - e.touches[1].clientY,
       );
       const scale = (dist / touchStartDist) * touchStartScale;
-      setViewerScale(Math.min(10, Math.max(0.1, scale)));
+      pendingViewerUpdate.current = { scale };
+      scheduleViewerUpdate();
     }
   };
 
   const handleTouchEnd = () => {
     setIsPanning(false);
     setTouchStartDist(null);
+    flushViewerUpdates();
   };
 
   // Initial Theme Sync & PWA Status Bar Optimization
