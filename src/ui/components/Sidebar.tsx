@@ -391,10 +391,13 @@ export function Sidebar({
   useEffect(() => {
     if (!listRef.current) return;
 
+    const env = getPlatformEnv();
+
     const sortable = new Sortable(listRef.current, {
       forceFallback: true,
       fallbackClass: "sortable-fallback", // 使用专门的类名
-      fallbackOnBody: true, // 放到 body 以避免被容器裁切
+      // 在 Popup 狭小且锁死了宽高的环境中，追加到 body 会导致严重的 layout thrashing 性能重排卡顿，所以必须对此环境关闭。
+      fallbackOnBody: !env.isPopup,
       swapThreshold: 0.65,
       animation: 250,
       delay: 100,
@@ -495,7 +498,7 @@ export function Sidebar({
       container.removeEventListener("touchstart", preventNativeDrag);
       container.removeEventListener("touchmove", preventNativeDrag);
     };
-  }, []);
+  }, [mode]);
 
   useLayoutEffect(() => {
     const list = listRef.current;

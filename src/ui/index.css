@@ -1477,13 +1477,16 @@ input:checked + .slider:before {
   background-color: var(--color-surface) !important;
   border-color: var(--color-primary) !important;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
-  transform: scale(1.05) !important;
+  transform: scale(
+    1.05
+  ); /* 移除 !important，允许 SortableJS 的 translate3d 原生内联样式生效 */
   z-index: 999999 !important;
   pointer-events: none !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-style: solid !important;
   border-width: 1px !important;
+  transition: none !important; /* 禁止拖拽发生过渡动画，防止极度卡顿 */
 }
 
 /* 
@@ -1504,6 +1507,7 @@ input:checked + .slider:before {
   pointer-events: none !important;
   z-index: 100000 !important;
   box-sizing: border-box !important;
+  transition: none !important; /* 禁止过渡动画避免迟滞及引起性能崩溃 */
 }
 
 /* 拖拽时隐藏不需要的按钮，减少 UI 噪音 */
