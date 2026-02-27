@@ -61,17 +61,18 @@
   <p><i>Seamless experience from Desktop Extension to Mobile PWA</i></p>
 </div>
 
-### 🧩 Split & Layout (Splitter)
-
-- **4-Panel & Vertical Stacks**: Optimized for the **"Vertical Image Stacking"** trend on X (Twitter). Split long images into 4 perfectly sized panels (T-shape or 2x2 grid) for that "Tap to Reveal" full-body effect.
-- **Custom Rows/Cols**: Support for custom N rows or N columns splitting, perfect for banners or ultra-long threads. ZIP export supported.
-- **Interactive UI**: Drag-and-drop cropping, what you see is what you get.
-
 ### 🖼️ Stitch & Collect (Stitcher)
 
 - **Creative Assembly**: Love the clever 4-panel splits or manga spreads designed by your favorite artists? One-click to grab these brilliant ideas and **assemble them into a high-res masterpiece** for your personal collection.
 - **Smart Prediction**: Auto-detects the best layout (T-shape, Grid) based on image count.
 - **Native Integration (Ext only)**: Injects a "🧩 Stitch" button directly into the timeline. From "Admiring" to "Cherishing" in one click.
+
+### ✂️ Smart Splitter
+
+- **Multi-Mode Splitting**: Offers versatile layouts including **2x2 Grid**, **T-Shape (1 big, 2 small)**, and **Custom Rows/Cols (Nx1, 1xN)**, perfectly tailored for Twitter's 4-image grid or vertical strip comics.
+- **Precision Editing**: Features **Unified** and **Individual** drag modes. You can scale and move the image globally or adjust each cell independently, including **replacing images** for specific cells.
+- **Twitter Optimization**: Built-in one-click **"Twitter Aspect Ratio"** optimization ensures your images are cropped perfectly for the timeline view.
+- **Customizable Export**: Adjust **gap sizes**, **fill exposed backgrounds** with colors, and choose to export as a **ZIP archive** or individual images.
 
 ### 📱 Platform
 
