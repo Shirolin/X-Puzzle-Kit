@@ -10,7 +10,7 @@
     "dev": "vite",
     "dev:web": "vite dev -c vite.config.web.ts",
     "dev:test": "vite serve -c vite.test.config.ts",
-    "build": "node scripts/sync-shortcuts.js && vite build",
+    "build": "node scripts/clean-dist.js && node scripts/sync-shortcuts.js && vite build",
     "build:web": "echo \"Building Web App...\" && node scripts/sync-shortcuts.js && vite build -c vite.config.web.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write .",
