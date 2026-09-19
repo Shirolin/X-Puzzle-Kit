@@ -36,3 +36,4 @@ worker-sites-init.js
 # AI Agent
 .agent/
 .agents/
+.workbuddy-ai/
