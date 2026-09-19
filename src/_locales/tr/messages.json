@@ -693,6 +693,22 @@
     "message": "Türkçe",
     "description": "Language name: Turkish"
   },
+  "langUk": {
+    "message": "Українська",
+    "description": "Language name: Ukrainian"
+  },
+  "langRu": {
+    "message": "Русский",
+    "description": "Language name: Russian"
+  },
+  "langIt": {
+    "message": "Italiano",
+    "description": "Language name: Italian"
+  },
+  "langId": {
+    "message": "Indonesia",
+    "description": "Language name: Indonesian"
+  },
   "openDebugPanel": {
     "message": "Hata Ayıklama Panelini Aç",
     "description": "Text for the debug panel opening menu"

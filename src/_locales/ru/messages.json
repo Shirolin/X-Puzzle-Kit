@@ -1,0 +1,768 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Kit: Склейка и разделение изображений для X",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Склеивайте панорамы или разделяйте сетки для X (Twitter). Пиксельная точность, оптимизация для ленты и качество без потерь.",
+    "description": "The description of the extension"
+  },
+  "longDescription": {
+    "message": "X-Puzzle-Kit — профессиональный инструмент для склейки изображений и разделения сеток, созданный специально для пользователей X (Twitter), цифровых художников и коллекционеров. Восстанавливаете ли вы многочастную панораму или готовите креативное раскрытие сетки — X-Puzzle-Kit гарантирует, что ваш контент будет выглядеть именно так, как задумано, в ленте X.\n\n🌐 КРОССПЛАТФОРМЕННАЯ ПОДДЕРЖКА:\nПомимо этого расширения для Chrome, мы предлагаем полнофункциональную веб-версию (https://x-puzzle-kit.pages.dev/) для удобного использования на мобильных устройствах, планшетах и в других браузерах.\n\n✨ ОСНОВНЫЕ ВОЗМОЖНОСТИ:\n\n🧵 Умная склейка изображений\nБесшовно объединяйте отдельные изображения из твитов обратно в исходную панораму или длинный формат.\n- Умные макеты: полная поддержка вертикального, горизонтального, сетки 2x2 и фирменного T-образного макета.\n- Пиксельная точность: усовершенствованный расчёт координат устраняет швы в 1 пиксель и размытие.\n- Нативная интеграция: склеивайте изображения прямо из ленты X одним кликом — без ручного сохранения.\n- Экспорт без потерь: сохраняет каждый пиксель в исходном разрешении. Без сжатия, без потери качества.\n\n✂️ Креативное разделение сетки (создатель мозаики)\nРазбивайте любое большое изображение на стандартизированные сетки (2x2 или собственные), оптимизированные для показа нескольких изображений в X.\n- Оптимизация «бесшовного потока» Twitter: настроено под механизм предпросмотра Twitter. Обеспечивает склейку нескольких частей в одно «бесшовное изображение» в ленте за счёт точного соответствия пропорциям предпросмотра X.\n- Разделение правой кнопкой: мгновенно отправляйте любое изображение из интернета в разделитель прямо из контекстного меню браузера.\n- Единое повествование: создавайте последовательные эффекты «раскрытия» для своей ленты.\n\n🚀 МОЩНЫЕ ФУНКЦИИ:\n- Плавный рабочий процесс: от ленты до холста за секунды благодаря глубокой интеграции с браузером.\n- Профессиональная настройка: точная регулировка глобальных и локальных отступов, тёмная тема и собственные цвета фона (включая прозрачность).\n- Простой импорт: поддержка загрузки файлов и вставки из буфера обмена вместе с нативной интеграцией с X.\n- Пакетный экспорт: сохраняйте работы как высококачественные PNG, JPG или WebP, или одним ZIP-архивом.\n\n🔒 ПРИВАТНОСТЬ ПРЕЖДЕ ВСЕГО\nВаши изображения никогда не покидают браузер. Вся обработка выполняется локально на вашем устройстве — без удалённых загрузок, без отслеживания, полная безопасность.\n\nУлучшите своё повествование в X вместе с X-Puzzle-Kit уже сегодня.",
+    "description": "Long description of the extension for store listing"
+  },
+  "previewTitle": {
+    "message": "Просмотр склейки",
+    "description": "Title of the preview window"
+  },
+  "splitterTitle": {
+    "message": "Разделитель",
+    "description": "Title of the splitter window"
+  },
+  "stitching": {
+    "message": "Склейка...",
+    "description": "Loading status during stitch generation"
+  },
+  "removeImage": {
+    "message": "Удалить изображение",
+    "description": "Tooltip for remove image"
+  },
+  "fromArtist": {
+    "message": "От",
+    "description": "Author prefix"
+  },
+  "tweetId": {
+    "message": "ID твита",
+    "description": "Label for Tweet ID"
+  },
+  "preparingHighRes": {
+    "message": "Подготовка ресурсов высокого разрешения...",
+    "description": "Loading text for high-res images"
+  },
+  "reset": {
+    "message": "Сброс",
+    "description": "Reset button text"
+  },
+  "layoutScheme": {
+    "message": "Схема макета",
+    "description": "Section header for layout"
+  },
+  "layoutGrid": {
+    "message": "Сетка 2x2",
+    "description": "2x2 layout label"
+  },
+  "layoutTShape": {
+    "message": "T-образная",
+    "description": "T-Shape layout label"
+  },
+  "layoutHorizontal": {
+    "message": "Горизонтально",
+    "description": "Horizontal layout label"
+  },
+  "layoutVertical": {
+    "message": "Вертикально",
+    "description": "Vertical layout label"
+  },
+  "exportSettings": {
+    "message": "Экспорт",
+    "description": "Section header for export settings"
+  },
+  "backgroundColor": {
+    "message": "Цвет фона",
+    "description": "Label for background color"
+  },
+  "transparent": {
+    "message": "Прозр.",
+    "description": "Transparent background option"
+  },
+  "white": {
+    "message": "Белый",
+    "description": "White background option"
+  },
+  "black": {
+    "message": "Чёрный",
+    "description": "Black background option"
+  },
+  "globalGap": {
+    "message": "Глобальный отступ",
+    "description": "Label for global gap"
+  },
+  "resetToZero": {
+    "message": "Сбросить до 0",
+    "description": "Tooltip for reset gap"
+  },
+  "imageSorting": {
+    "message": "Сортировка",
+    "description": "Section header for image sorting"
+  },
+  "localGap": {
+    "message": "Локальный отступ",
+    "description": "Subtitle for image sorting"
+  },
+  "imageLabel": {
+    "message": "Изображение",
+    "description": "Label for image"
+  },
+  "moveUp": {
+    "message": "Вверх",
+    "description": "Tooltip for move up"
+  },
+  "moveDown": {
+    "message": "Вниз",
+    "description": "Tooltip for move down"
+  },
+  "hideImage": {
+    "message": "Скрыть",
+    "description": "Tooltip for hide image"
+  },
+  "showImage": {
+    "message": "Показать",
+    "description": "Tooltip for show image"
+  },
+  "afterGap": {
+    "message": "Отступ после",
+    "description": "Label for local gap after image"
+  },
+  "decreaseGap": {
+    "message": "Уменьшить отступ",
+    "description": "Tooltip for decrease gap"
+  },
+  "increaseGap": {
+    "message": "Увеличить отступ",
+    "description": "Tooltip for increase gap"
+  },
+  "gapLabel": {
+    "message": "Отступ",
+    "description": "Label for the resulting gap"
+  },
+  "resetLocalGap": {
+    "message": "Сбросить отступ",
+    "description": "Tooltip for reset local gap"
+  },
+  "processing": {
+    "message": "Обработка...",
+    "description": "Button text while processing"
+  },
+  "stitchAndDownload": {
+    "message": "Склеить и скачать",
+    "description": "Final download button text"
+  },
+  "stitchBtnTitle": {
+    "message": "Склеить изображения",
+    "description": "Tooltip for the stitch button embedded in Twitter"
+  },
+  "language": {
+    "message": "Язык",
+    "description": "Language selector label"
+  },
+  "sourcedFrom": {
+    "message": "от",
+    "description": "Used in the source badge"
+  },
+  "splitImage": {
+    "message": "Разделить изображение",
+    "description": "Split button text"
+  },
+  "downloadAll": {
+    "message": "Скачать все",
+    "description": "Download all button text"
+  },
+  "uploadImage": {
+    "message": "Загрузить изображение",
+    "description": "Upload image button text"
+  },
+  "selectImageTip": {
+    "message": "Выберите изображение для разделения",
+    "description": "Select image tip"
+  },
+  "uploadImages": {
+    "message": "Загрузить изображения",
+    "description": "Button text for uploading multiple images"
+  },
+  "selectImagesTip": {
+    "message": "Выберите изображения для склейки",
+    "description": "Tip for selecting multiple images"
+  },
+  "addMoreImages": {
+    "message": "Добавить изображения",
+    "description": "Button text to add more images when preview is empty"
+  },
+  "dragAndDropTip": {
+    "message": "Или перетащите сюда",
+    "description": "Drag and drop instruction"
+  },
+  "changeImage": {
+    "message": "Изменить",
+    "description": "Change image button text"
+  },
+  "gapRemoval": {
+    "message": "Обрезать исходные отступы",
+    "description": "Gap removal label"
+  },
+  "gapRemovalTip": {
+    "message": "Если ваше исходное изображение имеет встроенные рамки или отступы (как в манге или комиксах), включите это, чтобы автоматически обрезать лишние пиксели при разделении.",
+    "description": "Gap removal description"
+  },
+  "rowCount": {
+    "message": "Количество строк (N)",
+    "description": "Row count label"
+  },
+  "colCount": {
+    "message": "Количество столбцов (N)",
+    "description": "Column count label"
+  },
+  "sourceImage": {
+    "message": "Источник",
+    "description": "Source image label"
+  },
+  "splitResult": {
+    "message": "Результат разделения",
+    "description": "Split result label"
+  },
+  "formatLabel": {
+    "message": "Формат экспорта",
+    "description": "Export format label"
+  },
+  "iosWebpWarningTitle": {
+    "message": "Совместимость WebP",
+    "description": "Title for iOS WebP warning"
+  },
+  "iosWebpWarning": {
+    "message": "Сохранение изображений WebP в приложение «Фото» на iOS может иметь проблемы совместимости (некоторые приложения могут отображать их неправильно). Рекомендуется PNG. Вы всё равно хотите переключиться на WebP?",
+    "description": "Warning for iOS WebP compatibility"
+  },
+  "zipLabel": {
+    "message": "Скачать как ZIP",
+    "description": "Zip download toggle label"
+  },
+  "zipTip": {
+    "message": "Упаковать все изображения в один ZIP-файл",
+    "description": "Zip feature description"
+  },
+  "restore": {
+    "message": "Восстановить",
+    "description": "Restore button text"
+  },
+  "twitterOptimize": {
+    "message": "Макет «бесшовный поток» Twitter",
+    "description": "Twitter optimization toggle label"
+  },
+  "twitterOptimizeTip": {
+    "message": "Оптимизировано для механизма предпросмотра Twitter. Обеспечивает склейку нескольких частей в одно «бесшовное изображение» в ленте.",
+    "description": "Twitter optimization tip"
+  },
+  "settings": {
+    "message": "Настройки",
+    "description": "General settings section title"
+  },
+  "modeStitch": {
+    "message": "Склейка",
+    "description": "Stitch mode button"
+  },
+  "modeSplit": {
+    "message": "Разделение",
+    "description": "Split mode button"
+  },
+  "support": {
+    "message": "Поддержка",
+    "description": "Support section title"
+  },
+  "buyMeCoffee": {
+    "message": "Поддержать",
+    "description": "Sponsorship button text"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: Разделить изображение",
+    "description": "Context menu item title"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "Расширение обновлено. Пожалуйста, обновите страницу.",
+    "description": "Message shown when extension context is invalidated"
+  },
+  "slideRefine": {
+    "message": "Проведите для точной настройки",
+    "description": "Hint for the jog dial controller"
+  },
+  "confirmRemoveImage": {
+    "message": "Вы уверены, что хотите удалить это изображение?",
+    "description": "Confirmation message when removing a single image"
+  },
+  "confirmClearAll": {
+    "message": "Вы уверены, что хотите очистить все изображения? Это действие нельзя отменить.",
+    "description": "Confirmation message when clearing all images"
+  },
+  "clearAll": {
+    "message": "Очистить все",
+    "description": "Clear all images button text"
+  },
+  "emptyImageText": {
+    "message": "Нет изображений, нажмите для загрузки",
+    "description": "Message shown when image list is empty"
+  },
+  "installTitle": {
+    "message": "Добавить на главный экран",
+    "description": "iOS install prompt title"
+  },
+  "installDesc": {
+    "message": "Нажмите кнопку «Поделиться» ниже, затем выберите «На главный экран».",
+    "description": "iOS install prompt description"
+  },
+  "installDescChrome": {
+    "message": "Нажмите кнопку «Поделиться» в правом верхнем углу, затем выберите «На главный экран».",
+    "description": "iOS Chrome install prompt description"
+  },
+  "installDescAndroid": {
+    "message": "Нажмите меню браузера (справа вверху или внизу), затем выберите «Установить приложение» или «На главный экран».",
+    "description": "Android install prompt description"
+  },
+  "pwaInstallBtn": {
+    "message": "Установить",
+    "description": "Native PWA install button text"
+  },
+  "pwaInstallDescNative": {
+    "message": "Установите приложение на главный экран для лучшего опыта.",
+    "description": "Native PWA install description"
+  },
+  "importFromUrl": {
+    "message": "Импорт по URL",
+    "description": "Import button title"
+  },
+  "invalidUrl": {
+    "message": "Неверный URL. Пожалуйста, укажите действительную ссылку на твит (X)",
+    "description": "Invalid URL tip"
+  },
+  "analyzingLink": {
+    "message": "Анализ ссылки...",
+    "description": "Analyzing link state"
+  },
+  "noImagesFound": {
+    "message": "В этом твите не найдено изображений для импорта",
+    "description": "No images found tip"
+  },
+  "downloadingImages": {
+    "message": "Загрузка изображений",
+    "description": "Downloading images state"
+  },
+  "processingImages": {
+    "message": "Обработка изображений...",
+    "description": "Processing images state"
+  },
+  "parseFailed": {
+    "message": "Не удалось разобрать твит",
+    "description": "Parse failed tip"
+  },
+  "workerInvalidResponse": {
+    "message": "Служба разбора вернула неожиданный формат. Возможно, твит ограничен или служба временно недоступна.",
+    "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
+  },
+  "workerStatusError": {
+    "message": "Служба разбора временно не может обработать этот твит (Ошибка: $status$).",
+    "description": "Tooltip for when worker returns non-200 status code",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
+  },
+  "networkError": {
+    "message": "Не удалось подключиться к сети. Проверьте настройки интернета.",
+    "description": "Tooltip for network errors during fetch"
+  },
+  "import": {
+    "message": "Импорт",
+    "description": "Import action button"
+  },
+  "cancel": {
+    "message": "Отмена",
+    "description": "Cancel action button"
+  },
+  "confirm": {
+    "message": "Подтвердить",
+    "description": "Confirm action button"
+  },
+  "imageResolution": {
+    "message": "Разрешение",
+    "description": "Label for image resolution"
+  },
+  "clickToShowResolution": {
+    "message": "Нажмите, чтобы увидеть разрешение",
+    "description": "Tooltip hint for thumbnails"
+  },
+  "finalGap": {
+    "message": "Итоговый отступ",
+    "description": "Calculated total gap including global and local"
+  },
+  "openSourcePage": {
+    "message": "Открыть страницу источника",
+    "description": "Tooltip for the source tweet link"
+  },
+  "invalidFormat": {
+    "message": "Неверный формат",
+    "description": "Error message for invalid input"
+  },
+  "auto": {
+    "message": "Авто",
+    "description": "Auto option for language/theme"
+  },
+  "themeSystem": {
+    "message": "Как в системе",
+    "description": "System theme option"
+  },
+  "themeLight": {
+    "message": "Светлая тема",
+    "description": "Light theme option"
+  },
+  "themeDark": {
+    "message": "Тёмная тема",
+    "description": "Dark theme option"
+  },
+  "themeLabel": {
+    "message": "Тема",
+    "description": "Label for theme selector"
+  },
+  "pwaVersionLabel": {
+    "message": "Веб-версия (мобильные/онлайн)",
+    "description": "PWA version label"
+  },
+  "pwaVersionTip": {
+    "message": "Используете на мобильном или в браузере без расширения? Попробуйте полнофункциональную веб-версию.",
+    "description": "PWA version description"
+  },
+  "openWebVersion": {
+    "message": "Открыть веб-версию",
+    "description": "Open PWA button text"
+  },
+  "extensionVersionLabel": {
+    "message": "Расширение Chrome",
+    "description": "Extension version label"
+  },
+  "extensionVersionTip": {
+    "message": "Используете браузер на компьютере? Попробуйте наше расширение для склейки одним кликом прямо в X (Twitter).",
+    "description": "Extension version description"
+  },
+  "openExtensionStore": {
+    "message": "Перейти в Chrome Web Store",
+    "description": "Open extension store button text"
+  },
+  "pwaUpdateAvailable": {
+    "message": "Доступна новая версия",
+    "description": "PWA update available tip"
+  },
+  "pwaUpdateReady": {
+    "message": "Обновитесь, чтобы получить новые функции и исправления",
+    "description": "PWA update description"
+  },
+  "pwaRefresh": {
+    "message": "Обновить",
+    "description": "PWA refresh button"
+  },
+  "pwaIgnore": {
+    "message": "Игнорировать",
+    "description": "PWA ignore button"
+  },
+  "pwaOfflineReady": {
+    "message": "Приложение готово работать офлайн",
+    "description": "PWA offline ready tip"
+  },
+  "layoutSchemeHelp": {
+    "message": "[icon:LayoutGrid] Сетка: для соцсетей\n[icon:Layout] T-образная: для художественной фотографии\n[icon:Rows] Вертикально/Горизонтально: для длинных панорам",
+    "description": "Layout help text"
+  },
+  "backgroundColorHelp": {
+    "message": "Задайте цвет под изображениями. Прозрачный (PNG/WebP) — самый гибкий, чёрный или белый помогает объединить микрокорректировки.",
+    "description": "Background color help"
+  },
+  "globalGapHelp": {
+    "message": "Задайте ширину отступа между всеми изображениями. Отрицательные значения допускают перекрытие.",
+    "description": "Global gap help"
+  },
+  "formatHelp": {
+    "message": "「PNG」Оригинальное качество, прозрачность, больше размер\n「JPG」Высокое сжатие, без прозрачности, меньше размер\n「WEBP」Высокое качество, прозрачность, плохая совместимость с iOS",
+    "description": "Help explanation for format selection"
+  },
+  "exportSettingsHelp": {
+    "message": "Персонализированный экспорт:\n「PNG」Оригинальное качество, прозрачность, больше размер\n「JPG」Высокое сжатие, без прозрачности, меньше размер\n「WEBP」Высокое качество, прозрачность, плохая совместимость с iOS",
+    "description": "Comprehensive help for export settings section"
+  },
+  "twitterOptimizeHelp": {
+    "message": "Когда вы публикуете несколько частей в X (Twitter), это корректирует границы для бесшовного вида «одного изображения» в лентах пользователей.",
+    "description": "Twitter optimization help"
+  },
+  "userGuideButton": {
+    "message": "Руководство",
+    "description": "User guide button text"
+  },
+  "tutorialImportTitle": {
+    "message": "Импорт изображений",
+    "description": "Tutorial step 1 title"
+  },
+  "tutorialImportDesc": {
+    "message": "Нажмите, чтобы загрузить локальные файлы, или используйте значок ссылки для импорта прямо из URL X (Twitter).",
+    "description": "Tutorial step 1 description"
+  },
+  "tutorialLayoutTitle": {
+    "message": "Выберите макет",
+    "description": "Tutorial step 2 title"
+  },
+  "tutorialLayoutDesc": {
+    "message": "Выберите макет для изображений. «Сетка» рекомендуется для публикаций в X (Twitter).",
+    "description": "Tutorial step 2 description"
+  },
+  "tutorialControlTitle": {
+    "message": "Тонкая настройка",
+    "description": "Tutorial step 3 title"
+  },
+  "tutorialControlDesc": {
+    "message": "Настройте глобальные/локальные отступы или перетащите список, чтобы изменить порядок изображений.",
+    "description": "Tutorial step 3 description"
+  },
+  "tutorialExportTitle": {
+    "message": "Экспорт и скачивание",
+    "description": "Tutorial step 4 title"
+  },
+  "tutorialExportDesc": {
+    "message": "Наконец, нажмите кнопку, чтобы создать и сохранить свою работу!",
+    "description": "Tutorial step 4 description"
+  },
+  "skipTutorial": {
+    "message": "Пропустить",
+    "description": "Skip button"
+  },
+  "nextStep": {
+    "message": "Далее",
+    "description": "Next button"
+  },
+  "localGapHelp": {
+    "message": "Настройте отступ между отдельными изображениями. Идеально для разделения глав или сокрытия «пасхалок».",
+    "description": "Help explanation for local gap"
+  },
+  "imageSortingHelp": {
+    "message": "Перетащите [icon:GripVertical] или нажмите [icon:ChevronUp][icon:ChevronDown], чтобы изменить порядок\nНажмите [icon:Eye], чтобы переключить видимость\nНажмите на числа для точной настройки отступов",
+    "description": "Comprehensive help for image sorting section"
+  },
+  "userGuideTitle": {
+    "message": "Руководство пользователя",
+    "description": "Guide dialog title"
+  },
+  "finishTutorial": {
+    "message": "Завершить",
+    "description": "Finish button"
+  },
+  "tabPWA": {
+    "message": "Веб / мобильные",
+    "description": "Manual tab 1"
+  },
+  "tabExtension": {
+    "message": "Расширение",
+    "description": "Manual tab 2"
+  },
+  "tabFeatures": {
+    "message": "Советы",
+    "description": "Manual tab 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. Улучшенная интеграция\nЗабудьте о ручном копировании. Нажмите кнопку ниже, чтобы добавить «X-Puzzle-Kit» в свою библиотеку Команд.\n2. Быстрый импорт\nНажмите эту команду в меню «Поделиться» X (Twitter), чтобы автоматически извлечь ссылки и перейти без лишних шагов.",
+    "description": "iOS Install Guide"
+  },
+  "installShortcutBtn": {
+    "message": "Установить команду iOS",
+    "description": "iOS Shortcut installation button"
+  },
+  "installShortcutTip": {
+    "message": "Нажмите, чтобы получить официальную команду iOS для импорта одним касанием.",
+    "description": "iOS Shortcut installation tip"
+  },
+  "guideAndroidInstall": {
+    "message": "1. Установите PWA (прогрессивное веб-приложение)\nНажмите «Установить приложение» в меню браузера. Не нужно скачивать из магазина.\n2. Нативный обмен\nПосле установки делитесь прямо из X (Twitter) и выберите «X-Puzzle-Kit» для импорта.",
+    "description": "Android installation guide"
+  },
+  "viewAndroidTutorial": {
+    "message": "Руководство по установке",
+    "description": "Android tutorial button text"
+  },
+  "guideExtensionStitch": {
+    "message": "Прямо под любым постом в X (Twitter) вы найдёте кнопку [icon]. Мгновенно соберите все изображения и войдите в режим пазла одним кликом.",
+    "description": "Extension stitch feature guide"
+  },
+  "guideExtensionSplit": {
+    "message": "Щёлкните правой кнопкой по любому изображению в интернете и выберите «X-Puzzle-Kit: Разделить изображение», чтобы сразу начать обработку без скачивания.",
+    "description": "Extension split feature guide"
+  },
+  "guideFlowOptimization": {
+    "message": "Когда включено, инструмент точно настраивает пропорции частей для алгоритма X (Twitter), обеспечивая бесшовную склейку в ленте.",
+    "description": "Optimization feature guide"
+  },
+  "guideExtensionTitle": {
+    "message": "Бесшовная склейка изображений в постах",
+    "description": "Manual card title 1"
+  },
+  "guideSplitTitle": {
+    "message": "Мгновенное разделение правой кнопкой",
+    "description": "Manual card title 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "Точный контроль отступов",
+    "description": "Manual card title 3"
+  },
+  "pwaBenefitTitle": {
+    "message": "Зачем устанавливать PWA?",
+    "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Бесшовная интеграция: поддерживает системное меню «Поделиться» Android для более быстрого импорта из X.\n• Полноэкранный режим: скрывает адресную строку браузера для точной настройки отступов на больших экранах.\n• Интеграция с платформой: глубокая оптимизация для iOS PWA, чтобы устранить белые полосы и проблемы с соотношением сторон.",
+    "description": "PWA benefit list content"
+  },
+  "pwaBenefitIntegrated": {
+    "message": "• Бесшовная интеграция: поддерживает системное меню «Поделиться» Android для более быстрого импорта из X.",
+    "description": "PWA benefit: Android integration"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• Полноэкранный режим: скрывает адресную строку браузера для точной настройки отступов на больших экранах.",
+    "description": "PWA benefit: Full-screen focus"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• Интеграция с платформой: глубокая оптимизация для iOS PWA, чтобы устранить белые полосы и проблемы с соотношением сторон.",
+    "description": "PWA benefit: iOS PWA optimization"
+  },
+  "guideNativeInstall": {
+    "message": "Установите PWA, чтобы увидеть «X-Puzzle-Kit» в меню «Поделиться» X (Twitter) для импорта одним кликом.",
+    "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "PWA — это современный формат приложений, не требующий загрузки из магазина. По сути, это «веб с возможностями приложения», почти не занимающий памяти — идеальный лёгкий выбор для вашего устройства.",
+    "description": "PWA explanation"
+  },
+  "guideTechnicalTitle": {
+    "message": "Обрезать исходные отступы",
+    "description": "Technical improvement title"
+  },
+  "guideTechnicalDesc": {
+    "message": "Если ваше исходное изображение имеет встроенные рамки или отступы (как в манге), включите это, чтобы обрезать эти пиксели для более чистого результата.",
+    "description": "Technical improvement description"
+  },
+  "statusOfflineAvailable": {
+    "message": "Доступно офлайн",
+    "description": "Status text shown when offline"
+  },
+  "troubleshootingTitle": {
+    "message": "Не удаётся установить?",
+    "description": "Troubleshooting section title"
+  },
+  "troubleshootingIncognito": {
+    "message": "Режим приватного просмотра препятствует установке PWA. Пожалуйста, используйте обычный режим и попробуйте снова.",
+    "description": "Warning about incognito mode"
+  },
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "Language name: Simplified Chinese"
+  },
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "Language name: Traditional Chinese"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "Language name: English"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "Language name: Japanese"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "Language name: Korean"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "Language name: Spanish"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "Language name: French"
+  },
+  "langDe": {
+    "message": "Deutsch",
+    "description": "Language name: German"
+  },
+  "langPt": {
+    "message": "Português",
+    "description": "Language name: Portuguese"
+  },
+  "langTr": {
+    "message": "Türkçe",
+    "description": "Language name: Turkish"
+  },
+  "langUk": {
+    "message": "Українська",
+    "description": "Language name: Ukrainian"
+  },
+  "langRu": {
+    "message": "Русский",
+    "description": "Language name: Russian"
+  },
+  "langIt": {
+    "message": "Italiano",
+    "description": "Language name: Italian"
+  },
+  "langId": {
+    "message": "Indonesia",
+    "description": "Language name: Indonesian"
+  },
+  "openDebugPanel": {
+    "message": "Открыть панель отладки",
+    "description": "Text for the debug panel opening menu"
+  },
+  "simulator": {
+    "message": "Симулятор",
+    "description": "Text for the simulator feature"
+  },
+  "viewDemoVideo": {
+    "message": "Смотреть бесшовный обмен",
+    "description": "Button to see the smooth sharing experience demo"
+  },
+  "privacyNotice": {
+    "message": "Приватность: веб-версия использует безопасный прокси для разбора (без логов). Обработка остаётся локальной.",
+    "description": "Privacy notice at the bottom of web version sidebar"
+  },
+  "privacyPolicy": {
+    "message": "Политика конфиденциальности",
+    "description": "Privacy policy link text"
+  },
+  "shortcutUpdateNote": {
+    "message": "Доступна новая версия! Не забудьте обновить свою команду.",
+    "description": "Note shown in iOS Shortcuts when an update is available"
+  },
+  "dragMode": {
+    "message": "Режим перетаскивания",
+    "description": "Label for drag mode control"
+  },
+  "dragModeUnified": {
+    "message": "Вместе",
+    "description": "Unified drag mode option"
+  },
+  "dragModeIndividual": {
+    "message": "Отдельно",
+    "description": "Individual drag mode option"
+  },
+  "contentScale": {
+    "message": "Масштаб содержимого",
+    "description": "Label for content scale slider"
+  },
+  "resetPosition": {
+    "message": "Сбросить позицию",
+    "description": "Button text to reset image position"
+  },
+  "splitReplaceImage": {
+    "message": "Заменить изображение",
+    "description": "Tooltip for replace image button"
+  },
+  "splitRestoreImage": {
+    "message": "Восстановить оригинал",
+    "description": "Tooltip for restore original image button"
+  },
+  "splitBackgroundTip": {
+    "message": "Когда включено, заполняет открытые края, возникающие от перемещения изображений, цветом фона.",
+    "description": "Tooltip for split background fill option"
+  }
+}

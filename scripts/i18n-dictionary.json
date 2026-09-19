@@ -7,7 +7,11 @@
     "fr": "Mode de glissement",
     "de": "Ziehmodus",
     "pt_BR": "Modo de arrastar",
-    "tr": "Sürükleme Modu"
+    "tr": "Sürükleme Modu",
+    "uk": "Режим перетягування",
+    "ru": "Режим перетаскивания",
+    "it": "Modalità trascinamento",
+    "id": "Mode Seret"
   },
   "dragModeUnified": {
     "zh_TW": "整體",
@@ -17,7 +21,11 @@
     "fr": "Unifié",
     "de": "Vereinheitlicht",
     "pt_BR": "Unificado",
-    "tr": "Birleşik"
+    "tr": "Birleşik",
+    "uk": "Разом",
+    "ru": "Вместе",
+    "it": "Unificato",
+    "id": "Menyatu"
   },
   "dragModeIndividual": {
     "zh_TW": "分別",
@@ -27,7 +35,11 @@
     "fr": "Individuel",
     "de": "Individuell",
     "pt_BR": "Individual",
-    "tr": "Bireysel"
+    "tr": "Bireysel",
+    "uk": "Окремо",
+    "ru": "Отдельно",
+    "it": "Individuale",
+    "id": "Individual"
   },
   "contentScale": {
     "zh_TW": "內容縮放",
@@ -37,7 +49,11 @@
     "fr": "Échelle du contenu",
     "de": "Inhaltsskalierung",
     "pt_BR": "Escala de conteúdo",
-    "tr": "İçerik Ölçeği"
+    "tr": "İçerik Ölçeği",
+    "uk": "Масштаб вмісту",
+    "ru": "Масштаб содержимого",
+    "it": "Scala contenuto",
+    "id": "Skala Konten"
   },
   "resetPosition": {
     "zh_TW": "重置位置",
@@ -47,7 +63,11 @@
     "fr": "Réinitialiser la position",
     "de": "Position zurücksetzen",
     "pt_BR": "Redefinir Posição",
-    "tr": "Konumu Sıfırla"
+    "tr": "Konumu Sıfırla",
+    "uk": "Скинути позицію",
+    "ru": "Сбросить позицию",
+    "it": "Reimposta posizione",
+    "id": "Atur ulang posisi"
   },
   "splitReplaceImage": {
     "zh_TW": "替換圖片",
@@ -57,7 +77,11 @@
     "fr": "Remplacer l'image",
     "de": "Bild ersetzen",
     "pt_BR": "Substituir Imagem",
-    "tr": "Resmi Değiştir"
+    "tr": "Resmi Değiştir",
+    "uk": "Замінити зображення",
+    "ru": "Заменить изображение",
+    "it": "Sostituisci immagine",
+    "id": "Ganti gambar"
   },
   "splitRestoreImage": {
     "zh_TW": "還原原圖",
@@ -67,6 +91,10 @@
     "fr": "Restaurer l'original",
     "de": "Original wiederherstellen",
     "pt_BR": "Restaurar Original",
-    "tr": "Orijinali Geri Yükle"
+    "tr": "Orijinali Geri Yükle",
+    "uk": "Відновити оригінал",
+    "ru": "Восстановить оригинал",
+    "it": "Ripristina originale",
+    "id": "Pulihkan asli"
   }
 }

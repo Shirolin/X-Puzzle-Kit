@@ -1274,8 +1274,12 @@ export function Sidebar({
                       { value: "de", label: t("langDe") },
                       { value: "pt", label: t("langPt") },
                       { value: "tr", label: t("langTr") },
+                      { value: "uk", label: t("langUk") },
+                      { value: "ru", label: t("langRu") },
+                      { value: "it", label: t("langIt") },
+                      { value: "id", label: t("langId") },
                     ]}
-                    style={{ width: "90px" }}
+                    style={{ width: "104px" }}
                     direction="top"
                   />
                 </div>

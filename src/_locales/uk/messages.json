@@ -1,0 +1,768 @@
+{
+  "appName": {
+    "message": "X-Puzzle-Kit: Зшивання та розділення зображень для X",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Зшивайте панорами чи розділяйте сітки для X (Twitter). Піксельна точність, оптимізація для стрічки та якість без втрат.",
+    "description": "The description of the extension"
+  },
+  "longDescription": {
+    "message": "X-Puzzle-Kit — професійний інструмент для зшивання зображень і розділення сіток, створений спеціально для користувачів X (Twitter), цифрових художників і колекціонерів. Чи відновлюєте ви багаточастинну панораму, чи готуєте креативне розкриття сітки — X-Puzzle-Kit гарантує, що ваш контент виглядатиме саме так, як задумано, у стрічці X.\n\n🌐 КРОСПЛАТФОРМНА ПІДТРИМКА:\nОкрім цього розширення для Chrome, ми пропонуємо повнофункціональну веб-версію (https://x-puzzle-kit.pages.dev/) для зручного використання на мобільних пристроях, планшетах та інших браузерах.\n\n✨ ОСНОВНІ МОЖЛИВОСТІ:\n\n🧵 Розумне зшивання зображень\nБезшовно об'єднуйте окремі зображення з твітів назад у вихідну панораму або довгий формат.\n- Розумні макети: повна підтримка вертикального, горизонтального, сітки 2x2 та фірмового T-подібного макета.\n- Піксельна точність: удосконалений розрахунок координат усуває шви в 1 піксель і розмитість.\n- Нативна інтеграція: зшивайте зображення прямо зі стрічки X одним кліком — без ручного збереження.\n- Експорт без втрат: зберігає кожен піксель у вихідній роздільній здатності. Без стиснення, без втрати якості.\n\n✂️ Креативне розділення сітки (творець мозаїки)\nРозбивайте будь-яке велике зображення на стандартизовані сітки (2x2 або власні), оптимізовані для показу кількох зображень у X.\n- Оптимізація «безшовного потоку» Twitter: налаштовано під механізм попереднього перегляду Twitter. Забезпечує зшивання кількох частин в одне «безшовне зображення» у стрічці завдяки точній відповідності пропорціям перегляду X.\n- Розділення правою кнопкою: миттєво надсилайте будь-яке зображення з інтернету до розділювача прямо з контекстного меню браузера.\n- Єдине оповідання: створюйте послідовні ефекти «розкриття» для своєї стрічки.\n\n🚀 ПОТУЖНІ ФУНКЦІЇ:\n- Плавний робочий процес: від стрічки до полотна за секунди завдяки глибокій інтеграції з браузером.\n- Професійне налаштування: точне регулювання глобальних і локальних відступів, темна тема та власні кольори фону (включно з прозорістю).\n- Простий імпорт: підтримка завантаження файлів і вставки з буфера обміну разом із нативною інтеграцією з X.\n- Пакетний експорт: зберігайте роботи як високоякісні PNG, JPG або WebP, чи одним ZIP-архівом.\n\n🔒 ПРИВАТНІСТЬ ПОНАД УСЕ\nВаші зображення ніколи не залишають браузер. Уся обробка виконується локально на вашому пристрої — без віддалених завантажень, без відстеження, повна безпека.\n\nПокращте свою розповідь у X разом із X-Puzzle-Kit вже сьогодні.",
+    "description": "Long description of the extension for store listing"
+  },
+  "previewTitle": {
+    "message": "Перегляд зшивання",
+    "description": "Title of the preview window"
+  },
+  "splitterTitle": {
+    "message": "Розділювач",
+    "description": "Title of the splitter window"
+  },
+  "stitching": {
+    "message": "Зшивання...",
+    "description": "Loading status during stitch generation"
+  },
+  "removeImage": {
+    "message": "Видалити зображення",
+    "description": "Tooltip for remove image"
+  },
+  "fromArtist": {
+    "message": "Від",
+    "description": "Author prefix"
+  },
+  "tweetId": {
+    "message": "ID твіта",
+    "description": "Label for Tweet ID"
+  },
+  "preparingHighRes": {
+    "message": "Підготовка ресурсів високої якості...",
+    "description": "Loading text for high-res images"
+  },
+  "reset": {
+    "message": "Скинути",
+    "description": "Reset button text"
+  },
+  "layoutScheme": {
+    "message": "Схема макета",
+    "description": "Section header for layout"
+  },
+  "layoutGrid": {
+    "message": "Сітка 2x2",
+    "description": "2x2 layout label"
+  },
+  "layoutTShape": {
+    "message": "T-подібна",
+    "description": "T-Shape layout label"
+  },
+  "layoutHorizontal": {
+    "message": "Горизонтально",
+    "description": "Horizontal layout label"
+  },
+  "layoutVertical": {
+    "message": "Вертикально",
+    "description": "Vertical layout label"
+  },
+  "exportSettings": {
+    "message": "Експорт",
+    "description": "Section header for export settings"
+  },
+  "backgroundColor": {
+    "message": "Колір фону",
+    "description": "Label for background color"
+  },
+  "transparent": {
+    "message": "Прозор.",
+    "description": "Transparent background option"
+  },
+  "white": {
+    "message": "Білий",
+    "description": "White background option"
+  },
+  "black": {
+    "message": "Чорний",
+    "description": "Black background option"
+  },
+  "globalGap": {
+    "message": "Глобальний відступ",
+    "description": "Label for global gap"
+  },
+  "resetToZero": {
+    "message": "Скинути до 0",
+    "description": "Tooltip for reset gap"
+  },
+  "imageSorting": {
+    "message": "Сортування",
+    "description": "Section header for image sorting"
+  },
+  "localGap": {
+    "message": "Локальний відступ",
+    "description": "Subtitle for image sorting"
+  },
+  "imageLabel": {
+    "message": "Зображення",
+    "description": "Label for image"
+  },
+  "moveUp": {
+    "message": "Вгору",
+    "description": "Tooltip for move up"
+  },
+  "moveDown": {
+    "message": "Вниз",
+    "description": "Tooltip for move down"
+  },
+  "hideImage": {
+    "message": "Приховати",
+    "description": "Tooltip for hide image"
+  },
+  "showImage": {
+    "message": "Показати",
+    "description": "Tooltip for show image"
+  },
+  "afterGap": {
+    "message": "Відступ після",
+    "description": "Label for local gap after image"
+  },
+  "decreaseGap": {
+    "message": "Зменшити відступ",
+    "description": "Tooltip for decrease gap"
+  },
+  "increaseGap": {
+    "message": "Збільшити відступ",
+    "description": "Tooltip for increase gap"
+  },
+  "gapLabel": {
+    "message": "Відступ",
+    "description": "Label for the resulting gap"
+  },
+  "resetLocalGap": {
+    "message": "Скинути відступ",
+    "description": "Tooltip for reset local gap"
+  },
+  "processing": {
+    "message": "Обробка...",
+    "description": "Button text while processing"
+  },
+  "stitchAndDownload": {
+    "message": "Зшити та завантажити",
+    "description": "Final download button text"
+  },
+  "stitchBtnTitle": {
+    "message": "Зшити зображення",
+    "description": "Tooltip for the stitch button embedded in Twitter"
+  },
+  "language": {
+    "message": "Мова",
+    "description": "Language selector label"
+  },
+  "sourcedFrom": {
+    "message": "від",
+    "description": "Used in the source badge"
+  },
+  "splitImage": {
+    "message": "Розділити зображення",
+    "description": "Split button text"
+  },
+  "downloadAll": {
+    "message": "Завантажити все",
+    "description": "Download all button text"
+  },
+  "uploadImage": {
+    "message": "Завантажити зображення",
+    "description": "Upload image button text"
+  },
+  "selectImageTip": {
+    "message": "Виберіть зображення для розділення",
+    "description": "Select image tip"
+  },
+  "uploadImages": {
+    "message": "Завантажити зображення",
+    "description": "Button text for uploading multiple images"
+  },
+  "selectImagesTip": {
+    "message": "Виберіть зображення для зшивання",
+    "description": "Tip for selecting multiple images"
+  },
+  "addMoreImages": {
+    "message": "Додати зображення",
+    "description": "Button text to add more images when preview is empty"
+  },
+  "dragAndDropTip": {
+    "message": "Або перетягніть сюди",
+    "description": "Drag and drop instruction"
+  },
+  "changeImage": {
+    "message": "Змінити",
+    "description": "Change image button text"
+  },
+  "gapRemoval": {
+    "message": "Обрізати вихідні відступи",
+    "description": "Gap removal label"
+  },
+  "gapRemovalTip": {
+    "message": "Якщо ваше вихідне зображення має вбудовані рамки або відступи (як у манзі чи коміксах), увімкніть це, щоб автоматично обрізати зайві пікселі під час розділення.",
+    "description": "Gap removal description"
+  },
+  "rowCount": {
+    "message": "Кількість рядків (N)",
+    "description": "Row count label"
+  },
+  "colCount": {
+    "message": "Кількість стовпців (N)",
+    "description": "Column count label"
+  },
+  "sourceImage": {
+    "message": "Джерело",
+    "description": "Source image label"
+  },
+  "splitResult": {
+    "message": "Результат розділення",
+    "description": "Split result label"
+  },
+  "formatLabel": {
+    "message": "Формат експорту",
+    "description": "Export format label"
+  },
+  "iosWebpWarningTitle": {
+    "message": "Сумісність WebP",
+    "description": "Title for iOS WebP warning"
+  },
+  "iosWebpWarning": {
+    "message": "Збереження зображень WebP у застосунок «Фото» на iOS може мати проблеми із сумісністю (деякі застосунки можуть відображати їх неправильно). Рекомендується PNG. Ви все одно хочете перейти на WebP?",
+    "description": "Warning for iOS WebP compatibility"
+  },
+  "zipLabel": {
+    "message": "Завантажити як ZIP",
+    "description": "Zip download toggle label"
+  },
+  "zipTip": {
+    "message": "Упакувати всі зображення в один ZIP-файл",
+    "description": "Zip feature description"
+  },
+  "restore": {
+    "message": "Відновити",
+    "description": "Restore button text"
+  },
+  "twitterOptimize": {
+    "message": "Макет «безшовний потік» Twitter",
+    "description": "Twitter optimization toggle label"
+  },
+  "twitterOptimizeTip": {
+    "message": "Оптимізовано для механізму попереднього перегляду Twitter. Забезпечує зшивання кількох частин в одне «безшовне зображення» у стрічці.",
+    "description": "Twitter optimization tip"
+  },
+  "settings": {
+    "message": "Налаштування",
+    "description": "General settings section title"
+  },
+  "modeStitch": {
+    "message": "Зшивання",
+    "description": "Stitch mode button"
+  },
+  "modeSplit": {
+    "message": "Розділення",
+    "description": "Split mode button"
+  },
+  "support": {
+    "message": "Підтримка",
+    "description": "Support section title"
+  },
+  "buyMeCoffee": {
+    "message": "Підтримати",
+    "description": "Sponsorship button text"
+  },
+  "contextMenuTitle": {
+    "message": "X-Puzzle-Kit: Розділити зображення",
+    "description": "Context menu item title"
+  },
+  "extensionUpdatedRefresh": {
+    "message": "Розширення оновлено. Будь ласка, оновіть сторінку.",
+    "description": "Message shown when extension context is invalidated"
+  },
+  "slideRefine": {
+    "message": "Проведіть для точного налаштування",
+    "description": "Hint for the jog dial controller"
+  },
+  "confirmRemoveImage": {
+    "message": "Ви впевнені, що хочете видалити це зображення?",
+    "description": "Confirmation message when removing a single image"
+  },
+  "confirmClearAll": {
+    "message": "Ви впевнені, що хочете очистити всі зображення? Цю дію не можна скасувати.",
+    "description": "Confirmation message when clearing all images"
+  },
+  "clearAll": {
+    "message": "Очистити все",
+    "description": "Clear all images button text"
+  },
+  "emptyImageText": {
+    "message": "Немає зображень, натисніть для завантаження",
+    "description": "Message shown when image list is empty"
+  },
+  "installTitle": {
+    "message": "Додати на головний екран",
+    "description": "iOS install prompt title"
+  },
+  "installDesc": {
+    "message": "Натисніть кнопку «Поділитися» нижче, потім виберіть «На головний екран».",
+    "description": "iOS install prompt description"
+  },
+  "installDescChrome": {
+    "message": "Натисніть кнопку «Поділитися» у правому верхньому куті, потім виберіть «На головний екран».",
+    "description": "iOS Chrome install prompt description"
+  },
+  "installDescAndroid": {
+    "message": "Натисніть меню браузера (праворуч угорі або внизу), потім виберіть «Встановити застосунок» або «На головний екран».",
+    "description": "Android install prompt description"
+  },
+  "pwaInstallBtn": {
+    "message": "Встановити",
+    "description": "Native PWA install button text"
+  },
+  "pwaInstallDescNative": {
+    "message": "Встановіть застосунок на головний екран для кращого досвіду.",
+    "description": "Native PWA install description"
+  },
+  "importFromUrl": {
+    "message": "Імпорт за URL",
+    "description": "Import button title"
+  },
+  "invalidUrl": {
+    "message": "Невірний URL. Будь ласка, надайте дійсне посилання на твіт (X)",
+    "description": "Invalid URL tip"
+  },
+  "analyzingLink": {
+    "message": "Аналіз посилання...",
+    "description": "Analyzing link state"
+  },
+  "noImagesFound": {
+    "message": "У цьому твіті не знайдено зображень для імпорту",
+    "description": "No images found tip"
+  },
+  "downloadingImages": {
+    "message": "Завантаження зображень",
+    "description": "Downloading images state"
+  },
+  "processingImages": {
+    "message": "Обробка зображень...",
+    "description": "Processing images state"
+  },
+  "parseFailed": {
+    "message": "Не вдалося розібрати твіт",
+    "description": "Parse failed tip"
+  },
+  "workerInvalidResponse": {
+    "message": "Служба розбору повернула неочікуваний формат. Можливо, твіт обмежено, або служба тимчасово недоступна.",
+    "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
+  },
+  "workerStatusError": {
+    "message": "Служба розбору тимчасово не може обробити цей твіт (Помилка: $status$).",
+    "description": "Tooltip for when worker returns non-200 status code",
+    "placeholders": {
+      "status": {
+        "content": "$1",
+        "example": "403"
+      }
+    }
+  },
+  "networkError": {
+    "message": "Не вдалося підключитися до мережі. Перевірте налаштування інтернету.",
+    "description": "Tooltip for network errors during fetch"
+  },
+  "import": {
+    "message": "Імпорт",
+    "description": "Import action button"
+  },
+  "cancel": {
+    "message": "Скасувати",
+    "description": "Cancel action button"
+  },
+  "confirm": {
+    "message": "Підтвердити",
+    "description": "Confirm action button"
+  },
+  "imageResolution": {
+    "message": "Роздільна здатність",
+    "description": "Label for image resolution"
+  },
+  "clickToShowResolution": {
+    "message": "Натисніть, щоб побачити роздільну здатність",
+    "description": "Tooltip hint for thumbnails"
+  },
+  "finalGap": {
+    "message": "Підсумковий відступ",
+    "description": "Calculated total gap including global and local"
+  },
+  "openSourcePage": {
+    "message": "Відкрити сторінку джерела",
+    "description": "Tooltip for the source tweet link"
+  },
+  "invalidFormat": {
+    "message": "Невірний формат",
+    "description": "Error message for invalid input"
+  },
+  "auto": {
+    "message": "Авто",
+    "description": "Auto option for language/theme"
+  },
+  "themeSystem": {
+    "message": "Як у системі",
+    "description": "System theme option"
+  },
+  "themeLight": {
+    "message": "Світла тема",
+    "description": "Light theme option"
+  },
+  "themeDark": {
+    "message": "Темна тема",
+    "description": "Dark theme option"
+  },
+  "themeLabel": {
+    "message": "Тема",
+    "description": "Label for theme selector"
+  },
+  "pwaVersionLabel": {
+    "message": "Веб-версія (мобільні/онлайн)",
+    "description": "PWA version label"
+  },
+  "pwaVersionTip": {
+    "message": "Користуєтесь на мобільному або в браузері без розширення? Спробуйте повнофункціональну веб-версію.",
+    "description": "PWA version description"
+  },
+  "openWebVersion": {
+    "message": "Відкрити веб-версію",
+    "description": "Open PWA button text"
+  },
+  "extensionVersionLabel": {
+    "message": "Розширення Chrome",
+    "description": "Extension version label"
+  },
+  "extensionVersionTip": {
+    "message": "Користуєтесь у браузері на комп'ютері? Спробуйте наше розширення для зшивання одним кліком прямо в X (Twitter).",
+    "description": "Extension version description"
+  },
+  "openExtensionStore": {
+    "message": "Перейти до Chrome Web Store",
+    "description": "Open extension store button text"
+  },
+  "pwaUpdateAvailable": {
+    "message": "Доступна нова версія",
+    "description": "PWA update available tip"
+  },
+  "pwaUpdateReady": {
+    "message": "Оновіться, щоб отримати нові функції та виправлення",
+    "description": "PWA update description"
+  },
+  "pwaRefresh": {
+    "message": "Оновити",
+    "description": "PWA refresh button"
+  },
+  "pwaIgnore": {
+    "message": "Ігнорувати",
+    "description": "PWA ignore button"
+  },
+  "pwaOfflineReady": {
+    "message": "Застосунок готовий працювати офлайн",
+    "description": "PWA offline ready tip"
+  },
+  "layoutSchemeHelp": {
+    "message": "[icon:LayoutGrid] Сітка: для соцмереж\n[icon:Layout] T-подібна: для художньої фотографії\n[icon:Rows] Вертикально/Горизонтально: для довгих панорам",
+    "description": "Layout help text"
+  },
+  "backgroundColorHelp": {
+    "message": "Встановіть колір під зображеннями. Прозорий (PNG/WebP) — найгнучкіший, чорний або білий допомагає об'єднати мікрокоригування.",
+    "description": "Background color help"
+  },
+  "globalGapHelp": {
+    "message": "Задайте ширину відступу між усіма зображеннями. Від'ємні значення дозволяють перекриття.",
+    "description": "Global gap help"
+  },
+  "formatHelp": {
+    "message": "「PNG」Оригінальна якість, прозорість, більший розмір\n「JPG」Високе стиснення, без прозорості, менший розмір\n「WEBP」Висока якість, прозорість, погана сумісність з iOS",
+    "description": "Help explanation for format selection"
+  },
+  "exportSettingsHelp": {
+    "message": "Персоналізований експорт:\n「PNG」Оригінальна якість, прозорість, більший розмір\n「JPG」Високе стиснення, без прозорості, менший розмір\n「WEBP」Висока якість, прозорість, погана сумісність з iOS",
+    "description": "Comprehensive help for export settings section"
+  },
+  "twitterOptimizeHelp": {
+    "message": "Коли ви публікуєте кілька частин у X (Twitter), це коригує межі для безшовного вигляду «одного зображення» у стрічці користувачів.",
+    "description": "Twitter optimization help"
+  },
+  "userGuideButton": {
+    "message": "Посібник",
+    "description": "User guide button text"
+  },
+  "tutorialImportTitle": {
+    "message": "Імпорт зображень",
+    "description": "Tutorial step 1 title"
+  },
+  "tutorialImportDesc": {
+    "message": "Натисніть, щоб завантажити локальні файли, або скористайтеся значком посилання для імпорту безпосередньо з URL X (Twitter).",
+    "description": "Tutorial step 1 description"
+  },
+  "tutorialLayoutTitle": {
+    "message": "Виберіть макет",
+    "description": "Tutorial step 2 title"
+  },
+  "tutorialLayoutDesc": {
+    "message": "Виберіть макет для зображень. «Сітка» рекомендується для публікацій у X (Twitter).",
+    "description": "Tutorial step 2 description"
+  },
+  "tutorialControlTitle": {
+    "message": "Точне налаштування",
+    "description": "Tutorial step 3 title"
+  },
+  "tutorialControlDesc": {
+    "message": "Налаштуйте глобальні/локальні відступи або перетягніть список, щоб змінити порядок зображень.",
+    "description": "Tutorial step 3 description"
+  },
+  "tutorialExportTitle": {
+    "message": "Експорт і завантаження",
+    "description": "Tutorial step 4 title"
+  },
+  "tutorialExportDesc": {
+    "message": "Нарешті, натисніть кнопку, щоб створити та зберегти свою роботу!",
+    "description": "Tutorial step 4 description"
+  },
+  "skipTutorial": {
+    "message": "Пропустити",
+    "description": "Skip button"
+  },
+  "nextStep": {
+    "message": "Далі",
+    "description": "Next button"
+  },
+  "localGapHelp": {
+    "message": "Налаштуйте відступ між окремими зображеннями. Ідеально для розділення розділів або приховування «пасхалок».",
+    "description": "Help explanation for local gap"
+  },
+  "imageSortingHelp": {
+    "message": "Перетягніть [icon:GripVertical] або натисніть [icon:ChevronUp][icon:ChevronDown], щоб змінити порядок\nНатисніть [icon:Eye], щоб перемкнути видимість\nНатисніть на числа для точного налаштування відступів",
+    "description": "Comprehensive help for image sorting section"
+  },
+  "userGuideTitle": {
+    "message": "Посібник користувача",
+    "description": "Guide dialog title"
+  },
+  "finishTutorial": {
+    "message": "Завершити",
+    "description": "Finish button"
+  },
+  "tabPWA": {
+    "message": "Веб / мобільні",
+    "description": "Manual tab 1"
+  },
+  "tabExtension": {
+    "message": "Розширення",
+    "description": "Manual tab 2"
+  },
+  "tabFeatures": {
+    "message": "Поради",
+    "description": "Manual tab 3"
+  },
+  "guideiOSInstall": {
+    "message": "1. Покращена інтеграція\nЗабудьте про ручне копіювання. Натисніть кнопку нижче, щоб додати «X-Puzzle-Kit» до своєї бібліотеки Команд.\n2. Швидкий імпорт\nНатисніть цю команду в меню «Поділитися» X (Twitter), щоб автоматично витягти посилання та перейти без зайвих кроків.",
+    "description": "iOS Install Guide"
+  },
+  "installShortcutBtn": {
+    "message": "Встановити команду iOS",
+    "description": "iOS Shortcut installation button"
+  },
+  "installShortcutTip": {
+    "message": "Натисніть, щоб отримати офіційну команду iOS для імпорту одним дотиком.",
+    "description": "iOS Shortcut installation tip"
+  },
+  "guideAndroidInstall": {
+    "message": "1. Встановіть PWA (прогресивний веб-застосунок)\nНатисніть «Встановити застосунок» у меню браузера. Не потрібно завантажувати з магазину.\n2. Нативний обмін\nПісля встановлення діліться прямо з X (Twitter) і виберіть «X-Puzzle-Kit» для імпорту.",
+    "description": "Android installation guide"
+  },
+  "viewAndroidTutorial": {
+    "message": "Посібник зі встановлення",
+    "description": "Android tutorial button text"
+  },
+  "guideExtensionStitch": {
+    "message": "Прямо під будь-якою публікацією в X (Twitter) ви знайдете кнопку [icon]. Миттєво зберіть усі зображення та увійдіть у режим пазла одним кліком.",
+    "description": "Extension stitch feature guide"
+  },
+  "guideExtensionSplit": {
+    "message": "Клацніть правою кнопкою на будь-якому зображенні в інтернеті та виберіть «X-Puzzle-Kit: Розділити зображення», щоб одразу почати обробку без завантаження.",
+    "description": "Extension split feature guide"
+  },
+  "guideFlowOptimization": {
+    "message": "Коли ввімкнено, інструмент точно налаштовує пропорції частин для алгоритму X (Twitter), забезпечуючи безшовне зшивання у стрічці.",
+    "description": "Optimization feature guide"
+  },
+  "guideExtensionTitle": {
+    "message": "Безшовне зшивання зображень у публікаціях",
+    "description": "Manual card title 1"
+  },
+  "guideSplitTitle": {
+    "message": "Миттєве розділення правою кнопкою",
+    "description": "Manual card title 2"
+  },
+  "guideLocalGapTitle": {
+    "message": "Точний контроль відступів",
+    "description": "Manual card title 3"
+  },
+  "pwaBenefitTitle": {
+    "message": "Навіщо встановлювати PWA?",
+    "description": "PWA benefit section title"
+  },
+  "pwaBenefitList": {
+    "message": "• Безшовна інтеграція: підтримує системне меню «Поділитися» Android для швидшого імпорту з X.\n• Повноекранний режим: приховує адресний рядок браузера для точного налаштування відступів на великих екранах.\n• Інтеграція з платформою: глибока оптимізація для iOS PWA, щоб усунути білі смуги та проблеми зі співвідношенням сторін.",
+    "description": "PWA benefit list content"
+  },
+  "pwaBenefitIntegrated": {
+    "message": "• Безшовна інтеграція: підтримує системне меню «Поділитися» Android для швидшого імпорту з X.",
+    "description": "PWA benefit: Android integration"
+  },
+  "pwaBenefitFullscreen": {
+    "message": "• Повноекранний режим: приховує адресний рядок браузера для точного налаштування відступів на великих екранах.",
+    "description": "PWA benefit: Full-screen focus"
+  },
+  "pwaBenefitIOSFix": {
+    "message": "• Інтеграція з платформою: глибока оптимізація для iOS PWA, щоб усунути білі смуги та проблеми зі співвідношенням сторін.",
+    "description": "PWA benefit: iOS PWA optimization"
+  },
+  "guideNativeInstall": {
+    "message": "Встановіть PWA, щоб побачити «X-Puzzle-Kit» у меню «Поділитися» X (Twitter) для імпорту одним кліком.",
+    "description": "Native install recommendation"
+  },
+  "pwaWhatIs": {
+    "message": "PWA — це сучасний формат застосунків, який не потребує завантаження з магазину. По суті, це «веб із можливостями застосунку», що майже не займає пам'яті — ідеальний легкий вибір для вашого пристрою.",
+    "description": "PWA explanation"
+  },
+  "guideTechnicalTitle": {
+    "message": "Обрізати вихідні відступи",
+    "description": "Technical improvement title"
+  },
+  "guideTechnicalDesc": {
+    "message": "Якщо ваше вихідне зображення має вбудовані рамки або відступи (як у манзі), увімкніть це, щоб обрізати ці пікселі для чистішого результату.",
+    "description": "Technical improvement description"
+  },
+  "statusOfflineAvailable": {
+    "message": "Доступно офлайн",
+    "description": "Status text shown when offline"
+  },
+  "troubleshootingTitle": {
+    "message": "Не вдається встановити?",
+    "description": "Troubleshooting section title"
+  },
+  "troubleshootingIncognito": {
+    "message": "Режим приватного перегляду перешкоджає встановленню PWA. Будь ласка, використайте звичайний режим і спробуйте знову.",
+    "description": "Warning about incognito mode"
+  },
+  "langZhCN": {
+    "message": "简体中文",
+    "description": "Language name: Simplified Chinese"
+  },
+  "langZhTW": {
+    "message": "繁體中文",
+    "description": "Language name: Traditional Chinese"
+  },
+  "langEn": {
+    "message": "English",
+    "description": "Language name: English"
+  },
+  "langJa": {
+    "message": "日本語",
+    "description": "Language name: Japanese"
+  },
+  "langKo": {
+    "message": "한국어",
+    "description": "Language name: Korean"
+  },
+  "langEs": {
+    "message": "Español",
+    "description": "Language name: Spanish"
+  },
+  "langFr": {
+    "message": "Français",
+    "description": "Language name: French"
+  },
+  "langDe": {
+    "message": "Deutsch",
+    "description": "Language name: German"
+  },
+  "langPt": {
+    "message": "Português",
+    "description": "Language name: Portuguese"
+  },
+  "langTr": {
+    "message": "Türkçe",
+    "description": "Language name: Turkish"
+  },
+  "langUk": {
+    "message": "Українська",
+    "description": "Language name: Ukrainian"
+  },
+  "langRu": {
+    "message": "Русский",
+    "description": "Language name: Russian"
+  },
+  "langIt": {
+    "message": "Italiano",
+    "description": "Language name: Italian"
+  },
+  "langId": {
+    "message": "Indonesia",
+    "description": "Language name: Indonesian"
+  },
+  "openDebugPanel": {
+    "message": "Відкрити панель налагодження",
+    "description": "Text for the debug panel opening menu"
+  },
+  "simulator": {
+    "message": "Симулятор",
+    "description": "Text for the simulator feature"
+  },
+  "viewDemoVideo": {
+    "message": "Дивитися безшовний обмін",
+    "description": "Button to see the smooth sharing experience demo"
+  },
+  "privacyNotice": {
+    "message": "Приватність: веб-версія використовує безпечний проксі для розбору (без логів). Обробка залишається локальною.",
+    "description": "Privacy notice at the bottom of web version sidebar"
+  },
+  "privacyPolicy": {
+    "message": "Політика конфіденційності",
+    "description": "Privacy policy link text"
+  },
+  "shortcutUpdateNote": {
+    "message": "Доступна нова версія! Не забудьте оновити свою команду.",
+    "description": "Note shown in iOS Shortcuts when an update is available"
+  },
+  "dragMode": {
+    "message": "Режим перетягування",
+    "description": "Label for drag mode control"
+  },
+  "dragModeUnified": {
+    "message": "Разом",
+    "description": "Unified drag mode option"
+  },
+  "dragModeIndividual": {
+    "message": "Окремо",
+    "description": "Individual drag mode option"
+  },
+  "contentScale": {
+    "message": "Масштаб вмісту",
+    "description": "Label for content scale slider"
+  },
+  "resetPosition": {
+    "message": "Скинути позицію",
+    "description": "Button text to reset image position"
+  },
+  "splitReplaceImage": {
+    "message": "Замінити зображення",
+    "description": "Tooltip for replace image button"
+  },
+  "splitRestoreImage": {
+    "message": "Відновити оригінал",
+    "description": "Tooltip for restore original image button"
+  },
+  "splitBackgroundTip": {
+    "message": "Коли ввімкнено, заповнює відкриті краї, що виникають від переміщення зображень, кольором фону.",
+    "description": "Tooltip for split background fill option"
+  }
+}

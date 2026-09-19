@@ -8,6 +8,10 @@ import langFr from "../_locales/fr/messages.json";
 import langDe from "../_locales/de/messages.json";
 import langPt from "../_locales/pt_BR/messages.json";
 import langTr from "../_locales/tr/messages.json";
+import langUk from "../_locales/uk/messages.json";
+import langRu from "../_locales/ru/messages.json";
+import langIt from "../_locales/it/messages.json";
+import langId from "../_locales/id/messages.json";
 import { platformStorage } from "./platform";
 
 const locales: Record<string, Record<string, { message: string }>> = {
@@ -22,6 +26,10 @@ const locales: Record<string, Record<string, { message: string }>> = {
   pt_BR: langPt,
   pt: langPt, // 保持 pt 引用，确保插件内部逻辑与旧配置兼容
   tr: langTr,
+  uk: langUk,
+  ru: langRu,
+  it: langIt,
+  id: langId,
 };
 
 let currentMessages: Record<string, { message: string }> | null = null;
@@ -46,6 +54,11 @@ function resolveAutoLanguage(): string {
     de: "de",
     pt: "pt_BR",
     tr: "tr",
+    uk: "uk",
+    ru: "ru",
+    it: "it",
+    id: "id",
+    in: "id", // 印尼语的历史语言代码（旧版 ICU / Java 使用），兼容性兜底
   };
 
   for (const [prefix, locale] of Object.entries(prefixMap)) {

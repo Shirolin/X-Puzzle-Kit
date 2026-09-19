@@ -1,58 +1,58 @@
 {
   "appName": {
-    "message": "X-Puzzle-Kit: Stitch & Split Images for X",
+    "message": "X-Puzzle-Kit: Gabung & Pisah Gambar untuk X",
     "description": "The name of the extension"
   },
   "appDesc": {
-    "message": "Stitch panoramas or split grids for X (Twitter). Pixel-perfect, timeline-optimized & lossless quality.",
+    "message": "Gabungkan panorama atau pisahkan kisi untuk X (Twitter). Presisi piksel, dioptimalkan untuk timeline & tanpa kompresi.",
     "description": "The description of the extension"
   },
   "longDescription": {
-    "message": "X-Puzzle-Kit is a professional image stitcher and grid splitter designed specifically for X (Twitter) users, digital artists, and collectors. Whether you「re reconstructing a multi-part panorama or preparing a creative grid reveal, X-Puzzle-Kit ensures your content looks exactly as intended on the X timeline.\n\n🌐 CROSS-PLATFORM SUPPORT:\nIn addition to this Chrome extension, we provide a full-featured Web version (https://x-puzzle-kit.pages.dev/) for seamless use on mobile devices, tablets, and other browsers.\n\n✨ CORE CAPABILITIES:\n\n🧵 Intelligent Image Stitching\nSeamlessly merge separate Tweet images back into their original panorama or long-form format.\n- Smart Layouts: Full support for Vertical, Horizontal, 2x2 Grid, and the signature T-Shape layouts.\n- Pixel-Perfect Alignment: Advanced coordinate calculation eliminates 1px seams and blurry artifacts.\n- Native Integration: Stitch images directly from your X timeline with a single click—no manual saving required.\n- Lossless Export: Preserves every pixel in its original resolution. No compression, no quality loss.\n\n✂️ Creative Grid Splitter (Mosaic Maker)\nBreak down any large image into standardized grids (2x2, or custom) optimized for the X multi-image display.\n- Twitter \"Seamless Flow\" Optimization: Optimized for Twitter」s preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline by perfectly matching X「s preview ratios.\n- Right-click & Split: Instantly send any web image to the splitter directly from your browser」s context menu.\n- Unified Storytelling: Create consistent, engaging \"reveal\" effects for your feed.\n\n🚀 POWER FEATURES:\n- Smooth Workflow: Move from timeline to canvas in seconds with deep browser integration.\n- Professional Customization: Fine-tune global/local gaps, toggle Dark Mode, and choose custom background colors (including transparency).\n- Easy Import: Support for file uploads and clipboard pasting alongside native X integration.\n- Batch Export: Save your creations as high-quality PNG, JPG, or WebP files, or a single organized ZIP package.\n\n🔒 COMMITTED TO PRIVACY\nYour images never leave your browser. All processing is done locally on your machine—no remote uploads, no tracking, and total security.\n\nEnhance your X storytelling with X-Puzzle-Kit today.",
+    "message": "X-Puzzle-Kit adalah penggabung gambar dan pemisah kisi profesional yang dirancang khusus untuk pengguna X (Twitter), seniman digital, dan kolektor. Baik Anda merekonstruksi panorama multi-bagian atau menyiapkan pengungkapan kisi yang kreatif, X-Puzzle-Kit memastikan konten Anda tampil persis seperti yang diinginkan di timeline X.\n\n🌐 DUKUNGAN LINTAS PLATFORM:\nSelain ekstensi Chrome ini, kami menyediakan versi Web lengkap (https://x-puzzle-kit.pages.dev/) untuk penggunaan lancar di perangkat seluler, tablet, dan browser lain.\n\n✨ KEMAMPUAN INTI:\n\n🧵 Penggabungan Gambar Cerdas\nGabungkan gambar Tweet terpisah kembali ke panorama asli atau format panjang secara mulus.\n- Tata letak cerdas: dukungan penuh untuk Vertikal, Horizontal, Kisi 2x2, dan tata letak Bentuk T yang khas.\n- Presisi piksel: perhitungan koordinat canggih menghilangkan sambungan 1 piksel dan artefak buram.\n- Integrasi asli: gabungkan gambar langsung dari timeline X dengan satu klik — tanpa penyimpanan manual.\n- Ekspor tanpa kehilangan: mempertahankan setiap piksel dalam resolusi aslinya. Tanpa kompresi, tanpa penurunan kualitas.\n\n✂️ Pemisah Kisi Kreatif (Pembuat Mosaik)\nPecah gambar besar apa pun menjadi kisi terstandardisasi (2x2 atau kustom) yang dioptimalkan untuk tampilan multi-gambar X.\n- Optimasi \"Alur Mulus\" Twitter: dioptimalkan untuk mekanisme pratinjau Twitter. Memastikan beberapa bagian menyatu kembali menjadi satu \"gambar mulus\" di timeline dengan mencocokkan rasio pratinjau X secara sempurna.\n- Pisah dengan klik kanan: kirim gambar web apa pun ke pemisah secara instan langsung dari menu konteks browser.\n- Penceritaan terpadu: buat efek \"pengungkapan\" yang konsisten dan menarik untuk feed Anda.\n\n🚀 FITUR UNGGULAN:\n- Alur kerja lancar: dari timeline ke kanvas dalam hitungan detik dengan integrasi browser yang mendalam.\n- Kustomisasi profesional: sesuaikan jarak global/lokal, aktifkan Mode Gelap, dan pilih warna latar belakang khusus (termasuk transparansi).\n- Impor mudah: dukungan unggah file dan tempel dari clipboard bersama integrasi asli X.\n- Ekspor massal: simpan kreasi Anda sebagai PNG, JPG, atau WebP berkualitas tinggi, atau satu paket ZIP yang terorganisir.\n\n🔒 BERKOMITMEN PADA PRIVASI\nGambar Anda tidak pernah meninggalkan browser. Semua pemrosesan dilakukan secara lokal di perangkat Anda — tanpa unggahan jarak jauh, tanpa pelacakan, keamanan total.\n\nTingkatkan penceritaan X Anda dengan X-Puzzle-Kit hari ini.",
     "description": "Long description of the extension for store listing"
   },
   "previewTitle": {
-    "message": "Stitch Preview",
+    "message": "Pratinjau gabung",
     "description": "Title of the preview window"
   },
   "splitterTitle": {
-    "message": "Splitter",
+    "message": "Pemisah",
     "description": "Title of the splitter window"
   },
   "stitching": {
-    "message": "Stitching...",
+    "message": "Menggabungkan...",
     "description": "Loading status during stitch generation"
   },
   "removeImage": {
-    "message": "Remove Image",
+    "message": "Hapus gambar",
     "description": "Tooltip for remove image"
   },
   "fromArtist": {
-    "message": "From",
+    "message": "Dari",
     "description": "Author prefix"
   },
   "tweetId": {
-    "message": "Tweet ID",
+    "message": "ID Tweet",
     "description": "Label for Tweet ID"
   },
   "preparingHighRes": {
-    "message": "Preparing high-res resources...",
+    "message": "Menyiapkan sumber resolusi tinggi...",
     "description": "Loading text for high-res images"
   },
   "reset": {
-    "message": "Reset",
+    "message": "Atur ulang",
     "description": "Reset button text"
   },
   "layoutScheme": {
-    "message": "Layout Scheme",
+    "message": "Skema tata letak",
     "description": "Section header for layout"
   },
   "layoutGrid": {
-    "message": "2x2 Grid",
+    "message": "Kisi 2x2",
     "description": "2x2 layout label"
   },
   "layoutTShape": {
-    "message": "T-Shape",
+    "message": "Bentuk T",
     "description": "T-Shape layout label"
   },
   "layoutHorizontal": {
@@ -60,303 +60,303 @@
     "description": "Horizontal layout label"
   },
   "layoutVertical": {
-    "message": "Vertical",
+    "message": "Vertikal",
     "description": "Vertical layout label"
   },
   "exportSettings": {
-    "message": "Export Settings",
+    "message": "Ekspor",
     "description": "Section header for export settings"
   },
   "backgroundColor": {
-    "message": "BG Color",
+    "message": "Warna BG",
     "description": "Label for background color"
   },
   "transparent": {
-    "message": "Trans",
+    "message": "Transp.",
     "description": "Transparent background option"
   },
   "white": {
-    "message": "White",
+    "message": "Putih",
     "description": "White background option"
   },
   "black": {
-    "message": "Black",
+    "message": "Hitam",
     "description": "Black background option"
   },
   "globalGap": {
-    "message": "Global Gap",
+    "message": "Jarak global",
     "description": "Label for global gap"
   },
   "resetToZero": {
-    "message": "Reset to 0",
+    "message": "Atur ke 0",
     "description": "Tooltip for reset gap"
   },
   "imageSorting": {
-    "message": "Image Sorting",
+    "message": "Urutkan",
     "description": "Section header for image sorting"
   },
   "localGap": {
-    "message": "Adjust local gap",
+    "message": "Jarak lokal",
     "description": "Subtitle for image sorting"
   },
   "imageLabel": {
-    "message": "Image",
+    "message": "Gambar",
     "description": "Label for image"
   },
   "moveUp": {
-    "message": "Move Up",
+    "message": "Naikkan",
     "description": "Tooltip for move up"
   },
   "moveDown": {
-    "message": "Move Down",
+    "message": "Turunkan",
     "description": "Tooltip for move down"
   },
   "hideImage": {
-    "message": "Hide Image",
+    "message": "Sembunyikan",
     "description": "Tooltip for hide image"
   },
   "showImage": {
-    "message": "Show Image",
+    "message": "Tampilkan",
     "description": "Tooltip for show image"
   },
   "afterGap": {
-    "message": "Gap after",
+    "message": "Jarak setelah",
     "description": "Label for local gap after image"
   },
   "decreaseGap": {
-    "message": "Decrease gap",
+    "message": "Kurangi jarak",
     "description": "Tooltip for decrease gap"
   },
   "increaseGap": {
-    "message": "Increase gap",
+    "message": "Tambah jarak",
     "description": "Tooltip for increase gap"
   },
   "gapLabel": {
-    "message": "Gap",
+    "message": "Jarak",
     "description": "Label for the resulting gap"
   },
   "resetLocalGap": {
-    "message": "Reset local gap",
+    "message": "Atur ulang jarak",
     "description": "Tooltip for reset local gap"
   },
   "processing": {
-    "message": "Processing...",
+    "message": "Memproses...",
     "description": "Button text while processing"
   },
   "stitchAndDownload": {
-    "message": "Stitch & Download",
+    "message": "Gabung & Unduh",
     "description": "Final download button text"
   },
   "stitchBtnTitle": {
-    "message": "Stitch Images",
+    "message": "Gabung gambar",
     "description": "Tooltip for the stitch button embedded in Twitter"
   },
   "language": {
-    "message": "Language",
+    "message": "Bahasa",
     "description": "Language selector label"
   },
   "sourcedFrom": {
-    "message": "from",
+    "message": "dari",
     "description": "Used in the source badge"
   },
   "splitImage": {
-    "message": "Split Image",
+    "message": "Pisah gambar",
     "description": "Split button text"
   },
   "downloadAll": {
-    "message": "Download All",
+    "message": "Unduh semua",
     "description": "Download all button text"
   },
   "uploadImage": {
-    "message": "Upload Image",
+    "message": "Unggah gambar",
     "description": "Upload image button text"
   },
   "selectImageTip": {
-    "message": "Select an image to split",
+    "message": "Pilih gambar untuk dipisah",
     "description": "Select image tip"
   },
   "uploadImages": {
-    "message": "Upload Images",
+    "message": "Unggah gambar",
     "description": "Button text for uploading multiple images"
   },
   "selectImagesTip": {
-    "message": "Please select images to stitch",
+    "message": "Pilih gambar untuk digabung",
     "description": "Tip for selecting multiple images"
   },
   "addMoreImages": {
-    "message": "Add more images",
+    "message": "Tambah gambar",
     "description": "Button text to add more images when preview is empty"
   },
   "dragAndDropTip": {
-    "message": "Or drag and drop here",
+    "message": "Atau seret ke sini",
     "description": "Drag and drop instruction"
   },
   "changeImage": {
-    "message": "Change",
+    "message": "Ubah",
     "description": "Change image button text"
   },
   "gapRemoval": {
-    "message": "Trim Original Gaps",
+    "message": "Potong jarak asli",
     "description": "Gap removal label"
   },
   "gapRemovalTip": {
-    "message": "If your original image has built-in borders or gutters (like manga or comics), enable this to automatically crop out those redundant pixels during splitting.",
+    "message": "Jika gambar asli Anda memiliki bingkai atau jarak bawaan (seperti pada manga atau komik), aktifkan ini untuk memotong piksel berlebih secara otomatis saat memisah.",
     "description": "Gap removal description"
   },
   "rowCount": {
-    "message": "Row Count (N)",
+    "message": "Jumlah baris (N)",
     "description": "Row count label"
   },
   "colCount": {
-    "message": "Col Count (N)",
+    "message": "Jumlah kolom (N)",
     "description": "Column count label"
   },
   "sourceImage": {
-    "message": "Source",
+    "message": "Sumber",
     "description": "Source image label"
   },
   "splitResult": {
-    "message": "Split Result",
+    "message": "Hasil pemisahan",
     "description": "Split result label"
   },
   "formatLabel": {
-    "message": "Export Format",
+    "message": "Format ekspor",
     "description": "Export format label"
   },
   "iosWebpWarningTitle": {
-    "message": "WebP Compatibility",
+    "message": "Kompatibilitas WebP",
     "description": "Title for iOS WebP warning"
   },
   "iosWebpWarning": {
-    "message": "Saving WebP images to the Photos app on iOS may have compatibility issues (some apps may not display them correctly). PNG is recommended. Do you still want to switch to WebP?",
+    "message": "Menyimpan gambar WebP ke aplikasi Foto di iOS mungkin memiliki masalah kompatibilitas (beberapa aplikasi mungkin tidak menampilkannya dengan benar). PNG direkomendasikan. Apakah Anda tetap ingin beralih ke WebP?",
     "description": "Warning for iOS WebP compatibility"
   },
   "zipLabel": {
-    "message": "Download as Zip",
+    "message": "Unduh sebagai ZIP",
     "description": "Zip download toggle label"
   },
   "zipTip": {
-    "message": "Package all images into a single zip file",
+    "message": "Kemas semua gambar ke dalam satu file ZIP",
     "description": "Zip feature description"
   },
   "restore": {
-    "message": "Restore",
+    "message": "Pulihkan",
     "description": "Restore button text"
   },
   "twitterOptimize": {
-    "message": "Twitter \"Seamless Flow\" Layout",
+    "message": "Tata letak \"Alur Mulus\" Twitter",
     "description": "Twitter optimization toggle label"
   },
   "twitterOptimizeTip": {
-    "message": "Optimized for Twitter's preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline.",
+    "message": "Dioptimalkan untuk mekanisme pratinjau Twitter. Memastikan beberapa bagian menyatu kembali menjadi satu \"gambar mulus\" di timeline.",
     "description": "Twitter optimization tip"
   },
   "settings": {
-    "message": "Settings",
+    "message": "Pengaturan",
     "description": "General settings section title"
   },
   "modeStitch": {
-    "message": "Stitch",
+    "message": "Gabung",
     "description": "Stitch mode button"
   },
   "modeSplit": {
-    "message": "Split",
+    "message": "Pisah",
     "description": "Split mode button"
   },
   "support": {
-    "message": "Support",
+    "message": "Dukungan",
     "description": "Support section title"
   },
   "buyMeCoffee": {
-    "message": "Buy me a coffee",
+    "message": "Dukung",
     "description": "Sponsorship button text"
   },
   "contextMenuTitle": {
-    "message": "X-Puzzle-Kit: Split Image",
+    "message": "X-Puzzle-Kit: Pisah Gambar",
     "description": "Context menu item title"
   },
   "extensionUpdatedRefresh": {
-    "message": "Extension updated. Please refresh the page.",
+    "message": "Ekstensi diperbarui. Silakan muat ulang halaman.",
     "description": "Message shown when extension context is invalidated"
   },
   "slideRefine": {
-    "message": "Slide to refine",
+    "message": "Geser untuk menyempurnakan",
     "description": "Hint for the jog dial controller"
   },
   "confirmRemoveImage": {
-    "message": "Are you sure you want to remove this image?",
+    "message": "Yakin ingin menghapus gambar ini?",
     "description": "Confirmation message when removing a single image"
   },
   "confirmClearAll": {
-    "message": "Are you sure you want to clear all images? This cannot be undone.",
+    "message": "Yakin ingin menghapus semua gambar? Tindakan ini tidak dapat dibatalkan.",
     "description": "Confirmation message when clearing all images"
   },
   "clearAll": {
-    "message": "Clear All",
+    "message": "Hapus semua",
     "description": "Clear all images button text"
   },
   "emptyImageText": {
-    "message": "No images, click to upload",
+    "message": "Tidak ada gambar, klik untuk mengunggah",
     "description": "Message shown when image list is empty"
   },
   "installTitle": {
-    "message": "Add to Home Screen",
+    "message": "Tambahkan ke Layar Utama",
     "description": "iOS install prompt title"
   },
   "installDesc": {
-    "message": "Tap the Share button below, then select 「Add to Home Screen」.",
+    "message": "Ketuk tombol Bagikan di bawah, lalu pilih \"Tambahkan ke Layar Utama\".",
     "description": "iOS install prompt description"
   },
   "installDescChrome": {
-    "message": "Tap the Share button top-right, then select 「Add to Home Screen」.",
+    "message": "Ketuk tombol Bagikan di kanan atas, lalu pilih \"Tambahkan ke Layar Utama\".",
     "description": "iOS Chrome install prompt description"
   },
   "installDescAndroid": {
-    "message": "Tap the browser menu (top or bottom right), then select 「Install app」 or 「Add to Home Screen」.",
+    "message": "Ketuk menu browser (kanan atas atau bawah), lalu pilih \"Instal aplikasi\" atau \"Tambahkan ke Layar Utama\".",
     "description": "Android install prompt description"
   },
   "pwaInstallBtn": {
-    "message": "Install",
+    "message": "Instal",
     "description": "Native PWA install button text"
   },
   "pwaInstallDescNative": {
-    "message": "Install the app to your home screen for a better experience.",
+    "message": "Instal aplikasi ke layar utama untuk pengalaman yang lebih baik.",
     "description": "Native PWA install description"
   },
   "importFromUrl": {
-    "message": "Import from URL",
+    "message": "Impor dari URL",
     "description": "Import button title"
   },
   "invalidUrl": {
-    "message": "Invalid URL, please provide a valid Tweet (X) link",
+    "message": "URL tidak valid. Berikan tautan Tweet (X) yang valid",
     "description": "Invalid URL tip"
   },
   "analyzingLink": {
-    "message": "Analyzing link...",
+    "message": "Menganalisis tautan...",
     "description": "Analyzing link state"
   },
   "noImagesFound": {
-    "message": "No importable images found in this Tweet",
+    "message": "Tidak ada gambar yang dapat diimpor di Tweet ini",
     "description": "No images found tip"
   },
   "downloadingImages": {
-    "message": "Downloading images",
+    "message": "Mengunduh gambar",
     "description": "Downloading images state"
   },
   "processingImages": {
-    "message": "Processing images...",
+    "message": "Memproses gambar...",
     "description": "Processing images state"
   },
   "parseFailed": {
-    "message": "Failed to parse Tweet",
+    "message": "Gagal mengurai Tweet",
     "description": "Parse failed tip"
   },
   "workerInvalidResponse": {
-    "message": "The parsing service returned an unexpected format. The tweet might be restricted or the service is temporarily unavailable.",
+    "message": "Layanan penguraian mengembalikan format yang tidak terduga. Tweet mungkin dibatasi atau layanan sementara tidak tersedia.",
     "description": "Tooltip for when JSON parsing fails or unexpected content is returned"
   },
   "workerStatusError": {
-    "message": "The parsing service is temporarily unable to process this tweet (Error: $status$).",
+    "message": "Layanan penguraian sementara tidak dapat memproses Tweet ini (Error: $status$).",
     "description": "Tooltip for when worker returns non-200 status code",
     "placeholders": {
       "status": {
@@ -366,291 +366,291 @@
     }
   },
   "networkError": {
-    "message": "Network connection failed. Please check your internet settings.",
+    "message": "Koneksi jaringan gagal. Periksa pengaturan internet Anda.",
     "description": "Tooltip for network errors during fetch"
   },
   "import": {
-    "message": "Import",
+    "message": "Impor",
     "description": "Import action button"
   },
   "cancel": {
-    "message": "Cancel",
+    "message": "Batal",
     "description": "Cancel action button"
   },
   "confirm": {
-    "message": "Confirm",
+    "message": "Konfirmasi",
     "description": "Confirm action button"
   },
   "imageResolution": {
-    "message": "Resolution",
+    "message": "Resolusi",
     "description": "Label for image resolution"
   },
   "clickToShowResolution": {
-    "message": "Click to see resolution",
+    "message": "Klik untuk melihat resolusi",
     "description": "Tooltip hint for thumbnails"
   },
   "finalGap": {
-    "message": "Final Gap",
+    "message": "Jarak akhir",
     "description": "Calculated total gap including global and local"
   },
   "openSourcePage": {
-    "message": "Open Source Page",
+    "message": "Buka halaman sumber",
     "description": "Tooltip for the source tweet link"
   },
   "invalidFormat": {
-    "message": "Invalid format",
+    "message": "Format tidak valid",
     "description": "Error message for invalid input"
   },
   "auto": {
-    "message": "Auto",
+    "message": "Otomatis",
     "description": "Auto option for language/theme"
   },
   "themeSystem": {
-    "message": "Follow System",
+    "message": "Ikuti Sistem",
     "description": "System theme option"
   },
   "themeLight": {
-    "message": "Light Mode",
+    "message": "Mode Terang",
     "description": "Light theme option"
   },
   "themeDark": {
-    "message": "Dark Mode",
+    "message": "Mode Gelap",
     "description": "Dark theme option"
   },
   "themeLabel": {
-    "message": "Theme",
+    "message": "Tema",
     "description": "Label for theme selector"
   },
   "pwaVersionLabel": {
-    "message": "Web Version (Mobile/Online)",
+    "message": "Versi Web (Seluler/Online)",
     "description": "PWA version label"
   },
   "pwaVersionTip": {
-    "message": "Using on mobile or browser without extension? Try our full-featured Web version.",
+    "message": "Menggunakan di seluler atau browser tanpa ekstensi? Coba versi Web lengkap kami.",
     "description": "PWA version description"
   },
   "openWebVersion": {
-    "message": "Open Web Version",
+    "message": "Buka Versi Web",
     "description": "Open PWA button text"
   },
   "extensionVersionLabel": {
-    "message": "Chrome Extension",
+    "message": "Ekstensi Chrome",
     "description": "Extension version label"
   },
   "extensionVersionTip": {
-    "message": "Using on a desktop browser? Try our extension for one-click stitching directly on X (Twitter).",
+    "message": "Menggunakan browser desktop? Coba ekstensi kami untuk menggabung sekali klik langsung di X (Twitter).",
     "description": "Extension version description"
   },
   "openExtensionStore": {
-    "message": "Go to Chrome Web Store",
+    "message": "Buka Chrome Web Store",
     "description": "Open extension store button text"
   },
   "pwaUpdateAvailable": {
-    "message": "New version available",
+    "message": "Versi baru tersedia",
     "description": "PWA update available tip"
   },
   "pwaUpdateReady": {
-    "message": "Update for the latest features and fixes",
+    "message": "Perbarui untuk fitur dan perbaikan terbaru",
     "description": "PWA update description"
   },
   "pwaRefresh": {
-    "message": "Refresh",
+    "message": "Muat ulang",
     "description": "PWA refresh button"
   },
   "pwaIgnore": {
-    "message": "Ignore",
+    "message": "Abaikan",
     "description": "PWA ignore button"
   },
   "pwaOfflineReady": {
-    "message": "App is ready to work offline",
+    "message": "Aplikasi siap bekerja offline",
     "description": "PWA offline ready tip"
   },
   "layoutSchemeHelp": {
-    "message": "[icon:LayoutGrid] Grid: For social media\n[icon:Layout] T-Shape: For artistic photography\n[icon:Rows] Vertical/Horizontal: For long panoramas",
+    "message": "[icon:LayoutGrid] Kisi: untuk media sosial\n[icon:Layout] Bentuk T: untuk fotografi artistik\n[icon:Rows] Vertikal/Horizontal: untuk panorama panjang",
     "description": "Layout help text"
   },
   "backgroundColorHelp": {
-    "message": "Set color behind images. Transparent (PNG/WebP) is most flexible, Black or White helps unify micro-adjustments.",
+    "message": "Atur warna di belakang gambar. Transparan (PNG/WebP) paling fleksibel, hitam atau putih membantu menyatukan penyesuaian kecil.",
     "description": "Background color help"
   },
   "globalGapHelp": {
-    "message": "Set gap width between all images. Negative values allow overlapping.",
+    "message": "Atur lebar jarak antar semua gambar. Nilai negatif memungkinkan tumpang tindih.",
     "description": "Global gap help"
   },
   "formatHelp": {
-    "message": "「PNG」Original quality, transparency, larger\n「JPG」High compression, no transparency, smaller\n「WEBP」High quality, transparency, poor iOS compatibility",
+    "message": "「PNG」Kualitas asli, transparansi, lebih besar\n「JPG」Kompresi tinggi, tanpa transparansi, lebih kecil\n「WEBP」Kualitas tinggi, transparansi, kompatibilitas iOS buruk",
     "description": "Help explanation for format selection"
   },
   "exportSettingsHelp": {
-    "message": "Personalized Export:\n「PNG」Original quality, transparency, larger\n「JPG」High compression, no transparency, smaller\n「WEBP」High quality, transparency, poor iOS compatibility",
+    "message": "Ekspor yang dipersonalisasi:\\n「PNG」Kualitas asli, transparansi, lebih besar\n「JPG」Kompresi tinggi, tanpa transparansi, lebih kecil\n「WEBP」Kualitas tinggi, transparansi, kompatibilitas iOS buruk",
     "description": "Comprehensive help for export settings section"
   },
   "twitterOptimizeHelp": {
-    "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 「One Image」 look in users' feeds.",
+    "message": "Saat memposting beberapa bagian ke X (Twitter), ini menyesuaikan batas untuk tampilan \"satu gambar\" yang mulus di feed pengguna.",
     "description": "Twitter optimization help"
   },
   "userGuideButton": {
-    "message": "User Guide",
+    "message": "Panduan",
     "description": "User guide button text"
   },
   "tutorialImportTitle": {
-    "message": "Import Images",
+    "message": "Impor Gambar",
     "description": "Tutorial step 1 title"
   },
   "tutorialImportDesc": {
-    "message": "Click to upload local files, or use the link icon to import directly from an X (Twitter) URL.",
+    "message": "Klik untuk mengunggah file lokal, atau gunakan ikon tautan untuk mengimpor langsung dari URL X (Twitter).",
     "description": "Tutorial step 1 description"
   },
   "tutorialLayoutTitle": {
-    "message": "Choose Layout",
+    "message": "Pilih Tata Letak",
     "description": "Tutorial step 2 title"
   },
   "tutorialLayoutDesc": {
-    "message": "Pick a layout for your images. 「Grid」 is recommended for X (Twitter) posts.",
+    "message": "Pilih tata letak untuk gambar Anda. \"Kisi\" direkomendasikan untuk postingan X (Twitter).",
     "description": "Tutorial step 2 description"
   },
   "tutorialControlTitle": {
-    "message": "Fine-tune",
+    "message": "Penyesuaian halus",
     "description": "Tutorial step 3 title"
   },
   "tutorialControlDesc": {
-    "message": "Adjust global/local gaps, or drag the list to reorder your images.",
+    "message": "Sesuaikan jarak global/lokal, atau seret daftar untuk mengurutkan ulang gambar.",
     "description": "Tutorial step 3 description"
   },
   "tutorialExportTitle": {
-    "message": "Export & Download",
+    "message": "Ekspor & Unduh",
     "description": "Tutorial step 4 title"
   },
   "tutorialExportDesc": {
-    "message": "Finally, click the button to generate and save your creation!",
+    "message": "Terakhir, klik tombol untuk membuat dan menyimpan kreasi Anda!",
     "description": "Tutorial step 4 description"
   },
   "skipTutorial": {
-    "message": "Skip",
+    "message": "Lewati",
     "description": "Skip button"
   },
   "nextStep": {
-    "message": "Next",
+    "message": "Berikutnya",
     "description": "Next button"
   },
   "localGapHelp": {
-    "message": "Adjust the gap between specific images. Perfect for separating chapters or hiding 'easter eggs'.",
+    "message": "Sesuaikan jarak antar gambar tertentu. Sempurna untuk memisahkan bab atau menyembunyikan \"easter egg\".",
     "description": "Help explanation for local gap"
   },
   "imageSortingHelp": {
-    "message": "Drag [icon:GripVertical] or Click [icon:ChevronUp][icon:ChevronDown] to reorder\nClick [icon:Eye] to toggle visibility\nClick numbers to fine-tune gaps",
+    "message": "Seret [icon:GripVertical] atau klik [icon:ChevronUp][icon:ChevronDown] untuk mengurutkan\nKlik [icon:Eye] untuk beralih visibilitas\nKlik angka untuk menyesuaikan jarak",
     "description": "Comprehensive help for image sorting section"
   },
   "userGuideTitle": {
-    "message": "User Manual & Guide",
+    "message": "Panduan Pengguna",
     "description": "Guide dialog title"
   },
   "finishTutorial": {
-    "message": "Finish",
+    "message": "Selesai",
     "description": "Finish button"
   },
   "tabPWA": {
-    "message": "Web / Mobile",
+    "message": "Web / Seluler",
     "description": "Manual tab 1"
   },
   "tabExtension": {
-    "message": "Extension",
+    "message": "Ekstensi",
     "description": "Manual tab 2"
   },
   "tabFeatures": {
-    "message": "Usage Tips",
+    "message": "Tips",
     "description": "Manual tab 3"
   },
   "guideiOSInstall": {
-    "message": "1. Enhanced Integration\nForget manual copying. Tap the button below to add 「X-Puzzle-Kit」 to your Shortcuts library.\n2. Quick Import\nTap this Shortcut in the X (Twitter) share menu to automatically extract links and jump seamlessly.",
+    "message": "1. Integrasi Lanjutan\nLupakan penyalinan manual. Ketuk tombol di bawah untuk menambahkan \"X-Puzzle-Kit\" ke pustaka Pintasan Anda.\n2. Impor Cepat\nKetuk Pintasan ini di menu Bagikan X (Twitter) untuk mengekstrak tautan secara otomatis dan beralih dengan lancar.",
     "description": "iOS Install Guide"
   },
   "installShortcutBtn": {
-    "message": "Install iOS Shortcut",
+    "message": "Instal Pintasan iOS",
     "description": "iOS Shortcut installation button"
   },
   "installShortcutTip": {
-    "message": "Tap to get the official iOS Shortcut for one-click importing.",
+    "message": "Ketuk untuk mendapatkan Pintasan iOS resmi untuk impor sekali ketuk.",
     "description": "iOS Shortcut installation tip"
   },
   "guideAndroidInstall": {
-    "message": "1. Install PWA (Progressive Web App)\nTap 「Install App」 in browser menu. No bulky store download required.\n2. Native Sharing\nOnce installed, share directly from X (Twitter) and select 「X-Puzzle-Kit」 to import.",
+    "message": "1. Instal PWA (Progressive Web App)\nKetuk \"Instal aplikasi\" di menu browser. Tidak perlu unduhan besar dari toko.\n2. Berbagi Asli\nSetelah dipasang, bagikan langsung dari X (Twitter) dan pilih \"X-Puzzle-Kit\" untuk mengimpor.",
     "description": "Android installation guide"
   },
   "viewAndroidTutorial": {
-    "message": "Installation Guide",
+    "message": "Panduan Instalasi",
     "description": "Android tutorial button text"
   },
   "guideExtensionStitch": {
-    "message": "Directly below any X (Twitter) post, you'll find the [icon] button. Grab all images instantly and enter puzzle mode with one click.",
+    "message": "Tepat di bawah postingan X (Twitter) mana pun, Anda akan menemukan tombol [icon]. Ambil semua gambar secara instan dan masuk mode puzzle dengan satu klik.",
     "description": "Extension stitch feature guide"
   },
   "guideExtensionSplit": {
-    "message": "Right-click any image on the web and select 「X-Puzzle-Kit: Split Image」 to start processing immediately without downloading.",
+    "message": "Klik kanan gambar apa pun di web dan pilih \"X-Puzzle-Kit: Pisah Gambar\" untuk mulai memproses segera tanpa mengunduh.",
     "description": "Extension split feature guide"
   },
   "guideFlowOptimization": {
-    "message": "When enabled, the tool fine-tunes slice ratios for the X (Twitter) algorithm, ensuring seamless stitching in the post feed.",
+    "message": "Saat diaktifkan, alat ini menyempurnakan rasio bagian untuk algoritma X (Twitter), memastikan penggabungan mulus di feed.",
     "description": "Optimization feature guide"
   },
   "guideExtensionTitle": {
-    "message": "Seamless Post Image Stitching",
+    "message": "Penggabungan Gambar Mulus di Postingan",
     "description": "Manual card title 1"
   },
   "guideSplitTitle": {
-    "message": "Instant Right-click Split",
+    "message": "Pemisahan Instan dengan Klik Kanan",
     "description": "Manual card title 2"
   },
   "guideLocalGapTitle": {
-    "message": "Precise Gap Control",
+    "message": "Kontrol Jarak Presisi",
     "description": "Manual card title 3"
   },
   "pwaBenefitTitle": {
-    "message": "Why Install PWA?",
+    "message": "Mengapa Memasang PWA?",
     "description": "PWA benefit section title"
   },
   "pwaBenefitList": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "message": "• Integrasi Mulus: mendukung menu bagikan sistem Android untuk impor lebih cepat dari X.\n• Fokus Layar Penuh: menyembunyikan bilah alamat browser untuk penyesuaian jarak yang presisi di layar besar.\n• Integrasi Platform: dioptimalkan mendalam untuk PWA iOS guna menghilangkan bilah putih dan masalah rasio aspek.",
     "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.",
+    "message": "• Integrasi Mulus: mendukung menu bagikan sistem Android untuk impor lebih cepat dari X.",
     "description": "PWA benefit: Android integration"
   },
   "pwaBenefitFullscreen": {
-    "message": "• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.",
+    "message": "• Fokus Layar Penuh: menyembunyikan bilah alamat browser untuk penyesuaian jarak yang presisi di layar besar.",
     "description": "PWA benefit: Full-screen focus"
   },
   "pwaBenefitIOSFix": {
-    "message": "• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "message": "• Integrasi Platform: dioptimalkan mendalam untuk PWA iOS guna menghilangkan bilah putih dan masalah rasio aspek.",
     "description": "PWA benefit: iOS PWA optimization"
   },
   "guideNativeInstall": {
-    "message": "Install the PWA to see 「X-Puzzle-Kit」 in your X (Twitter) share menu for one-click importing.",
+    "message": "Instal PWA untuk melihat \"X-Puzzle-Kit\" di menu Bagikan X (Twitter) untuk impor sekali klik.",
     "description": "Native install recommendation"
   },
   "pwaWhatIs": {
-    "message": "PWA is a modern app format that requires no store download. Essentially a 「web with app powers,」 it uses almost no storage—the perfect lightweight choice for your device.",
+    "message": "PWA adalah format aplikasi modern yang tidak memerlukan unduhan dari toko. Pada dasarnya \"web dengan kemampuan aplikasi\", hampir tidak memakan penyimpanan — pilihan ringan yang sempurna untuk perangkat Anda.",
     "description": "PWA explanation"
   },
   "guideTechnicalTitle": {
-    "message": "Trim Original Gaps",
+    "message": "Potong jarak asli",
     "description": "Technical improvement title"
   },
   "guideTechnicalDesc": {
-    "message": "If your original image has built-in borders or gaps (like manga), enable this to crop out those pixels for a cleaner result.",
+    "message": "Jika gambar asli Anda memiliki bingkai atau jarak bawaan (seperti manga), aktifkan ini untuk memotong piksel tersebut agar hasil lebih bersih.",
     "description": "Technical improvement description"
   },
   "statusOfflineAvailable": {
-    "message": "Offline available",
+    "message": "Tersedia offline",
     "description": "Status text shown when offline"
   },
   "troubleshootingTitle": {
-    "message": "Can't Install?",
+    "message": "Tidak bisa memasang?",
     "description": "Troubleshooting section title"
   },
   "troubleshootingIncognito": {
-    "message": "Private/Incognito browsing mode prevents PWA installation. Please use normal browsing mode and try again.",
+    "message": "Mode penjelajahan privat/penyamaran mencegah pemasangan PWA. Gunakan mode normal dan coba lagi.",
     "description": "Warning about incognito mode"
   },
   "langZhCN": {
@@ -710,7 +710,7 @@
     "description": "Language name: Indonesian"
   },
   "openDebugPanel": {
-    "message": "Open Debug Panel",
+    "message": "Buka Panel Debug",
     "description": "Text for the debug panel opening menu"
   },
   "simulator": {
@@ -718,27 +718,27 @@
     "description": "Text for the simulator feature"
   },
   "viewDemoVideo": {
-    "message": "See Seamless Sharing",
+    "message": "Lihat Berbagi Mulus",
     "description": "Button to see the smooth sharing experience demo"
   },
   "privacyNotice": {
-    "message": "Privacy: Web version uses a secure proxy for parsing (no logs). Processing stays local.",
+    "message": "Privasi: versi Web menggunakan proxy aman untuk penguraian (tanpa log). Pemrosesan tetap lokal.",
     "description": "Privacy notice at the bottom of web version sidebar"
   },
   "privacyPolicy": {
-    "message": "Privacy Policy",
+    "message": "Kebijakan Privasi",
     "description": "Privacy policy link text"
   },
   "shortcutUpdateNote": {
-    "message": "New version available! Check keeping your shortcut updated.",
+    "message": "Versi baru tersedia! Jangan lupa memperbarui Pintasan Anda.",
     "description": "Note shown in iOS Shortcuts when an update is available"
   },
   "dragMode": {
-    "message": "Drag Mode",
+    "message": "Mode Seret",
     "description": "Label for drag mode control"
   },
   "dragModeUnified": {
-    "message": "Unified",
+    "message": "Menyatu",
     "description": "Unified drag mode option"
   },
   "dragModeIndividual": {
@@ -746,23 +746,23 @@
     "description": "Individual drag mode option"
   },
   "contentScale": {
-    "message": "Content Scale",
+    "message": "Skala Konten",
     "description": "Label for content scale slider"
   },
   "resetPosition": {
-    "message": "Reset Position",
+    "message": "Atur ulang posisi",
     "description": "Button text to reset image position"
   },
   "splitReplaceImage": {
-    "message": "Replace Image",
+    "message": "Ganti gambar",
     "description": "Tooltip for replace image button"
   },
   "splitRestoreImage": {
-    "message": "Restore Original",
+    "message": "Pulihkan asli",
     "description": "Tooltip for restore original image button"
   },
   "splitBackgroundTip": {
-    "message": "When enabled, fills the exposed edges resulting from moving images with the background color.",
+    "message": "Saat diaktifkan, mengisi tepi terbuka akibat memindahkan gambar dengan warna latar belakang.",
     "description": "Tooltip for split background fill option"
   }
 }
