@@ -76,7 +76,9 @@ function resolveAutoLanguage(): string {
  */
 export async function setLanguage(lang: string) {
   const targetLang = lang === "auto" ? resolveAutoLanguage() : lang;
-  currentMessages = locales[targetLang] || locales["zh_CN"];
+  // 与 getResolvedLanguage 保持一致：未知语言代码回落到 default_locale（en），
+  // 避免出现「中文文案 + data-lang=en 字体栈」的错配
+  currentMessages = locales[targetLang] || locales["en"];
 
   if (typeof chrome !== "undefined" && chrome.storage) {
     await chrome.storage.local.set({ "x-puzzle-kit-lang": lang });
