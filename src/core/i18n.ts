@@ -30,6 +30,7 @@ const locales: Record<string, Record<string, { message: string }>> = {
   ru: langRu,
   it: langIt,
   id: langId,
+  in: langId, // 印尼语的历史语言代码，与 prefixMap 的兜底保持一致
 };
 
 let currentMessages: Record<string, { message: string }> | null = null;

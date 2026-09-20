@@ -1279,7 +1279,8 @@ export function Sidebar({
                       { value: "it", label: t("langIt") },
                       { value: "id", label: t("langId") },
                     ]}
-                    style={{ width: "104px" }}
+                    // 与移动端 .custom-select-trigger 的 min-width 保持一致，确保最长的语言名完整显示
+                    style={{ width: "110px" }}
                     direction="top"
                   />
                 </div>
