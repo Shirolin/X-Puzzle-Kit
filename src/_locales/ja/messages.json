@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit は、X (Twitter) ユーザー、デジタルアーティスト、コレクターのために設計されたプロフェッショナルな画像編集ツールボックスです。複数枚のツイート画像からオリジナルのパノラマを復元する場合でも、クリエイティブなタイル表示を作成する場合でも、X-Puzzle-Kit を使用すればコンテンツを X のタイムライン上で理想的な形で表示できます。\n\n🌐 マルチプラットフォーム対応：\nこの Chrome 拡張機能に加えて、モバイル、タブレット、その他のブラウザでもシームレスに利用できる、機能フル装備の Web オンライン版（https://x-puzzle-kit.pages.dev/）を提供しています。\n\n✨ 主な機能：\n\n🧵 高精度な画像結合\nバラバラになったツイート画像を、元のパノラマや長尺形式にシームレスに結合します。\n・ 多彩なレイアウト：垂直、水平、2x2、および独自の T 型レイアウトを完全にサポート。\n・ ピクセルパーフェクトな整列：精密な座標計算により、継ぎ目やぼやけを排除し、鮮明な画質を実現します。\n・ ネイティブ統合：X のページ上から直接ボタンをクリックして結合を開始でき、手間を大幅に削減します。\n・ 画質劣化なしの出力：二次圧縮を行わず、各ピクセルの元の解像度を維持し、ディテールを完璧に再現します。\n\n✂️ クリエイティブ分割ツール (グリッド・タイル作成)\nあらゆる画像を標準的なグリッド（2x2、またはカスタム）に分割し、X のマルチ画像表示に完璧に適合させます。\n・ X「1枚絵」レイアウト最適化：Xのプレビュー表示に最適化。タイムライン上で複数の分割画像が繋がって、1枚の大きな画像に見えるように調整します。\n・ 右クリックで即分割：ウェブ上で画像を右クリックして、そのまま分割ツールに送って処理できます。\n・ 統一された視覚効果：グリッド投稿に一貫性をもたせ、タイムラインでの注目度を高めます。\n\n🚀 便利な機能：\n・ 高効率なワークフロー：ブラウザに深く統合されており、ツイートの発見から画像生成までわずか数秒で完了します。\n・ 柔軟なカスタマイズ：全体の余白や個別の余白を微調整。ダークモード対応、背景色の自由な設定（透明対応）も可能です。\n・ 多様なインポート：ファイルアップロード、クリップボード貼り付け、および X ページからの直接インポートに対応。\n・ 一括書き出し：高品質な PNG、JPG、WebP でのダウンロード、または ZIP 形式での一括保存が可能です。\n\n🔒 プライバシー保護\nすべての画像処理はローカルブラウザ内で行われます。画像がリモートサーバーにアップロードされることはありません。トラッキングなし、記録なしで、あなたの創作プライバシーを守ります。\n\n今すぐ X-Puzzle-Kit を使って、X での画像投稿をよりプロフェッショナルにしましょう。",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "結合プレビュー",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "画像分割",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "画像を結合しています...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "画像を削除",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "Artist",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "ツイート ID",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "高画質リソースを準備中...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "リセット",
@@ -87,10 +67,6 @@
     "message": "全体の余白",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "0にリセット",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "並べ替え",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "画像を表示",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "後ろの余白",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "余白を減らす",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "余白を増やす",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "余白",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "個別の余白をリセット",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "処理中...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "言語",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "作成者",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "画像を分割",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "すべてダウンロード",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "画像をアップロード",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "分割する画像を選択してください",
@@ -191,10 +139,6 @@
     "message": "またはここに画像をドラッグ＆ドロップ",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "変更",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "元の隙間を削除",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "列 (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "元画像",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "分割結果",
@@ -267,9 +207,9 @@
     "message": "サポート",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "開発者を支援",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "Afdian で支援する",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: 画像を分割",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] 田の字：SNS投稿に最適\n[icon:Layout] T型：写真作品のような配置\n[icon:Rows] 縦/横：パノラマや長図の結合",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "画像の背景色を設定します。透明(PNG/WebP)が最も柔軟ですが、微調整を行う場合は黒や白に設定すると統一感を出しやすくなります。",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "すべての画像間の隙間を一括で設定します。マイナスの値を設定すると画像を重ねることができます。",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "X (Twitter) に複数の画像を投稿する際、タイムライン上で1枚の絵のように繋がって見えるよう、比率や境界線を微調整します。",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "使い方ガイド",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "画像の取り込み",
@@ -613,10 +545,6 @@
     "message": "なぜ PWA をインストールするのですか？",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• シームレス連携：Android の共有メニューに対応し、X からの画像取り込みがスムーズ。\n• 全画面表示：ブラウザのアドレスバーを隠し、大画面でも余白を正確に調整。\n• プラットフォーム最適化：iOS PWA 向けに徹底最適化し、白い余白とアスペクト比のズレを解消。",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• シームレスな統合：Android のシステム共有メニューに対応。X からのインポートが劇的に速くなります。",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "デバッグパネルを開く",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "シミュレーター",

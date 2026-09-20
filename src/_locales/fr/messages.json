@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s'affiche exactement comme prévu sur votre fil X.\n\n🌐 SUPPORT MULTIPLATEFORME :\nEn plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.\n\n✨ FONCTIONNALITÉS CLÉS :\n\n🧵 Assemblage Intelligent d'Images\nFusionnez sans couture des images séparées d'un Tweet pour retrouver leur format original panoramique ou long.\n- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.\n- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.\n- Intégration Native : Assemblez des images directement depuis votre fil X d'un simple clic, sans manipulations manuelles.\n- Exportation sans Perte : Préserve chaque pixel dans sa résolution d'origine. Aucune compression, aucune perte de qualité.\n\n✂️ Découpeur de Grilles Créatif (Mosaic Maker)\nDivisez n'importe quelle image en grilles standardisées (2x2 ou personnalisées) optimisées pour l'affichage multi-images de X.\n- Optimisation de Mise en Page \"Image Unique\" pour Twitter : Optimisé pour l'aperçu de X. Permet de fusionner plusieurs découpes en une seule \"grande image\" dans le flux.\n- Clic droit et Découpe : Envoyez instantanément n'importe quelle image vers l'outil de découpe via le menu contextuel du navigateur.\n- Esthétique Unifiée : Créez des rendus cohérents qui captent l'attention sur votre flux.\n\n🚀 FONCTIONS AVANCÉES :\n- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.\n- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).\n- Import Facile : Support de l'import de fichiers, du presse-papiers et de l'intégration native avec la page X.\n- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.\n\n🔒 CONFIDENTIALITÉ GARANTIE\nVos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.\n\nSublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "Aperçu de la fusion",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "Diviseur",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "Fusion en cours...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "Supprimer l'image",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "De",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "ID Tweet",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "Ressources HD...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "Réinitialiser",
@@ -87,10 +67,6 @@
     "message": "Espacement global",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "RAZ à 0",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "Galerie",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "Afficher l'image",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "Espace après",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "Réduire l'espace",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "Augmenter l'espace",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "Espace",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "RAZ espace local",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "Traitement...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "Langue",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "de",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "Diviser l'image",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "Tout télécharger",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "Uploader une image",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "Sélectionnez une image à diviser",
@@ -191,10 +139,6 @@
     "message": "Ou glisser-déposer ici",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "Changer",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "Supprimer les marges d'origine",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "Colonnes (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "Source",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "Résultat",
@@ -267,9 +207,9 @@
     "message": "Soutien",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "Offrez-moi un café",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "Soutenez-moi sur Afdian",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: Diviser l'image",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] Grille : Pour les réseaux sociaux\n[icon:Layout] Forme en T : Pour la photographie artistique\n[icon:Rows] Vertical/Horizontal : Pour les panoramas",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "Définissez la couleur derrière les images. Le fond transparent (PNG/WebP) est le plus flexible, le noir ou le blanc aide à unifier les micro-ajustements.",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "Définissez la largeur de l'espace entre toutes les images. Les valeurs négatives permettent le chevauchement.",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "Lors de la publication de plusieurs découpes sur X (Twitter), cela ajuste les bordures pour un aspect 「Image Unique」 sans couture dans le fil des utilisateurs.",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "Guide de l'utilisateur",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "Importer des Images",
@@ -613,10 +545,6 @@
     "message": "Pourquoi installer la PWA ?",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• Intégration transparente : Compatible avec le menu de partage Android pour importer plus rapidement depuis X.\n• Focus plein écran : Masque la barre d'adresse pour ajuster précisément les espaces sur grand écran.\n• Intégration à la plateforme : Optimisé en profondeur pour la PWA iOS afin d'éliminer les barres blanches et les problèmes de ratio.",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• Intégration fluide : Supporte le menu de partage Android pour importer des images de X plus rapidement.",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "Ouvrir le panneau de débogage",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "Simulateur",

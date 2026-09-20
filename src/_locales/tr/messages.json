@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit, X (Twitter) kullanıcıları, dijital sanatçılar ve koleksiyoncular için özel olarak tasarlanmış profesyonel bir resim birleştirme ve ızgara bölme aracıdır. İster çok parçalı bir panoramayı yeniden birleştiriyor olun, ister yaratıcı bir ızgara \"reveal\" (açığa çıkarma) efekti hazırlıyor olun, X-Puzzle-Kit içeriğinizin X zaman akışında tam olarak amaçlandığı gibi görünmesini sağlar.\n\n🌐 PLATFORMLAR ARASI DESTEK:\nBu Chrome uzantısına ek olarak, mobil cihazlar, tabletler ve diğer tarayıcılarda sorunsuz kullanım için tam özellikli bir Web sürümü (https://x-puzzle-kit.pages.dev/) sunuyoruz.\n\n✨ TEMEL GÜÇLER:\n\n🧵 Akıllı Resim Birleştirme (Stitching)\nAyrı Tweet resimlerini orijinal panorama veya uzun formata sorunsuz bir şekilde geri birleştirin.\n- Akıllı Düzenler: Dikey, Yatay, 2x2 Izgara ve imza niteliğindeki T-Şekli düzenleri için tam destek.\n- Piksel Mükemmelliğinde Hizalama: Gelişmiş koordinat hesaplaması, 1 piksellik dikiş izlerini ve bulanık eserleri ortadan kaldırır.\n- Yerel Entegrasyon: Resimleri doğrudan X zaman akışınızdan tek tıklamayla birleştirin — manuel kaydetmeye gerek yok.\n- Kayıpsız Dışa Aktarma: Her pikseli orijinal çözünürlüğünde korur. Sıkıştırma yok, kalite kaybı yok.\n\n✂️ Yaratıcı Izgara Bölücü (Mosaic Maker)\nHerhangi bir büyük resmi, X'in çoklu resim gösterimi için optimize edilmiş standart ızgaralara (2x2 veya özel) bölün.\n- Twitter \"Kusursuz Akış\" Optimizasyonu: Twitter'ın önizleme mekanizması için optimize edilmiştir. Zaman akışında görsel olarak tek bir \"kesintisiz resim\" gibi birleşmesini sağlar.\n- Sağ Tık & Böl: Herhangi bir web resmini doğrudan tarayıcınızın içerik menüsünden bölücüye gönderin.\n- Birleşik Hikaye Anlatımı: Akışınız için tutarlı, ilgi çekici \"ortaya çıkarma\" efektleri oluşturun.\n\n🚀 GÜÇLÜ ÖZELLİKLER:\n- Akıcı İş Akışı: Derin tarayıcı entegrasyonu ile saniyeler içinde zaman akışından düzenlemeye geçin.\n- Profesyonel Özelleştirme: Global/yerel boşlukların ince ayarı, Karanlık Mod ve özel arka plan renkleri (şeffaflık dahil).\n- Kolay İçe Aktarma: Yerel X entegrasyonunun yanı sıra dosya yükleme ve panodan yapıştırma desteği.\n- Toplu Dışa Aktarma: Tasarımlarınızı yüksek kaliteli PNG, JPG veya WebP dosyaları olarak ya da tek bir düzenli ZIP paketi olarak kaydedin.\n\n🔒 GİZLİLİK ÖNCELİĞİMİZ\nResimleriniz asla tarayıcınızdan çıkmaz. Tüm işlemler yerel olarak cihazınızda yapılır — uzaktan yükleme yok, izleme yok ve tam güvenlik.\n\nX hikaye anlatımınızı X-Puzzle-Kit ile bugün geliştirin.",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "Önizleme & Birleştirme",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "Bölücü (Splitter)",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "İşleniyor...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "Resmi Kaldır",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "Kimden",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "Tweet ID",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "Yüksek çözünürlük hazırlanıyor...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "Sıfırla",
@@ -87,10 +67,6 @@
     "message": "Global Boşluk",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "0'a Sıfırla",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "Resim Sıralaması",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "Resmi Göster",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "Sonraki boşluk",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "Azalt",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "Artır",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "Boşluk",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "Yerel boşluğu sıfırla",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "İşleniyor...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "Dil (Language)",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "kaynak",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "Resmi Böl",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "Hepsini İndir",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "Resim Yükle",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "Bölmek için bir resim seçin",
@@ -191,10 +139,6 @@
     "message": "Veya buraya sürükleyip bırakın",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "Değiştir",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "Orijinal Boşlukları Kırp",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "Sütun (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "Kaynak",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "Sonuç",
@@ -267,9 +207,9 @@
     "message": "Destek",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "Bana bir kahve ısmarla",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "Afdian'da destek ol",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: Resmi Böl",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] Izgara: Sosyal medya için\n[icon:Layout] T-Şekli: Sanatsal fotoğrafçılık için\n[icon:Rows] Dikey/Yatay: Uzun panoramalar için",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "Arka plan rengi. Şeffaf (PNG/WebP) en esneğidir, Siyah veya Beyaz görsel bütünlük sağlar.",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "Tüm resimler arasındaki boşluk genişliği. Negatif değerler bindirme sağlar.",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "X'te (Twitter) birden fazla parça paylaştığınızda, zaman akışında kusursuz bir \"Tek Resim\" gibi görünmesi için kenarları ayarlar.",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "Kullanım Kılavuzu",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "Resim İçe Aktar",
@@ -613,10 +545,6 @@
     "message": "Neden PWA Yüklemelisiniz?",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• Sorunsuz Entegrasyon: Daha hızlı içe aktarma için Android sistem paylaşım menüsünü destekler.\n• Tam Ekran Odak: Daha geniş çalışma alanı için tarayıcı adres çubuğunu gizler.\n• Platform Entegrasyonu: iOS'ta beyaz çubukları ve en boy oranı sorunlarını önlemek için özel optimize edilmiştir.",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• Sorunsuz Entegrasyon: Daha hızlı içe aktarma için Android sistem paylaşım menüsünü destekler.",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "Hata Ayıklama Panelini Aç",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "Simülatör",

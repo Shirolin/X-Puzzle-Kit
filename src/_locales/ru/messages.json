@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit — профессиональный инструмент для склейки изображений и разделения сеток, созданный специально для пользователей X (Twitter), цифровых художников и коллекционеров. Восстанавливаете ли вы многочастную панораму или готовите креативное раскрытие сетки — X-Puzzle-Kit гарантирует, что ваш контент будет выглядеть именно так, как задумано, в ленте X.\n\n🌐 КРОССПЛАТФОРМЕННАЯ ПОДДЕРЖКА:\nПомимо этого расширения для Chrome, мы предлагаем полнофункциональную веб-версию (https://x-puzzle-kit.pages.dev/) для удобного использования на мобильных устройствах, планшетах и в других браузерах.\n\n✨ ОСНОВНЫЕ ВОЗМОЖНОСТИ:\n\n🧵 Умная склейка изображений\nБесшовно объединяйте отдельные изображения из твитов обратно в исходную панораму или длинный формат.\n- Умные макеты: полная поддержка вертикального, горизонтального, сетки 2x2 и фирменного T-образного макета.\n- Пиксельная точность: усовершенствованный расчёт координат устраняет швы в 1 пиксель и размытие.\n- Нативная интеграция: склеивайте изображения прямо из ленты X одним кликом — без ручного сохранения.\n- Экспорт без потерь: сохраняет каждый пиксель в исходном разрешении. Без сжатия, без потери качества.\n\n✂️ Креативное разделение сетки (создатель мозаики)\nРазбивайте любое большое изображение на стандартизированные сетки (2x2 или собственные), оптимизированные для показа нескольких изображений в X.\n- Оптимизация «бесшовного потока» Twitter: настроено под механизм предпросмотра Twitter. Обеспечивает склейку нескольких частей в одно «бесшовное изображение» в ленте за счёт точного соответствия пропорциям предпросмотра X.\n- Разделение правой кнопкой: мгновенно отправляйте любое изображение из интернета в разделитель прямо из контекстного меню браузера.\n- Единое повествование: создавайте последовательные эффекты «раскрытия» для своей ленты.\n\n🚀 МОЩНЫЕ ФУНКЦИИ:\n- Плавный рабочий процесс: от ленты до холста за секунды благодаря глубокой интеграции с браузером.\n- Профессиональная настройка: точная регулировка глобальных и локальных отступов, тёмная тема и собственные цвета фона (включая прозрачность).\n- Простой импорт: поддержка загрузки файлов и вставки из буфера обмена вместе с нативной интеграцией с X.\n- Пакетный экспорт: сохраняйте работы как высококачественные PNG, JPG или WebP, или одним ZIP-архивом.\n\n🔒 ПРИВАТНОСТЬ ПРЕЖДЕ ВСЕГО\nВаши изображения никогда не покидают браузер. Вся обработка выполняется локально на вашем устройстве — без удалённых загрузок, без отслеживания, полная безопасность.\n\nУлучшите своё повествование в X вместе с X-Puzzle-Kit уже сегодня.",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "Просмотр склейки",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "Разделитель",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "Склейка...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "Удалить изображение",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "От",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "ID твита",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "Подготовка ресурсов высокого разрешения...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "Сброс",
@@ -87,10 +67,6 @@
     "message": "Глобальный отступ",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "Сбросить до 0",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "Сортировка",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "Показать",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "Отступ после",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "Уменьшить отступ",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "Увеличить отступ",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "Отступ",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "Сбросить отступ",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "Обработка...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "Язык",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "от",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "Разделить изображение",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "Скачать все",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "Загрузить изображение",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "Выберите изображение для разделения",
@@ -191,10 +139,6 @@
     "message": "Или перетащите сюда",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "Изменить",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "Обрезать исходные отступы",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "Количество столбцов (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "Источник",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "Результат разделения",
@@ -267,9 +207,9 @@
     "message": "Поддержка",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "Поддержать",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "Поддержать на Afdian",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: Разделить изображение",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] Сетка: для соцсетей\n[icon:Layout] T-образная: для художественной фотографии\n[icon:Rows] Вертикально/Горизонтально: для длинных панорам",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "Задайте цвет под изображениями. Прозрачный (PNG/WebP) — самый гибкий, чёрный или белый помогает объединить микрокорректировки.",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "Задайте ширину отступа между всеми изображениями. Отрицательные значения допускают перекрытие.",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "Когда вы публикуете несколько частей в X (Twitter), это корректирует границы для бесшовного вида «одного изображения» в лентах пользователей.",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "Руководство",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "Импорт изображений",
@@ -613,10 +545,6 @@
     "message": "Зачем устанавливать PWA?",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• Бесшовная интеграция: поддерживает системное меню «Поделиться» Android для более быстрого импорта из X.\n• Полноэкранный режим: скрывает адресную строку браузера для точной настройки отступов на больших экранах.\n• Интеграция с платформой: глубокая оптимизация для iOS PWA, чтобы устранить белые полосы и проблемы с соотношением сторон.",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• Бесшовная интеграция: поддерживает системное меню «Поделиться» Android для более быстрого импорта из X.",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "Открыть панель отладки",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "Симулятор",

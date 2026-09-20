@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit — професійний інструмент для зшивання зображень і розділення сіток, створений спеціально для користувачів X (Twitter), цифрових художників і колекціонерів. Чи відновлюєте ви багаточастинну панораму, чи готуєте креативне розкриття сітки — X-Puzzle-Kit гарантує, що ваш контент виглядатиме саме так, як задумано, у стрічці X.\n\n🌐 КРОСПЛАТФОРМНА ПІДТРИМКА:\nОкрім цього розширення для Chrome, ми пропонуємо повнофункціональну веб-версію (https://x-puzzle-kit.pages.dev/) для зручного використання на мобільних пристроях, планшетах та інших браузерах.\n\n✨ ОСНОВНІ МОЖЛИВОСТІ:\n\n🧵 Розумне зшивання зображень\nБезшовно об'єднуйте окремі зображення з твітів назад у вихідну панораму або довгий формат.\n- Розумні макети: повна підтримка вертикального, горизонтального, сітки 2x2 та фірмового T-подібного макета.\n- Піксельна точність: удосконалений розрахунок координат усуває шви в 1 піксель і розмитість.\n- Нативна інтеграція: зшивайте зображення прямо зі стрічки X одним кліком — без ручного збереження.\n- Експорт без втрат: зберігає кожен піксель у вихідній роздільній здатності. Без стиснення, без втрати якості.\n\n✂️ Креативне розділення сітки (творець мозаїки)\nРозбивайте будь-яке велике зображення на стандартизовані сітки (2x2 або власні), оптимізовані для показу кількох зображень у X.\n- Оптимізація «безшовного потоку» Twitter: налаштовано під механізм попереднього перегляду Twitter. Забезпечує зшивання кількох частин в одне «безшовне зображення» у стрічці завдяки точній відповідності пропорціям перегляду X.\n- Розділення правою кнопкою: миттєво надсилайте будь-яке зображення з інтернету до розділювача прямо з контекстного меню браузера.\n- Єдине оповідання: створюйте послідовні ефекти «розкриття» для своєї стрічки.\n\n🚀 ПОТУЖНІ ФУНКЦІЇ:\n- Плавний робочий процес: від стрічки до полотна за секунди завдяки глибокій інтеграції з браузером.\n- Професійне налаштування: точне регулювання глобальних і локальних відступів, темна тема та власні кольори фону (включно з прозорістю).\n- Простий імпорт: підтримка завантаження файлів і вставки з буфера обміну разом із нативною інтеграцією з X.\n- Пакетний експорт: зберігайте роботи як високоякісні PNG, JPG або WebP, чи одним ZIP-архівом.\n\n🔒 ПРИВАТНІСТЬ ПОНАД УСЕ\nВаші зображення ніколи не залишають браузер. Уся обробка виконується локально на вашому пристрої — без віддалених завантажень, без відстеження, повна безпека.\n\nПокращте свою розповідь у X разом із X-Puzzle-Kit вже сьогодні.",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "Перегляд зшивання",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "Розділювач",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "Зшивання...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "Видалити зображення",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "Від",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "ID твіта",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "Підготовка ресурсів високої якості...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "Скинути",
@@ -87,10 +67,6 @@
     "message": "Глобальний відступ",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "Скинути до 0",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "Сортування",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "Показати",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "Відступ після",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "Зменшити відступ",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "Збільшити відступ",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "Відступ",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "Скинути відступ",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "Обробка...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "Мова",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "від",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "Розділити зображення",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "Завантажити все",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "Завантажити зображення",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "Виберіть зображення для розділення",
@@ -191,10 +139,6 @@
     "message": "Або перетягніть сюди",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "Змінити",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "Обрізати вихідні відступи",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "Кількість стовпців (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "Джерело",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "Результат розділення",
@@ -267,9 +207,9 @@
     "message": "Підтримка",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "Підтримати",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "Підтримати на Afdian",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: Розділити зображення",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] Сітка: для соцмереж\n[icon:Layout] T-подібна: для художньої фотографії\n[icon:Rows] Вертикально/Горизонтально: для довгих панорам",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "Встановіть колір під зображеннями. Прозорий (PNG/WebP) — найгнучкіший, чорний або білий допомагає об'єднати мікрокоригування.",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "Задайте ширину відступу між усіма зображеннями. Від'ємні значення дозволяють перекриття.",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "Коли ви публікуєте кілька частин у X (Twitter), це коригує межі для безшовного вигляду «одного зображення» у стрічці користувачів.",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "Посібник",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "Імпорт зображень",
@@ -613,10 +545,6 @@
     "message": "Навіщо встановлювати PWA?",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• Безшовна інтеграція: підтримує системне меню «Поділитися» Android для швидшого імпорту з X.\n• Повноекранний режим: приховує адресний рядок браузера для точного налаштування відступів на великих екранах.\n• Інтеграція з платформою: глибока оптимізація для iOS PWA, щоб усунути білі смуги та проблеми зі співвідношенням сторін.",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• Безшовна інтеграція: підтримує системне меню «Поділитися» Android для швидшого імпорту з X.",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "Відкрити панель налагодження",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "Симулятор",

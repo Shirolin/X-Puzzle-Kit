@@ -1327,7 +1327,7 @@ export function Sidebar({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-icon"
-                      title="爱发电 (Afdian)"
+                      title={t("supportAfdian")}
                       style={{
                         textDecoration: "none",
                         color: "var(--color-text)",

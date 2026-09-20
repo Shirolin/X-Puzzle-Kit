@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit은 X (트위터) 사용자, 디지털 아티스트 및 수집가를 위해 설계된 전문가용 미디어 툴킷입니다. 여러 트윗 이미지를 원래의 파노라마로 복원하거나 창의적인 그리드 전시를 준비할 때, X-Puzzle-Kit은 콘텐츠가 X 타임라인에서 의도한 대로 완벽하게 보이도록 도와줍니다.\n\n🌐 멀티 플랫폼 지원:\n이 Chrome 확장 프로그램 외에도 모바일, 태블릿 및 기타 브라우저에서 원활하게 사용할 수 있도록 모든 기능을 갖춘 웹 온라인 버전(https://x-puzzle-kit.pages.dev/)을 제공합니다.\n\n✨ 핵심 기능:\n\n🧵 지능형 이미지 병합\n분산된 트윗 이미지를 원래의 파노라마 또는 긴 형식으로 매끄럽게 병합합니다.\n- 스마트 레이아웃: 세로, 가로, 2x2 격자 및 시그니처 T자형 레이아웃을 완벽하게 지원합니다.\n- 픽셀 단위 정렬: 정교한 알고리즘으로 1px의 오차나 흐릿함을 제거하여 선명하고 전문적인 화질을 제공합니다.\n- 네이티브 통합: X 페이지에서 버튼을 클릭하여 즉시 병합을 시작할 수 있어 번거로운 수동 다운로드가 필요 없습니다.\n- 무손실 내보내기: 원본 해상도를 그대로 유지하며 품질 저하 없이 최고의 결과물을 보장합니다.\n\n✂️ 창의적 그리드 분할 (모자이크 제작)\n어떤 이미지든 표준 그리드(2x2 또는 사용자 정의)로 분할하여 X의 다중 이미지 표시에 최적화된 결과물을 만듭니다.\n- 트위터 「한 장의 그림」 레이아웃 최적화: 트위터 미리보기 메커니즘에 최적화되었습니다. 타임라인에서 여러 장의 이미지가 끊김 없이 연결되어 하나의 큰 이미지로 보이도록 합니다.\n- 우클릭 즉시 분할: 웹에서 이미지를 우클릭하여 분할 도구로 직접 보내 빠르게 편집할 수 있습니다.\n- 통일된 시각 효과: 일관성 있는 레이아웃으로 트윗의 주목도를 높이고 메시지를 효과적으로 전달합니다.\n\n🚀 강력한 기능:\n- 워크플로우 효율화: 브라우저와 깊이 통합되어 트윗 발견부터 이미지 생성까지 단 몇 초 만에 완료됩니다.\n- 프로 설정: 전체 및 개별 간격 미세 조정, 다크 모드 지원, 배경색 및 투명도 사용자 정의가 가능합니다.\n- 간편한 가져오기: 파일 업로드, 클립보드 복사-붙여넣기 및 X 페이지 직접 연동을 지원합니다.\n- 일괄 저장: 고화질 PNG, JPG, WebP 다운로드 또는 ZIP 파일로 한 번에 보관할 수 있습니다.\n\n🔒 철저한 개인정보 보호\n모든 이미지 처리는 사용자 기기의 로컬 브라우저 내에서만 이루어집니다. 이미지가 서버로 전송되지 않으며, 어떠한 추적이나 기록도 남지 않아 안심하고 창작에만 집중할 수 있습니다.\n\n지금 바로 X-Puzzle-Kit로 X에서의 미디어 경험을 한 단계 업그레이드해보세요。",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "연결 미리보기",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "이미지 분할",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "연결 중...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "이미지 제거",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "출처",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "트윗 ID",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "고해상도 리소스 준비 중...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "초기화",
@@ -87,10 +67,6 @@
     "message": "전체 간격",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "0으로 초기화",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "이미지 정렬",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "이미지 표시",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "뒤쪽 간격",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "간격 줄이기",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "간격 늘리기",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "간격",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "개별 간격 초기화",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "처리 중...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "언어",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "출처",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "이미지 분할",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "모두 다운로드",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "이미지 업로드",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "분할할 이미지를 선택하세요",
@@ -191,10 +139,6 @@
     "message": "또는 여기에 이미지를 드래그 앤 드롭 하세요",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "변경",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "원본 간격 제거",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "열 수 (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "원본",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "분할 결과",
@@ -267,9 +207,9 @@
     "message": "후원",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "개발 지원하기",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "Afdian에서 후원하기",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: 이미지 나누기",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] 격자: 소셜 미디어 게시에 적합\n[icon:Layout] T형: 예술적 사진 레이아웃\n[icon:Rows] 세로/가로: 긴 파노라마 이미지 결합",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "이미지 배경색을 설정합니다. 투명(PNG/WebP)이 가장 유연하며, 검은색이나 흰색 배경은 미세 조정 시 통일감을 주는 데 도움이 됩니다.",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "모든 이미지 사이의 간격을 일괄 설정합니다. 음수 값을 입력하면 이미지를 겹치게 할 수 있습니다.",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "X (Twitter)에 여러 장의 이미지를 게시할 때, 타임라인에서 이음새 없이 하나의 커다란 이미지처럼 보이도록 테두리와 간격을 미세 조정합니다.",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "사용 가이드",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "이미지 불러오기",
@@ -613,10 +545,6 @@
     "message": "왜 PWA를 설치해야 하나요?",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• 원활한 연동: Android 시스템 공유 메뉴를 지원하여 X에서 이미지를 더 빠르게 가져옵니다.\n• 전체 화면 집중: 브라우저 주소 표시줄을 숨겨 큰 화면에서도 여백을 정확하게 조정합니다.\n• 플랫폼 최적화: iOS PWA에 맞춰 최적화하여 흰색 여백과 화면 비율 문제를 해결합니다.",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• 원활한 통합: Android 시스템 공유 메뉴를 지원하여 X에서 이미지를 더 빠르게 가져올 수 있습니다.",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "디버그 패널 열기",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "시뮬레이터",

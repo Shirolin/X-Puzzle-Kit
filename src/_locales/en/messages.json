@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit is a professional image stitcher and grid splitter designed specifically for X (Twitter) users, digital artists, and collectors. Whether you're reconstructing a multi-part panorama or preparing a creative grid reveal, X-Puzzle-Kit ensures your content looks exactly as intended on the X timeline.\n\n🌐 CROSS-PLATFORM SUPPORT:\nIn addition to this Chrome extension, we provide a full-featured Web version (https://x-puzzle-kit.pages.dev/) for seamless use on mobile devices, tablets, and other browsers.\n\n✨ CORE CAPABILITIES:\n\n🧵 Intelligent Image Stitching\nSeamlessly merge separate Tweet images back into their original panorama or long-form format.\n- Smart Layouts: Full support for Vertical, Horizontal, 2x2 Grid, and the signature T-Shape layouts.\n- Pixel-Perfect Alignment: Advanced coordinate calculation eliminates 1px seams and blurry artifacts.\n- Native Integration: Stitch images directly from your X timeline with a single click—no manual saving required.\n- Lossless Export: Preserves every pixel in its original resolution. No compression, no quality loss.\n\n✂️ Creative Grid Splitter (Mosaic Maker)\nBreak down any large image into standardized grids (2x2, or custom) optimized for the X multi-image display.\n- Twitter \"Seamless Flow\" Optimization: Optimized for Twitter's preview mechanism. Ensures multiple splits stitch back into a single \"seamless image\" in the timeline by perfectly matching X's preview ratios.\n- Right-click & Split: Instantly send any web image to the splitter directly from your browser's context menu.\n- Unified Storytelling: Create consistent, engaging \"reveal\" effects for your feed.\n\n🚀 POWER FEATURES:\n- Smooth Workflow: Move from timeline to canvas in seconds with deep browser integration.\n- Professional Customization: Fine-tune global/local gaps, toggle Dark Mode, and choose custom background colors (including transparency).\n- Easy Import: Support for file uploads and clipboard pasting alongside native X integration.\n- Batch Export: Save your creations as high-quality PNG, JPG, or WebP files, or a single organized ZIP package.\n\n🔒 COMMITTED TO PRIVACY\nYour images never leave your browser. All processing is done locally on your machine—no remote uploads, no tracking, and total security.\n\nEnhance your X storytelling with X-Puzzle-Kit today.",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "Stitch Preview",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "Splitter",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "Stitching...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "Remove Image",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "From",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "Tweet ID",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "Preparing high-res resources...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "Reset",
@@ -87,10 +67,6 @@
     "message": "Global Gap",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "Reset to 0",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "Image Sorting",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "Show Image",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "Gap after",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "Decrease gap",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "Increase gap",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "Gap",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "Reset local gap",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "Processing...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "Language",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "from",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "Split Image",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "Download All",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "Upload Image",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "Select an image to split",
@@ -191,10 +139,6 @@
     "message": "Or drag and drop here",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "Change",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "Trim Original Gaps",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "Col Count (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "Source",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "Split Result",
@@ -267,9 +207,9 @@
     "message": "Support",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "Buy me a coffee",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "Support me on Afdian",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: Split Image",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] Grid: For social media\n[icon:Layout] T-Shape: For artistic photography\n[icon:Rows] Vertical/Horizontal: For long panoramas",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "Set color behind images. Transparent (PNG/WebP) is most flexible, Black or White helps unify micro-adjustments.",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "Set gap width between all images. Negative values allow overlapping.",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "When posting multiple slices to X (Twitter), this adjusts borders for a seamless 「One Image」 look in users' feeds.",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "User Guide",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "Import Images",
@@ -613,10 +545,6 @@
     "message": "Why Install PWA?",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "Open Debug Panel",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "Simulator",

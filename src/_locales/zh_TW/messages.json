@@ -11,14 +11,6 @@
     "message": "X-Puzzle-Kit 是一款專為推特 (X) 用戶、數位藝術家及收藏家打造的專業拼圖與切圖工具箱。無論您是想還原多圖推文中的全景長圖，還是準備製作高效的網格展示，X-Puzzle-Kit 都能確保您的內容在推特動態（Timeline）中得到理想呈現。\n\n🌐 全平台支持：\n除了此 Chrome 擴充功能，我們還提供功能完整的 Web 在線版（https://x-puzzle-kit.pages.dev/），方便您在手機、平板或其他瀏覽器中隨時使用。\n\n✨ 核心功能：\n\n🧵 智能無縫拼圖\n將推文中分散的圖片重新拼接回其原始的全景或長圖格式。\n- 佈局方案：全面支持縱向、橫向、田字格（2x2）以及獨特的 T 型佈局。\n- 像素級對齊：精準的座標計算邏輯，有效消除接縫與模糊偽影，呈現清晰畫質。\n- 原生集成：直接在推特頁面上點擊按鈕發起拼接，省略手動下載步驟。\n- 無損匯出：不進行二次壓縮，保留每一顆像素的原始解析度，細節分毫畢現。\n\n✂️ 創意切圖助手 (九宮格製作)\n將任何圖片拆分為標準網格（2x2 或自定義），完美適配推特的多圖展示機制。\n- 推特「一圖流」佈局優化：針對推特預覽機制特殊適配，讓多張切圖在動態時報中拼成一張完整的「大圖」。\n- 右键即刻拆分：在網頁中右鍵點擊圖片，即可直接發送至拆分工具進行處理。\n- 統一視覺效果：為您的網格推文創造一致的展示效果，提升推文吸引力。\n\n🚀 實用特性：\n- 高效操作流：深度集成於瀏覽器，從發現推文到生成圖片僅需数秒。\n- 靈活選項：微調全局或局部間距，支持深色模式，可自定義背景顏色（支持透明）。\n- 多樣化導入：支持文件上傳、剪貼簿貼上以及推特頁面直接導入。\n- 批量匯出：支持高質量 PNG、JPG、WebP 下載，或一鍵打包為 ZIP 壓縮檔。\n\n🔒 隱私保護\n所有圖片處理均在您的本地瀏覽器中完成。圖片絕不會上傳到任何遠端伺服器——無追蹤、无記錄，保護您的創作隱私。\n\n立即使用 X-Puzzle-Kit 提升您的推特配圖效率。",
     "description": "Long description of the extension for store listing"
   },
-  "previewTitle": {
-    "message": "拼圖預覽",
-    "description": "Title of the preview window"
-  },
-  "splitterTitle": {
-    "message": "圖片拆分",
-    "description": "Title of the splitter window"
-  },
   "stitching": {
     "message": "正在拼接...",
     "description": "Loading status during stitch generation"
@@ -26,18 +18,6 @@
   "removeImage": {
     "message": "移除圖片",
     "description": "Tooltip for remove image"
-  },
-  "fromArtist": {
-    "message": "來自",
-    "description": "Author prefix"
-  },
-  "tweetId": {
-    "message": "推文 ID",
-    "description": "Label for Tweet ID"
-  },
-  "preparingHighRes": {
-    "message": "高清資源準備中...",
-    "description": "Loading text for high-res images"
   },
   "reset": {
     "message": "重設",
@@ -87,10 +67,6 @@
     "message": "全局間距",
     "description": "Label for global gap"
   },
-  "resetToZero": {
-    "message": "重置為0",
-    "description": "Tooltip for reset gap"
-  },
   "imageSorting": {
     "message": "圖片排序",
     "description": "Section header for image sorting"
@@ -119,26 +95,6 @@
     "message": "顯示圖片",
     "description": "Tooltip for show image"
   },
-  "afterGap": {
-    "message": "後間距",
-    "description": "Label for local gap after image"
-  },
-  "decreaseGap": {
-    "message": "減小間距",
-    "description": "Tooltip for decrease gap"
-  },
-  "increaseGap": {
-    "message": "增大間距",
-    "description": "Tooltip for increase gap"
-  },
-  "gapLabel": {
-    "message": "間距",
-    "description": "Label for the resulting gap"
-  },
-  "resetLocalGap": {
-    "message": "重置局部間距",
-    "description": "Tooltip for reset local gap"
-  },
   "processing": {
     "message": "處理中...",
     "description": "Button text while processing"
@@ -155,10 +111,6 @@
     "message": "語言",
     "description": "Language selector label"
   },
-  "sourcedFrom": {
-    "message": "來源於",
-    "description": "Used in the source badge"
-  },
   "splitImage": {
     "message": "拆分圖片",
     "description": "Split button text"
@@ -166,10 +118,6 @@
   "downloadAll": {
     "message": "全部下載",
     "description": "Download all button text"
-  },
-  "uploadImage": {
-    "message": "上傳圖片",
-    "description": "Upload image button text"
   },
   "selectImageTip": {
     "message": "請選擇一張圖片進行拆分",
@@ -191,10 +139,6 @@
     "message": "或直接拖放圖片到此處",
     "description": "Drag and drop instruction"
   },
-  "changeImage": {
-    "message": "更換",
-    "description": "Change image button text"
-  },
   "gapRemoval": {
     "message": "消除原圖間隙",
     "description": "Gap removal label"
@@ -210,10 +154,6 @@
   "colCount": {
     "message": "列數 (N)",
     "description": "Column count label"
-  },
-  "sourceImage": {
-    "message": "原圖",
-    "description": "Source image label"
   },
   "splitResult": {
     "message": "拆分結果",
@@ -267,9 +207,9 @@
     "message": "支持專案",
     "description": "Support section title"
   },
-  "buyMeCoffee": {
-    "message": "請喝咖啡",
-    "description": "Sponsorship button text"
+  "supportAfdian": {
+    "message": "在愛發電支持我",
+    "description": "Tooltip for the Afdian support link"
   },
   "contextMenuTitle": {
     "message": "X-Puzzle-Kit: 拆分圖片",
@@ -473,10 +413,6 @@
     "message": "[icon:LayoutGrid] 田字格：社交展示\n[icon:Layout] T型佈局：藝術攝影\n[icon:Rows] 縱/橫向：拼接長圖",
     "description": "Layout help text"
   },
-  "backgroundColorHelp": {
-    "message": "設置圖片背後的顏色。透明背景（PNG/WebP）最靈活，黑色或白色背景則能使接縫微調效果更統一。",
-    "description": "Background color help"
-  },
   "globalGapHelp": {
     "message": "統一設置所有圖片之間的縫隙寬度。負值可讓圖片互相重疊。",
     "description": "Global gap help"
@@ -492,10 +428,6 @@
   "twitterOptimizeHelp": {
     "message": "當您在 Twitter/X 一次發布多張切圖時，此選項會微調邊框和間距，使它們在用戶的信息流滾動預覽中無接縫，視覺效果如同一張大圖。",
     "description": "Twitter optimization help"
-  },
-  "userGuideButton": {
-    "message": "使用手冊",
-    "description": "User guide button text"
   },
   "tutorialImportTitle": {
     "message": "匯入圖片",
@@ -613,10 +545,6 @@
     "message": "為什麼安裝 PWA？",
     "description": "PWA benefit section title"
   },
-  "pwaBenefitList": {
-    "message": "• 無縫整合：Android 端支援系統分享選單，從 X 匯入圖片快人一步。\n• 全螢幕視野：隱藏瀏覽器網址列，在大螢幕上更精準地調整切片間距。\n• 視口修正：針對 iOS PWA 環境深度最佳化，徹底解決底部白邊與比例偏移問題。",
-    "description": "PWA benefit list content"
-  },
   "pwaBenefitIntegrated": {
     "message": "• 無縫集成：Android 端支持被系統分享菜單調用，從 X 匯入圖片快人一步。",
     "description": "PWA benefit: Android integration"
@@ -712,10 +640,6 @@
   "langId": {
     "message": "Indonesia",
     "description": "Language name: Indonesian"
-  },
-  "openDebugPanel": {
-    "message": "打開偵錯面板",
-    "description": "Text for the debug panel opening menu"
   },
   "simulator": {
     "message": "模擬器",
