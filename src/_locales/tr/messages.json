@@ -381,6 +381,10 @@
     "message": "Onayla",
     "description": "Confirm action button"
   },
+  "close": {
+    "message": "Kapat",
+    "description": "Close action button"
+  },
   "imageResolution": {
     "message": "Çözünürlük",
     "description": "Label for image resolution"

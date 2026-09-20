@@ -381,6 +381,10 @@
     "message": "Konfirmasi",
     "description": "Confirm action button"
   },
+  "close": {
+    "message": "Tutup",
+    "description": "Close action button"
+  },
   "imageResolution": {
     "message": "Resolusi",
     "description": "Label for image resolution"

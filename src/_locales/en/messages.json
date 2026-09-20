@@ -381,6 +381,10 @@
     "message": "Confirm",
     "description": "Confirm action button"
   },
+  "close": {
+    "message": "Close",
+    "description": "Close action button"
+  },
   "imageResolution": {
     "message": "Resolution",
     "description": "Label for image resolution"

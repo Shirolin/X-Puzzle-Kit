@@ -381,6 +381,10 @@
     "message": "확인",
     "description": "Confirm action button"
   },
+  "close": {
+    "message": "닫기",
+    "description": "Close action button"
+  },
   "imageResolution": {
     "message": "해상도",
     "description": "Label for image resolution"

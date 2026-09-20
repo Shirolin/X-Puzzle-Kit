@@ -381,6 +381,10 @@
     "message": "Підтвердити",
     "description": "Confirm action button"
   },
+  "close": {
+    "message": "Закрити",
+    "description": "Close action button"
+  },
   "imageResolution": {
     "message": "Роздільна здатність",
     "description": "Label for image resolution"

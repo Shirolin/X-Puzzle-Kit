@@ -381,6 +381,10 @@
     "message": "確定",
     "description": "Confirm action button"
   },
+  "close": {
+    "message": "關閉",
+    "description": "Close action button"
+  },
   "imageResolution": {
     "message": "解析度",
     "description": "Label for image resolution"
