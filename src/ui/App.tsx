@@ -1102,7 +1102,7 @@ export function App({
             <img
               src={logoUrl}
               className="app-logo"
-              alt="Logo"
+              alt={t("altLogo")}
               title={t("appDesc")}
             />
             <div className="app-brand-stack">

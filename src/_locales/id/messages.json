@@ -7,6 +7,18 @@
     "message": "Gabungkan panorama atau pisahkan kisi untuk X (Twitter). Presisi piksel, dioptimalkan untuk timeline & tanpa kompresi.",
     "description": "The description of the extension"
   },
+  "altLogo": {
+    "message": "Logo",
+    "description": "Alt text for the app logo image"
+  },
+  "altAppIcon": {
+    "message": "Ikon aplikasi",
+    "description": "Alt text for the app icon image in the install prompt"
+  },
+  "altPreview": {
+    "message": "Pratinjau",
+    "description": "Alt text for the screenshot preview image in the user guide"
+  },
   "longDescription": {
     "message": "X-Puzzle-Kit adalah penggabung gambar dan pemisah kisi profesional yang dirancang khusus untuk pengguna X (Twitter), seniman digital, dan kolektor. Baik Anda merekonstruksi panorama multi-bagian atau menyiapkan pengungkapan kisi yang kreatif, X-Puzzle-Kit memastikan konten Anda tampil persis seperti yang diinginkan di timeline X.\n\n🌐 DUKUNGAN LINTAS PLATFORM:\nSelain ekstensi Chrome ini, kami menyediakan versi Web lengkap (https://x-puzzle-kit.pages.dev/) untuk penggunaan lancar di perangkat seluler, tablet, dan browser lain.\n\n✨ KEMAMPUAN INTI:\n\n🧵 Penggabungan Gambar Cerdas\nGabungkan gambar Tweet terpisah kembali ke panorama asli atau format panjang secara mulus.\n- Tata letak cerdas: dukungan penuh untuk Vertikal, Horizontal, Kisi 2x2, dan tata letak Bentuk T yang khas.\n- Presisi piksel: perhitungan koordinat canggih menghilangkan sambungan 1 piksel dan artefak buram.\n- Integrasi asli: gabungkan gambar langsung dari timeline X dengan satu klik — tanpa penyimpanan manual.\n- Ekspor tanpa kehilangan: mempertahankan setiap piksel dalam resolusi aslinya. Tanpa kompresi, tanpa penurunan kualitas.\n\n✂️ Pemisah Kisi Kreatif (Pembuat Mosaik)\nPecah gambar besar apa pun menjadi kisi terstandardisasi (2x2 atau kustom) yang dioptimalkan untuk tampilan multi-gambar X.\n- Optimasi \"Alur Mulus\" Twitter: dioptimalkan untuk mekanisme pratinjau Twitter. Memastikan beberapa bagian menyatu kembali menjadi satu \"gambar mulus\" di timeline dengan mencocokkan rasio pratinjau X secara sempurna.\n- Pisah dengan klik kanan: kirim gambar web apa pun ke pemisah secara instan langsung dari menu konteks browser.\n- Penceritaan terpadu: buat efek \"pengungkapan\" yang konsisten dan menarik untuk feed Anda.\n\n🚀 FITUR UNGGULAN:\n- Alur kerja lancar: dari timeline ke kanvas dalam hitungan detik dengan integrasi browser yang mendalam.\n- Kustomisasi profesional: sesuaikan jarak global/lokal, aktifkan Mode Gelap, dan pilih warna latar belakang khusus (termasuk transparansi).\n- Impor mudah: dukungan unggah file dan tempel dari clipboard bersama integrasi asli X.\n- Ekspor massal: simpan kreasi Anda sebagai PNG, JPG, atau WebP berkualitas tinggi, atau satu paket ZIP yang terorganisir.\n\n🔒 BERKOMITMEN PADA PRIVASI\nGambar Anda tidak pernah meninggalkan browser. Semua pemrosesan dilakukan secara lokal di perangkat Anda — tanpa unggahan jarak jauh, tanpa pelacakan, keamanan total.\n\nTingkatkan penceritaan X Anda dengan X-Puzzle-Kit hari ini.",
     "description": "Long description of the extension for store listing"

@@ -7,6 +7,18 @@
     "message": "Unisci panorami o dividi griglie per X (Twitter). Precisione al pixel, ottimizzato per la timeline e senza perdite.",
     "description": "The description of the extension"
   },
+  "altLogo": {
+    "message": "Logo",
+    "description": "Alt text for the app logo image"
+  },
+  "altAppIcon": {
+    "message": "Icona dell'app",
+    "description": "Alt text for the app icon image in the install prompt"
+  },
+  "altPreview": {
+    "message": "Anteprima",
+    "description": "Alt text for the screenshot preview image in the user guide"
+  },
   "longDescription": {
     "message": "X-Puzzle-Kit è un unione immagini e divisore di griglie professionale, progettato appositamente per gli utenti di X (Twitter), artisti digitali e collezionisti. Che tu stia ricostruendo un panorama in più parti o preparando una rivelazione creativa a griglia, X-Puzzle-Kit garantisce che i tuoi contenuti appaiano esattamente come previsto nella timeline di X.\n\n🌐 SUPPORTO MULTIPIATTAFORMA:\nOltre a questa estensione per Chrome, offriamo una versione Web completa (https://x-puzzle-kit.pages.dev/) per un utilizzo fluido su dispositivi mobili, tablet e altri browser.\n\n✨ FUNZIONALITÀ PRINCIPALI:\n\n🧵 Unione intelligente delle immagini\nUnisci senza soluzione di continuità le immagini separate dei Tweet nel loro panorama originale o formato lungo.\n- Layout intelligenti: pieno supporto per verticale, orizzontale, griglia 2x2 e il caratteristico layout a T.\n- Precisione al pixel: il calcolo avanzato delle coordinate elimina cuciture di 1 pixel e artefatti sfocati.\n- Integrazione nativa: unisci le immagini direttamente dalla timeline di X con un clic — nessun salvataggio manuale.\n- Esportazione senza perdite: preserva ogni pixel nella risoluzione originale. Nessuna compressione, nessuna perdita di qualità.\n\n✂️ Divisore di griglie creativo (creatore di mosaici)\nScomponi qualsiasi immagine grande in griglie standardizzate (2x2 o personalizzate) ottimizzate per la visualizzazione multi-immagine di X.\n- Ottimizzazione \"flusso continuo\" di Twitter: ottimizzato per il meccanismo di anteprima di Twitter. Garantisce che più parti si uniscano in un'unica \"immagine continua\" nella timeline, corrispondendo perfettamente alle proporzioni di anteprima di X.\n- Divisione con clic destro: invia istantaneamente qualsiasi immagine dal web al divisore direttamente dal menu contestuale del browser.\n- Narrazione unificata: crea effetti \"rivelazione\" coerenti e coinvolgenti per il tuo feed.\n\n🚀 FUNZIONI AVANZATE:\n- Flusso di lavoro fluido: dalla timeline alla tela in pochi secondi con una profonda integrazione nel browser.\n- Personalizzazione professionale: regola con precisione gli spazi globali/locali, attiva la modalità scura e scegli colori di sfondo personalizzati (inclusa la trasparenza).\n- Importazione facile: supporto per il caricamento di file e l'incollaggio dagli appunti insieme all'integrazione nativa con X.\n- Esportazione in blocco: salva le tue creazioni come file PNG, JPG o WebP di alta qualità, o in un unico pacchetto ZIP organizzato.\n\n🔒 IMPEGNO PER LA PRIVACY\nLe tue immagini non lasciano mai il browser. Tutta l'elaborazione avviene localmente sul tuo dispositivo — nessun caricamento remoto, nessun tracciamento, sicurezza totale.\n\nMigliora la tua narrazione su X con X-Puzzle-Kit oggi stesso.",
     "description": "Long description of the extension for store listing"

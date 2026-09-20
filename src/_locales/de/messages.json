@@ -7,6 +7,18 @@
     "message": "Erstellen Sie nahtlose Panoramen oder Raster für X (Twitter). Pixelgenau, Timeline-optimiert & verlustfreie Qualität.",
     "description": "The description of the extension"
   },
+  "altLogo": {
+    "message": "Logo",
+    "description": "Alt text for the app logo image"
+  },
+  "altAppIcon": {
+    "message": "App-Symbol",
+    "description": "Alt text for the app icon image in the install prompt"
+  },
+  "altPreview": {
+    "message": "Vorschau",
+    "description": "Alt text for the screenshot preview image in the user guide"
+  },
   "longDescription": {
     "message": "X-Puzzle-Kit ist ein professionelles Tool zum Zusammenfügen und Aufteilen von Bildern, das speziell für X (Twitter)-Nutzer, digitale Künstler und Sammler entwickelt wurde. Egal ob Sie ein mehrteiliges Panorama rekonstruieren oder ein kreatives Raster für einen 'Reveal'-Effekt erstellen möchten – X-Puzzle-Kit sorgt dafür, dass Ihre Inhalte auf der X-Timeline genau so aussehen wie beabsichtigt.\n\n🌐 PLATTFORMÜBERGREIFENDER SUPPORT:\nZusätzlich zu dieser Chrome-Erweiterung bieten wir eine voll ausgestattete Web-Version (https://x-puzzle-kit.pages.dev/) für die nahtlose Nutzung auf Mobilgeräten, Tablets und anderen Browsern.\n\n✨ KERNFUNKTIONEN:\n\n🧵 Intelligentes Zusammenfügen (Stitching)\nFügen Sie separate Tweet-Bilder nahtlos wieder zu ihrem ursprünglichen Panorama- oder Langformat zusammen.\n- Smarte Layouts: Unterstützung für Vertokal-, Horizontal-, 2x2-Raster- und das charakteristische T-Form-Layout.\n- Pixelgenaue Ausrichtung: Fortschrittliche Koordinatenberechnung eliminiert 1px-Nähte und unscharfe Artefakte.\n- Native Integration: Bilder direkt aus Ihrer X-Timeline mit einem Klick zusammenfügen – kein manuelles Speichern erforderlich.\n- Verlustfreier Export: Erhält jeden Pixel in seiner Originalauflösung. Keine Kompression, kein Qualitätsverlust.\n\n✂️ Kreatives Aufteilen (Grid Splitter)\nTeilen Sie jedes große Bild in standardisierte Raster (2x2 oder benutzerdefiniert), die für die Multi-Image-Anzeige von X optimiert sind.\n- Twitter 'Seamless Flow'-Optimierung: Perfektes Splitting für den X-Vorschau-Mechanismus. Sorgt dafür, dass mehrere Teile in der Timeline optisch wieder zu einem einzigen, nahtlosen Bild verschmelzen.\n- Rechtsklick & Teilen: Senden Sie jedes Web-Bild direkt über das Kontextmenü Ihres Browsers an den Splitter.\n- Einheitliches Storytelling: Erstellen Sie konsistente, fesselnde 'Reveal'-Effekte für Ihren Feed.\n\n🚀 POWER-FUNKTIONEN:\n- Reibungsloser Workflow: Wechseln Sie dank tiefer Browser-Integration in Sekunden von der Timeline zur Bearbeitung.\n- Professionelle Anpassung: Feinabstimmung globaler/lokaler Abstände, Dark Mode und benutzerdefinierte Hintergrundfarben (inkl. Transparenz).\n- Einfacher Import: Unterstützung für Datei-Uploads und Einfügen aus der Zwischenablage neben der nativen X-Integration.\n- Batch-Export: Speichern Sie Ihre Kreationen als hochwertige PNG-, JPG- oder WebP-Dateien oder als einzelnes, organisiertes ZIP-Paket.\n\n🔒 DATENSCHUTZ IM FOKUS\nIhre Bilder verlassen niemals Ihren Browser. Die gesamte Verarbeitung erfolgt lokal auf Ihrem Gerät – keine Uploads, kein Tracking, absolute Sicherheit.\n\nOptimieren Sie Ihr X-Storytelling noch heute mit X-Puzzle-Kit.",
     "description": "Long description of the extension for store listing"

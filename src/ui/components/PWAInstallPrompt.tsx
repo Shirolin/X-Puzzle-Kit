@@ -101,7 +101,7 @@ export function PWAInstallPrompt({
           <img
             src={getAssetUrl("assets/icon-48.png")}
             className="ios-prompt-icon"
-            alt="App Icon"
+            alt={t("altAppIcon")}
           />
           <div className="ios-prompt-text">
             <div className="ios-prompt-title">{t("installTitle")}</div>

@@ -8,9 +8,7 @@ window.chrome = {
   ...window.chrome,
   runtime: {
     ...window.chrome?.runtime,
-    // @ts-expect-error: Mock API
     onMessage: { addListener: () => {} },
-    // @ts-expect-error: Mock API
     sendMessage: async (
       message: unknown,
       callback: (response: unknown) => void,
@@ -52,13 +50,10 @@ window.chrome = {
         }
       }
     },
-    // @ts-expect-error: Mock API
     getURL: (path: string) => path,
-    // @ts-expect-error: Mock API
     getManifest: () => ({ name: "X-Puzzle-Kit" }),
   },
   i18n: {
-    // @ts-expect-error: Mock API
     getMessage: (messageName: string) => messageName,
   },
   storage: {
@@ -116,7 +111,7 @@ window.chrome = {
       },
     },
   },
-};
+} as unknown as typeof chrome;
 
 function createPlaceholder(_url: string): string {
   const canvas = document.createElement("canvas");

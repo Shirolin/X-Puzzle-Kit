@@ -530,7 +530,7 @@ export function UserGuideDialog({
               key={previewMedia.src}
               ref={mediaRef}
               src={previewMedia.src}
-              alt="Preview"
+              alt={t("altPreview")}
               className={`screenshot-preview-img ${isMediaLoading ? "loading" : "loaded"}`}
               loading="lazy"
               onLoad={() => setIsMediaLoading(false)}
