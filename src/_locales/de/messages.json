@@ -256,11 +256,11 @@
     "description": "General settings section title"
   },
   "modeStitch": {
-    "message": "Stitch",
+    "message": "Zusammenfügen",
     "description": "Stitch mode button"
   },
   "modeSplit": {
-    "message": "Split",
+    "message": "Aufteilen",
     "description": "Split mode button"
   },
   "support": {
@@ -518,7 +518,7 @@
     "description": "Tutorial step 3 description"
   },
   "tutorialExportTitle": {
-    "message": "Export & Download",
+    "message": "Exportieren & Herunterladen",
     "description": "Tutorial step 4 title"
   },
   "tutorialExportDesc": {

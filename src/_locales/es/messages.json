@@ -610,7 +610,7 @@
     "description": "PWA benefit section title"
   },
   "pwaBenefitList": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "message": "• Integración perfecta: Compatible con el menú de compartir de Android para importar más rápido desde X.\n• Enfoque a pantalla completa: Oculta la barra de direcciones para ajustar los espacios con precisión en pantallas grandes.\n• Integración con la plataforma: Optimizado a fondo para la PWA de iOS para eliminar barras blancas y problemas de proporción.",
     "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {

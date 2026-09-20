@@ -482,7 +482,7 @@
     "description": "Help explanation for format selection"
   },
   "exportSettingsHelp": {
-    "message": "カスタマイズ書き出し：\n「PNG」最高画질、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
+    "message": "カスタマイズ書き出し：\n「PNG」最高画質、透明対応、容量大\n「JPG」高圧縮、透明不可、容量小\n「WEBP」高画質、透明対応、iOS互換性に注意",
     "description": "Comprehensive help for export settings section"
   },
   "twitterOptimizeHelp": {
@@ -610,7 +610,7 @@
     "description": "PWA benefit section title"
   },
   "pwaBenefitList": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "message": "• シームレス連携：Android の共有メニューに対応し、X からの画像取り込みがスムーズ。\n• 全画面表示：ブラウザのアドレスバーを隠し、大画面でも余白を正確に調整。\n• プラットフォーム最適化：iOS PWA 向けに徹底最適化し、白い余白とアスペクト比のズレを解消。",
     "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {

@@ -482,7 +482,7 @@
     "description": "Help explanation for format selection"
   },
   "exportSettingsHelp": {
-    "message": "Ekspor yang dipersonalisasi:\\n「PNG」Kualitas asli, transparansi, lebih besar\n「JPG」Kompresi tinggi, tanpa transparansi, lebih kecil\n「WEBP」Kualitas tinggi, transparansi, kompatibilitas iOS buruk",
+    "message": "Ekspor yang dipersonalisasi:\n「PNG」Kualitas asli, transparansi, lebih besar\n「JPG」Kompresi tinggi, tanpa transparansi, lebih kecil\n「WEBP」Kualitas tinggi, transparansi, kompatibilitas iOS buruk",
     "description": "Comprehensive help for export settings section"
   },
   "twitterOptimizeHelp": {

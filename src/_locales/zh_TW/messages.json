@@ -96,7 +96,7 @@
     "description": "Section header for image sorting"
   },
   "localGap": {
-    "message": "Adjust local gap",
+    "message": "局部間距",
     "description": "Subtitle for image sorting"
   },
   "imageLabel": {
@@ -610,7 +610,7 @@
     "description": "PWA benefit section title"
   },
   "pwaBenefitList": {
-    "message": "• Seamless Integration: Supports Android system share menu for faster importing from X.\n• Full-screen Focus: Hides browser address bar for precise gap adjustments on larger screens.\n• Platform Integration: Deeply optimized for iOS PWA to eliminate white bars and aspect ratio issues.",
+    "message": "• 無縫整合：Android 端支援系統分享選單，從 X 匯入圖片快人一步。\n• 全螢幕視野：隱藏瀏覽器網址列，在大螢幕上更精準地調整切片間距。\n• 視口修正：針對 iOS PWA 環境深度最佳化，徹底解決底部白邊與比例偏移問題。",
     "description": "PWA benefit list content"
   },
   "pwaBenefitIntegrated": {

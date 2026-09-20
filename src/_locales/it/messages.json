@@ -482,7 +482,7 @@
     "description": "Help explanation for format selection"
   },
   "exportSettingsHelp": {
-    "message": "Esportazione personalizzata:\\n「PNG」Qualità originale, trasparenza, file più grande\n「JPG」Alta compressione, senza trasparenza, file più piccolo\n「WEBP」Alta qualità, trasparenza, scarsa compatibilità iOS",
+    "message": "Esportazione personalizzata:\n「PNG」Qualità originale, trasparenza, file più grande\n「JPG」Alta compressione, senza trasparenza, file più piccolo\n「WEBP」Alta qualità, trasparenza, scarsa compatibilità iOS",
     "description": "Comprehensive help for export settings section"
   },
   "twitterOptimizeHelp": {
