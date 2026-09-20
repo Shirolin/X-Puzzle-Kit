@@ -41,19 +41,22 @@ let currentMessages: Record<string, { message: string }> | null = null;
 function resolveAutoLanguage(): string {
   const lang = navigator.language.toLowerCase();
 
-  // 优先全字匹配
-  if (lang === "zh-cn" || lang === "zh") return "zh_CN";
-  if (lang === "zh-tw" || lang === "zh-hk") return "zh_TW";
-
+  // 顺序敏感：具体的 zh-* 标签必须排在裸 "zh" 兜底之前，
+  // 否则 zh-Hant / zh-MO 等会被 startsWith("zh") 命中而误判为简体。
   const prefixMap: Record<string, string> = {
+    "zh-hans": "zh_CN", // 简体（含 zh-Hans-CN）
     "zh-cn": "zh_CN",
+    "zh-hant": "zh_TW", // 繁体（含 zh-Hant-TW / -HK / -MO）
+    "zh-tw": "zh_TW",
+    "zh-hk": "zh_TW",
+    "zh-mo": "zh_TW", // 中国澳门使用繁体
     zh: "zh_CN", // 兜底中文
     ja: "ja",
     ko: "ko",
     es: "es",
     fr: "fr",
     de: "de",
-    pt: "pt_BR",
+    pt: "pt_BR", // 葡萄牙语家族统一回落 pt_BR
     tr: "tr",
     uk: "uk",
     ru: "ru",
@@ -65,8 +68,6 @@ function resolveAutoLanguage(): string {
   for (const [prefix, locale] of Object.entries(prefixMap)) {
     if (lang.startsWith(prefix)) return locale;
   }
-  // 特殊处理葡萄牙语家族
-  if (lang.startsWith("pt")) return "pt_BR";
 
   return "en";
 }
