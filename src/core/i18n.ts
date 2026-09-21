@@ -38,34 +38,45 @@ let currentMessages: Record<string, { message: string }> | null = null;
 /**
  * Identify the current browser language
  */
+/**
+ * 语言标签前缀 → 语言包代码的映射表。
+ *
+ * 顺序敏感：具体的 zh-* 标签必须排在裸 "zh" 兜底之前，
+ * 否则 zh-Hant / zh-MO 等会被 startsWith("zh") 命中而误判为简体。
+ * 匹配采用 startsWith 前缀比较，因此 Object.entries 的遍历顺序即优先级顺序。
+ */
+const LANGUAGE_PREFIX_MAP: Record<string, string> = {
+  "zh-hans": "zh_CN", // 简体（含 zh-Hans-CN）
+  "zh-cn": "zh_CN",
+  "zh-hant": "zh_TW", // 繁体（含 zh-Hant-TW / -HK / -MO）
+  "zh-tw": "zh_TW",
+  "zh-hk": "zh_TW",
+  "zh-mo": "zh_TW", // 中国澳门使用繁体
+  zh: "zh_CN", // 兜底中文
+  ja: "ja",
+  ko: "ko",
+  es: "es",
+  fr: "fr",
+  de: "de",
+  pt: "pt_BR", // 葡萄牙语家族统一回落 pt_BR
+  tr: "tr",
+  uk: "uk",
+  ru: "ru",
+  it: "it",
+  id: "id",
+  in: "id", // 印尼语的历史语言代码（旧版 ICU / Java 使用），兼容性兜底
+};
+
 function resolveAutoLanguage(): string {
-  const lang = navigator.language.toLowerCase();
+  // 非浏览器环境（如单元测试的 Node 环境）可能没有 navigator，
+  // 直接回落 en，避免模块加载期的 i18nInit 抛出未处理的 rejection
+  const lang = (
+    typeof navigator !== "undefined" && navigator.language
+      ? navigator.language
+      : "en"
+  ).toLowerCase();
 
-  // 顺序敏感：具体的 zh-* 标签必须排在裸 "zh" 兜底之前，
-  // 否则 zh-Hant / zh-MO 等会被 startsWith("zh") 命中而误判为简体。
-  const prefixMap: Record<string, string> = {
-    "zh-hans": "zh_CN", // 简体（含 zh-Hans-CN）
-    "zh-cn": "zh_CN",
-    "zh-hant": "zh_TW", // 繁体（含 zh-Hant-TW / -HK / -MO）
-    "zh-tw": "zh_TW",
-    "zh-hk": "zh_TW",
-    "zh-mo": "zh_TW", // 中国澳门使用繁体
-    zh: "zh_CN", // 兜底中文
-    ja: "ja",
-    ko: "ko",
-    es: "es",
-    fr: "fr",
-    de: "de",
-    pt: "pt_BR", // 葡萄牙语家族统一回落 pt_BR
-    tr: "tr",
-    uk: "uk",
-    ru: "ru",
-    it: "it",
-    id: "id",
-    in: "id", // 印尼语的历史语言代码（旧版 ICU / Java 使用），兼容性兜底
-  };
-
-  for (const [prefix, locale] of Object.entries(prefixMap)) {
+  for (const [prefix, locale] of Object.entries(LANGUAGE_PREFIX_MAP)) {
     if (lang.startsWith(prefix)) return locale;
   }
 
@@ -95,6 +106,18 @@ export function getResolvedLanguage(currentLangSetting: string): string {
 }
 
 /**
+ * 获取指定语言代码对应的消息集。
+ *
+ * 用途：验证别名映射（如 pt 与 pt_BR 指向同一语言包）以及调试。
+ * 未知语言代码返回 undefined。
+ */
+export function getLocaleMessages(
+  lang: string,
+): Record<string, { message: string }> | undefined {
+  return locales[lang];
+}
+
+/**
  * Initialize language settings
  */
 export async function initI18n() {
@@ -108,31 +131,38 @@ export async function initI18n() {
 export const i18nInit = initI18n();
 
 /**
+ * 替换 Chrome 格式的占位符：$1 / $2... 与命名占位符 $name$
+ */
+function applySubstitutions(
+  message: string,
+  substitutions?: string | string[],
+): string {
+  if (!substitutions) return message;
+  const args = Array.isArray(substitutions) ? substitutions : [substitutions];
+  let result = message;
+  args.forEach((val, idx) => {
+    result = result.replace(`$${idx + 1}`, val);
+  });
+  // 特殊处理命名占位符（例如 $status$）
+  result = result.replace(/\$[a-zA-Z0-9_]+\$/g, (match) => {
+    if (match === "$status$" && args.length > 0) return args[0];
+    return match;
+  });
+  return result;
+}
+
+/**
  * Simple i18n wrapper function
  */
 export function t(
   messageName: string,
   substitutions?: string | string[],
 ): string {
-  // 1. 优先使用本地加载的消息集 (支持在插件环境中运行时切换语言)
-  if (currentMessages && currentMessages[messageName]) {
-    let message = currentMessages[messageName].message;
-    if (substitutions) {
-      const args = Array.isArray(substitutions)
-        ? substitutions
-        : [substitutions];
-      // 处理 Chrome 格式的占位符 $1, $2... 和命名占位符 $name$
-      args.forEach((val, idx) => {
-        message = message.replace(`$${idx + 1}`, val);
-      });
-      // 特殊处理命名占位符（例如 $status$）
-      message = message.replace(/\$[a-zA-Z0-9_]+\$/g, (match) => {
-        if (match === "$status$" && args.length > 0) return args[0];
-        return match;
-      });
-    }
-    return message;
-  }
+  // 1. 当前语言的消息集；当前语言缺该键时回落到 en（default_locale）。
+  //    en 是静态导入的，必然存在，因此「漏键 → 显示英文」这一兜底是真实生效的；
+  //    只有当 en 也没有该键时才返回键名本身，作为开发期错误信号。
+  const entry = currentMessages?.[messageName] ?? locales.en[messageName];
+  if (entry) return applySubstitutions(entry.message, substitutions);
 
   // 2. 兜底尝试原生插件 API (如果本地没加载或找不到 Key)
   if (typeof chrome !== "undefined" && chrome.i18n) {

@@ -73,10 +73,7 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
         err.message.includes("Extension context invalidated")
       ) {
         await initToaster();
-        toast.error(
-          t("extensionUpdatedRefresh") ||
-            "Extension updated. Please refresh the page.",
-        );
+        toast.error(t("extensionUpdatedRefresh"));
       } else {
         await initToaster();
         const errorMessage = err instanceof Error ? err.message : String(err);

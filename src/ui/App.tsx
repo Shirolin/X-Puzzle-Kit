@@ -1208,10 +1208,10 @@ export function App({
                 }
                 title={`${t("themeLabel")}: ${
                   theme === "system"
-                    ? t("themeSystem") || "System"
+                    ? t("themeSystem")
                     : theme === "light"
-                      ? t("themeLight") || "Light"
-                      : t("themeDark") || "Dark"
+                      ? t("themeLight")
+                      : t("themeDark")
                 }`}
                 style={{
                   width: "28px",

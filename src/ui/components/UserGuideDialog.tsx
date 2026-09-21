@@ -218,7 +218,7 @@ export function UserGuideDialog({
             className="btn btn-ghost flex-row-center gap-xs tutorial-btn"
           >
             <BookOpen size={14} />
-            <span>{t("viewAndroidTutorial") || "Installation Guide"}</span>
+            <span>{t("viewAndroidTutorial")}</span>
           </button>
           <button
             onClick={() =>

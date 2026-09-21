@@ -161,7 +161,7 @@ export function SplitterControl({
       {/* 拖动模式切换 */}
       {hasSplitSource && (
         <SidebarSection
-          title={t("dragMode") || "Drag Mode"}
+          title={t("dragMode")}
           style={containerStyle}
         >
           <div className="mode-switcher" style={{ width: "100%" }}>
@@ -176,7 +176,7 @@ export function SplitterControl({
               style={{ flex: 1 }}
             >
               <Move size={12} />
-              <span>{t("dragModeUnified") || "Unified"}</span>
+              <span>{t("dragModeUnified")}</span>
             </button>
             <button
               className={`mode-btn ${splitEditState.dragMode === "individual" ? "active" : ""}`}
@@ -214,7 +214,7 @@ export function SplitterControl({
               style={{ flex: 1 }}
             >
               <Hand size={12} />
-              <span>{t("dragModeIndividual") || "Individual"}</span>
+              <span>{t("dragModeIndividual")}</span>
             </button>
           </div>
 
@@ -230,7 +230,7 @@ export function SplitterControl({
               }}
             >
               <h3 className="section-sub-header" style={{ margin: 0 }}>
-                {t("contentScale") || "Content Scale"}
+                {t("contentScale")}
               </h3>
               <span
                 style={{
@@ -410,7 +410,7 @@ export function SplitterControl({
               }}
             >
               <RotateCcw size={11} />
-              <span>{t("resetPosition") || "Reset Position"}</span>
+              <span>{t("resetPosition")}</span>
             </button>
           </div>
         </SidebarSection>
@@ -604,7 +604,7 @@ export function SplitterControl({
               }}
             >
               <h3 className="section-sub-header" style={{ margin: 0 }}>
-                {t("backgroundColor") || "BG Color"}
+                {t("backgroundColor")}
               </h3>
               <span
                 style={{
@@ -613,7 +613,7 @@ export function SplitterControl({
                   lineHeight: 1.2,
                 }}
               >
-                {t("splitBackgroundTip") || "When enabled, fills the exposed edges resulting from moving images with the background color."}
+                {t("splitBackgroundTip")}
               </span>
             </div>
             <label className="switch" style={{ flexShrink: 0 }}>
