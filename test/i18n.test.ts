@@ -1,5 +1,11 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { getResolvedLanguage } from "../src/core/i18n";
+import fs from "node:fs";
+import path from "node:path";
+import {
+  getResolvedLanguage,
+  getLocaleMessages,
+  t,
+} from "../src/core/i18n";
 
 type Entry = {
   message: string;
@@ -149,9 +155,16 @@ describe("手动指定语言", () => {
     expect(getResolvedLanguage("uk")).toBe("uk");
   });
 
-  it("pt 别名指向 pt_BR 语言包", () => {
-    expect(getResolvedLanguage("pt")).toBe("pt");
-    expect(locales.pt_BR).toBeDefined();
+  it("pt 别名与 pt_BR 指向同一语言包", () => {
+    // 断言同一对象引用。此前该用例写的是 expect(locales.pt_BR).toBeDefined()，
+    // 而 locales.pt_BR 来自 import.meta.glob 的重新加载结果，恒为真，等于没测。
+    expect(getLocaleMessages("pt")).toBeDefined();
+    expect(getLocaleMessages("pt")).toBe(getLocaleMessages("pt_BR"));
+  });
+
+  it("in 别名与 id 指向同一语言包", () => {
+    expect(getLocaleMessages("in")).toBeDefined();
+    expect(getLocaleMessages("in")).toBe(getLocaleMessages("id"));
   });
 
   it("未知语言代码回落到 en", () => {
@@ -206,5 +219,72 @@ describe("关键键存在性（回归）", () => {
         expect(locales[loc][k], `${loc}.${k} 不应存在`).toBeUndefined();
       }
     }
+  });
+});
+
+// ---------------------------------------------------------------------------
+
+describe("t() 取值行为", () => {
+  it("键存在时返回文案本身，不回落到键名", () => {
+    for (const k of ["close", "supportAfdian", "altLogo"]) {
+      const v = t(k);
+      expect(v, `${k} 不应返回键名`).not.toBe(k);
+      expect(v.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("当前语言缺键时回落到 en 文案", () => {
+    // setup.ts 固定 navigator.language = en-US，故当前语言即 en。
+    // 该用例的意义在于把「t() 永不返回键名（除非 en 也缺）」这一契约固化下来：
+    // 正是它让 t(key) || fallback 这类写法变得多余。
+    const key = "close";
+    expect(t(key)).toBe(locales.en[key].message);
+  });
+
+  it("en 也不存在的键返回键名，作为开发期错误信号", () => {
+    expect(t("__definitelyMissingKey__")).toBe("__definitelyMissingKey__");
+  });
+
+  it("占位符替换生效", () => {
+    const withArg = Object.keys(locales.en).find((k) =>
+      /\$1/.test(locales.en[k].message),
+    );
+    if (withArg) {
+      const filled = t(withArg, "PLACEHOLDER_VALUE");
+      expect(filled).not.toContain("$1");
+      expect(filled).toContain("PLACEHOLDER_VALUE");
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+
+describe("源码引用的键都在语言包中（回归）", () => {
+  it('src 下所有 t("key") 调用均能在 en 中找到', () => {
+    const srcDir = path.resolve(process.cwd(), "src");
+    const files: string[] = [];
+    const walk = (dir: string): void => {
+      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, e.name);
+        if (e.isDirectory()) walk(p);
+        else if (/\.(ts|tsx)$/.test(e.name)) files.push(p);
+      }
+    };
+    walk(srcDir);
+
+    const used = new Set<string>();
+    for (const f of files) {
+      const text = fs.readFileSync(f, "utf8");
+      for (const m of text.matchAll(/\bt\(\s*["'`]([A-Za-z0-9_]+)["'`]/g)) {
+        used.add(m[1]);
+      }
+    }
+
+    expect(used.size, "应扫描到 t() 调用").toBeGreaterThan(0);
+    const missing = [...used].filter((k) => !(k in base));
+    expect(
+      missing,
+      `以下键被源码引用但 en 未定义: ${missing.join(", ")}`,
+    ).toEqual([]);
   });
 });

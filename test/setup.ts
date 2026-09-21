@@ -44,3 +44,22 @@ if (typeof globalThis.localStorage === "undefined") {
     writable: true,
   });
 }
+
+/**
+ * 固定 navigator.language。
+ *
+ * 两个必要性：
+ *   1. Node < 21 没有 navigator 全局对象（CI 锁定 Node 20），而 i18n.ts 在
+ *      模块加载时即执行 i18nInit → resolveAutoLanguage → navigator.language，
+ *      缺失会导致未处理的 rejection 并让测试进程以非 0 退出。
+ *   2. Node 21.2+ 虽有 navigator.language，但其取值取决于宿主操作系统语言，
+ *      会使语言解析结果随开发机漂移。这里无条件固定，保证可复现。
+ *
+ * configurable: true 是必需的 —— 测试内 vi.stubGlobal("navigator", ...)
+ * 需要能覆盖它，且 vi.unstubAllGlobals() 会恢复到这里设定的值。
+ */
+Object.defineProperty(globalThis, "navigator", {
+  value: { language: "en-US" },
+  configurable: true,
+  writable: true,
+});

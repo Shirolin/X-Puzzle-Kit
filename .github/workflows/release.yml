@@ -30,6 +30,7 @@ jobs:
         run: |
           npm run type-check
           npm run lint
+          npm test
 
       - name: Create release artifacts
         run: npm run package
