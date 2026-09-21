@@ -25,10 +25,16 @@ observer.observe(document.body, {
   subtree: true,
 });
 
-// Wait for language to load before performing initial scan
-i18nInit.then(() => {
-  parseTweets();
-});
+// Wait for language to load before performing initial scan.
+// 语言初始化失败时（如扩展上下文失效）仍需执行首轮扫描，
+// 否则 i18nInit 的 rejection 会让内容脚本静默失效。
+i18nInit
+  .catch((err) => {
+    console.error("[X-Puzzle-Kit] i18n 初始化失败，以默认语言继续：", err);
+  })
+  .finally(() => {
+    parseTweets();
+  });
 
 // Listen for context menu messages
 chrome.runtime.onMessage.addListener((message, _sender, _sendResponse) => {
