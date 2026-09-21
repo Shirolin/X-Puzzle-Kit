@@ -7,13 +7,19 @@ const observer = new MutationObserver((mutations) => {
   for (const mutation of mutations) {
     for (const node of mutation.addedNodes) {
       if (node instanceof Element) {
-        // 1. Scan for tweets within the added node (or if node is tweet)
-        parseTweets(node);
+        // 单个节点解析失败不应中断整批处理 —— parseTweets 内部用
+        // forEach(processTweet)，一个异常节点会让同批次后续节点全部漏处理。
+        try {
+          // 1. Scan for tweets within the added node (or if node is tweet)
+          parseTweets(node);
 
-        // 2. Check if the added node is part of an existing tweet (e.g. image loaded later)
-        const parentTweet = node.closest('article[data-testid="tweet"]');
-        if (parentTweet) {
-          parseTweets(parentTweet);
+          // 2. Check if the added node is part of an existing tweet (e.g. image loaded later)
+          const parentTweet = node.closest('article[data-testid="tweet"]');
+          if (parentTweet) {
+            parseTweets(parentTweet);
+          }
+        } catch (err) {
+          console.error("[X-Puzzle-Kit] 节点解析失败，已跳过：", err);
         }
       }
     }
@@ -34,6 +40,9 @@ i18nInit
   })
   .finally(() => {
     parseTweets();
+  })
+  .catch((err) => {
+    console.error("[X-Puzzle-Kit] 首轮扫描失败：", err);
   });
 
 // Listen for context menu messages
