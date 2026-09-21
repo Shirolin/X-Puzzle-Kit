@@ -233,10 +233,12 @@ describe("t() 取值行为", () => {
     }
   });
 
-  it("当前语言缺键时回落到 en 文案", () => {
-    // setup.ts 固定 navigator.language = en-US，故当前语言即 en。
-    // 该用例的意义在于把「t() 永不返回键名（除非 en 也缺）」这一契约固化下来：
-    // 正是它让 t(key) || fallback 这类写法变得多余。
+  it("取值等于当前语言（en）的文案，不返回键名", () => {
+    // 覆盖边界说明：setup.ts 固定 navigator.language = en-US，因此 currentMessages
+    // 恒等于 locales.en，`currentMessages?.[key] ?? locales.en[key]` 的**回落分支
+    // 在测试中不可达** —— 14 个语言键集完全一致（见上方「键集与 en 完全一致」用例），
+    // 无法构造「当前语言缺键」的场景。该分支的语义由代码审查保证，非本用例覆盖。
+    // 本用例固化的是「t() 不返回键名」这一契约（它让 t(key) || fallback 成为多余）。
     const key = "close";
     expect(t(key)).toBe(locales.en[key].message);
   });
@@ -245,15 +247,15 @@ describe("t() 取值行为", () => {
     expect(t("__definitelyMissingKey__")).toBe("__definitelyMissingKey__");
   });
 
-  it("占位符替换生效", () => {
-    const withArg = Object.keys(locales.en).find((k) =>
-      /\$1/.test(locales.en[k].message),
-    );
-    if (withArg) {
-      const filled = t(withArg, "PLACEHOLDER_VALUE");
-      expect(filled).not.toContain("$1");
-      expect(filled).toContain("PLACEHOLDER_VALUE");
-    }
+  it("命名占位符 $status$ 被替换", () => {
+    // en 中唯一带占位符的键是 workerStatusError，其 message 使用命名占位符 $status$。
+    // 数字占位符 $1 只出现在 placeholders.status.content 里，不在任何 message 中，
+    // 因此不能靠扫描 message 找 $1 —— 原用例正因如此恒不执行（空转）。
+    // 先断言前置条件，避免将来数据变化后本用例静默失效。
+    expect(locales.en.workerStatusError.message).toContain("$status$");
+    const filled = t("workerStatusError", "403");
+    expect(filled).not.toContain("$status$");
+    expect(filled).toContain("403");
   });
 });
 
