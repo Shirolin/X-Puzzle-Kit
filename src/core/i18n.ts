@@ -30,14 +30,11 @@ const locales: Record<string, Record<string, { message: string }>> = {
   ru: langRu,
   it: langIt,
   id: langId,
-  in: langId, // 印尼语的历史语言代码，与 prefixMap 的兜底保持一致
+  in: langId, // 印尼语的历史语言代码，与 LANGUAGE_PREFIX_MAP 的兜底保持一致
 };
 
 let currentMessages: Record<string, { message: string }> | null = null;
 
-/**
- * Identify the current browser language
- */
 /**
  * 语言标签前缀 → 语言包代码的映射表。
  *
@@ -67,6 +64,9 @@ const LANGUAGE_PREFIX_MAP: Record<string, string> = {
   in: "id", // 印尼语的历史语言代码（旧版 ICU / Java 使用），兼容性兜底
 };
 
+/**
+ * Identify the current browser language
+ */
 function resolveAutoLanguage(): string {
   // 非浏览器环境（如单元测试的 Node 环境）可能没有 navigator，
   // 直接回落 en，避免模块加载期的 i18nInit 抛出未处理的 rejection
@@ -113,7 +113,7 @@ export function getResolvedLanguage(currentLangSetting: string): string {
  */
 export function getLocaleMessages(
   lang: string,
-): Record<string, { message: string }> | undefined {
+): Readonly<Record<string, Readonly<{ message: string }>>> | undefined {
   return locales[lang];
 }
 
@@ -164,7 +164,9 @@ export function t(
   const entry = currentMessages?.[messageName] ?? locales.en[messageName];
   if (entry) return applySubstitutions(entry.message, substitutions);
 
-  // 2. 兜底尝试原生插件 API (如果本地没加载或找不到 Key)
+  // 2. 兜底尝试原生插件 API。
+  //    注：上一步已回落到 en，且 14 个语言包键集完全一致，走到这里意味着该键
+  //    在所有语言中都不存在，故实际不会在此命中；保留以兼容键集不一致的场景。
   if (typeof chrome !== "undefined" && chrome.i18n) {
     const msg = chrome.i18n.getMessage(messageName, substitutions);
     if (msg) return msg;
