@@ -18,6 +18,7 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "package": "npm run build && node scripts/package.js",
+    "store-copy": "node scripts/gen-store-copy.js && prettier --write doc/store-listing-copy.md",
     "version": "node scripts/update-version.js && git add src/manifest.json"
   },
   "keywords": [],
