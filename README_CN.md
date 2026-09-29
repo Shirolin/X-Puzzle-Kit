@@ -143,13 +143,13 @@ git push --follow-tags
 
 ### 手动打包
 
-构建 `.zip` 和 `.crx` 文件：
+构建 `.zip` 包：
 
 ```bash
 npm run package
 ```
 
-产物将生成在 `release/` 目录下。
+产物将生成在 `release/` 目录下。将该 ZIP 上传至 Chrome 网上应用店，或解压后在 `chrome://extensions` 中「加载已解压的扩展程序」。不再产出 `.crx` —— CRX 需要固定私钥才能得到稳定的扩展 ID，而商店只接收 ZIP 并自行重签名。
 
 ## 🤝 贡献与支持
 

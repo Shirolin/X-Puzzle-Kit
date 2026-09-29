@@ -41,8 +41,6 @@ jobs:
         with:
           files: |
             release/*.zip
-            release/*.crx
-            release/*.xpi
           generate_release_notes: true
           draft: false
           prerelease: false

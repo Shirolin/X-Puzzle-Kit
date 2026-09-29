@@ -143,13 +143,13 @@ git push --follow-tags
 
 ### Manual Packaging
 
-To build `.zip` and `.crx` files locally:
+To build the `.zip` package locally:
 
 ```bash
 npm run package
 ```
 
-Artifacts will be generated in the `release/` directory.
+The artifact is generated in the `release/` directory. Upload that ZIP to the Chrome Web Store, or unzip it and use "Load unpacked" in `chrome://extensions`. No `.crx` is produced — a CRX requires a fixed private key to yield a stable extension ID, which the store does not accept anyway.
 
 ## 🤝 Contribution & Support
 
