@@ -33,9 +33,9 @@
 | `it`          | `it`               | 44       | 115          | 2723         |
 | `ja`          | `ja`               | 25       | 101          | 1233         |
 | `ko`          | `ko`               | 34       | 99           | 1327         |
-| `pt_BR`       | `pt-BR`            | 44       | 141          | 2491         |
+| `pt_BR`       | `pt-BR`            | 44       | 131          | 2491         |
 | `ru`          | `ru`               | 52       | 123          | 2537         |
-| `tr`          | `tr`               | 46       | 140          | 2464         |
+| `tr`          | `tr`               | 46       | 129          | 2464         |
 | `uk`          | `uk`               | 52       | 119          | 2445         |
 | `zh_CN`       | `zh-CN`            | 28       | 65           | 847          |
 | `zh_TW`       | `zh-TW`            | 28       | 65           | 856          |
@@ -443,7 +443,7 @@ X-Puzzle-Kit: Unir e Cortar Imagens para o X
 **简短描述 (Summary)**
 
 ```text
-Crie panoramas perfeitos ou mosaicos (grids) para o X (Twitter). Alinhamento pixel-perfect, otimizado para a timeline e qualidade sem perdas.
+Crie panoramas perfeitos ou mosaicos (grids) para o X (Twitter). Alinhamento pixel-perfect, otimizado para a timeline e sem perdas.
 ```
 
 **详细描述 (Detailed description)**
@@ -541,7 +541,7 @@ X-Puzzle-Kit: X için Resim Birleştirme & Bölme
 **简短描述 (Summary)**
 
 ```text
-X (Twitter) için panoramaları birleştirin veya ızgaralara bölün. Piksel mükemmelliğinde, zaman akışı (timeline) optimize ve kayıpsız kalite.
+X (Twitter) için panoramaları birleştirin veya ızgaralara bölün. Piksel mükemmelliğinde, zaman akışı optimize ve kayıpsız kalite.
 ```
 
 **详细描述 (Detailed description)**

@@ -31,6 +31,7 @@ jobs:
           npm run type-check
           npm run lint
           npm test
+          node scripts/check-i18n.js
 
       - name: Create release artifacts
         run: npm run package
