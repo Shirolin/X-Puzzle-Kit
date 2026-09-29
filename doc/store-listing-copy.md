@@ -26,16 +26,16 @@
 | manifest 目录 | Dashboard 语言代码 | 名称长度 | 简短描述长度 | 详细描述长度 |
 | ------------- | ------------------ | -------- | ------------ | ------------ |
 | `en`          | `en`               | 41       | 102          | 2304         |
-| `de`          | `de`               | 49       | 117          | 2633         |
-| `es`          | `es`               | 49       | 110          | 2585         |
-| `fr`          | `fr`               | 43       | 125          | 2625         |
+| `de`          | `de`               | 49       | 117          | 2795         |
+| `es`          | `es`               | 49       | 110          | 2747         |
+| `fr`          | `fr`               | 43       | 125          | 2909         |
 | `id`          | `id`               | 43       | 118          | 2431         |
 | `it`          | `it`               | 44       | 115          | 2723         |
 | `ja`          | `ja`               | 25       | 101          | 1233         |
-| `ko`          | `ko`               | 34       | 99           | 1327         |
-| `pt_BR`       | `pt-BR`            | 44       | 131          | 2491         |
+| `ko`          | `ko`               | 34       | 99           | 1319         |
+| `pt_BR`       | `pt-BR`            | 44       | 131          | 2726         |
 | `ru`          | `ru`               | 52       | 123          | 2537         |
-| `tr`          | `tr`               | 46       | 129          | 2464         |
+| `tr`          | `tr`               | 46       | 129          | 2538         |
 | `uk`          | `uk`               | 52       | 119          | 2445         |
 | `zh_CN`       | `zh-CN`            | 28       | 65           | 847          |
 | `zh_TW`       | `zh-TW`            | 28       | 65           | 856          |
@@ -106,36 +106,36 @@ Erstellen Sie nahtlose Panoramen oder Raster für X (Twitter). Pixelgenau, Timel
 **详细描述 (Detailed description)**
 
 ```text
-X-Puzzle-Kit ist ein professionelles Tool zum Zusammenfügen und Aufteilen von Bildern, das speziell für X (Twitter)-Nutzer, digitale Künstler und Sammler entwickelt wurde. Egal ob Sie ein mehrteiliges Panorama rekonstruieren oder ein kreatives Raster für einen 'Reveal'-Effekt erstellen möchten – X-Puzzle-Kit sorgt dafür, dass Ihre Inhalte auf der X-Timeline genau so aussehen wie beabsichtigt.
+X-Puzzle-Kit ist ein professionelles Tool zum Zusammenfügen und Teilen von Bildern, das speziell für X (Twitter)-Nutzer, digitale Künstler und Sammler entwickelt wurde. Egal, ob Sie ein mehrteiliges Panorama rekonstruieren oder ein kreatives Raster-Reveal vorbereiten möchten, X-Puzzle-Kit stellt sicher, dass Ihre Inhalte auf der X-Timeline genau so aussehen, wie sie beabsichtigt sind.
 
-🌐 PLATTFORMÜBERGREIFENDER SUPPORT:
-Zusätzlich zu dieser Chrome-Erweiterung bieten wir eine voll ausgestattete Web-Version (https://x-puzzle-kit.pages.dev/) für die nahtlose Nutzung auf Mobilgeräten, Tablets und anderen Browsern.
+🌐 PLATTFORMÜBERGREIFENDE UNTERSTÜTZUNG:
+Zusätzlich zu dieser Chrome-Erweiterung bieten wir eine voll funktionsfähige Web-Version (https://x-puzzle-kit.pages.dev/) für die nahtlose Nutzung auf Mobilgeräten, Tablets und anderen Browsern an.
 
-✨ KERNFUNKTIONEN:
+✨KERNFUNKTIONEN:
 
-🧵 Intelligentes Zusammenfügen (Stitching)
-Fügen Sie separate Tweet-Bilder nahtlos wieder zu ihrem ursprünglichen Panorama- oder Langformat zusammen.
-- Smarte Layouts: Unterstützung für Vertokal-, Horizontal-, 2x2-Raster- und das charakteristische T-Form-Layout.
-- Pixelgenaue Ausrichtung: Fortschrittliche Koordinatenberechnung eliminiert 1px-Nähte und unscharfe Artefakte.
-- Native Integration: Bilder direkt aus Ihrer X-Timeline mit einem Klick zusammenfügen – kein manuelles Speichern erforderlich.
-- Verlustfreier Export: Erhält jeden Pixel in seiner Originalauflösung. Keine Kompression, kein Qualitätsverlust.
+🧵 Intelligentes Zusammenfügen von Bildern
+Fügen Sie separate Tweet-Bilder nahtlos wieder in ihr ursprüngliches Panorama- oder Langformat zusammen.
+- Smart Layouts: Volle Unterstützung für vertikale, horizontale, 2x2-Raster- und die charakteristischen T-Form-Layouts.
+- Pixelgenaue Ausrichtung: Fortschrittliche Koordinatenberechnung eliminiert 1px-Nähte und verschwommene Artefakte.
+- Native Integration: Fügen Sie Bilder mit einem einzigen Klick direkt von Ihrer X-Timeline zusammen – kein manuelles Speichern erforderlich.
+- Verlustreier Export: Bewahrt jeden Pixel in seiner ursprünglichen Auflösung. Keine Kompression, kein Qualitätsverlust.
 
-✂️ Kreatives Aufteilen (Grid Splitter)
-Teilen Sie jedes große Bild in standardisierte Raster (2x2 oder benutzerdefiniert), die für die Multi-Image-Anzeige von X optimiert sind.
-- Twitter 'Seamless Flow'-Optimierung: Perfektes Splitting für den X-Vorschau-Mechanismus. Sorgt dafür, dass mehrere Teile in der Timeline optisch wieder zu einem einzigen, nahtlosen Bild verschmelzen.
-- Rechtsklick & Teilen: Senden Sie jedes Web-Bild direkt über das Kontextmenü Ihres Browsers an den Splitter.
-- Einheitliches Storytelling: Erstellen Sie konsistente, fesselnde 'Reveal'-Effekte für Ihren Feed.
+✂️ Kreativer Raster-Splitter (Mosaic Maker)
+Unterteilen Sie jedes große Bild in Standardraster (2x2 oder benutzerdefiniert), die für die X-Multibildanzeige optimiert sind.
+- Twitter "Seamless Flow" Optimierung: Optimiert für den Vorschaumechanismus von Twitter. Stellt sicher, dass mehrere Teilstücke in der Timeline wieder zu einem einzigen "nahtlosen Bild" zusammengefügt werden, indem die Vorschauraten von X perfekt angepasst werden.
+- Rechtsklick & Teilen: Senden Sie jedes Webbild sofort direkt aus dem Kontextmenü Ihres Browsers an den Splitter.
+- Einheitliches Storytelling: Erstellen Sie konsistente, ansprechende "Reveal"-Effekte für Ihren Feed.
 
 🚀 POWER-FUNKTIONEN:
-- Reibungsloser Workflow: Wechseln Sie dank tiefer Browser-Integration in Sekunden von der Timeline zur Bearbeitung.
-- Professionelle Anpassung: Feinabstimmung globaler/lokaler Abstände, Dark Mode und benutzerdefinierte Hintergrundfarben (inkl. Transparenz).
-- Einfacher Import: Unterstützung für Datei-Uploads und Einfügen aus der Zwischenablage neben der nativen X-Integration.
-- Batch-Export: Speichern Sie Ihre Kreationen als hochwertige PNG-, JPG- oder WebP-Dateien oder als einzelnes, organisiertes ZIP-Paket.
+- Schneller Workflow: Wechseln Sie dank tiefer Browser-Integration in Sekundenschnelle von der Timeline zur Leinwand.
+- Professionelle Anpassung: Verfeinern Sie globale/lokale Lücken, schalten Sie den Dunkelmodus um und wählen Sie benutzerdefinierte Hintergrundfarben (einschließlich Transparenz).
+- Einfacher Import: Unterstützung für Dateiuploads und Einfügen aus der Zwischenablage neben der nativen X-Integration.
+- Batch-Export: Speichern Sie Ihre Kreationen als hochwertige PNG-, JPG- oder WebP-Dateien oder als ein einziges organisiertes ZIP-Paket.
 
-🔒 DATENSCHUTZ IM FOKUS
-Ihre Bilder verlassen niemals Ihren Browser. Die gesamte Verarbeitung erfolgt lokal auf Ihrem Gerät – keine Uploads, kein Tracking, absolute Sicherheit.
+🔒 DEM DATENSCHUTZ VERPFLICHTET
+Ihre Bilder verlassen niemals Ihren Browser. Die gesamte Verarbeitung erfolgt lokal auf Ihrem Rechner – keine Remote-Uploads, kein Tracking und absolute Sicherheit.
 
-Optimieren Sie Ihr X-Storytelling noch heute mit X-Puzzle-Kit.
+Verbessern Sie noch heute Ihr Storytelling auf X mit X-Puzzle-Kit.
 ```
 
 ## es — Dashboard 代码 `es`
@@ -155,36 +155,36 @@ Kit para X (Twitter): Ensambla panorámicas o crea cuadrículas. Optimizado para
 **详细描述 (Detailed description)**
 
 ```text
-X-Puzzle-Kit es un kit de herramientas multimedia profesional diseñado específicamente para usuarios de X (Twitter), artistas digitales y coleccionistas. Ya sea que estés reconstruyendo una panorámica a partir de varios tweets o preparando una galería creativa, X-Puzzle-Kit garantiza que tu contenido se vea exactamente como deseas en el timeline de X.
+X-Puzzle-Kit es un ensamblador de imágenes y divisor de cuadrícula profesional diseñado específicamente para usuarios de X (Twitter), artistas digitales y coleccionistas. Ya sea que estés reconstruyendo un panorama de varias piezas o preparando una revelación de cuadrícula creativa, X-Puzzle-Kit garantiza que tu contenido se vea exactamente como se diseñó en el timeline de X.
 
 🌐 SOPORTE MULTIPLATAFORMA:
-Además de esta extensión de Chrome, ofrecemos una versión Web en línea completa (https://x-puzzle-kit.pages.dev/) para un uso fluido en dispositivos móviles, tablets y otros navegadores.
+Además de esta extensión de Chrome, ofrecemos una versión web completa (https://x-puzzle-kit.pages.dev/) para un uso fluido en dispositivos móviles, tablets y otros navegadores.
 
 ✨ CAPACIDADES PRINCIPALES:
 
 🧵 Ensamblado Inteligente de Imágenes
-Une sin costuras imágenes separadas de un Tweet en su formato original panorámico o de formato largo.
-- Diseños Inteligentes: Soporte completo para disposiciones Verticales, Horizontales, Cuadrículas 2x2 y el exclusivo diseño en forma de T.
-- Alineación de Píxel Perfecto: El cálculo avanzado de coordenadas elimina las uniones de 1px y los artefactos borrosos para un acabado profesional.
-- Integración Nativa: Ensambla imágenes directamente desde tu timeline de X con un solo clic, sin descargas manuales.
-- Exportación sin Pérdidas: Conserva cada píxel en su resolución original. Sin compresión ni pérdida de calidad.
+Combina de forma fluida imágenes de Tweets separadas para que vuelvan a su formato panorámico u original.
+- Diseños Inteligentes: Soporte completo para cuadrícula vertical, horizontal, 2x2 y los diseños característicos en forma de T.
+- Alineación Píxel por Píxel: El cálculo de coordenadas avanzado elimina las costuras de 1px y los artefactos borrosos.
+- Integración Nativa: Ensambla imágenes directamente desde tu timeline de X con un solo clic, sin necesidad de guardarlas manualmente.
+- Exportación sin Pérdida: Preserva cada píxel en su resolución original. Sin compresión, sin pérdida de calidad.
 
-✂️ Divisor de Grillas Creativo (Creador de Mosaicos)
-Divide sus imágenes en grillas estandarizadas (2x2 o personalizadas) optimizadas para la visualización de múltiples imágenes de X.
-- Optimización de Diseño "Imagen Única" para Twitter: Optimizado para la vista previa de X. Asegura que múltiples cortes se unan en una sola "gran imagen" en el timeline.
-- Clic Derecho y Dividir: Envía instantáneamente cualquier imagen web al divisor directamente desde el menú contextual del navegador.
-- Estética Unificada: Crea efectos visuales consistentes que capturan la atención en el feed.
+✂️ Divisor de Cuadrícula Creativo (Creador de Mosaicos)
+Divide cualquier imagen grande en cuadrículas estándar (2x2 o personalizadas) optimizadas para la visualización de varias imágenes de X.
+- Optimización de "Flujo Fluido" de Twitter: Optimizado para el mecanismo de vista previa de Twitter. Garantiza que las divisiones múltiples se vuelvan a unir en una sola "imagen fluida" en el timeline al coincidir perfectamente con los ratios de vista previa de X.
+- Clic Derecho y Dividir: Envía instantáneamente cualquier imagen web al divisor directamente desde el menú contextual de tu navegador.
+- Narrativa Unificada: Crea efectos de "revelación" consistentes y atractivos para tu feed.
 
-🚀 CARACTERÍSTICAS POTENTES:
-- Flujo de Trabajo Eficiente: Pasa del timeline al lienzo en segundos con una integración profunda.
-- Personalización Pro: Ajusta espacios globales/locales, activa el Modo Oscuro y elige colores de fondo personalizados (incluyendo transparencia).
-- Importación Fácil: Soporte para subida de archivos, portapapeles e integración nativa con la página de X.
-- Exportación por Lotes: Guarda tus creaciones como archivos PNG, JPG o WebP de alta calidad, o en un paquete ZIP.
+🚀 FUNCIONES AVANZADAS:
+- Flujo de Trabajo Sencillo: Pasa del timeline al lienzo en segundos con una profunda integración en el navegador.
+- Personalización Profesional: Ajusta los espacios globales y locales, cambia al Modo Oscuro y elige colores de fondo personalizados (incluida la transparencia).
+- Importación Fácil: Soporte para carga de archivos y pegado desde el portapapeles junto con la integración nativa de X.
+- Exportación por Lotes: Guarda tus creaciones como archivos PNG, JPG o WebP de alta calidad, o en un único paquete ZIP organizado.
 
-🔒 COMPROMETIDO CON LA PRIVACIDAD
-Tus imágenes nunca salen de tu navegador. Todo el procesamiento se realiza localmente en tu equipo: sin subidas, sin rastreo y con total seguridad.
+🔒 COMPROMETIDOS CON LA PRIVACIDAD
+Tus imágenes nunca salen de tu navegador. Todo el procesamiento se realiza localmente en tu equipo: sin cargas remotas, sin seguimiento y con total seguridad.
 
-Mejora tu contenido visual en X con X-Puzzle-Kit hoy mismo.
+Mejora hoy mismo tu narrativa en X con X-Puzzle-Kit.
 ```
 
 ## fr — Dashboard 代码 `fr`
@@ -204,36 +204,36 @@ Assemblez des panoramas ou créez des grilles pour X (Twitter). Qualité origina
 **详细描述 (Detailed description)**
 
 ```text
-X-Puzzle-Kit est une boîte à outils média professionnelle conçue spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous souhaitiez reconstituer un panorama à partir de plusieurs tweets ou préparer une présentation en grille créative, X-Puzzle-Kit garantit que votre contenu s'affiche exactement comme prévu sur votre fil X.
+X-Puzzle-Kit est un assembleur d'images et un diviseur de grille professionnel conçu spécifiquement pour les utilisateurs de X (Twitter), les artistes numériques et les collectionneurs. Que vous reconstruisiez un panorama en plusieurs parties ou que vous prépariez une révélation de grille créative, X-Puzzle-Kit garantit que votre contenu apparaisse exactement comme prévu sur le fil X.
 
 🌐 SUPPORT MULTIPLATEFORME :
-En plus de cette extension Chrome, nous proposons une version Web en ligne complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur mobiles, tablettes et autres navigateurs.
+En plus de cette extension Chrome, nous proposons une version Web complète (https://x-puzzle-kit.pages.dev/) pour une utilisation fluide sur les appareils mobiles, les tablettes et autres navigateurs.
 
-✨ FONCTIONNALITÉS CLÉS :
+✨ CAPACITÉS CLÉS :
 
-🧵 Assemblage Intelligent d'Images
-Fusionnez sans couture des images séparées d'un Tweet pour retrouver leur format original panoramique ou long.
-- Mises en page intelligentes : Support complet des formats Vertical, Horizontal, Grille 2x2 et de la mise en page signature en forme de T.
-- Alignement au pixel près : Un algorithme avancé élimine les raccords de 1px et les flous pour une finition professionnelle.
-- Intégration Native : Assemblez des images directement depuis votre fil X d'un simple clic, sans manipulations manuelles.
-- Exportation sans Perte : Préserve chaque pixel dans sa résolution d'origine. Aucune compression, aucune perte de qualité.
+🧵 Assemblage d'images intelligent
+Fusionnez de manière transparente des images de Tweets séparées pour recréer leur format panoramique ou long d'origine.
+- Layouts Intelligents : Support complet pour les formats Vertical, Horizontal, Grille 2x2 et les mises en page signature en forme de T.
+- Alignement au pixel près : Le calcul avancé des coordonnées élimine les coutures d'un pixel et les flous.
+- Intégration Native : Assemblez des images directement depuis votre fil X en un seul clic — aucune sauvegarde manuelle n'est requise.
+- Exportation sans perte : Préserve chaque pixel dans sa résolution d'origine. Pas de compression, pas de perte de qualité.
 
-✂️ Découpeur de Grilles Créatif (Mosaic Maker)
-Divisez n'importe quelle image en grilles standardisées (2x2 ou personnalisées) optimisées pour l'affichage multi-images de X.
-- Optimisation de Mise en Page "Image Unique" pour Twitter : Optimisé pour l'aperçu de X. Permet de fusionner plusieurs découpes en une seule "grande image" dans le flux.
-- Clic droit et Découpe : Envoyez instantanément n'importe quelle image vers l'outil de découpe via le menu contextuel du navigateur.
-- Esthétique Unifiée : Créez des rendus cohérents qui captent l'attention sur votre flux.
+✂️ Diviseur de grille créatif (Créateur de mosaïques)
+Divisez n'importe quelle image de grande taille en grilles standard (2x2 ou personnalisées) optimisées pour l'affichage multi-images de X.
+- Optimisation Twitter "Seamless Flow" : Optimisé pour le mécanisme de prévisualisation de Twitter. Garantit que les multiples divisions se réassemblent en une seule "image sans couture" dans le fil en respectant parfaitement les ratios de prévisualisation de X.
+- Clic droit & Diviser : Envoyez instantanément n'importe quelle image Web vers le diviseur directement depuis le menu contextuel de votre navigateur.
+- Narration unifiée : Créez des effets de "révélation" cohérents et attrayants pour votre fil d'actualité.
 
-🚀 FONCTIONS AVANCÉES :
-- Flux de Travail Fluide : Passez du fil au canevas en quelques secondes grâce à une intégration profonde.
-- Personnalisation Pro : Ajustez les espacements, activez le Mode Sombre et choisissez des couleurs de fond (transparence incluse).
-- Import Facile : Support de l'import de fichiers, du presse-papiers et de l'intégration native avec la page X.
-- Export par Lot : Sauvegardez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.
+🚀 FONCTIONNALITÉS PUISSANTES :
+- Flux de travail fluide : Passez du fil d'actualité au canevas en quelques secondes grâce à une intégration poussée au navigateur.
+- Personnalisation professionnelle : Ajustez les espacements globaux/locaux, activez le mode sombre et choisissez des couleurs de fond personnalisées (transparence incluse).
+- Importation facile : Supporte le téléchargement de fichiers et le collage depuis le presse-papiers parallèlement à l'intégration native de X.
+- Exportation par lot : Enregistrez vos créations aux formats PNG, JPG ou WebP de haute qualité, ou dans une archive ZIP organisée.
 
-🔒 CONFIDENTIALITÉ GARANTIE
-Vos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre machine : aucun transfert vers un serveur, aucun suivi, sécurité totale.
+🔒 ENGAGÉS POUR LA CONFIDENTIALITÉ
+Vos images ne quittent jamais votre navigateur. Tout le traitement est effectué localement sur votre ordinateur — aucun téléchargement à distance, aucun suivi, sécurité totale.
 
-Sublimez vos contenus sur X avec X-Puzzle-Kit dès aujourdhui.
+Améliorez votre narration sur X avec X-Puzzle-Kit dès aujourd'hui.
 ```
 
 ## id — Dashboard 代码 `id`
@@ -400,36 +400,36 @@ X (트위터) 전용 전문 툴킷. 이미지를 파노라마로 매끄럽게 �
 **详细描述 (Detailed description)**
 
 ```text
-X-Puzzle-Kit은 X (트위터) 사용자, 디지털 아티스트 및 수집가를 위해 설계된 전문가용 미디어 툴킷입니다. 여러 트윗 이미지를 원래의 파노라마로 복원하거나 창의적인 그리드 전시를 준비할 때, X-Puzzle-Kit은 콘텐츠가 X 타임라인에서 의도한 대로 완벽하게 보이도록 도와줍니다.
+X-Puzzle-Kit은 X(트위터) 사용자, 디지털 아티스트 및 수집가를 위해 특별히 설계된 전문 이미지 병합 및 그리드 분할 도구입니다. 여러 파트로 나누어진 파노라마를 재구성하거나 창의적인 그리드 공개를 준비할 때, X-Puzzle-Kit은 여러분의 콘텐츠가 X 타임라인에서 의도한 대로 정확하게 보이도록 보장합니다.
 
-🌐 멀티 플랫폼 지원:
-이 Chrome 확장 프로그램 외에도 모바일, 태블릿 및 기타 브라우저에서 원활하게 사용할 수 있도록 모든 기능을 갖춘 웹 온라인 버전(https://x-puzzle-kit.pages.dev/)을 제공합니다.
+🌐 크로스 플랫폼 지원:
+이 Chrome 확장 프로그램 외에도 모바일 기기, 태블릿 및 기타 브라우저에서 원활하게 사용할 수 있도록 모든 기능을 갖춘 웹 버전(https://x-puzzle-kit.pages.dev/)을 제공합니다.
 
-✨ 핵심 기능:
+✨ 주요 기능:
 
 🧵 지능형 이미지 병합
-분산된 트윗 이미지를 원래의 파노라마 또는 긴 형식으로 매끄럽게 병합합니다.
-- 스마트 레이아웃: 세로, 가로, 2x2 격자 및 시그니처 T자형 레이아웃을 완벽하게 지원합니다.
-- 픽셀 단위 정렬: 정교한 알고리즘으로 1px의 오차나 흐릿함을 제거하여 선명하고 전문적인 화질을 제공합니다.
-- 네이티브 통합: X 페이지에서 버튼을 클릭하여 즉시 병합을 시작할 수 있어 번거로운 수동 다운로드가 필요 없습니다.
-- 무손실 내보내기: 원본 해상도를 그대로 유지하며 품질 저하 없이 최고의 결과물을 보장합니다.
+개별 트윗 이미지를 원래의 파노라마 또는 긴 형태의 형식으로 원활하게 다시 병합합니다.
+- 스마트 레이아웃: 수직, 수평, 2x2 그리드 및 고유한 T자형 레이아웃을 완벽하게 지원합니다.
+- 픽셀 완벽 정렬: 고급 좌표 계산으로 1px 이음새와 흐릿한 현상을 제거합니다.
+- 네이티브 통합: 수동 저장 없이 클릭 한 번으로 X 타임라인에서 이미지를 직접 병합할 수 있습니다.
+- 무손실 내보내기: 모든 픽셀을 원래 해상도로 보존합니다. 압축 및 화질 저하가 없습니다.
 
-✂️ 창의적 그리드 분할 (모자이크 제작)
-어떤 이미지든 표준 그리드(2x2 또는 사용자 정의)로 분할하여 X의 다중 이미지 표시에 최적화된 결과물을 만듭니다.
-- 트위터 「한 장의 그림」 레이아웃 최적화: 트위터 미리보기 메커니즘에 최적화되었습니다. 타임라인에서 여러 장의 이미지가 끊김 없이 연결되어 하나의 큰 이미지로 보이도록 합니다.
-- 우클릭 즉시 분할: 웹에서 이미지를 우클릭하여 분할 도구로 직접 보내 빠르게 편집할 수 있습니다.
-- 통일된 시각 효과: 일관성 있는 레이아웃으로 트윗의 주목도를 높이고 메시지를 효과적으로 전달합니다.
+✂️ 창의적인 그리드 분할기 (모자이크 메이커)
+모든 대형 이미지를 X 다중 이미지 디스플레이에 최적화된 표준 그리드(2x2 또는 맞춤형)로 분할합니다.
+- 트위터 "심리스 플로우" 최적화: 트위터의 미리보기 메커니즘에 최적화되었습니다. X의 미리보기 비율과 완벽하게 일치시켜 타임라인에서 여러 분할 이미지가 하나의 "심리스 이미지"로 다시 병합되도록 합니다.
+- 우클릭 및 분할: 브라우저 컨텍스트 메뉴에서 웹 이미지를 즉시 분할기로 직접 전송할 수 있습니다.
+- 통합 스토리텔링: 피드에 일관되고 매력적인 "공개" 효과를 만듭니다.
 
 🚀 강력한 기능:
-- 워크플로우 효율화: 브라우저와 깊이 통합되어 트윗 발견부터 이미지 생성까지 단 몇 초 만에 완료됩니다.
-- 프로 설정: 전체 및 개별 간격 미세 조정, 다크 모드 지원, 배경색 및 투명도 사용자 정의가 가능합니다.
-- 간편한 가져오기: 파일 업로드, 클립보드 복사-붙여넣기 및 X 페이지 직접 연동을 지원합니다.
-- 일괄 저장: 고화질 PNG, JPG, WebP 다운로드 또는 ZIP 파일로 한 번에 보관할 수 있습니다.
+- 원활한 워크플로우: 깊은 브라우저 통합을 통해 타임라인에서 캔버스까지 몇 초 만에 이동할 수 있습니다.
+- 전문적인 맞춤 설정: 전역/지역 간격을 미세 조정하고, 다크 모드를 전환하며, 사용자 정의 배경색(투명도 포함)을 선택할 수 있습니다.
+- 간편한 가져오기: 네이티브 X 통합과 함께 파일 업로드 및 클립보드 붙여넣기를 지원합니다.
+- 일괄 내보내기: 결과물을 고품질 PNG, JPG, WebP 파일로 저장하거나 하나의 정리된 ZIP 패키지로 다운로드할 수 있습니다.
 
-🔒 철저한 개인정보 보호
-모든 이미지 처리는 사용자 기기의 로컬 브라우저 내에서만 이루어집니다. 이미지가 서버로 전송되지 않으며, 어떠한 추적이나 기록도 남지 않아 안심하고 창작에만 집중할 수 있습니다.
+🔒 개인 정보 보호 약속
+이미지는 브라우저를 절대 벗어나지 않습니다. 모든 처리는 사용자의 기기에서 로컬로 수행됩니다. 원격 업로드나 추적이 없으며 완전한 보안을 보장합니다.
 
-지금 바로 X-Puzzle-Kit로 X에서의 미디어 경험을 한 단계 업그레이드해보세요。
+지금 바로 X-Puzzle-Kit으로 X 스토리텔링을 강화해 보세요.
 ```
 
 ## pt_BR — Dashboard 代码 `pt-BR`
@@ -449,36 +449,36 @@ Crie panoramas perfeitos ou mosaicos (grids) para o X (Twitter). Alinhamento pix
 **详细描述 (Detailed description)**
 
 ```text
-O X-Puzzle-Kit é uma ferramenta profissional de união (stitching) e divisão de imagens desenvolvida especificamente para usuários do X (Twitter), artistas digitais e colecionadores. Seja para reconstruir um panorama em várias partes ou criar um "reveal" criativo em grade, o X-Puzzle-Kit garante que seu conteúdo apareça exatamente como planejado na timeline do X.
+O X-Puzzle-Kit é um combinador de imagens e divisor de grade profissional projetado especificamente para usuários do X (Twitter), artistas digitais e colecionadores. Esteja você reconstruindo um panorama de várias partes ou preparando uma revelação criativa em grade, o X-Puzzle-Kit garante que seu conteúdo apareça exatamente como pretendido na linha do tempo do X.
 
 🌐 SUPORTE MULTIPLATAFORMA:
-Além desta extensão para Chrome, oferecemos uma versão Web completa (https://x-puzzle-kit.pages.dev/) para uso perfeito em celulares, tablets e outros navegadores.
+Além desta extensão do Chrome, oferecemos uma versão web com todos os recursos (https://x-puzzle-kit.pages.dev/) para uso contínuo em dispositivos móveis, tablets e outros navegadores.
 
-✨ RECURSOS PRINCIPAIS:
+✨ CAPACIDADES PRINCIPAIS:
 
-🧵 União Inteligente (Stitching)
-Junte imagens de Tweets separados de volta ao seu formato original panorâmico ou longo.
-- Layouts Inteligentes: Suporte total para layouts Vertical, Horizontal, Grade 2x2 e o exclusivo formato "T-Shape".
-- Alinhamento Pixel-Perfect: Cálculo avançado de coordenadas elimina emendas de 1px e artefatos borrados.
-- Integração Nativa: Una imagens diretamente da sua timeline do X com um clique — sem necessidade de salvar manualmente.
-- Exportação Sem Perdas: Preserva cada pixel na resolução original. Sem compressão, sem perda de qualidade.
+🧵 Combinação Inteligente de Imagens
+Mescle imagens separadas de Tweets de volta ao seu formato original de panorama ou formato longo.
+- Layouts Inteligentes: Suporte total para layouts Vertical, Horizontal, Grade 2x2 e os exclusivos layouts em forma de T.
+- Alinhamento Perfeito de Pixels: O cálculo avançado de coordenadas elimina costuras de 1px e artefatos borrados.
+- Integração Nativa: Combine imagens diretamente da sua linha do tempo do X com um único clique — sem necessidade de salvamento manual.
+- Exportação sem Perdas: Preserva cada pixel em sua resolução original. Sem compressão, sem perda de qualidade.
 
-✂️ Divisor de Grade Criativo (Mosaic Maker)
-Divida qualquer imagem grande em grades padronizadas (2x2 ou personalizadas) otimizadas para a exibição de múltiplas imagens do X.
-- Otimização "Seamless Flow": Otimizado para o mecanismo de prévia do Twitter. Garante que várias partes se unam visualmente em uma única "imagem contínua" na timeline.
-- Clique Direito e Dividir: Envie instantaneamente qualquer imagem da web para o divisor direto do menu de contexto do navegador.
-- Storytelling Unificado: Crie efeitos de revelação consistentes e envolventes para o seu feed.
+✂️ Divisor de Grade Criativo (Criador de Mosaicos)
+Divida qualquer imagem grande em grades padronizadas (2x2 ou personalizadas) otimizadas para a exibição de várias imagens do X.
+- Otimização "Fluxo Contínuo" do Twitter: Otimizado para o mecanismo de visualização do Twitter. Garante que as divisões múltiplas se combinem novamente em uma única "imagem contínua" na linha do tempo, correspondendo perfeitamente às proporções de visualização do X.
+- Clique com o Botão Direito e Dividir: Envie instantaneamente qualquer imagem da web para o divisor diretamente do menu de contexto do seu navegador.
+- Storytelling Unificado: Crie efeitos de "revelação" consistentes e envolventes para o seu feed.
 
-🚀 RECURSOS AVANÇADOS:
-- Fluxo Fluido: Vá da timeline para a edição em segundos com integração profunda no navegador.
-- Personalização Profissional: Ajuste fino de espaçamentos globais/locais, Modo Escuro e cores de fundo personalizadas (incluindo transparência).
-- Importação Fácil: Suporte para upload de arquivos e colar da área de transferência, além da integração nativa com o X.
-- Exportação em Lote: Salve suas criações como arquivos PNG, JPG ou WebP de alta qualidade, ou como um pacote ZIP organizado.
+🚀 RECURSOS PODEROSOS:
+- Fluxo de Trabalho Ágil: Mude da linha do tempo para a tela em segundos com integração profunda do navegador.
+- Personalização Profissional: Ajuste fino de lacunas globais/locais, alterne para o Modo Escuro e escolha cores de fundo personalizadas (incluindo transparência).
+- Importação Fácil: Suporte para upload de arquivos e colagem da área de transferência, além da integração nativa do X.
+- Exportação em Lote: Salve suas criações como arquivos PNG, JPG ou WebP de alta qualidade ou em um único pacote ZIP organizado.
 
-🔒 PRIVACIDADE EM PRIMEIRO LUGAR
-Suas imagens nunca saem do seu navegador. Todo o processamento é feito localmente no seu dispositivo — sem uploads remotos, sem rastreamento e com total segurança.
+🔒 COMPROMISSO COM A PRIVACIDADE
+Suas imagens nunca saem do seu navegador. Todo o processamento é feito localmente em sua máquina — sem uploads remotos, sem rastreamento e segurança total.
 
-Melhore seu storytelling no X hoje com o X-Puzzle-Kit.
+Melhore o seu storytelling no X com o X-Puzzle-Kit hoje mesmo.
 ```
 
 ## ru — Dashboard 代码 `ru`
@@ -547,36 +547,36 @@ X (Twitter) için panoramaları birleştirin veya ızgaralara bölün. Piksel m�
 **详细描述 (Detailed description)**
 
 ```text
-X-Puzzle-Kit, X (Twitter) kullanıcıları, dijital sanatçılar ve koleksiyoncular için özel olarak tasarlanmış profesyonel bir resim birleştirme ve ızgara bölme aracıdır. İster çok parçalı bir panoramayı yeniden birleştiriyor olun, ister yaratıcı bir ızgara "reveal" (açığa çıkarma) efekti hazırlıyor olun, X-Puzzle-Kit içeriğinizin X zaman akışında tam olarak amaçlandığı gibi görünmesini sağlar.
+X-Puzzle-Kit, X (Twitter) kullanıcıları, dijital sanatçılar ve koleksiyoncular için özel olarak tasarlanmış profesyonel bir resim birleştirici ve ızgara ayırıcıdır. İster çok parçalı bir panoramayı yeniden oluşturuyor olun ister yaratıcı bir ızgara gösterimi hazırlıyor olun, X-Puzzle-Kit içeriğinizin X zaman tünelinde tam olarak istediğiniz gibi görünmesini sağlar.
 
-🌐 PLATFORMLAR ARASI DESTEK:
-Bu Chrome uzantısına ek olarak, mobil cihazlar, tabletler ve diğer tarayıcılarda sorunsuz kullanım için tam özellikli bir Web sürümü (https://x-puzzle-kit.pages.dev/) sunuyoruz.
+🌐 ÇAPRAZ PLATFORM DESTEĞİ:
+Bu Chrome uzantısına ek olarak, mobil cihazlarda, tabletlerde ve diğer tarayıcılarda sorunsuz kullanım için tam özellikli bir Web sürümü (https://x-puzzle-kit.pages.dev/) sunuyoruz.
 
-✨ TEMEL GÜÇLER:
+✨ TEMEL YETENEKLER:
 
-🧵 Akıllı Resim Birleştirme (Stitching)
-Ayrı Tweet resimlerini orijinal panorama veya uzun formata sorunsuz bir şekilde geri birleştirin.
-- Akıllı Düzenler: Dikey, Yatay, 2x2 Izgara ve imza niteliğindeki T-Şekli düzenleri için tam destek.
-- Piksel Mükemmelliğinde Hizalama: Gelişmiş koordinat hesaplaması, 1 piksellik dikiş izlerini ve bulanık eserleri ortadan kaldırır.
-- Yerel Entegrasyon: Resimleri doğrudan X zaman akışınızdan tek tıklamayla birleştirin — manuel kaydetmeye gerek yok.
+🧵 Akıllı Resim Birleştirme
+Ayrı Tweet resimlerini orijinal panorama veya uzun form formatlarına sorunsuz bir şekilde geri birleştirin.
+- Akıllı Düzenler: Dikey, Yatay, 2x2 Izgara ve imza niteliğindeki T-Biçimli düzenler için tam destek.
+- Piksel Kusursuzluğunda Hizalama: Gelişmiş koordinat hesaplaması 1 piksellik dikişleri ve bulanık artefaktları ortadan kaldırır.
+- Yerel Entegrasyon: Resimleri tek bir tıklamayla doğrudan X zaman tünelinizden birleştirin; manuel kaydetmeye gerek yoktur.
 - Kayıpsız Dışa Aktarma: Her pikseli orijinal çözünürlüğünde korur. Sıkıştırma yok, kalite kaybı yok.
 
-✂️ Yaratıcı Izgara Bölücü (Mosaic Maker)
-Herhangi bir büyük resmi, X'in çoklu resim gösterimi için optimize edilmiş standart ızgaralara (2x2 veya özel) bölün.
-- Twitter "Kusursuz Akış" Optimizasyonu: Twitter'ın önizleme mekanizması için optimize edilmiştir. Zaman akışında görsel olarak tek bir "kesintisiz resim" gibi birleşmesini sağlar.
-- Sağ Tık & Böl: Herhangi bir web resmini doğrudan tarayıcınızın içerik menüsünden bölücüye gönderin.
-- Birleşik Hikaye Anlatımı: Akışınız için tutarlı, ilgi çekici "ortaya çıkarma" efektleri oluşturun.
+✂️ Yaratıcı Izgara Ayırıcı (Mozaik Oluşturucu)
+Herhangi bir büyük resmi, X'in çoklu resim ekranı için optimize edilmiş standart ızgaralara (2x2 veya özel) bölün.
+- Twitter "Kesintisiz Akış" Optimizasyonu: Twitter'ın önizleme mekanizması için optimize edilmiştir. X'in önizleme oranlarıyla mükemmel şekilde eşleşerek birden fazla parçanın zaman tünelinde tek bir "kesintisiz resim" olarak birleşmesini sağlar.
+- Sağ Tıkla ve Ayır: Herhangi bir web resmini doğrudan tarayıcınızın içerik menüsünden anında ayırıcıya gönderin.
+- Birleşik Hikaye Anlatımı: Akışınız için tutarlı, ilgi çekici "gösterim" efektleri oluşturun.
 
 🚀 GÜÇLÜ ÖZELLİKLER:
-- Akıcı İş Akışı: Derin tarayıcı entegrasyonu ile saniyeler içinde zaman akışından düzenlemeye geçin.
-- Profesyonel Özelleştirme: Global/yerel boşlukların ince ayarı, Karanlık Mod ve özel arka plan renkleri (şeffaflık dahil).
+- Sorunsuz İş Akışı: Derin tarayıcı entegrasyonu ile saniyeler içinde zaman tünelinden tuvale geçin.
+- Profesyonel Özelleştirme: Genel/yerel boşluklara ince ayar yapın, Karanlık Modu açın ve özel arka plan renkleri (şeffaflık dahil) seçin.
 - Kolay İçe Aktarma: Yerel X entegrasyonunun yanı sıra dosya yükleme ve panodan yapıştırma desteği.
-- Toplu Dışa Aktarma: Tasarımlarınızı yüksek kaliteli PNG, JPG veya WebP dosyaları olarak ya da tek bir düzenli ZIP paketi olarak kaydedin.
+- Toplu Dışa Aktarma: Tasarımlarınızı yüksek kaliteli PNG, JPG veya WebP dosyaları olarak veya tek bir düzenli ZIP paketi olarak kaydedin.
 
-🔒 GİZLİLİK ÖNCELİĞİMİZ
-Resimleriniz asla tarayıcınızdan çıkmaz. Tüm işlemler yerel olarak cihazınızda yapılır — uzaktan yükleme yok, izleme yok ve tam güvenlik.
+🔒 GİZLİLİK TAAHHÜDÜ
+Resimleriniz asla tarayıcınızdan çıkmaz. Tüm işlemler yerel olarak makinenizde yapılır; uzak sunucuya yükleme yok, izleme yok ve tam güvenlik.
 
-X hikaye anlatımınızı X-Puzzle-Kit ile bugün geliştirin.
+X hikaye anlatımınızı bugün X-Puzzle-Kit ile geliştirin.
 ```
 
 ## uk — Dashboard 代码 `uk`
