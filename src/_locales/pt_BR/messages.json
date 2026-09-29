@@ -4,7 +4,7 @@
     "description": "The name of the extension"
   },
   "appDesc": {
-    "message": "Crie panoramas perfeitos ou mosaicos (grids) para o X (Twitter). Alinhamento pixel-perfect, otimizado para a timeline e qualidade sem perdas.",
+    "message": "Crie panoramas perfeitos ou mosaicos (grids) para o X (Twitter). Alinhamento pixel-perfect, otimizado para a timeline e sem perdas.",
     "description": "The description of the extension"
   },
   "altLogo": {

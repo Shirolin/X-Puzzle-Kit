@@ -66,3 +66,33 @@ if (totalMissing === 0) {
   );
 }
 console.log("=======================================\n");
+
+// Chrome 对 manifest 字段有硬上限：name ≤ 75、description ≤ 132 字符。
+// 超限的 description 会在商店列表页被静默截断（实测 pt_BR/tr 曾被截成 "…"），
+// 且截断发生在 Google 侧，本地构建无法察觉，故在此显式拦截。
+const LIMITS = { appName: 75, appDesc: 132 };
+const overLimit = [];
+
+for (const lang of locales) {
+  const data = JSON.parse(
+    fs.readFileSync(path.join(localesDir, lang, "messages.json"), "utf8"),
+  );
+  for (const [key, max] of Object.entries(LIMITS)) {
+    const len = data[key]?.message?.length ?? 0;
+    if (len > max) overLimit.push({ lang, key, len, max });
+  }
+}
+
+console.log("📏 Manifest length limits (name ≤ 75, description ≤ 132):");
+if (overLimit.length === 0) {
+  console.log("✅ All locales within limits.");
+} else {
+  for (const { lang, key, len, max } of overLimit) {
+    console.log(`❌ [${lang}] ${key} is ${len} chars, exceeds ${max} by ${len - max}.`);
+  }
+}
+console.log("");
+
+if (totalMissing > 0 || overLimit.length > 0) {
+  process.exit(1);
+}
