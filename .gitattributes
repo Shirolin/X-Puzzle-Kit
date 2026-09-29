@@ -1,0 +1,24 @@
+# 统一换行符，保证任意机器/CI 检出的字节一致。
+#
+# 背景：仓库此前无 .gitattributes，而本机 core.autocrlf=true，
+# 导致工作区为 CRLF 而 CI（Linux）为 LF。构建时 vite-plugin-static-copy
+# 会原样拷贝 _locales/*.json 进 dist，于是同一 tag 在不同机器上会产出
+# 字节不同的发布包（实测 _locales 下 14 个文件各差 708 处换行），
+# 上传前无法用 sha256 校验包的一致性。
+#
+# 仓库内所有文本文件的 blob 本就是 LF，故本文件不会造成批量重写。
+* text=auto eol=lf
+
+# 二进制文件不做任何转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.zip binary
+*.crx binary
+*.pem binary
