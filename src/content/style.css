@@ -16,41 +16,114 @@
   animation: x-spin 0.8s linear infinite;
 }
 
+/*
+ * 注入位置是 X 操作栏（display:flex + justify-content:space-between + gap:4px）。
+ * 原生项分两类：回复/转帖/喜欢/浏览是 flex:1 1 0%，书签和分享是 19px 定宽。
+ * 这里必须定宽且不伸缩，否则会被当成第五个可伸缩项，图标居中后两侧各空出
+ * 一大截，操作栏也会被撑高。
+ */
 .x-puzzle-kit-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
   flex: 0 0 auto;
+  width: 34.75px;
+  min-width: 34.75px;
+  height: 100%;
+  min-height: 20px;
+  margin: auto 0;
+  /* 悬停圆圈比操作栏高，不能被裁掉。 */
+  overflow: visible;
 }
 
+/*
+ * 按钮盒只有操作栏那么高（约 20px），所以底色不能铺在按钮上，否则是一个
+ * 扁椭圆。悬停圆圈改由 ::before 画：34.75px 与 X 原生按钮同尺寸。
+ */
 .x-stitch-btn-inner {
-  display: flex;
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 34.75px;
-  height: 34.75px;
+  min-width: 34.75px;
+  height: 100%;
+  min-height: 20px;
+  margin: auto 0;
+  padding: 0;
+  border: 0;
   border-radius: 9999px;
+  background: transparent;
+  flex-shrink: 0;
+  font: inherit;
+  line-height: 1;
   cursor: pointer;
-  color: #71767b;
+  user-select: none;
+  /* 图标墨色跟随 X 的主题：亮色页 #536471，深色/暗蓝 #71767B。
+     主题由 X 写在 <html> 的 color-scheme 上，light-dark() 直接读它，
+     不依赖系统的 prefers-color-scheme。 */
+  color: rgb(83, 100, 113);
+  color: light-dark(rgb(83, 100, 113), rgb(113, 118, 123));
   transition:
-    background-color 0.2s,
-    color 0.2s;
-  outline: none;
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.x-stitch-btn-inner::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34.75px;
+  height: 34.75px;
+  margin: -17.375px 0 0 -17.375px;
+  border-radius: 9999px;
+  background-color: transparent;
+  transition: background-color 0.15s ease;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .x-stitch-btn-inner:hover {
-  background-color: rgba(29, 155, 240, 0.1);
   color: rgb(29, 155, 240);
 }
 
+.x-stitch-btn-inner:hover::before {
+  background-color: rgba(29, 155, 240, 0.1);
+}
+
 .x-stitch-btn-inner:active {
+  transform: scale(0.92);
+}
+
+.x-stitch-btn-inner:active::before {
   background-color: rgba(29, 155, 240, 0.2);
-  color: rgb(29, 155, 240);
+}
+
+/* 操作栏会裁切子元素，焦点环内缩 2px 才不会被切掉一半；
+   画在圆圈上，键盘聚焦时读到的是和悬停一致的形状。 */
+.x-stitch-btn-inner:focus-visible {
+  outline: none;
+}
+
+.x-stitch-btn-inner:focus-visible::before {
+  outline: 2px solid rgb(0, 122, 205);
+  outline: 2px solid light-dark(rgb(0, 122, 205), rgb(29, 155, 240));
+  outline-offset: -2px;
 }
 
 .x-stitch-btn-inner.x-loading {
   cursor: not-allowed;
   color: rgb(29, 155, 240);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .x-stitch-btn-inner,
+  .x-stitch-btn-inner::before {
+    transition-duration: 0.01ms;
+  }
 }
 
 .x-stitch-icon-wrapper {
@@ -59,9 +132,10 @@
   justify-content: center;
 }
 
+/* 18.75px 是 X 操作栏原生图标的尺寸，比原来的 20px 更贴合整行。 */
 .x-stitch-svg {
-  width: 20px;
-  height: 20px;
+  width: 18.75px;
+  height: 18.75px;
   fill: none;
   display: block;
 }

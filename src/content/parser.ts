@@ -97,10 +97,12 @@ function createButtonContainer() {
 }
 
 function createInnerButton() {
-  const innerBtn = document.createElement("div");
-  innerBtn.role = "button";
-  innerBtn.tabIndex = 0;
+  // 真按钮而不是 div[role=button]：X 操作栏里本来就都是 button，
+  // 键盘的 Enter / Space 也就不用自己再补一份。
+  const innerBtn = document.createElement("button");
+  innerBtn.type = "button";
   innerBtn.title = t("stitchBtnTitle");
+  innerBtn.setAttribute("aria-label", t("stitchBtnTitle"));
   innerBtn.className = "x-stitch-btn-inner";
   return innerBtn;
 }
@@ -120,7 +122,7 @@ function createStitchIcon() {
 
   const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
   g.setAttribute("stroke", "currentColor");
-  g.setAttribute("stroke-width", "1.9"); // 微调笔触
+  g.setAttribute("stroke-width", "1.75"); // 与 X 操作栏图标的线宽一致
   g.setAttribute("stroke-linecap", "round");
   g.setAttribute("stroke-linejoin", "round");
 
