@@ -21,6 +21,12 @@
  * 原生项分两类：回复/转帖/喜欢/浏览是 flex:1 1 0%，书签和分享是 19px 定宽。
  * 这里必须定宽且不伸缩，否则会被当成第五个可伸缩项，图标居中后两侧各空出
  * 一大截，操作栏也会被撑高。
+ *
+ * 宽度取图标本身的尺寸（时间线 18.75px、推文详情 22.5px，由脚本读 X 原生
+ * 图标后写进 --x-stitch-icon-size），不留左右内边距：34.75px 的盒子会让
+ * 图标与相邻图标之间多出约 8px，紧挨着另一个带同样内边距的扩展按钮时（比如
+ * post-to-card），两个图标之间就比原生间距宽一截。悬停圆圈溢出盒子绘制，
+ * 不参与布局。
  */
 .x-puzzle-kit-btn {
   display: inline-flex;
@@ -28,8 +34,8 @@
   justify-content: center;
   align-self: center;
   flex: 0 0 auto;
-  width: 34.75px;
-  min-width: 34.75px;
+  width: var(--x-stitch-icon-size, 18.75px);
+  min-width: var(--x-stitch-icon-size, 18.75px);
   height: 100%;
   min-height: 20px;
   margin: auto 0;
@@ -38,8 +44,9 @@
 }
 
 /*
- * 按钮盒只有操作栏那么高（约 20px），所以底色不能铺在按钮上，否则是一个
- * 扁椭圆。悬停圆圈改由 ::before 画：34.75px 与 X 原生按钮同尺寸。
+ * 按钮盒只有操作栏那么高（时间线约 20px、详情约 48px），所以底色不能铺在
+ * 按钮上，否则时间线上是一条扁椭圆。悬停圆圈改由 ::before 画：X 的圆圈是
+ * 图标尺寸 + 16px（时间线 34.75px、详情 38.5px）。
  */
 .x-stitch-btn-inner {
   position: relative;
@@ -47,8 +54,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34.75px;
-  min-width: 34.75px;
+  width: var(--x-stitch-icon-size, 18.75px);
+  min-width: var(--x-stitch-icon-size, 18.75px);
   height: 100%;
   min-height: 20px;
   margin: auto 0;
@@ -76,9 +83,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 34.75px;
-  height: 34.75px;
-  margin: -17.375px 0 0 -17.375px;
+  --x-stitch-hover-size: calc(var(--x-stitch-icon-size, 18.75px) + 16px);
+  width: var(--x-stitch-hover-size);
+  height: var(--x-stitch-hover-size);
+  margin: calc(var(--x-stitch-hover-size) / -2) 0 0
+    calc(var(--x-stitch-hover-size) / -2);
   border-radius: 9999px;
   background-color: transparent;
   transition: background-color 0.15s ease;
@@ -132,10 +141,11 @@
   justify-content: center;
 }
 
-/* 18.75px 是 X 操作栏原生图标的尺寸，比原来的 20px 更贴合整行。 */
+/* 尺寸跟随 X 操作栏原生图标（时间线 18.75px、推文详情 22.5px），
+   脚本把读到的值写在 --x-stitch-icon-size 上。 */
 .x-stitch-svg {
-  width: 18.75px;
-  height: 18.75px;
+  width: var(--x-stitch-icon-size, 18.75px);
+  height: var(--x-stitch-icon-size, 18.75px);
   fill: none;
   display: block;
 }

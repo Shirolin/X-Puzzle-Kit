@@ -44,6 +44,20 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   const iconWrapper = createIconWrapper();
   const svg = createStitchIcon();
 
+  // 图标尺寸跟随 X 的原生操作图标：时间线 18.75px，推文详情 22.5px。
+  // 写进变量后，盒子宽度和悬停圆圈（图标 + 16px）都按同一个尺寸算。
+  const referenceIcon =
+    actionBar.querySelector('button[data-testid="reply"] svg') ??
+    actionBar.querySelector("svg");
+  // 用计算宽度而不是 getBoundingClientRect：操作栏尚未布局时（离屏、隐藏）
+  // 也能拿到 18.75 / 22.5，不会退回默认值。
+  const iconSize = referenceIcon
+    ? parseFloat(getComputedStyle(referenceIcon).width) || 0
+    : 0;
+  if (iconSize > 0) {
+    container.style.setProperty("--x-stitch-icon-size", `${iconSize}px`);
+  }
+
   iconWrapper.append(svg);
   innerBtn.append(iconWrapper);
   container.append(innerBtn);
@@ -88,6 +102,21 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   };
 
   actionBar.appendChild(container);
+
+  // X 的尾部图标（书签 → 分享）字形间距是 12px：操作栏自身的 4px gap 加上
+  // 前一个图标盒子的右侧留白。我们的盒子没有内边距，所以补一格 margin-left；
+  // 前一个按钮若是同样带内边距的扩展按钮（如 post-to-card 的 34.75px 盒子），
+  // 它的留白已经占掉这部分，就不再补，两种顺序下的间距都是 12px。
+  const previous = container.previousElementSibling;
+  const previousIcon =
+    previous instanceof Element ? previous.querySelector("svg") : null;
+  if (previous instanceof HTMLElement && previousIcon) {
+    const trailing =
+      previous.getBoundingClientRect().right -
+      previousIcon.getBoundingClientRect().right +
+      (parseFloat(getComputedStyle(previous).marginRight) || 0);
+    container.style.marginLeft = `${Math.max(0, 8 - trailing)}px`;
+  }
 }
 
 function createButtonContainer() {
