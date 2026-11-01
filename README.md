@@ -92,7 +92,8 @@
 
 No installation required! Simply visit the web version and add it to your Home Screen for a native-like experience.
 
-- **URL**: [https://x-puzzle-kit.pages.dev](https://x-puzzle-kit.pages.dev)
+- **URL (Cloudflare Pages)**: [https://x-puzzle-kit.pages.dev](https://x-puzzle-kit.pages.dev)
+- **Mirror (GitHub Pages)**: [https://shirolin.github.io/X-Puzzle-Kit/](https://shirolin.github.io/X-Puzzle-Kit/)
 - **Features**: Supports sharing directly from the **Mobile App or Web version** (via System Share menu).
 
 ### Method 2: Chrome Extension (Best for Desktop)
