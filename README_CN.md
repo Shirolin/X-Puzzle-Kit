@@ -92,7 +92,8 @@
 
 无需安装，即点即用！您可以直接访问网页版，并将其“添加到主屏幕”以获得原生 App 般的体验。
 
-- **访问地址**: [https://x-puzzle-kit.pages.dev](https://x-puzzle-kit.pages.dev)
+- **访问地址 (Cloudflare Pages)**: [https://x-puzzle-kit.pages.dev](https://x-puzzle-kit.pages.dev)
+- **备用镜像 (GitHub Pages)**: [https://shirolin.github.io/X-Puzzle-Kit/](https://shirolin.github.io/X-Puzzle-Kit/)
 - **特色功能**: 支持在**移动端**通过系统“分享”功能将推文（App 或网页版）直接导入处理。
 
 ### 方法二：Chrome 浏览器扩展 (PC 控制台最佳)
