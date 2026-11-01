@@ -6,7 +6,7 @@
     <b>Creative Puzzle & Stitching Toolkit for X (Twitter)</b>
   </p>
   <p>
-    <b>English</b> | <a href="./README_CN.md">简体中文</a>
+    <b>English</b> | <a href="./README_CN.md">简体中文</a> · <a href="https://x-puzzle-kit.pages.dev"><b>Online Web App ↗</b></a>
   </p>
 
   <p>
@@ -28,7 +28,7 @@
 
   <p>
     <a href="https://x-puzzle-kit.pages.dev">
-      <img src="https://img.shields.io/badge/Try_Web_App_(PWA)-Try_Web_App-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="Try Web App" />
+      <img src="https://img.shields.io/badge/Web_Studio_(PWA)-Launch_Online-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="Try Web App" />
     </a>
     <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
       <img src="https://img.shields.io/badge/Download_Extension-Download-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
