@@ -6,7 +6,7 @@
     <b>X (Twitter) 创意拼图/拆分工具箱</b>
   </p>
   <p>
-    <a href="./README.md">English</a> | <b>简体中文</b>
+    <a href="./README.md">English</a> | <b>简体中文</b> · <a href="https://x-puzzle-kit.pages.dev"><b>在线工作台 (PWA) ↗</b></a>
   </p>
 
   <p>
@@ -28,7 +28,7 @@
 
   <p>
     <a href="https://x-puzzle-kit.pages.dev">
-      <img src="https://img.shields.io/badge/点击访问_Web_版_(PWA)-Try_Web_App-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="Try Web App" />
+      <img src="https://img.shields.io/badge/在线工作台_(PWA)-立即使用-blue?style=for-the-badge&logo=pwa&logoColor=white" alt="Try Web App" />
     </a>
     <a href="https://github.com/Shirolin/X-Puzzle-Kit/releases/latest">
       <img src="https://img.shields.io/badge/下载最新离线包-Download-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Download" />
