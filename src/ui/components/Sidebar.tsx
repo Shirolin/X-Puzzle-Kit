@@ -17,6 +17,7 @@ import {
   ChevronUp,
   ChevronDown,
   Coffee,
+  Printer,
   Puzzle,
   HelpCircle,
   BookOpen,
@@ -1363,6 +1364,27 @@ export function Sidebar({
                       }}
                     >
                       <Coffee size={15} />
+                    </a>
+                    <a
+                      href="https://chromewebstore.google.com/detail/mfmldbbkajimckojjgceehiackjpakai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-icon"
+                      title="PostPress"
+                      style={{
+                        textDecoration: "none",
+                        color: "var(--color-text)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "6px",
+                        backgroundColor: "var(--color-surface-soft)",
+                        transition: "all 0.2s",
+                      }}
+                    >
+                      <Printer size={15} />
                     </a>
                   </div>
                 </div>

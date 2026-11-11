@@ -161,6 +161,11 @@ npm run package
 - [爱发电 (Afdian)](https://ifdian.net/a/shirolin)
 - [Ko-fi](https://ko-fi.com/shirolin)
 
+### 同作者的其他扩展
+
+- **[PostPress](https://chromewebstore.google.com/detail/mfmldbbkajimckojjgceehiackjpakai)** —— 把 X 上的推文或长串一键复制成出版级 3× 卡片。
+- **[Imaget](https://chromewebstore.google.com/detail/kjnhapjhnhlilcngmhggiaaljddadjek)** —— 嗅探并批量下载页面上的所有图片。
+
 ## 📄 许可证
 
 [GPL-3.0](./LICENSE) License © 2026 shirolin

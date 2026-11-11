@@ -161,6 +161,11 @@ If you find this project helpful, please give it a Star ⭐️ or buy me a coffe
 - [Afdian](https://ifdian.net/a/shirolin)
 - [Ko-fi](https://ko-fi.com/shirolin)
 
+### More extensions by the same author
+
+- **[PostPress](https://chromewebstore.google.com/detail/mfmldbbkajimckojjgceehiackjpakai)** — Copy any post or thread on X as a print-grade 3× card, straight to your clipboard.
+- **[Imaget](https://chromewebstore.google.com/detail/kjnhapjhnhlilcngmhggiaaljddadjek)** — Sniff and batch-download every image on a page.
+
 ## 📄 License
 
 [GPL-3.0](./LICENSE) License © 2026 shirolin
