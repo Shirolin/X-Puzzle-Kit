@@ -22,21 +22,23 @@ function processTweet(tweet: HTMLElement) {
   // Check if button is already injected
   if (tweet.querySelector(".x-puzzle-kit-btn")) return;
 
-  // Find images in the tweet
+  // Find images in the tweet (X 支持单推文超过 4 张图，不设上限)
   const photoContainers = tweet.querySelectorAll(
     'div[data-testid="tweetPhoto"]',
   );
-  if (photoContainers.length >= 2 && photoContainers.length <= 4) {
-    injectStitchButton(tweet, photoContainers);
+  if (photoContainers.length >= 2) {
+    injectStitchButton(tweet);
   }
 }
 
 /**
  * Inject "Stitch" button (SVG Icon version) into the tweet
  */
-function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
+function injectStitchButton(tweet: HTMLElement) {
   // Find tweet action bar (where Retweet/Like buttons are)
-  const actionBar = tweet.querySelector('div[role="group"][aria-label]');
+  const actionBar =
+    tweet.querySelector('div[role="group"][aria-label]') ??
+    tweet.querySelector('[data-testid="reply"]')?.closest('div[role="group"]');
   if (!actionBar) return;
 
   const container = createButtonContainer();
@@ -47,7 +49,7 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
   // 图标尺寸跟随 X 的原生操作图标：时间线 18.75px，推文详情 22.5px。
   // 写进变量后，盒子宽度和悬停圆圈（图标 + 16px）都按同一个尺寸算。
   const referenceIcon =
-    actionBar.querySelector('button[data-testid="reply"] svg') ??
+    actionBar.querySelector('[data-testid="reply"] svg') ??
     actionBar.querySelector("svg");
   // 用计算宽度而不是 getBoundingClientRect：操作栏尚未布局时（离屏、隐藏）
   // 也能拿到 18.75 / 22.5，不会退回默认值。
@@ -78,7 +80,7 @@ function injectStitchButton(tweet: HTMLElement, photos: NodeListOf<Element>) {
     iconWrapper.append(spinner);
 
     try {
-      await handleStitchClick(tweet, photos);
+      await handleStitchClick(tweet);
     } catch (err) {
       console.error("Stitch error:", err);
       // Handle extension context invalidated (common during dev)
@@ -197,16 +199,16 @@ function createStitchIcon() {
 /**
  * Logic handling stitch button click
  */
-async function handleStitchClick(
-  tweet: HTMLElement,
-  photos: NodeListOf<Element>,
-) {
+async function handleStitchClick(tweet: HTMLElement) {
+  // 点击时再实时收集图片节点，避免轮播/延迟渲染导致早期注入时抓不全
+  const photos = tweet.querySelectorAll('div[data-testid="tweetPhoto"]');
+
   // Extract artist handle and tweet ID
   let artistHandle = "unknown";
   let tweetId = "unknown";
 
   const timeElement = tweet.querySelector("time");
-  const tweetLink = timeElement?.parentElement as HTMLAnchorElement;
+  const tweetLink = timeElement?.closest("a") as HTMLAnchorElement | null;
   if (tweetLink?.href) {
     try {
       const url = new URL(tweetLink.href);
@@ -229,7 +231,10 @@ async function handleStitchClick(
       let originalUrl = img.src;
       try {
         const url = new URL(img.src);
-        if (url.hostname === "pbs.twimg.com") {
+        if (
+          url.hostname === "pbs.twimg.com" &&
+          url.pathname.startsWith("/media/")
+        ) {
           url.searchParams.set("name", "orig");
           originalUrl = url.toString();
         }

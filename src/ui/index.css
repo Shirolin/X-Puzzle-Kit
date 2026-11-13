@@ -2340,10 +2340,16 @@ input:checked + .slider:before {
   flex: 1;
 }
 
-.layout-btn:hover {
+.layout-btn:hover:not(:disabled) {
   background-color: var(--color-surface);
   color: var(--color-text);
   transform: translateY(-1px);
+}
+
+.layout-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .layout-btn.active {

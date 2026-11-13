@@ -4,7 +4,8 @@ import {
   calculateCellRegions,
   calculateEffectiveArea,
 } from "../src/core/splitLayout";
-import type { SplitConfig } from "../src/core/types";
+import { calculateLayout } from "../src/core/stitcher";
+import type { ImageNode, SplitConfig } from "../src/core/types";
 
 const size = (width: number, height: number): ImageSize => ({ width, height });
 
@@ -80,12 +81,18 @@ describe("recommendLayout", () => {
     });
   });
 
-  it("0 / 1 / 5 张图回落到横向排列", () => {
+  it("0 / 1 张图回落到横向；>4 张时仅能铺满矩形才默认网格，否则默认纵向", () => {
     expect(recommendLayout([])).toBe("HORIZONTAL_Nx1");
     expect(recommendLayout([size(100, 100)])).toBe("HORIZONTAL_Nx1");
-    expect(
-      recommendLayout([size(1, 1), size(1, 1), size(1, 1), size(1, 1), size(1, 1)]),
-    ).toBe("HORIZONTAL_Nx1");
+    const make = (n: number) => Array.from({ length: n }, () => size(1, 1));
+    // 6(3x2), 9(3x3), 12(4x3), 16(4x4), 20(5x4) 正好铺满 -> GRID_2x2
+    for (const n of [6, 9, 12, 16, 20]) {
+      expect(recommendLayout(make(n))).toBe("GRID_2x2");
+    }
+    // 5, 7, 8, 10, 15 等有残行 -> VERTICAL_1xN
+    for (const n of [5, 7, 8, 10, 15]) {
+      expect(recommendLayout(make(n))).toBe("VERTICAL_1xN");
+    }
   });
 });
 
@@ -359,5 +366,60 @@ describe("calculateEffectiveArea", () => {
         expect(r.drawY + r.drawH).toBeLessThanOrEqual(h);
       }
     }
+  });
+});
+
+// ---------------------------------------------------------------------------
+
+describe("calculateLayout (GRID_2x2 自适应多行网格)", () => {
+  const makeNodes = (dims: Array<[number, number]>): ImageNode[] =>
+    dims.map(([width, height], i) => ({
+      id: String(i),
+      originalUrl: "",
+      thumbnailUrl: "",
+      width,
+      height,
+    }));
+
+  it("4 张图保持 2x2：两行右端对齐，无 1px 接缝", () => {
+    const nodes = makeNodes([
+      [300, 400],
+      [500, 400],
+      [400, 300],
+      [333, 300],
+    ]);
+    const scene = calculateLayout(nodes, "GRID_2x2", 10);
+    expect(scene.placements).toHaveLength(4);
+    // 第一行右端与第二行右端均等于 scene.width
+    const row1Right = scene.placements[1].x + scene.placements[1].width;
+    const row2Right = scene.placements[3].x + scene.placements[3].width;
+    expect(row1Right).toBe(scene.width);
+    expect(row2Right).toBe(scene.width);
+  });
+
+  it("6 张图按 3x2 排布，20 张图按 5x4 排布", () => {
+    const nodes6 = makeNodes(Array.from({ length: 6 }, () => [100, 100]));
+    const scene6 = calculateLayout(nodes6, "GRID_2x2", 10);
+    expect(scene6.width).toBe(100 * 3 + 10 * 2);
+    expect(scene6.height).toBe(100 * 2 + 10);
+
+    const nodes20 = makeNodes(Array.from({ length: 20 }, () => [100, 100]));
+    const scene20 = calculateLayout(nodes20, "GRID_2x2", 0);
+    expect(scene20.width).toBe(500);
+    expect(scene20.height).toBe(400);
+    expect(scene20.placements).toHaveLength(20);
+  });
+
+  it("未填满的末行不拉伸占满整行，保持上一行高度左对齐", () => {
+    // 7 张 100x100：cols=3 -> 3 + 3 + 1
+    const nodes7 = makeNodes(Array.from({ length: 7 }, () => [100, 100]));
+    const scene7 = calculateLayout(nodes7, "GRID_2x2", 0);
+    expect(scene7.width).toBe(300);
+    expect(scene7.height).toBe(300);
+    const last = scene7.placements[6];
+    expect(last.x).toBe(0);
+    expect(last.y).toBe(200);
+    expect(last.width).toBe(100);
+    expect(last.height).toBe(100);
   });
 });

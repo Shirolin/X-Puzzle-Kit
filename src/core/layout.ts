@@ -12,12 +12,26 @@ export interface ImageSize {
 }
 
 /**
+ * 计算自适应网格的列数，并判断是否刚好铺满无残行。
+ */
+export function getGridColumns(count: number): number {
+  return Math.ceil(Math.sqrt(count));
+}
+
+export function isCompleteGrid(count: number): boolean {
+  if (count < 4) return false;
+  return count % getGridColumns(count) === 0;
+}
+
+/**
  * Recommend layout based on image quantity and dimensions
  */
 export function recommendLayout(images: ImageSize[]): LayoutType {
   const n = images.length;
 
-  if (n === 4) return "GRID_2x2";
+  if (n >= 4) {
+    return isCompleteGrid(n) ? "GRID_2x2" : "VERTICAL_1xN";
+  }
 
   if (n === 3) {
     const r1 = images[0].width / images[0].height;

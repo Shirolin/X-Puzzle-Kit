@@ -5,6 +5,8 @@ interface LayoutButtonProps {
   onClick: () => void;
   icon: VNode;
   label: string;
+  disabled?: boolean;
+  title?: string;
 }
 
 export function LayoutButton({
@@ -12,10 +14,14 @@ export function LayoutButton({
   onClick,
   icon,
   label,
+  disabled = false,
+  title,
 }: LayoutButtonProps) {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
+      title={title}
       className={`layout-btn ${active ? "active" : ""}`}
     >
       <div className="layout-icon">{icon}</div>

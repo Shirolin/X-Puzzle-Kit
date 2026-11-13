@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from "preact/hooks";
 import { ImageNode, LayoutType } from "../../core/types";
+import { isCompleteGrid } from "../../core/layout";
 import { stitchImages } from "../../core/stitcher";
 import { platformCanvas } from "../../core/platform";
 
@@ -63,11 +64,15 @@ export function useStitchManager(options: StitchOptions = {}) {
       setImages((prev) => {
         const next = [...prev];
         next[index] = { ...next[index], visible: !next[index].visible };
+        const visibleCount = next.filter((img) => img.visible !== false).length;
+        if (visibleCount > 3 && layout === "T_SHAPE_3") {
+          setLayout(isCompleteGrid(visibleCount) ? "GRID_2x2" : "VERTICAL_1xN");
+        }
         return next;
       });
       triggerGeneration();
     },
-    [triggerGeneration],
+    [triggerGeneration, layout],
   );
 
   const updateLocalGap = useCallback(
@@ -111,7 +116,9 @@ export function useStitchManager(options: StitchOptions = {}) {
         if (next.length === 1) setLayout("VERTICAL_1xN");
         else if (next.length === 2) setLayout("HORIZONTAL_Nx1");
         else if (next.length === 3) setLayout("T_SHAPE_3");
-        else if (next.length >= 4) setLayout("GRID_2x2");
+        else if (next.length >= 4) {
+          setLayout(isCompleteGrid(next.length) ? "GRID_2x2" : "VERTICAL_1xN");
+        }
         return next;
       });
       triggerGeneration();

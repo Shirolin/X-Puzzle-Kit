@@ -643,6 +643,8 @@ export function Sidebar({
       });
   }, []);
 
+  const visibleCount = images.filter((img) => img.visible !== false).length;
+
   return (
     <div
       className={`sidebar-panel ${isCollapsed ? "collapsed" : ""}`}
@@ -736,6 +738,7 @@ export function Sidebar({
                   onClick={() => setLayout("T_SHAPE_3")}
                   icon={<Layout size={13} />}
                   label={t("layoutTShape")}
+                  disabled={visibleCount > 3}
                 />
                 <LayoutButton
                   active={

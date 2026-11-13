@@ -1,4 +1,5 @@
 import { ImageNode, LayoutType } from "./types";
+import { getGridColumns } from "./layout";
 import { platformCanvas, safeCloseImageBitmap } from "./platform";
 
 /**
@@ -57,9 +58,9 @@ export async function stitchImages(
 }
 
 /**
- * Layout strategy router
+ * Layout strategy router (pure coordinate calculation, exported for testing)
  */
-function calculateLayout(
+export function calculateLayout(
   images: ImageNode[],
   layout: LayoutType,
   gap: number,
@@ -72,10 +73,10 @@ function calculateLayout(
     case "VERTICAL_1xN":
       return layoutVertical(images, gap);
     case "GRID_2x2":
-      // Smart fallback: use T-Shape if less than 4 images, use horizontal if less than 3
+      // Smart fallback: use T-Shape if 3 images, horizontal if less than 3, adaptive grid for >= 4
       if (images.length === 3) return layoutTShape3(images, gap);
       if (images.length < 3) return layoutHorizontal(images, gap);
-      return layoutGrid2x2(images, gap);
+      return layoutGrid(images, gap);
     case "T_SHAPE_3":
       // Smart fallback: use horizontal if less than 3 images
       if (images.length < 3) return layoutHorizontal(images, gap);
@@ -136,41 +137,88 @@ function layoutVertical(images: ImageNode[], globalGap: number): Scene {
 }
 
 /**
- * Layout: Grid (2x2)
- * Based on top-row alignment principle; eliminate 1px gaps via difference calculation.
+ * Layout: Adaptive Grid (2x2 for 4 images, ceil(sqrt(N)) columns for N > 4)
+ * Based on top-row alignment principle; full rows eliminate 1px gaps via difference calculation,
+ * while an incomplete last row preserves the previous row's height instead of stretching.
  */
-function layoutGrid2x2(images: ImageNode[], globalGap: number): Scene {
-  const h1 = Math.round(images[0].height);
-  const gapRow1 = Math.round(globalGap + (images[0].localGap || 0));
-  const s1 = h1 / images[1].height;
-  const w1_0 = Math.round(images[0].width);
-  const w1_1 = Math.round(images[1].width * s1);
-  const rowWidth = w1_0 + gapRow1 + w1_1;
+function layoutGrid(images: ImageNode[], globalGap: number): Scene {
+  const cols = getGridColumns(images.length);
+  const rows: ImageNode[][] = [];
+  for (let i = 0; i < images.length; i += cols) {
+    rows.push(images.slice(i, i + cols));
+  }
 
-  const gapRow2 = Math.round(globalGap + (images[2].localGap || 0));
-  const ratioSum2 =
-    images[2].width / images[2].height + images[3].width / images[3].height;
-  const h2 = Math.round((rowWidth - gapRow2) / ratioSum2);
-  const w2_2 = Math.round((images[2].width / images[2].height) * h2);
-  const w2_3 = rowWidth - gapRow2 - w2_2; // Eliminate 1px gap
+  const placements: Placement[] = [];
 
-  const vGap = Math.round(globalGap + (images[1].localGap || 0));
+  // Row 0 establishes the target rowWidth using the first image's height
+  const firstRow = rows[0];
+  const h0 = Math.max(1, Math.round(firstRow[0].height));
+  let rowWidth = 0;
+  for (let j = 0; j < firstRow.length; j++) {
+    const img = firstRow[j];
+    const w =
+      j === 0
+        ? Math.max(1, Math.round(img.width))
+        : Math.max(1, Math.round(img.width * (h0 / img.height)));
+    placements.push({ img, x: rowWidth, y: 0, width: w, height: h0 });
+    rowWidth += w;
+    if (j < firstRow.length - 1) {
+      rowWidth += Math.round(globalGap + (img.localGap || 0));
+    }
+  }
+
+  let currentY = h0;
+  let prevRowHeight = h0;
+  let maxWidth = rowWidth;
+
+  for (let r = 1; r < rows.length; r++) {
+    const prevRow = rows[r - 1];
+    const prevRowLastImg = prevRow[prevRow.length - 1];
+    const vGap = Math.round(globalGap + (prevRowLastImg.localGap || 0));
+    currentY += vGap;
+
+    const row = rows[r];
+    const hGaps: number[] = [];
+    let rowGapSum = 0;
+    for (let j = 0; j < row.length - 1; j++) {
+      const gap = Math.round(globalGap + (row[j].localGap || 0));
+      hGaps.push(gap);
+      rowGapSum += gap;
+    }
+
+    const isFullRow = row.length === cols;
+    let rowHeight = prevRowHeight;
+    if (isFullRow) {
+      const ratioSum = row.reduce(
+        (sum, img) => sum + img.width / img.height,
+        0,
+      );
+      rowHeight = Math.max(1, Math.round((rowWidth - rowGapSum) / ratioSum));
+    }
+
+    let x = 0;
+    for (let j = 0; j < row.length; j++) {
+      const img = row[j];
+      const isLastInFullRow = isFullRow && j === row.length - 1;
+      const w = isLastInFullRow
+        ? Math.max(1, rowWidth - x) // Eliminate 1px gap
+        : Math.max(1, Math.round((img.width / img.height) * rowHeight));
+      placements.push({ img, x, y: currentY, width: w, height: rowHeight });
+      x += w;
+      if (j < row.length - 1) {
+        x += hGaps[j];
+      }
+    }
+
+    maxWidth = Math.max(maxWidth, x);
+    prevRowHeight = rowHeight;
+    currentY += rowHeight;
+  }
 
   return {
-    width: rowWidth,
-    height: h1 + vGap + h2,
-    placements: [
-      { img: images[0], x: 0, y: 0, width: w1_0, height: h1 },
-      { img: images[1], x: w1_0 + gapRow1, y: 0, width: w1_1, height: h1 },
-      { img: images[2], x: 0, y: h1 + vGap, width: w2_2, height: h2 },
-      {
-        img: images[3],
-        x: w2_2 + gapRow2,
-        y: h1 + vGap,
-        width: w2_3,
-        height: h2,
-      },
-    ],
+    width: Math.max(1, maxWidth),
+    height: Math.max(1, currentY),
+    placements,
   };
 }
 
@@ -218,15 +266,33 @@ function drawScene(
   scene: Scene,
   backgroundColor: string,
 ): HTMLCanvasElement | OffscreenCanvas {
-  const canvas = platformCanvas.create(scene.width, scene.height);
+  // 多图（如 20 张原图拼接）可能超过浏览器单边 32767px 或总面积上限，超限时等比缩放防崩溃
+  const MAX_CANVAS_DIM = 32767;
+  const MAX_CANVAS_AREA = 268435456; // 16384 * 16384
+  const rawW = Math.max(1, scene.width);
+  const rawH = Math.max(1, scene.height);
+  let scale = 1;
+  if (rawW > MAX_CANVAS_DIM || rawH > MAX_CANVAS_DIM) {
+    scale = Math.min(scale, MAX_CANVAS_DIM / rawW, MAX_CANVAS_DIM / rawH);
+  }
+  if (rawW * rawH * scale * scale > MAX_CANVAS_AREA) {
+    scale = Math.min(scale, Math.sqrt(MAX_CANVAS_AREA / (rawW * rawH)));
+  }
+
+  const canvasW = Math.max(1, Math.floor(rawW * scale));
+  const canvasH = Math.max(1, Math.floor(rawH * scale));
+  const canvas = platformCanvas.create(canvasW, canvasH);
 
   const ctx = canvas.getContext("2d") as
     | CanvasRenderingContext2D
     | OffscreenCanvasRenderingContext2D;
   if (!ctx) return canvas;
 
-  // Key: Disable image smoothing to ensure physical pixel alignment and prevent semi-transparent seams.
-  ctx.imageSmoothingEnabled = false;
+  // 1:1 时关闭插值保证物理像素对齐；仅在超限降采样时开启高质量平滑
+  ctx.imageSmoothingEnabled = scale < 1;
+  if (scale < 1 && "imageSmoothingQuality" in ctx) {
+    ctx.imageSmoothingQuality = "high";
+  }
 
   // Fill background
   if (backgroundColor !== "transparent") {
@@ -237,7 +303,13 @@ function drawScene(
   // Iterate and draw images
   for (const p of scene.placements) {
     if (p.img.bitmap) {
-      ctx.drawImage(p.img.bitmap, p.x, p.y, p.width, p.height);
+      ctx.drawImage(
+        p.img.bitmap,
+        p.x * scale,
+        p.y * scale,
+        p.width * scale,
+        p.height * scale,
+      );
     }
   }
 

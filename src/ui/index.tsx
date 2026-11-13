@@ -110,7 +110,10 @@ export async function mountUI(task: StitchTask, splitImageUrl?: string) {
   // 预加载图片
   const updatedImages = await Promise.all(
     task.userImages.map(async (img) => {
-      const response = await fetchImageData(img.originalUrl);
+      let response = await fetchImageData(img.originalUrl);
+      if ((!response || !response.dataUrl) && img.originalUrl !== img.thumbnailUrl) {
+        response = await fetchImageData(img.thumbnailUrl);
+      }
       if (response && response.dataUrl) {
         const res = await fetch(response.dataUrl);
         const blob = await res.blob();
@@ -123,7 +126,11 @@ export async function mountUI(task: StitchTask, splitImageUrl?: string) {
         };
       } else {
         console.error("Fetch image failed", response?.error);
-        return img;
+        // 避免单张图片加载失败导致整体拼接崩溃
+        return {
+          ...img,
+          visible: false,
+        };
       }
     }),
   );
