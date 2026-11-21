@@ -167,6 +167,10 @@
     "message": "Spalten (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "Das Bild ist für so viele Teile mit diesem Abstand zu klein. Verringere den Abstand oder die Anzahl der Teile.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Ergebnis",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Demo ansehen",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Auf X posten"
+  },
+  "postShareFiles": {
+    "message": "Teilen-Menü öffnen"
+  },
+  "postShareHint": {
+    "message": "Wenn X im Teilen-Menü deines Geräts erscheint, wähle es aus, um die Bilder dorthin zu senden."
+  },
+  "postCopyImage": {
+    "message": "Bild kopieren"
+  },
+  "postCopied": {
+    "message": "Bild kopiert. Öffne X und füge es ein."
+  },
+  "postCopyFailed": {
+    "message": "Das Bild konnte nicht kopiert werden. Lade es stattdessen herunter."
+  },
+  "postDownloadImage": {
+    "message": "Bild herunterladen"
+  },
+  "postDownloadHint": {
+    "message": "Lade das Bild herunter, öffne X und füge es einem Beitrag hinzu."
+  },
+  "postOpenX": {
+    "message": "X öffnen"
+  },
+  "postComposerUnavailable": {
+    "message": "X konnte den Beitragseditor nicht öffnen. Versuche es erneut oder lade die Bildteile herunter."
+  },
+  "postComposerDraft": {
+    "message": "In X ist bereits ein Entwurf geöffnet. Schließe ihn oder stelle ihn fertig und versuche es erneut."
+  },
+  "postComposerAttachments": {
+    "message": "X hat nicht alle Bildteile hinzugefügt. Prüfe die Anhänge in X oder lade die Originalteile herunter."
+  },
+  "postShareFailed": {
+    "message": "Die Bilder konnten über das Teilen-Menü des Geräts nicht geteilt werden."
+  },
+  "postShareCountLimit": {
+    "message": "Diese Auswahl enthält $1 Bilder. Über das Teilen-Menü des Browsers lassen sich bis zu $2 auf einmal teilen."
+  },
+  "postShareSizeLimit": {
+    "message": "Die Bilder sind zusammen zu groß, um sie auf einmal im Browser zu teilen."
+  },
+  "postShareUnavailable": {
+    "message": "Dieser Browser kann diese Bilder nicht direkt teilen."
+  },
+  "postDownloadZipHint": {
+    "message": "Die ZIP-Datei enthält alle Bilder. Entpacke sie, öffne X und füge die Bilder in der Reihenfolge der Dateinamen zu einem Beitrag hinzu."
+  },
+  "postDownloadFailed": {
+    "message": "Der Download konnte nicht vorbereitet werden. Versuche es erneut."
   },
   "privacyNotice": {
     "message": "Datenschutz: Die Web-Version nutzt einen sicheren Proxy nur zum Parsen (keine Logs). Verarbeitung erfolgt lokal.",

@@ -167,6 +167,10 @@
     "message": "Sütun (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "Görsel, seçilen boşlukla bu kadar parçaya bölünemiyor. Boşluğu veya parça sayısını azaltın.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Sonuç",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Demoyu İzle",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "X’te paylaş"
+  },
+  "postShareFiles": {
+    "message": "Paylaşım menüsünü aç"
+  },
+  "postShareHint": {
+    "message": "Cihazınızın paylaşım menüsünde X görünüyorsa görselleri göndermek için X’i seçin."
+  },
+  "postCopyImage": {
+    "message": "Görseli kopyala"
+  },
+  "postCopied": {
+    "message": "Görsel kopyalandı. X’i açıp yapıştırın."
+  },
+  "postCopyFailed": {
+    "message": "Görsel kopyalanamadı. İndirip ekleyin."
+  },
+  "postDownloadImage": {
+    "message": "Görseli indir"
+  },
+  "postDownloadHint": {
+    "message": "Görseli indirin, X’i açıp gönderiye ekleyin."
+  },
+  "postOpenX": {
+    "message": "X’i aç"
+  },
+  "postComposerUnavailable": {
+    "message": "X gönderi düzenleyicisi açılamadı. Tekrar deneyin veya parçaları indirin."
+  },
+  "postComposerDraft": {
+    "message": "X’te zaten açık bir taslak var. Taslağı kapatın veya tamamlayın, ardından tekrar deneyin."
+  },
+  "postComposerAttachments": {
+    "message": "X tüm parçaları ekleyemedi. X’teki ekleri kontrol edin veya parçaları indirin."
+  },
+  "postShareFailed": {
+    "message": "Sistem bu görselleri paylaşamadı."
+  },
+  "postShareCountLimit": {
+    "message": "Toplam $1 görsel var. Tarayıcınız tek seferde en fazla $2 görsel paylaşabilir."
+  },
+  "postShareSizeLimit": {
+    "message": "Görsellerin toplam boyutu, tarayıcının tek seferde paylaşma sınırını aşıyor."
+  },
+  "postShareUnavailable": {
+    "message": "Bu tarayıcı görselleri doğrudan paylaşamıyor."
+  },
+  "postDownloadZipHint": {
+    "message": "ZIP dosyası tüm görselleri içerir. Dosyaları çıkarın, X’i açın ve görselleri dosya adı sırasıyla tek bir gönderiye ekleyin."
+  },
+  "postDownloadFailed": {
+    "message": "İndirme hazırlanamadı. Tekrar deneyin."
   },
   "privacyNotice": {
     "message": "Gizlilik: Web sürümü sadece ayrıştırma için güvenli bir proxy kullanır (log tutulmaz). İşleme yereldir.",

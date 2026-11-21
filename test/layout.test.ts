@@ -3,6 +3,7 @@ import { recommendLayout, type ImageSize } from "../src/core/layout";
 import {
   calculateCellRegions,
   calculateEffectiveArea,
+  getSplitFilename,
 } from "../src/core/splitLayout";
 import { calculateLayout } from "../src/core/stitcher";
 import type { ImageNode, SplitConfig } from "../src/core/types";
@@ -13,13 +14,13 @@ const size = (width: number, height: number): ImageSize => ({ width, height });
 
 describe("recommendLayout", () => {
   it("4 张图固定为 2x2 网格", () => {
-    expect(recommendLayout([size(1, 1), size(1, 1), size(1, 1), size(1, 1)])).toBe(
-      "GRID_2x2",
-    );
+    expect(
+      recommendLayout([size(1, 1), size(1, 1), size(1, 1), size(1, 1)]),
+    ).toBe("GRID_2x2");
     // 与图片比例无关
-    expect(recommendLayout([size(9, 1), size(1, 9), size(1, 1), size(2, 3)])).toBe(
-      "GRID_2x2",
-    );
+    expect(
+      recommendLayout([size(9, 1), size(1, 9), size(1, 1), size(2, 3)]),
+    ).toBe("GRID_2x2");
   });
 
   describe("3 张图", () => {
@@ -99,7 +100,12 @@ describe("recommendLayout", () => {
 // ---------------------------------------------------------------------------
 
 describe("calculateCellRegions", () => {
-  const base: SplitConfig = { layout: "HORIZONTAL_Nx1", rows: 2, cols: 3, gap: 0 };
+  const base: SplitConfig = {
+    layout: "HORIZONTAL_Nx1",
+    rows: 2,
+    cols: 3,
+    gap: 0,
+  };
 
   /** 断言所有格子都落在有效区域内 */
   function expectWithinBounds(
@@ -125,13 +131,11 @@ describe("calculateCellRegions", () => {
     );
     expect(regions).toHaveLength(3);
 
-    const segW = Math.floor((W - 2 * 10) / 3); // 326
-    regions.forEach((r, i) => {
-      expect(r.width).toBe(segW);
-      expect(r.height).toBe(H);
-      expect(r.x).toBe(i * (segW + 10));
-      expect(r.y).toBe(0);
-    });
+    expect(regions).toEqual([
+      { x: 0, y: 0, width: 326, height: H },
+      { x: 336, y: 0, width: 327, height: H },
+      { x: 673, y: 0, width: 327, height: H },
+    ]);
     expectWithinBounds(regions, W, H);
   });
 
@@ -250,9 +254,7 @@ describe("calculateCellRegions", () => {
       640,
       480,
     );
-    expect(regions).toEqual([
-      { x: 0, y: 0, width: 640, height: 480 },
-    ]);
+    expect(regions).toEqual([{ x: 0, y: 0, width: 640, height: 480 }]);
   });
 
   it("gap=0 时各格无缝铺满", () => {
@@ -267,25 +269,36 @@ describe("calculateCellRegions", () => {
     expect(regions[2].x + regions[2].width).toBe(W);
   });
 
-  it("取整导致的余量不超过 gap 级别（不溢出）", () => {
-    // 尺寸刻意选为「不能整除」，这样若把 floor 改成 ceil 就会越界而被本用例捕获。
-    // 反例：1001/999 + gap 7 在横向恰好整除，floor 与 ceil 结果相同，无法发现该错误。
-    const W = 1000;
-    const H = 997;
-    const gap = 7;
-    for (const layout of [
-      "HORIZONTAL_Nx1",
-      "VERTICAL_1xN",
-      "GRID_2x2",
-      "T_SHAPE_3",
-    ] as const) {
+  it.each(["HORIZONTAL_Nx1", "VERTICAL_1xN"] as const)(
+    "%s 切 20 格时保留不可整除的余数和指定间距",
+    (layout) => {
+      const gap = 3;
       const regions = calculateCellRegions(
-        { layout, rows: 3, cols: 3, gap },
-        W,
-        H,
+        { layout, rows: 20, cols: 20, gap },
+        1019,
+        1019,
       );
-      expectWithinBounds(regions, W, H);
-    }
+      const horizontal = layout === "HORIZONTAL_Nx1";
+      let start = 0;
+      expect(regions).toHaveLength(20);
+      for (const region of regions) {
+        const size = horizontal ? region.width : region.height;
+        expect(horizontal ? region.x : region.y).toBe(start);
+        expect(size).toBeGreaterThanOrEqual(48);
+        expect(size).toBeLessThanOrEqual(49);
+        start += size + gap;
+      }
+      expect(start - gap).toBe(1019);
+    },
+  );
+
+  it("仅在每格至少有 1 像素时返回区域", () => {
+    const config = { ...base, cols: 20, gap: 3 };
+    const boundary = calculateCellRegions(config, 77, 100);
+    expect(boundary).toHaveLength(20);
+    expect(boundary.every((region) => region.width === 1)).toBe(true);
+    expect(calculateCellRegions(config, 76, 100)).toEqual([]);
+    expect(calculateCellRegions({ ...config, gap: 0 }, 19, 100)).toEqual([]);
   });
 });
 
@@ -421,5 +434,30 @@ describe("calculateLayout (GRID_2x2 自适应多行网格)", () => {
     expect(last.y).toBe(200);
     expect(last.width).toBe(100);
     expect(last.height).toBe(100);
+  });
+});
+
+// ---------------------------------------------------------------------------
+
+describe("getSplitFilename", () => {
+  it("2–9 张时使用 1 位序号不补零", () => {
+    const png = new Blob([], { type: "image/png" });
+    expect(getSplitFilename(png, 0, 9)).toBe("split_1.png");
+    expect(getSplitFilename(png, 8, 9)).toBe("split_9.png");
+  });
+
+  it("10–20 张时按位数补零，保证按字典序排序正确", () => {
+    const png = new Blob([], { type: "image/png" });
+    const webp = new Blob([], { type: "image/webp" });
+    expect(getSplitFilename(png, 0, 10)).toBe("split_01.png");
+    expect(getSplitFilename(png, 9, 10)).toBe("split_10.png");
+    expect(getSplitFilename(webp, 19, 20)).toBe("split_20.webp");
+  });
+
+  it("image/jpeg 映射为 .jpg，空 MIME 回落为 .png", () => {
+    expect(getSplitFilename(new Blob([], { type: "image/jpeg" }), 0, 2)).toBe(
+      "split_1.jpg",
+    );
+    expect(getSplitFilename(new Blob([]), 0, 2)).toBe("split_1.png");
   });
 });

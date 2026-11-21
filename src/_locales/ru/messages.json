@@ -167,6 +167,10 @@
     "message": "Количество столбцов (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "Изображение слишком мало для такого количества частей с выбранным отступом. Уменьшите отступ или количество частей.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Результат разделения",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Смотреть бесшовный обмен",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Опубликовать в X"
+  },
+  "postShareFiles": {
+    "message": "Открыть меню «Поделиться»"
+  },
+  "postShareHint": {
+    "message": "Если X есть в меню «Поделиться» на вашем устройстве, выберите его, чтобы отправить изображения."
+  },
+  "postCopyImage": {
+    "message": "Копировать изображение"
+  },
+  "postCopied": {
+    "message": "Изображение скопировано. Откройте X и вставьте его."
+  },
+  "postCopyFailed": {
+    "message": "Не удалось скопировать изображение. Скачайте его."
+  },
+  "postDownloadImage": {
+    "message": "Скачать изображение"
+  },
+  "postDownloadHint": {
+    "message": "Скачайте изображение, откройте X и добавьте его в публикацию."
+  },
+  "postOpenX": {
+    "message": "Открыть X"
+  },
+  "postComposerUnavailable": {
+    "message": "Не удалось открыть редактор публикаций X. Повторите попытку или скачайте части."
+  },
+  "postComposerDraft": {
+    "message": "В X уже открыт черновик. Закройте или завершите его, затем повторите попытку."
+  },
+  "postComposerAttachments": {
+    "message": "X добавил не все части. Проверьте вложения в X или скачайте их."
+  },
+  "postShareFailed": {
+    "message": "Не удалось поделиться изображениями через системное меню."
+  },
+  "postShareCountLimit": {
+    "message": "Количество изображений в наборе — $1. Браузер позволяет поделиться не более чем $2 за раз."
+  },
+  "postShareSizeLimit": {
+    "message": "Общий размер изображений превышает ограничение браузера на одну отправку."
+  },
+  "postShareUnavailable": {
+    "message": "Этот браузер не может напрямую поделиться изображениями."
+  },
+  "postDownloadZipHint": {
+    "message": "ZIP-архив содержит все изображения. Распакуйте его, откройте X и добавьте изображения в одну публикацию по порядку имён файлов."
+  },
+  "postDownloadFailed": {
+    "message": "Не удалось подготовить скачивание. Повторите попытку."
   },
   "privacyNotice": {
     "message": "Приватность: веб-версия использует безопасный прокси для разбора (без логов). Обработка остаётся локальной.",

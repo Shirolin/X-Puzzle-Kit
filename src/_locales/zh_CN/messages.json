@@ -167,6 +167,10 @@
     "message": "列数 (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "图片尺寸过小，无法按所选间距切出这么多张。请减小间距或减少切图数量。",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "拆分结果",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "感受极致分享体验",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "发推"
+  },
+  "postShareFiles": {
+    "message": "打开系统分享菜单"
+  },
+  "postShareHint": {
+    "message": "如果在系统分享菜单中看到 X，选择它即可发送图片。"
+  },
+  "postCopyImage": {
+    "message": "复制图片"
+  },
+  "postCopied": {
+    "message": "图片已复制，打开 X 后粘贴即可。"
+  },
+  "postCopyFailed": {
+    "message": "无法复制图片，请下载后添加。"
+  },
+  "postDownloadImage": {
+    "message": "下载图片"
+  },
+  "postDownloadHint": {
+    "message": "下载图片后点击「打开 X」，将图片添加到帖子。"
+  },
+  "postOpenX": {
+    "message": "打开 X"
+  },
+  "postComposerUnavailable": {
+    "message": "未能打开 X 发帖编辑器。你可以重试，或下载切图后手动添加。"
+  },
+  "postComposerDraft": {
+    "message": "X 中已有打开的草稿。请先关闭或完成编辑，再重试。"
+  },
+  "postComposerAttachments": {
+    "message": "X 未能添加全部切图。请检查 X 发帖编辑器中的附件，或下载切图后手动添加。"
+  },
+  "postShareFailed": {
+    "message": "系统未能分享图片。"
+  },
+  "postShareCountLimit": {
+    "message": "当前共有 $1 张图片，超过了浏览器单次分享的 $2 张上限。"
+  },
+  "postShareSizeLimit": {
+    "message": "图片总大小超过了浏览器的单次分享上限。"
+  },
+  "postShareUnavailable": {
+    "message": "当前浏览器无法直接分享图片。"
+  },
+  "postDownloadZipHint": {
+    "message": "ZIP 包含全部切图。解压后点击「打开 X」，按文件名编号将它们添加到同一条帖子。"
+  },
+  "postDownloadFailed": {
+    "message": "下载准备失败，请重试。"
   },
   "privacyNotice": {
     "message": "隐私提示：Web 版通过安全代理解析推文（无日志），处理过程始终在本地完成。",

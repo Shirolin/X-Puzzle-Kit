@@ -1434,6 +1434,63 @@ input:checked + .slider:before {
   width: 100%; /* PC 端垂直时占满宽度 */
 }
 
+.post-to-x-button {
+  min-height: 44px;
+}
+
+.post-to-x-dialog {
+  box-sizing: border-box;
+  width: min(420px, calc(100% - 2rem));
+  max-height: calc(100% - 2rem);
+  padding: clamp(1rem, 5vw, 1.5rem);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-background);
+  color: var(--color-text);
+  box-shadow: var(--shadow-glass);
+}
+
+.post-to-x-dialog::backdrop {
+  background: rgb(0 0 0 / 50%);
+}
+
+.post-to-x-content {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.post-to-x-content h2,
+.post-to-x-content p {
+  margin: 0;
+}
+
+.post-to-x-content p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.post-to-x-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.post-to-x-dialog .btn {
+  min-height: 44px;
+  white-space: normal;
+}
+
+.post-to-x-dialog .btn:focus-visible,
+.post-to-x-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.post-to-x-feedback:empty {
+  display: none;
+}
+
 [data-theme="dark"] .sidebar-footer {
   background: #1c1c1e !important;
   border-top: 1px solid rgba(255, 255, 255, 0.05);

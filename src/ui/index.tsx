@@ -2,7 +2,8 @@ import { render } from "preact";
 import { App } from "./App";
 import { Toaster } from "sonner";
 import { StitchTask } from "../core/types";
-import { fetchImageData, platformStorage } from "../core/platform";
+import { fetchImageData, isExtension, platformStorage } from "../core/platform";
+import { fillXComposer } from "../content/xComposer";
 import cssText from "./index.css?inline";
 import sonnerCssText from "sonner/dist/styles.css?inline";
 
@@ -111,7 +112,10 @@ export async function mountUI(task: StitchTask, splitImageUrl?: string) {
   const updatedImages = await Promise.all(
     task.userImages.map(async (img) => {
       let response = await fetchImageData(img.originalUrl);
-      if ((!response || !response.dataUrl) && img.originalUrl !== img.thumbnailUrl) {
+      if (
+        (!response || !response.dataUrl) &&
+        img.originalUrl !== img.thumbnailUrl
+      ) {
         response = await fetchImageData(img.thumbnailUrl);
       }
       if (response && response.dataUrl) {
@@ -142,9 +146,16 @@ export async function mountUI(task: StitchTask, splitImageUrl?: string) {
       task={task}
       initialMode={splitImageUrl ? "split" : "stitch"}
       initialSplitImageUrl={splitImageUrl}
-      onClose={() => {
-        render(null, appRoot);
-      }}
+      onClose={() => render(null, appRoot)}
+      onPostToX={
+        isExtension
+          ? async (files, signal) => {
+              const error = await fillXComposer(files, signal);
+              if (!error && !signal.aborted) render(null, appRoot);
+              return error;
+            }
+          : undefined
+      }
       mountNode={appRoot as HTMLElement}
     />,
     appRoot,

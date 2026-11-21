@@ -119,6 +119,7 @@ export function SplitEditor({
   if (!source || !sourceUrl || drawW === 0 || drawH === 0) return null;
 
   const regions = calculateCellRegions(config, drawW, drawH);
+  if (!regions.length) return null;
 
   return (
     <div
@@ -155,8 +156,6 @@ export function SplitEditor({
           fillBackground={config.fillBackground}
           backgroundColor={backgroundColor}
           gap={config.gap}
-          rows={config.rows}
-          cols={config.cols}
           drawW={drawW}
           drawH={drawH}
         />
@@ -186,8 +185,6 @@ interface SplitEditorCellProps {
   fillBackground?: boolean;
   backgroundColor: import("../../core/types").BackgroundColor;
   gap: number;
-  rows: number;
-  cols: number;
   drawW: number;
   drawH: number;
 }
@@ -216,8 +213,6 @@ const SplitEditorCell = memo(
     fillBackground,
     backgroundColor,
     gap,
-    rows,
-    cols,
     drawW,
     drawH,
   }: SplitEditorCellProps) {
@@ -382,11 +377,17 @@ const SplitEditorCell = memo(
       ? replacementUrl
       : sourceUrl;
     const adaptiveRadius = getAdaptiveBorderRadius(
-      index,
-      cols,
-      rows,
+      region,
+      drawW,
+      drawH,
       gap,
       viewerScale,
+    );
+    const compact = Math.min(region.width, region.height) * viewerScale < 32;
+    const badgeSize = Math.min(
+      compact ? 12 / viewerScale : 18 / viewerScale,
+      region.width,
+      region.height,
     );
 
     return (
@@ -504,14 +505,14 @@ const SplitEditorCell = memo(
           className="split-editor-cell__badge"
           style={{
             position: "absolute",
-            top: `${6 / viewerScale}px`,
-            left: `${6 / viewerScale}px`,
+            top: compact ? 0 : `${6 / viewerScale}px`,
+            left: compact ? 0 : `${6 / viewerScale}px`,
             background: isActive ? "var(--color-primary)" : "rgba(0,0,0,0.6)",
             color: "white",
-            fontSize: `${10 / viewerScale}px`,
+            fontSize: `${(compact ? 9 : 10) / viewerScale}px`,
             fontWeight: 700,
-            width: `${18 / viewerScale}px`,
-            height: `${18 / viewerScale}px`,
+            width: `${badgeSize}px`,
+            height: `${badgeSize}px`,
             borderRadius: "50%",
             display: "flex",
             alignItems: "center",
@@ -525,25 +526,27 @@ const SplitEditorCell = memo(
           {index + 1}
         </div>
 
-        <div
-          style={{
-            position: "absolute",
-            bottom: `${4 / viewerScale}px`,
-            left: "50%",
-            backgroundColor: "rgba(0,0,0,0.6)",
-            color: "white",
-            fontSize: `${10 / viewerScale}px`,
-            padding: `${2 / viewerScale}px ${6 / viewerScale}px`,
-            borderRadius: `${10 / viewerScale}px`,
-            whiteSpace: "nowrap",
-            pointerEvents: "none",
-            zIndex: 11,
-            backdropFilter: "blur(4px)",
-            transform: `translateX(-50%)`,
-          }}
-        >
-          {region.width} × {region.height}
-        </div>
+        {!compact && (
+          <div
+            style={{
+              position: "absolute",
+              bottom: `${4 / viewerScale}px`,
+              left: "50%",
+              backgroundColor: "rgba(0,0,0,0.6)",
+              color: "white",
+              fontSize: `${10 / viewerScale}px`,
+              padding: `${2 / viewerScale}px ${6 / viewerScale}px`,
+              borderRadius: `${10 / viewerScale}px`,
+              whiteSpace: "nowrap",
+              pointerEvents: "none",
+              zIndex: 11,
+              backdropFilter: "blur(4px)",
+              transform: `translateX(-50%)`,
+            }}
+          >
+            {region.width} × {region.height}
+          </div>
+        )}
       </div>
     );
   },
@@ -560,7 +563,6 @@ const SplitEditorCell = memo(
       return false;
     if (prev.backgroundColor !== next.backgroundColor) return false;
     if (prev.gap !== next.gap) return false;
-    if (prev.cols !== next.cols || prev.rows !== next.rows) return false;
     if (
       prev.region.x !== next.region.x ||
       prev.region.y !== next.region.y ||

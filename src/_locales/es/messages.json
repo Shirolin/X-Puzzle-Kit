@@ -167,6 +167,10 @@
     "message": "Columnas (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "La imagen es demasiado pequeña para tantas partes con esta separación. Reduce la separación o el número de partes.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Resultado",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Ver demo de compartir",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Publicar en X"
+  },
+  "postShareFiles": {
+    "message": "Abrir menú de compartir"
+  },
+  "postShareHint": {
+    "message": "Si X aparece en el menú de compartir de tu dispositivo, selecciónalo para enviar las imágenes."
+  },
+  "postCopyImage": {
+    "message": "Copiar imagen"
+  },
+  "postCopied": {
+    "message": "Imagen copiada. Abre X y pégala."
+  },
+  "postCopyFailed": {
+    "message": "No se pudo copiar la imagen. Descárgala."
+  },
+  "postDownloadImage": {
+    "message": "Descargar imagen"
+  },
+  "postDownloadHint": {
+    "message": "Descarga la imagen, abre X y añádela a una publicación."
+  },
+  "postOpenX": {
+    "message": "Abrir X"
+  },
+  "postComposerUnavailable": {
+    "message": "X no pudo abrir el editor de publicaciones. Vuelve a intentarlo o descarga las partes."
+  },
+  "postComposerDraft": {
+    "message": "Ya hay un borrador abierto en X. Ciérralo o termínalo y vuelve a intentarlo."
+  },
+  "postComposerAttachments": {
+    "message": "X no añadió todas las partes. Revisa los adjuntos en X o descárgalas."
+  },
+  "postShareFailed": {
+    "message": "El sistema no pudo compartir estas imágenes."
+  },
+  "postShareCountLimit": {
+    "message": "Este lote tiene $1 imágenes. Tu navegador puede compartir hasta $2 a la vez."
+  },
+  "postShareSizeLimit": {
+    "message": "El tamaño total de las imágenes supera el límite del navegador para compartirlas de una vez."
+  },
+  "postShareUnavailable": {
+    "message": "Este navegador no puede compartir estas imágenes directamente."
+  },
+  "postDownloadZipHint": {
+    "message": "El ZIP contiene todas las imágenes. Descomprímelo, abre X y añádelas a una misma publicación en el orden de sus nombres."
+  },
+  "postDownloadFailed": {
+    "message": "No se pudo preparar la descarga. Inténtalo de nuevo."
   },
   "privacyNotice": {
     "message": "Privacidad: Proxy seguro para análisis (sin registros). Procesamiento siempre local.",

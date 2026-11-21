@@ -167,6 +167,10 @@
     "message": "Jumlah kolom (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "Gambar terlalu kecil untuk jumlah potongan dengan jarak ini. Kurangi jarak atau jumlah potongan.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Hasil pemisahan",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Lihat Berbagi Mulus",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Posting ke X"
+  },
+  "postShareFiles": {
+    "message": "Buka menu berbagi sistem"
+  },
+  "postShareHint": {
+    "message": "Jika X muncul di menu berbagi perangkat, pilih X untuk mengirim gambar."
+  },
+  "postCopyImage": {
+    "message": "Salin gambar"
+  },
+  "postCopied": {
+    "message": "Gambar disalin. Buka X lalu tempel."
+  },
+  "postCopyFailed": {
+    "message": "Gambar tidak dapat disalin. Silakan unduh."
+  },
+  "postDownloadImage": {
+    "message": "Unduh gambar"
+  },
+  "postDownloadHint": {
+    "message": "Unduh gambar, buka X, lalu tambahkan ke postingan."
+  },
+  "postOpenX": {
+    "message": "Buka X"
+  },
+  "postComposerUnavailable": {
+    "message": "Tidak dapat membuka editor postingan X. Coba lagi atau unduh potongan gambar."
+  },
+  "postComposerDraft": {
+    "message": "Sudah ada draf yang terbuka di X. Tutup atau selesaikan draf tersebut, lalu coba lagi."
+  },
+  "postComposerAttachments": {
+    "message": "X tidak menambahkan semua potongan gambar. Periksa lampiran di X atau unduh potongannya."
+  },
+  "postShareFailed": {
+    "message": "Sistem tidak dapat membagikan gambar ini."
+  },
+  "postShareCountLimit": {
+    "message": "Kumpulan ini berisi $1 gambar. Browser hanya dapat membagikan hingga $2 sekaligus."
+  },
+  "postShareSizeLimit": {
+    "message": "Ukuran total gambar melebihi batas berbagi sekaligus di browser ini."
+  },
+  "postShareUnavailable": {
+    "message": "Browser ini tidak dapat membagikan gambar secara langsung."
+  },
+  "postDownloadZipHint": {
+    "message": "File ZIP berisi semua gambar. Ekstrak isinya, buka X, lalu tambahkan gambar ke satu postingan sesuai urutan nama file."
+  },
+  "postDownloadFailed": {
+    "message": "Gagal menyiapkan unduhan. Coba lagi."
   },
   "privacyNotice": {
     "message": "Privasi: versi Web menggunakan proxy aman untuk penguraian (tanpa log). Pemrosesan tetap lokal.",

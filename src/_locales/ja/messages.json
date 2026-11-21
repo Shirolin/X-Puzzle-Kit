@@ -167,6 +167,10 @@
     "message": "列 (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "この間隔と分割数では画像が小さすぎます。間隔を狭くするか、分割数を減らしてください。",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "分割結果",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "極上の共有体験を見る",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "X に投稿"
+  },
+  "postShareFiles": {
+    "message": "共有メニューを開く"
+  },
+  "postShareHint": {
+    "message": "端末の共有メニューに X が表示されたら、選択して画像を送信できます。"
+  },
+  "postCopyImage": {
+    "message": "画像をコピー"
+  },
+  "postCopied": {
+    "message": "画像をコピーしました。X を開いて貼り付けてください。"
+  },
+  "postCopyFailed": {
+    "message": "画像をコピーできませんでした。代わりにダウンロードしてください。"
+  },
+  "postDownloadImage": {
+    "message": "画像をダウンロード"
+  },
+  "postDownloadHint": {
+    "message": "画像をダウンロードし、「X を開く」を押してポストに画像を追加してください。"
+  },
+  "postOpenX": {
+    "message": "X を開く"
+  },
+  "postComposerUnavailable": {
+    "message": "X の投稿画面を開けませんでした。再試行するか、分割画像をダウンロードしてください。"
+  },
+  "postComposerDraft": {
+    "message": "X ですでに下書きが開いています。閉じるか投稿を完了してから、もう一度お試しください。"
+  },
+  "postComposerAttachments": {
+    "message": "X にすべての分割画像を追加できませんでした。X 側の添付画像を確認するか、分割画像をダウンロードしてください。"
+  },
+  "postShareFailed": {
+    "message": "共有機能で画像を共有できませんでした。"
+  },
+  "postShareCountLimit": {
+    "message": "画像は全部で $1 枚あります。このブラウザで一度に共有できるのは $2 枚までです。"
+  },
+  "postShareSizeLimit": {
+    "message": "画像の合計サイズが、このブラウザで一度に共有できる上限を超えています。"
+  },
+  "postShareUnavailable": {
+    "message": "このブラウザでは画像を直接共有できません。"
+  },
+  "postDownloadZipHint": {
+    "message": "ZIP にはすべての分割画像が入っています。解凍して「X を開く」を押し、ファイル名の番号順に同じポストへ追加してください。"
+  },
+  "postDownloadFailed": {
+    "message": "ダウンロードの準備に失敗しました。もう一度お試しください。"
   },
   "privacyNotice": {
     "message": "プライバシー：Web版は安全なプロキシで解析（ログなし）。処理は常にローカルで実行されます。",

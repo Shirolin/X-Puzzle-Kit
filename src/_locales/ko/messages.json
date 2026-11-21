@@ -167,6 +167,10 @@
     "message": "열 수 (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "현재 간격과 분할 수에 비해 이미지가 너무 작습니다. 간격이나 분할 수를 줄여 주세요.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "분할 결과",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "환상적인 공유 체험하기",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "X에 게시"
+  },
+  "postShareFiles": {
+    "message": "공유 메뉴 열기"
+  },
+  "postShareHint": {
+    "message": "기기의 공유 메뉴에 X가 표시되면 선택해 이미지를 보낼 수 있습니다."
+  },
+  "postCopyImage": {
+    "message": "이미지 복사"
+  },
+  "postCopied": {
+    "message": "이미지를 복사했습니다. X를 열어 붙여넣으세요."
+  },
+  "postCopyFailed": {
+    "message": "이미지를 복사할 수 없습니다. 대신 다운로드해 주세요."
+  },
+  "postDownloadImage": {
+    "message": "이미지 다운로드"
+  },
+  "postDownloadHint": {
+    "message": "이미지를 다운로드한 뒤 「X 열기」를 눌러 게시물에 추가해 주세요."
+  },
+  "postOpenX": {
+    "message": "X 열기"
+  },
+  "postComposerUnavailable": {
+    "message": "X 게시물 작성 화면을 열 수 없습니다. 다시 시도하거나 분할 이미지를 다운로드해 주세요."
+  },
+  "postComposerDraft": {
+    "message": "X에 이미 작성 중인 게시물이 있습니다. 닫거나 게시를 완료한 뒤 다시 시도해 주세요."
+  },
+  "postComposerAttachments": {
+    "message": "X에 분할 이미지를 모두 추가하지 못했습니다. X에 첨부된 이미지를 확인하거나 분할 이미지를 다운로드해 주세요."
+  },
+  "postShareFailed": {
+    "message": "시스템 공유 기능으로 이미지를 공유하지 못했습니다."
+  },
+  "postShareCountLimit": {
+    "message": "이미지가 총 $1장입니다. 이 브라우저에서는 한 번에 최대 $2장까지 공유할 수 있습니다."
+  },
+  "postShareSizeLimit": {
+    "message": "이미지의 전체 용량이 이 브라우저에서 한 번에 공유할 수 있는 한도를 초과했습니다."
+  },
+  "postShareUnavailable": {
+    "message": "이 브라우저에서는 이미지를 바로 공유할 수 없습니다."
+  },
+  "postDownloadZipHint": {
+    "message": "ZIP 파일에 모든 분할 이미지가 들어 있습니다. 압축을 푼 뒤 「X 열기」를 눌러 파일 이름 순서대로 한 게시물에 추가해 주세요."
+  },
+  "postDownloadFailed": {
+    "message": "다운로드를 준비하지 못했습니다. 다시 시도해 주세요."
   },
   "privacyNotice": {
     "message": "개인정보: 웹 버전은 안전한 프록시로 분석(로그 없음). 처리는 항상 로컬에서 수행됩니다.",

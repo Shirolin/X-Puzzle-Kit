@@ -1,5 +1,15 @@
 import { SplitConfig, CellRegion } from "./types";
 
+export const MAX_SPLIT_COUNT = 20;
+export const MAX_SEPARATE_SPLIT_DOWNLOADS = 10;
+
+export function getSplitFilename(blob: Blob, index: number, count: number) {
+  const extension =
+    blob.type === "image/jpeg" ? "jpg" : blob.type.split("/")[1];
+  const digits = String(count).length;
+  return `split_${String(index + 1).padStart(digits, "0")}.${extension || "png"}`;
+}
+
 /**
  * 根据 SplitConfig 和图片有效区域尺寸，计算每个分割格的几何区域。
  * 与 splitter.ts 的裁切逻辑对齐，但仅返回坐标而不执行渲染。
@@ -10,91 +20,59 @@ export function calculateCellRegions(
   effectiveHeight: number,
 ): CellRegion[] {
   const { layout, rows, cols, gap } = config;
-  const regions: CellRegion[] = [];
+  let columnCount = 1;
+  let rowCount = 1;
 
   switch (layout) {
     case "HORIZONTAL_Nx1":
-    case "HORIZONTAL_2x1": {
-      const n = layout === "HORIZONTAL_2x1" ? 2 : cols || 2;
-      const totalGap = (n - 1) * gap;
-      const segW = Math.floor((effectiveWidth - totalGap) / n);
-      for (let i = 0; i < n; i++) {
-        regions.push({
-          x: i * (segW + gap),
-          y: 0,
-          width: segW,
-          height: effectiveHeight,
-        });
-      }
+    case "HORIZONTAL_2x1":
+      columnCount = layout === "HORIZONTAL_2x1" ? 2 : cols || 2;
       break;
-    }
-
     case "VERTICAL_1xN":
-    case "VERTICAL_1x2": {
-      const n = layout === "VERTICAL_1x2" ? 2 : rows || 2;
-      const totalGap = (n - 1) * gap;
-      const segH = Math.floor((effectiveHeight - totalGap) / n);
-      for (let i = 0; i < n; i++) {
-        regions.push({
-          x: 0,
-          y: i * (segH + gap),
-          width: effectiveWidth,
-          height: segH,
-        });
-      }
+    case "VERTICAL_1x2":
+      rowCount = layout === "VERTICAL_1x2" ? 2 : rows || 2;
       break;
-    }
-
-    case "GRID_2x2": {
-      const nCols = 2;
-      const nRows = 2;
-      const wGap = (nCols - 1) * gap;
-      const hGap = (nRows - 1) * gap;
-      const segW = Math.floor((effectiveWidth - wGap) / nCols);
-      const segH = Math.floor((effectiveHeight - hGap) / nRows);
-
-      // 左上
-      regions.push({ x: 0, y: 0, width: segW, height: segH });
-      // 右上
-      regions.push({ x: segW + gap, y: 0, width: segW, height: segH });
-      // 左下
-      regions.push({ x: 0, y: segH + gap, width: segW, height: segH });
-      // 右下
-      regions.push({
-        x: segW + gap,
-        y: segH + gap,
-        width: segW,
-        height: segH,
-      });
+    case "GRID_2x2":
+    case "T_SHAPE_3":
+      columnCount = 2;
+      rowCount = 2;
       break;
-    }
+  }
 
-    case "T_SHAPE_3": {
-      const halfW = Math.floor((effectiveWidth - gap) / 2);
-      const halfH = Math.floor((effectiveHeight - gap) / 2);
+  const width = Math.floor(effectiveWidth);
+  const height = Math.floor(effectiveHeight);
+  const usableWidth = width - (columnCount - 1) * gap;
+  const usableHeight = height - (rowCount - 1) * gap;
+  if (
+    !Number.isInteger(columnCount) ||
+    !Number.isInteger(rowCount) ||
+    columnCount < 1 ||
+    rowCount < 1 ||
+    !(gap >= 0 && Number.isInteger(gap)) ||
+    !(usableWidth >= columnCount && usableHeight >= rowCount)
+  ) {
+    return [];
+  }
 
-      // 左侧（全高）
-      regions.push({ x: 0, y: 0, width: halfW, height: effectiveHeight });
-      // 右上
-      regions.push({ x: halfW + gap, y: 0, width: halfW, height: halfH });
-      // 右下
+  const regions: CellRegion[] = [];
+  for (let row = 0; row < rowCount; row++) {
+    const top = Math.floor((row * usableHeight) / rowCount);
+    const bottom = Math.floor(((row + 1) * usableHeight) / rowCount);
+    for (let column = 0; column < columnCount; column++) {
+      const left = Math.floor((column * usableWidth) / columnCount);
+      const right = Math.floor(((column + 1) * usableWidth) / columnCount);
       regions.push({
-        x: halfW + gap,
-        y: halfH + gap,
-        width: halfW,
-        height: halfH,
+        x: left + column * gap,
+        y: top + row * gap,
+        width: right - left,
+        height: bottom - top,
       });
-      break;
     }
+  }
 
-    default:
-      // 整张图作为单格
-      regions.push({
-        x: 0,
-        y: 0,
-        width: effectiveWidth,
-        height: effectiveHeight,
-      });
+  if (layout === "T_SHAPE_3") {
+    regions[0].height = height;
+    regions.splice(2, 1);
   }
 
   return regions;
@@ -157,6 +135,7 @@ export async function exportWithEditState(
     config.autoCropRatio,
   );
   const regions = calculateCellRegions(config, drawW, drawH);
+  if (!regions.length) throw new Error("Invalid split dimensions");
   const blobs: Blob[] = [];
 
   for (let i = 0; i < regions.length; i++) {
@@ -230,8 +209,14 @@ export async function exportWithEditState(
       );
     }
 
-    const blob = await new Promise<Blob>((resolve) => {
-      canvas.toBlob((b) => resolve(b!), `image/${format}`);
+    const blob = await new Promise<Blob>((resolve, reject) => {
+      canvas.toBlob(
+        (result) => {
+          if (result) resolve(result);
+          else reject(new Error("Failed to encode split image"));
+        },
+        format === "jpg" ? "image/jpeg" : `image/${format}`,
+      );
     });
     blobs.push(blob);
   }

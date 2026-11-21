@@ -1,14 +1,16 @@
+import type { CellRegion } from "../../../core/types";
+
 export function getAdaptiveBorderRadius(
-  index: number,
-  cols: number,
-  rows: number,
+  region: CellRegion,
+  width: number,
+  height: number,
   gap: number,
   viewerScale: number,
 ) {
-  const isTopRow = index < cols;
-  const isBottomRow = index >= (rows - 1) * cols;
-  const isLeftCol = index % cols === 0;
-  const isRightCol = index % cols === cols - 1;
+  const isTopRow = region.y === 0;
+  const isBottomRow = region.y + region.height === Math.floor(height);
+  const isLeftCol = region.x === 0;
+  const isRightCol = region.x + region.width === Math.floor(width);
 
   const innerRadius =
     gap === 0 ? "0px" : `${Math.min(4 / viewerScale, gap / 2)}px`;

@@ -21,6 +21,7 @@ import { platformStorage } from "@/core/platform";
 import {
   calculateCellRegions,
   calculateEffectiveArea,
+  MAX_SPLIT_COUNT,
 } from "../../core/splitLayout";
 
 interface SplitterControlProps {
@@ -29,6 +30,7 @@ interface SplitterControlProps {
   exportFormat: "png" | "jpg" | "webp";
   onExportFormatChange: (fmt: "png" | "jpg" | "webp") => void;
   isZip: boolean;
+  requiresZip: boolean;
   onIsZipChange: (val: boolean) => void;
   isTwitterOptimized: boolean;
   onIsTwitterOptimizedChange: (val: boolean) => void;
@@ -57,6 +59,7 @@ export function SplitterControl({
   exportFormat,
   onExportFormatChange,
   isZip,
+  requiresZip,
   onIsZipChange,
   isTwitterOptimized,
   onIsTwitterOptimizedChange,
@@ -75,6 +78,7 @@ export function SplitterControl({
   onBackgroundColorChange,
 }: SplitterControlProps) {
   const { layout, rows, cols, gap } = config;
+  const splitCount = layout === "VERTICAL_1xN" ? rows : cols;
   const [isGapOpen, setIsGapOpen] = useState(gap > 0);
 
   const setLayout = (l: LayoutType) =>
@@ -160,10 +164,7 @@ export function SplitterControl({
 
       {/* 拖动模式切换 */}
       {hasSplitSource && (
-        <SidebarSection
-          title={t("dragMode")}
-          style={containerStyle}
-        >
+        <SidebarSection title={t("dragMode")} style={containerStyle}>
           <div className="mode-switcher" style={{ width: "100%" }}>
             <button
               className={`mode-btn ${splitEditState.dragMode === "unified" ? "active" : ""}`}
@@ -315,6 +316,7 @@ export function SplitterControl({
                     );
                     const regions = calculateCellRegions(config, drawW, drawH);
                     const region = regions[idx];
+                    if (!region) return;
 
                     const anchorX = region.x + region.width / 2;
                     const anchorY = region.y + region.height / 2;
@@ -424,9 +426,9 @@ export function SplitterControl({
           headerRight={
             <div className="control-group-pill">
               <IconButton
+                disabled={splitCount <= 2}
                 onClick={() => {
-                  const val = layout === "VERTICAL_1xN" ? rows : cols;
-                  const newVal = Math.max(2, val - 1);
+                  const newVal = Math.max(2, splitCount - 1);
                   if (layout === "VERTICAL_1xN") setRows(newVal);
                   else setCols(newVal);
                 }}
@@ -450,12 +452,12 @@ export function SplitterControl({
                   lineHeight: 1,
                 }}
               >
-                {layout === "VERTICAL_1xN" ? rows : cols}
+                {splitCount}
               </span>
               <IconButton
+                disabled={splitCount >= MAX_SPLIT_COUNT}
                 onClick={() => {
-                  const val = layout === "VERTICAL_1xN" ? rows : cols;
-                  const newVal = Math.min(10, val + 1);
+                  const newVal = Math.min(MAX_SPLIT_COUNT, splitCount + 1);
                   if (layout === "VERTICAL_1xN") setRows(newVal);
                   else setCols(newVal);
                 }}
@@ -697,6 +699,7 @@ export function SplitterControl({
               <input
                 type="checkbox"
                 checked={isZip}
+                disabled={requiresZip}
                 onChange={(e) =>
                   onIsZipChange((e.target as HTMLInputElement).checked)
                 }

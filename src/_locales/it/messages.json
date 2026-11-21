@@ -167,6 +167,10 @@
     "message": "Numero colonne (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "L’immagine è troppo piccola per così tante parti con lo spazio selezionato. Riduci lo spazio o il numero di parti.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Risultato divisione",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Guarda la condivisione continua",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Pubblica su X"
+  },
+  "postShareFiles": {
+    "message": "Apri menu di condivisione"
+  },
+  "postShareHint": {
+    "message": "Se X compare nel menu di condivisione del dispositivo, selezionalo per inviare le immagini."
+  },
+  "postCopyImage": {
+    "message": "Copia immagine"
+  },
+  "postCopied": {
+    "message": "Immagine copiata. Apri X e incollala."
+  },
+  "postCopyFailed": {
+    "message": "Impossibile copiare l’immagine. Scaricala."
+  },
+  "postDownloadImage": {
+    "message": "Scarica immagine"
+  },
+  "postDownloadHint": {
+    "message": "Scarica l’immagine, apri X e aggiungila a un post."
+  },
+  "postOpenX": {
+    "message": "Apri X"
+  },
+  "postComposerUnavailable": {
+    "message": "X non ha potuto aprire l’editor dei post. Riprova o scarica le parti."
+  },
+  "postComposerDraft": {
+    "message": "C’è già una bozza aperta in X. Chiudila o completala, poi riprova."
+  },
+  "postComposerAttachments": {
+    "message": "X non ha aggiunto tutte le parti. Controlla gli allegati in X o scarica quelle originali."
+  },
+  "postShareFailed": {
+    "message": "Il sistema non è riuscito a condividere queste immagini."
+  },
+  "postShareCountLimit": {
+    "message": "Questo gruppo contiene $1 immagini. Il browser può condividerne fino a $2 alla volta."
+  },
+  "postShareSizeLimit": {
+    "message": "Queste immagini sono troppo grandi per essere condivise insieme da questo browser."
+  },
+  "postShareUnavailable": {
+    "message": "Questo browser non può condividere direttamente queste immagini."
+  },
+  "postDownloadZipHint": {
+    "message": "Lo ZIP contiene tutte le immagini. Estrailo, apri X e aggiungile a un unico post nell’ordine dei nomi dei file."
+  },
+  "postDownloadFailed": {
+    "message": "Impossibile preparare il download. Riprova."
   },
   "privacyNotice": {
     "message": "Privacy: la versione Web usa un proxy sicuro per l'analisi (nessun log). L'elaborazione resta locale.",

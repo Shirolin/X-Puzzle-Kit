@@ -401,12 +401,6 @@ export function ViewerArea({
                   config={splitConfig}
                   backgroundColor={backgroundColor}
                   viewerScale={viewerScale}
-                  aspectRatio={
-                    splitConfig.autoCropRatio ||
-                    (splitSourceBitmap
-                      ? splitSourceBitmap.width / splitSourceBitmap.height
-                      : undefined)
-                  }
                 />
               ) : (
                 <SplitEditor

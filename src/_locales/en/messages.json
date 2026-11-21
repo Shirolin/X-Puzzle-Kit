@@ -167,6 +167,10 @@
     "message": "Col Count (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "The image is too small for this slice count and gap. Reduce the gap or slice count.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Split Result",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "See Seamless Sharing",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Post to X"
+  },
+  "postShareFiles": {
+    "message": "Open share menu"
+  },
+  "postShareHint": {
+    "message": "If X appears in your device’s share menu, select it to share directly."
+  },
+  "postCopyImage": {
+    "message": "Copy image"
+  },
+  "postCopied": {
+    "message": "Image copied. Open X and paste it."
+  },
+  "postCopyFailed": {
+    "message": "Couldn’t copy the image. Download it instead."
+  },
+  "postDownloadImage": {
+    "message": "Download image"
+  },
+  "postDownloadHint": {
+    "message": "Download the image, then open X and add it to a post."
+  },
+  "postOpenX": {
+    "message": "Open X"
+  },
+  "postComposerUnavailable": {
+    "message": "Couldn’t open the X post composer. Try again, or download below."
+  },
+  "postComposerDraft": {
+    "message": "X already has a post in progress. Finish or clear it, then try again."
+  },
+  "postComposerAttachments": {
+    "message": "X didn’t attach every slice. Check your post in X, or download below."
+  },
+  "postShareFailed": {
+    "message": "Couldn’t share directly."
+  },
+  "postShareCountLimit": {
+    "message": "There are $1 images, but this browser can share up to $2 at once."
+  },
+  "postShareSizeLimit": {
+    "message": "Too large to share directly in this browser."
+  },
+  "postShareUnavailable": {
+    "message": "Direct sharing isn’t supported in this browser."
+  },
+  "postDownloadZipHint": {
+    "message": "Download the ZIP, unzip it, then open X and add the images to one post in filename order."
+  },
+  "postDownloadFailed": {
+    "message": "Couldn’t prepare the download. Try again."
   },
   "privacyNotice": {
     "message": "Privacy: Web version uses a secure proxy for parsing (no logs). Processing stays local.",

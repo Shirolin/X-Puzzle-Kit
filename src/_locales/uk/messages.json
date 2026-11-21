@@ -167,6 +167,10 @@
     "message": "Кількість стовпців (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "Зображення замале для такої кількості частин із вибраним відступом. Зменште відступ або кількість частин.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Результат розділення",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Дивитися безшовний обмін",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Опублікувати в X"
+  },
+  "postShareFiles": {
+    "message": "Відкрити меню «Поділитися»"
+  },
+  "postShareHint": {
+    "message": "Якщо в меню «Поділитися» на вашому пристрої є X, виберіть його, щоб надіслати зображення."
+  },
+  "postCopyImage": {
+    "message": "Копіювати зображення"
+  },
+  "postCopied": {
+    "message": "Зображення скопійовано. Відкрийте X і вставте його."
+  },
+  "postCopyFailed": {
+    "message": "Не вдалося скопіювати зображення. Завантажте його."
+  },
+  "postDownloadImage": {
+    "message": "Завантажити зображення"
+  },
+  "postDownloadHint": {
+    "message": "Завантажте зображення, відкрийте X і додайте його до публікації."
+  },
+  "postOpenX": {
+    "message": "Відкрити X"
+  },
+  "postComposerUnavailable": {
+    "message": "Не вдалося відкрити редактор публікацій X. Спробуйте ще раз або завантажте частини."
+  },
+  "postComposerDraft": {
+    "message": "У X уже відкрито чернетку. Закрийте або завершіть її та спробуйте ще раз."
+  },
+  "postComposerAttachments": {
+    "message": "X не додав усі частини. Перевірте вкладення в X або завантажте їх."
+  },
+  "postShareFailed": {
+    "message": "Не вдалося поділитися зображеннями через системне меню."
+  },
+  "postShareCountLimit": {
+    "message": "Кількість зображень у наборі — $1. Браузер дозволяє поділитися не більш ніж $2 за раз."
+  },
+  "postShareSizeLimit": {
+    "message": "Загальний розмір зображень перевищує ліміт браузера на одне надсилання."
+  },
+  "postShareUnavailable": {
+    "message": "Цей браузер не може напряму поділитися зображеннями."
+  },
+  "postDownloadZipHint": {
+    "message": "ZIP-архів містить усі зображення. Розпакуйте його, відкрийте X і додайте зображення до однієї публікації в порядку назв файлів."
+  },
+  "postDownloadFailed": {
+    "message": "Не вдалося підготувати завантаження. Спробуйте ще раз."
   },
   "privacyNotice": {
     "message": "Приватність: веб-версія використовує безпечний проксі для розбору (без логів). Обробка залишається локальною.",

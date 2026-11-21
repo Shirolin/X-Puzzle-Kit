@@ -39,8 +39,15 @@ import {
 } from "../../core/types";
 import { LayoutButton, IconButton, CustomSelect } from "./Common";
 import { SplitterControl } from "./SplitterControl";
+import { SplitPostToX } from "./SplitPostToX";
 import { isExtension, platformStorage, getPlatformEnv } from "@/core/platform";
 import { APP_CONFIG } from "../../core/config";
+import {
+  calculateCellRegions,
+  calculateEffectiveArea,
+  getSplitFilename,
+  MAX_SEPARATE_SPLIT_DOWNLOADS,
+} from "../../core/splitLayout";
 
 const GithubIcon = ({ size = 15 }: { size?: number }) => (
   <Icon
@@ -282,6 +289,10 @@ export const JogWheel = ({ value, onChange, min, max }: JogWheelProps) => {
 
 interface SidebarProps {
   mode: "stitch" | "split";
+  onPostToX?: (
+    files: File[],
+    signal: AbortSignal,
+  ) => Promise<string | undefined>;
   layout: LayoutType;
   setLayout: (l: LayoutType) => void;
   images: ImageNode[];
@@ -333,6 +344,7 @@ interface SidebarProps {
 
 export function Sidebar({
   mode,
+  onPostToX,
   layout,
   setLayout,
   images,
@@ -373,6 +385,19 @@ export function Sidebar({
   onSplitEditStateChange,
   splitSourceBitmap,
 }: SidebarProps) {
+  const splitArea =
+    mode === "split" && splitSourceBitmap
+      ? calculateEffectiveArea(
+          splitSourceBitmap.width,
+          splitSourceBitmap.height,
+          splitConfig.autoCropRatio,
+        )
+      : null;
+  const invalidSplit =
+    splitArea !== null &&
+    calculateCellRegions(splitConfig, splitArea.drawW, splitArea.drawH)
+      .length === 0;
+  const requiresZip = splitBlobs.length > MAX_SEPARATE_SPLIT_DOWNLOADS;
   const [isGapOpen, setIsGapOpen] = useState(
     globalGap !== 0 || images.some((img) => img.localGap && img.localGap !== 0),
   );
@@ -688,7 +713,8 @@ export function Sidebar({
             onExportFormatChange={(fmt) =>
               setSplitConfig((prev) => ({ ...prev, format: fmt }))
             }
-            isZip={isZip}
+            isZip={isZip || requiresZip}
+            requiresZip={requiresZip}
             onIsZipChange={setIsZip}
             isTwitterOptimized={isTwitterOptimized}
             onIsTwitterOptimizedChange={setIsTwitterOptimized}
@@ -1561,6 +1587,18 @@ export function Sidebar({
       <div className="sidebar-footer">
         {mode === "split" ? (
           <div className="footer-button-group">
+            {invalidSplit && splitBlobs.length === 0 && (
+              <p
+                role="alert"
+                style={{
+                  margin: 0,
+                  color: "var(--color-error-text)",
+                  fontSize: "0.8rem",
+                }}
+              >
+                {t("invalidSplitDimensions")}
+              </p>
+            )}
             <button
               onClick={() =>
                 splitBlobs.length > 0
@@ -1568,7 +1606,9 @@ export function Sidebar({
                   : handleSplit(splitConfig)
               }
               disabled={
-                (!hasSplitSource && splitBlobs.length === 0) || isSplitting
+                ((!hasSplitSource || invalidSplit) &&
+                  splitBlobs.length === 0) ||
+                isSplitting
               }
               className={`btn ${splitBlobs.length > 0 ? "btn-secondary" : "btn-primary"}`}
               style={{ height: "3rem", fontSize: "0.95rem" }}
@@ -1594,24 +1634,17 @@ export function Sidebar({
               disabled={splitBlobs.length === 0}
               onClick={async () => {
                 if (splitBlobs.length === 0) return;
-                const format = splitConfig.format || "png";
-                if (isZip) {
+                const files = splitBlobs.map((blob, index) => ({
+                  blob,
+                  name: getSplitFilename(blob, index, splitBlobs.length),
+                }));
+                if (isZip || requiresZip) {
                   const zip = new JSZip();
-                  splitBlobs.forEach((b, i) =>
-                    zip.file(
-                      `split_${i + 1}.${b.type.split("/")[1] || format}`,
-                      b,
-                    ),
-                  );
+                  files.forEach(({ blob, name }) => zip.file(name, blob));
                   const content = await zip.generateAsync({ type: "blob" });
                   downloadBlob(content, `split_${Date.now()}.zip`);
                 } else {
-                  splitBlobs.forEach((b, i) => {
-                    downloadBlob(
-                      b,
-                      `split_${i + 1}.${b.type.split("/")[1] || format}`,
-                    );
-                  });
+                  files.forEach(({ blob, name }) => downloadBlob(blob, name));
                 }
                 // 拆分下载成功后，延迟 5 秒触发 PWA 安装提示
                 setTimeout(() => {
@@ -1630,7 +1663,7 @@ export function Sidebar({
               }}
             >
               <Download size={18} />
-              <span>{t("downloadAll")}</span>
+              <span>{t(requiresZip ? "zipLabel" : "downloadAll")}</span>
             </button>
           </div>
         ) : (
@@ -1649,6 +1682,13 @@ export function Sidebar({
             <Download size={20} />
             <span>{t("stitchAndDownload")}</span>
           </button>
+        )}
+        {mode === "split" && splitBlobs.length > 0 && (
+          <SplitPostToX
+            blobs={splitBlobs}
+            download={downloadBlob}
+            onPostToX={onPostToX}
+          />
         )}
       </div>
     </div>

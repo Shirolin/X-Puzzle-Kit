@@ -47,6 +47,10 @@ import { DebugPanel } from "./components/DebugPanel";
 interface AppProps {
   task: StitchTask;
   onClose: () => void;
+  onPostToX?: (
+    files: File[],
+    signal: AbortSignal,
+  ) => Promise<string | undefined>;
   initialMode?: "stitch" | "split";
   initialSplitImageUrl?: string;
   isPopup?: boolean;
@@ -58,6 +62,7 @@ const STORAGE_KEYS = APP_CONFIG.STORAGE;
 export function App({
   task,
   onClose,
+  onPostToX,
   initialMode = "stitch",
   initialSplitImageUrl,
   isPopup = false,
@@ -1405,6 +1410,7 @@ export function App({
 
           <Sidebar
             mode={mode}
+            onPostToX={onPostToX}
             layout={layout}
             setLayout={updateLayout}
             images={images}

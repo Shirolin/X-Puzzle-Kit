@@ -167,6 +167,10 @@
     "message": "Colonnes (N)",
     "description": "Column count label"
   },
+  "invalidSplitDimensions": {
+    "message": "L’image est trop petite pour autant de découpes avec cet espacement. Réduisez l’espacement ou le nombre de découpes.",
+    "description": "Shown when the slice count and gap leave no space for valid image slices"
+  },
   "splitResult": {
     "message": "Résultat",
     "description": "Split result label"
@@ -660,6 +664,60 @@
   "viewDemoVideo": {
     "message": "Voir la démo de partage",
     "description": "Button to see the smooth sharing experience demo"
+  },
+  "postToX": {
+    "message": "Publier sur X"
+  },
+  "postShareFiles": {
+    "message": "Ouvrir le menu de partage"
+  },
+  "postShareHint": {
+    "message": "Si X apparaît dans le menu de partage de votre appareil, sélectionnez-le pour y envoyer les images."
+  },
+  "postCopyImage": {
+    "message": "Copier l’image"
+  },
+  "postCopied": {
+    "message": "Image copiée. Ouvrez X et collez-la."
+  },
+  "postCopyFailed": {
+    "message": "Impossible de copier l’image. Téléchargez-la."
+  },
+  "postDownloadImage": {
+    "message": "Télécharger l’image"
+  },
+  "postDownloadHint": {
+    "message": "Téléchargez l’image, ouvrez X et ajoutez-la à une publication."
+  },
+  "postOpenX": {
+    "message": "Ouvrir X"
+  },
+  "postComposerUnavailable": {
+    "message": "X n’a pas pu ouvrir l’éditeur de publication. Réessayez ou téléchargez les découpes."
+  },
+  "postComposerDraft": {
+    "message": "Un brouillon est déjà ouvert dans X. Fermez-le ou terminez-le, puis réessayez."
+  },
+  "postComposerAttachments": {
+    "message": "X n’a pas ajouté toutes les découpes. Vérifiez les pièces jointes dans X ou téléchargez-les."
+  },
+  "postShareFailed": {
+    "message": "Le système n’a pas pu partager ces images."
+  },
+  "postShareCountLimit": {
+    "message": "Ce lot contient $1 images. Votre navigateur peut en partager jusqu’à $2 à la fois."
+  },
+  "postShareSizeLimit": {
+    "message": "Ces images sont trop volumineuses pour être partagées ensemble depuis ce navigateur."
+  },
+  "postShareUnavailable": {
+    "message": "Ce navigateur ne peut pas partager directement ces images."
+  },
+  "postDownloadZipHint": {
+    "message": "Le ZIP contient toutes les images. Décompressez-le, ouvrez X, puis ajoutez-les à une même publication dans l’ordre des noms de fichiers."
+  },
+  "postDownloadFailed": {
+    "message": "Impossible de préparer le téléchargement. Réessayez."
   },
   "privacyNotice": {
     "message": "Confidentialité : Proxy sécurisé (aucun log). Traitement toujours local.",
