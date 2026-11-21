@@ -1,39 +1,48 @@
 import langEn from "../_locales/en/messages.json";
-import langZhCN from "../_locales/zh_CN/messages.json";
-import langZhTW from "../_locales/zh_TW/messages.json";
-import langJa from "../_locales/ja/messages.json";
-import langKo from "../_locales/ko/messages.json";
-import langEs from "../_locales/es/messages.json";
-import langFr from "../_locales/fr/messages.json";
-import langDe from "../_locales/de/messages.json";
-import langPt from "../_locales/pt_BR/messages.json";
-import langTr from "../_locales/tr/messages.json";
-import langUk from "../_locales/uk/messages.json";
-import langRu from "../_locales/ru/messages.json";
-import langIt from "../_locales/it/messages.json";
-import langId from "../_locales/id/messages.json";
 import { platformStorage } from "./platform";
 
-const locales: Record<string, Record<string, { message: string }>> = {
-  en: langEn,
-  zh_CN: langZhCN,
-  zh_TW: langZhTW,
-  ja: langJa,
-  ko: langKo,
-  es: langEs,
-  fr: langFr,
-  de: langDe,
-  pt_BR: langPt,
-  pt: langPt, // 保持 pt 引用，确保插件内部逻辑与旧配置兼容
-  tr: langTr,
-  uk: langUk,
-  ru: langRu,
-  it: langIt,
-  id: langId,
-  in: langId, // 印尼语的历史语言代码，与 LANGUAGE_PREFIX_MAP 的兜底保持一致
+export type LocaleMessages = Readonly<
+  Record<string, Readonly<{ message: string }>>
+>;
+
+const LOCALE_ALIASES: Record<string, string> = {
+  pt: "pt_BR", // 保持 pt 引用，确保插件内部逻辑与旧配置兼容
+  in: "id", // 印尼语的历史语言代码，与 LANGUAGE_PREFIX_MAP 的兜底保持一致
 };
 
-let currentMessages: Record<string, { message: string }> | null = null;
+const localeLoaders: Record<
+  string,
+  () => Promise<{ default: LocaleMessages }>
+> = {
+  zh_CN: () => import("../_locales/zh_CN/messages.json"),
+  zh_TW: () => import("../_locales/zh_TW/messages.json"),
+  ja: () => import("../_locales/ja/messages.json"),
+  ko: () => import("../_locales/ko/messages.json"),
+  es: () => import("../_locales/es/messages.json"),
+  fr: () => import("../_locales/fr/messages.json"),
+  de: () => import("../_locales/de/messages.json"),
+  pt_BR: () => import("../_locales/pt_BR/messages.json"),
+  tr: () => import("../_locales/tr/messages.json"),
+  uk: () => import("../_locales/uk/messages.json"),
+  ru: () => import("../_locales/ru/messages.json"),
+  it: () => import("../_locales/it/messages.json"),
+  id: () => import("../_locales/id/messages.json"),
+};
+
+const loadedLocales: Record<string, LocaleMessages> = {
+  en: langEn,
+};
+
+function normalizeLocaleCode(lang: string): string {
+  return LOCALE_ALIASES[lang] ?? lang;
+}
+
+function isSupportedLocale(lang: string): boolean {
+  const canonical = normalizeLocaleCode(lang);
+  return canonical === "en" || canonical in localeLoaders;
+}
+
+let currentMessages: LocaleMessages | null = null;
 
 /**
  * 语言标签前缀 → 语言包代码的映射表。
@@ -84,13 +93,29 @@ function resolveAutoLanguage(): string {
 }
 
 /**
+ * 按需加载指定语言代码对应的消息集并缓存。
+ * 未知语言代码返回 undefined。
+ */
+export async function loadLocaleMessages(
+  lang: string,
+): Promise<LocaleMessages | undefined> {
+  const canonical = normalizeLocaleCode(lang);
+  if (loadedLocales[canonical]) return loadedLocales[canonical];
+  const loader = localeLoaders[canonical];
+  if (!loader) return undefined;
+  const mod = await loader();
+  loadedLocales[canonical] = mod.default;
+  return loadedLocales[canonical];
+}
+
+/**
  * Set the manually overridden language
  */
 export async function setLanguage(lang: string) {
   const targetLang = lang === "auto" ? resolveAutoLanguage() : lang;
   // 与 getResolvedLanguage 保持一致：未知语言代码回落到 default_locale（en），
   // 避免出现「中文文案 + data-lang=en 字体栈」的错配
-  currentMessages = locales[targetLang] || locales["en"];
+  currentMessages = (await loadLocaleMessages(targetLang)) ?? loadedLocales.en;
 
   if (typeof chrome !== "undefined" && chrome.storage) {
     await chrome.storage.local.set({ "x-puzzle-kit-lang": lang });
@@ -102,19 +127,17 @@ export async function setLanguage(lang: string) {
  */
 export function getResolvedLanguage(currentLangSetting: string): string {
   if (currentLangSetting === "auto") return resolveAutoLanguage();
-  return locales[currentLangSetting] ? currentLangSetting : "en";
+  return isSupportedLocale(currentLangSetting) ? currentLangSetting : "en";
 }
 
 /**
- * 获取指定语言代码对应的消息集。
+ * 获取已加载缓存中指定语言代码对应的消息集。
  *
  * 用途：验证别名映射（如 pt 与 pt_BR 指向同一语言包）以及调试。
- * 未知语言代码返回 undefined。
+ * 未加载或未知语言代码返回 undefined。
  */
-export function getLocaleMessages(
-  lang: string,
-): Readonly<Record<string, Readonly<{ message: string }>>> | undefined {
-  return locales[lang];
+export function getLocaleMessages(lang: string): LocaleMessages | undefined {
+  return loadedLocales[normalizeLocaleCode(lang)];
 }
 
 /**
@@ -161,7 +184,7 @@ export function t(
   // 1. 当前语言的消息集；当前语言缺该键时回落到 en（default_locale）。
   //    en 是静态导入的，必然存在，因此「漏键 → 显示英文」这一兜底是真实生效的；
   //    只有当 en 也没有该键时才返回键名本身，作为开发期错误信号。
-  const entry = currentMessages?.[messageName] ?? locales.en[messageName];
+  const entry = currentMessages?.[messageName] ?? loadedLocales.en[messageName];
   if (entry) return applySubstitutions(entry.message, substitutions);
 
   // 2. 兜底尝试原生插件 API。

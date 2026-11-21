@@ -4,6 +4,7 @@ import path from "node:path";
 import {
   getResolvedLanguage,
   getLocaleMessages,
+  loadLocaleMessages,
   t,
 } from "../src/core/i18n";
 
@@ -155,15 +156,21 @@ describe("手动指定语言", () => {
     expect(getResolvedLanguage("uk")).toBe("uk");
   });
 
-  it("pt 别名与 pt_BR 指向同一语言包", () => {
+  it("pt 别名与 pt_BR 指向同一语言包", async () => {
     // 断言同一对象引用。此前该用例写的是 expect(locales.pt_BR).toBeDefined()，
     // 而 locales.pt_BR 来自 import.meta.glob 的重新加载结果，恒为真，等于没测。
-    expect(getLocaleMessages("pt")).toBeDefined();
+    const pt = await loadLocaleMessages("pt");
+    const ptBr = await loadLocaleMessages("pt_BR");
+    expect(pt).toBeDefined();
+    expect(pt).toBe(ptBr);
     expect(getLocaleMessages("pt")).toBe(getLocaleMessages("pt_BR"));
   });
 
-  it("in 别名与 id 指向同一语言包", () => {
-    expect(getLocaleMessages("in")).toBeDefined();
+  it("in 别名与 id 指向同一语言包", async () => {
+    const idAlias = await loadLocaleMessages("in");
+    const id = await loadLocaleMessages("id");
+    expect(idAlias).toBeDefined();
+    expect(idAlias).toBe(id);
     expect(getLocaleMessages("in")).toBe(getLocaleMessages("id"));
   });
 

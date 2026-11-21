@@ -26,6 +26,7 @@ import {
   getPlatformEnv,
   platformCanvas,
   isExtension,
+  safeCloseImageBitmap,
 } from "../core/platform";
 import { useStitchManager } from "./hooks/useStitchManager";
 import { useIOSViewportFix } from "./hooks/useIOSViewportFix";
@@ -137,12 +138,88 @@ export function App({
     window.dispatchEvent(new CustomEvent("pwa-smart-trigger"));
   }, []);
 
+  const hasPendingInitialImages = task.userImages.some(
+    (img) => !img.bitmap && Boolean(img.originalUrl),
+  );
+  const isLoadingInitialImagesRef = useRef(hasPendingInitialImages);
+
   const [loading, setLoading] = useState(() => {
+    if (hasPendingInitialImages) return true;
     // If we have share target params, start in loading state
     const params = new URLSearchParams(window.location.search);
     return !!(params.get("title") || params.get("text") || params.get("url"));
   });
-  const [loadingMessage, setLoadingMessage] = useState("");
+  const [loadingMessage, setLoadingMessage] = useState(() =>
+    hasPendingInitialImages ? t("downloadingImages") : "",
+  );
+
+  // 弹窗挂载后再并发拉取初始原图，避免点击按钮后卡在页面原地等待
+  useEffect(() => {
+    if (!hasPendingInitialImages) return;
+
+    let active = true;
+    isLoadingInitialImagesRef.current = true;
+    setLoading(true);
+    setLoadingMessage(t("downloadingImages"));
+
+    Promise.all(
+      task.userImages.map(async (img, i) => {
+        const baseNode: ImageNode = {
+          ...img,
+          originalIndex: img.originalIndex ?? i + 1,
+        };
+        if (baseNode.bitmap || !baseNode.originalUrl) return baseNode;
+
+        try {
+          let response = await fetchImageData(baseNode.originalUrl);
+          if (
+            (!response || !response.dataUrl) &&
+            baseNode.originalUrl !== baseNode.thumbnailUrl
+          ) {
+            response = await fetchImageData(baseNode.thumbnailUrl);
+          }
+          if (response && response.dataUrl) {
+            const res = await fetch(response.dataUrl);
+            const blob = await res.blob();
+            const bitmap = await createImageBitmap(blob);
+            if (!active) {
+              safeCloseImageBitmap(bitmap);
+              return baseNode;
+            }
+            return {
+              ...baseNode,
+              bitmap,
+              width: bitmap.width,
+              height: bitmap.height,
+            };
+          }
+          console.error("Fetch image failed", response?.error);
+        } catch (err) {
+          console.error("Fetch image failed", err);
+        }
+        return {
+          ...baseNode,
+          visible: false,
+        };
+      }),
+    )
+      .then((loadedImages) => {
+        if (!active) return;
+        setImages(loadedImages);
+        triggerGeneration(true);
+      })
+      .finally(() => {
+        if (!active) return;
+        isLoadingInitialImagesRef.current = false;
+        setLoading(false);
+        setLoadingMessage("");
+      });
+
+    return () => {
+      active = false;
+      isLoadingInitialImagesRef.current = false;
+    };
+  }, [task.taskId, hasPendingInitialImages, setImages, triggerGeneration]);
 
   // Split Mode State
   const [mode, setMode] = useState<"stitch" | "split">(initialMode);
@@ -256,9 +333,10 @@ export function App({
         setLanguage(res[STORAGE_KEYS.LANG] as string)
           .then(() => {
             setIsLangLoaded(true);
-            // Only turn off loading if we are NOT potentially processing a share target
+            // Only turn off loading if we are NOT potentially processing a share target or initial images
             const params = new URLSearchParams(window.location.search);
             if (
+              !isLoadingInitialImagesRef.current &&
               !params.get("title") &&
               !params.get("text") &&
               !params.get("url")
@@ -270,7 +348,7 @@ export function App({
             console.error("Failed to load language:", err);
             // Fallback to ensure we still save future settings even if lang load fails partially
             setIsLangLoaded(true);
-            setLoading(false);
+            if (!isLoadingInitialImagesRef.current) setLoading(false);
           });
       })
       .catch((err) => {
@@ -278,7 +356,7 @@ export function App({
         // Even if storage load fails, we should enable UI
         setLanguage("auto").finally(() => {
           setIsLangLoaded(true);
-          setLoading(false);
+          if (!isLoadingInitialImagesRef.current) setLoading(false);
         });
       });
 
@@ -1439,8 +1517,7 @@ export function App({
             }}
             lang={lang}
             setLang={(l) => {
-              setLanguage(l);
-              setLang(l);
+              void setLanguage(l).then(() => setLang(l));
             }}
             hasSplitSource={!!splitSourceBitmap}
             handleStitch={handleStitchAndDownload}

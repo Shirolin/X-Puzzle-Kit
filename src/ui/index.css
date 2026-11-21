@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&family=Inter:wght@400;600;700&display=swap");
-
 :host {
   all: initial;
   /* 彻底断开与外部样式的联系 */
@@ -79,7 +77,6 @@
 
   /* Fonts */
   font-family:
-    "Fira Sans",
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
@@ -220,8 +217,7 @@ textarea {
 [data-lang]:not([data-lang^="zh"]):not([data-lang^="ja"]):not([data-lang^="ko"])
   * {
   font-family:
-    "Inter", "SF Pro Text", "Segoe UI", "Helvetica Neue", "Arial", system-ui,
-    sans-serif !important;
+    "SF Pro Text", "Segoe UI", "Helvetica Neue", "Arial", system-ui, sans-serif !important;
   letter-spacing: -0.015em !important; /* 核心：对齐 Apple 级紧致感 */
   text-rendering: optimizeLegibility;
 }
@@ -230,7 +226,7 @@ textarea {
 .x-puzzle-kit-mount-point:not([data-lang^="zh"]):not([data-lang^="ja"]):not(
     [data-lang^="ko"]
   ) {
-  font-family: "Inter", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  font-family: "SF Pro Text", "Segoe UI", system-ui, sans-serif;
 }
 
 :host,
@@ -635,7 +631,9 @@ input:checked + .slider:before {
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--color-text);
-  font-family: "Fira Code", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
   white-space: nowrap;
   max-width: 80vw; /* Prevent crossing left edge on narrow screens */
   overflow: hidden;
@@ -1694,7 +1692,9 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: center;
   padding: 0 4px;
-  font-family: "Fira Code", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
   z-index: 2;
 }
 
@@ -1735,7 +1735,9 @@ input:checked + .slider:before {
 .item-meta {
   font-size: 8.5px !important;
   color: var(--color-text-muted);
-  font-family: "Fira Code", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
   opacity: 0.85;
 }
 
@@ -1754,7 +1756,9 @@ input:checked + .slider:before {
 }
 
 .gap-value-text {
-  font-family: "Fira Code", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
   font-size: 9px !important;
   font-weight: 700;
   color: var(--color-primary);
@@ -1987,7 +1991,9 @@ input:checked + .slider:before {
   text-align: center;
   font-weight: 600;
   color: var(--color-primary);
-  font-family: "Fira Code", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
   font-variant-numeric: tabular-nums;
   padding: 0;
   outline: none;
@@ -4056,7 +4062,9 @@ button:active {
   background: rgba(0, 122, 255, 0.15);
   padding: 2px 8px;
   border-radius: 99px;
-  font-family: "Fira Code", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
 }
 
 .guide-close {

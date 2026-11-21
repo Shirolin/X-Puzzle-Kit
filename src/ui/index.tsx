@@ -2,7 +2,7 @@ import { render } from "preact";
 import { App } from "./App";
 import { Toaster } from "sonner";
 import { StitchTask } from "../core/types";
-import { fetchImageData, isExtension, platformStorage } from "../core/platform";
+import { isExtension, platformStorage } from "../core/platform";
 import { fillXComposer } from "../content/xComposer";
 import cssText from "./index.css?inline";
 import sonnerCssText from "sonner/dist/styles.css?inline";
@@ -105,41 +105,8 @@ export async function initToaster() {
 export async function mountUI(task: StitchTask, splitImageUrl?: string) {
   const { appRoot } = ensureContainer();
 
-  // 确保 Toaster 存在
-  await initToaster();
-
-  // 预加载图片
-  const updatedImages = await Promise.all(
-    task.userImages.map(async (img) => {
-      let response = await fetchImageData(img.originalUrl);
-      if (
-        (!response || !response.dataUrl) &&
-        img.originalUrl !== img.thumbnailUrl
-      ) {
-        response = await fetchImageData(img.thumbnailUrl);
-      }
-      if (response && response.dataUrl) {
-        const res = await fetch(response.dataUrl);
-        const blob = await res.blob();
-        const bitmap = await createImageBitmap(blob);
-        return {
-          ...img,
-          bitmap,
-          width: bitmap.width,
-          height: bitmap.height,
-        };
-      } else {
-        console.error("Fetch image failed", response?.error);
-        // 避免单张图片加载失败导致整体拼接崩溃
-        return {
-          ...img,
-          visible: false,
-        };
-      }
-    }),
-  );
-
-  task.userImages = updatedImages;
+  // 非阻塞初始化 Toaster，避免拖慢弹窗首帧挂载
+  void initToaster();
 
   render(
     <App

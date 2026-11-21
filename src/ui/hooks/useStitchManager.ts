@@ -27,11 +27,14 @@ export function useStitchManager(options: StitchOptions = {}) {
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
   const isGeneratingRef = useRef(false);
+  const immediateRef = useRef(false);
+  const previewUrlRef = useRef("");
 
   // Helper to trigger generation with immediate feedback
-  const triggerGeneration = useCallback(() => {
+  const triggerGeneration = useCallback((immediate = false) => {
     setIsGenerating(true);
     isGeneratingRef.current = true;
+    if (immediate) immediateRef.current = true;
   }, []);
 
   // Standardized setters with auto-generating trigger
@@ -104,6 +107,10 @@ export function useStitchManager(options: StitchOptions = {}) {
 
   const clearAllImages = useCallback(() => {
     setImages([]);
+    if (previewUrlRef.current && previewUrlRef.current.startsWith("blob:")) {
+      URL.revokeObjectURL(previewUrlRef.current);
+      previewUrlRef.current = "";
+    }
     setPreviewUrl("");
     setCanvasSize({ width: 0, height: 0 });
   }, []);
@@ -134,11 +141,22 @@ export function useStitchManager(options: StitchOptions = {}) {
 
       const visibleImages = images.filter((img) => img.visible !== false);
       if (visibleImages.length === 0) {
-        if (previewUrl && previewUrl.startsWith("blob:"))
-          URL.revokeObjectURL(previewUrl);
+        if (
+          previewUrlRef.current &&
+          previewUrlRef.current.startsWith("blob:")
+        ) {
+          URL.revokeObjectURL(previewUrlRef.current);
+          previewUrlRef.current = "";
+        }
         setPreviewUrl("");
         setIsGenerating(false);
         isGeneratingRef.current = false;
+        immediateRef.current = false;
+        return;
+      }
+
+      // 若仍有初始图片正在异步解码，暂不绘制，待加载完成后由 triggerGeneration(true) 触发
+      if (visibleImages.some((img) => !img.bitmap)) {
         return;
       }
 
@@ -153,32 +171,45 @@ export function useStitchManager(options: StitchOptions = {}) {
           globalGap,
           backgroundColor,
         );
-        if (!active) return;
+        if (!active) {
+          platformCanvas.dispose(canvas);
+          return;
+        }
 
         setCanvasSize({ width: canvas.width, height: canvas.height });
 
-        const blob = await platformCanvas.toBlob(canvas, "image/png");
+        // 预览优先使用 WebP（支持透明背景且编码比无损 PNG 快数倍），正式下载仍按所选格式全分辨率编码
+        const blob =
+          (await platformCanvas.toBlob(canvas, "image/webp", 0.85)) ??
+          (await platformCanvas.toBlob(canvas, "image/png"));
+        platformCanvas.dispose(canvas);
         if (!active || !blob) return;
 
         const newUrl = URL.createObjectURL(blob);
-        setPreviewUrl((old) => {
-          if (old && old.startsWith("blob:")) URL.revokeObjectURL(old);
-          return newUrl;
-        });
+        if (
+          previewUrlRef.current &&
+          previewUrlRef.current.startsWith("blob:")
+        ) {
+          URL.revokeObjectURL(previewUrlRef.current);
+        }
+        previewUrlRef.current = newUrl;
+        setPreviewUrl(newUrl);
       } catch (e) {
         console.error("Preview generation failed:", e);
       } finally {
         setIsGenerating(false);
         isGeneratingRef.current = false;
+        immediateRef.current = false;
       }
     };
 
-    const timer = setTimeout(generate, 400); // 400ms debounce
+    const delay = immediateRef.current ? 0 : 400;
+    const timer = setTimeout(generate, delay);
     return () => {
       active = false;
       clearTimeout(timer);
     };
-  }, [images, layout, globalGap, backgroundColor, previewUrl]);
+  }, [images, layout, globalGap, backgroundColor]);
 
   return {
     images,
