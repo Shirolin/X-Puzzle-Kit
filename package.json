@@ -12,6 +12,7 @@
     "dev:test": "vite serve -c vite.test.config.ts",
     "build": "node scripts/clean-dist.js && node scripts/sync-shortcuts.js && vite build",
     "build:web": "echo \"Building Web App...\" && node scripts/sync-shortcuts.js && vite build -c vite.config.web.ts",
+    "build:pages": "vite build -c vite.config.pages.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "format": "prettier --write .",

@@ -1,9 +1,9 @@
 <div align="center">
-  <img src="public/assets/icon-128.png" width="120" height="120" alt="Icon" />
+  <img src="public/assets/icon-128.png" width="120" height="120" alt="X-Puzzle-Kit icon" />
 
   <h1>X-Puzzle-Kit</h1>
   <p>
-    <b>Creative Puzzle & Stitching Toolkit for X (Twitter)</b>
+    <b>Creative Image Stitching & Splitting Toolkit for X (Twitter)</b>
   </p>
   <p>
     <b>English</b> | <a href="./README_CN.md">简体中文</a> · <a href="https://x-puzzle-kit.pages.dev"><b>Online Web App ↗</b></a>
@@ -21,7 +21,7 @@
   </p>
 
   <a href="https://x-puzzle-kit.pages.dev">
-    <img src="marketing/screenshots/拼图-截图.png" width="100%" alt="Hero Image" />
+    <img src="marketing/screenshots/拼图-截图.png" width="100%" alt="X-Puzzle-Kit workspace screenshot" />
   </a>
 
   <br/>
@@ -43,7 +43,7 @@
 <div align="center">
   <table>
     <tr>
-      <td align="center" width="33%"><b>Chrome Extension (PC)</b></td>
+      <td align="center" width="33%"><b>Chrome Extension (Desktop)</b></td>
       <td align="center" width="33%"><b>Android (PWA)</b></td>
       <td align="center" width="33%"><b>iOS (Shortcut)</b></td>
     </tr>
@@ -53,48 +53,47 @@
       <td><img src="public/assets/ios.gif" width="100%" /></td>
     </tr>
     <tr>
-      <td align="center" valign="top">✨ <b>Timeline Injection</b><br/>Right-click to split</td>
+      <td align="center" valign="top">✨ <b>Timeline Integration</b><br/>Right-click to split</td>
       <td align="center" valign="top">🚀 <b>System Share Target</b><br/>Add to Home Screen</td>
-      <td align="center" valign="top">📲 <b>Shortcut Integration</b><br/>One-click from App</td>
+      <td align="center" valign="top">📲 <b>Shortcut Integration</b><br/>One-click from X app</td>
     </tr>
   </table>
-  <p><i>Seamless experience from Desktop Extension to Mobile PWA</i></p>
+  <p><i>Seamless workflow from Desktop Extension to Mobile PWA</i></p>
 </div>
 
 ### 🖼️ Stitch & Collect (Stitcher)
 
-- **Creative Assembly**: Love the clever 4-panel splits or manga spreads designed by your favorite artists? One-click to grab these brilliant ideas and **assemble them into a high-res masterpiece** for your personal collection.
-- **Smart Prediction**: Auto-detects the best layout (T-shape, Grid) based on image count.
-- **Native Integration (Ext only)**: Injects a "🧩 Stitch" button directly into the timeline. From "Admiring" to "Cherishing" in one click.
+- **Creative Assembly**: Love multi-panel illustrations or comic spreads on X? Grab all images from a post in one click and **stitch them into a full-resolution image** for your collection.
+- **Smart Layout Prediction**: Automatically chooses the best layout (2x2 Grid, adaptive multi-row grid for 5+ images, T-Shape, Horizontal, or Vertical) based on image count and aspect ratios.
+- **Native Integration (Extension only)**: Adds a Stitch button directly to multi-image posts on X so you can combine images without saving them first.
 
 ### ✂️ Smart Splitter
 
-- **Multi-Mode Splitting**: Offers versatile layouts including **2x2 Grid**, **T-Shape (1 big, 2 small)**, and **Custom Rows/Cols (Nx1, 1xN)**, perfectly tailored for Twitter's 4-image grid or vertical strip comics.
-- **Precision Editing**: Features **Unified** and **Individual** drag modes. You can scale and move the image globally or adjust each cell independently, including **replacing images** for specific cells.
-- **Twitter Optimization**: Built-in one-click **"Twitter Aspect Ratio"** optimization ensures your images are cropped perfectly for the timeline view.
-- **Customizable Export**: Adjust **gap sizes**, **fill exposed backgrounds** with colors, and choose to export as a **ZIP archive** or individual images.
+- **Multi-Mode Splitting**: Supports **2x2 Grid**, **T-Shape (1 large, 2 small)**, **Horizontal (Nx1, up to 20 slices)**, and **Vertical (1xN, up to 20 slices)**—ideal for X's 4-image grid or vertical strip comics.
+- **Precision Editing**: Switch between **Unified** and **Individual** drag modes to pan and scale globally or fine-tune each cell independently, including **replacing images** per cell.
+- **Twitter "Seamless Flow" Layout**: One-click aspect-ratio optimization matches X's preview ratios so split slices align seamlessly in the timeline.
+- **Post to X & Flexible Export**: Trim built-in source gaps, fill exposed edges with a background color, download individually or as a **ZIP archive**, or use **Post to X** (direct post composer attachment in the extension; system share menu or ZIP/image download on Web).
 
 ### 📱 Platform
 
-- **PWA & Mobile**: Full PWA support with a premium touch UI for iOS/Android.
-- **Silent Updates**: Frontend logic updates instantly (especially when launched via iOS Shortcuts), bypassing extension store review delays.
-- **Mobile Integration**: Import tweets directly via the system "Share" menu from the **Mobile App or Mobile Web**. Supported via **Web Share Target** (Android) and **Shortcuts** (iOS).
+- **PWA & Mobile**: Full PWA support with a touch-friendly UI for iOS and Android.
+- **Instant Updates**: Web and PWA updates ship immediately without waiting for extension store review.
+- **Mobile Integration**: Import posts directly via the system Share menu from the **X mobile app or mobile web**, powered by **Web Share Target** (Android) and **Shortcuts** (iOS).
 
-### 🔒 Core
+### 🔒 Privacy
 
-- **Privacy Policy**:
-  - **Extension**: **100% Local processing**, zero communication with external servers.
-  - **Web/PWA**: Uses a secure proxy (Cloudflare Worker) for tweet URL parsing (no data stored). Final image processing always stays local in your browser.
+- **Chrome Extension**: **100% local processing** in your browser, with zero uploads to X-Puzzle-Kit servers.
+- **Web / PWA**: Uses a stateless proxy (Cloudflare Workers / Pages Functions) only to parse tweet URLs and relay CORS-restricted X media, without storing personal data or usage logs. Image stitching and splitting always stay local in your browser. See the [Privacy Policy](./doc/privacy.md) for details.
 
 ## 📦 Installation
 
 ### Method 1: Web App / PWA (Easiest)
 
-No installation required! Simply visit the web version and add it to your Home Screen for a native-like experience.
+No installation required! Visit the Web App and add it to your Home Screen for an app-like experience.
 
 - **URL (Cloudflare Pages)**: [https://x-puzzle-kit.pages.dev](https://x-puzzle-kit.pages.dev)
-- **Mirror (GitHub Pages)**: [https://shirolin.github.io/X-Puzzle-Kit/](https://shirolin.github.io/X-Puzzle-Kit/)
-- **Features**: Supports sharing directly from the **Mobile App or Web version** (via System Share menu).
+- **Product Site (GitHub Pages)**: [https://shirolin.github.io/X-Puzzle-Kit/](https://shirolin.github.io/X-Puzzle-Kit/)
+- **Features**: Supports sharing posts directly from the **X mobile app or mobile web** via the system Share menu.
 
 ### Method 2: Chrome Extension (Best for Desktop)
 
@@ -121,13 +120,13 @@ npm run build:web  # Build Web/PWA Version (dist-web)
 
 ## 🛠️ Tech Stack
 
-Built with modern web technologies for performance and experience:
+Built with modern web technologies for speed and reliability:
 
-- **Framework**: [React](https://react.dev/) + [Preact](https://preactjs.com/) (Lite weight)
+- **Framework**: [Preact](https://preactjs.com/) (with `preact/compat`)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Build Tool**: [Vite](https://vitejs.dev/)
-- **Components**: [Lucide](https://lucide.dev/), [Sonner](https://sonner.stevenly.me/), [SortableJS](https://sortablejs.com/)
-- **Styling**: Vanilla CSS (Apple Design Style) / Scss-like Utilities
+- **Components**: [Lucide](https://lucide.dev/), [Sonner](https://sonner.stevenly.me/), [SortableJS](https://sortablejs.com/), [JSZip](https://stuk.github.io/jszip/)
+- **Styling**: Vanilla CSS (CSS Custom Properties)
 
 ## 🔖 Release & Build
 
@@ -154,7 +153,7 @@ The artifact is generated in the `release/` directory. Upload that ZIP to the Ch
 
 ## 🤝 Contribution & Support
 
-Issues and Pull Requests are welcome!
+[Issues](https://github.com/Shirolin/X-Puzzle-Kit/issues) and Pull Requests are welcome!
 
 If you find this project helpful, please give it a Star ⭐️ or buy me a coffee:
 

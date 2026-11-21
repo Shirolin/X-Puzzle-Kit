@@ -10,6 +10,11 @@ export default defineConfig(() => {
   return {
     root: "./",
     base: "./",
+    server: {
+      watch: {
+        ignored: [path.resolve(__dirname, ".tmp")],
+      },
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
@@ -73,6 +78,16 @@ export default defineConfig(() => {
         },
         workbox: {
           globPatterns: ["**/*.{js,css,html,ico,png,svg,webp}"],
+          globIgnores: [
+            "landing/**",
+            "assets/landing-*",
+            "assets/coast-*",
+            "assets/stitch-demo-*",
+          ],
+          navigateFallbackDenylist: [
+            /^\/landing(?:\/|$)/,
+            /^\/shortcuts(?:\/|$)/,
+          ],
           runtimeCaching: [
             {
               urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -91,6 +106,22 @@ export default defineConfig(() => {
           ],
         },
       }),
+      {
+        name: "landing-manifest-path",
+        apply: "build",
+        enforce: "post",
+        transformIndexHtml: {
+          order: "post",
+          handler(html, { path }) {
+            if (path === "/landing/index.html") {
+              return html.replace(
+                'href="./manifest.webmanifest"',
+                'href="../manifest.webmanifest"',
+              );
+            }
+          },
+        },
+      },
     ],
     define: {
       __IS_EXTENSION__: false,
@@ -118,6 +149,7 @@ export default defineConfig(() => {
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, "index.html"),
+          landing: path.resolve(__dirname, "landing/index.html"),
         },
         output: {
           manualChunks: {
