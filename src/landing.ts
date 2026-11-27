@@ -24,6 +24,8 @@ type CopyKey =
   | "stitchSpec2"
   | "stitchSpec3"
   | "stitchSpec4"
+  | "heroNote"
+  | "ctaKicker"
   | "ctaWeb"
   | "ctaExt"
   | "splitEyebrow"
@@ -39,6 +41,7 @@ type CopyKey =
   | "splitHl3Body"
   | "demoAria"
   | "demoPrompt"
+  | "demoLive"
   | "modesAria"
   | "modeOriginal"
   | "modeHorizontal"
@@ -61,6 +64,15 @@ type CopyKey =
   | "wfPrivTitle"
   | "wfPrivDesc"
   | "wfPrivLink"
+  | "statSlices"
+  | "statLangs"
+  | "statLocal"
+  | "statUploads"
+  | "closingEyebrow"
+  | "closingTitle"
+  | "closingDesc"
+  | "privacyTitle"
+  | "privacyHint"
   | "footerNote"
   | "footerWeb"
   | "footerExt"
@@ -137,6 +149,8 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
       stitchSpec2: "智能消除原图间隙",
       stitchSpec3: "单格/全局间距与底色",
       stitchSpec4: "PNG / JPG / WebP 无损导出",
+      heroNote: "免费使用 · 无需注册 · 图片不上传",
+      ctaKicker: "快速开始",
       ctaWeb: "打开网页工作台",
       ctaExt: "安装 Chrome 扩展",
       splitEyebrow: "创意拆图 · 智能裁切",
@@ -155,6 +169,7 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
         "支持扩展端一键填入发帖编辑器、移动端系统分享，或导出单图与 ZIP。",
       demoAria: "切图演示",
       demoPrompt: "试切这张图",
+      demoLive: "实时预览",
       modesAria: "预览模式",
       modeOriginal: "原图",
       modeHorizontal: "横向",
@@ -163,7 +178,7 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
       sampleAlt: "海岸公路、红色汽车和浪花",
       sliceCountLabel: "切片数量",
       workflowEyebrow: "双端工作流与隐私承诺",
-      workflowTitle: "从桌面时间线到移动端，一套顺手工作流",
+      workflowTitle: "从桌面时间线到移动端，\n一套顺手工作流",
       workflowDesc:
         "浏览器扩展深度嵌入 X 页面，网页与 PWA 覆盖手机和平板；无论哪一端，图片拼接与切分都在本地完成。",
       wfExtTag: "桌面端扩展",
@@ -181,6 +196,16 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
       wfPrivDesc:
         "所有图片处理都在本地 Canvas 完成，不上传图片也不记录个人数据；Web 端仅通过无状态代理按需解析推文。基于 GPL-3.0 开源，内置 14 种语言。",
       wfPrivLink: "阅读隐私政策",
+      statSlices: "切片上限",
+      statLangs: "内置语言",
+      statLocal: "本地处理",
+      statUploads: "图片上传",
+      closingEyebrow: "准备好了吗",
+      closingTitle: "下一张拼图，从这里开始",
+      closingDesc:
+        "网页工作台免安装即开即用；装进浏览器后，X 时间线里的多图与长图都能一键处理。",
+      privacyTitle: "隐私政策",
+      privacyHint: "本地处理 · 无账号 · 无追踪",
       footerNote: "本地 Canvas 处理 · GPL-3.0 开源 · 支持 14 种语言",
       footerWeb: "打开网页工作台",
       footerExt: "Chrome 扩展",
@@ -236,6 +261,8 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
       stitchSpec2: "Trim original source gaps",
       stitchSpec3: "Per-panel & global gaps + fills",
       stitchSpec4: "Lossless PNG, JPG & WebP",
+      heroNote: "Free to use · No account · No image uploads",
+      ctaKicker: "Get started",
       ctaWeb: "Open Web Studio",
       ctaExt: "Install Chrome Extension",
       splitEyebrow: "Smart Image Splitter",
@@ -255,6 +282,7 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
         "Attach slices straight to the X composer in the extension, share on mobile, or export images and ZIPs.",
       demoAria: "Image splitting demo",
       demoPrompt: "Try splitting this photo",
+      demoLive: "Live preview",
       modesAria: "Preview mode",
       modeOriginal: "Original",
       modeHorizontal: "Horizontal",
@@ -263,7 +291,7 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
       sampleAlt: "Coastal road, red car, and ocean waves",
       sliceCountLabel: "Slice count",
       workflowEyebrow: "Cross-Platform Workflow & Privacy",
-      workflowTitle: "One smooth workflow from desktop timeline to mobile",
+      workflowTitle: "One smooth workflow,\nfrom desktop timeline to mobile",
       workflowDesc:
         "The browser extension embeds right into X, while Web and PWA cover phones and tablets—with all image processing staying local.",
       wfExtTag: "Desktop Extension",
@@ -281,6 +309,16 @@ const TRANSLATIONS: Record<Lang, TranslationBundle> = {
       wfPrivDesc:
         "All stitching and splitting runs locally on Canvas with zero image uploads or tracking; Web uses a stateless proxy only when parsing post URLs. GPL-3.0 open source in 14 languages.",
       wfPrivLink: "Privacy Policy",
+      statSlices: "Slice limit",
+      statLangs: "Languages",
+      statLocal: "Local processing",
+      statUploads: "Image uploads",
+      closingEyebrow: "Ready when you are",
+      closingTitle: "Your next stitch starts here",
+      closingDesc:
+        "Open the Web Studio and go, or add the extension to handle multi-image posts and long-image recovery right inside your X timeline.",
+      privacyTitle: "Privacy Policy",
+      privacyHint: "Local processing · No account · No tracking",
       footerNote:
         "Local Canvas processing · GPL-3.0 Open Source · 14 Languages",
       footerWeb: "Open Web Studio",
@@ -458,6 +496,16 @@ function updateDemoControls(pieces: number): void {
 
   if (count) {
     count.disabled = !previewReady || isOriginal || isGrid;
+
+    if (count.disabled) {
+      count.style.setProperty("--fill", "0%");
+    } else {
+      const min = Number(count.min);
+      const max = Number(count.max);
+      const ratio = max > min ? (count.valueAsNumber - min) / (max - min) : 1;
+      const percent = Math.min(100, Math.max(0, ratio * 100));
+      count.style.setProperty("--fill", `${percent.toFixed(2)}%`);
+    }
   }
 
   if (countLabel) {
@@ -628,6 +676,37 @@ function initPreview(): void {
 }
 
 applyLanguage(lang);
+
+const privacyDetails =
+  document.querySelector<HTMLDetailsElement>("details.privacy");
+
+function openPrivacy(): void {
+  if (!privacyDetails) return;
+  privacyDetails.open = true;
+  privacyDetails.scrollIntoView({
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth",
+    block: "start",
+  });
+}
+
+document
+  .querySelectorAll<HTMLAnchorElement>('a[href="#privacy"]')
+  .forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (!privacyDetails) return;
+      event.preventDefault();
+      openPrivacy();
+      const nextUrl = new URL(window.location.href);
+      nextUrl.hash = "#privacy";
+      history.replaceState(null, "", nextUrl);
+    });
+  });
+
+if (privacyDetails && window.location.hash === "#privacy") {
+  privacyDetails.open = true;
+}
 
 langToggle?.addEventListener("click", () => {
   lang = lang === "zh" ? "en" : "zh";

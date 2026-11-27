@@ -71,11 +71,17 @@ export default defineConfig({
           )
           .replace(
             "</main>",
-            () => `  <section class="privacy wrap" id="privacy" lang="en" aria-labelledby="privacy-policy-for-x-puzzle-kit">
-        <article>
+            () => `      <details class="privacy wrap" id="privacy">
+        <summary>
+          <span class="privacy-kicker">Privacy</span>
+          <span class="privacy-title" data-i18n="privacyTitle">隐私政策</span>
+          <span class="privacy-hint" data-i18n="privacyHint">本地处理 · 无账号 · 无追踪</span>
+          <span class="privacy-toggle" aria-hidden="true"></span>
+        </summary>
+        <article lang="en">
 ${policy}
         </article>
-      </section>
+      </details>
     </main>`,
           );
       },
