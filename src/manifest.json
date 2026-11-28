@@ -1,10 +1,13 @@
 {
   "manifest_version": 3,
   "name": "__MSG_appName__",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
-  "permissions": ["storage", "contextMenus"],
+  "permissions": [
+    "storage",
+    "contextMenus"
+  ],
   "host_permissions": [
     "https://twitter.com/*",
     "https://x.com/*",
@@ -20,9 +23,16 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/*", "https://x.com/*"],
-      "js": ["src/content/index.ts"],
-      "css": ["src/content/style.css"],
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*"
+      ],
+      "js": [
+        "src/content/index.ts"
+      ],
+      "css": [
+        "src/content/style.css"
+      ],
       "run_at": "document_idle"
     }
   ],
@@ -32,8 +42,13 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["assets/*"],
-      "matches": ["https://twitter.com/*", "https://x.com/*"]
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*"
+      ]
     }
   ]
 }
