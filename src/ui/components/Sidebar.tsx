@@ -1676,7 +1676,11 @@ export function Sidebar({
               width: "100%",
               height: "3rem",
               fontSize: "1rem",
-              boxShadow: "0 10px 24px rgba(0, 122, 255, 0.35)",
+              opacity: images.length === 0 || loading || isGenerating ? 0.4 : 1,
+              boxShadow:
+                images.length === 0
+                  ? "none"
+                  : "0 10px 24px rgba(0, 122, 255, 0.35)",
             }}
           >
             <Download size={20} />

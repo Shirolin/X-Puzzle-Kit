@@ -1387,7 +1387,7 @@ input:checked + .slider:before {
 
 /* Sidebar */
 .sidebar-panel {
-  width: 262px;
+  width: 288px;
   border-left: 1px solid var(--color-glass-border);
   display: flex;
   flex-direction: column;
@@ -4914,4 +4914,157 @@ button:active {
 
 .screenshot-preview-img.loaded {
   opacity: 1;
+}
+
+/* --- UI polish pass --- */
+
+/* Keyboard focus: base buttons clear the UA outline, so restore a visible ring */
+:where(
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  [role="button"],
+  [tabindex]
+):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* A disabled primary action must not look clickable; the stitch CTA starts
+   disabled while the canvas is empty */
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none !important;
+  filter: none;
+}
+
+@media (hover: hover) {
+  .btn:disabled:hover {
+    filter: none;
+    transform: none;
+  }
+}
+
+/* Long section titles (e.g. the X timeline optimisation) wrap instead of
+   truncating mid-word */
+.section-header {
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+.section-header-text {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+/* The hover action overlay only needs ~44px; the old 72px reserve cut names
+   down to three characters */
+@media (min-width: 769px) {
+  .item-info {
+    margin-right: 56px;
+  }
+}
+
+/* The mobile action group sits over the row, so don't reserve it twice
+   (base margin-right + mobile padding-right) */
+@media (max-width: 768px) {
+  .item-info {
+    margin-right: 0;
+    padding-right: 138px !important;
+  }
+
+  /* Center the empty card in the canvas area that is not covered by the
+     bottom sheet (the sheet eats ~64px of the scroll region) */
+  .viewer-empty-state::after {
+    flex: 1.6 !important;
+  }
+}
+
+/* Touch screens reorder by dragging; the 44px arrow column costs more room
+   than the file name has on a phone */
+@media (max-width: 480px) {
+  .sortable-item .sort-arrows-col {
+    display: none !important;
+  }
+
+  .item-info {
+    padding-right: 104px !important;
+  }
+}
+
+/* Fade the end of the scrolling panel so content is not sliced by the footer */
+.sidebar-scroll-area {
+  padding-bottom: 2.5rem;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - 36px),
+    transparent
+  );
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 36px), transparent);
+}
+
+/* Narrow phones: the English header needs ~385px, so drop the decorative
+   mode icons before the brand is forced to wrap */
+@media (max-width: 400px) {
+  .app-header .mode-btn svg {
+    display: none;
+  }
+
+  .app-header .mode-btn {
+    padding-inline: 10px !important;
+  }
+}
+
+/* 320px-wide screens: the two-line brand no longer fits next to the controls */
+@media (max-width: 359px) {
+  .app-header {
+    padding-inline: 10px !important;
+  }
+
+  .app-header .header-group {
+    gap: 0.5rem !important;
+  }
+
+  .app-header .app-slogan-text {
+    display: none !important;
+  }
+
+  /* The zoom island overflows by ~50px here and clipped the upload action;
+     1:1 is redundant with the fit-to-screen reset on a phone */
+  .viewer-toolbar-v2 {
+    gap: 4px !important;
+    padding: 4px 8px !important;
+  }
+
+  .viewer-toolbar-v2 .toolbar-row {
+    gap: 4px !important;
+  }
+
+  .viewer-toolbar-v2 .toolbar-row.secondary .toolbar-text-btn:first-child {
+    display: none;
+  }
+
+  .viewer-toolbar-v2 .toolbar-divider-v {
+    margin: 0 !important;
+  }
+
+  .viewer-toolbar-v2 .toolbar-btn {
+    min-width: 36px !important;
+    padding: 6px !important;
+  }
+}
+
+/* The update prompt used to sit on top of the primary download button and
+   overflowed a 320px viewport */
+.pwa-reload-prompt-container {
+  right: 16px;
+  bottom: 90px;
+  width: min(360px, calc(100vw - 32px));
+  min-width: 0;
+  max-width: calc(100vw - 32px);
 }
