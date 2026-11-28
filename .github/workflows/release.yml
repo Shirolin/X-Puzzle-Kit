@@ -12,6 +12,9 @@ jobs:
   build-and-release:
     name: Build and Release
     runs-on: ubuntu-latest
+    env:
+      # 凭据未配置时跳过商店上传，不影响 GitHub Release
+      CWS_CONFIGURED: ${{ secrets.CWS_REFRESH_TOKEN != '' }}
 
     steps:
       - name: Checkout code
@@ -35,6 +38,16 @@ jobs:
 
       - name: Create release artifacts
         run: npm run package
+
+      - name: Publish to Chrome Web Store
+        if: env.CWS_CONFIGURED == 'true'
+        env:
+          CWS_PUBLISHER_ID: ${{ secrets.CWS_PUBLISHER_ID }}
+          CWS_EXTENSION_ID: ${{ secrets.CWS_EXTENSION_ID }}
+          CWS_CLIENT_ID: ${{ secrets.CWS_CLIENT_ID }}
+          CWS_CLIENT_SECRET: ${{ secrets.CWS_CLIENT_SECRET }}
+          CWS_REFRESH_TOKEN: ${{ secrets.CWS_REFRESH_TOKEN }}
+        run: node scripts/publish-cws.mjs --publish
 
       - name: Create Release
         uses: softprops/action-gh-release@v1

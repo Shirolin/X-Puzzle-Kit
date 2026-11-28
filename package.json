@@ -20,6 +20,7 @@
     "lint": "eslint .",
     "package": "npm run build && node scripts/package.js",
     "store-copy": "node scripts/gen-store-copy.js && prettier --write doc/store-listing-copy.md",
+    "publish:cws": "node scripts/publish-cws.mjs",
     "version": "node scripts/update-version.js && git add src/manifest.json"
   },
   "keywords": [],

@@ -30,6 +30,9 @@ dist-test
 release
 *.pem
 
+# Local secrets (CWS 发布凭据等)
+.env
+
 # Cloudflare Workers
 .wrangler
 worker-sites-init.js
