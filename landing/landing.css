@@ -188,8 +188,13 @@ section[id] {
   transition: transform 280ms var(--ease);
 }
 
-.site-nav a:hover::after {
+.site-nav a:hover::after,
+.site-nav a.is-active::after {
   transform: scaleX(1);
+}
+
+.site-nav a.is-active {
+  color: var(--ink);
 }
 
 .lang-switch {
@@ -335,7 +340,7 @@ p {
 }
 
 .stitch-copy h1 {
-  font-size: clamp(2.35rem, 4.1vw, 4.1rem);
+  font-size: clamp(2.45rem, 4.25vw, 4.25rem);
   line-height: 1.08;
 }
 
@@ -632,7 +637,7 @@ p {
 }
 
 .split-copy h2 {
-  font-size: clamp(2.5rem, 4.6vw, 4.5rem);
+  font-size: clamp(2.35rem, 4vw, 3.85rem);
   letter-spacing: -0.05em;
   line-height: 1.06;
 }
@@ -646,7 +651,7 @@ p {
 }
 
 .split-copy h2 strong {
-  font-size: 1.28em;
+  font-size: 1.22em;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.06em;
@@ -1531,7 +1536,7 @@ html[lang="en"] .stitch-copy h1 {
 }
 
 html[lang="en"] .split-copy h2 {
-  font-size: clamp(2.15rem, 4vw, 4rem);
+  font-size: clamp(2.05rem, 3.35vw, 3.4rem);
   letter-spacing: -0.04em;
   line-height: 1.04;
 }
@@ -1556,14 +1561,24 @@ html[lang="en"] .closing h2 {
 
 /* ------------------------------------------------------------ responsive */
 
-@media (min-width: 1381px) {
+@media (min-width: 1221px) {
   .stitch-intro {
     padding-left: clamp(16px, 1.6vw, 24px);
     border-left: 1px solid var(--rule);
   }
 }
 
-@media (max-width: 1380px) {
+@media (min-width: 1221px) and (max-width: 1380px) {
+  .stitch-actions {
+    width: 100%;
+  }
+
+  .stitch-actions .button {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 1220px) {
   .stitch-copy {
     grid-template-columns: 1fr;
     align-items: start;
@@ -1683,7 +1698,7 @@ html[lang="en"] .closing h2 {
   }
 
   .site-nav a {
-    min-height: 40px;
+    min-height: 44px;
     font-size: 13.5px;
     white-space: nowrap;
   }
@@ -1697,7 +1712,7 @@ html[lang="en"] .closing h2 {
   }
 
   .lang-switch {
-    min-height: 38px;
+    min-height: 40px;
   }
 
   .spec-strip {
@@ -1822,7 +1837,7 @@ html[lang="en"] .closing h2 {
 
   .split-copy h2,
   html[lang="en"] .split-copy h2 {
-    font-size: clamp(2.05rem, 9.2vw, 3.1rem);
+    font-size: clamp(1.95rem, 8vw, 2.75rem);
   }
 
   .split-copy > p:not(.eyebrow) {
@@ -1876,7 +1891,7 @@ html[lang="en"] .closing h2 {
   }
 
   .demo-count input {
-    height: 34px;
+    height: 40px;
   }
 
   .workflow-inner {
@@ -1930,20 +1945,66 @@ html[lang="en"] .closing h2 {
   }
 }
 
-@media (max-width: 440px) {
-  .modes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 560px) {
+  .stitch-flow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px;
   }
 
+  .stitch-flow figcaption {
+    margin-bottom: 8px;
+  }
+
+  .flow-label {
+    font-size: 10px;
+  }
+
+  .stitch-flow figcaption strong {
+    font-size: 16px;
+  }
+
+  .stitch-pieces {
+    gap: 8px;
+  }
+
+  .stitch-pieces span,
+  .stitch-result {
+    border-radius: 8px;
+  }
+
+  .stitch-arrow {
+    width: 32px;
+    justify-self: center;
+    font-size: 14px;
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 440px) {
   .modes button {
-    min-height: 36px;
-    padding-inline: 6px;
-    font-size: 12px;
+    min-height: 40px;
+    padding-inline: 4px;
+    font-size: 11.5px;
+  }
+
+  html[lang="en"] .modes button {
+    font-size: 11px;
   }
 
   .workflow-stats dd {
     font-size: 1.55rem;
+  }
+}
+
+@media (max-width: 359px) {
+  html[lang="en"] .modes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  html[lang="en"] .modes button {
+    min-height: 38px;
   }
 }
 

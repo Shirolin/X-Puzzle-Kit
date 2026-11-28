@@ -714,6 +714,60 @@ langToggle?.addEventListener("click", () => {
   applyLanguage(lang);
 });
 
+const navSections = Array.from(
+  document.querySelectorAll<HTMLAnchorElement>('.site-nav a[href^="#"]'),
+)
+  .map((link) => {
+    const target = document.querySelector<HTMLElement>(link.hash);
+    return target ? { link, target } : null;
+  })
+  .filter(
+    (entry): entry is { link: HTMLAnchorElement; target: HTMLElement } =>
+      entry !== null,
+  );
+
+if (navSections.length > 0) {
+  const headerHeight =
+    Number.parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        "--header-height",
+      ),
+    ) || 68;
+  let pending = false;
+
+  const updateActiveSection = (): void => {
+    pending = false;
+    const line = headerHeight + 32;
+    let active: HTMLElement | null = null;
+
+    navSections.forEach(({ target }) => {
+      if (target.getBoundingClientRect().top <= line) {
+        active = target;
+      }
+    });
+
+    navSections.forEach(({ link, target }) => {
+      const isActive = target === active;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const requestUpdate = (): void => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(updateActiveSection);
+  };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate);
+  updateActiveSection();
+}
+
 if (photo && canvas && context) {
   photo.decode().then(initPreview, () => {
     if (photo.complete && photo.naturalWidth > 0) {
